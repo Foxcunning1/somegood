@@ -1,0 +1,306 @@
+<!Doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>卖家管理中心</title>
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+	<import type="css" file="statics.store.css.store-public,statics.store.css.store-style,css.pagination,css.ui-dialog" />
+	<import type="js" file="scripts.jquery.jquery-1#11#2#min,scripts.artdialog.dialog-plus-min,scripts.zepto.lazyload#min" />
+</head>
+<body>
+	<div class="tab-box">
+	    <ul class="tab-ul fl">
+
+	        <li <eq name="pageType" value="1"> class="sel"</eq>><a href="{:U('Seller/Order/index')}?pageType=1">待发货</a><div class="move"></div></li>
+	        <li <eq name="pageType" value="2"> class="sel"</eq>><a href="{:U('Seller/Order/index')}?pageType=2">待完成</a><div class="move"></div></li>
+	        <li <eq name="pageType" value="3"> class="sel"</eq>><a href="{:U('Seller/Order/index')}?pageType=3">已完成</a><div class="move"></div></li>
+	        <li <eq name="pageType" value="0"> class="sel"</eq>><a href="{:U('Seller/Order/index')}?pageType=0">待付款</a><div class="move"></div></li>
+	    </ul>
+	    <div class="search-box fr">
+			<form action="" method="post">
+				<input type="text" class="search-input" placeholder="订单号|收货人|收货人手机号" name="keywords" value="{$keywords}"/>
+				<input type="hidden" name="pageType" value="{$pageType}">
+				<input type="submit" class="search-btn" value="搜索"/>
+			</form>
+	    </div>
+	</div>
+	<div class="info-box">
+	    <div class="box-title">
+	        <div class="th th-info">订单详情</div>
+	        <div class="th th-people">收货人</div>
+	        <div class="th th-pay">订单金额</div>
+	        <div class="th th-status">订单状态</div>
+	        <div class="th th-do">操作</div>
+	    </div>
+	   <!-- <div class="all-select-box">
+	        <label for="allSelect" id="allSelectLabel"><input type="checkbox" id="allSelect"/>全选</label>
+	    </div>-->
+	    <div class="list-box">
+			<!--提供4个样式-->
+			<volist name="list" id="item">
+				<div class="item" id="item{$item.order_sn}">
+					<div class="item-title-bg">
+						<!--<input type="checkbox" class="fl"/>-->
+						<div class="order-num fl">订单号：<span>{$item.order_sn}</span></div>
+						<switch name="pageType">
+							<case value="1">
+								<div class="time fr">付款时间：<span>{$item.pay_time|date="Y-m-d H:i:s",###}</span></div>
+							</case>
+							<case value="2">
+								<div class="time fr">发货时间：<span>{$item.ship_time|date="Y-m-d H:i:s",###}</span></div>
+							</case>
+							<case value="3">
+								<div class="time fr">完成时间：<span>{$item.complete_time|date="Y-m-d H:i:s",###}</span></div>
+							</case>
+							<case value="0">
+								<div class="time fr">下单时间：<span>{$item.add_time|date="Y-m-d H:i:s",###}</span></div>
+							</case>
+						</switch>
+					</div>
+					<div class="item-content">
+						<div class="th th-info">
+							<volist name="item.goods_thumb" id="gt">
+								<div class="order-goods-list">
+									<img src="__PUBLIC__/statics/mobile/images/default_img.png" data-original="__PUBLIC__/uploads/{$gt}_c200x200" alt="商品图" height="70" height="70">
+									<a href="javascript:void(0);" class="good-name fl">{$item.goods_title.$key}</a>
+								</div>
+							</volist>
+						</div>
+						<div class="th th-people">
+							<span><eq name="item.delivery_way" value="0">到店购买<else/>{$item.consignee}</eq></span>
+							<!--详细信息-->
+							<div class="consignee-more">
+								<span class="pointer"></span>
+								<dl>
+									<dt>{$item.consignee}</dt>
+									<dd>{$item.address}</dd>
+									<dd>{$item.mobile}</dd>
+								</dl>
+							</div>
+						</div>
+						<div class="th th-pay"><span>￥{$item.money}</span></div>
+						<div class="th th-status">
+							<switch name="pageType">
+								<case value="1">
+									<span class="order-status">买家已付款</span>
+									<a href="{:U('Seller/Order/orderDetail')}?order_sn={$item.order_sn}" target="StoreContent" class="order-info-a">订单详情</a>
+								</case>
+								<case value="2">
+									<span class="order-status">已发货</span>
+									<a href="{:U('Seller/Order/orderDetail')}?order_sn={$item.order_sn}" target="StoreContent" class="order-info-a">订单详情</a>
+								</case>
+								<case value="3">
+									<span class="order-status">买家已确认收货</span>
+									<a href="{:U('Seller/Order/orderDetail')}?order_sn={$item.order_sn}" target="StoreContent" class="order-info-a">订单详情</a>
+								</case>
+								<case value="0">
+									<span class="order-status">买家未付款</span>
+									<a href="{:U('Seller/Order/orderDetail')}?order_sn={$item.order_sn}" target="StoreContent" class="order-info-a">订单详情</a>
+								</case>
+							</switch>
+						</div>
+						<div class="th th-do">
+							<switch name="pageType">
+								<case value="1">
+									<a href="javascript:;" class="btn set-out" data-id="{$item.order_sn}">发货</a>
+								</case>
+								<case value="2">
+									<a href="{:U('Seller/Order/orderLogistics')}?nu={$item.order_sn}" class="btn">查看物流</a>
+								</case>
+								<case value="3">
+									<a href="{:U('Seller/Order/orderLogistics')}?nu={$item.order_sn}" class="btn">查看物流</a>
+								</case>
+								<case value="0">
+									<if condition="$item['delivery_way'] eq 1 and $item['is_son'] eq 2">
+										<a href="javascript:;" class="btn change-price" data-value="{$item.order_sn}">改价</a>
+									</if>
+								</case>
+							</switch>
+
+						</div>
+						<div class="clear"></div>
+					</div>
+				</div>
+			</volist>
+	    </div>
+	</div>
+	<div class="pagelist">
+		<div id="PageContent" class="default">{$pageShow}</div>
+	</div>
+
+</div>
+<script>
+    $(function(){
+        $(".order-goods-list img").lazyload({effect : "fadeIn"});
+    })
+	/*发货*/
+    $(".item-content").find(".set-out").click(function() {
+        var orderSn=$(this).attr("data-id");
+        $.ajax({
+        type: "POST",
+        dataType:'json',
+        url:'{:Seller/Order/index}',
+        data: {
+            orderSn: orderSn
+        },
+        async: false,
+        error: function(request) {
+
+        },
+        success: function(data) {
+            //接收后台返回的结果
+            window.logisticsName=data.data[0].name;
+            window.logisticsId=data.data[0].id;
+        }
+        });
+        var d = dialog({
+            title:"填写发货信息",
+            content: "<div class='set-out-form'>" +
+            "<form method='post' id='deliverForm' url='{:U('Mobile/Seller/deliverGoods')}'>" +
+            "<dl>" +
+            "<dt>选择物流</dt>" +
+            "<dd>" +
+            "<select name='data[type]' id='delive_type'>" +
+            "<option value='"+logisticsId+"'>"+logisticsName+"</option>" +
+            "</select>" +
+            "</dd>" +
+            "</dl>" +
+            "<dl>" +
+            "<dt>订单号</dt>" +
+            "<dd>" +
+            "<input type='text' id='logistics_sn' name='data[logistics_sn]' placeholder='请输入物流单号...'></dd>" +
+            "<input type='hidden' id='order_sn' name='data[order_sn]' value='"+$(this).attr("data-id")+"'></dd>" +
+            "</dl>" +
+            "</form>" +
+            "</div>",
+            okValue: '确定',
+            ok: function () {
+                bindSubmitBtn();
+                this.title('提交中…');
+                return true;
+            },
+            cancelValue: '取消',
+            cancel: function () {}
+        }).width(300).height(130).show();
+    })
+    function bindSubmitBtn() {
+        var delive_type = $("#delive_type").val();
+        var logistics_sn = $("#logistics_sn").val();
+        var order_sn = $("#order_sn").val();
+        if(logistics_sn==""){
+            var d = dialog({content:"请输入快递单号！"}).show();
+            setTimeout(function () {
+                d.close().remove();
+            }, 1500);
+        }else{
+            $.ajax({
+                type: "POST",
+                url: "{:U('Mobile/Seller/deliverGoods')}",
+                data: {"data[type]":delive_type,"data[logistics_sn]":logistics_sn,"data[order_sn]":order_sn},
+                dataType: 'json',
+                success: function(data){
+                    if(data.status==1){
+                        var d = dialog({content:data.info}).show();
+                        setTimeout(function () {
+                            d.close().remove();
+                        }, 1500);
+                        $("#item"+order_sn).remove();
+                    }else{
+                        var d = dialog({content:data.info}).show();
+                        setTimeout(function () {
+                            d.close().remove();
+                        }, 1500);
+                    }
+                }
+            });
+        }
+    }
+	/*改价*/
+    $(".item-content").find(".change-price").click(function() {
+        var d = top.dialog({
+            title:"价格修改",
+            content: "<div class='change-price-form'>" +
+            "<form action=''>" +
+            "<dl>" +
+            "<dt>新价格</dt>" +
+            "<dd>" +
+            "<input type='text' id='edit_price' ></dd>" +
+            "<input type='hidden' id='order_sn' value='"+$(this).attr("data-value")+"'></dd>" +
+            "</dl>" +
+            "</form>" +
+            "</div>",
+            okValue: '确定',
+            ok: function () {
+                bindSubmitBtn1();
+                this.title('提交中…');
+                return true;
+            },
+            cancelValue: '取消',
+            cancel: function () {}
+        }).width(300).height(90).showModal();
+    })
+    function bindSubmitBtn1() {
+            var edit_price = $("#edit_price").val();
+            var order_sn =$('#order_sn').val();
+            $.ajax({
+                type: "POST",
+                url: "{:U('Seller/Order/editPrice')}",
+                data: {"order_sn":order_sn,"edit_price":edit_price},
+                dataType: 'json',
+                success: function(data){
+                    if(data.status==1){
+                        var d = dialog({content:data.info}).show();
+                        setTimeout(function () {
+                            d.close().remove();
+                        }, 800);
+                        setTimeout(function(){
+                            window.location.href="__SELF__";
+                        },800)
+                    }else{
+                        var d = dialog({content:data.info}).show();
+                        setTimeout(function () {
+                            d.close().remove();
+                        }, 800);
+                    }
+                },
+                error:function (data) {
+                }
+            });
+    }
+    $(".tab-ul li").click(function(){
+     $(this).addClass("sel").siblings().removeClass("sel");
+    })
+    /*全选*/
+    function allChecked(obj){
+        if($(obj).find("input").is(":checked")){
+            $(".list-box").find("input[type='checkbox']").prop("checked",true);
+        }else{
+            $(".list-box").find("input[type='checkbox']").prop("checked",false);
+
+        }
+    }
+    /*单选*/
+    function allsingle(obj){
+        var Len = $(".list-box").find(".item input:checkbox:checked").length;
+        var len = $(".list-box").find(".item input:checkbox").length;
+        if($(obj).is(":checked")){
+            $(obj).prop("checked",true);
+            if(Len==len){
+                $("#allSelectLabel").find("input").prop("checked",true);
+            }
+        }else{
+            $(obj).prop("checked",false);
+            $("#allSelectLabel").find("input").prop("checked",false);
+        }
+
+    }
+    $("#allSelectLabel").click(function(){
+        allChecked(this);
+    })
+    $(".list-box").find("input[type='checkbox']").click(function(){
+        allsingle(this);
+    })
+</script>
+</body>
+</html>

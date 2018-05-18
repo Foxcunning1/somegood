@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>{$web_title}</title>
+    <import type="css" file="statics.mobile.css.public,statics.mobile.css.user,dist.dropload" />
+    <import type="js" file="scripts.zepto.zepto#min,scripts.zepto.timeago,dist.dropload#min,statics.mobile.js.common" />
+    <script type="text/javascript" src="__PUBLIC__/statics/mobile/js/rem.js" fu-psd="720" fu-min="50" fu-max="100"></script>
+</head>
+<body>
+<div class="shop-inner">
+    <div class="top-tips">
+        <a href="{:U('Mobile/Users/index')}" class="icons icon-back fl"></a>
+        <h2>我的购物币</h2>
+        <a href="{:U('Mobile/Users/setting')}" class="setting-box fr"><i class="icons icon-setting"></i></a>
+    </div>
+    <div class="head-portrait">
+        <a href="{:U('Users/setting',array('type'=>'user_img'))}" class="fl">
+            <img src="__PUBLIC__/statics/mobile/images/default_img.png" data-original="<empty name="user.avatar">__PUBLIC__/statics/mobile/images/default_img.png<else/>__PUBLIC__/uploads/{$user.avatar}_c200x200</empty>" alt="{$session.mobile.mobile}" style="border-radius: 50%;" />
+        </a>
+    </div>
+    <div class="name-funs">
+        <h3>购物币合计：￥{$countInfo.total_money}</h3>
+    </div>
+</div>
+<div class="already-title" style="padding: 0; position: absolute;">
+    <ul class="tab">
+        <li class="item <eq name="type" value="0">sel</eq>"><a href="{:U('Mobile/Users/virtualCash')}">已获得<em id="hasGet">({$countInfo.f_counts})</em></a></li>
+        <li class="item <eq name="type" value="1">sel</eq>"><a href="{:U('Mobile/Users/virtualCash',array('type'=>1))}">已抵扣<em id="hasDivided">({$countInfo.t_counts})</em></a></li>
+    </ul>
+</div>
+<div class="user-section" style="padding-top:0.78rem">
+    <div class="sec-content">
+        <div class="virtual-currency-box">
+            <div class="result-list">
+                <volist name="list" id="item">
+                <div class="list-item">
+                    <div class="share fl">
+                        <eq name="item.change_type" value="0"><empty name="item.user_name">{$item.mobile}<else/>{$item.user_name}</empty><else/>抵扣</eq>
+                    </div>
+                    <div class="info fl">
+                        <div class="title">{$item.change_note}</div>
+                        <div class="time"><time class="timeago" datetime="{$vo.change_time|date="Y-m-d H:i:s",###}"></time></div>
+                    </div>
+                    <div class="number fl">{$item.user_money}</div>
+                </div>
+                </volist>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--公用底部-->
+<include file="Public/ufooter" />
+<!--公用底部-->
+<script>
+    $(function(){
+        //发布的日期与现在间隔的时间
+        $(".timeago").timeago();
+    })
+    //滚动页面ajax自动获取下一页内容
+    var page=2; //有效求购的页码
+    var totalPage = {$pageCount}; //有效求购页的总页码，会从后台获
+    var ajaxUrl="{:U('Mobile/Users/virtualCash')}?type=1";//ajax请求地址
+    $(function(){
+        var tabLoadEnd = false;
+        // dropload
+        var dropload = $('.virtual-currency-box').dropload({
+            scrollArea : window,
+            loadDownFn : function(me){
+                // 加载菜单一的数据
+                if(page <= totalPage){
+                    $.ajax({
+                        url:ajaxUrl,
+                        type:"post",
+                        dataType:"json",
+                        data:{
+                            'p':page
+                        },
+                        success:function(data){
+                            var str='';
+                            $.each(data.data.list,function(index, vo) {
+
+                                str += "<div class=\"list-item\">";
+                                str += "<div class=\"share fl\">";
+                                if(vo['change_type']==1){
+                                    str += "抵扣";
+                                }else{
+                                    str += vo['mobile'];
+                                }
+                                str += "</div>";
+                                str += "<div class=\"info fl\">";
+                                str += "<div class=\"title\">"+vo['change_note']+"</div>";
+                                str += "<div class=\"time\"><time class=\"timeago\" datetime=\""+date('Y-m-d',""+vo['change_time']+"")+"\"></time></div>";
+                                str += "</div>";
+                                str += "<div class=\"number fl\">"+vo['user_money']+"</div>";
+                                str += "</div>";
+                            })
+                            // 为了测试，延迟1秒加载
+                            $('.result-list').append(str);
+                            // 每次数据加载完，必须重置
+                            me.resetload();
+                            $(".timeago").timeago();
+                            totalPage = data.data.pageCount;
+                        },
+                        error: function(xhr, type){
+                            alert('Ajax error!');
+                            // 即使加载出错，也得重置
+                            me.resetload();
+                        }
+                    });
+                    page++;
+                }else{
+                    // 数据加载完
+                    tabLoadEnd = true;
+                    // 锁定
+                    me.lock();
+                    // 无数据
+                    me.noData();
+                    me.resetload();
+                }
+                // 加载菜单二的数据
+            }
+        });
+        // 如果数据没有加载完
+        if(!tabLoadEnd){
+            // 解锁
+            dropload.unlock();
+            dropload.noData(false);
+        }else{
+            // 锁定
+            dropload.lock('down');
+            dropload.noData();
+        }
+        // 重置
+        dropload.resetload();
+        /*头部背景改变*/
+        $(window).scroll(function(){
+            var sTop = $(window).scrollTop();
+            if(sTop >= 20){
+                $(".top-tips").addClass("change-bgcolor");
+                $(".top-tips h2").show();
+            }else{
+                $(".top-tips").removeClass("change-bgcolor");
+                $(".top-tips h2").hide();
+            }
+        })
+    });
+</script>
+</body>
+</html>

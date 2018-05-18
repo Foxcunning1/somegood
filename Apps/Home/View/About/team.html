@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>{$web_title}</title>
+    <meta name="keywords" content="{$web_keywords}"/>
+    <meta name="description" content="{$web_description}" />
+    <import type="css" file="statics.home.css.public,statics.home.css.style,statics.home.css.animate,statics.home.css.scrollanim#min" />
+    <!--[if lte IE 9]>
+    <import type="js" file="scripts.js.html5shiv#min" />
+    <![endif]-->
+    <import type="js" file="statics.home.js.jquery-1#11#2#min,statics.home.js.jquery#SuperSlide#2#1#1,statics.home.js.totop" />
+</head>
+<body>
+<include file="Public/header" />
+    <section class="team-slider"></section>
+    <article class="floor1 team-floor1">
+        <div class="w1200">
+            <section class="team-section clearfix">
+                <div class="left fl" data-kui-anim="fadeInLeftFast">
+                    <p>愿 景：让推广变得更加简单有效！</p>
+                    <p>使 命：在三好连锁人人平等！</p>
+                    <p>核心：用平民的成本把您的产品和品牌推广到平民百姓的生活中去</p>
+                </div>
+                <div class="right fl" data-kui-anim="fadeInRightFast">
+                    <img src="__PUBLIC__/statics/home/images/team_section_right.jpg" alt="" width="564" height="350"/>
+                </div>
+            </section>
+            <section class="member-section clearfix">
+                <ul>
+                    <li>
+                        <div class="img-box fl"><img src="__PUBLIC__/statics/home/images/member_img_1.jpg" alt="" width="266" height="250"/></div>
+                        <div class="info-box">
+                            <div class="name">John</div>
+                            <div class="info">
+                                <p>高级品牌营销顾问</p>
+                                <p>10年广告行业经验</p>
+                                <p>曾任职多家4A公司</p>
+                                <p>为众多知名企业提供战略品牌策划咨询</p>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="img-box fl"><img src="__PUBLIC__/statics/home/images/member_img_1.jpg" alt="" width="266" height="250"/></div>
+                        <div class="info-box">
+                            <div class="name">John</div>
+                            <div class="info">
+                                <p>高级品牌营销顾问</p>
+                                <p>10年广告行业经验</p>
+                                <p>曾任职多家4A公司</p>
+                                <p>为众多知名企业提供战略品牌策划咨询</p>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="img-box fl"><img src="__PUBLIC__/statics/home/images/member_img_1.jpg" alt="" width="266" height="250"/></div>
+                        <div class="info-box">
+                            <div class="name">John</div>
+                            <div class="info">
+                                <p>高级品牌营销顾问</p>
+                                <p>10年广告行业经验</p>
+                                <p>曾任职多家4A公司</p>
+                                <p>为众多知名企业提供战略品牌策划咨询</p>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="img-box fl"><img src="__PUBLIC__/statics/home/images/member_img_1.jpg" alt="" width="266" height="250"/></div>
+                        <div class="info-box">
+                            <div class="name">John</div>
+                            <div class="info">
+                                <p>高级品牌营销顾问</p>
+                                <p>10年广告行业经验</p>
+                                <p>曾任职多家4A公司</p>
+                                <p>为众多知名企业提供战略品牌策划咨询</p>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </section>
+        </div>
+    </article>
+    <include file="Public/footer" />
+    <script>
+        $(function(){
+            $(".member-section li:odd").addClass("fadeInRightFast");
+            $(".member-section li:even").addClass("fadeInLeftFast");
+        })
+    </script>
+</body>
+</html>

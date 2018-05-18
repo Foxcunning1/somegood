@@ -1,0 +1,108 @@
+    <import type="js" file="scripts.zepto.event" />
+	<header class="header" id="header">
+        <a class="home-logo fl" href="{:U('Mobile/Index/index')}"><img src="__PUBLIC__/statics/mobile/images/logo.png" alt="" class="logo fl" /></a>
+        <div class="search-wrap fl">
+            <div class="search-input" id="skeywords" placeholder="搜一搜你所需的物品"><empty name="keywords">搜一搜你所需的物品<else/>{$keywords}</empty></div>
+            <i class="icons icon-search-small"></i>
+        </div>
+        <div class="release-wrap fr">
+            <a href="{:U('Mobile/SecondHand/publish')}">
+                <i class="icons icon-release"></i>
+                <span>发布</span>
+            </a>
+        </div>
+    </header>
+    <!--隐藏搜索部分 主页和产品列表页可以公用-->
+    <div class="hide-search-page" id="hideSearchPage">
+        <div class="search-inter-box">
+            <i id="cancelBtn" class="icons icon-close fl"></i>
+            <div class="hide-search-wrap fr">
+                <div class="search-box">
+                    <form class="form fl" name="searchForm" id="searchForm" method="get" action="{:U('Ershou/Search/list')}">
+                        <input type="text" name="keywords" id="keywords"  placeholder="请输入关键词" value="{$keywords}" />
+                    </form>
+                    <a href="javascript:void(0);" id="searchBtn" class="search-big-box"><i class="icons icon-search-big"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="current-search-box" id="searchOptionBox">
+        </div>
+        <script type="text/javascript">
+            var inputChange = {
+                input:function(obj){
+                    var obj = document.getElementById(obj);
+                    var inputLock = false;
+                    function doing(obj){
+                        $("#searchOptionBox").html("");
+                        var keywords = $("#keywords").val();
+                        if(keywords!=""){
+                            //组合搜索下拉
+                            var searchOptionStr = "";
+                            searchOptionStr += "<div class=\"search-item-option\">";
+                            var typeStr = "";
+                            var defaultText = "的商品";
+                            searchOptionStr += "<span><a href=\"{:U('Ershou/Search/list')}?keywords="+keywords
+                                    + typeStr + "\">搜索<em>“"+keywords+"”</em>" + defaultText + "</a></span>";
+                            searchOptionStr += "</div>";
+                            $("#searchOptionBox").append(searchOptionStr);
+                        }
+                    }
+                    obj.addEventListener('compositionstart', function() {
+                        inputLock = true;
+                    });
+                    obj.addEventListener('compositionend', function(event) {
+                        inputLock = false;
+                        doing(event.target);
+                    })
+                    obj.addEventListener('input', function(event) {
+                        if (!inputLock) {
+                            doing(event.target);
+                            event.returnValue = false;
+                        }
+                    });
+                }
+            }
+            $(function(){
+                inputChange.input("keywords");
+            })
+        </script>
+        <notempty name="searchedKeywordsList">
+        <div class="search-history">
+            <h4>最近搜索：</h4>
+            <div class="history-word hot-word">
+                <volist name="searchedKeywordsList" id="item">
+                <span><a href="{:U('Ershou/Search/list')}?keywords={$item.keyword}">{$item.keyword}</a></span>
+                </volist>
+            </div>
+        </div>
+        </notempty>
+        <div class="search-interest">
+            <h4>热搜：</h4>
+            <div class="hot-word">
+                <volist name="hotKeywords" id="vo">
+                    <span><a href="{:U('Ershou/Search/list')}?keywords={$item.keyword}">{$vo.keyword}</a></span>
+                </volist>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+    /*以下js头部带搜索框的都可以通用 当输入框获取焦点时 转到搜索页面*/
+    /*搜索获取焦点时隐藏搜索出现*/
+    var button = document.getElementById("skeywords");
+    var inputElem = document.getElementById("keywords");
+    var hideSearchPage = document.getElementById("hideSearchPage");
+    button.addEventListener("click", function(e){
+        hideSearchPage.style.visibility = "visible";
+        inputElem.focus();
+    });
+    /*关闭隐藏搜索*/
+    $("i.icon-close").on("touchstart",function(){
+        $(".hide-search-page").css("visibility", "hidden");
+    })
+    $("#searchBtn").on("touchstart",function(){
+        var keywords = $("#keywords").val();
+        if(keywords!=""){
+           $("#searchForm").submit();
+        }
+    })
+    </script>

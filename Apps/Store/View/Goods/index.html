@@ -1,0 +1,158 @@
+<!Doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>商品列表</title>
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <import type="css" file="statics.store.css.store-public,statics.store.css.store-style,scripts.artdialog.ui-dialog,css.pagination" />
+    <import type="js" file="scripts.jquery.jquery-1#11#2#min,scripts.artdialog.dialog-plus-min,scripts.jquery.jquery#lazyload#min" />
+</head>
+<body style="background-color: #edf1f2;overflow-y: auto;">
+<div class="tab-box">
+    <ul class="tab-ul fl">
+        <li <eq name="pageType" value="sale"> class="sel"</eq>><a href="{:U('Store/Goods/index')}?pageType=sale">在售</a><div class="move"></div></li>
+        <li <eq name="pageType" value="off"> class="sel"</eq>><a href="{:U('Store/Goods/index')}?pageType=off">已失效</a><div class="move"></div></li>
+    </ul>
+</div>
+<div class="info-box">
+    <div class="goods-list-box">
+        <!--<div class="all-select-box">-->
+            <!--<label for="allSelect" id="allSelectLabel"><input type="checkbox" id="allSelect"/>全选</label>-->
+            <!--<a href="javascript:;"  class="print-a">批量打印</a>-->
+        <!--</div>-->
+        <form action="{:U('Store/Goods/printList')}" class="goods-form" id="goodsForm" method="post" target="_blank">
+            <volist name="list" id="item">
+                <div class="goods-item" id="item{$item.sg_id}">
+                    <!--<input type="checkbox" name="ids[]" value="{$item.sg_id}"/>-->
+                    <a href="{:U('Mobile/Goods/detail')}?id={$item.sg_id}" target="goodsInfoIframe" class="img-a-box btn-info"><img src="__PUBLIC__/statics/mobile/images/default_img.png" data-original="__PUBLIC__/uploads/{$item.goods_thumb}_c200x200" alt="{$item.goods_title}"></a>
+                    <a href="{:U('Mobile/Goods/detail')}?id={$item.sg_id}" target="goodsInfoIframe" class="desc btn-info">{$item.goods_title}</a>
+                    <div class="price">￥<span>{$item.price}</span></div>
+                    <div class="price">库存<span>{$item.stock}</span></div>
+                    <div class="price">销量<span>{$item.sales_volume}</span></div>
+                    <div class="goods-btn-box">
+                        <!--待发货的商品的按钮-->
+                        <a href="{:U('Mobile/Goods/detail')}?id={$item.sg_id}"  class="btn-info" target="goodsInfoIframe">详情</a>
+                            <eq name="pageType" value="sale">
+                                <a href="javascript:void(0);" data-value="{$item.is_new}"  onclick="updateGoodsParam('{$item.sg_id}','new',this)" class="examine-btn <eq name="item.is_new" value="1">selected</eq>">最新</a>
+                                <a href="javascript:void(0);" data-value="{$item.is_hot}"  onclick="updateGoodsParam('{$item.sg_id}','hot',this)" class="examine-btn <eq name="item.is_hot" value="1">selected</eq>">热卖</a>
+                                <a href="javascript:void(0);" data-value="{$item.is_rec}"  onclick="updateGoodsParam('{$item.sg_id}','rec',this)" class="examine-btn <eq name="item.is_rec" value="1">selected</eq>">推荐</a>
+                                <a href="javascript:void(0);" data-value="{$item.is_top}"  onclick="updateGoodsParam('{$item.sg_id}','top',this)" class="examine-btn <eq name="item.is_top" value="1">selected</eq>">置顶</a>
+                                <!--上架-->
+                            </eq>
+                    </div>
+                </div>
+            </volist>
+        </form>
+    </div>
+</div>
+<div class="pagelist">
+    <div id="PageContent" class="default">{$pageShow}</div>
+</div>
+<!--点击弹出的小按钮-->
+<div class="iframe-show-div" id="iframeShowDiv"></div>
+<!--点击弹出的小按钮-->
+<!--点击弹出的iframe-->
+<div class="iframe-box" id="iframeBox">
+    <div class="iframe-box-content">
+        <iframe name="goodsInfoIframe" scrolling="auto"></iframe>
+    </div>
+</div>
+<script type="text/javascript">
+    /*商品属性处理*/
+    function updateGoodsParam(id,param,obj) {
+        var status= $(obj).attr("data-value");
+        if(status==1){
+            var num=0;
+        }else if(status==0){
+            var num=1;
+        }
+
+        $.ajax({
+            url:"{:U('Mobile/Store/updateGoodsParam')}",
+            type:"post",
+            dataType:"json",
+            data:{
+                'id':id,
+                'param':param,
+                'status':num,
+            },
+            success:function(data){
+                if(data.status==1){
+                    $(obj).attr("data-value",num);
+                    if(num==1){
+                        $(obj).addClass("selected");
+                    }else if(num==0){
+                        $(obj).removeClass("selected");
+                    }
+                }else{
+                    var d = dialog({content:data.info}).show();
+                    setTimeout(function () {
+                        d.close().remove();
+                    }, 1500);
+                }
+            }
+        });
+    }
+
+    $(function(){
+        $(".img-a-box img").lazyload({effect : "fadeIn"});
+    })
+
+    $(".tab-ul li").click(function(){
+        $(this).addClass("sel").siblings().removeClass("sel");
+    })
+    $(".goods-item").find(".btn-info").click(function(){
+        $(".iframe-box").addClass("move");
+    })
+    $(".iframe-show-div").click(function(){
+        if($(".iframe-box").hasClass("move")){
+            $(".iframe-box").removeClass("move");
+        }else{
+            $(".iframe-box").addClass("move");
+        }
+    })
+    $(".print-a").click(function(){
+        if($(".goods-list-box .goods-item").find("input:checkbox:checked").length){
+            //执行。。。
+            $('#goodsForm').submit();
+        }else{
+            var d = dialog({title:"温馨提示",content:"请选择要打印的商品！！！"}).show();
+            setTimeout(function () {
+                d.close().remove();
+            }, 1500);
+        }
+    })
+    /*全选*/
+    function allChecked(obj){
+        if($(obj).find("input").is(":checked")){
+            $(".goods-item").find("input[type='checkbox']").prop("checked",true);
+        }else{
+            $(".goods-item").find("input[type='checkbox']").prop("checked",false);
+
+        }
+    }
+    /*单选*/
+    function allsingle(obj){
+        var Len = $(".goods-item").find("input:checkbox:checked").length;
+        var len = $(".goods-item").find("input:checkbox").length;
+        if($(obj).is(":checked")){
+            $(obj).prop("checked",true);
+            if(Len==len){
+                $("#allSelectLabel").find("input").prop("checked",true);
+            }
+        }else{
+            $(obj).prop("checked",false);
+            $("#allSelectLabel").find("input").prop("checked",false);
+        }
+
+    }
+    $("#allSelectLabel").click(function(){
+        allChecked(this);
+    })
+    $(".goods-list-box .goods-item").find("input[type='checkbox']").click(function(){
+        allsingle(this);
+    })
+</script>
+</body>
+</html>

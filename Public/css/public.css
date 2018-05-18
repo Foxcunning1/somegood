@@ -1,0 +1,73 @@
+@charset "utf-8";
+/* css reset */
+html,body,header,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,a,abbr,address,big,em,img,q,small,strike,strong,
+sub,sup,tt,var,i,dl,dt,dd,ol,ul,li,form,fieldset,label,table,caption,tbody,thead,tfoot,tr,th,td,article,
+aside,canvas,details,figure,figcaption,header,footer,menu,nav,output,section,time,mark,audio,
+video,input,select,button{margin:0;padding:0;border:0; font-family:PingFangSC-Regular,Helvetica,"Droid Sans",Arial,sans-serif;font-style:normal;font-weight:normal;}
+ul,ol,li{list-style: none;}
+html {font-size: 100px; width: 100%; height: 100%; -webkit-text-size-adjust:100%; -ms-text-size-adjust:100%; max-width: 640px; margin: 0 auto; line-height:1; }
+q, blockquote { quotes:none; }
+a, img { border:none; -webkit-touch-callout: none; display: inline-block;}
+a {text-decoration: none;}
+table { border-collapse:collapse; border-spacing:0; }
+input,button,textarea{ outline: none; border: none;}
+.fl{ float:left; }
+.fr{ float:right; }
+
+/*公用头部样式*/
+.page-title { height: 0.86rem; background-color: #00b190;}
+.position-title { width: 100%; position: fixed; left: 0; top: 0; z-index: 35;}
+.page-title .to-back-box {  width: 0.6rem; height: 0.6rem; position: absolute; left: 0.15rem; top: 0.1rem; z-index: 35;}
+.page-title .to-menu-box { width: 0.6rem; height: 0.6rem;position: absolute; right: 0.15rem; top: 0.1rem;z-index: 35;}
+.page-title h2.title {font-size: 0.3rem; font-weight: normal; color: #fff; text-align: center; line-height: 0.9rem; margin: 0 0.8rem;}
+/*公用底部样式*/
+.footer { width: 100%; position: fixed; left: 0;bottom: 0; background-color: #fff; box-shadow: -3px 0 10px #ccc}
+.footer ul { display: flex;}
+.footer ul li {flex: 1; text-align: center; }
+.footer ul li a { font-size: 0.2rem;color: #333; position: relative;}
+.footer ul li a i,.footer ul li a span {display: block;}
+.footer ul li a span { margin-top: 0.1rem}
+.footer ul li a .home {width: 0.38rem; height: 0.38rem; background: url(../images/icon.png) no-repeat; background-position: 0 0; background-size: 3rem 3rem; }
+.footer ul li.sel a .home {background-position: -0.45rem 0;}
+.footer ul li a .classify { width: 0.38rem; height: 0.38rem; background: url(../images/icon.png) no-repeat; background-position: 0 -0.43rem; background-size: 3rem 3rem; }
+.footer ul li.sel a .classify{ background-position: -0.45rem -0.43rem;}
+.footer ul li a .massage { width: 0.38rem; height: 0.38rem; background: url(../images/icon.png) no-repeat; background-position: 0 -0.83rem; background-size: 3rem 3rem; }
+.footer ul li.sel a .massage{ background-position: -0.45rem -0.83rem;}
+.footer ul li a .mine { width: 0.38rem; height: 0.38rem; background: url(../images/icon.png) no-repeat; background-position: 0 -1.22rem; background-size: 3rem 3rem; }
+.footer ul li.sel a .mine{background-position: -0.45rem -1.22rem;}
+.footer ul li.plus { margin-top: -0.4rem; }
+.footer ul li.plus i { display: block; width: 0.98rem;height: 0.98rem; background: url(../images/plus.png) no-repeat; background-size: cover;}
+.footer ul li .icon-num { display: block; padding: 0.02rem 0.06rem; position: absolute; right: -0.1rem; top: -0.1rem; background-color: #ec343a; color: #fff; font-size: 0.14rem; border-radius: 50%;}
+.footer ul li.sel a{color: #00b190}
+
+/*icon图标 样式*/
+.icons { display:block; background: url(../images/icon.png) no-repeat; background-size: 3rem 3rem}
+.icon-release { width: 0.26rem; height: 0.26rem; margin: 0.04rem auto;  background-position: 0 -1.96rem;}
+.icon-search-small { width: 0.24rem; height: 0.24rem; background-position: -2.75rem 0; position: absolute; left: 0.1rem; top: 0.18rem; }
+.icon-search-big {  width: 0.24rem; height: 0.24rem; background-position: -2.75rem 0; position: absolute; left: 0.21rem; top: 0.2rem; }
+.icon-location {display: inline-block; width: 0.22rem; height: 0.22rem; background-position: -2.80rem -1.33rem; margin-right: 0.05rem; vertical-align: middle;}
+.icon-chat {  width: 0.24rem; height: 0.24rem; background-position: -2.76rem -0.28rem; margin-right: 0.2rem;}
+.icon-close { width:0.26rem; height:0.26rem; position: absolute; left: 0.2rem;top: 0.36rem; background-position: 0 -1.66rem;}
+.icon-like { width: 0.26rem; height: 0.24rem;background-position: -2.75rem -0.54rem; }
+.icon-clock {  display: inline-block; width: 0.26rem; height: 0.26rem; background-position: -2.76rem -1.06rem; margin-right: 0.05rem; margin-top: -2px;vertical-align: middle;}
+.icon-more { width: 0.16rem; height:0.26rem;  margin-top:0.12rem;  background-position: 0 -2.28rem; }
+.icon-guarantee { width: 0.22rem; height:0.22rem; background-position: -1.51rem -0.26rem; margin-top: 0.14rem;}
+.icon-identification { width: 0.74rem; height: 0.25rem; margin: 0.1rem auto; background-position: -0.89rem 0;}
+.icon-reputation { width: 0.62rem; height: 0.22rem; background-position: -0.88rem -0.26rem; position: absolute; top: 0.1rem ; right: -0.7rem; }
+.icon-share { width:0.34rem; height: 0.38rem; position: absolute;top: 0.11rem; left: 0.10rem; background-position: -0.50rem -2.62rem;z-index: 35;}
+.icon-back { width:0.20rem; height: 0.38rem; position: absolute;top: 0.11rem; left: 0.18rem; background-position: 0 -2.62rem; z-index: 35;}
+.icon-back-gray { background-position: -0.28rem -2.62rem;}
+.goods-filter .area-choose li.sel .icon-select { width:0.20rem; height:0.18rem; position: absolute; right: 0.1rem ;top: 0.15rem; background-position: -0.45rem -2.1rem; }
+.icon-setting {width: 0.28rem; height: 0.28rem; background-position: -0.45rem -2.28rem; margin: 0 auto 0.1rem;}
+.icon-already-release {width: 0.3rem; height: 0.3rem; background-position: -2.32rem 0.02rem; margin: 0 auto;}
+.icon-already-sell {width: 0.3rem; height: 0.3rem; background-position: -2.34rem -0.30rem;}
+.icon-my-release {width: 0.3rem; height: 0.3rem; background-position: -2.32rem -0.58rem; margin: 0.12rem 0.2rem 0 0;}
+.icon-my-buy {width: 0.3rem; height: 0.3rem; background-position: -2.32rem -2.70rem; margin: 0.12rem 0.2rem 0 0;}
+.icon-my-coupon {width: 0.3rem; height: 0.26rem; background-position: -2.32rem -1.65rem; margin: 0.12rem 0.2rem 0 0;}
+.icon-my-collection {width: 0.3rem; height: 0.28rem; background-position: -2.32rem -1.13rem; margin: 0.12rem 0.2rem 0 0;}
+.icon-my-authentication {width: 0.3rem; height: 0.28rem; background-position: -2.32rem -1.38rem; margin: 0.12rem 0.2rem 0 0;}
+.icon-help {width: 0.3rem; height: 0.28rem; background-position: -2.32rem -1.92rem; margin: 0.12rem 0.2rem 0 0;}
+.icon-customer {width: 0.3rem; height: 0.28rem; background-position: -2.32rem -2.19rem; margin: 0.12rem 0.2rem 0 0;}
+.icon-join {width: 0.3rem; height: 0.26rem; background-position: -2.32rem -2.47rem; margin: 0.15rem 0.2rem 0 0;}
+.icon-ask { width: 0.22rem ;height: 0.32rem; background-position:-1.98rem -0.29rem; margin: 0.15rem 0.2rem 0 0;}
+.icon-wchat { width: 0.46rem; height: 0.38rem; background-position: -0.89rem -2.62rem; position: absolute; left: 0.2rem; top: 0.15rem;}

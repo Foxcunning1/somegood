@@ -1,0 +1,416 @@
+<eq name="isAjax" value="1">
+        <volist name="list" id="vo">
+        <li class="ui-switchable-panel ui-switchable-panel-selected" id="address1" >
+            <div class="consignee-item item-selected" data-address-id="{$vo.address_id}"><span>{$vo.consignee}</span><b></b></div>
+            <div class="addr-detail">
+                <span class="addr-name">{$vo.consignee}</span>
+                <span class="addr-info">{$vo.iname}{$vo.oname}{$vo.rname}{$vo.address}</span>
+                <span class="addr-tel">{$vo.mobile}</span>
+                <if condition="$vo['is_default'] eq 1"><span class="addr-default">默认地址</span></if>
+            </div>
+            <div class="op-btns">
+                <if condition="$vo['is_default'] eq 0"><a href="javascript:;" class="ftx-05 setdefault-consignee">设为默认地址</a></if>
+                <a href="javascript:;" class="ftx-05 edit-consignee" data-edit-addressid="{$vo.address_id}">编辑</a>
+                <a href="javascript:;" class="ftx-05 del-consignee" onclick="delAddress({$vo.address_id},delajaxUrl,$(this))">删除</a>
+            </div>
+        </li>
+        </volist>
+        <input type="hidden" name="data[address_id]" value="{$defaultId}" id="selAddressId">
+<else/>
+<layout name="cart_layout" />
+<script type="text/javascript" src="__PUBLIC__/statics/shop/js/address.js"></script>
+<script type="text/javascript" src="__PUBLIC__/statics/shop/js/settlement.js"></script>
+<div class="order-confirm-box">
+    <div class="w1200">
+        <div class="confirm-title">
+            <h2>填写并核对订单信息</h2>
+        </div>
+        <div class="checkout-steps">
+            <div class="step-tit">
+                <h3 class="fl">收货人信息</h3>
+                <div class="extra-r fr">
+                    <a href="javascript:;" class="add-address ftx-05">+新增收货地址</a>
+                </div>
+            </div>
+            <form class="" action="{:U('Shop/Order/submitOrder')}" method="post">
+            <div class="step-cont">
+                <div class="consignee-content" id="consigneeAddr">
+                    <div class="ui-scrollbar-wrap">
+                        <div class="consignee-scrollbar" style="left:0; top:0; overflow: hidden;">
+                        <div class="ui-scrollbar-main">
+                            <div class="consignee-scroll">
+                                <div class="consignee-cont">
+                                    <ul id="consigneeList">
+                                        <volist name="list" id="vo">
+                                        <li class="ui-switchable-panel <if condition="$vo['is_default'] eq 1">ui-switchable-panel-selected</if>" id="address1" >
+                                            <div class="consignee-item <if condition="$vo['is_default'] eq 1">item-selected</if>" data-address-id="{$vo.address_id}"><span>{$vo.consignee}</span><b></b></div>
+                                            <div class="addr-detail">
+                                                <span class="addr-name">{$vo.consignee}</span>
+                                                <span class="addr-info">{$vo.iname}{$vo.oname}{$vo.rname}{$vo.address}</span>
+                                                <span class="addr-tel">{$vo.mobile}</span>
+                                                <span class="addr-default">默认地址</span>
+                                            </div>
+                                            <div class="op-btns">
+                                                <if condition="$vo['is_default'] eq 0"><a href="javascript:;" class="ftx-05 setdefault-consignee">设为默认地址</a></if>
+                                                <a href="javascript:;" class="ftx-05 edit-consignee" data-editid="{$vo.address_id}">编辑</a>
+                                                <a href="javascript:;" class="ftx-05 del-consignee" onclick="delAddress({$vo.address_id},delajaxUrl,$(this))">删除</a>
+                                            </div>
+                                        </li>
+                                        </volist>
+                                        <input type="hidden" name="data[address_id]" value="{$defaultId}" id="selAddressId">
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                <div class="addr-switch switch-on">
+                    <span>更多地址</span>
+                    <b></b>
+                </div>
+                <div class="addr-switch switch-off hide">
+                    <span>收起地址</span>
+                    <b></b>
+                </div>
+            </div>
+            <div class="hr"></div>
+            <div class="step-tit">
+                <h3 class="fl">支付方式</h3>
+            </div>
+            <div class="step-cont">
+                <div class="payment-list clearfix" >
+                    <div class="list-cont">
+                        <ul id="payment-list">
+                            <li payType="0" >
+                                <div class="payment-item">到店购买</div>
+                            </li>
+                            <li payType="1" class="cur">
+                                <div class="payment-item">快递运输</div>
+                            </li>
+                        </ul>
+                        <input type="hidden" id="payType" value="1" name="data[delivery_way]">
+                        <div class="clear"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="hr" id="zitihr"></div>
+            <div class="step-tit">
+                <h3 class="fl">送货清单</h3>
+                <div class="extra-r fr">
+                    <a href="{:U('Shop/Cart/index')}" class="back-to-cart ftx-05">返回修改购物车</a>
+                </div>
+            </div>
+            <!--送货清单-->
+            <div class="step-cont">
+                <div class="shopping-lists" >
+                    <volist name="sellerInfo" id="vs">
+                    <div class="shopping-list">
+                        <!--商品列表-->
+                        <div class="goods-list">
+                            <div class="goods-tit">
+                                <h4 class="vendor_name_h">商家：{$vs['user_name']}</h4>
+                            </div>
+                            <volist name="goodslist" id="vo">
+                            <if condition="$vo['seller_id'] eq $vs['seller_id']">
+                            <div class="goods-items clearfix">
+                                <div class="goods-item goods-item-extra">
+                                    <div class="p-img"><a href="javascript:;"><img src="__PUBLIC__/uploads/{$vo['goods_thumb']}" alt="商品图" /></a></div>
+                                    <div class="goods-msg">
+                                        <div class="goods-msg-gel">
+                                            <div class="p-name"><a href="javascript:;">{$vo['goods_title']}<br>-----店铺:{$vo['store_name']}</a></div>
+                                            <div class="p-price">
+                                                <strong class="sh-price">{$vo['goods_price']}</strong>
+                                                <span class="p-num">{$vo['counts']}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="clear"></div>
+                                </div>
+                            </div>
+                        </if>
+                    </volist>
+                        </div>
+                        <!--快递方式列表-->
+                        <div class="dis-modes" data-sid="{$vs['seller_id']}"></div>
+                    </div>
+                    </volist>
+                </div>
+            </div>
+
+            <div class="hr"></div>
+
+            <!--优惠券-->
+
+            <div class="step-tit">
+                <h3 class="fl">优惠券</h3>
+            </div>
+            <if condition=" $couponList['num'] eq 0 ">
+              <div class="no-coupon">
+                  很遗憾您未有可使用的优惠券！
+              </div>
+              <else />
+            <div class="step-cont">
+                <div class="coupon-wrap clearfix">
+                    <ul>
+                        <volist name="couponList" id="vo">
+                        <li>
+                            <div class="coupon-item coupon-item-new">
+                                <div class="c-detail">
+                                    <div class="c-msg c-dong">
+                                        <div class="c-top-dong"></div>
+                                        <div class="item-selected-cancel hide">取消勾选</div>
+                                        <div class="c-price">
+                                            <em>￥{$vo[type_money]}</em>
+                                        </div>
+                                        <div class="c-limit">
+                                    <span>
+                                    满{$vo[min_goods_amount]}
+                                    </span>
+                                        </div>
+                                        <div class="c-time c-time-dong">
+                                            <span>有效期至{$vo['use_end_date']|date="Y.m.d",###}</span>
+                                        </div>
+                                    </div>
+                                    <div class="c-type c-type-dong">
+                                        <span class="c-type-l">[平台券]</span>
+                                        <span class="c-type-r" id="24996803677">[限品类]</span>
+                                    </div>
+                                </div>
+                                <div class="c-info"></div>
+                            </div>
+                        </li>
+                        </volist>
+                    </ul>
+                    <div class="clear"></div>
+                </div>
+                <input type="hidden" id="canUseCoupon" value="33">
+                <input type="hidden" name="data[coupon_id]" value="0">
+            </div>
+            </if>
+            <div class="hr"></div>
+
+            <!--购物币-->
+
+            <div class="step-tit">
+                <h3 class="fl">购物币</h3>
+                <div class="bill-info fr">
+                    <span class="fl">购物币使用规则：</span>
+                    <span class="bill-desc"> 购物币每满1可以抵扣1元, 一个订单最多可以使用{$Think.config.share_bill}元</span>
+                </div>
+            </div>
+            <div class="step-cont clearfix">
+                <div class="bill-item clearfix">
+                    <div class="fl"><span class="left fl">购物币总额：</span><span class="bill all-bill fl" id="fwbTotal">{$userShallBill}</span></div>
+                    <div class="fr">
+                        <span class="left fl">可使用：</span>
+                        <input type="number"  id="billInput" name="billInput" class="bill use-bill fl" placeholder="可使用抵扣金额<if condition="$userShallBill egt $shareBillMax">{$shareBillMax}<else />{$userShallBill}</if>元"/>
+                        <input type="hidden" id="canUseBill" name="canUseBill" value="">
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <!-- <div class="hr"></div> -->
+
+            <!--余额-->
+
+            <!-- <div class="step-tit">
+                <h3>余额</h3>
+            </div>
+            <div class="step-cont clearfix">
+                <div class="bill-item clearfix">
+                    <div class="fl"><span class="left fl">余额：</span><span class="bill all-ye fl" id="yeTotal">300</span></div>
+                    <div class="fr">
+                        <span class="left fl">可使用：</span>
+                        <input type="number" id="yeInput" name="yeInput" class="bill use-ye fl" placeholder="可使用抵扣金额<if condition="$userShallBill egt $shareBill">{$Think.config.share_bill}<else />{$userShallBill}</if>元"/>
+                        <input type="hidden" id="yeCanUse" name="yeCanUse" value="">
+                    </div>
+                </div>
+            </div> -->
+        </div>
+        <div class="order-summary">
+            <div class="statistic fr">
+                <div class="list">
+                    <span><em class="ftx-01">{$couponInfo.num}</em> 件商品，总商品金额：</span>
+                    <span class="price">￥<em id="GoodsMoney">{$couponInfo.money}</em></span>
+                </div>
+                <div class="list">
+                    <span>购物币抵扣：</span>
+                    <em class="price" id="fwbDiKou">0.00</em>
+                </div>
+                <div class="list">
+                    <span>优惠券抵扣：</span>
+                    <em class="price" id="yhqDiKou">0.00</em>
+                </div>
+                <div class="list">
+                    <span>余额抵扣：</span>
+                    <em class="price" id="yeDiKou">0.00</em>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="trade-foot">
+            <div class="trade-foot-detail-com">
+                <div class="fc-price-info">
+                    <span class="price-tit">应付总额：</span>
+                    <span class="price-num" id="payTotal"></span>
+                </div>
+                <div class="fc-consignee-info">
+                    <span class="address" id="sendAddr">寄送至： 广东 深圳市 龙华新区   深圳龙华新区民治街道上塘社区</span>
+                    <span id="sendMobile">收货人：蒋建 135****1127</span>
+                </div>
+            </div>
+
+            <div class="group">
+                <div class="ui-ceilinglamp checkout-buttons">
+                    <button type="submit" class="checkout-submit">提交订单<b></b></button>
+                </div>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="loading-box" style='width:200px; position:absolute; top: 50%; left: 50%; margin-left:-100px; display: none; '>
+        <img src="__PUBLIC__/statics/shop/images/profile_load.gif" alt="loading" />
+</div>
+<script>
+    $(function () {
+        window.clickCurrentUrl = "{:U('Shop/Order/updateDefaultAddress')}";
+        window.delajaxUrl  =  "{:U('Shop/Order/delOrderAddress')}";
+        refreshDeliveryWay("{$defaultId}","{:U('Shop/Order/logistics')}");
+        /*编辑地址弹出框*/
+        $("#consigneeList").on('click', '.edit-consignee', function(){
+            var address_id =$(this).data("editid");
+            var d = dialog({
+                title:'编辑收货人信息',
+                width:600,
+                url:"{:U('Shop/Order/editaddress')}?address_id="+address_id,
+            }).showModal();
+        });
+        /*新增收货地址*/
+        $(document).on('click', '.add-address', function(){
+            var d = dialog({
+                title:'新增收货地址',
+                id:'newAddress',
+                width:600,
+                url:"{:U('Order/newaddress')}"
+            }).showModal();
+
+        })
+        /*订单计算*/
+        var goods_total = parseFloat($("#GoodsMoney").html()).toFixed(2);//商品总金额
+        var ye_total = parseFloat($("#yeTotal").html()).toFixed(2); //余额总额
+        var fwb_total = parseFloat($("#fwbTotal").html()).toFixed(2); //服务币总额
+
+        $("#payTotal").html(goods_total);
+
+        /*********服务币********/
+        fwb_total = 0;//初始化服务币总额
+        if($(".all-bill").text()!=""&&$(".all-bill").text()!="0"){
+            fwb_total = Number(parseFloat($(".all-bill").text()).toFixed(2));//用户可用的虚拟币
+        }
+        //判断是否超过最大的可用虚拟币
+        if (fwb_total >= {$Think.config.share_bill}) {
+            fwb_total = parseFloat({$Think.config.share_bill});
+        }
+        /*输入购物币验证是否可用*/
+        $("#billInput").blur(function(){
+            if($(this).val()!=""){
+                var billVal = Number(parseFloat($(this).val()).toFixed(2));
+                if( billVal<0 || billVal>fwb_total){
+                    $(this).val("0");
+                    var d = dialog({
+                        title:'温馨提示',
+                        content:'亲,您最多能使用'+<if condition="$userShallBill egt $shareBillMax">{$shareBillMax}<else />{$userShallBill}</if>+'个金币抵扣!'
+                    }).showModal();
+                }else{
+                    $(this).val(billVal);
+                    $("#fwbDiKou").html(parseFloat(billVal).toFixed(2));
+                    var fwb_dk = $("#fwbDiKou").html();
+                    goods_total-=fwb_dk;
+                    $("#payTotal").html(parseFloat(goods_total).toFixed(2));
+                }
+            }
+        })
+        /*********余额********/
+        ye_total = 0;//初始化余额总额
+        if($(".all-ye").text()!=""&&$(".all-ye").text()!="0"){
+            ye_total = Number(parseFloat($(".all-ye").text()).toFixed(2));//用户可用的虚拟币
+        }
+        /*输入购物币*/
+        $("#yeInput").blur(function(){
+            if($(this).val()!=""){
+                var yeVal = Number(parseFloat($(this).val()).toFixed(2));
+                if( yeVal<0 || yeVal>ye_total ){
+                    $(this).val("0");
+                    var d = dialog({
+                        title:'温馨提示',
+                        content:'亲,您输入的余额不足抵扣!'
+                    }).showModal();
+                }else{
+                    $(this).val(yeVal);
+                    $("#yeDiKou").html(parseFloat(yeVal).toFixed(2));
+                    var ye_dk = $("#yeDiKou").html();
+                    goods_total-=ye_dk;
+                    $("#payTotal").html(parseFloat(goods_total).toFixed(2));
+                }
+            }
+        })
+    });
+    /*删除收货地址
+    * @Param            addressId                obj                  收货地址id
+    * @Param            ajax_url                  str                    ajax地址
+    * @Param            fh                  		obj                    点击的对象
+    */
+    //删除收货地址
+function delAddress(address_id,ajax_url,fh) {
+          $.ajax({
+              data:{
+                  address_id:address_id
+              },
+              type: 'POST',
+              url: ajax_url,
+              dataType: 'json',
+              success: function (data) {
+                  if (data.status == 1) {
+                      fh.parent().parent().remove();
+                  }else {
+                    alert(data.info);
+                  }
+              }
+          })
+}
+    payTypeSel();   //支付方式选择
+    selAddressId("{:U('Shop/Order/logistics')}");   //收货地址id选择
+
+    //删除dropload加载的iframe与遮罩层
+    function delDroploadDiv() {
+        $(".ui-popup.ui-popup-modal.ui-popup-show.ui-popup-focus").next().hide();
+        $(".ui-popup.ui-popup-modal.ui-popup-show.ui-popup-focus").hide();
+    }
+
+    //点击一次第一个
+    function clickFirstButton(){
+        $(".consignee-item").eq(0).removeClass('item-selected');
+        $(".consignee-item").eq(0).click();
+        $(".consignee-item").eq(0).addClass('item-selected');
+    }
+
+
+    //局部刷新收货地址div块
+    function refreshReceipt() {
+        $("#consigneeList").children().remove();  //移除收货地址列表
+        //ajax获取新的列表
+        $.ajax({
+            type: 'POST',
+            url: "{:U('Shop/Order/receipt')}",
+            dataType:"html",
+            success: function (data) {
+                    $("#consigneeList").append(data);
+            }
+        })
+    }
+
+</script>
+</eq>

@@ -1,0 +1,183 @@
+<?php if (!defined('THINK_PATH')) exit();?><!Doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>商家管理中心</title>
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" type="text/css" href="/somegood/Public/statics/store/css/store-public.css" /><link rel="stylesheet" type="text/css" href="/somegood/Public/statics/store/css/store-style.css" /><link rel="stylesheet" type="text/css" href="/somegood/Public/css/toastr.css" />
+    <script type="text/javascript" src="/somegood/Public/scripts/jquery/jquery-1.11.2.min.js"></script><script type="text/javascript" src="/somegood/Public/scripts/toastr/toastr.js"></script><script type="text/javascript" src="/somegood/Public/scripts/zepto/lazyload.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/somegood/Public/scripts/artdialog/ui-dialog.css" />
+    <script type="text/javascript" src="/somegood/Public/scripts/artdialog/dialog-plus-min.js"></script>
+</head>
+<body style="background-color: #edf1f2;">
+<div class="left-menu">
+    <div class="user-box">
+        <div class="img-box"><img src="/somegood/Public/statics/mobile/images/default_img.png" data-original="/somegood/Public/uploads/<?php echo ($info["logo"]); ?>_c200x200" alt="" width="70" height="70" /></div>
+        <div class="name-box"><?php echo ($info["company_name"]); ?></div>
+    </div>
+    <ul class="ul-1">
+        <li>
+            <a href="javascript:;" class="ul-1-a"><i class="icons icon-order"></i><span>商家订单</span><i class="pointer">&gt;</i></a>
+            <ul class="ul-2">
+                <li><a href="<?php echo U('Seller/Order/index');?>?pageType=1" target="StoreContent">待发货</a></li>
+                <li><a href="<?php echo U('Seller/Order/index');?>?pageType=2" target="StoreContent">待完成</a></li>
+                <li><a href="<?php echo U('Seller/Order/index');?>?pageType=3" target="StoreContent">已完成</a></li>
+                <li><a href="<?php echo U('Seller/Order/index');?>?pageType=0" target="StoreContent">待付款</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="javascript:;" class="ul-1-a"><i class="icons icon-sell"></i><span>商品列表</span><i class="pointer">&gt;</i></a>
+            <ul class="ul-2">
+                <li><a href="<?php echo U('Seller/Goods/publish');?>" target="StoreContent">新增</a></li>
+                <li><a href="<?php echo U('Seller/Goods/index',array('type'=>'all'));?>" target="StoreContent">全部</a></li>
+                <li><a href="<?php echo U('Seller/Goods/index',array('type'=>'sale'));?>" target="StoreContent">在售</a></li>
+                <li><a href="<?php echo U('Seller/Goods/index',array('type'=>'off'));?>" target="StoreContent">未上架</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="javascript:;" class="ul-1-a"><i class="icons icon-sell"></i><span>线下推广列表</span><i class="pointer">&gt;</i></a>
+            <ul class="ul-2">
+                <li><a href="<?php echo U('Seller/Extension/index',array('type'=>'all'));?>" target="StoreContent">全部</a></li>
+                <li><a href="<?php echo U('Seller/Extension/index',array('type'=>'wait'));?>" target="StoreContent">待投放</a></li>
+                <li><a href="<?php echo U('Seller/Extension/index',array('type'=>'ing'));?>" target="StoreContent">投放中</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="javascript:;" class="ul-1-a"><i class="icons icon-sell"></i><span>广告推广列表</span><i class="pointer">&gt;</i></a>
+            <ul class="ul-2">
+                <li><a href="<?php echo U('Seller/Adv/index',array('type'=>'online'));?>" target="StoreContent">线上推广</a></li>
+                <li><a href="<?php echo U('Seller/Adv/index',array('type'=>'store'));?>" target="StoreContent">线下店铺推广</a></li>
+            </ul>
+        </li>
+        <li><a href="<?php echo U('Seller/Order/settlement');?>" target="StoreContent" class="ul-1-a"><i class="icons icon-settlement"></i><span>订单结算</span><i class="pointer">&gt;</i></a></li>
+        <li><a href="<?php echo U('Seller/Logistics/index');?>" target="StoreContent" class="ul-1-a"><i class="icons icon-logistics"></i><span>配送方式</span><i class="pointer">&gt;</i></a></li>
+        <li><a href="<?php echo U('Seller/Index/column');?>" target="StoreContent" class="ul-1-a"><i class="icons icon-logistics"></i><span>栏目主题</span><i class="pointer">&gt;</i></a></li>
+    </ul>
+</div>
+<div class="fixed-title">
+    <div class="logo fl"><a href="<?php echo U('Seller/Index/index');?>"><img src="/somegood/Public/statics/store/images/logo.png" alt="logo" width="153" height="38"/></a></div>
+    <div class="a-box fr">
+        <a href="<?php echo U('Seller/Index/notice');?>" target="StoreContent" class="update"><i class="icons icon-update"></i>消息(<span id="noticeNum">0</span>)</a>
+        <a href="<?php echo U('Seller/Index/setting');?>" target="StoreContent" class="update"><i class="icons icon-setting"></i><span>设置</span></a>
+        <a href="<?php echo U('Seller/Login/loginOut');?>" class="update"><i class="icons icon-quite"></i><span>退出</span></a>
+    </div>
+</div>
+<div class="containter">
+    <div class="containter-box" style="background-color: #fff;">
+        <iframe src="<?php echo U('Seller/Order/settlement');?>" name="StoreContent" frameborder="no" border="0"></iframe>
+        <div class="clear"></div>
+    </div>
+</div>
+
+<script>
+    function playSound()
+    {
+        var borswer = window.navigator.userAgent.toLowerCase();
+        if ( borswer.indexOf( "ie" ) >= 0 )
+        {
+            //IE内核浏览器
+            var strEmbed = '<embed name="embedPlay" src="/somegood/Public/statics/store/audio/notice.wav" autostart="true" hidden="true" loop="false"></embed>';
+            if ( $( "body" ).find( "embed" ).length <= 0 )
+                $( "body" ).append( strEmbed );
+            var embed = document.embedPlay;
+            //浏览器不支持 audion，则使用 embed 播放
+            embed.volume = 100;
+        } else
+        {
+            //非IE内核浏览器
+            var strAudio = "<audio id='audioPlay' src='/somegood/Public/statics/store/audio/notice.wav' hidden='true'>";
+            if ( $( "body" ).find( "audio" ).length <= 0 )
+                $( "body" ).append( strAudio );
+            var audio = document.getElementById( "audioPlay" );
+            //浏览器支持 audion
+            audio.play();
+        }
+    }
+    //通知框设置
+    toastr.options = {
+        "closeButton": true,
+        "debug": false,
+        "positionClass": "toast-top-right",
+        "onclick": null,
+        "showDuration": "300",
+        "hideDuration": "1000",
+        "timeOut": "7000",
+        "extendedTimeOut": "1000",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "fadeIn",
+        "hideMethod": "fadeOut"
+    }
+    function getting(){
+        $.ajax({
+            url:"<?php echo U('Seller/Index/getNotice');?>",
+            dataType:'json',
+            success:function(data) {
+            if (data.data.wait_num >0){
+                toastr.warning("您有"+data.data.wait_num+"条订单待发货,请尽快发货")
+                playSound();
+            }
+            $("#noticeNum").html(data.data.totalCount);
+        }
+        })
+    };
+    window.setInterval(function(){getting();},300000);
+
+
+    $(".left-menu li a").click(function(){
+        var $this = $(this).parent("li");
+        if($this.hasClass("selected")){
+            $this.removeClass("selected");
+            $this.find(".ul-2").slideUp(300);
+        }else{
+            $this.siblings("li").removeClass("selected");
+            $this.siblings("li").find(".ul-2").slideUp(300);
+            $this.addClass("selected");
+            $this.find(".ul-2").slideDown(300);
+
+        }
+    })
+    $(function(){
+        getting();
+        //图片延迟加载
+        $(".img-box img").lazyload({effect : "fadeIn"});
+    })
+    $(".tab-ul li").click(function(){
+     $(this).addClass("sel").siblings().removeClass("sel");
+    })
+    function bindSubmitBtn1(reUrl) {
+        var length = $("#length").val();
+        var width =$('#width').val();
+        var height =$('#height').val();
+        var goods_id =$('#goods_id').val();
+        $.ajax({
+            type: "POST",
+            url: "<?php echo U('Seller/Goods/extension');?>",
+            data: {
+                "length":length,
+                "width":width,
+                "height":height,
+                "goods_id":goods_id
+            },
+            dataType: 'json',
+            success: function(data){
+                if(data.status==1){
+                    var d = dialog({content:data.info}).show();
+                    setTimeout(function () {
+                        d.close().remove();
+                    }, 800);
+                }else{
+                    var d = dialog({content:data.info}).show();
+                    setTimeout(function () {
+                        d.close().remove();
+                    }, 800);
+                }
+            },
+            error:function (data) {
+            }
+        });
+    }
+</script>
+</body>
+</html>

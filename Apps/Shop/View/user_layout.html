@@ -1,0 +1,44 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>3好连锁店商城首页</title>
+    <meta name="keywords" content="{$web_keywords}"/>
+    <meta name="description" content="{$web_description}" />
+    <link type="text/css" rel="stylesheet" href="__PUBLIC__/statics/shop/css/public.css">
+    <link type="text/css" rel="stylesheet" href="__PUBLIC__/statics/shop/css/user.css">
+    <link type="text/css" rel="stylesheet" href="__PUBLIC__/scripts/jquery/jquery.selectlist.css" >
+    <link type="text/css" rel="stylesheet" href="__PUBLIC__/scripts/artdialog/ui-dialog.css">
+    <script type="text/javascript" src="__PUBLIC__/scripts/jquery/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/scripts/jquery/jquery.form.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/scripts/jquery/Validform_v5.3.2_min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/scripts/artdialog/dialog-plus-min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/statics/shop/js/common.js"></script>
+    <script type="text/javascript" charset="utf-8" src="__PUBLIC__/scripts/js/share-code.js"></script>
+</head>
+<body>
+<div class="header">
+    <include file="Public/header" />
+    <div class="bg-box">
+        <div class="w1200">
+            <div class="h-middle clearfix">
+                <a href="{:U('Shop/Index/index')}" class="fl"><img src="__PUBLIC__/statics/shop/images/logo.png" alt="logo" class="logo"/></a>
+                <div class="user-nav fr">
+                    <ul>
+                        <li><a href="{:U('Shop/Index/index')}">首页</a></li>
+                        <li><a href="javascript:;">今日上新</a></li>
+                        <li><a href="javascript:;">全网秒杀</a></li>
+                        <li><a href="javascript:;">品牌投放</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{__CONTENT__}
+
+<include file="Public/footer" />
+</body>
+</html>

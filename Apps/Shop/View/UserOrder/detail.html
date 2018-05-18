@@ -1,0 +1,164 @@
+<layout name="user_layout" />
+<div id="vipCenterContent" class="user-center">
+    <div class="w1200">
+        <div class="left-menu-list fl" id="leftMenu">
+            <include file="Public/user_menu"/>
+        </div>
+        <div class="right-show fr">
+                <elt name="info.status" value="3">
+                    <div class="step-box mini">
+                        <ul>
+                            <!--下单-->
+                            <li class="first done">
+                                <div class="progress">
+                                    <span class="text">已提交</span>
+                                </div>
+                                <div class="info hide">
+                                    {$info.add_time|date='Y-m-d H:i:s',###}
+                                </div>
+                            </li>
+                            <!--/下单-->
+                            <!--待付款-->
+
+                            <!--/待付款-->
+
+                            <!--已付款-->
+
+                            <li <if condition="$info['status'] gt 1">class="done"</if>>
+                                <div class="progress">
+                                    <span class="text"><if condition="$info['status'] eq 0"><b>待付款</b><else /><b>已付款</b></if></span>
+                                </div>
+                                <div class="info hide">
+                                    {$info.pay_time|date='Y-m-d H:i:s',###}
+                                </div>
+                            </li>
+                            <!--/已付款-->
+                            <li <if condition="$info['status'] gt 2">class="done"</if>>
+                                <div class="progress">
+                                    <span class="text"><if condition="$info['status'] gt 1"><b>已发货</b><else/><b>等待发货</b></if></span>
+                                </div>
+                                <div class="info hide">
+                                    {$info.complete_time|date='Y-m-d H:i:s',###}
+                                </div>
+                            </li>
+                            <!--完成-->
+                            <li class="last <if condition="$info['status'] eq 3 or $info['status'] eq 6">done</if>">
+                                <div class="progress">
+                                    <span class="text"><if condition="$info['status'] eq 3 or $info['status'] eq 6"><b>已完成</b><else/><b>等待完成</b></if></span>
+                                </div>
+                                <div class="info hide">
+                                    {$info.complete_time|date='Y-m-d H:i:s',###}
+                                </div>
+                            </li>
+                            <!--完成-->
+                        </ul>
+                    </div>
+                    <div class="line20"></div>
+                </elt>
+
+                <div class="form-box accept-box">
+                    <dl class="head">
+                        <dd>订单信息</dd>
+                    </dl>
+                    <dl>
+                        <dt>订单号：</dt>
+                        <dd> {$info.order_sn}</dd>
+                    </dl>
+                    <dl>
+                        <dt>订单状态：</dt>
+                        <dd>
+                                <volist name=":C('FRONT_ORDER_STATUS_LIST')" id="item">
+                                    <if condition="$info.status eq $key">{$item}</if>
+                                </volist>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt>价格：</dt>
+                        <dd>￥  {$info.price}</dd>
+                    </dl>
+                    <dl>
+                        <dd>
+                            <button class="btn backBtn" onclick="history.back()">返回</button>
+                            <if condition="$info.status eq 0">
+                                <button class="btn backBtn" onclick="ExecPostBack('{$info.id}')">取消</button>
+                            </if>
+                        </dd>
+                    </dl>
+                    <dl class="head">
+                        <dt>三好连锁</dt>
+                    </dl>
+                    <thead>
+                <tr>
+                    <th class="grap"></th>
+                    <th>商品图</th>
+                    <th>商品标题</th>
+                    <th>商品数量</th>
+                    <th>三好连锁价</th>
+                </tr>
+                </thead>
+                <br>
+                <volist name="info[info]" id="item">
+                <tbody>
+                    <tr>
+                        <td class="grap"></td>
+                        <td ><img src="__PUBLIC__/uploads/{$item.goods_thumb}" alt=""></td>
+                        <td >{$item.goods_title}</td>
+                        <td >{$item.counts}</td>
+                        <td >{$item.price}</td>
+                    </tr>
+                </tbody>
+                </volist>
+                <div class="line20"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<input id="turl" value="{:U('UserOrder/index')}" type="hidden"><!--存在跳转的URL值-->
+<div class="clear"></div>
+<script type="text/javascript">
+    $.ajax({
+        type: 'get',
+        url:"{:U('Users/menu')}?mnav={$mnav}&r="+Math.random(),
+        dataType: 'html',
+        success:function(data){
+            $("#leftMenu").html(data);
+        }
+    });
+    function uploadCertificate() {
+        var orderSn = {$info.order_sn};
+        var current = "{$info.current}";
+        top.dialog({
+            width: 800,
+            height: 200,
+            title: '确认信息',
+            cancelValue: '取消',
+            lock: true,
+            url: "{:U('UserOrder/upload')}?"+"order_sn="+orderSn+'&current='+current
+        }).showModal();
+    }
+    //删除信息
+    function ExecPostBack(checkValue) {
+        ExecDelete("{:U('UserOrder/cancelOrder')}", checkValue, '#turl','取消记录后不可恢复，您确定吗？');
+    }
+    $(function () {
+        $('.step-box ul li').each(function (index,data) {
+            if({$info.status} >= index){
+                switch (index) {
+                    case 1:
+                        $(data).find('.text').text('已审核');
+                        break;
+                    case 2:
+                        $(data).find('.text').text('已付款');
+                        break;
+                    case 3:
+                        $(data).find('.text').text('已完成');
+                        break;
+                    default:
+                        break;
+                }
+                $(data).addClass('done');
+                $(data).children('.info').removeClass('hide');
+            }
+        })
+    });
+</script>

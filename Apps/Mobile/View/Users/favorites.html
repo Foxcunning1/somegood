@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no" />
+    <link rel="stylesheet" href="__PUBLIC__/dist/dropload.css">
+    <import type="css" file="statics.mobile.css.public,statics.mobile.css.user" />
+    <import type="js" file="scripts.zepto.zepto#min,scripts.zepto.zepto#miniDialog,statics.mobile.js.common,scripts.zepto.lazyload#min" />
+    <script type="text/javascript" src="__PUBLIC__/statics/mobile/js/rem.js" fu-psd="720" fu-min="50" fu-max="100"></script>
+    <title>我的收藏</title>
+    <script type="text/javascript">
+        var usersLng = {$Think.session.lng};//用户所在的经纬度
+        var usersLat = {$Think.session.lat};
+        if(isWeixin()) {
+            usersLng = parseFloat(localStorage.getItem("longitude"));
+            usersLat = parseFloat(localStorage.getItem("latitude"));
+        }
+    </script>
+</head>
+<body style="height: auto;">
+<div class="page-title">
+    <!--返回按钮-->
+    <div class="to-back-box">
+        <a href="javascript:history.back();" class="icons icon-back"></a>
+    </div>
+    <!--返回按钮-->
+    <!--标题-->
+    <h2 class="title">我的收藏</h2>
+    <!--标题-->
+</div>
+<div class="already-title">
+    <ul class="tab">
+        <li class="item sel"><a href="javascript:void(0)">新品</a></li>
+        <li class="item"><a  href="javascript:void(0)">二手</a></li>
+    </ul>
+</div>
+
+<!---->
+<div class="already-content-box">
+    <div class="my-collection-list">
+        <ul class="collection-list" id="sellerGoods"></ul>
+        <ul class="collection-list" id="erGoods"></ul>
+    </div>
+</div>
+
+
+
+<!--公用底部-->
+<include file="Public/ufooter" />
+<!--公用底部-->
+<!-- jQuery1.7以上 或者 Zepto 二选一，不要同时都引用 -->
+<script src="__PUBLIC__/dist/dropload.min.js"></script>
+<script>
+    $(function(){
+        /*公用底部点击样式变换 放再公用的layout里面*/
+        $(".footer ul").find("li").on("touchstart",function(){
+            $(this).addClass("sel").siblings().removeClass("sel");
+        })
+    })
+    var page0=1; //商品的页码
+    var page1=1; //店铺的页码
+    var allpage0={$pageCount0}; //商品页的总页码，会从后台获
+    var allpage1={$pageCount1}; //店铺页的总页码，会从后台获
+    var ajaxUrl="{:U('Mobile/Users/favorites')}";//ajax请求地址
+    var imgPath = "__PUBLIC__/";
+    $(function(){
+        var itemIndex = 0;
+        var tab1LoadEnd = false,tab2LoadEnd = false,tabLoadEnd =false;
+        // tab
+        $('.tab .item').on('click',function(){
+            var $this = $(this);
+            itemIndex = $this.index();
+            $this.addClass('sel').siblings('.item').removeClass('sel');
+            $('.my-collection-list ul').eq(itemIndex).show().siblings('ul').hide();
+
+            // 如果选中菜单一
+            if(itemIndex == '0'){
+                // 如果数据没有加载完
+                if(!tab1LoadEnd){
+                    // 解锁
+                    dropload.unlock();
+                    dropload.noData(false);
+                }else{
+                    // 锁定
+                    dropload.lock('down');
+                    dropload.noData();
+                }
+                // 如果选中菜单二
+            }else if(itemIndex == '1'){
+                if(!tab2LoadEnd){
+                    // 解锁
+                    dropload.unlock();
+                    dropload.noData(false);
+                }else{
+                    // 锁定
+                    dropload.lock('down');
+                    dropload.noData();
+                }
+            }
+            // 重置
+            dropload.resetload();
+        });
+        // dropload
+        var dropload = $('.my-collection-list').dropload({
+            scrollArea : window,
+            loadDownFn : function(me){
+                // 加载菜单一的数据
+                if(itemIndex == '0'){
+                    ajaxGetDataList(imgPath,"#sellerGoods",page0,allpage0,ajaxUrl,0,me,"tab1LoadEnd","{:U('Mobile/Goods/detail')}");
+                    page0++;
+                    calcDistance(".distance");
+                    $(".g-img a img").lazyload({effect : "fadeIn"});
+                    // 加载菜单二的数据
+                }else if(itemIndex == '1'){
+                    ajaxGetDataList(imgPath,"#erGoods",page1,allpage1,ajaxUrl,1,me,"tab2LoadEnd","{:U('Ershou/Goods/detail')}");
+                    page1++
+                    calcDistance(".distance");
+                    $(".g-img a img").lazyload({effect : "fadeIn"});
+                }
+            }
+        });
+    });
+    $(function(){
+        /*公用底部点击样式变换 放再公用的layout里面*/
+        $(".footer ul").find("li").on("touchstart",function(){
+            $(this).addClass("sel").siblings().removeClass("sel");
+        })
+    })
+    //关注/取消
+    function cancelFavorite(id,favorite_type){
+        $.ajax({
+            method:'post',
+            dataType:'json',
+            url:"{:U('Mobile/Goods/collect')}",
+            data:{
+                'goods_id':id,
+                'favorite_type':favorite_type,
+            },
+            success:function(data){
+                if(data.status==1){
+                    //操作成功
+                        //取消关注
+                        $('body').minDialog({
+                            content:data.info,
+                            isMask:true,
+                            isAutoClose:true,
+                            isCloseAll:true,
+                            closeTime:700,
+                        })
+                        $("#favorite_"+favorite_type+"_"+id).remove();
+                }else{
+                    //操作失败
+                    $('body').minDialog({
+                        content:data.info,
+                        isMask:true,
+                        isAutoClose:true,
+                        isCloseAll:true,
+                        closeTime:700,
+                    })
+                }
+            }
+        });
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no" />
+    <import type="css" file="statics.mobile.css.public,statics.mobile.css.user" />
+    <import type="js" file="scripts.jquery.jquery-1#11#2#min,scripts.webuploader.webuploader#min" />
+    <script type="text/javascript" src="__PUBLIC__/statics/mobile/js/rem.js" fu-psd="720" fu-min="50" fu-max="100"></script>
+    <!--选择区域页面所要引入的文件-->
+    <import type="css" file="statics.mobile.css.zepto#select#dialog,statics.mobile.css.zepto#select#area" />
+    <import type="js" file="scripts.zepto.zepto#select#dialog,scripts.zepto.zepto#select#area,scripts.js.region,statics.mobile.js.uploader,scripts.zepto.zepto#miniDialog,statics.mobile.js.common" />
+    <script type="text/javascript">
+        var uploadType = 'image';
+        var defaultCatId = "{$info.category_id}";
+        $(function(){
+            $(".upload-album").InitUploader({ btntext: "批量上传", multiple: true, sendurl: "{:U('Mobile/Member/uploadFile')}", swf: "/116cs/Public/JS/webuploader/uploader.swf" });
+        })
+    </script>
+    <title>{$page_title}</title>
+</head>
+<body>
+<div class="page-title">
+    <!--返回按钮-->
+    <div class="to-back-box">
+        <a href="javascript:history.go(-1);" class="icons icon-back"></a>
+    </div>
+    <!--返回按钮-->
+    <!--标题-->
+    <h2 class="title">{$page_title}</h2>
+    <!--标题-->
+</div>
+    <form action="{:U('Mobile/Users/addWant')}" name="publishForm" id="publishForm" method="post" enctype="multipart/form-data" style="padding-top: 0.9rem;">
+        <!--宝贝其他-->
+        <div class="form-box">
+            <dl>
+                <dt>标题</dt>
+                <dd><input type="text" name="data[w_title]" placeholder="请输入标题" class="required" value="{$info.w_title}" id="title"/></dd>
+            </dl>
+            <dl>
+                <dt>详细需求</dt>
+                <dd>
+                    <textarea name="data[w_content]" id="yourGoodsDescribe" placeholder="详细说下您的需求把！" onKeyDown="checkMaxInput(this)" onKeyUp="checkMaxInput(this)">{$info.w_content}</textarea>
+                    <span class="can-input" id="canInput">100/100</span>
+                </dd>
+            </dl>
+            <dl>
+                <dt>价格</dt>
+                <dd>
+                    <input type="number" name="data[w_min]" placeholder="0" class="small" value="{$info.w_min}" />——<input type="number" name="data[w_max]" placeholder="10000" class="small" value="{$info.w_max}" />
+                </dd>
+            </dl>
+            <dl>
+                <dt>类别</dt>
+                <dd>
+                    <span class="focusBtn" obj-id="goods-type-box" id="goods-type-span"><if condition="$info[w_cateid] gt 0">{$info.cate_title}<else/>请选择商品类别</if></span><input type="hidden" name="data[w_cateid]" id="goods-type" value="{$info.w_cateid}" />
+                </dd>
+            </dl>
+            <dl>
+                <dt>有效期</dt>
+                <dd>
+                    <span class="focusBtn" obj-id="new-old-degree-box"><if condition="$info[w_validitytime] gt 0">{$validityTime.$info[w_validitytime]}<else/>请选择有效期</if></span>
+                    <input type="hidden" name="data[w_validitytime]" id="goods-condition" value="{$info.w_validitytime}" />
+                </dd>
+            </dl>
+
+            <dl>
+                <dt>选择区域</dt>
+                <dd>
+                    <!--所属区域-->
+                    <input type="text" name="area_text" id="areaText" data-value="{$info['w_arealist']}" placeholder="点击选择区域 "
+                           value="<if condition="$info['w_arealist'] gt 1">{$info.region}</if>" />
+                    <input type="hidden" name="data[w_arealist]"  class="required" value="{$info['w_arealist']}" />
+                    <script>
+                        //初始化所有城市JS
+                        var selectArea = new MobileSelectArea();
+                        var defaultArea = "{$info['w_arealist']}";
+                        var areaName = "{$info.region}";
+                        var areaArr = ['','',''];
+                        if(areaName!=""){
+                            areaArr = areaName.split(' ');
+                        }
+                        selectArea.init({trigger:'#areaText',data:cityJson,default:0,text:areaArr,value:defaultArea,position:"bottom"});
+                    </script>
+                </dd>
+            </dl>
+        </div>
+        <!--宝贝其他-->
+        <!--发布按钮-->
+        <div class="release-btn-box">
+            <input type="hidden" name="w_id" value="{$info.w_id}">
+            <input type="hidden" name="action" value="{$action}">
+            <input type="hidden" name="returnUrl" value="{$returnUrl}">
+            <a href="javascript:void(0);" class="release-btn" id="releaseBtn" onclick="submitWantForm()">发布</a>
+        </div>
+    </form>
+<div class="over-lay"></div>
+<!--商品筛选-->
+<div class="kinds-box" style="padding-bottom: 0">
+    <div class="kind-filter">
+        <i class="icons icon-close-overlay fl"></i>
+        <span class="fl">选择</span>
+    </div>
+    <div class="filter-box" id="goods-type-box" style="bottom:0">
+        <div class="category-title">
+            <span class="fl">商品分类</span>
+            <span class="fr" id="choosed" style="margin-right:20px;">所有分类</span>
+            <i class="icon-pointer"></i>
+        </div>
+        <div class="left-classify-box" style="position: absolute; top: 0.71rem; bottom: 0; overflow: auto;">
+            <div class="left-over-box" style="padding: 0; height: 100%; ">
+                <ul>
+                    <volist name="categoryList" id="vo" empty="$empty">
+                        <li <if condition="$vo.id eq $bigCatId">class="sel"</if> data-id="{$vo.id}"><a href="javascript:;">{$vo.title}</a></li>
+                    </volist>
+                </ul>
+            </div>
+        </div>
+        <!--右边分类展示-->
+        <div class="right-show-box" style="position: absolute; top: 0.71rem; bottom:0; overflow: auto;">
+            <div class="right-show-box-content" style="padding:0; height: 100%;">
+                <div class="category-lists" id="categoryBox" ></div>
+            </div>
+        </div>
+    </div>
+    <div class="filter-box" id="new-old-degree-box">
+        <div class="category-title">
+            <span class="fl">求购有效期</span>
+            <i class="icon-pointer"></i>
+        </div>
+        <div class="category-content-time">
+            <volist name="validityTime" id="gc">
+                <span class="filter-option <if condition='$info[w_validitytime] eq $key'> select</if>" data-value="{$key}">{$gc}</span>
+            </volist>
+        </div>
+    </div>
+</div>
+<!--商品筛选-->
+<!--&lt;!&ndash;商品筛选&ndash;&gt;-->
+<!--<div class="kinds-box">-->
+    <!--<div class="kind-filter">-->
+        <!--<i class="icons icon-close-overlay fl"></i>-->
+        <!--<span class="fl">选择</span>-->
+    <!--</div>-->
+    <!--<div class="filter-box" id="goods-type-box">-->
+        <!--<dl class="filter-item">-->
+            <!--<dt>-->
+                <!--<span class="fl">求购类别</span>-->
+                <!--<span class="fr fSelected"></span>-->
+            <!--</dt>-->
+            <!--<dd>-->
+                <!--<volist name="goodsCategoryList" id="gc">-->
+                    <!--<span class="filter-option <if condition='$info[w_cateid] eq $gc[id]'> fCurrent</if>" data-value="{$gc.id}">{$gc.title}</span>-->
+                <!--</volist>-->
+            <!--</dd>-->
+        <!--</dl>-->
+    <!--</div>-->
+    <!--<div class="filter-box" id="new-old-degree-box">-->
+        <!--<dl class="filter-item">-->
+            <!--<dt>-->
+                <!--<span class="fl">求购有效期</span>-->
+                <!--<span class="fr fSelected"></span>-->
+            <!--</dt>-->
+            <!--<dd>-->
+                <!--<volist name="validityTime" id="gc">-->
+                    <!--<span class="filter-option <if condition='$info[w_validitytime] eq $key'> fCurrent</if>" data-value="{$key}">{$gc}</span>-->
+                <!--</volist>-->
+            <!--</dd>-->
+        <!--</dl>-->
+    <!--</div>-->
+</div>
+<!--发布按钮-->
+<script type="text/javascript">
+    $(function(){
+        //筛选菜单点击及默认效果
+        var ajaxCategoryUrl = "{:U('Mobile/Goods/category')}";
+        //筛选菜单选项卡点击效果
+        //默认第一个选项卡被选中
+        if($(".left-classify-box").find("li.sel").length>0){
+            var defaultId = $(".left-classify-box").find("li.sel").eq(0).attr("data-id");
+        }else{
+            $(".left-classify-box").find("li").eq(0).addClass("sel");
+            var defaultId = $(".left-classify-box").find("li").eq(0).attr("data-id");
+        }
+        if(typeof(defaultId!="undefined")) {
+            menuTabChangeAjax(defaultCatId,defaultId, "#categoryBox", ajaxCategoryUrl,true);
+        }
+        $(".left-classify-box").find("li").on("click",function(){
+            $(this).addClass("sel").siblings().removeClass("sel");
+            if(typeof($(this).attr("data-id"))!="undefined"){
+                var id = $(this).attr("data-id");
+                menuTabChangeAjax(defaultCatId,id,"#categoryBox",ajaxCategoryUrl,true);
+            }
+        })
+    })
+    var maxLen = 100; //定义用户可以输入的最多字数
+    var canInput = document.getElementById("canInput");
+    function checkMaxInput(obj) {
+        if (obj.value.length > maxLen){ //如果输入的字数超过了限制
+            obj.value = obj.value.substring(0, maxLen); //就去掉多余的字
+            canInput.innerText = '您输入的内容超出了字数限制'
+        }
+        else{
+            canInput.innerText = (maxLen - obj.value.length) + '/' + maxLen;//计算并显示剩余字数
+        }
+    }
+    //按钮绑定
+    $(function(){
+        //按钮绑定事件
+        $(".focusBtn").on("click",function(){
+            $(".filter-box").hide();
+            var obj = $("#"+$(this).attr("obj-id"));
+            openOverLay(obj);//滑出窗口
+        })
+        $("#new-old-degree-box .filter-option").on("click",function(){
+            var curVal = $(this).attr("data-value");
+            var curText = $(this).text();
+            $("#goods-condition").val(curVal);
+            $("#goods-condition").parent().find(".focusBtn").text(curText);
+            $(this).parent().find(".filter-option").removeClass("select");
+            $(this).addClass("select");
+            closeOverLay($("#new-old-degree-box"));//关闭窗口
+        })
+    })
+    /*滑出窗口
+     *@Param       obj    obj//要显示的选项卡对应的内容
+     * */
+    function openOverLay(obj){
+        var obj = arguments[0] ? arguments[0] : '';
+        $(".over-lay").show();
+        $(".kinds-box").show().animate({"left":"15%"},300,function(){
+            if(obj!="") {
+                obj.show();
+            }
+        });
+        $('html').addClass('noscroll');
+        $("body").css("overflow","hidden");
+    }
+    /*关闭窗口
+     *@Param      obj     obj  //关闭后，选项卡对应隐藏
+     * */
+    function closeOverLay(obj){
+        var obj = arguments[0] ? arguments[0] : '';
+        if(obj!=""){
+            obj.hide();
+        }
+        $(".kinds-box").animate({"left":"100%"},300,function(){
+            $(".kinds-box").hide();
+            $(".over-lay").hide();
+        });
+        $('html').removeClass('noscroll');
+        $("body").css("overflow","auto");
+    }
+    $(".kind-filter .icon-close-overlay").on("touchstart",function(){
+        closeOverLay();
+    })
+function submitWantForm() {
+    var form = new FormData(document.getElementById("publishForm"));
+
+    $.ajax({
+        type: "POST",
+        url: "{:U('Mobile/Users/addWant')}",
+        data: form,
+        dataType: 'json',
+        processData:false,
+        contentType:false,
+        success:function(data){
+            if(data.status==1){
+                $('body').minDialog({
+                    content:data.info,
+                    isMask:true,
+                    isAutoClose:true,
+                    isCloseAll:true,
+                    closeTime:1500,
+                })
+                setTimeout(function(){
+                    window.location.href='{$returnUrl}';
+                },1500)
+            }else{
+                $('body').minDialog({
+                    content:data.info,
+                    isMask:true,
+                    isAutoClose:true,
+                    isCloseAll:true,
+                    closeTime:800,
+                })
+            }
+        },
+        error:function(){
+            $('body').minDialog({
+                content:"发布失败",
+                isMask:true,
+                isAutoClose:true,
+                isCloseAll:true,
+                closeTime:800,
+            })
+        }
+    })
+}
+
+</script>
+</body>
+</html>

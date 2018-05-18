@@ -1,0 +1,38 @@
+[
+    {
+        "name": "flc/alidayu",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/flc1125/alidayu.git",
+            "reference": "24cd56a6cbbaab5dcb7962f6188c137a9cb11237"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://files.phpcomposer.com/files/flc1125/alidayu/24cd56a6cbbaab5dcb7962f6188c137a9cb11237.zip",
+            "reference": "24cd56a6cbbaab5dcb7962f6188c137a9cb11237",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.4.0"
+        },
+        "time": "2017-10-07T01:25:00+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Flc\\Alidayu\\": "src/Alidayu/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "description": "阿里大于(鱼)API-SDK；适用任何PHP项目，包括Laravel、Yii、Thinkphp等...",
+        "keywords": [
+            "alidayu",
+            "flc"
+        ]
+    }
+]

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>3好连锁店铺中心</title>
+    <link rel="stylesheet" type="text/css" href="../css/public.css" />
+    <link rel="stylesheet" type="text/css" href="../css/style.css" />
+    <link rel="stylesheet" type="text/css" href="../css/user.css" />
+    <script type="text/javascript" charset="utf-8" src="../js/zepto.min.js"></script>
+    <script type="text/javascript" src="../js/rem.js" fu-psd="720" fu-min="50" fu-max="100"></script>
+</head>
+<body>
+<!--店铺主页-->
+<div class="shop-inner">
+    <!--返回按钮和分享-->
+    <div class="to-back-box">
+        <a href="javascript:history.back();" class="icons icon-back"></a>
+    </div>
+    <h2 class="title">我的店铺中心</h2>
+    <div class="to-menu-box">
+        <i class="icons icon-share"></i>
+    </div>
+    <!--返回按钮和分享-->
+    <img src="../images/user_img1.png" alt="店铺头像" class="user-img" />
+</div>
+<!--店铺主页-->
+<!--分享引导-->
+<div class="over-lay-share">
+    <img src="../images/know.png" alt="我知道了" class="know" />
+    <img src="../images/pointer.png" alt="点击右上角分享按钮分享产品" class="pointer" />
+</div>
+<!--分享引导-->
+
+
+<div class="inner-store belong-store my-store">
+    <div class="impression">
+        <ul>
+            <li>
+                <span class="red">0件</span>
+                <span>待发货</span>
+            </li>
+            <li>
+                <span class="red">0件</span>
+                <span>待审核</span>
+            </li>
+        </ul>
+    </div>
+</div>
+<!--所属店铺-->
+<div class="user-section">
+    <div class="sec-content">
+        <ul class="items">
+            <li>
+                <i class="icons icon-my-order"></i>
+                <a href="/somegood/Mobile/Users/want.html">
+                    <span class="fl">我的订单</span><i class="icons icon-more fr"></i><span class="num fr" id="buyNum">0</span>
+                </a>
+            </li>
+            <li>
+                <i class="icons icon-my-sell"></i>
+                <a href="/somegood/Mobile/Users/goodsManage.html">
+                    <span class="fl">已卖出</span><i class="icons icon-more fr"></i><span class="num fr" id="mySellNum">0</span>
+                </a>
+            </li>
+            <li>
+                <i class="icons icon-shelves"></i>
+                <a href="/somegood/Mobile/Users/goodsManage.html">
+                    <span class="fl">已上架</span><i class="icons icon-more fr"></i><span class="num fr" id="releaseNum">0</span>
+                </a>
+            </li>
+            <li>
+                <i class="icons icon-off-the-shelf"></i>
+                <a href="/somegood/Mobile/Users/want.html">
+                    <span class="fl">已下架</span><i class="icons icon-more fr"></i><span class="num fr" id="buyNum">0</span>
+                </a>
+            </li>
+
+            <li>
+                <i class="icons icon-settlement"></i>
+                <a href="/somegood/Mobile/Users/want.html">
+                    <span class="fl">我的结算</span><i class="icons icon-more fr"></i><span class="num fr" id="buyNum">0</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+<!--商品筛选部分-->
+<div class="footer">
+    <ul>
+        <li><a href="/somegood/Mobile/Index/index.html"><i class="icons icon-home"></i><span>首页</span></a></li>
+        <li><a href="/somegood/Mobile/Goods/category.html"><i class="icons icon-classify"></i><span>分类</span></a></li>
+        <li class="plus"><i class="icons icon-plus"></i></li>
+        <li><a href="/somegood/Mobile/Cart/index.html"><i class="icons icon-cart"></i><span class="icon-num" id="cartNum">2</span><span>购物车</span></a></li>
+        <li id="shopKeepper"><a href="/somegood/Mobile/Users/index.html"><i class="icons icon-mine"></i><span>我的</span></a></li>
+    </ul>
+</div>
+
+<!--公用底部-->
+<script>
+    /*分享引导弹出*/
+    $(".icon-share").on("touchstart",function(){
+        $(".over-lay-share").show();
+        $("body").css("overflow","hidden");
+    })
+    $("img.know").on("touchstart",function(){
+        $(".over-lay-share").hide();
+        $("body").css("overflow","auto");
+    })
+</script>
+</body>
+</html>

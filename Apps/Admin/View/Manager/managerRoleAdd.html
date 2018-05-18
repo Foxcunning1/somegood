@@ -1,0 +1,167 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>编辑角色</title>
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0,user-scalable=no" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/scripts/artdialog/ui-dialog.css" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/statics/admin/css/icon/iconfont.css" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/statics/admin/css/style.css" />
+<script type="text/javascript" charset="utf-8" src="__PUBLIC__/scripts/jquery/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="__PUBLIC__/scripts/jquery/Validform_v5.3.2_min.js"></script>
+<script type="text/javascript" charset="utf-8" src="__PUBLIC__/scripts/artdialog/dialog-plus-min.js"></script>
+<script type="text/javascript" charset="utf-8" src="__PUBLIC__/statics/admin/js/common.js"></script>
+<script type="text/javascript" charset="utf-8" src="__PUBLIC__/statics/admin/js/laymain.js"></script>
+<style type="text/css">
+  .tree-list .col-1{ padding-left:1%; width:39%; }
+  .tree-list .col-2{ width:50%; }
+  .tree-list .col-3{ width:10%; text-align:center; }
+</style>
+<script type="text/javascript">
+    $(function () {
+        //初始化表单验证
+        $("#managerRoleForm").initValidform();
+        //初始化分类的结构
+        initCategoryHtml('.tree-list', 1);
+        //初始化分类的事件
+        $('.tree-list').initCategoryTree(true);
+        //是否启用权限
+        if ($("#ddlRoleType").find("option:selected").attr("value") == 1) {
+          $(".tree-list").find("input[type='checkbox']").prop("disabled", true);
+        }
+        $("#ddlRoleType").change(function () {
+          if ($(this).find("option:selected").attr("value") == 1) {
+            $(".tree-list").find("input[type='checkbox']").prop("checked", false);
+            $(".tree-list").find("input[type='checkbox']").prop("disabled", true);
+          } else {
+            $(".tree-list").find("input[type='checkbox']").prop("disabled", false);
+          }
+        });
+        //权限全选
+        $("input[name='checkAll']").click(function () {
+          if ($(this).prop("checked") == true) {
+            $(this).parent().siblings(".col").find("input[type='checkbox']").prop("checked", true);
+          } else {
+            $(this).parent().siblings(".col").find("input[type='checkbox']").prop("checked", false);
+          }
+        });
+    });
+</script>
+</head>
+
+<body class="mainbody">
+<form method="post" name="managerRoleForm" id="managerRoleForm" action="{:U('Admin/Manager/managerRoleAdd')}">
+<!--导航栏-->
+<div class="location">
+  <a href="{:U('Admin/Manager/managerRoleList')}" class="back"><i class="iconfont icon-up"></i><span>返回列表页</span></a>
+  <a href="{:U('Admin/Index/center')}"><i class="iconfont icon-home"></i><span>首页</span></a>
+  <i class="arrow iconfont icon-arrow-right"></i>
+  <a href="{:U('Admin/Manager/managerRoleList')}"><span>角色管理</span></a>
+  <i class="arrow iconfont icon-arrow-right"></i>
+  <span>编辑角色</span>
+</div>
+<div class="line10"></div>
+<!--/导航栏-->
+
+<!--内容-->
+<div id="floatHead" class="content-tab-wrap">
+  <div class="content-tab">
+    <div class="content-tab-ul-wrap">
+      <ul>
+        <li><a class="selected" href="javascript:;">基本信息</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="tab-content">
+  <dl>
+    <dt>角色类型</dt>
+    <dd>
+      <div class="rule-single-select">
+        <select name="data[role_type]" id="ddlRoleType" datatype="*" errormsg="请选择角色类型！" sucmsg=" ">
+          <option value="">请选择类型...</option>
+          <option value="1" <eq name="info.role_type" value='1'>selected="selected"</eq>>超级用户</option>
+          <option value="2" <eq name="info.role_type" value='2'>selected="selected"</eq>>系统用户</option>
+        </select>
+      </div>
+    </dd>
+  </dl>
+  <dl>
+    <dt>角色名称</dt>
+    <dd>
+      <input name="data[role_name]" type="text" id="txtRoleName" class="input normal" datatype="*1-100" sucmsg=" " ajaxurl="{:U('Admin/Ajax/validateManagerRole',array('old_name'=>$info['role_name']))}" value="{$info.role_name}" />
+      <span class="Validform_checktip">*角色中文名称，100字符内</span></dd>
+  </dl>
+  <dl>
+    <dt>管理权限</dt>
+    <dd>
+      <div class="tree-list">
+        <div class="thead">
+          <div class="col col-1">导航名称</div>
+          <div class="col col-2">权限分配</div>
+          <div class="col col-3">全选</div>
+        </div>
+        <ul>
+          <volist name="list" id="vo" key="k">
+          <li class="layer-{$vo.count}">
+            <div class="tbody">
+              <div class="col index col-1">
+                {$vo.title}
+              </div>
+              <div class="col col-2">
+                <span class="cbllist">
+                  <volist name="vo['action_type']" id="vi" key="ki">
+                    <if condition="$vi eq 'show'">
+                      <input id="cblType_{$vo['id']}" type="checkbox" name="action_type_{$vo['name']}[]" <if condition="$vo['show'] eq '1'"> checked="checked" </if> value="show" />
+                      <label for="cblType_{$vo['id']}"> 显示 </label>
+                    </if>
+                    <if condition="$vi eq 'view'">
+                      <input id="cblType_{$vo['id']}" type="checkbox" name="action_type_{$vo['name']}[]" value="view" <if condition="$vo['view'] eq '1'"> checked="checked" </if> />
+                      <label for="cblType_{$vo['id']}"> 查看 </label>
+                    </if>
+                    <if condition="$vi eq 'add'">
+                      <input id="cblType_{$vo['id']}" type="checkbox" name="action_type_{$vo['name']}[]" value="add" <if condition="$vo['add'] eq '1'"> checked="checked" </if> />
+                      <label for="cblType_{$vo['id']}"> 添加 </label>
+                    </if>
+                    <if condition="$vi eq 'edit'">
+                      <input id="cblType_{$vo['id']}" type="checkbox" name="action_type_{$vo['name']}[]" value="edit" <if condition="$vo['edit'] eq '1'"> checked="checked" </if> />
+                      <label for="cblType_{$vo['id']}"> 修改 </label>
+                    </if>
+                    <if condition="$vi eq 'delete'">
+                      <input id="cblType_{$vo['id']}" type="checkbox" name="action_type_{$vo['name']}[]" value="delete" <if condition="$vo['delete'] eq '1'"> checked="checked" </if> />
+                      <label for="cblType_{$vo['id']}"> 删除 </label>
+                    </if>
+                  </volist>
+                </span>
+              </div>
+              <div class="col col-3">
+                <input name="checkAll" type="checkbox" />
+              </div>
+            </div>
+          </li>
+          </volist>
+        </ul>
+      </div>
+    </dd>
+  </dl>
+</div>
+<!--/内容-->
+
+<!--工具栏-->
+<div class="page-footer">
+  <div class="btn-wrap">
+    <input type="hidden" name="action" value="{$action}" />
+    <input type="hidden" name="returnUrl" value="{$returnUrl}" />
+    <input type="hidden" name="role_id" value="{$role_id}" />
+    <input type="submit" name="btnSubmit" value="提交保存" id="btnSubmit" class="btn" />
+    <input name="btnReturn" type="button" value="返回上一页" class="btn yellow" onclick="javascript:history.back(-1);" />
+  </div>
+</div>
+<!--/工具栏-->
+</form>
+</body>
+</html>

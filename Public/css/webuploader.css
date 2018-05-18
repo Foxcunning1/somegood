@@ -1,0 +1,39 @@
+.wu-example{padding:0.8rem 0.15rem;background-color:#fafafa;box-shadow:inset 0 3px 6px rgba(0,0,0,.05);margin-bottom: 0.2rem; overflow:hidden}
+.wu-example .title{font-size:0.22rem;line-height:0.5rem;font-weight:bold;color:#bbb;text-transform:uppercase;text-align:center}
+.release-uploader { padding: 0 0.15rem}
+#filePicker{ width: 1rem; height: 0.9rem; float:left; background:url(../images/image.png) center center no-repeat;background-size:  cover;color:#ccc;font-size:18px;}
+.webuploader-element-invisible{position:absolute !important;clip:rect(1px 1px 1px 1px);clip:rect(1px,1px,1px,1px)}
+.webuploader-pick-disable{opacity:0.6;pointer-events:none}
+.wu-example .placeholder{min-height:3rem; padding: 0.2rem 0.2rem 1rem; position: relative;}
+.wu-example .placeholder .webuploader-pick{width:1rem; height: 0.9rem; color:#fff;display:inline-block;}
+.placeholder p{font-size:0.2rem}
+#container{color:#838383;font-size:12px}
+.filelist { float:left; display: inline-block;}
+.wu-example .queueList{margin:0.3rem; min-height: 3rem; border:3px dashed #e6e6e6}
+.wu-example .queueList.filled{padding:0.15rem;border:1px dashed #e6e6e6}
+
+.wu-example .placeholder .flashTip{color:#666666;font-size:12px;position:absolute;width:100%;text-align:center;bottom:20px}
+.wu-example .placeholder .flashTip a{color:#0785d1;text-decoration:none}
+.wu-example .filelist:after{content:'';display:block;width:0;height:0;overflow:hidden;clear:both}
+.wu-example .filelist li{width:1.5rem;height:1.5rem;background:url(../images/bg.png) no-repeat;text-align:center;margin:0 0.15rem 0.15rem 0;position:relative;display:inline;float:left;font-size:0.16rem}
+.wu-example .filelist li p.log{position:relative;top:-45px}
+.wu-example .filelist li p.progress{position:absolute;width:100%;bottom:0;left:0;height:8px;overflow:hidden;z-index:50;margin:0;border-radius:0;background:none;-webkit-box-shadow:0 0 0}
+.wu-example .filelist li p.progress span{display:none;overflow:hidden;width:0;height:100%;background:#1483d8 url(../images/progress.png) repeat-x;-webit-transition:width 200ms linear;-moz-transition:width 200ms linear;-o-transition:width 200ms linear;-ms-transition:width 200ms linear;transition:width 200ms linear;-webkit-animation:progressmove 2s linear infinite;-moz-animation:progressmove 2s linear infinite;-o-animation:progressmove 2s linear infinite;-ms-animation:progressmove 2s linear infinite;animation:progressmove 2s linear infinite;-webkit-transform:translateZ(0)}@-webkit-keyframes progressmove{0%{background-position:0 0}100%{background-position:17px 0}}@-moz-keyframes progressmove{0%{background-position:0 0}100%{background-position:17px 0}}@keyframes progressmove{0%{background-position:0 0}100%{background-position:17px 0}}
+.wu-example .filelist li p.imgWrap{position:relative;z-index:2;line-height:1.5rem;vertical-align:middle;overflow:hidden;width:1.5rem;height:1.5rem;-webkit-transform-origin:50% 50%;-moz-transform-origin:50% 50%;-o-transform-origin:50% 50%;-ms-transform-origin:50% 50%;transform-origin:50% 50%;-webit-transition:200ms ease-out;-moz-transition:200ms ease-out;-o-transition:200ms ease-out;-ms-transition:200ms ease-out;transition:200ms ease-out}
+.wu-example .filelist li img{width:100%}
+.wu-example .filelist li p.error{background:#f43838;color:#fff;position:absolute;bottom:0;left:0;height:28px;line-height:28px;width:100%;z-index:100}
+.wu-example .filelist li .success{display:block;position:absolute;left:0;bottom:0;height:40px;width:100%;z-index:200;background:url(../images/success.png) no-repeat right bottom}
+.wu-example .filelist div.file-panel{position:absolute;width:0.30rem; height:0.30rem; top:0;right:0;z-index:300}
+.wu-example .filelist div.file-panel span.cancel{ width:0.30rem; height:0.30rem; display:block; text-indent:-9999px; background:url(../images/icons.png) no-repeat; background-position:-0.98rem -0.50rem;}
+.wu-example .statusBar{padding:0 0.15rem}
+.wu-example .statusBar .progress{border:1px solid #1483d8;width:100%;background:#fff;height:0.2rem;position:relative;display:block;text-align:center;line-height:0.2rem;color:#6dbfff;font-size:0.2rem;margin:0.1rem 0.1rem 0.1rem 0}
+.wu-example .statusBar .progress span.percentage{width:0;height:100%;left:0;top:0;background:#1483d8;position:absolute}
+.wu-example .statusBar .progress span.text{position:relative;z-index:10}
+.wu-example .statusBar .info{display:block;font-size:14px;color:#666666;line-height:30px;margin-bottom:30px}
+.wu-example .statusBar .btns{line-height:40px}#filePicker2{display:inline-block;float:left}
+.wu-example .statusBar .btns .webuploader-pick,
+.wu-example .statusBar .btns .uploadBtn,
+.wu-example .statusBar .btns .uploadBtn.state-uploading,
+.wu-example .statusBar .btns .uploadBtn.state-paused{background:#ffffff;border:1px solid #cfcfcf;color:#565656;padding:0 18px;display:inline-block;border-radius:3px;margin-left:10px;cursor:pointer;font-size:14px;float:left}
+.wu-example .statusBar .btns .uploadBtn{background:#00b7ee;color:#fff;border-color:transparent}
+.wu-example .statusBar .btns .uploadBtn.disabled{pointer-events:none;opacity:0.6}

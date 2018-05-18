@@ -1,0 +1,130 @@
+<layout name="user_layout"/>
+<div class="user-center">
+	<div class="w1200">
+		<div class="left-menu-list fl" id="leftMenu">
+			<include file="Public/user_menu"/>
+		</div>
+		<div class="right-show fr">
+			<div class="my-info clearfix">
+				<div class="info" style=" position:relative; z-index:1;">
+					<div class="left fl">
+						<img src="__PUBLIC__/<empty name='user.avatar'>statics/mobile/images/default_img.png<else/>uploads/{$user.avatar}</empty>" width="150" height="150" />
+						<eq name="auth" value="2">
+							<img src="__PUBLIC__/statics/shop/images/already_certified.png" alt="已认证" class="img-status yes">
+							<else/>
+							<img src="__PUBLIC__/statics/shop/images/pending_audit.png" alt="待审核" class="img-status no">
+						</eq>
+					</div>
+					<div class="center fl">
+						<h3 class="user-name">{$Think.session.mobile.username}</h3>
+						<div class="info-div"><a href="{:U('Shop/Users/avatar')}">设置头像</a></div>
+						<div class="info-div"><a href="{:U('Shop/Users/password')}">修改密码</a></div>
+					</div>
+					<div class="right fl">
+						<ul class="ul-1 fl">
+							<li><a href="javascript:;"><i class="icon-wait-pay"></i><span>待付款<em id="waitPay">2</em></span></a></li>
+							<li><a href="javascript:;"><i class="icon-wait-deliver"></i><span>待发货<em id="waitDeliver">2</em></span></a></li>
+							<li><a href="javascript:;"><i class="icon-wait-receipt"></i><span>待收货<em id="waitReceipt">2</em></span></a></li>
+							<li><a href="javascript:;"><i class="icon-complete"></i><span>已完成</span></a></li>
+						</ul>
+						<ul class="ul-2 fl">
+							<li><a href="javascript:;"><span class="bold">余额</span><span class="text" id="balance">2</span></a></li>
+							<li><a href="javascript:;"><span class="bold">优惠券</span><span class="text" id="coupon">2</span></a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="clear"></div>
+			<div class="title"><h3 class="fl">我的订单</h3><a href="{:U('UserOrder/index')}" class="fr">查看全部订单</a></div>
+			<include file="{:U('UserOrder/orderlist')}"/>
+			<table class="shop-order-table">
+				<thead>
+				<tr>
+					<th>订单详情</th>
+					<th>收货人</th>
+					<th>金额</th>
+					<th>订单状态</th>
+					<th>操作</th>
+				</tr>
+				</thead>
+				<!--订单-->
+				<tbody>
+					<tr class="sep-row">
+						<td colspan="5"></td>
+					</tr>
+					<tr class="tr-th">
+						<td colspan="5">
+							<span class="gap"></span>
+							<span class="dealtime" title="2017-11-19 12:33:22">2017-11-19 12:33:22</span>
+							<span class="number">
+								订单号：<a href="javascript:;">69058717693</a>
+							</span>
+						</td>
+					</tr>
+					<tr class="tr-bd">
+						<td>
+							<div class="goods-item p-3235700">
+								<div class="p-img"><a href="javascript:;"><img src="" alt="商品图" /></a></div>
+								<div class="p-msg">
+									<div class="p-name">fsdfsdfsdfsdf</div>
+								</div>
+								<div class="goods-number">X1</div>
+							</div>
+						</td>
+						<td rowspan="1">
+							<div class="consignee tooltip">
+								<span class="txt">老蒋</span>
+							</div>
+						</td>
+						<td rowspan="1">
+							<div class="amount">
+								<span>总额 ¥31.90</span>
+							</div>
+						</td>
+						<td rowspan="1">
+							<div class="status">
+								<!--订单的三个状态-->
+								<!--1-->
+								<span class="order-status ftx-01">待付款</span>
+								<br/>
+								<!--2-->
+								<span class="order-status ftx-02">请上门自提</span>
+								<br/>
+								<div class="tooltip">
+									<i class="auto-icon"></i>
+									跟踪
+									<i class="circle-icon"></i>
+									<div class="prompt-01">
+										<div class="pc">
+											<div class="p-tit">普通快递</div>
+											<div class="logistics-cont">
+												<ul>
+													<li class="first">
+														<i class="node-icon"></i>
+														<a href="">【长沙市】 您的订单在京东【长沙师范学院南校区京东派】上架完成，请上门自提</a>
+														<br>您的订单预计2017-11-20送达您手中
+														<div class="ftx-13">2017-11-20 08:47:31</div>
+													</li>
+												</ul>
+											</div>
+										</div>
+										<div class="p-arrow"></div>
+									</div>
+								</div>
+								<!--3-->
+								<span class="order-status ftx-03">已完成</span>
+								<br/>
+								<a href="javascript:;">订单详情</a>
+							</div>
+						</td>
+						<td rowspan="1">
+							<a href="javascript:;" class="a-link order-cancel">取消订单</a>
+						</td>
+					</tr>
+
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+<div class="clear"></div>

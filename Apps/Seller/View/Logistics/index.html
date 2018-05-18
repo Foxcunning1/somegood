@@ -1,0 +1,171 @@
+<!Doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>卖家管理中心</title>
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+	<import type="css" file="statics.store.css.store-public,statics.store.css.store-style,css.pagination,css.ui-dialog" />
+	<import type="js" file="scripts.jquery.jquery-1#11#2#min,scripts.artdialog.dialog-plus-min,scripts.zepto.lazyload#min" />
+</head>
+<body>
+	<div class="info-box logistics-box">
+		<div class="all-select-box">
+			<a href="javascript:;" class="add-logistics-btn">+ 新增</a>
+		</div>
+	    <div class="box-title">
+	        <div class="th th-info">快递/物流公司</div>
+			<div class="th th-status">备注</div>
+	        <div class="th th-do">操作</div>
+	    </div>
+	    <div class="list-box">
+			<!--提供4个样式-->
+			<div class="item" id="logistics_list">
+				<volist name="list" id='vo'>
+					<div class="item-content">
+						<div class="th th-info">
+							{$vo.logistics_name}
+						</div>
+						<div class="th th-status">
+							<span class="order-status" onclick="editRemarks(this,'{$vo.id}','{$vo.remarks}')"><empty name="vo.remarks">无<else/>{$vo.remarks}</empty></span>
+						</div>
+						<div class="th th-do"  id="planStatus_{$vo.id}">
+							<eq name="vo.is_on" value="0">
+								<a href="javascript:void(0);" onclick="startPlan('{$vo.id}',1)" class="btn">启用</a>
+								<else/>
+								<a href="javascript:void(0);" onclick="startPlan('{$vo.id}',0)" class="btn">禁用</a>
+								<a href="{:U('Seller/Logistics/list')}?id={$vo.id}" class="btn">编辑配送区域</a>
+							</eq>
+
+						</div>
+						<div class="clear"></div>
+					</div>
+				</volist>
+			</div>
+	    </div>
+	</div>
+	<div class="pagelist">
+		<div id="PageContent" class="default">{$pageShow}</div>
+	</div>
+</div>
+<script>
+    function editRemarks(obj,objId,old_value){
+        var value=$(obj).text();
+        if(value){
+            $(obj).html("<input class='focusInput' type='text' id="+objId+" name='remarks' value="+value+">");
+            $(obj).children("input").focus().blur(function(){
+                if($(obj).children("input").val()!=old_value){
+                    $.ajax({
+                        type: "POST",
+                        url: "{:U('Seller/Logistics/editRemarks')}",
+                        dataType: 'json',
+                        data: "id="+objId+"&value="+ $(obj).children("input").val()+"&old_value="+old_value,
+                    });
+                }else{
+                    $(obj).html(old_value);
+                }
+            });
+        }
+    }
+	function startPlan(id,is_on) {
+		var ajax_url="{:U('Seller/Logistics/start')}"
+		$.ajax({
+			type: "POST",
+			url: ajax_url,
+			dataType: 'json',
+			data: {
+				id:id,
+				is_on:is_on,
+			},
+			success: function(data){
+				//判断返回状态
+				if(data.status==0){
+					parent.jsprint(data.info,"");
+				}else{
+					var str='';
+					switch(is_on){
+						case 1:
+							str+="<a href=\"javascript:void(0);\" onclick=\"startPlan('"+data.data+"',0)\" class=\"btn\">禁用</a> <a href=\"{:U('Seller/Logistics/list')}?id="+data.data+"\" class='btn'>编辑配送区域</a>";
+							break;
+						case 0:
+							str+="<a href=\"javascript:void(0);\" onclick=\"startPlan('"+data.data+"',1)\" class=\"btn\">启用</a>";
+							break;
+					}
+					$("#planStatus_"+data.data+"").html(str);
+				}
+			}
+		});
+	}
+	/*新增*/
+	$(".info-box").find(".all-select-box").click(function() {
+		var d = dialog({
+			title:"新增配送方式",
+			content: "<div class='set-out-form'>" +
+			"<form method='post' id='deliverForm' url='{:U('Seller/Logistics/addLogistics')}'>" +
+			"<dl>" +
+			"<dt>选择物流</dt>" +
+			"<dd>" +
+			"<select name='data[logistics_id]' id='logistics_id'>" +
+			<volist name="logistics_list" id="item">
+			"<option value='{$item.id}'>{$item.name}</option>" +
+			</volist>
+			"</select>" +
+			"</dd>" +
+			"</dl>" +
+			"<dl>" +
+			"<dt>备注</dt>" +
+			"<dd>" +
+			"<input type='text' id='remarks' name='data[remarks]' placeholder='备注,如地址电话等...'></dd>" +
+			"</dl>" +
+			"</form>" +
+			"</div>",
+			okValue: '确定',
+			ok: function () {
+				bindSubmitBtn();
+				this.title('提交中…');
+				return true;
+			},
+			cancelValue: '取消',
+			cancel: function () {}
+		}).width(300).height(130).show();
+	})
+	function bindSubmitBtn() {
+		var logistics_id = $("#logistics_id").val();
+		var remarks = $("#remarks").val();
+		var logistics_name=$("#logistics_id").find("option:selected").text();
+			$.ajax({
+				type: "POST",
+				url: "{:U('Seller/Logistics/addLogistics')}",
+				data: {"data[logistics_id]":logistics_id,"data[remarks]":remarks},
+				dataType: 'json',
+				success: function(data){
+					if(data.status==1){
+						var d = dialog({content:"添加成功"}).show();
+						setTimeout(function () {
+							d.close().remove();
+						}, 1500);
+						var str="";
+						str +="<div class=\"item-content\">"+
+						"  <div class=\"th th-info\">"+logistics_name+"</div>"+
+						" <div class=\"th th-status\">"+
+						"  <span class=\"order-status\">"+remarks+"</span>"+
+						"</div>"+
+						"<div class=\"th th-do\"  id=\"planStatus_"+data.info+"\">"+
+						"  <a href=\"javascript:void(0);\" onclick=\"startPlan('"+data.info+"',1)\" class=\"btn\">启用</a>"+
+
+						" </div>"+
+						"<div class=\"clear\"></div>"+
+						" </div>";
+						$('#logistics_list').append(str);
+					}else{
+						var d = dialog({content:data.info}).show();
+						setTimeout(function () {
+							d.close().remove();
+						}, 1500);
+					}
+				}
+			});
+	}
+</script>
+</body>
+</html>

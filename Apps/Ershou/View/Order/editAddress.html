@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>编辑收货地址</title>
+    <!-- <link rel="stylesheet" type="text/css" href="../css/public.css" />
+    <link rel="stylesheet" type="text/css" href="../css/cart.css" />
+    <link rel="stylesheet" type="text/css" href="../css/zepto.select.area.css" />
+    <link rel="stylesheet" type="text/css" href="../css/zepto.select.dialog.css" />
+    <script type="text/javascript" src="../js/zepto.min.js"></script>
+    <script type="text/javascript" src="../js/zepto.miniDialog.js"></script>
+    <script type="text/javascript" src="../js/zepto.validateForm.js"></script>
+    <script type="text/javascript" src="../js/rem.js" fu-psd="720" fu-min="50" fu-max="100"></script> -->
+
+    <import type="css" file="statics.ershou.css.public,statics.ershou.css.cart,statics.ershou.css.zepto#select#area,statics.ershou.css.zepto#select#dialog" />
+    <import type="js" file="scripts.zepto.zepto#min,scripts.zepto.zepto#miniDialog,scripts.zepto.zepto#validateForm,statics.ershou.js.common" />
+    <script type="text/javascript" src="__PUBLIC__/statics/ershou/js/rem.js" fu-psd="720" fu-min="50" fu-max="100"></script>
+    <!-- <script type="text/javascript" src="__PUBLIC__/statics/mobile/js/jquery-1.11.2.min.js"></script> -->
+    <script type="text/javascript" src="__PUBLIC__/scripts/js/region.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/scripts/zepto/zepto.select.dialog.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/scripts/zepto/zepto.select.area.js"></script>
+</head>
+<body style="background-color: #fff">
+<div class="page-title">
+    <!--返回按钮-->
+    <div class="to-back-box">
+        <a href="javascript:history.go(-1);" class="icons icon-back"></a>
+    </div>
+    <!--返回按钮-->
+    <!--标题-->
+    <h2 class="title">编辑收货地址</h2>
+    <!--标题-->
+</div>
+<form method="post" class="new-address-form" id="newAddressForm" url="{:U('Ershou/Order/receipt')}">
+  <input type="hidden" name="address_id" value="{$address_id}">
+    <div class="address-editor-box pd-t08">
+        <dl>
+            <dt>收货人：</dt>
+            <dd><input type="text" name="person" value="{$list['consignee']}" class="required"/></dd>
+        </dl>
+        <dl>
+            <dt>手机号码：</dt>
+            <!-- <dd><input type="text" name="mobile" value="" class="required"/></dd> -->
+            <dd><input type="text" placeholder="请输入手机号" value="{$list['mobile']}" class="required mobile" maxlength="11" id="mobile" sucmsg="通过验证" name="mobile"/>
+
+        </dl>
+        <dl>
+            <dt>所在区域：</dt>
+            <dd>
+                <input type="text" name="area_text" id="areaText"  data-value="801,802,810" placeholder="点击选择区域 "
+                       value="{$list.iname} {$list.oname} {$list.rname}" />
+                <input type="hidden" name="data[area_list]"  class="required" value="{$list.province},{$list.city},{$list.district}" />
+            </dd>
+        </dl>
+
+        <script>
+            //初始化所有城市JS
+            var selectArea = new MobileSelectArea();
+            var defaultArea = "{$area_list}";
+            var areaName = "{$info.region}";
+            var areaArr = ['','',''];
+            if(areaName!=""){
+                areaArr = areaName.split(' ');
+            }
+            selectArea.init({trigger:'#areaText',data:cityJson,default:0,text:areaArr,value:defaultArea,position:"bottom"});
+        </script>
+        <dl>
+            <dt>详细地址：</dt>
+            <dd><input type="text" name="address" value="{$list['address']}" placeholder="请输入详细地址" class="required"/></dd>
+        </dl>
+    </div>
+    <input type="hidden" name="action" value="edit">
+    <input type="hidden" id="returnUrl"  value="{:U('Ershou/Order/receipt')}">
+    <div class="add-address-box">
+        <button id="submitButton" type="submit" class="save-use-btn" name="" value="" >提交</button>
+    </div>
+
+</form>
+
+<script>
+
+    $(function(){
+        /*改变默认地址*/
+        // $(".address-items .address-center-box").on("touchstart",function(){
+        //     $(this).parent().addClass("select").siblings(".address-items").removeClass("select");
+        // })
+        /*改变标签选中样式*/
+        $(".tips-box").find("span.tips").on("touchstart",function(){
+            $(this).addClass("selected").siblings().removeClass("selected");
+        })
+        /*表单验证*/
+         var returnUrl = $("#returnUrl").val();
+         $("#newAddressForm").validateForm({return_url:returnUrl,isBindDel:true});
+
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+				<ul>
+					<li class="title">个人中心</li>
+					<li><a <if condition="$mnav eq 1">class="cur"</if> href="{:U('Shop/Users/setting',array('action'=>'info'))}">个人资料</a></li>
+					<li><a <if condition="$mnav eq 2">class="cur"</if> href="{:U('Shop/Users/setting',array('action'=>'edit'))}">资料修改</a></li>
+				</ul>
+				<ul>
+					<li class="title">我的订单</li>
+					<li><a <if condition="$mnav eq 17">class="cur"</if> href="{:U('userOrder/orderlist')}">订单管理</a></li>
+				</ul>
+				<ul>
+					<li class="title">我的资产</li>
+					<if condition="$info['is_salesman'] eq 1">
+					<li><a <if condition="$mnav eq 12">class="cur"</if> href="{:U('Account/commission')}">提成明细</a></li>
+					<else/>
+					<li><a <if condition="$mnav eq 13">class="cur"</if> href="{:U('Shop/Users/amount')}">资金查看</a></li>
+					<li><a <if condition="$mnav eq 14">class="cur"</if> href="{:U('Shop/Users/coupon',array('pageType'=>'can_use'))}">优惠券</a></li>
+					<li><a <if condition="$mnav eq 12">class="cur"</if> href="{:U('Shop/Users/commission')}">提成明细</a></li>
+					</if>
+				</ul>
+				<ul>
+					<li class="title">我的收藏</li>
+					<li><a <if condition="$mnav eq 16">class="cur"</if> href="{:U('Shop/Users/favorites')}">我的收藏夹</a></li>
+				</ul>

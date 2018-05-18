@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no" />
+    <link rel="stylesheet" href="__PUBLIC__/dist/dropload.css">
+    <import type="css" file="statics.mobile.css.public,statics.mobile.css.style" />
+    <import type="js" file="scripts.zepto.zepto#min,scripts.zepto.zepto#miniDialog,scripts.zepto.zepto#fx,statics.mobile.js.common" />
+    <script type="text/javascript" src="__PUBLIC__/statics/mobile/js/rem.js" fu-psd="720" fu-min="50" fu-max="100"></script>
+    <title>同城寻宝</title>
+    <script type="text/javascript">
+        var defaultCatId = "{$catid}";
+    </script>
+</head>
+<body>
+<div class="page-title">
+    <!--返回按钮-->
+    <div class="back-box">
+        <a href="javascript:history.back();" class="icons icon-back"></a>
+    </div>
+    <!--返回按钮-->
+    <!--标题-->
+    <h2 class="title">同城寻宝</h2>
+    <!--标题-->
+</div>
+<!--商品筛选部分-->
+<form action="{:U(want/index)}" id="searchForm" method="post">
+    <input type="hidden" name="area_id" id="area_id" value="{$area_id}"/>
+    <input type="hidden" name="type_id" id="type_id" value="{$type_id}"/>
+    <input type="hidden" name="order" id="order" value="{$order}">
+</form>
+<div class="goods-filter">
+    <ul class="filter-ul">
+        <li class="area" id="area"><span>区域</span></li>
+        <li class="orderBtn price selected <eq name="order" value="1">click</eq>" data-status="{$order}"><span>时间</span></li>
+        <li class="filter"><span>筛选</span></li>
+    </ul>
+    <!--商品区域-->
+    <div class="area-choose" id="areaChoose">
+        <div class="choose-box">
+            <ul>
+                <li <eq name="area_id" value="0">class="sel"</eq>><a href="{:U('Mobile/Want/list')}?cate_id={$cate_id}&area_id=0&order={$order}"><span>全部区域</span><i class="icons icon-select"></i></a></li>
+                <volist name="areaList" id="area">
+                    <li <eq name="area_id" value="$area['id']">class="sel"</eq>><a href="{:U('Mobile/Want/list')}?cate_id={$cate_id}&area_id={$area.id}&order={$order}"><span>{$area.name}</span><i class="icons icon-select"></i></a></li>
+                </volist>
+            </ul>
+        </div>
+    </div>
+    <!--商品区域-->
+</div>
+<!--商品筛选部分-->
+<div class="my-apply-list pd-t18">
+        <ul class="apply-list">
+            <volist name="list" id="vo">
+                <li>
+                    <div class="title"><a href="{:U('Mobile/Want/detail')}?id={$vo.w_id}">{$vo.w_title}</a></div>
+                    <div class="location"><i class="icons icon-location fl"></i><span class="fl">{$vo.area}</span></div>
+                    <div class="price-and-time"><span class="price fl"><if condition="$vo.w_min eq 0 && $vo.w_max eq 0">面议<elseif condition="$vo.w_min eq 0 && $vo.w_max neq 0"/>{$item.w_max}元以内<else/>{$vo.w_min}到{$vo.w_max}元</if></span><span class="time fr">{$vo.w_updatetime|date='Y-m-d',###}</span></div>
+                </li>
+            </volist>
+        </ul>
+</div>
+<div class="over-lay"></div>
+<div class="over-lay-small"></div>
+
+<!--商品筛选-->
+<div class="kinds-box">
+    <div class="kind-filter">
+        <i class="icons icon-close-overlay fl"></i>
+        <span class="fl">筛选</span>
+    </div>
+    <div class="filter-box">
+        <div class="category-title">
+            <span class="fl">商品分类</span>
+            <span class="fr" id="choosed" style="margin-right:20px;">所有分类</span>
+            <i class="icon-pointer"></i>
+            <input type="hidden" name="catid" id="categoryId" value="{$catid}" />
+        </div>
+        <div class="left-classify-box" style="position: absolute; top: 0.71rem; bottom: 0; overflow: auto;">
+            <div class="left-over-box" style="padding: 0; height: 100%; ">
+                <ul>
+                    <volist name="categoryList" id="vo" empty="$empty">
+                        <li <if condition="$vo.id eq $bigCatId">class="sel"</if> data-id="{$vo.id}"><a href="javascript:;">{$vo.title}</a></li>
+                    </volist>
+                </ul>
+            </div>
+        </div>
+        <!--右边分类展示-->
+        <div class="right-show-box" style="position: absolute; top: 0.71rem; bottom:0; overflow: auto;">
+            <div class="right-show-box-content" style="padding:0; height: 100%;">
+                <div class="category-lists" id="categoryBox" ></div>
+            </div>
+        </div>
+    </div>
+    <div class="tools-btn-box">
+        <a class="cancleBtn" href="javascirpt:;">取消</a>
+        <a class="submit-btn" id="submitBtn" href="javascript:;">确定</a>
+    </div>
+</div>
+<!--商品筛选-->
+<!--公用底部-->
+<include file="Public/footer" />
+<!--公用底部-->
+<script>
+    //筛选菜单点击及默认效果
+    var ajaxCategoryUrl = "{:U('Mobile/Goods/category')}";//Ajax获取分类地址
+    $(function(){
+        //点击排序
+        $(".orderBtn").on("touchstart",function(){
+            var orderType = $(this).attr("data-status");
+            var jumpUrl = "{:U('Mobile/Want/list')}?cate_id={$cate_id}&area_id={$area_id}&order=2";
+            if($(this).hasClass("price")){
+                if(orderType=="0"){
+                    jumpUrl = "{:U('Mobile/Want/list')}?cate_id={$cate_id}&area_id={$area_id}&order=1";
+                }else{
+                    jumpUrl = "{:U('Mobile/Want/list')}?cate_id={$cate_id}&area_id={$area_id}&order=0";
+                }
+            }
+            window.location.href = jumpUrl;
+        })
+        //筛选提交
+        var defaultCatId = "{$catid}";
+        $("#submitBtn").on("click",function(){
+            var catid = $("#categoryId").val();
+            if(catid!=""){
+                jumpUrl = "{:U('Mobile/Want/list')}?cate_id="+catid+"&area_id={$area_id}&order={$order}";
+                window.location.href = jumpUrl;
+            }
+        })
+        //筛选菜单选项卡点击效果
+        //默认第一个选项卡被选中
+        var defaultId = 0;
+        if($(".left-classify-box").find("li.sel").length>0){
+            defaultId = $(".left-classify-box").find("li.sel").eq(0).attr("data-id");
+        }else{
+            $(".left-classify-box").find("li").eq(0).addClass("sel");
+            defaultId = $(".left-classify-box").find("li").eq(0).attr("data-id");
+        }
+        if(typeof(defaultId!="undefined")) {
+            menuTabChangeAjax(defaultCatId,defaultId, "#categoryBox", ajaxCategoryUrl);
+        }
+        $(".left-classify-box").find("li").on("click",function(){
+            $(this).addClass("sel").siblings().removeClass("sel");
+            if(typeof($(this).attr("data-id"))!="undefined"){
+                var id = $(this).attr("data-id");
+                menuTabChangeAjax(defaultCatId,id,"#categoryBox",ajaxCategoryUrl);
+            }
+        })
+        //筛选内容选中效果
+        $(".filter-option").on("click",function(){
+            var curVal = $(this).attr("data-value");
+            var curText = $(this).text();
+            $(this).parent().parent().find("input").val(curVal);
+            $(this).parent().parent().find(".fSelected").text(curText);
+            $(this).parent().find(".filter-option").removeClass("fCurrent");
+            $(this).addClass("fCurrent");
+            $(this).parent().parent().removeClass("filter-open");
+        })
+        //区域被选中信息
+        var areaName = "区域";
+        var selectText = $("#areaChoose").find("li.sel").eq(0).find("span").text();
+        if(selectText){
+            areaName = selectText;
+        }
+        $("#area").text(areaName);
+    })
+    /*区域下拉*/
+    var h = $(".area-choose").height();
+    var wh = $(window).height();
+    $(".over-lay-small").height(wh);
+    /*区域选择*/
+    $(".goods-filter li.area").on("click",function(){
+        if($(this).hasClass("done")){
+            $(".area-choose").css("max-height",h);
+            $(".over-lay-small").hide();
+            $(this).removeClass("done");
+            $(".area-choose").css("max-height",0);
+            //$(".area-choose").removeClass("showBox");
+            $(".area-choose").css("max-height",0);
+            $("body").css("overflow","auto");
+        }else{
+            $(".area-choose").css("max-height",0);
+            $(".over-lay-small").show();
+            $(this).addClass("done");
+            $(".area-choose").css("max-height",h);
+            $(".area-choose").addClass("showBox");
+            $("body").css("overflow","hidden");
+        }
+    })
+    /*区域收起*/
+    $(document).on('click',function(e){
+        var e = e || window.event; //浏览器兼容性
+        var elem = e.target || e.srcElement;
+        while (elem) {
+            //循环判断至跟节点，防止点击的是div子元素
+            if (elem.id && elem.id=='area') {
+                return;
+            }
+            elem = elem.parentNode;
+        }
+        $(".area-choose").css("max-height",h);
+        $(".over-lay-small").hide();
+        $(this).removeClass("done");
+        $(".area-choose").css("max-height",0);
+        //$(".area-choose").removeClass("showBox");
+        $(".area-choose").css("max-height",0);
+    });
+    /*筛选滑出*/
+    $(".goods-filter li.filter").on("click",function(){
+        $(".over-lay").show();
+        $(".kinds-box").show().animate({"left":"15%"},300,function(){
+            $(".tools-btn-box").addClass("tools-btn-box-show");
+            $('html').addClass('noscroll');
+            $("body").css("overflow-y","hidden");
+        });
+
+    })
+    /*筛选隐藏*/
+    $(".over-lay").on("click",function(){
+        $(".tools-btn-box").removeClass("tools-btn-box-show");
+        $(".kinds-box").animate({"left":"100%"},300,function(){
+            $(".kinds-box").hide();
+            $(".over-lay").hide();
+            $('html').removeClass('noscroll');
+            $("body").css({"overflow-y":"auto"});
+        });
+
+    })
+    /*筛选隐藏*/
+    $(".kind-filter .icon-close-overlay").on("click",function(){
+        $(".kinds-box").animate({"left":"100%"},300,function(){
+            $(".kinds-box").hide();
+            $(".over-lay").hide();
+            $('html').removeClass('noscroll');
+            $("body").css({"overflow-y":"auto"});
+        });
+
+    })
+    /*筛选取消*/
+    $(".cancleBtn").on("touchstart",function(){
+        $(".kinds-box").animate({"left":"100%"},300,function(){
+            $(".kinds-box").hide();
+            $(".over-lay").hide();
+            $("body").css({"overflow-y":"auto"});
+        });
+    })
+
+
+</script>
+<!-- jQuery1.7以上 或者 Zepto 二选一，不要同时都引用 -->
+<script src="__PUBLIC__/dist/dropload.min.js"></script>
+<script>
+    var page=2; //当前页的页码
+    var allpage={$pageCount}; //总页码，会从后台获
+    var ajaxUrl="{:U('Mobile/Want/list')}";//ajax请求地址
+    $(function(){
+        var dropload = $('.my-apply-list').dropload({
+            scrollArea : window,
+            loadDownFn : function(me){
+                    if(page<=allpage){
+                        $.ajax({
+                            url:ajaxUrl,
+                            type:"post",
+                            dataType:"json",
+                            data:{
+                                'is_ajax':1,
+                                'p':page,
+                                'area_id':{$area_id},
+                                'cate_id':{$cate_id},
+                                'order':{$order},
+                            },
+                            success:function(data){
+                                var str='';
+                                $.each(data.data.list,function(index, vo) {
+                                    var money;
+                                    if(vo['w_max']==0){
+                                        money="面议";
+                                    }else if(vo['w_min']>0 && vo['w_max']>0){
+                                        money="￥"+vo['w_min']+"到￥"+vo['w_max'];
+                                    }else{
+                                        money="￥"+vo['w_max']+"以内";
+                                    }
+
+                                    str +="<li> ";
+                                    str += "<div class=\"title\"><a href=\"http://www.baidu.com\">"+vo['w_title']+"</a></div>";
+                                    str += "<div class=\"location\"><i class=\"icons icon-location fl\"></i><span class=\"fl\">"+vo['area']+"</span></div>";
+                                    str += "<div class=\"price-and-time\"><span class=\"price fl\">"+money+"</span><span class=\"time fl\">更新时间:"+date('Y-m-d',""+vo['w_overtime']+"")+"</span></div>";
+                                    str +="</li>";
+                                })
+                                $('.apply-list').append(str);
+                                // 每次数据加载完，必须重置
+                                me.resetload();
+                                allpage=data.data.pageCount;
+                            },
+                            error: function(xhr, type){
+                                alert('Ajax error!');
+                                // 即使加载出错，也得重置
+                                me.resetload();
+                            }
+                        });
+                        page++;
+                    }else{
+                        // 锁定
+                        me.lock();
+                        // 无数据
+                        me.noData();
+                        me.resetload();
+                    }
+            }
+        });
+    });
+</script>
+</body>
+</html>

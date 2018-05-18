@@ -1,0 +1,17 @@
+<volist name="list" id="vo">
+<li class="ui-switchable-panel <if condition="$vo['is_default'] eq 1">ui-switchable-panel-selected</if>" id="address1" >
+	<div class="consignee-item <if condition="$vo['is_default'] eq 1">item-selected</if>" data-address-id="{$vo.address_id}"><span>{$vo.consignee}</span><b></b></div>
+	<div class="addr-detail">
+		<span class="addr-name">{$vo.consignee}</span>
+		<span class="addr-info">{$vo.iname}{$vo.oname}{$vo.rname}{$vo.address}</span>
+		<span class="addr-tel">{$vo.mobile}</span>
+		<span class="addr-default">默认地址</span>
+	</div>
+	<div class="op-btns">
+		<if condition="$vo['is_default'] eq 0"><a href="javascript:;" class="ftx-05 setdefault-consignee">设为默认地址</a></if>
+		<a href="javascript:;" class="ftx-05 edit-consignee" data-editid="{$vo.address_id}">编辑</a>
+		<a href="javascript:;" class="ftx-05 del-consignee" onclick="delAddress({$vo.address_id},delajaxUrl,$(this))">删除</a>
+	</div>
+</li>
+</volist>
+<input type="hidden" name="data[address_id]" value="{$defaultId}" id="selAddressId">

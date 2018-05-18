@@ -1,0 +1,144 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>编辑管理员</title>
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0,user-scalable=no" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/scripts/artdialog/ui-dialog.css" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/statics/admin/css/icon/iconfont.css" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/statics/admin/css/style.css" />
+<script type="text/javascript" charset="utf-8" src="__PUBLIC__/scripts/jquery/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="__PUBLIC__/scripts/jquery/Validform_v5.3.2_min.js"></script>
+<script type="text/javascript" charset="utf-8" src="__PUBLIC__/scripts/artdialog/dialog-plus-min.js"></script>
+<script type="text/javascript" charset="utf-8" src="__PUBLIC__/statics/admin/js/common.js"></script>
+<script type="text/javascript" charset="utf-8" src="__PUBLIC__/statics/admin/js/laymain.js"></script>
+<style type="text/css">
+  .tree-list .col-1{ padding-left:1%; width:39%; }
+  .tree-list .col-2{ width:50%; }
+  .tree-list .col-3{ width:10%; text-align:center; }
+</style>
+<script type="text/javascript">
+    $(function () {
+        //初始化表单验证
+        $("#managerRoleForm").initValidform();
+        //初始化分类的结构
+        initCategoryHtml('.tree-list', 1);
+        //初始化分类的事件
+        $('.tree-list').initCategoryTree(true);
+        //是否启用权限
+        if ($("#ddlRoleType").find("option:selected").attr("value") == 1) {
+          $(".tree-list").find("input[type='checkbox']").prop("disabled", true);
+        }
+        $("#ddlRoleType").change(function () {
+          if ($(this).find("option:selected").attr("value") == 1) {
+            $(".tree-list").find("input[type='checkbox']").prop("checked", false);
+            $(".tree-list").find("input[type='checkbox']").prop("disabled", true);
+          } else {
+            $(".tree-list").find("input[type='checkbox']").prop("disabled", false);
+          }
+        });
+        //权限全选
+        $("input[name='checkAll']").click(function () {
+          if ($(this).prop("checked") == true) {
+            $(this).parent().siblings(".col").find("input[type='checkbox']").prop("checked", true);
+          } else {
+            $(this).parent().siblings(".col").find("input[type='checkbox']").prop("checked", false);
+          }
+        });
+    });
+</script>
+</head>
+
+<body class="mainbody">
+<form method="post" name="managerRoleForm" id="managerRoleForm" action="{:U('Admin/Manager/managerAdd')}">
+<!--导航栏-->
+<div class="location">
+  <a href="{:U('Admin/Manager/managerRoleList')}" class="back"><i class="iconfont icon-up"></i><span>返回列表页</span></a>
+  <a href="{:U('Admin/Index/center')}"><i class="iconfont icon-home"></i><span>首页</span></a>
+  <i class="arrow iconfont icon-arrow-right"></i>
+  <a href="{:U('Admin/Manager/managerList')}"><span>管理员列表</span></a>
+  <i class="arrow iconfont icon-arrow-right"></i>
+  <span>编辑管理员</span>
+</div>
+<div class="line10"></div>
+<!--/导航栏-->
+
+<!--内容-->
+<div id="floatHead" class="content-tab-wrap">
+  <div class="content-tab">
+    <div class="content-tab-ul-wrap">
+      <ul>
+        <li><a class="selected" href="javascript:;">基本信息</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="tab-content">
+    <dl>
+      <dt>管理角色</dt>
+      <dd>
+        <div class="rule-single-select">
+          <select name="data[r_id]" id="ddlRoleId" datatype="*" errormsg="请选择管理员角色" sucmsg=" ">
+            <option value="">请选择角色...</option>
+            <volist name="roleList" id="vo">
+              <option value="{$vo.role_id}" <if condition="$vo['role_id'] eq $info['r_id']"> selected="selected"</if>>{$vo.role_name}</option>
+            </volist>>
+          </select>
+        </div>
+      </dd>
+    </dl>
+    <dl>
+      <dt>是否锁定</dt>
+      <dd>
+        <div class="rule-single-checkbox">
+          <input id="cbIsLock" type="checkbox" name="data[is_lock]" value="1" <eq name="info.is_lock" value="1">checked="checked"</eq> />
+        </div>
+        <span class="Validform_checktip">*不启用则无法使用该账户登录</span>
+      </dd>
+    </dl>
+    <dl>
+      <dt>用户名</dt>
+      <dd><input name="data[admin_name]" type="text" <if condition="$info['admin_name']"> readonly="readonly" value="{$info['admin_name']}" <else /> value="" </if> id="txtUserName" class="input normal" datatype="/^[a-zA-Z0-9\-\_]{2,50}$/" sucmsg=" " ajaxurl="{:U('Admin/Ajax/validateManager')}?old_name={$info.admin_name}" /> <span class="Validform_checktip">*字母、下划线，不可修改</span></dd>
+    </dl>
+    <dl>
+      <dt>登录密码</dt>
+      <dd><input name="data[password]" type="password" id="txtPassword" class="input normal" datatype="*6-20" nullmsg="请设置密码" errormsg="密码范围在6-20位之间" sucmsg="" <if condition="$info['password']"> value="123ee456" <else /> value="" </if> /> <span class="Validform_checktip">*</span></dd>
+    </dl>
+    <dl>
+      <dt>确认密码</dt>
+      <dd><input name="txtPassword1" type="password" id="txtPassword1" class="input normal" datatype="*" recheck="data[password]" nullmsg="请再输入一次密码" errormsg="两次输入的密码不一致" sucmsg="" <if condition="$info['password']"> value="123ee456" <else /> value="" </if> /> <span class="Validform_checktip">*</span></dd>
+    </dl>
+    <dl>
+      <dt>姓名</dt>
+      <dd><input name="data[real_name]" type="text" <if condition="$info['real_name']"> value="{$info['real_name']}" <else /> value="" </if> id="txtRealName" class="input normal" /></dd>
+    </dl>
+    <dl>
+      <dt>电话</dt>
+      <dd><input name="data[mobile]" type="text" <if condition="$info['mobile']"> value="{$info['mobile']}" <else /> value="" </if> id="txtTelephone" class="input normal" /></dd>
+    </dl>
+    <dl>
+      <dt>邮箱</dt>
+      <dd><input name="data[email]" type="text" <if condition="$info['email']"> value="{$info['email']}" <else /> value="" </if> id="txtEmail" class="input normal" /></dd>
+    </dl>
+  </div>
+<!--/内容-->
+
+<!--工具栏-->
+<div class="page-footer">
+  <div class="btn-wrap">
+    <input type="hidden" name="action" value="{$action}" />
+    <input type="hidden" name="id" value="{$info.id}" />
+    <input type="hidden" name="password" value="{$info.password}" />
+    <input type="hidden" name="returnUrl" value="{$returnUrl}" />
+    <input type="submit" name="btnSubmit" value="提交保存" id="btnSubmit" class="btn" />
+    <input name="btnReturn" type="button" value="返回上一页" class="btn yellow" onclick="javascript:history.back(-1);" />
+  </div>
+</div>
+<!--/工具栏-->
+</form>
+</body>
+</html>

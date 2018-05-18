@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>{$web_title}</title>
+    <meta name="keywords" content="{$web_keywords}"/>
+    <meta name="description" content="{$web_description}" />
+    <import type="css" file="statics.wap.css.public,statics.wap.css.style,dist.dropload" />
+    <!--[if lt IE9]>
+    <import type="js" file="scripts.js.jshtml5shiv#min" />
+    <![endif]-->
+    <import type="js" file="statics.wap.js.zepto#min,statics.wap.js.zepto#fx,dist.dropload#min,scripts.zepto.lazyload#min,statics.mobile.js.common,statics.wap.js.rem" />
+    <style type="text/css">
+        .recommend{ padding:10px; background-color:#f3f3f3;}
+        .recommend .rec-title { padding: 0 0.15rem; line-height: 0.78rem; border-bottom: 1px solid #f1f1f1; background-color: #fff; overflow: hidden;}
+        .recommend .rec-title h2 { font-size: 0.30rem; color: #333; }
+        .recommend .rec-title a.to-shop { font-size: 0.24rem; color: #666; }
+        .recommend .rec-content-wrap li { background-color: #fff; border-bottom: 1px solid #e5e5e5; text-align: left; padding: 0.15rem;}
+        .recommend .rec-content-wrap li a { width: 100%; display: -webkit-box;  display: -moz-box; display: -ms-flexbox; display: -webkit-flex; display: flex;}
+        .recommend .rec-content-wrap li img { display: block; width: 1.8rem; height: 1.8rem; margin-right: 0.2rem;}
+        .recommend .rec-content-wrap li .info-box {  -webkit-box-flex: 1; -moz-box-flex: 1; -webkit-flex: 1;  -ms-flex: 1;  flex: 1; color: #333; }
+        .recommend .rec-content-wrap li .info-box .line-item { width: 100%; height: 0.5rem; line-height: 0.5rem;}
+        .recommend .rec-content-wrap li .info-box .span-item { color: #666; height: 0.7rem; line-height: 0.35rem; font-size: 0.22rem; }
+        .recommend .rec-content-wrap li .info-box .name { font-size: 0.3rem;}
+
+    </style>
+    <script type="text/javascript">
+        var usersLng = {$Think.session.lng};//用户所在的经纬度
+        var usersLat = {$Think.session.lat};
+        if(isWeixin()) {
+            usersLng = parseFloat(localStorage.getItem("longitude"));
+            usersLat = parseFloat(localStorage.getItem("latitude"));
+        }
+    </script>
+</head>
+<body>
+    <section class="floor">
+        <h2 data-kui-anim="fadeInRightFast">加盟<span>品牌</span></h2>
+        <div class="line" data-kui-anim="fadeInRightSlow"></div>
+        <div class="recommend">
+            <div class="rec-content-wrap" id="recContentWrap">
+                <div class="rec-content">
+                    <ul>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+<script type="text/javascript">
+    //滚动页面ajax自动获取下一页内容
+    var page=1; //有效求购的页码
+    var totalPage = {$totalPage}; //有效求购页的总页码，会从后台获
+    var ajaxUrl="{:U('Mobile/Index/storeList')}";//ajax请求地址
+    $(function(){
+        var tabLoadEnd = false;
+        var dropload = $('.rec-content-wrap').dropload({
+            scrollArea : window,
+            loadDownFn : function(me){
+                // 加载菜单一的数据
+                if(page <= totalPage){
+                    $.ajax({
+                        url:ajaxUrl,
+                        type:"post",
+                        dataType:"html",
+                        data:{
+                            'p':page
+                        },
+                        success:function(data){
+                            $('.rec-content-wrap ul').append(data);
+                            //绑定计算距离
+                            calcDistance(".distance");
+                            //图片延迟加载
+                            $(".rec-content li img").lazyload({effect : "fadeIn"});
+                            // 每次数据加载完，必须重置
+                            me.resetload();
+                        },
+                        error: function(xhr, type){
+                            alert('Ajax error!');
+                            // 即使加载出错，也得重置
+                            me.resetload();
+                        }
+                    });
+                    page++;
+                }else{
+                    // 数据加载完
+                    tabLoadEnd = true;
+                    // 锁定
+                    me.lock();
+                    // 无数据
+                    me.noData();
+                    me.resetload();
+                }
+                // 加载菜单二的数据
+            }
+        });
+        // 如果数据没有加载完
+        if(!tabLoadEnd){
+            // 解锁
+            dropload.unlock();
+            dropload.noData(false);
+        }else{
+            // 锁定
+            dropload.lock('down');
+            dropload.noData();
+        }
+        // 重置
+        dropload.resetload();
+    });
+</script>
+</body>
+</html>

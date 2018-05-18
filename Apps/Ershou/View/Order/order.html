@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>订单结算</title>
+    <import type="css" file="statics.ershou.css.public,statics.ershou.css.cart" />
+    <import type="js" file="scripts.zepto.zepto#min,statics.ershou.js.common,scripts.zepto.zepto#fx,scripts.zepto.zepto#miniDialog,scripts.zepto.zepto#cookie#min,scripts.TouchSlide.TouchSlide#1#1" />
+    <script type="text/javascript" src="__PUBLIC__/statics/ershou/js/rem.js" fu-psd="720" fu-min="50" fu-max="100"></script>
+</head>
+<body>
+<div class="page-title">
+    <!--返回按钮-->
+    <div class="to-back-box">
+        <a href="javascript:void(0);" class="icons icon-back"></a>
+    </div>
+    <!--返回按钮-->
+    <!--标题-->
+    <h2 class="title">订单结算</h2>
+    <!--标题-->
+</div>
+<form method="post" class="order-form" id="orderForm" style="padding-top: 0.86rem;">
+
+    <div class="order-wrapper" <if condition="$delivery_way eq '0' ">style="display:none;"</if>>
+        <div class="my-address" >
+            <a href="{:U('UserOrder/receipt')}" class="my-address-a">
+                <div class="name">
+                    <div class="fl"><span>{$userDefaultAddress[consignee]}</span></div>
+                    <div class="fl"><span>{$userDefaultAddress[mobile]}</span></div>
+                    <if condition="$userDefaultAddress['is_default'] eq 1">
+                        <div class="fl">默认</div>
+                    </if>
+                </div>
+                <div class="address">
+                    <i class="icons icon-more"></i>
+                    <i class="icons icon-location fl"></i>
+                    <p class="address-where">{$userDefaultAddress.iname}{$userDefaultAddress.oname}{$userDefaultAddress.rname}{$userDefaultAddress.address}</p>
+                </div>
+            </a>
+            <span class="s1-borderB"></span>
+        </div>
+    </div>
+    <div class="order-wrapper">
+        <div class="items">
+            <div class="item-l">
+                <div class="list-title">订单列表</div>
+            </div>
+            <div class="item-r" style="border-bottom: 1px solid #f1f1f1">
+                <div class="item-r fl">
+                    <ul class="order-list-box">
+                        <volist name="orderInfo" id="vo">
+                            <li <if condition="$vo['goods_num'] eq 0 || $vo['is_on_sale'] eq 0">class="invalid"</if>>
+                              <a href="javascript:void(0);"><img class="img-length" src="__PUBLIC__/uploads/{$vo[goods_thumb]}_c200x200" alt="" /><span>×{$vo[counts]}</span></a>
+                              <if condition="$vo['goods_num'] eq 0 || $vo['is_on_sale'] eq 0"><div class="invalid-box"><p>无货</p><p>Sold Out</p></div></if>
+                            </li>
+                        </volist>
+                    </ul>
+                </div>
+                <div class="list-right fr">
+                    <span>共{$orderCounts}件</span>
+                </div>
+            </div>
+            <div class="item-r" id="payDeliverWay">
+                <div class="l-box fl">支付配送</div>
+                <div class="r-box">
+                    <p><span>微信支付</span></p>
+                    <p><span style="color:red;" id="yunshu"><if condition="$delivery_way eq 0">到店购买<else />接受快递</if></span></p>
+                    <p><span>工作日、双休日、节假日均可配送</span></p>
+                    <i class="icons icon-more"></i>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="order-wrapper">
+        <div class="items">
+            <div class="item-l">
+                <div class="list-title">取货方式</div>
+            </div>
+            <div class="item-r" id="adelivery_way">
+                <input type="radio" name="delivery_way" value="0" style="display:none;">
+                <a href="javascript:void(0);" id="buySelfBtn" class="btn <if condition="$delivery_way eq 0"> select </if>"  >到店购买</a>
+                <input type="radio" name="delivery_way" value="1" style="display:none;">
+                <a href="javascript:void(0);" class="btn <if condition="$delivery_way eq 1"> select </if>"  >接受快递</a>
+            </div>
+            <div class="item-r"><span class="attention">由于三好连锁店的所有物品都是超低价格出售，如选择接受快递，快递费均由买家自付！</span></div>
+        </div>
+    </div>
+      <div class="order-wrapper">
+          <div class="items">
+              <a href="{:U('userOrder/coupon')}">
+              <div class="item-l fl" style="margin-top: 0.1rem"><span class="fl">优惠券</span>
+                <i class="can-use-tips fl">{$couponNum}张可用</i>
+              </div>
+              <i class="icons icon-more fr"></i>
+              </a>
+          </div>
+      </div>
+      <div class="order-wrapper">
+          <div class="items">
+              <a href="{:U('userOrder/shareBill')}">
+                  <div class="item-l fl" style="margin-top: 0.1rem"><span class="fl">购物币</span>
+                    <i class="can-use-tips fl">￥{$userShallBill}可用</i>
+                  </div>
+                  <i class="icons icon-more fr"></i>
+              </a>
+          </div>
+      </div>
+
+    <div class="order-wrapper" style="margin-bottom: 1.3rem">
+        <div class="items">
+            <div class="item-l fl"><span>商品金额</span></div><div class="item-r fr"><span class="money">￥{$orderMoney}</span></div>
+        </div>
+        <if condition="!empty($coupon_id)">
+        <div class="items">
+            <div class="item-l fl"><span>优惠券抵扣</span></div><div class="item-r fr"><span class="money">￥{$ctype_money}</span></div>
+        </div>
+        </if>
+        <if condition="!empty($share_bill)">
+        <div class="items">
+            <div class="item-l fl"><span>购物币抵扣</span></div><div class="item-r fr"><span class="money">￥{$share_bill}</span></div>
+        </div>
+        </if>
+            <div class="items">
+                <div class="item-l fl"><span>运费(<span style="color:red;">备注:买家到付</span>)</span></div><div class="item-r fr"><span class="money" style="color:#323232;">￥{$yunfei}</span></div>
+            </div>
+
+    </div>
+    <div class="info-noteMsg">
+        送至：{$userDefaultAddress.iname}{$userDefaultAddress.oname}{$userDefaultAddress.rname}{$userDefaultAddress.address}
+    </div>
+    <div class="order-bottom-bar">
+        <div class="left">实付款：￥<span class="pay-money" id="pauMoney">{$applyMoney}</span></div>
+        <a href="javascript:void(0);" class="order-submit-btn" id="orderSubmitBtn">提交订单</a>
+    </div>
+</form>
+<!--加载-->
+<div class="is-loading" style="height: 35px; padding-top: 2px; display: none;">
+    <em></em>
+    <span>加载中...</span>
+</div>
+<script>
+    $(".order-submit-btn").on('touchstart',function(){
+        var length=$(".img-length").length;
+        var a=true;
+        for (var i = 0; i < length; i++) {
+          var bool=!$(".img-length").eq(i).parent().parent().hasClass("invalid");
+          var a= Boolean(a) && Boolean(bool);
+        }
+        if (a == true) {
+                window.location.href="{:U('Mobile/userOrder/submitOrder')}";
+        }else {
+            $("body").minDialog({
+                title: '提示',
+                content: "<p>您选择的商品无货!</p>",
+                closeTime:1500,
+                isAutoClose:true
+            });
+        }
+    })
+
+    /*取货方式*/
+    $("#adelivery_way a").on("click",function(){
+      var delivery_way=$(this).prev().val();
+      var addressCounts={$addressCounts};
+      var fh =$(this);
+        $(this).addClass('select').siblings("a").removeClass('select');
+            if( delivery_way == 1){
+                $("#yunshu").text('接受快递');
+                $("#orderForm").find(".order-wrapper").eq(0).show();
+                $(".info-noteMsg").show();
+            }else{
+                $("#yunshu").text('到店购买');
+                $("#orderForm").find(".order-wrapper").eq(0).hide();
+                $(".info-noteMsg").hide();
+            }
+
+        //更新配送方式
+      $.ajax({
+      type: "POST",
+      dataType:'json',
+      url:"{:U('Mobile/UserOrder/updateWayCookie')}",
+      data:{delivery_way:delivery_way},
+      async: false,
+      error: function(request) {
+          alert('cuowu');
+      },
+      success: function(data) {
+
+        if ( fh.text()=='接受快递') {
+            if (addressCounts == 0) {
+                window.location.href="{:U('Mobile/UserOrder/add')}";
+            }else {
+              window.location.href="{:U('Mobile/UserOrder/deliveryWay')}";
+            }
+        }
+
+        if ( fh.text()=='到店购买') {
+            $(".info-noteMsg").hide();
+        }
+
+      }
+      });
+
+
+    })
+
+          //跳转清空cookie
+      $('.icon-back').on("touchstart",function(){
+          var url="{:U('Mobile/UserOrder/redirectCookieNull')}";
+          $("body").minDialog({content:'便宜不等人,请三思而行~',isConfirm:true,btnConfirm:'去意已决',btnCancal:'我再想想'},function(){
+                $(".confirmBtn").click(function(){
+
+                    window.location.href=url;
+                })
+          })
+      })
+
+    // function getcookie(objname){//获取指定名称的cookie的值
+    //     var arrstr = document.cookie.split("; ");
+    //     for(var i = 0;i < arrstr.length;i ++){
+    //     var temp = arrstr[i].split("=");
+    //     if(temp[0] == objname) return unescape(temp[1]);
+    //     }
+    //     }
+      $("#payDeliverWay").on('touchstart',function(){
+          //更新配送方式
+
+          if ($('#adelivery_way').find('a').eq(1).hasClass('select')) {
+              window.location.href="{:U('Mobile/UserOrder/deliveryWay')}";
+          }
+      })
+
+    $(function(){
+      $(window).scroll(function(){
+          if(!$("#buySelfBtn").hasClass("select")){
+              var delivery_way={$delivery_way};
+              var sTop = $(window).scrollTop();
+              var titleHeight = $(".page-title").height();
+              if(sTop>=titleHeight){
+                  if(delivery_way == 1){
+                      $(".info-noteMsg").show();
+                  }else{
+                      $(".info-noteMsg").hide();
+                  }
+              }else{
+                  $(".info-noteMsg").hide();
+              }
+          }
+      })
+    })
+
+
+
+        //移除函数的方法
+    function removeEvent( node, type, listener) {
+        if( node.addEventListener ){
+            node.removeEventListener( type, listener, false );
+            return true;
+        } else if( node.detachEvent) {
+            node.detachEvent('on' + type, listener);
+            return true;
+        }
+        //如两种方法都不具备则返回false
+        return false;
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0,user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/scripts/artdialog/ui-dialog.css" />
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/css/pagination.css" />
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/statics/admin/css/icon/iconfont.css" />
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/statics/admin/css/style.css" />
+    <script type="text/javascript" src="__PUBLIC__/scripts/jquery/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/scripts/artdialog/dialog-plus-min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="__PUBLIC__/statics/admin/js/laymain.js"></script>
+    <script type="text/javascript" charset="utf-8" src="__PUBLIC__/statics/admin/js/common.js"></script>
+    <script type="text/javascript">
+        var pajax_url="{:U('Admin/Ajax/doubleClickModify')}";//双击修改
+        function doPostBack(objId) {
+            if(objId == 'btnDelete') {
+                $('#orderForm').submit();
+            }else{
+                $('#searchForm').submit();
+            }
+        }
+    </script>
+</head>
+<body class="mainbody">
+    </div>
+    <!--导航栏-->
+    <div class="location">
+        <a href="javascript:history.back(-1);" class="back"><i></i><span>返回上一页</span></a>
+        <a href="{:U('Index/center')}" class="home"><i class="iconfont icon-home"></i><span>首页</span></a>
+        <i class="arrow iconfont icon-arrow-right"></i>
+        <span>关键词统计</span>
+    </div>
+    <!--/导航栏-->
+    <!--工具栏-->
+    <div id="floatHead" class="toolbar-wrap">
+        <div class="toolbar">
+            <div class="box-wrap">
+                <a class="menu-btn"></a>
+
+                <form action="{:U('Keywords/index')}" method="get" id="searchForm">
+                    <div class="l-list">
+                        <ul class="icon-list">
+                            <li><a class="all" href="javascript:void(0);" onclick="checkAll(this)"><i class="iconfont icon-check"></i><span>全选</span></a></li>
+                            <li><a onclick="ExePostBack('btnDelete')" id="btnDelete" class="del" href="javascript:void(0);"><i class="iconfont icon-delete"></i><span>删除</span></a></li>
+                        </ul>
+                        <div class="menu-list">
+                            <div class="rule-single-select">
+                                <select name="category_id" onchange="doPostBack('categoryId') " id="categoryId">
+                                    <option selected="selected" value="">所有类别</option>
+                                    <volist name="category_list" id="item">
+                                        <option <if condition="$item['id'] == $category_id"> selected="selected" </if> value="{$item.id}"><neq name="item.count" value="1">{$item['count']|fill_up_string="&nbsp;&nbsp;"}├</neq>{$item.title}</option>
+                                    </volist>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="r-list">
+                        <input name="keywords" type="text" id="txtKeywords" class="keyword" value="{$keywords}" />
+                        <a id="btnSearch" class="btn-search" onclick="doPostBack('btnSearch');"><i class="iconfont icon-search"></i></a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!--/工具栏-->
+    <!--列表-->
+    <div class="table-container">
+        <form action="{:U('Keywords/del')}" id="orderForm" method="post">
+            <input type="hidden" name="type" id="type" value=""/>
+            <input type="hidden" name="move" id="move" value="">
+            <!--文字列表-->
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" class="ltable">
+                <tr>
+                    <th width="6%">选择</th>
+                    <th width="6%" align="left">所属类别</th>
+                    <th width="6%" align="left">是否热搜</th>
+                    <th align="left">关键词</th>
+                    <th width="6%"  align="left">次数</th>
+                    <th width="10%" align="left">加入时间</th>
+                    <!-- <th width="6%" >操作</th> -->
+                </tr>
+                <volist name="list" id="item">
+                    <tr>
+                        <td align="center">
+                            <span class="checkall" style="vertical-align:middle;">
+                                <input type="checkbox" name="ids[]" value="{$item.id}" />
+                            </span>
+                        </td>
+                        <td>
+                            {$item.category_name}
+                        </td>
+                        <td>
+                            <span boolvalue="{$item.is_hot}" onclick="editFieldIs(this,'keywords','id','is_hot','{$item.id}',pajax_url,0,1)"><if condition="($item.is_hot eq 1)">是<else/>否</if></span>
+                        </td>
+                        <td>{$item.keyword}</td>
+                        <td>{$item.count}</td>
+                        <td>{$item.date|date='Y-m-d H:i:s',###}</td>
+                        <!-- <td align="center">
+                            <a href="{:U('Keywords/add' , array('id' => $item['id'] , 'action' => 'edit'))}" title="修改" class="edit">修改</a>
+                        </td> -->
+                    </tr>
+                </volist>
+            </table>
+            <!--/文字列表-->
+        </form>
+    </div>
+    <!--/列表-->
+    <!--内容底部-->
+    <div class="line20"></div>
+    <div class="pagelist">
+        <div id="PageContent" class="default">{$page}</div>
+    </div>
+    <!--/内容底部-->
+
+</body>
+</html>

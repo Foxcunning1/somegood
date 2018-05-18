@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>购物车</title>
+    <import type="css" file="statics.mobile.css.public,statics.mobile.css.cart,statics.mobile.css.ui-dialog" />
+    <import type="js" file="scripts.zepto.zepto#min,scripts.zepto.zepto#miniDialog,statics.mobile.js.common,statics.mobile.js.cart,statics.mobile.js.rem,scripts.zepto.zepto#cookie#min" />
+</head>
+<body>
+    <div class="page-title" >
+        <!--返回按钮-->
+        <div class="to-back-box">
+            <a href="<if condition=" $returnUrl eq 'order.html' ">{:U('Mobile/index/index')}<else />javascript:history.back(-1);</if>" class="icons icon-back"></a>
+        </div>
+        <h2 class="title">购物车</h2>
+        <!--返回按钮-->
+    </div>
+    <!--购物车是空的-->
+    <if condition="$counts eq 0 " >
+    <div class="car-is-empty">
+        <div class="empty-img"></div>
+        <p>购物车是空的</p>
+        <div class="empty-a-box"><a href="{:U('Goods/category')}" id="hereAndThere">到处逛逛</a></div>
+        <!--公用底部-->
+        <include file="Public/footer" />
+        <!--公用底部-->
+    </div>
+  <else />
+  <div class="page-content-pd pd-t08">
+      <div class="safe-mode-box">
+          <div class="safe-mode-msg">
+                  <span>
+                      <i class="icons icon-relax"></i>
+                      <span class="msg-safe">您正在安全购物环境中，请放心购物</span>
+                  </span>
+          </div>
+      </div>
+      <form class="cart-form" id="cartForm" url="ajax_url" method="post" action="<if condition="$user_id eq 0">{:U('Users/index')}<else />{:U('Mobile/Cart/cookieNull')}</if>">
+        <volist name="shop" id="vs">
+          <div class="show-group" id="storeItem{$vs.store_id}">
+              <div class="show-title">
+                  <i class="icons icon-location fl"></i>
+                  <span class="shop-location fl">卖家:<empty name="$vs['company_name']">{$vs.company_name}<else />三好连锁</empty></span>
+              </div>
+
+              <volist name="info" id="item">
+                <if condition="$item['seller_id'] eq $vs['seller_id']" >
+              <div class="shop-car-list">
+                  <ul>
+                      <li id="cartItem{$item.cart_id}">
+                          <div class="items">
+                              <div class="check-wrapper"><i class="icons icon-checkbox"></i>
+                                <input type="checkbox" style="display:none" name="cartIds[]" style="z-index: -1"  value="{$item.cart_id}">
+                                <input type="hidden" name="" value="{$item.goods_id}">
+                              </div>
+                          </div>
+                          <div class="shop-cart-item-core">
+                              <a href="javascript:void(0);" class="cart-product-cell"><img src="__PUBLIC__/uploads/{$item.goods_thumb}_c200x200" alt="商品图" /></a>
+                              <div class="item-info">
+                                  <div class="item-name">
+                                      <a href="{:U('Goods/detail',array('id'=>$item['real_goods_id']))}">
+                                          <span>{$item['goods_title']}</span>
+                                          <span style="height: 0.3rem; line-height:0.3rem;font-size: 0.24rem">({$item['store_name']})</span>
+                                      </a>
+                                  </div>
+                                  <div class="item-price"><span class="good-price fl">{$item[goods_price]}</span>
+                                      <div class="num-change-box fr" >
+                                          <input type="hidden" name="" value="{$item.cart_id}">
+                                          <a href="javascript:void(0);" class="num-plus fl" onclick="">-</a>
+                                          <input type="text" disabled="disabled" class="num fl" name="" value="{$item.counts}">
+                                          <a href="javascript:void(0);" class="num-reduce fl" onclick="">+</a>
+                                      </div>
+                                  </div>
+                                  <div class="option-btns">
+                                      <!-- <a class="cart-new-btn atten-move-btn" data-action="move" goodsid="{$item.cart_id}" href="javascript:;">移入收藏</a> -->
+                                      <input type="hidden" name="cart_id" value="{$item['cart_id']}">
+                                      <a class="cart-new-btn del-prod-btn fr" data-action="del" data-index="0" goodsid="{$item.cart_id}" storeid="{$vs.store_id}" href="javascript:;">删除</a>
+
+                                  </div>
+                              </div>
+                              <if condition="($item['store_id'] neq 0 && $item['stock'] eq 0 &&  $item['online_stock'] eq 0) || $item['store_id'] neq 0 && $item['is_on_sale'] eq 0 || $item['store_id'] eq 0 && $item['online_stock'] eq 0"><div class="invalid-box"><p>无货</p><p>Sold Out</p></div></if>
+                          </div>
+                      </li>
+
+                  </ul>
+              </div>
+            </if>
+            </volist>
+          </div>
+        </volist>
+
+
+
+          <div class="payment-total-bar box-flex-f">
+              <div class="shop-chk-new">
+                  <label for="checkIcon-1" style="display: block;">
+                      <span class="icons icon-checkboxall" id="checkIcon-1"></span>
+                      <span class="car-checkbox-text">全选</span>
+                  </label>
+              </div>
+              <div class="shop-car-info box-flex-c">
+                  <strong class="shop-car-total">
+                      合计:
+                      <span class="bottom-bar-price"> 0.00</span>
+                  </strong>
+                  <span class="bottom-total-price">
+                      总额:
+                      <span class="money-unit-bf"> 0.00</span>
+                  </span>
+              </div>
+              <a href="javascript:void(0);" class="btn-right-block box-flex-c">去结算(<span id="checkedNum">0</span>)</a>
+          </div>
+          <!-- <input type="submit" style="display:none;" name="" value=""> -->
+      </form>
+  </div>
+    </if>
+    <!--购物车是空的-->
+
+</body>
+<script>
+      /*激活结算按钮*/
+      $(".btn-right-block").on("touchstart",function(){
+          //绑定表单提交事件
+          submitCartGoods();
+      })
+
+      //移入收藏
+      $(".atten-move-btn").on('touchstart',function(){
+        var goods_id =$(this).attr("goodsid");
+        //alert(goods_id);
+        $.ajax({
+          method:'post',
+          dataType:'json',
+          url:"{:U('Mobile/Goods/collect')}",
+          data:{goods_id:goods_id},
+          async:false,
+          error:function(request){
+            var info ='加入收藏夹失败';
+            popupa(info);
+          },
+          success:function(data){
+            if (data == 'no') {
+              popupa('用户未登录,不能加入收藏夹');
+            }else {
+              //$(".icon-like").toggleClass("like");
+              popupa(data);
+            }
+          }
+        });
+      })
+      //删除购物车
+    $('.del-prod-btn').on('touchstart',function(){
+        var cart_id=$(this).attr("goodsid");
+        var parentObjId = $(this).attr("storeid");
+        //alert(cart_id);
+        delCart(cart_id, "{:U('Mobile/Cart/delCartGoods')}", false);
+        var cartItem='#cartItem'+cart_id;
+        $(cartItem).remove();
+        var parentObj = $("#storeItem"+parentObjId).find("li");
+        if(parentObj.length==0){
+            $("#storeItem"+parentObjId).remove();
+        }
+        if($(".show-group").length==0){
+            window.location.href = "{:U('Mobile/Cart/index')}";
+        }
+    })
+
+    //更新购物车数量
+    $('.num-change-box a').on('touchstart',function(){
+        if($(this).hasClass('num-reduce')){
+            plusOrReduce($(this),1);
+        }else{
+            plusOrReduce($(this),0);
+        }
+        var num =$(this).parent().children('.num').val();
+        var goods_id =$(this).parent().children().eq(0).val();
+        updateCartGoods($(this),"{:U('Mobile/Cart/ajaxUpdateGoodsNum')}", goods_id, num);
+    })
+    //商品数量输入失去焦点
+    $(".num").on("blur",function(){
+        var num =$(this).val();
+        var goods_id =$(this).parent().children().eq(0).val();
+        updateCartGoods($(this),"{:U('Mobile/Cart/ajaxUpdateGoodsNum')}", goods_id, num);
+    })
+    function popupa(info){
+      $("body").minDialog({
+          title: '提示',
+          content: "<p>"+info+"</p>",
+      });
+    }
+
+    function delete2(){
+      $("body").minDialog({
+          title: '提示',
+          content: "<p>删除成功</p>",
+      });
+    }
+
+    function delete1(){
+      $("body").minDialog({
+          title: '提示',
+          content: "<p>删除失败</p>",
+      });
+    }
+    /*单选加计算*/
+    $(".shop-car-list").find(".icon-checkbox").on("touchstart",function(){
+        singleChecked(this);
+        cartCount(this);
+    });
+    /*全选和计算*/
+    $(".shop-chk-new").find(".icon-checkboxall").on("touchstart",function(){
+        allChecked(this);
+        cartCount(this);
+    })
+
+
+
+</script>
+
+
+</html>

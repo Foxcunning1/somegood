@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0,user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>编辑城市信息</title>
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/scripts/artdialog/ui-dialog.css" />
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/css/pagination.css" />
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/statics/admin/css/icon/iconfont.css" />
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/statics/admin/css/style.css" />
+    <script type="text/javascript" src="__PUBLIC__/scripts/jquery/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/scripts/jquery/Validform_v5.3.2_min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/scripts/artdialog/dialog-plus-min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/statics/admin/js/laymain.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/statics/admin/js/common.js"></script>
+    <script type="text/javascript">
+        var uploadType = 'image';
+        $(function () {
+            //初始化表单验证
+            $("#cityForm").initValidform();
+        });
+    </script>
+</head>
+
+<body class="mainbody">
+<form method="post" action="{:U('Admin/City/add')}" id="cityForm">
+    <!--导航栏-->
+    <div class="location">
+        <a href="{:U('Admin/City/add' , array('pid' => $pid))}" class="back"><i class="iconfont icon-up"></i><span>返回列表页</span></a>
+        <a href="{:U('Admin/Index/center')}" class="home"><i class="iconfont icon-home"></i><span>首页</span></a>
+        <i class="arrow iconfont icon-arrow-right"></i>
+        <a href="{:U('Admin/City/add',array('pid' => $pid))}"><span>城市管理</span></a>
+        <i class="arrow iconfont icon-arrow-right"></i>
+        <span>编辑城市</span>
+    </div>
+    <div class="line10"></div>
+    <!--/导航栏-->
+
+    <!--内容-->
+    <div id="floatHead" class="content-tab-wrap">
+        <div class="content-tab">
+            <div class="content-tab-ul-wrap">
+                <ul>
+                    <li><a class="selected" href="javascript:void(0);">基本信息</a></li>
+                    <li><a href="javascript:void(0);">坐标拾取</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="tab-content">
+        <dl>
+            <dt>上级区域</dt>
+            <dd>
+                {$info.parent_name}
+                <input name="pid" type="hidden" value="{$pid}" />
+            </dd>
+        </dl>
+        <dl>
+            <dt>名称</dt>
+            <dd>
+                <input name="data[name]" type="text" id="txtName" class="input normal" value="{$info.name}" datatype="*2-100" sucmsg=" " />
+                <span class="Validform_checktip">*名字最多100个字符</span>
+            </dd>
+        </dl>
+        <dl>
+            <dt>简称</dt>
+            <dd>
+                <input name="data[shortname]" type="text" id="txtShortName" class="input normal" value="{$info.shortname}" datatype="*1-100" sucmsg=" " />
+                <span class="Validform_checktip">*名字最多100个字符</span>
+            </dd>
+        </dl>
+        <dl>
+            <dt>拼音</dt>
+            <dd>
+                <input name="data[pinyin]" type="text" id="txtPinyin" class="input normal" value="{$info.pinyin}" datatype="/^[a-zA-Z]+$/" errormsg="只能填写英文或拼音" sucmsg=" " />
+                <span class="Validform_checktip">*拼音最多100个字符，如无操作，系统将根据简称自动生成！</span>
+            </dd>
+        </dl>
+        <dl>
+            <dt>拼音缩写</dt>
+            <dd>
+                <input name="data[short_pinyin]" type="text" id="txtShortPinyin" class="input normal" value="{$info.short_pinyin}" datatype="/^[a-zA-Z]+$/" errormsg="只能填写英文或拼音" sucmsg=" " />
+                <span class="Validform_checktip">*拼音最多100个字符，如无操作，系统将根据简称自动生成！</span>
+            </dd>
+        </dl>
+        <dl>
+            <dt>区号</dt>
+            <dd>
+                <input name="data[code]" type="text" id="txtcode" value="{$info.code}" class="input normal" />
+            </dd>
+        </dl>
+        <dl>
+            <dt>邮编</dt>
+            <dd>
+                <input name="data[zip_code]" type="text" id="txtZipCode" value="{$info.zip_code}" class="input normal" />
+            </dd>
+        </dl>
+    </div>
+    <div class="tab-content">
+        <dl>
+            <dt>地图拾取</dt>
+            <dd>
+                <input name="coordinate" type="text" id="txtCoordinate" value="<if condition="$info['lng'] neq '' and $info['lat'] neq ''">{$info.lng},{$info.lat}</if>" class="input normal" />
+            </dd>
+        </dl>
+        <dl>
+            <dd>
+                <iframe height="960" width="100%" id="mapIframe" src="http://api.map.baidu.com/lbsapi/getpoint/index.html?qq-pf-to=pcqq.group"></iframe>
+            </dd>
+        </dl>
+    </div>
+
+    <!--/内容-->
+
+    <!--工具栏-->
+    <div class="page-footer">
+        <div class="btn-wrap">
+            <input type="hidden" name="action" value="{$action}" />
+            <input type="hidden" name="id" value="{$info.id}" />
+            <input type="hidden" name="returnUrl" value="{$returnUrl}" />
+            <input type="submit" name="btnSubmit" value="提交保存" id="btnSubmit" class="btn" />
+            <input name="btnReturn" type="button" value="返回上一页" class="btn yellow" onclick="javascript:history.back(-1);" />
+        </div>
+    </div>
+    <!--/工具栏-->
+
+</form>
+<script type="text/javascript">
+    $(function(){
+        /*简称失去焦点中文转英文*/
+        $("#txtShortName").blur(function(){
+            setPartWordsByString("#txtShortName","#txtPinyin,#txtShortPinyin","{:U('Admin/Ajax/getPinyinByChinses')}");
+        });
+        /*修复百度地图在不可视的选项卡中无法显示*/
+        $("#mapIframe").load(function(){
+            $(".tab-content").eq(1).hide();
+        });
+    })
+</script>
+</body>
+</html>

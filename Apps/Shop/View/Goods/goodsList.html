@@ -1,0 +1,70 @@
+<layout name="goods_layout"/>
+<!--商品列表-->
+<div class="list-container">
+    <div class="w1200">
+        <div class="bread-crumbs">您现在的位置：<a href="{:C('MARKET_DOMAIN')}">首页</a>&nbsp; &gt;&nbsp;
+            <if condition="$catId gt 0">
+                <volist name="cinfo.breadCrumbs" key="ke" id="ca">
+                    <a href="{:C('MARKET_DOMAIN')}{:U('Goods/goodsList',array('category_id'=>$ca['id']))}">{$ca.title}</a>
+                    <if condition="($ke neq count($cinfo['breadCrumbs'])) OR (count($cinfo['breadCrumbs']) eq 0)">&nbsp;&gt;&nbsp;</if>
+                </volist>
+            </if>
+        </div>
+        <div class="classification">
+            <dl class="service">
+                <dt>分类：</dt>
+                <dd>
+                    <a <eq name="category" value="0">class="select"</eq> href="{:C('MARKET_DOMAIN')}{:U('Goods/goodsList' , array('category_id' => $parent_id))}">全部</a>
+                    <volist name="categoryList" id="item">
+                        <a <eq name="item.id" value="$catid">class="select"</eq> href="{:U('Shop/Goods/goodsList' , array('catid' => $item['id']))}">{$item.title}</a>
+                    </volist>
+                </dd>
+            </dl>
+        </div>
+        <div class="items-container">
+            <ul>
+                <volist name="list" id="item">
+                    <li>
+                        <a href="{:U('Shop/Goods/goods' , array('id' => $item['id']))}">
+                            <img src="__PUBLIC__/Uploads/{$item.goods_thumb}" alt="{$item.goods_title}">
+                        </a>
+                        <div class="desc">
+                            <a href="{:U('Shop/Goods/goods' , array('id' => $item['id']))}" class="s-name">{$item.goods_title}</a>
+                            <span class="s-price">￥{$item.price}</span>
+                        </div>
+                    </li>
+                </volist>
+            </ul>
+            <div class="line20 clear"></div>
+            <div class="pagelist">
+                {$page}
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>
+<!--底部-->
+<script>
+    /*分类选择*/
+    $(".classification dl").find("a").click(function(){
+        $(this).addClass("select").siblings().removeClass("select");
+    })
+    /*菜单显示*/
+    $(".all-category").hover(function(){
+        $(".category-box").show();
+    },function(){
+        $(".category-box").hide();
+    })
+    /**/
+    $(".category-box").hover(function(){
+        $(this).show();
+    },function(){
+        $(this).hide();
+    })
+    /*二级菜单显示*/
+    $(".category-box-ul").find("li").hover(function(){
+        $(this).find(".category-box-content").show().siblings("li").find(".category-box-content").hide();
+    },function(){
+        $(this).find(".category-box-content").hide();
+    })
+</script>

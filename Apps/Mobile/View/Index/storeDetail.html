@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>{$web_title}</title>
+    <import type="css" file="statics.mobile.css.public,statics.mobile.css.style,dist.dropload,css.smartphoto" />
+    <import type="js" file="scripts.zepto.zepto#min,scripts.zepto.zepto#cookie#min,scripts.zepto.zepto#fx,statics.mobile.js.region,scripts.zepto.timeago,statics.mobile.js.common,dist.dropload#min,scripts.zepto.lazyload#min,scripts.js.smartphoto#min" />
+    <script type="text/javascript" src="__PUBLIC__/statics/mobile/js/rem.js" fu-psd="720" fu-min="50" fu-max="100"></script><script src=""></script>
+    <script type="text/javascript">
+        var usersLng = {$Think.session.lng};//用户所在的经纬度
+        var usersLat = {$Think.session.lat};
+        if(isWeixin()) {
+            usersLng = parseFloat(localStorage.getItem("longitude"));
+            usersLat = parseFloat(localStorage.getItem("latitude"));
+        }
+        var defaultCatId = "{$catid}";
+    </script>
+</head>
+<body>
+    <div class="page-title cooperation-title">
+        <!--返回按钮-->
+        <div class="back-box">
+            <a href="javascript:history.back();" class="icons icon-back"></a>
+        </div>
+        <h2 class="title">{$info.store_name}</h2>
+        <div class="share-box">
+            <a href="javascript:;" class="icons icon-menu"></a>
+            <div class="hide-menu">
+                <ul>
+                    <li><a href="{:U('Mobile/Index/index')}"><i class="icons icon-co-index"></i>首页</a></li>
+                    <!--<li><a href="javascript:;"><i class="icons icon-co-like"></i>收藏</a></li>-->
+                </ul>
+            </div>
+        </div>
+        <!--返回按钮-->
+    </div>
+    <div class="cooperation-info-containter">
+        <div class="co-item-box">
+            <div class="item-tip">
+                <div class="user-img fl"><img src="__PUBLIC__/uploads/{$info.logo}_c50x50" alt=""></div>
+                <a href="javascript:;" class="name fl">{$info.store_name}</a>
+            </div>
+            <div class="item-tip">
+                <span class="location"><i class="icons icon-location"></i></span>
+                <span class="tip-center"><a href="http://api.map.baidu.com/marker?location={$info.lat},{$info.lng}&title={$info.store_name}&content={$info.address}&output=html ">{$info.region}&nbsp;&nbsp;<em data-lng="{$info.lng}" data-lat="{$info.lat}" class="distance address"></em>KM</a></span>
+                <span class="tel"><a href="tel:{$info.phone}" class="icons icon-tel"></a></span>
+            </div>
+            <div class="item-tip">
+                <a href="javascript:;" class="name picture">{$info.products}</a>
+            </div>
+            <div class="item-tip">
+                <a href="javascript:;" class="name picture">相册</a>
+            </div>
+            <div class="item-tip">
+                <ul class="tip-ul">
+                    <volist name="plist" id="p">
+                        <li><a href="__PUBLIC__/uploads/{$p}" class="js-img-viwer"><img data-original="__PUBLIC__/uploads/{$p}_c130x130" src="__PUBLIC__/statics/mobile/images/default_img.png" alt="{$rlist.$key}" /></a></li>
+                    </volist>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script>
+        window.addEventListener('load',function(){
+            new smartPhoto(".js-img-viwer");
+            new smartPhoto(".js-img-viwer-fit");
+        });
+        $(function() {
+            calcDistance(".distance");
+            /*懒加载*/
+            $(".tip-ul li img").lazyload({effect: "fadeIn"});
+            /*顶部右上角菜单出现*/
+            $(".share-box").on("click",function(event){
+                if($(this).hasClass("open")) {
+                    $(this).removeClass("open");
+                }else{
+                    $(this).addClass("open");
+                }
+                event.stopPropagation();
+            })
+            /*点击其他地方右上角菜单隐藏*/
+            $(document).bind('click',function(e){
+                var e = e || window.event; //浏览器兼容性
+                var elem = e.target || e.srcElement;
+                while (elem) { //循环判断至跟节点，防止点击的是div子元素
+                    if (elem.id && elem.id=='test') {
+                        return;
+                    }
+                    elem = elem.parentNode;
+                }
+                $(".share-box").addClass("open");
+                $(".share-box").removeClass("open");
+            })
+        })
+    </script>
+</body>
+</html>

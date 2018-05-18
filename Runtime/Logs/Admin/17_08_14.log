@@ -1,0 +1,1056 @@
+[ 2017-08-14T09:06:09+08:00 ] ::1 /somegood/Admin/Goods/goodslist
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.012001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.012001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-08-14T09:06:12+08:00 ] ::1 /somegood/Admin/login/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001001s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.009001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.009001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-08-14T09:06:20+08:00 ] ::1 /somegood/Admin/Login/login.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_admin` [ RunTime:0.0260s ]
+SQL: SELECT COUNT(*) AS tp_count FROM sg_admin a LEFT JOIN sg_admin_role AS ar ON a.r_id = ar.role_id   WHERE `admin_name` = 'admin' LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM sg_admin a LEFT JOIN sg_admin_role AS ar ON a.r_id = ar.role_id   WHERE `admin_name` = 'admin' LIMIT 1   [ RunTime:0.0010s ]
+NOTIC: [8] Undefined offset: 0 D:\xampps\htdocs\somegood\Apps\Admin\Controller\LoginController.class.php 第 84 行.
+SQL: UPDATE `sg_admin` SET `last_ip`='0.0.0.0',`add_time`='1502672780' WHERE `id` = 1 [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_admin_log` [ RunTime:0.0030s ]
+SQL: INSERT INTO `sg_admin_log` (`admin_id`,`admin_name`,`action_type`,`note`,`login_ip`,`login_time`) VALUES ('1','admin','login','用户登录','0.0.0.0','1502672780') [ RunTime:0.0010s ]
+
+[ 2017-08-14T09:06:21+08:00 ] ::1 /somegood/Admin/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.011000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.011000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-08-14T09:06:21+08:00 ] ::1 /somegood/Admin/Ajax/getSystemNav.html?time=0.4346066425689634
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: sub_html D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 89 行.
+NOTIC: [8] Undefined variable: sub_html D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 89 行.
+NOTIC: [8] Undefined variable: sub_html D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 89 行.
+NOTIC: [8] Undefined variable: sub_html D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 89 行.
+NOTIC: [8] Undefined index: childs D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 98 行.
+NOTIC: [8] Undefined index: childs D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 98 行.
+NOTIC: [8] Undefined index: childs D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 98 行.
+NOTIC: [8] Undefined variable: sub_html D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 89 行.
+NOTIC: [8] Undefined index: childs D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 98 行.
+NOTIC: [8] Undefined index: childs D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 98 行.
+NOTIC: [8] Undefined index: childs D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 98 行.
+NOTIC: [8] Undefined index: childs D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 98 行.
+NOTIC: [8] Undefined index: childs D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 98 行.
+NOTIC: [8] Undefined index: childs D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 98 行.
+NOTIC: [8] Undefined index: childs D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 98 行.
+NOTIC: [8] Undefined variable: sub_html D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 89 行.
+NOTIC: [8] Undefined index: childs D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 98 行.
+NOTIC: [8] Undefined variable: sub_html D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 89 行.
+NOTIC: [8] Undefined variable: sub_html D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 89 行.
+NOTIC: [8] Undefined index: childs D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 98 行.
+NOTIC: [8] Undefined index: childs D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 98 行.
+NOTIC: [8] Undefined index: childs D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 98 行.
+NOTIC: [8] Undefined variable: sub_html D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 89 行.
+NOTIC: [8] Undefined index: childs D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 98 行.
+NOTIC: [8] Undefined variable: sub_html D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 89 行.
+NOTIC: [8] Undefined variable: sub_html D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 89 行.
+NOTIC: [8] Undefined index: childs D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 98 行.
+NOTIC: [8] Undefined index: childs D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 98 行.
+NOTIC: [8] Undefined index: childs D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 98 行.
+NOTIC: [8] Undefined variable: sub_html D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 89 行.
+NOTIC: [8] Undefined variable: sub_html D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 89 行.
+NOTIC: [8] Undefined variable: sub_html D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 89 行.
+NOTIC: [8] Undefined index: childs D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 98 行.
+NOTIC: [8] Undefined variable: sub_html D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 89 行.
+NOTIC: [8] Undefined index: childs D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 98 行.
+NOTIC: [8] Undefined index: childs D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 98 行.
+NOTIC: [8] Undefined index: childs D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 98 行.
+NOTIC: [8] Undefined index: childs D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 98 行.
+NOTIC: [8] Undefined variable: sub_html D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 89 行.
+NOTIC: [8] Undefined index: childs D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 98 行.
+NOTIC: [8] Undefined index: childs D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 98 行.
+NOTIC: [8] Undefined index: childs D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 98 行.
+NOTIC: [8] Undefined index: childs D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 98 行.
+NOTIC: [8] Undefined index: childs D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 98 行.
+NOTIC: [8] Undefined variable: sub_html D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 89 行.
+NOTIC: [8] Undefined variable: sub_html D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 89 行.
+NOTIC: [8] Undefined index: childs D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 98 行.
+NOTIC: [8] Undefined index: childs D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 98 行.
+NOTIC: [8] Undefined variable: sub_html D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 89 行.
+NOTIC: [8] Undefined index: childs D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 98 行.
+NOTIC: [8] Undefined index: childs D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 98 行.
+NOTIC: [8] Undefined index: childs D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 98 行.
+NOTIC: [8] Undefined variable: sub_html D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 89 行.
+NOTIC: [8] Undefined variable: sub_html D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 89 行.
+NOTIC: [8] Undefined variable: sub_html D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 89 行.
+NOTIC: [8] Undefined index: childs D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 98 行.
+NOTIC: [8] Undefined variable: sub_html D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 89 行.
+NOTIC: [8] Undefined index: childs D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 98 行.
+NOTIC: [8] Undefined index: childs D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 98 行.
+NOTIC: [8] Undefined variable: sub_html D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 89 行.
+NOTIC: [8] Undefined index: childs D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 98 行.
+NOTIC: [8] Undefined index: childs D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 98 行.
+NOTIC: [8] Undefined index: childs D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 98 行.
+NOTIC: [8] Undefined variable: sub_html D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 89 行.
+NOTIC: [8] Undefined index: childs D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 98 行.
+NOTIC: [8] Undefined index: childs D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 98 行.
+NOTIC: [8] Undefined index: childs D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 98 行.
+NOTIC: [8] Undefined index: childs D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 98 行.
+NOTIC: [8] Undefined variable: sub_html D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 89 行.
+NOTIC: [8] Undefined variable: sub_html D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 89 行.
+NOTIC: [8] Undefined index: childs D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 98 行.
+NOTIC: [8] Undefined index: childs D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 98 行.
+NOTIC: [8] Undefined variable: sub_html D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 89 行.
+NOTIC: [8] Undefined index: childs D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 98 行.
+NOTIC: [8] Undefined index: childs D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 98 行.
+NOTIC: [8] Undefined index: childs D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 98 行.
+NOTIC: [8] Undefined index: childs D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 98 行.
+NOTIC: [8] Undefined index: childs D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 98 行.
+NOTIC: [8] Undefined index: childs D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 98 行.
+NOTIC: [8] Undefined variable: sub_html D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 89 行.
+NOTIC: [8] Undefined variable: sub_html D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 89 行.
+NOTIC: [8] Undefined variable: sub_html D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 89 行.
+NOTIC: [8] Undefined index: childs D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 98 行.
+NOTIC: [8] Undefined index: childs D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 98 行.
+NOTIC: [8] Undefined variable: sub_html D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 89 行.
+NOTIC: [8] Undefined index: childs D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 98 行.
+NOTIC: [8] Undefined index: childs D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 98 行.
+NOTIC: [8] Undefined index: childs D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 98 行.
+NOTIC: [8] Undefined variable: sub_html D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 89 行.
+NOTIC: [8] Undefined index: childs D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 98 行.
+NOTIC: [8] Undefined index: childs D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 98 行.
+NOTIC: [8] Undefined index: childs D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 98 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-08-14T09:06:21+08:00 ] ::1 /somegood/Admin/Index/center.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_admin` [ RunTime:0.3750s ]
+SQL: SELECT * FROM `sg_admin` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: select version() [ RunTime:0.0020s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.029002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.030002s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-08-14T09:06:23+08:00 ] ::1 /somegood/Admin/Order/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `sg_admin` [ RunTime:0.0030s ]
+SQL: SELECT `r_id` FROM `sg_admin` WHERE `id` = 1 AND `is_lock` = 0 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_admin_role` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `sg_admin_role` WHERE ( role_id=1 ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_admin_role_value` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `sg_admin_role_value` WHERE `role_id` = 1  [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_market_order_goods` [ RunTime:0.4070s ]
+SQL: SHOW COLUMNS FROM `sg_market_order` [ RunTime:0.1440s ]
+NOTIC: [8] Undefined variable: condition D:\xampps\htdocs\somegood\Apps\Admin\Controller\OrderController.class.php 第 36 行.
+NOTIC: [8] Undefined variable: pageCondition D:\xampps\htdocs\somegood\Apps\Admin\Controller\OrderController.class.php 第 36 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `sg_market_order` ORDER BY id DESC LIMIT 1   [ RunTime:0.0010s ]
+NOTIC: [2] Invalid argument supplied for foreach() D:\xampps\htdocs\somegood\Apps\Admin\Model\MarketOrderModel.class.php 第 83 行.
+SQL: SELECT * FROM `sg_market_order` ORDER BY add_time DESC,id DESC LIMIT 0,15   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_market_order_goods` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `sg_market_order_goods` WHERE ( 1=1 AND order_sn='1' )  [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_market_order_bill` [ RunTime:0.6380s ]
+SQL: SELECT * FROM `sg_market_order_bill` WHERE ( 1=1 AND order_sn='1' )  [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_market_order` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `sg_market_order` WHERE ( 1=1 AND parent_order_sn='1' )  [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_market_order_bill_discount` [ RunTime:0.3430s ]
+SQL: SELECT * FROM `sg_market_order_bill_discount` WHERE ( 1=1 AND order_sn='1' )  [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_users` [ RunTime:0.5370s ]
+SQL: SELECT `user_name`,`mobile` FROM `sg_users` WHERE ( 1=1 AND uid='1' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_store` [ RunTime:0.1090s ]
+SQL: SELECT `store_name` FROM `sg_store` WHERE ( 1=1 AND sid='1' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `sg_market_order_goods` WHERE ( 1=1 AND order_sn='2' )  [ RunTime:0.0010s ]
+SQL: SELECT * FROM `sg_market_order_bill` WHERE ( 1=1 AND order_sn='2' )  [ RunTime:0.0010s ]
+SQL: SELECT * FROM `sg_market_order` WHERE ( 1=1 AND parent_order_sn='2' )  [ RunTime:0.0020s ]
+SQL: SELECT * FROM `sg_market_order_bill_discount` WHERE ( 1=1 AND order_sn='2' )  [ RunTime:0.0010s ]
+SQL: SELECT `user_name`,`mobile` FROM `sg_users` WHERE ( 1=1 AND uid='2' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT `store_name` FROM `sg_store` WHERE ( 1=1 AND sid='2' ) LIMIT 1   [ RunTime:0.0020s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: type D:\xampps\htdocs\somegood\Runtime\Cache\Admin\f4e214009ad75ac936bcad6ad9452214.php 第 102 行.
+NOTIC: [8] Undefined index: type D:\xampps\htdocs\somegood\Runtime\Cache\Admin\f4e214009ad75ac936bcad6ad9452214.php 第 144 行.
+NOTIC: [8] Undefined index: is_instalment D:\xampps\htdocs\somegood\Runtime\Cache\Admin\f4e214009ad75ac936bcad6ad9452214.php 第 147 行.
+NOTIC: [8] Undefined index: type D:\xampps\htdocs\somegood\Runtime\Cache\Admin\f4e214009ad75ac936bcad6ad9452214.php 第 102 行.
+NOTIC: [8] Undefined index: type D:\xampps\htdocs\somegood\Runtime\Cache\Admin\f4e214009ad75ac936bcad6ad9452214.php 第 144 行.
+NOTIC: [8] Undefined index: is_instalment D:\xampps\htdocs\somegood\Runtime\Cache\Admin\f4e214009ad75ac936bcad6ad9452214.php 第 147 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.024002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.024002s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-08-14T09:06:32+08:00 ] ::1 /somegood/Admin/Bill/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+ERR: 无法加载控制器:Bill
+
+[ 2017-08-14T09:06:33+08:00 ] ::1 /somegood/Admin/Order/config
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+ERR: 非法操作:config
+
+[ 2017-08-14T09:06:35+08:00 ] ::1 /somegood/Admin/Bill/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+ERR: 无法加载控制器:Bill
+
+[ 2017-08-14T09:06:36+08:00 ] ::1 /somegood/Admin/Order/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_admin` [ RunTime:0.0190s ]
+SQL: SELECT `r_id` FROM `sg_admin` WHERE `id` = 1 AND `is_lock` = 0 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_admin_role` [ RunTime:0.0060s ]
+SQL: SELECT * FROM `sg_admin_role` WHERE ( role_id=1 ) LIMIT 1   [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `sg_admin_role_value` [ RunTime:0.0060s ]
+SQL: SELECT * FROM `sg_admin_role_value` WHERE `role_id` = 1  [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_market_order_goods` [ RunTime:0.0070s ]
+SQL: SHOW COLUMNS FROM `sg_market_order` [ RunTime:0.0050s ]
+NOTIC: [8] Undefined variable: condition D:\xampps\htdocs\somegood\Apps\Admin\Controller\OrderController.class.php 第 36 行.
+NOTIC: [8] Undefined variable: pageCondition D:\xampps\htdocs\somegood\Apps\Admin\Controller\OrderController.class.php 第 36 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `sg_market_order` ORDER BY id DESC LIMIT 1   [ RunTime:0.0010s ]
+NOTIC: [2] Invalid argument supplied for foreach() D:\xampps\htdocs\somegood\Apps\Admin\Model\MarketOrderModel.class.php 第 83 行.
+SQL: SELECT * FROM `sg_market_order` ORDER BY add_time DESC,id DESC LIMIT 0,15   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_market_order_goods` [ RunTime:0.0060s ]
+SQL: SELECT * FROM `sg_market_order_goods` WHERE ( 1=1 AND order_sn='1' )  [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `sg_market_order_bill` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `sg_market_order_bill` WHERE ( 1=1 AND order_sn='1' )  [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_market_order` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `sg_market_order` WHERE ( 1=1 AND parent_order_sn='1' )  [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_market_order_bill_discount` [ RunTime:0.0060s ]
+SQL: SELECT * FROM `sg_market_order_bill_discount` WHERE ( 1=1 AND order_sn='1' )  [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_users` [ RunTime:0.0060s ]
+SQL: SELECT `user_name`,`mobile` FROM `sg_users` WHERE ( 1=1 AND uid='1' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_store` [ RunTime:0.0040s ]
+SQL: SELECT `store_name` FROM `sg_store` WHERE ( 1=1 AND sid='1' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `sg_market_order_goods` WHERE ( 1=1 AND order_sn='2' )  [ RunTime:0.0010s ]
+SQL: SELECT * FROM `sg_market_order_bill` WHERE ( 1=1 AND order_sn='2' )  [ RunTime:0.0010s ]
+SQL: SELECT * FROM `sg_market_order` WHERE ( 1=1 AND parent_order_sn='2' )  [ RunTime:0.0020s ]
+SQL: SELECT * FROM `sg_market_order_bill_discount` WHERE ( 1=1 AND order_sn='2' )  [ RunTime:0.0010s ]
+SQL: SELECT `user_name`,`mobile` FROM `sg_users` WHERE ( 1=1 AND uid='2' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT `store_name` FROM `sg_store` WHERE ( 1=1 AND sid='2' ) LIMIT 1   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: type D:\xampps\htdocs\somegood\Runtime\Cache\Admin\f4e214009ad75ac936bcad6ad9452214.php 第 102 行.
+NOTIC: [8] Undefined index: type D:\xampps\htdocs\somegood\Runtime\Cache\Admin\f4e214009ad75ac936bcad6ad9452214.php 第 144 行.
+NOTIC: [8] Undefined index: is_instalment D:\xampps\htdocs\somegood\Runtime\Cache\Admin\f4e214009ad75ac936bcad6ad9452214.php 第 147 行.
+NOTIC: [8] Undefined index: type D:\xampps\htdocs\somegood\Runtime\Cache\Admin\f4e214009ad75ac936bcad6ad9452214.php 第 102 行.
+NOTIC: [8] Undefined index: type D:\xampps\htdocs\somegood\Runtime\Cache\Admin\f4e214009ad75ac936bcad6ad9452214.php 第 144 行.
+NOTIC: [8] Undefined index: is_instalment D:\xampps\htdocs\somegood\Runtime\Cache\Admin\f4e214009ad75ac936bcad6ad9452214.php 第 147 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.041002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.041002s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-08-14T09:26:35+08:00 ] ::1 /somegood/Admin/Keywords/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_admin` [ RunTime:0.0070s ]
+SQL: SELECT `r_id` FROM `sg_admin` WHERE `id` = 1 AND `is_lock` = 0 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_admin_role` [ RunTime:0.0060s ]
+SQL: SELECT * FROM `sg_admin_role` WHERE ( role_id=1 ) LIMIT 1   [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `sg_admin_role_value` [ RunTime:0.0060s ]
+SQL: SELECT * FROM `sg_admin_role_value` WHERE `role_id` = 1  [ RunTime:0.0010s ]
+NOTIC: [8] Use of undefined constant HAS_MANY - assumed 'HAS_MANY' D:\xampps\htdocs\somegood\ThinkPHP\Common\functions.php 第 588 行.
+NOTIC: [8] Use of undefined constant BELONGS_TO - assumed 'BELONGS_TO' D:\xampps\htdocs\somegood\ThinkPHP\Common\functions.php 第 588 行.
+SQL: SHOW COLUMNS FROM `sg_goods` [ RunTime:0.0060s ]
+SQL: SHOW COLUMNS FROM `sg_goods_category` [ RunTime:0.0320s ]
+SQL: SELECT * FROM `sg_goods_category` ORDER BY parent_id ASC , sort_num ASC , id DESC  [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_keywords` [ RunTime:0.0430s ]
+NOTIC: [8] Undefined variable: w D:\xampps\htdocs\somegood\Apps\Admin\Controller\KeywordsController.class.php 第 28 行.
+NOTIC: [2] Missing argument 3 for Admin\Model\KeywordsModel::getKeywordPageList1(), called in D:\xampps\htdocs\somegood\Apps\Admin\Controller\KeywordsController.class.php on line 28 and defined D:\xampps\htdocs\somegood\Apps\Admin\Model\KeywordsModel.class.php 第 26 行.
+NOTIC: [8] Undefined variable: count D:\xampps\htdocs\somegood\Apps\Admin\Model\KeywordsModel.class.php 第 27 行.
+NOTIC: [8] Undefined variable: pageCondition D:\xampps\htdocs\somegood\Apps\Admin\Model\KeywordsModel.class.php 第 27 行.
+SQL: SHOW COLUMNS FROM `sg_keywords` [ RunTime:0.0070s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `sg_keywords` LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `sg_keywords` ORDER BY count DESC LIMIT 0,15   [ RunTime:0.0020s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: search_type D:\xampps\htdocs\somegood\Runtime\Cache\Admin\2224062b3d8f9214eeb86c3794391da2.php 第 104 行.
+NOTIC: [8] Undefined index: search_type D:\xampps\htdocs\somegood\Runtime\Cache\Admin\2224062b3d8f9214eeb86c3794391da2.php 第 105 行.
+NOTIC: [8] Undefined index: hot_search D:\xampps\htdocs\somegood\Runtime\Cache\Admin\2224062b3d8f9214eeb86c3794391da2.php 第 109 行.
+NOTIC: [8] Undefined index: search_type D:\xampps\htdocs\somegood\Runtime\Cache\Admin\2224062b3d8f9214eeb86c3794391da2.php 第 104 行.
+NOTIC: [8] Undefined index: search_type D:\xampps\htdocs\somegood\Runtime\Cache\Admin\2224062b3d8f9214eeb86c3794391da2.php 第 105 行.
+NOTIC: [8] Undefined index: hot_search D:\xampps\htdocs\somegood\Runtime\Cache\Admin\2224062b3d8f9214eeb86c3794391da2.php 第 109 行.
+NOTIC: [8] Undefined index: search_type D:\xampps\htdocs\somegood\Runtime\Cache\Admin\2224062b3d8f9214eeb86c3794391da2.php 第 104 行.
+NOTIC: [8] Undefined index: search_type D:\xampps\htdocs\somegood\Runtime\Cache\Admin\2224062b3d8f9214eeb86c3794391da2.php 第 105 行.
+NOTIC: [8] Undefined index: hot_search D:\xampps\htdocs\somegood\Runtime\Cache\Admin\2224062b3d8f9214eeb86c3794391da2.php 第 109 行.
+NOTIC: [8] Undefined index: search_type D:\xampps\htdocs\somegood\Runtime\Cache\Admin\2224062b3d8f9214eeb86c3794391da2.php 第 104 行.
+NOTIC: [8] Undefined index: search_type D:\xampps\htdocs\somegood\Runtime\Cache\Admin\2224062b3d8f9214eeb86c3794391da2.php 第 105 行.
+NOTIC: [8] Undefined index: hot_search D:\xampps\htdocs\somegood\Runtime\Cache\Admin\2224062b3d8f9214eeb86c3794391da2.php 第 109 行.
+NOTIC: [8] Undefined index: search_type D:\xampps\htdocs\somegood\Runtime\Cache\Admin\2224062b3d8f9214eeb86c3794391da2.php 第 104 行.
+NOTIC: [8] Undefined index: search_type D:\xampps\htdocs\somegood\Runtime\Cache\Admin\2224062b3d8f9214eeb86c3794391da2.php 第 105 行.
+NOTIC: [8] Undefined index: hot_search D:\xampps\htdocs\somegood\Runtime\Cache\Admin\2224062b3d8f9214eeb86c3794391da2.php 第 109 行.
+NOTIC: [8] Undefined index: search_type D:\xampps\htdocs\somegood\Runtime\Cache\Admin\2224062b3d8f9214eeb86c3794391da2.php 第 104 行.
+NOTIC: [8] Undefined index: search_type D:\xampps\htdocs\somegood\Runtime\Cache\Admin\2224062b3d8f9214eeb86c3794391da2.php 第 105 行.
+NOTIC: [8] Undefined index: hot_search D:\xampps\htdocs\somegood\Runtime\Cache\Admin\2224062b3d8f9214eeb86c3794391da2.php 第 109 行.
+NOTIC: [8] Undefined index: search_type D:\xampps\htdocs\somegood\Runtime\Cache\Admin\2224062b3d8f9214eeb86c3794391da2.php 第 104 行.
+NOTIC: [8] Undefined index: search_type D:\xampps\htdocs\somegood\Runtime\Cache\Admin\2224062b3d8f9214eeb86c3794391da2.php 第 105 行.
+NOTIC: [8] Undefined index: hot_search D:\xampps\htdocs\somegood\Runtime\Cache\Admin\2224062b3d8f9214eeb86c3794391da2.php 第 109 行.
+NOTIC: [8] Undefined index: search_type D:\xampps\htdocs\somegood\Runtime\Cache\Admin\2224062b3d8f9214eeb86c3794391da2.php 第 104 行.
+NOTIC: [8] Undefined index: search_type D:\xampps\htdocs\somegood\Runtime\Cache\Admin\2224062b3d8f9214eeb86c3794391da2.php 第 105 行.
+NOTIC: [8] Undefined index: hot_search D:\xampps\htdocs\somegood\Runtime\Cache\Admin\2224062b3d8f9214eeb86c3794391da2.php 第 109 行.
+NOTIC: [8] Undefined index: search_type D:\xampps\htdocs\somegood\Runtime\Cache\Admin\2224062b3d8f9214eeb86c3794391da2.php 第 104 行.
+NOTIC: [8] Undefined index: search_type D:\xampps\htdocs\somegood\Runtime\Cache\Admin\2224062b3d8f9214eeb86c3794391da2.php 第 105 行.
+NOTIC: [8] Undefined index: hot_search D:\xampps\htdocs\somegood\Runtime\Cache\Admin\2224062b3d8f9214eeb86c3794391da2.php 第 109 行.
+NOTIC: [8] Undefined index: search_type D:\xampps\htdocs\somegood\Runtime\Cache\Admin\2224062b3d8f9214eeb86c3794391da2.php 第 104 行.
+NOTIC: [8] Undefined index: search_type D:\xampps\htdocs\somegood\Runtime\Cache\Admin\2224062b3d8f9214eeb86c3794391da2.php 第 105 行.
+NOTIC: [8] Undefined index: hot_search D:\xampps\htdocs\somegood\Runtime\Cache\Admin\2224062b3d8f9214eeb86c3794391da2.php 第 109 行.
+NOTIC: [8] Undefined index: search_type D:\xampps\htdocs\somegood\Runtime\Cache\Admin\2224062b3d8f9214eeb86c3794391da2.php 第 104 行.
+NOTIC: [8] Undefined index: search_type D:\xampps\htdocs\somegood\Runtime\Cache\Admin\2224062b3d8f9214eeb86c3794391da2.php 第 105 行.
+NOTIC: [8] Undefined index: hot_search D:\xampps\htdocs\somegood\Runtime\Cache\Admin\2224062b3d8f9214eeb86c3794391da2.php 第 109 行.
+NOTIC: [8] Undefined index: search_type D:\xampps\htdocs\somegood\Runtime\Cache\Admin\2224062b3d8f9214eeb86c3794391da2.php 第 104 行.
+NOTIC: [8] Undefined index: search_type D:\xampps\htdocs\somegood\Runtime\Cache\Admin\2224062b3d8f9214eeb86c3794391da2.php 第 105 行.
+NOTIC: [8] Undefined index: hot_search D:\xampps\htdocs\somegood\Runtime\Cache\Admin\2224062b3d8f9214eeb86c3794391da2.php 第 109 行.
+NOTIC: [8] Undefined index: search_type D:\xampps\htdocs\somegood\Runtime\Cache\Admin\2224062b3d8f9214eeb86c3794391da2.php 第 104 行.
+NOTIC: [8] Undefined index: search_type D:\xampps\htdocs\somegood\Runtime\Cache\Admin\2224062b3d8f9214eeb86c3794391da2.php 第 105 行.
+NOTIC: [8] Undefined index: hot_search D:\xampps\htdocs\somegood\Runtime\Cache\Admin\2224062b3d8f9214eeb86c3794391da2.php 第 109 行.
+NOTIC: [8] Undefined index: search_type D:\xampps\htdocs\somegood\Runtime\Cache\Admin\2224062b3d8f9214eeb86c3794391da2.php 第 104 行.
+NOTIC: [8] Undefined index: search_type D:\xampps\htdocs\somegood\Runtime\Cache\Admin\2224062b3d8f9214eeb86c3794391da2.php 第 105 行.
+NOTIC: [8] Undefined index: hot_search D:\xampps\htdocs\somegood\Runtime\Cache\Admin\2224062b3d8f9214eeb86c3794391da2.php 第 109 行.
+NOTIC: [8] Undefined index: search_type D:\xampps\htdocs\somegood\Runtime\Cache\Admin\2224062b3d8f9214eeb86c3794391da2.php 第 104 行.
+NOTIC: [8] Undefined index: search_type D:\xampps\htdocs\somegood\Runtime\Cache\Admin\2224062b3d8f9214eeb86c3794391da2.php 第 105 行.
+NOTIC: [8] Undefined index: hot_search D:\xampps\htdocs\somegood\Runtime\Cache\Admin\2224062b3d8f9214eeb86c3794391da2.php 第 109 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.017001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.017001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-08-14T09:26:49+08:00 ] ::1 /somegood/Admin/Keywords/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `sg_admin` [ RunTime:0.0060s ]
+SQL: SELECT `r_id` FROM `sg_admin` WHERE `id` = 1 AND `is_lock` = 0 LIMIT 1   [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `sg_admin_role` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `sg_admin_role` WHERE ( role_id=1 ) LIMIT 1   [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `sg_admin_role_value` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `sg_admin_role_value` WHERE `role_id` = 1  [ RunTime:0.0010s ]
+NOTIC: [8] Use of undefined constant HAS_MANY - assumed 'HAS_MANY' D:\xampps\htdocs\somegood\ThinkPHP\Common\functions.php 第 588 行.
+NOTIC: [8] Use of undefined constant BELONGS_TO - assumed 'BELONGS_TO' D:\xampps\htdocs\somegood\ThinkPHP\Common\functions.php 第 588 行.
+SQL: SHOW COLUMNS FROM `sg_goods` [ RunTime:0.0070s ]
+SQL: SHOW COLUMNS FROM `sg_goods_category` [ RunTime:0.0060s ]
+SQL: SELECT * FROM `sg_goods_category` ORDER BY parent_id ASC , sort_num ASC , id DESC  [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `sg_keywords` [ RunTime:0.0060s ]
+NOTIC: [8] Undefined variable: w D:\xampps\htdocs\somegood\Apps\Admin\Controller\KeywordsController.class.php 第 34 行.
+NOTIC: [8] Undefined variable: pageCondition D:\xampps\htdocs\somegood\Apps\Admin\Controller\KeywordsController.class.php 第 34 行.
+NOTIC: [8] Undefined variable: count D:\xampps\htdocs\somegood\Apps\Admin\Model\KeywordsModel.class.php 第 14 行.
+SQL: SHOW COLUMNS FROM `sg_keywords` [ RunTime:0.0050s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `sg_keywords` WHERE ( category_id=4 ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `sg_keywords` WHERE ( category_id=4 ) ORDER BY count DESC LIMIT 0,15   [ RunTime:0.0020s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.016001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.016001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001001s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001001s ]
+
+[ 2017-08-14T09:26:50+08:00 ] ::1 /somegood/Admin/Keywords/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_admin` [ RunTime:0.0070s ]
+SQL: SELECT `r_id` FROM `sg_admin` WHERE `id` = 1 AND `is_lock` = 0 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_admin_role` [ RunTime:0.0060s ]
+SQL: SELECT * FROM `sg_admin_role` WHERE ( role_id=1 ) LIMIT 1   [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `sg_admin_role_value` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `sg_admin_role_value` WHERE `role_id` = 1  [ RunTime:0.0010s ]
+NOTIC: [8] Use of undefined constant HAS_MANY - assumed 'HAS_MANY' D:\xampps\htdocs\somegood\ThinkPHP\Common\functions.php 第 588 行.
+NOTIC: [8] Use of undefined constant BELONGS_TO - assumed 'BELONGS_TO' D:\xampps\htdocs\somegood\ThinkPHP\Common\functions.php 第 588 行.
+SQL: SHOW COLUMNS FROM `sg_goods` [ RunTime:0.0060s ]
+SQL: SHOW COLUMNS FROM `sg_goods_category` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `sg_goods_category` ORDER BY parent_id ASC , sort_num ASC , id DESC  [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_keywords` [ RunTime:0.0050s ]
+NOTIC: [8] Undefined variable: w D:\xampps\htdocs\somegood\Apps\Admin\Controller\KeywordsController.class.php 第 34 行.
+NOTIC: [8] Undefined variable: pageCondition D:\xampps\htdocs\somegood\Apps\Admin\Controller\KeywordsController.class.php 第 34 行.
+NOTIC: [8] Undefined variable: count D:\xampps\htdocs\somegood\Apps\Admin\Model\KeywordsModel.class.php 第 14 行.
+SQL: SHOW COLUMNS FROM `sg_keywords` [ RunTime:0.0050s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `sg_keywords` WHERE ( category_id=3 ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `sg_keywords` WHERE ( category_id=3 ) ORDER BY count DESC LIMIT 0,15   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: search_type D:\xampps\htdocs\somegood\Runtime\Cache\Admin\2224062b3d8f9214eeb86c3794391da2.php 第 104 行.
+NOTIC: [8] Undefined index: search_type D:\xampps\htdocs\somegood\Runtime\Cache\Admin\2224062b3d8f9214eeb86c3794391da2.php 第 105 行.
+NOTIC: [8] Undefined index: hot_search D:\xampps\htdocs\somegood\Runtime\Cache\Admin\2224062b3d8f9214eeb86c3794391da2.php 第 109 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.013000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.013000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-08-14T09:26:51+08:00 ] ::1 /somegood/Admin/Keywords/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_admin` [ RunTime:0.0070s ]
+SQL: SELECT `r_id` FROM `sg_admin` WHERE `id` = 1 AND `is_lock` = 0 LIMIT 1   [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `sg_admin_role` [ RunTime:0.0060s ]
+SQL: SELECT * FROM `sg_admin_role` WHERE ( role_id=1 ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_admin_role_value` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `sg_admin_role_value` WHERE `role_id` = 1  [ RunTime:0.0010s ]
+NOTIC: [8] Use of undefined constant HAS_MANY - assumed 'HAS_MANY' D:\xampps\htdocs\somegood\ThinkPHP\Common\functions.php 第 588 行.
+NOTIC: [8] Use of undefined constant BELONGS_TO - assumed 'BELONGS_TO' D:\xampps\htdocs\somegood\ThinkPHP\Common\functions.php 第 588 行.
+SQL: SHOW COLUMNS FROM `sg_goods` [ RunTime:0.0060s ]
+SQL: SHOW COLUMNS FROM `sg_goods_category` [ RunTime:0.0060s ]
+SQL: SELECT * FROM `sg_goods_category` ORDER BY parent_id ASC , sort_num ASC , id DESC  [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_keywords` [ RunTime:0.0060s ]
+NOTIC: [8] Undefined variable: w D:\xampps\htdocs\somegood\Apps\Admin\Controller\KeywordsController.class.php 第 34 行.
+NOTIC: [8] Undefined variable: pageCondition D:\xampps\htdocs\somegood\Apps\Admin\Controller\KeywordsController.class.php 第 34 行.
+NOTIC: [8] Undefined variable: count D:\xampps\htdocs\somegood\Apps\Admin\Model\KeywordsModel.class.php 第 14 行.
+SQL: SHOW COLUMNS FROM `sg_keywords` [ RunTime:0.0050s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `sg_keywords` WHERE ( category_id=1 ) LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `sg_keywords` WHERE ( category_id=1 ) ORDER BY count DESC LIMIT 0,15   [ RunTime:0.0020s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.008000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.008000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001001s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001001s ]
+
+[ 2017-08-14T09:26:52+08:00 ] ::1 /somegood/Admin/Keywords/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_admin` [ RunTime:0.0070s ]
+SQL: SELECT `r_id` FROM `sg_admin` WHERE `id` = 1 AND `is_lock` = 0 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_admin_role` [ RunTime:0.0060s ]
+SQL: SELECT * FROM `sg_admin_role` WHERE ( role_id=1 ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_admin_role_value` [ RunTime:0.0060s ]
+SQL: SELECT * FROM `sg_admin_role_value` WHERE `role_id` = 1  [ RunTime:0.0010s ]
+NOTIC: [8] Use of undefined constant HAS_MANY - assumed 'HAS_MANY' D:\xampps\htdocs\somegood\ThinkPHP\Common\functions.php 第 588 行.
+NOTIC: [8] Use of undefined constant BELONGS_TO - assumed 'BELONGS_TO' D:\xampps\htdocs\somegood\ThinkPHP\Common\functions.php 第 588 行.
+SQL: SHOW COLUMNS FROM `sg_goods` [ RunTime:0.0060s ]
+SQL: SHOW COLUMNS FROM `sg_goods_category` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `sg_goods_category` ORDER BY parent_id ASC , sort_num ASC , id DESC  [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `sg_keywords` [ RunTime:0.0050s ]
+NOTIC: [8] Undefined variable: w D:\xampps\htdocs\somegood\Apps\Admin\Controller\KeywordsController.class.php 第 28 行.
+NOTIC: [2] Missing argument 3 for Admin\Model\KeywordsModel::getKeywordPageList1(), called in D:\xampps\htdocs\somegood\Apps\Admin\Controller\KeywordsController.class.php on line 28 and defined D:\xampps\htdocs\somegood\Apps\Admin\Model\KeywordsModel.class.php 第 26 行.
+NOTIC: [8] Undefined variable: count D:\xampps\htdocs\somegood\Apps\Admin\Model\KeywordsModel.class.php 第 27 行.
+NOTIC: [8] Undefined variable: pageCondition D:\xampps\htdocs\somegood\Apps\Admin\Model\KeywordsModel.class.php 第 27 行.
+SQL: SHOW COLUMNS FROM `sg_keywords` [ RunTime:0.0050s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `sg_keywords` LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `sg_keywords` ORDER BY count DESC LIMIT 0,15   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: search_type D:\xampps\htdocs\somegood\Runtime\Cache\Admin\2224062b3d8f9214eeb86c3794391da2.php 第 104 行.
+NOTIC: [8] Undefined index: search_type D:\xampps\htdocs\somegood\Runtime\Cache\Admin\2224062b3d8f9214eeb86c3794391da2.php 第 105 行.
+NOTIC: [8] Undefined index: hot_search D:\xampps\htdocs\somegood\Runtime\Cache\Admin\2224062b3d8f9214eeb86c3794391da2.php 第 109 行.
+NOTIC: [8] Undefined index: search_type D:\xampps\htdocs\somegood\Runtime\Cache\Admin\2224062b3d8f9214eeb86c3794391da2.php 第 104 行.
+NOTIC: [8] Undefined index: search_type D:\xampps\htdocs\somegood\Runtime\Cache\Admin\2224062b3d8f9214eeb86c3794391da2.php 第 105 行.
+NOTIC: [8] Undefined index: hot_search D:\xampps\htdocs\somegood\Runtime\Cache\Admin\2224062b3d8f9214eeb86c3794391da2.php 第 109 行.
+NOTIC: [8] Undefined index: search_type D:\xampps\htdocs\somegood\Runtime\Cache\Admin\2224062b3d8f9214eeb86c3794391da2.php 第 104 行.
+NOTIC: [8] Undefined index: search_type D:\xampps\htdocs\somegood\Runtime\Cache\Admin\2224062b3d8f9214eeb86c3794391da2.php 第 105 行.
+NOTIC: [8] Undefined index: hot_search D:\xampps\htdocs\somegood\Runtime\Cache\Admin\2224062b3d8f9214eeb86c3794391da2.php 第 109 行.
+NOTIC: [8] Undefined index: search_type D:\xampps\htdocs\somegood\Runtime\Cache\Admin\2224062b3d8f9214eeb86c3794391da2.php 第 104 行.
+NOTIC: [8] Undefined index: search_type D:\xampps\htdocs\somegood\Runtime\Cache\Admin\2224062b3d8f9214eeb86c3794391da2.php 第 105 行.
+NOTIC: [8] Undefined index: hot_search D:\xampps\htdocs\somegood\Runtime\Cache\Admin\2224062b3d8f9214eeb86c3794391da2.php 第 109 行.
+NOTIC: [8] Undefined index: search_type D:\xampps\htdocs\somegood\Runtime\Cache\Admin\2224062b3d8f9214eeb86c3794391da2.php 第 104 行.
+NOTIC: [8] Undefined index: search_type D:\xampps\htdocs\somegood\Runtime\Cache\Admin\2224062b3d8f9214eeb86c3794391da2.php 第 105 行.
+NOTIC: [8] Undefined index: hot_search D:\xampps\htdocs\somegood\Runtime\Cache\Admin\2224062b3d8f9214eeb86c3794391da2.php 第 109 行.
+NOTIC: [8] Undefined index: search_type D:\xampps\htdocs\somegood\Runtime\Cache\Admin\2224062b3d8f9214eeb86c3794391da2.php 第 104 行.
+NOTIC: [8] Undefined index: search_type D:\xampps\htdocs\somegood\Runtime\Cache\Admin\2224062b3d8f9214eeb86c3794391da2.php 第 105 行.
+NOTIC: [8] Undefined index: hot_search D:\xampps\htdocs\somegood\Runtime\Cache\Admin\2224062b3d8f9214eeb86c3794391da2.php 第 109 行.
+NOTIC: [8] Undefined index: search_type D:\xampps\htdocs\somegood\Runtime\Cache\Admin\2224062b3d8f9214eeb86c3794391da2.php 第 104 行.
+NOTIC: [8] Undefined index: search_type D:\xampps\htdocs\somegood\Runtime\Cache\Admin\2224062b3d8f9214eeb86c3794391da2.php 第 105 行.
+NOTIC: [8] Undefined index: hot_search D:\xampps\htdocs\somegood\Runtime\Cache\Admin\2224062b3d8f9214eeb86c3794391da2.php 第 109 行.
+NOTIC: [8] Undefined index: search_type D:\xampps\htdocs\somegood\Runtime\Cache\Admin\2224062b3d8f9214eeb86c3794391da2.php 第 104 行.
+NOTIC: [8] Undefined index: search_type D:\xampps\htdocs\somegood\Runtime\Cache\Admin\2224062b3d8f9214eeb86c3794391da2.php 第 105 行.
+NOTIC: [8] Undefined index: hot_search D:\xampps\htdocs\somegood\Runtime\Cache\Admin\2224062b3d8f9214eeb86c3794391da2.php 第 109 行.
+NOTIC: [8] Undefined index: search_type D:\xampps\htdocs\somegood\Runtime\Cache\Admin\2224062b3d8f9214eeb86c3794391da2.php 第 104 行.
+NOTIC: [8] Undefined index: search_type D:\xampps\htdocs\somegood\Runtime\Cache\Admin\2224062b3d8f9214eeb86c3794391da2.php 第 105 行.
+NOTIC: [8] Undefined index: hot_search D:\xampps\htdocs\somegood\Runtime\Cache\Admin\2224062b3d8f9214eeb86c3794391da2.php 第 109 行.
+NOTIC: [8] Undefined index: search_type D:\xampps\htdocs\somegood\Runtime\Cache\Admin\2224062b3d8f9214eeb86c3794391da2.php 第 104 行.
+NOTIC: [8] Undefined index: search_type D:\xampps\htdocs\somegood\Runtime\Cache\Admin\2224062b3d8f9214eeb86c3794391da2.php 第 105 行.
+NOTIC: [8] Undefined index: hot_search D:\xampps\htdocs\somegood\Runtime\Cache\Admin\2224062b3d8f9214eeb86c3794391da2.php 第 109 行.
+NOTIC: [8] Undefined index: search_type D:\xampps\htdocs\somegood\Runtime\Cache\Admin\2224062b3d8f9214eeb86c3794391da2.php 第 104 行.
+NOTIC: [8] Undefined index: search_type D:\xampps\htdocs\somegood\Runtime\Cache\Admin\2224062b3d8f9214eeb86c3794391da2.php 第 105 行.
+NOTIC: [8] Undefined index: hot_search D:\xampps\htdocs\somegood\Runtime\Cache\Admin\2224062b3d8f9214eeb86c3794391da2.php 第 109 行.
+NOTIC: [8] Undefined index: search_type D:\xampps\htdocs\somegood\Runtime\Cache\Admin\2224062b3d8f9214eeb86c3794391da2.php 第 104 行.
+NOTIC: [8] Undefined index: search_type D:\xampps\htdocs\somegood\Runtime\Cache\Admin\2224062b3d8f9214eeb86c3794391da2.php 第 105 行.
+NOTIC: [8] Undefined index: hot_search D:\xampps\htdocs\somegood\Runtime\Cache\Admin\2224062b3d8f9214eeb86c3794391da2.php 第 109 行.
+NOTIC: [8] Undefined index: search_type D:\xampps\htdocs\somegood\Runtime\Cache\Admin\2224062b3d8f9214eeb86c3794391da2.php 第 104 行.
+NOTIC: [8] Undefined index: search_type D:\xampps\htdocs\somegood\Runtime\Cache\Admin\2224062b3d8f9214eeb86c3794391da2.php 第 105 行.
+NOTIC: [8] Undefined index: hot_search D:\xampps\htdocs\somegood\Runtime\Cache\Admin\2224062b3d8f9214eeb86c3794391da2.php 第 109 行.
+NOTIC: [8] Undefined index: search_type D:\xampps\htdocs\somegood\Runtime\Cache\Admin\2224062b3d8f9214eeb86c3794391da2.php 第 104 行.
+NOTIC: [8] Undefined index: search_type D:\xampps\htdocs\somegood\Runtime\Cache\Admin\2224062b3d8f9214eeb86c3794391da2.php 第 105 行.
+NOTIC: [8] Undefined index: hot_search D:\xampps\htdocs\somegood\Runtime\Cache\Admin\2224062b3d8f9214eeb86c3794391da2.php 第 109 行.
+NOTIC: [8] Undefined index: search_type D:\xampps\htdocs\somegood\Runtime\Cache\Admin\2224062b3d8f9214eeb86c3794391da2.php 第 104 行.
+NOTIC: [8] Undefined index: search_type D:\xampps\htdocs\somegood\Runtime\Cache\Admin\2224062b3d8f9214eeb86c3794391da2.php 第 105 行.
+NOTIC: [8] Undefined index: hot_search D:\xampps\htdocs\somegood\Runtime\Cache\Admin\2224062b3d8f9214eeb86c3794391da2.php 第 109 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.019001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.020001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-08-14T09:27:14+08:00 ] ::1 /somegood/Admin/cart/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_admin` [ RunTime:0.0070s ]
+SQL: SELECT `r_id` FROM `sg_admin` WHERE `id` = 1 AND `is_lock` = 0 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_admin_role` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `sg_admin_role` WHERE ( role_id=1 ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_admin_role_value` [ RunTime:0.0060s ]
+SQL: SELECT * FROM `sg_admin_role_value` WHERE `role_id` = 1  [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_cart` [ RunTime:0.0440s ]
+NOTIC: [8] Undefined variable: order D:\xampps\htdocs\somegood\Apps\Admin\Controller\CartController.class.php 第 21 行.
+NOTIC: [8] Undefined variable: condition D:\xampps\htdocs\somegood\Apps\Admin\Controller\CartController.class.php 第 21 行.
+NOTIC: [8] Undefined variable: pageCondition D:\xampps\htdocs\somegood\Apps\Admin\Controller\CartController.class.php 第 21 行.
+SQL: SHOW COLUMNS FROM `sg_cart` [ RunTime:0.0060s ]
+SQL: SELECT COUNT(distinct goods_id) AS tp_count FROM `sg_cart` LIMIT 1   [ RunTime:0.0010s ]
+NOTIC: [2] Invalid argument supplied for foreach() D:\xampps\htdocs\somegood\Apps\Common\Model\CartModel.class.php 第 21 行.
+SQL: SELECT `cart_id`,`goods_title`,count(distinct cart_id) as count_num,sum(counts) as counts,`market_price`,`goods_price` FROM `sg_cart` GROUP BY goods_id  [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: keywords D:\xampps\htdocs\somegood\Runtime\Cache\Admin\676abddb71c3e0310f7282ee07bb0fca.php 第 68 行.
+NOTIC: [8] Undefined index: uid D:\xampps\htdocs\somegood\Runtime\Cache\Admin\676abddb71c3e0310f7282ee07bb0fca.php 第 93 行.
+NOTIC: [8] Undefined index: uid D:\xampps\htdocs\somegood\Runtime\Cache\Admin\676abddb71c3e0310f7282ee07bb0fca.php 第 96 行.
+NOTIC: [8] Undefined index: avatar D:\xampps\htdocs\somegood\Runtime\Cache\Admin\676abddb71c3e0310f7282ee07bb0fca.php 第 97 行.
+NOTIC: [8] Undefined index: mobile D:\xampps\htdocs\somegood\Runtime\Cache\Admin\676abddb71c3e0310f7282ee07bb0fca.php 第 103 行.
+NOTIC: [8] Undefined index: reg_time D:\xampps\htdocs\somegood\Runtime\Cache\Admin\676abddb71c3e0310f7282ee07bb0fca.php 第 104 行.
+NOTIC: [8] Undefined index: reg_time D:\xampps\htdocs\somegood\Runtime\Cache\Admin\676abddb71c3e0310f7282ee07bb0fca.php 第 104 行.
+NOTIC: [8] Undefined index: uid D:\xampps\htdocs\somegood\Runtime\Cache\Admin\676abddb71c3e0310f7282ee07bb0fca.php 第 117 行.
+NOTIC: [8] Undefined index: uid D:\xampps\htdocs\somegood\Runtime\Cache\Admin\676abddb71c3e0310f7282ee07bb0fca.php 第 93 行.
+NOTIC: [8] Undefined index: uid D:\xampps\htdocs\somegood\Runtime\Cache\Admin\676abddb71c3e0310f7282ee07bb0fca.php 第 96 行.
+NOTIC: [8] Undefined index: avatar D:\xampps\htdocs\somegood\Runtime\Cache\Admin\676abddb71c3e0310f7282ee07bb0fca.php 第 97 行.
+NOTIC: [8] Undefined index: mobile D:\xampps\htdocs\somegood\Runtime\Cache\Admin\676abddb71c3e0310f7282ee07bb0fca.php 第 103 行.
+NOTIC: [8] Undefined index: reg_time D:\xampps\htdocs\somegood\Runtime\Cache\Admin\676abddb71c3e0310f7282ee07bb0fca.php 第 104 行.
+NOTIC: [8] Undefined index: reg_time D:\xampps\htdocs\somegood\Runtime\Cache\Admin\676abddb71c3e0310f7282ee07bb0fca.php 第 104 行.
+NOTIC: [8] Undefined index: uid D:\xampps\htdocs\somegood\Runtime\Cache\Admin\676abddb71c3e0310f7282ee07bb0fca.php 第 117 行.
+NOTIC: [8] Undefined index: uid D:\xampps\htdocs\somegood\Runtime\Cache\Admin\676abddb71c3e0310f7282ee07bb0fca.php 第 93 行.
+NOTIC: [8] Undefined index: uid D:\xampps\htdocs\somegood\Runtime\Cache\Admin\676abddb71c3e0310f7282ee07bb0fca.php 第 96 行.
+NOTIC: [8] Undefined index: avatar D:\xampps\htdocs\somegood\Runtime\Cache\Admin\676abddb71c3e0310f7282ee07bb0fca.php 第 97 行.
+NOTIC: [8] Undefined index: mobile D:\xampps\htdocs\somegood\Runtime\Cache\Admin\676abddb71c3e0310f7282ee07bb0fca.php 第 103 行.
+NOTIC: [8] Undefined index: reg_time D:\xampps\htdocs\somegood\Runtime\Cache\Admin\676abddb71c3e0310f7282ee07bb0fca.php 第 104 行.
+NOTIC: [8] Undefined index: reg_time D:\xampps\htdocs\somegood\Runtime\Cache\Admin\676abddb71c3e0310f7282ee07bb0fca.php 第 104 行.
+NOTIC: [8] Undefined index: uid D:\xampps\htdocs\somegood\Runtime\Cache\Admin\676abddb71c3e0310f7282ee07bb0fca.php 第 117 行.
+NOTIC: [8] Undefined index: uid D:\xampps\htdocs\somegood\Runtime\Cache\Admin\676abddb71c3e0310f7282ee07bb0fca.php 第 93 行.
+NOTIC: [8] Undefined index: uid D:\xampps\htdocs\somegood\Runtime\Cache\Admin\676abddb71c3e0310f7282ee07bb0fca.php 第 96 行.
+NOTIC: [8] Undefined index: avatar D:\xampps\htdocs\somegood\Runtime\Cache\Admin\676abddb71c3e0310f7282ee07bb0fca.php 第 97 行.
+NOTIC: [8] Undefined index: mobile D:\xampps\htdocs\somegood\Runtime\Cache\Admin\676abddb71c3e0310f7282ee07bb0fca.php 第 103 行.
+NOTIC: [8] Undefined index: reg_time D:\xampps\htdocs\somegood\Runtime\Cache\Admin\676abddb71c3e0310f7282ee07bb0fca.php 第 104 行.
+NOTIC: [8] Undefined index: reg_time D:\xampps\htdocs\somegood\Runtime\Cache\Admin\676abddb71c3e0310f7282ee07bb0fca.php 第 104 行.
+NOTIC: [8] Undefined index: uid D:\xampps\htdocs\somegood\Runtime\Cache\Admin\676abddb71c3e0310f7282ee07bb0fca.php 第 117 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.024002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.024002s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-08-14T09:31:40+08:00 ] ::1 /somegood/Admin/cart/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_admin` [ RunTime:0.0070s ]
+SQL: SELECT `r_id` FROM `sg_admin` WHERE `id` = 1 AND `is_lock` = 0 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_admin_role` [ RunTime:0.0060s ]
+SQL: SELECT * FROM `sg_admin_role` WHERE ( role_id=1 ) LIMIT 1   [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `sg_admin_role_value` [ RunTime:0.0060s ]
+SQL: SELECT * FROM `sg_admin_role_value` WHERE `role_id` = 1  [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_cart` [ RunTime:0.0070s ]
+NOTIC: [8] Undefined variable: order D:\xampps\htdocs\somegood\Apps\Admin\Controller\CartController.class.php 第 21 行.
+NOTIC: [8] Undefined variable: condition D:\xampps\htdocs\somegood\Apps\Admin\Controller\CartController.class.php 第 21 行.
+NOTIC: [8] Undefined variable: pageCondition D:\xampps\htdocs\somegood\Apps\Admin\Controller\CartController.class.php 第 21 行.
+SQL: SHOW COLUMNS FROM `sg_cart` [ RunTime:0.0060s ]
+SQL: SELECT COUNT(distinct goods_id) AS tp_count FROM `sg_cart` LIMIT 1   [ RunTime:0.0010s ]
+NOTIC: [2] Invalid argument supplied for foreach() D:\xampps\htdocs\somegood\Apps\Common\Model\CartModel.class.php 第 21 行.
+SQL: SELECT `cart_id`,`goods_title`,count(distinct cart_id) as count_num,sum(counts) as counts,`market_price`,`goods_price` FROM `sg_cart` GROUP BY goods_id  [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: keywords D:\xampps\htdocs\somegood\Runtime\Cache\Admin\676abddb71c3e0310f7282ee07bb0fca.php 第 68 行.
+NOTIC: [8] Undefined index: uid D:\xampps\htdocs\somegood\Runtime\Cache\Admin\676abddb71c3e0310f7282ee07bb0fca.php 第 93 行.
+NOTIC: [8] Undefined index: uid D:\xampps\htdocs\somegood\Runtime\Cache\Admin\676abddb71c3e0310f7282ee07bb0fca.php 第 96 行.
+NOTIC: [8] Undefined index: avatar D:\xampps\htdocs\somegood\Runtime\Cache\Admin\676abddb71c3e0310f7282ee07bb0fca.php 第 97 行.
+NOTIC: [8] Undefined index: mobile D:\xampps\htdocs\somegood\Runtime\Cache\Admin\676abddb71c3e0310f7282ee07bb0fca.php 第 103 行.
+NOTIC: [8] Undefined index: reg_time D:\xampps\htdocs\somegood\Runtime\Cache\Admin\676abddb71c3e0310f7282ee07bb0fca.php 第 104 行.
+NOTIC: [8] Undefined index: reg_time D:\xampps\htdocs\somegood\Runtime\Cache\Admin\676abddb71c3e0310f7282ee07bb0fca.php 第 104 行.
+NOTIC: [8] Undefined index: uid D:\xampps\htdocs\somegood\Runtime\Cache\Admin\676abddb71c3e0310f7282ee07bb0fca.php 第 117 行.
+NOTIC: [8] Undefined index: uid D:\xampps\htdocs\somegood\Runtime\Cache\Admin\676abddb71c3e0310f7282ee07bb0fca.php 第 93 行.
+NOTIC: [8] Undefined index: uid D:\xampps\htdocs\somegood\Runtime\Cache\Admin\676abddb71c3e0310f7282ee07bb0fca.php 第 96 行.
+NOTIC: [8] Undefined index: avatar D:\xampps\htdocs\somegood\Runtime\Cache\Admin\676abddb71c3e0310f7282ee07bb0fca.php 第 97 行.
+NOTIC: [8] Undefined index: mobile D:\xampps\htdocs\somegood\Runtime\Cache\Admin\676abddb71c3e0310f7282ee07bb0fca.php 第 103 行.
+NOTIC: [8] Undefined index: reg_time D:\xampps\htdocs\somegood\Runtime\Cache\Admin\676abddb71c3e0310f7282ee07bb0fca.php 第 104 行.
+NOTIC: [8] Undefined index: reg_time D:\xampps\htdocs\somegood\Runtime\Cache\Admin\676abddb71c3e0310f7282ee07bb0fca.php 第 104 行.
+NOTIC: [8] Undefined index: uid D:\xampps\htdocs\somegood\Runtime\Cache\Admin\676abddb71c3e0310f7282ee07bb0fca.php 第 117 行.
+NOTIC: [8] Undefined index: uid D:\xampps\htdocs\somegood\Runtime\Cache\Admin\676abddb71c3e0310f7282ee07bb0fca.php 第 93 行.
+NOTIC: [8] Undefined index: uid D:\xampps\htdocs\somegood\Runtime\Cache\Admin\676abddb71c3e0310f7282ee07bb0fca.php 第 96 行.
+NOTIC: [8] Undefined index: avatar D:\xampps\htdocs\somegood\Runtime\Cache\Admin\676abddb71c3e0310f7282ee07bb0fca.php 第 97 行.
+NOTIC: [8] Undefined index: mobile D:\xampps\htdocs\somegood\Runtime\Cache\Admin\676abddb71c3e0310f7282ee07bb0fca.php 第 103 行.
+NOTIC: [8] Undefined index: reg_time D:\xampps\htdocs\somegood\Runtime\Cache\Admin\676abddb71c3e0310f7282ee07bb0fca.php 第 104 行.
+NOTIC: [8] Undefined index: reg_time D:\xampps\htdocs\somegood\Runtime\Cache\Admin\676abddb71c3e0310f7282ee07bb0fca.php 第 104 行.
+NOTIC: [8] Undefined index: uid D:\xampps\htdocs\somegood\Runtime\Cache\Admin\676abddb71c3e0310f7282ee07bb0fca.php 第 117 行.
+NOTIC: [8] Undefined index: uid D:\xampps\htdocs\somegood\Runtime\Cache\Admin\676abddb71c3e0310f7282ee07bb0fca.php 第 93 行.
+NOTIC: [8] Undefined index: uid D:\xampps\htdocs\somegood\Runtime\Cache\Admin\676abddb71c3e0310f7282ee07bb0fca.php 第 96 行.
+NOTIC: [8] Undefined index: avatar D:\xampps\htdocs\somegood\Runtime\Cache\Admin\676abddb71c3e0310f7282ee07bb0fca.php 第 97 行.
+NOTIC: [8] Undefined index: mobile D:\xampps\htdocs\somegood\Runtime\Cache\Admin\676abddb71c3e0310f7282ee07bb0fca.php 第 103 行.
+NOTIC: [8] Undefined index: reg_time D:\xampps\htdocs\somegood\Runtime\Cache\Admin\676abddb71c3e0310f7282ee07bb0fca.php 第 104 行.
+NOTIC: [8] Undefined index: reg_time D:\xampps\htdocs\somegood\Runtime\Cache\Admin\676abddb71c3e0310f7282ee07bb0fca.php 第 104 行.
+NOTIC: [8] Undefined index: uid D:\xampps\htdocs\somegood\Runtime\Cache\Admin\676abddb71c3e0310f7282ee07bb0fca.php 第 117 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.014001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.014001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-08-14T19:10:11+08:00 ] ::1 /somegood/Admin/Goods/goodslist
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_admin` [ RunTime:0.0030s ]
+SQL: SELECT `r_id` FROM `sg_admin` WHERE `id` = 1 AND `is_lock` = 0 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `sg_admin_role` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_admin_role` WHERE ( role_id=1 ) LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `sg_admin_role_value` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `sg_admin_role_value` WHERE `role_id` = 1  [ RunTime:0.0010s ]
+NOTIC: [8] Use of undefined constant HAS_MANY - assumed 'HAS_MANY' D:\xampps\htdocs\somegood\ThinkPHP\Common\functions.php 第 588 行.
+NOTIC: [8] Use of undefined constant BELONGS_TO - assumed 'BELONGS_TO' D:\xampps\htdocs\somegood\ThinkPHP\Common\functions.php 第 588 行.
+SQL: SHOW COLUMNS FROM `sg_goods` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `sg_goods_category` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_goods_category` ORDER BY parent_id ASC , sort_num ASC , id DESC  [ RunTime:0.0010s ]
+NOTIC: [8] Undefined variable: condition D:\xampps\htdocs\somegood\Apps\Admin\Controller\GoodsController.class.php 第 52 行.
+NOTIC: [8] Undefined variable: pageCondition D:\xampps\htdocs\somegood\Apps\Admin\Controller\GoodsController.class.php 第 52 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `sg_goods` LIMIT 1   [ RunTime:0.0020s ]
+NOTIC: [2] Invalid argument supplied for foreach() D:\xampps\htdocs\somegood\Apps\Admin\Model\GoodsModel.class.php 第 143 行.
+SQL: SELECT * FROM `sg_goods` ORDER BY id DESC LIMIT 0,15   [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `sg_goods_category` [ RunTime:0.0020s ]
+NOTIC: [8] Undefined variable: relationData D:\xampps\htdocs\somegood\ThinkPHP\Library\Think\Model\RelationModel.class.php 第 227 行.
+NOTIC: [8] Undefined variable: relationData D:\xampps\htdocs\somegood\ThinkPHP\Library\Think\Model\RelationModel.class.php 第 227 行.
+NOTIC: [8] Undefined variable: relationData D:\xampps\htdocs\somegood\ThinkPHP\Library\Think\Model\RelationModel.class.php 第 227 行.
+NOTIC: [8] Undefined variable: relationData D:\xampps\htdocs\somegood\ThinkPHP\Library\Think\Model\RelationModel.class.php 第 227 行.
+NOTIC: [8] Undefined variable: relationData D:\xampps\htdocs\somegood\ThinkPHP\Library\Think\Model\RelationModel.class.php 第 227 行.
+NOTIC: [8] Undefined variable: relationData D:\xampps\htdocs\somegood\ThinkPHP\Library\Think\Model\RelationModel.class.php 第 227 行.
+NOTIC: [8] Undefined variable: relationData D:\xampps\htdocs\somegood\ThinkPHP\Library\Think\Model\RelationModel.class.php 第 227 行.
+NOTIC: [8] Undefined variable: relationData D:\xampps\htdocs\somegood\ThinkPHP\Library\Think\Model\RelationModel.class.php 第 227 行.
+NOTIC: [8] Undefined variable: relationData D:\xampps\htdocs\somegood\ThinkPHP\Library\Think\Model\RelationModel.class.php 第 227 行.
+NOTIC: [8] Undefined variable: relationData D:\xampps\htdocs\somegood\ThinkPHP\Library\Think\Model\RelationModel.class.php 第 227 行.
+NOTIC: [8] Undefined variable: relationData D:\xampps\htdocs\somegood\ThinkPHP\Library\Think\Model\RelationModel.class.php 第 227 行.
+NOTIC: [8] Undefined variable: relationData D:\xampps\htdocs\somegood\ThinkPHP\Library\Think\Model\RelationModel.class.php 第 227 行.
+NOTIC: [8] Undefined variable: relationData D:\xampps\htdocs\somegood\ThinkPHP\Library\Think\Model\RelationModel.class.php 第 227 行.
+NOTIC: [8] Undefined variable: relationData D:\xampps\htdocs\somegood\ThinkPHP\Library\Think\Model\RelationModel.class.php 第 227 行.
+NOTIC: [8] Undefined variable: relationData D:\xampps\htdocs\somegood\ThinkPHP\Library\Think\Model\RelationModel.class.php 第 227 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: category_id D:\xampps\htdocs\somegood\Runtime\Cache\Admin\5f22b6464054c7fc10c584a9a2298435.php 第 64 行.
+NOTIC: [8] Undefined variable: category_id D:\xampps\htdocs\somegood\Runtime\Cache\Admin\5f22b6464054c7fc10c584a9a2298435.php 第 64 行.
+NOTIC: [8] Undefined variable: category_id D:\xampps\htdocs\somegood\Runtime\Cache\Admin\5f22b6464054c7fc10c584a9a2298435.php 第 64 行.
+NOTIC: [8] Undefined variable: category_id D:\xampps\htdocs\somegood\Runtime\Cache\Admin\5f22b6464054c7fc10c584a9a2298435.php 第 64 行.
+NOTIC: [8] Undefined variable: category_id D:\xampps\htdocs\somegood\Runtime\Cache\Admin\5f22b6464054c7fc10c584a9a2298435.php 第 64 行.
+NOTIC: [8] Undefined variable: category_id D:\xampps\htdocs\somegood\Runtime\Cache\Admin\5f22b6464054c7fc10c584a9a2298435.php 第 64 行.
+NOTIC: [8] Undefined variable: category_id D:\xampps\htdocs\somegood\Runtime\Cache\Admin\5f22b6464054c7fc10c584a9a2298435.php 第 64 行.
+NOTIC: [8] Undefined variable: category_id D:\xampps\htdocs\somegood\Runtime\Cache\Admin\5f22b6464054c7fc10c584a9a2298435.php 第 64 行.
+NOTIC: [8] Undefined variable: category_id D:\xampps\htdocs\somegood\Runtime\Cache\Admin\5f22b6464054c7fc10c584a9a2298435.php 第 64 行.
+NOTIC: [8] Undefined variable: category_id D:\xampps\htdocs\somegood\Runtime\Cache\Admin\5f22b6464054c7fc10c584a9a2298435.php 第 64 行.
+NOTIC: [8] Undefined variable: category_id D:\xampps\htdocs\somegood\Runtime\Cache\Admin\5f22b6464054c7fc10c584a9a2298435.php 第 64 行.
+NOTIC: [8] Undefined variable: category_id D:\xampps\htdocs\somegood\Runtime\Cache\Admin\5f22b6464054c7fc10c584a9a2298435.php 第 64 行.
+NOTIC: [8] Undefined variable: category_id D:\xampps\htdocs\somegood\Runtime\Cache\Admin\5f22b6464054c7fc10c584a9a2298435.php 第 64 行.
+NOTIC: [8] Undefined variable: category_id D:\xampps\htdocs\somegood\Runtime\Cache\Admin\5f22b6464054c7fc10c584a9a2298435.php 第 64 行.
+NOTIC: [8] Undefined variable: returnUrl D:\xampps\htdocs\somegood\Runtime\Cache\Admin\5f22b6464054c7fc10c584a9a2298435.php 第 106 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.010001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.010001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-08-14T19:10:19+08:00 ] ::1 /somegood/Admin/Goods/goodslist/p/2.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_admin` [ RunTime:0.0030s ]
+SQL: SELECT `r_id` FROM `sg_admin` WHERE `id` = 1 AND `is_lock` = 0 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_admin_role` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `sg_admin_role` WHERE ( role_id=1 ) LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `sg_admin_role_value` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `sg_admin_role_value` WHERE `role_id` = 1  [ RunTime:0.0010s ]
+NOTIC: [8] Use of undefined constant HAS_MANY - assumed 'HAS_MANY' D:\xampps\htdocs\somegood\ThinkPHP\Common\functions.php 第 588 行.
+NOTIC: [8] Use of undefined constant BELONGS_TO - assumed 'BELONGS_TO' D:\xampps\htdocs\somegood\ThinkPHP\Common\functions.php 第 588 行.
+SQL: SHOW COLUMNS FROM `sg_goods` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `sg_goods_category` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_goods_category` ORDER BY parent_id ASC , sort_num ASC , id DESC  [ RunTime:0.0010s ]
+NOTIC: [8] Undefined variable: condition D:\xampps\htdocs\somegood\Apps\Admin\Controller\GoodsController.class.php 第 52 行.
+NOTIC: [8] Undefined variable: pageCondition D:\xampps\htdocs\somegood\Apps\Admin\Controller\GoodsController.class.php 第 52 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `sg_goods` LIMIT 1   [ RunTime:0.0010s ]
+NOTIC: [2] Invalid argument supplied for foreach() D:\xampps\htdocs\somegood\Apps\Admin\Model\GoodsModel.class.php 第 143 行.
+SQL: SELECT * FROM `sg_goods` ORDER BY id DESC LIMIT 15,15   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `sg_goods_category` [ RunTime:0.0030s ]
+NOTIC: [8] Undefined variable: relationData D:\xampps\htdocs\somegood\ThinkPHP\Library\Think\Model\RelationModel.class.php 第 227 行.
+NOTIC: [8] Undefined variable: relationData D:\xampps\htdocs\somegood\ThinkPHP\Library\Think\Model\RelationModel.class.php 第 227 行.
+NOTIC: [8] Undefined variable: relationData D:\xampps\htdocs\somegood\ThinkPHP\Library\Think\Model\RelationModel.class.php 第 227 行.
+NOTIC: [8] Undefined variable: relationData D:\xampps\htdocs\somegood\ThinkPHP\Library\Think\Model\RelationModel.class.php 第 227 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: category_id D:\xampps\htdocs\somegood\Runtime\Cache\Admin\5f22b6464054c7fc10c584a9a2298435.php 第 64 行.
+NOTIC: [8] Undefined variable: category_id D:\xampps\htdocs\somegood\Runtime\Cache\Admin\5f22b6464054c7fc10c584a9a2298435.php 第 64 行.
+NOTIC: [8] Undefined variable: category_id D:\xampps\htdocs\somegood\Runtime\Cache\Admin\5f22b6464054c7fc10c584a9a2298435.php 第 64 行.
+NOTIC: [8] Undefined variable: category_id D:\xampps\htdocs\somegood\Runtime\Cache\Admin\5f22b6464054c7fc10c584a9a2298435.php 第 64 行.
+NOTIC: [8] Undefined variable: category_id D:\xampps\htdocs\somegood\Runtime\Cache\Admin\5f22b6464054c7fc10c584a9a2298435.php 第 64 行.
+NOTIC: [8] Undefined variable: category_id D:\xampps\htdocs\somegood\Runtime\Cache\Admin\5f22b6464054c7fc10c584a9a2298435.php 第 64 行.
+NOTIC: [8] Undefined variable: category_id D:\xampps\htdocs\somegood\Runtime\Cache\Admin\5f22b6464054c7fc10c584a9a2298435.php 第 64 行.
+NOTIC: [8] Undefined variable: category_id D:\xampps\htdocs\somegood\Runtime\Cache\Admin\5f22b6464054c7fc10c584a9a2298435.php 第 64 行.
+NOTIC: [8] Undefined variable: category_id D:\xampps\htdocs\somegood\Runtime\Cache\Admin\5f22b6464054c7fc10c584a9a2298435.php 第 64 行.
+NOTIC: [8] Undefined variable: category_id D:\xampps\htdocs\somegood\Runtime\Cache\Admin\5f22b6464054c7fc10c584a9a2298435.php 第 64 行.
+NOTIC: [8] Undefined variable: category_id D:\xampps\htdocs\somegood\Runtime\Cache\Admin\5f22b6464054c7fc10c584a9a2298435.php 第 64 行.
+NOTIC: [8] Undefined variable: category_id D:\xampps\htdocs\somegood\Runtime\Cache\Admin\5f22b6464054c7fc10c584a9a2298435.php 第 64 行.
+NOTIC: [8] Undefined variable: category_id D:\xampps\htdocs\somegood\Runtime\Cache\Admin\5f22b6464054c7fc10c584a9a2298435.php 第 64 行.
+NOTIC: [8] Undefined variable: category_id D:\xampps\htdocs\somegood\Runtime\Cache\Admin\5f22b6464054c7fc10c584a9a2298435.php 第 64 行.
+NOTIC: [8] Undefined variable: returnUrl D:\xampps\htdocs\somegood\Runtime\Cache\Admin\5f22b6464054c7fc10c584a9a2298435.php 第 106 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.009000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.009000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-08-14T19:10:21+08:00 ] ::1 /somegood/Admin/Goods/goodslist/p/1.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_admin` [ RunTime:0.0030s ]
+SQL: SELECT `r_id` FROM `sg_admin` WHERE `id` = 1 AND `is_lock` = 0 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_admin_role` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `sg_admin_role` WHERE ( role_id=1 ) LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `sg_admin_role_value` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `sg_admin_role_value` WHERE `role_id` = 1  [ RunTime:0.0000s ]
+NOTIC: [8] Use of undefined constant HAS_MANY - assumed 'HAS_MANY' D:\xampps\htdocs\somegood\ThinkPHP\Common\functions.php 第 588 行.
+NOTIC: [8] Use of undefined constant BELONGS_TO - assumed 'BELONGS_TO' D:\xampps\htdocs\somegood\ThinkPHP\Common\functions.php 第 588 行.
+SQL: SHOW COLUMNS FROM `sg_goods` [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `sg_goods_category` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_goods_category` ORDER BY parent_id ASC , sort_num ASC , id DESC  [ RunTime:0.0010s ]
+NOTIC: [8] Undefined variable: condition D:\xampps\htdocs\somegood\Apps\Admin\Controller\GoodsController.class.php 第 52 行.
+NOTIC: [8] Undefined variable: pageCondition D:\xampps\htdocs\somegood\Apps\Admin\Controller\GoodsController.class.php 第 52 行.
+SQL: SELECT COUNT(*) AS tp_count FROM `sg_goods` LIMIT 1   [ RunTime:0.0020s ]
+NOTIC: [2] Invalid argument supplied for foreach() D:\xampps\htdocs\somegood\Apps\Admin\Model\GoodsModel.class.php 第 143 行.
+SQL: SELECT * FROM `sg_goods` ORDER BY id DESC LIMIT 0,15   [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `sg_goods_category` [ RunTime:0.0020s ]
+NOTIC: [8] Undefined variable: relationData D:\xampps\htdocs\somegood\ThinkPHP\Library\Think\Model\RelationModel.class.php 第 227 行.
+NOTIC: [8] Undefined variable: relationData D:\xampps\htdocs\somegood\ThinkPHP\Library\Think\Model\RelationModel.class.php 第 227 行.
+NOTIC: [8] Undefined variable: relationData D:\xampps\htdocs\somegood\ThinkPHP\Library\Think\Model\RelationModel.class.php 第 227 行.
+NOTIC: [8] Undefined variable: relationData D:\xampps\htdocs\somegood\ThinkPHP\Library\Think\Model\RelationModel.class.php 第 227 行.
+NOTIC: [8] Undefined variable: relationData D:\xampps\htdocs\somegood\ThinkPHP\Library\Think\Model\RelationModel.class.php 第 227 行.
+NOTIC: [8] Undefined variable: relationData D:\xampps\htdocs\somegood\ThinkPHP\Library\Think\Model\RelationModel.class.php 第 227 行.
+NOTIC: [8] Undefined variable: relationData D:\xampps\htdocs\somegood\ThinkPHP\Library\Think\Model\RelationModel.class.php 第 227 行.
+NOTIC: [8] Undefined variable: relationData D:\xampps\htdocs\somegood\ThinkPHP\Library\Think\Model\RelationModel.class.php 第 227 行.
+NOTIC: [8] Undefined variable: relationData D:\xampps\htdocs\somegood\ThinkPHP\Library\Think\Model\RelationModel.class.php 第 227 行.
+NOTIC: [8] Undefined variable: relationData D:\xampps\htdocs\somegood\ThinkPHP\Library\Think\Model\RelationModel.class.php 第 227 行.
+NOTIC: [8] Undefined variable: relationData D:\xampps\htdocs\somegood\ThinkPHP\Library\Think\Model\RelationModel.class.php 第 227 行.
+NOTIC: [8] Undefined variable: relationData D:\xampps\htdocs\somegood\ThinkPHP\Library\Think\Model\RelationModel.class.php 第 227 行.
+NOTIC: [8] Undefined variable: relationData D:\xampps\htdocs\somegood\ThinkPHP\Library\Think\Model\RelationModel.class.php 第 227 行.
+NOTIC: [8] Undefined variable: relationData D:\xampps\htdocs\somegood\ThinkPHP\Library\Think\Model\RelationModel.class.php 第 227 行.
+NOTIC: [8] Undefined variable: relationData D:\xampps\htdocs\somegood\ThinkPHP\Library\Think\Model\RelationModel.class.php 第 227 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: category_id D:\xampps\htdocs\somegood\Runtime\Cache\Admin\5f22b6464054c7fc10c584a9a2298435.php 第 64 行.
+NOTIC: [8] Undefined variable: category_id D:\xampps\htdocs\somegood\Runtime\Cache\Admin\5f22b6464054c7fc10c584a9a2298435.php 第 64 行.
+NOTIC: [8] Undefined variable: category_id D:\xampps\htdocs\somegood\Runtime\Cache\Admin\5f22b6464054c7fc10c584a9a2298435.php 第 64 行.
+NOTIC: [8] Undefined variable: category_id D:\xampps\htdocs\somegood\Runtime\Cache\Admin\5f22b6464054c7fc10c584a9a2298435.php 第 64 行.
+NOTIC: [8] Undefined variable: category_id D:\xampps\htdocs\somegood\Runtime\Cache\Admin\5f22b6464054c7fc10c584a9a2298435.php 第 64 行.
+NOTIC: [8] Undefined variable: category_id D:\xampps\htdocs\somegood\Runtime\Cache\Admin\5f22b6464054c7fc10c584a9a2298435.php 第 64 行.
+NOTIC: [8] Undefined variable: category_id D:\xampps\htdocs\somegood\Runtime\Cache\Admin\5f22b6464054c7fc10c584a9a2298435.php 第 64 行.
+NOTIC: [8] Undefined variable: category_id D:\xampps\htdocs\somegood\Runtime\Cache\Admin\5f22b6464054c7fc10c584a9a2298435.php 第 64 行.
+NOTIC: [8] Undefined variable: category_id D:\xampps\htdocs\somegood\Runtime\Cache\Admin\5f22b6464054c7fc10c584a9a2298435.php 第 64 行.
+NOTIC: [8] Undefined variable: category_id D:\xampps\htdocs\somegood\Runtime\Cache\Admin\5f22b6464054c7fc10c584a9a2298435.php 第 64 行.
+NOTIC: [8] Undefined variable: category_id D:\xampps\htdocs\somegood\Runtime\Cache\Admin\5f22b6464054c7fc10c584a9a2298435.php 第 64 行.
+NOTIC: [8] Undefined variable: category_id D:\xampps\htdocs\somegood\Runtime\Cache\Admin\5f22b6464054c7fc10c584a9a2298435.php 第 64 行.
+NOTIC: [8] Undefined variable: category_id D:\xampps\htdocs\somegood\Runtime\Cache\Admin\5f22b6464054c7fc10c584a9a2298435.php 第 64 行.
+NOTIC: [8] Undefined variable: category_id D:\xampps\htdocs\somegood\Runtime\Cache\Admin\5f22b6464054c7fc10c584a9a2298435.php 第 64 行.
+NOTIC: [8] Undefined variable: returnUrl D:\xampps\htdocs\somegood\Runtime\Cache\Admin\5f22b6464054c7fc10c584a9a2298435.php 第 106 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.010001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.010001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-08-14T19:10:26+08:00 ] ::1 /somegood/Admin/Goods/goodslist.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_admin` [ RunTime:0.0030s ]
+SQL: SELECT `r_id` FROM `sg_admin` WHERE `id` = 1 AND `is_lock` = 0 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_admin_role` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `sg_admin_role` WHERE ( role_id=1 ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_admin_role_value` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `sg_admin_role_value` WHERE `role_id` = 1  [ RunTime:0.0010s ]
+NOTIC: [8] Use of undefined constant HAS_MANY - assumed 'HAS_MANY' D:\xampps\htdocs\somegood\ThinkPHP\Common\functions.php 第 588 行.
+NOTIC: [8] Use of undefined constant BELONGS_TO - assumed 'BELONGS_TO' D:\xampps\htdocs\somegood\ThinkPHP\Common\functions.php 第 588 行.
+SQL: SHOW COLUMNS FROM `sg_goods` [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `sg_goods_category` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `sg_goods_category` ORDER BY parent_id ASC , sort_num ASC , id DESC  [ RunTime:0.0020s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `sg_goods` WHERE `category_id` = 5 LIMIT 1   [ RunTime:0.0010s ]
+NOTIC: [8] Array to string conversion D:\xampps\htdocs\somegood\Apps\Admin\Model\GoodsModel.class.php 第 144 行.
+SQL: SELECT * FROM `sg_goods` WHERE `category_id` = 5 ORDER BY id DESC LIMIT 0,15   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined variable: returnUrl D:\xampps\htdocs\somegood\Runtime\Cache\Admin\5f22b6464054c7fc10c584a9a2298435.php 第 106 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.027001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.027001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-08-14T19:10:29+08:00 ] ::1 /somegood/Admin/Goods/goodslist.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_admin` [ RunTime:0.0030s ]
+SQL: SELECT `r_id` FROM `sg_admin` WHERE `id` = 1 AND `is_lock` = 0 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_admin_role` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `sg_admin_role` WHERE ( role_id=1 ) LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `sg_admin_role_value` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `sg_admin_role_value` WHERE `role_id` = 1  [ RunTime:0.0010s ]
+NOTIC: [8] Use of undefined constant HAS_MANY - assumed 'HAS_MANY' D:\xampps\htdocs\somegood\ThinkPHP\Common\functions.php 第 588 行.
+NOTIC: [8] Use of undefined constant BELONGS_TO - assumed 'BELONGS_TO' D:\xampps\htdocs\somegood\ThinkPHP\Common\functions.php 第 588 行.
+SQL: SHOW COLUMNS FROM `sg_goods` [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `sg_goods_category` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_goods_category` ORDER BY parent_id ASC , sort_num ASC , id DESC  [ RunTime:0.0020s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `sg_goods` WHERE `category_id` = 1 LIMIT 1   [ RunTime:0.0010s ]
+NOTIC: [8] Array to string conversion D:\xampps\htdocs\somegood\Apps\Admin\Model\GoodsModel.class.php 第 144 行.
+NOTIC: [2] Illegal string offset 'p' D:\xampps\htdocs\somegood\ThinkPHP\Library\Think\Page.class.php 第 81 行.
+SQL: SELECT * FROM `sg_goods` WHERE `category_id` = 1 ORDER BY id DESC LIMIT 0,15   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_goods_category` [ RunTime:0.0030s ]
+NOTIC: [8] Undefined variable: relationData D:\xampps\htdocs\somegood\ThinkPHP\Library\Think\Model\RelationModel.class.php 第 227 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined variable: returnUrl D:\xampps\htdocs\somegood\Runtime\Cache\Admin\5f22b6464054c7fc10c584a9a2298435.php 第 106 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.009001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.009001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-08-14T19:10:38+08:00 ] ::1 /somegood/Admin/Goods/goodslist.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001001s ]
+SQL: SHOW COLUMNS FROM `sg_admin` [ RunTime:0.0030s ]
+SQL: SELECT `r_id` FROM `sg_admin` WHERE `id` = 1 AND `is_lock` = 0 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_admin_role` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `sg_admin_role` WHERE ( role_id=1 ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_admin_role_value` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `sg_admin_role_value` WHERE `role_id` = 1  [ RunTime:0.0010s ]
+NOTIC: [8] Use of undefined constant HAS_MANY - assumed 'HAS_MANY' D:\xampps\htdocs\somegood\ThinkPHP\Common\functions.php 第 588 行.
+NOTIC: [8] Use of undefined constant BELONGS_TO - assumed 'BELONGS_TO' D:\xampps\htdocs\somegood\ThinkPHP\Common\functions.php 第 588 行.
+SQL: SHOW COLUMNS FROM `sg_goods` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `sg_goods_category` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `sg_goods_category` ORDER BY parent_id ASC , sort_num ASC , id DESC  [ RunTime:0.0010s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `sg_goods` WHERE `status` = 0 LIMIT 1   [ RunTime:0.0010s ]
+NOTIC: [8] Array to string conversion D:\xampps\htdocs\somegood\Apps\Admin\Model\GoodsModel.class.php 第 144 行.
+SQL: SELECT * FROM `sg_goods` WHERE `status` = 0 ORDER BY id DESC LIMIT 0,15   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: category_id D:\xampps\htdocs\somegood\Runtime\Cache\Admin\5f22b6464054c7fc10c584a9a2298435.php 第 64 行.
+NOTIC: [8] Undefined variable: category_id D:\xampps\htdocs\somegood\Runtime\Cache\Admin\5f22b6464054c7fc10c584a9a2298435.php 第 64 行.
+NOTIC: [8] Undefined variable: category_id D:\xampps\htdocs\somegood\Runtime\Cache\Admin\5f22b6464054c7fc10c584a9a2298435.php 第 64 行.
+NOTIC: [8] Undefined variable: category_id D:\xampps\htdocs\somegood\Runtime\Cache\Admin\5f22b6464054c7fc10c584a9a2298435.php 第 64 行.
+NOTIC: [8] Undefined variable: category_id D:\xampps\htdocs\somegood\Runtime\Cache\Admin\5f22b6464054c7fc10c584a9a2298435.php 第 64 行.
+NOTIC: [8] Undefined variable: category_id D:\xampps\htdocs\somegood\Runtime\Cache\Admin\5f22b6464054c7fc10c584a9a2298435.php 第 64 行.
+NOTIC: [8] Undefined variable: category_id D:\xampps\htdocs\somegood\Runtime\Cache\Admin\5f22b6464054c7fc10c584a9a2298435.php 第 64 行.
+NOTIC: [8] Undefined variable: category_id D:\xampps\htdocs\somegood\Runtime\Cache\Admin\5f22b6464054c7fc10c584a9a2298435.php 第 64 行.
+NOTIC: [8] Undefined variable: category_id D:\xampps\htdocs\somegood\Runtime\Cache\Admin\5f22b6464054c7fc10c584a9a2298435.php 第 64 行.
+NOTIC: [8] Undefined variable: category_id D:\xampps\htdocs\somegood\Runtime\Cache\Admin\5f22b6464054c7fc10c584a9a2298435.php 第 64 行.
+NOTIC: [8] Undefined variable: category_id D:\xampps\htdocs\somegood\Runtime\Cache\Admin\5f22b6464054c7fc10c584a9a2298435.php 第 64 行.
+NOTIC: [8] Undefined variable: category_id D:\xampps\htdocs\somegood\Runtime\Cache\Admin\5f22b6464054c7fc10c584a9a2298435.php 第 64 行.
+NOTIC: [8] Undefined variable: category_id D:\xampps\htdocs\somegood\Runtime\Cache\Admin\5f22b6464054c7fc10c584a9a2298435.php 第 64 行.
+NOTIC: [8] Undefined variable: category_id D:\xampps\htdocs\somegood\Runtime\Cache\Admin\5f22b6464054c7fc10c584a9a2298435.php 第 64 行.
+NOTIC: [8] Undefined variable: returnUrl D:\xampps\htdocs\somegood\Runtime\Cache\Admin\5f22b6464054c7fc10c584a9a2298435.php 第 106 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.026002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.026002s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+

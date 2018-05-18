@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0,user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>订单管理</title>
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/scripts/artdialog/ui-dialog.css" />
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/css/pagination.css" />
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/statics/admin/css/icon/iconfont.css" />
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/statics/admin/css/style.css" />
+    <script type="text/javascript" src="__PUBLIC__/scripts/jquery/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/scripts/artdialog/dialog-plus-min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="__PUBLIC__/statics/admin/js/laymain.js"></script>
+    <script type="text/javascript" charset="utf-8" src="__PUBLIC__/statics/admin/js/common.js"></script>
+    <script type="text/javascript">
+        //菜单获取
+        var ajax_url="{:U('Index/ajax')}";
+        //站点列表获取
+        var ajax_site_url = "<?php echo U('Site/sajax');?>";
+        //单击修改的ajax地址
+        var pajax_url="{:U('Order/ajax')}";
+
+        function doPostBack(objId) {
+            if(objId == 'btnDelete') {
+                $('#orderForm').submit();
+            }else{
+                $('#searchForm').submit();
+            }
+        }
+        // $(function () {
+        //     //图片延迟加载
+        //     $(".pic img").lazyload({ effect: "fadeIn" });
+        //     //点击图片链接
+        //     $(".pic img").click(function () {
+        //         var linkUrl = $(this).parent().parent().find(".foot a").attr("href");
+        //         if (linkUrl != "") {
+        //             location.href = linkUrl; //跳转到修改页面
+        //         }
+        //     });
+        // });
+    </script>
+</head>
+<body class="mainbody">
+</div>
+<!--导航栏-->
+<div class="location">
+    <a href="javascript:history.back(-1);" class="back"><i class="iconfont icon-up"></i><span>返回上一页</span></a>
+    <a href="{:U('Index/center')}" class="home"><i class="iconfont icon-home"></i><span>首页</span></a>
+    <i class="arrow iconfont icon-arrow-right"></i>
+    <span>结算列表</span>
+</div>
+<!--/导航栏-->
+
+<!--工具栏-->
+<div id="floatHead" class="toolbar-wrap">
+    <div class="toolbar">
+        <div class="box-wrap">
+            <a class="menu-btn"></a>
+            <form action="{:U('Admin/Order/settlement')}" method="post" id="searchForm">
+                <div class="l-list">
+                    <ul class="icon-list">
+                        <li><a class="all" href="javascript:void(0);" onclick="checkAll(this)"><i class="iconfont icon-check"></i><span>全选</span></a></li>
+                        <li><a onclick="ExePostBack('btnDelete','确定要批量结算吗?')" id="btnDelete" class="del" href="javascript:void(0);"><i class="iconfont icon-order"></i><span>结算</span></a></li>
+                    </ul>
+                    <div class="menu-list">
+                        <div class="rule-single-select">
+                            <select name="status" onchange="doPostBack('status')" id="property">
+                              <option value="99" <if condition="$status eq 99">selected="selected"</if>>全部</option>
+                              <option value="3" <if condition="$status eq 3">selected="selected"</if>>正在结算</option>
+                              <option value="6" <if condition="$status eq 6">selected="selected"</if>>结算完成</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="r-list">
+                  <input name="keywords" type="text" id="txtKeywords" class="search-input keyword" placeholder="请输入订单号">
+                    <a id="btnSearch" class="btn-search" onclick="doPostBack('btnSearch');"><i class="iconfont icon-search"></i></a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!--/工具栏-->
+
+<!--列表-->
+<div class="table-container">
+    <form action="{:U('Admin/Order/someSettlement')}" id="orderForm" method="post">
+        <input type="hidden" name="type" id="type" value=""/>
+        <input type="hidden" name="move" id="move" value="">
+        <input type="hidden" name="" value="">
+        <!--文字列表-->
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="ltable">
+            <tr>
+                <th width="6%">选择</th>
+                <th align="left">订单号</th>
+                <th align="left" >订单总额</th>
+                <th align="left">卖家分成</th>
+                <th align="left" >店铺分成</th>
+                <th align="left" >订单状态</th>
+                <th align="center" >完成时间</th>
+                <th align="center" >结算时间</th>
+                <th >操作</th>
+            </tr>
+            <volist name="list['list']" id="vo">
+                <tr class="checkall">
+                    <td align="center" width="6%"><input type="checkbox" name="orderSn[]" value="{$vo.order_sn}"/></td>
+                    <td align="left">{$vo.order_sn}</td>
+                    <td align="left" class="price">￥{$vo.original_price}</td>
+                    <td align="left" class="get-price">￥{$vo.user_money}</td>
+                    <td align="left" class="get-price">￥{$vo.store_money}</td>
+
+
+                    <td align="left">
+                        <if condition="$vo['status'] eq 3 "> 正在结算<else/>结算完成</if>
+                    </td>
+                    <td align="center">{$vo['complete_time']|date="Y-m-d ",###}</td>
+                    <if condition="$vo['status'] eq 6"><td align="center">{$vo['settlement_time']|date="Y-m-d ",###}</td><else /><td align="center">no data!</td></if>
+                    <if condition="$vo['status'] eq 3 "><td align="center"><input type="hidden" name="" value="{$vo.order_sn}"><a href="javascript:;"  class="settlementIcon operate-btn settlement-btn">结算</a></td><else />
+                      <td align="center"><span href="javascript:;" class="operate-btn settlement-btn">结算已完成</span></td>
+                    </if>
+                    <!-- <td><a href="javascript:;" class="operate-btn settlement-btn">结算</a></td> -->
+                </tr>
+            </volist>
+        </table>
+        <!--/文字列表-->
+    </form>
+</div>
+<!--/列表-->
+
+<!--内容底部-->
+<div class="line20"></div>
+<div class="pagelist">
+    <div id="PageContent" class="default">{$list['page']}</div>
+</div>
+<!--/内容底部-->
+
+<script type="text/javascript">
+
+        $("#btnSearch").click(function(){
+            $('#searchForm').submit();
+        })
+
+
+      $(".settlementIcon").click(function(){
+        var order_sn=$(this).prev().val();
+        var fh=$(this);
+          $.ajax({
+            method:'post',
+            dataType:'json',
+            url:"{:U('Admin/Order/addSettlementData')}",
+            data:{order_sn:order_sn},
+            async:false,
+            error:function(request){
+              var info ='服务器有点问题!';
+              //popupa(info);
+            },
+            success:function(data){
+              if (data.status == 1) {
+                alert('结算成功');
+                fh.text("结算已完成");
+                fh.parent().parent().find(".ing").text("结算完成");
+              }else {
+                alert('error');
+              }
+
+            }
+          });
+      })
+</script>
+
+</body>
+</html>

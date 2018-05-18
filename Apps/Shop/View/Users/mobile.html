@@ -1,0 +1,260 @@
+<layout name="user_layout" />
+	<!--vipCenterContent start-->
+      <script type="text/javascript">
+	    $(function(){
+			//初始化表单
+			AjaxInitForm('#mobileForm', '#btnSubmit', 1,"#tUrl");
+		});
+	</script>
+	<div id="vipCenterContent" class="user-center">
+		<div class="w1200">
+		    <div class="left-menu-list fl" id="leftMenu">
+				<include file="Public/user_menu"/>
+			</div>
+			<div class="right-show fr">
+			      <div class="u-tab-head">
+			        <p>
+			          <a href="{:U('Shop/Users/contact',array('type'=>'email'))}">更换邮箱</a>
+			          <a class="selected" href="{:U('Shop/Users/contact',array('type'=>'mobile'))}">更换手机</a>
+			        </p>
+			      </div>
+			      <div class="u-tab-content">
+			        <div class="title-div">
+			          <strong>更换手机</strong>
+			        </div>
+				        <form url="{:U('Shop/Users/mobile')}" id="mobileForm" name="mobileForm">
+				        <div class="form-box">
+				          <dl>
+				            <dt>已绑定手机号：</dt>
+				            <dd>{$info['mobile']}</dd>
+				          </dl>
+							<dl>
+								<dt>验证码：</dt>
+								<dd>
+									<img class="code-img" id="code_img" onclick="this.src='{:U('Shop/Code/verify')}?r='+Math.random();" src="{:U('Shop/Code/verify')}" alt="图片验证码" />
+									<input type="text" name="vcode" id="vcode" dataType="*" maxlength="4" placeholder="请输入验证码" class="input" />
+								</dd>
+							</dl>
+				          <dl>
+				            <dt>解绑验证类型：</dt>
+				            <dd>
+				            	<select name="data[codeType]" id="codeType" class="select" datatype="*" sucmsg=" " style="float:left;">
+				            	    <option value="1">手机</option>
+				            		<if condition="$info['email'] neq ''"><option value="0">邮箱</option>
+										<input type="hidden" name="data[old_email]" value="{$info['email']}">
+									</if>
+				            	</select>
+				            	<input type="button" class="bBtn" id="sendBtn" value="发送解绑验证码" />
+				            </dd>
+				          </dl>
+				          <dl>
+				            <dt>解绑验证码：</dt>
+				            <dd>
+				              <input name="data[sendCode]" id="txtSendCode" type="text" class="input txt small" style="float:left;" datatype="*" maxlength="6"  nullmsg="请输入解绑码" errormsg="解绑码不能为空" sucmsg=" " />
+				            </dd>
+				          </dl>
+				          <dl>
+				            <dt>新手机：</dt>
+				            <dd>
+				              <input name="data[new]" id="txtSend" type="text" class="input txt" style="float:left" datatype="*"  ajaxurl="{:U('Shop/Login/checkMobile')}" nullmsg="请输入新的手机号码" errormsg="手机号码不能为空" sucmsg=" " />
+				              <input type="button" class="bBtn"  id="sendBtn1" value="获取绑定验证码" onclick="sendType('Mobile')" style="margin-top: -3px;"/>
+								<input type="hidden" name="data[old_mobile]" value="{$info.mobile}">
+				            </dd>
+				          </dl>
+				          <dl>
+				            <dt>绑定验证码：</dt>
+				            <dd>
+				              <input name="data[bindCode]" id="txtBindCode" type="text" class="input txt small" style="float:left;" datatype="*" maxlength="6" nullmsg="请输入绑定验证码" errormsg="绑定验证码不能为空" sucmsg=" " />
+				            </dd>
+				          </dl>
+				          <dl>
+				            <dt></dt>
+				            <dd>
+				              <input name="btnSubmit" id="btnSubmit" type="submit" class="btn btn-success" value="确认修改" />
+				              <input type="hidden" id="tUrl" name="tUrl" value="{:U('Shop/Users/mobile')}" />
+				            </dd>
+				          </dl>
+				        </div>
+				        </form>
+			      </div>
+			      <!--/修改资料-->
+			</div>
+		</div>
+	</div>
+	<!--end vipCenterContent-->
+	<div class="clear"></div>
+	<script type="text/javascript">
+	//点击弹出发送短信验证码
+	<if condition="$info['mobile'] neq ''">
+        $("#sendBtn").click(function(){
+            var vcode=$("#vcode").val();
+            var codeType=$("#codeType").val();
+            if(!$(this).hasClass("disabled")&&vcode!=""){
+                if(codeType==1){
+                    var mobile = "{$info.mobile}";
+                    sendSmsCode(mobile,0);
+				}else{
+                    var email ="{$info.email}";
+                    sendEmailCode(email);
+				}
+
+            }else{
+                var d = dialog({content:"请输入验证码！"}).show();
+                setTimeout(function () {
+                    d.close().remove();
+                }, 1000);
+			}
+        })
+
+
+		function sendType(type){
+			var vcode=$("#vcode").val();
+			var value = $("#txtSend").val()
+			if(!$(this).hasClass("disabled")&&vcode!=""&&value!=""){
+			    if(type=="Mobile"){
+                    sendSmsCode(value,1);
+				}else{
+                    sendEmailCode(value);
+				}
+			}else{
+                if(type=="Mobile"){
+                    var d = dialog({content:"验证码或手机号不可为空！"}).show();
+                }else{
+                    var d = dialog({content:"验证码或邮箱不可为空！"}).show();
+                }
+				setTimeout(function () {
+					d.close().remove();
+				}, 1000);
+			}
+		}
+
+		function sendSmsCode(mobile,codeType){
+			var type   = 'bind';
+			var vcode  = $("#vcode").val();
+			if(mobile!=""){
+				$.ajax({
+					type: 'POST',
+	     			url: "{:U('Shop/Ajax/checkMobile')}" ,
+					data: 'param='+mobile,
+					dataType: 'json',
+					success: function(data) {
+			          if(codeType == 0){
+			              if(data.status =="n"){
+                              sendMobileCode(mobile,type,vcode,codeType);
+						  }else{
+                              var d = dialog({content:"该手机号未注册！"}).show();
+                              setTimeout(function () {
+                                  d.close().remove();
+                              }, 1000);
+						  }
+			         	}else{
+                          if(data.status =="y"){
+                              sendMobileCode(mobile,type,vcode,codeType);
+                          }else{
+                              var d = dialog({content:"该手机号已被绑定！"}).show();
+                              setTimeout(function () {
+                                  d.close().remove();
+                              }, 1000);
+                          }
+					  }
+			        }
+				})
+			}
+		}
+
+		function sendMobileCode(mobile,type,vcode,codeType){
+            $.ajax({
+                type: 'POST',
+                url: "{:U('Shop/Ajax/sendSms')}" ,
+                data: {
+                    'mobile':mobile,
+					'type':type,
+					'vcode':vcode
+				},
+                dataType: 'json',
+                success: function(data) {
+                    if(data.status==1){
+                        if(codeType==1){
+                            var btnObj = "#sendBtn1";
+                            var btnObjTxt = "获取绑定验证码";
+                        }else{
+                            var btnObj = "#sendBtn";
+                            var btnObjTxt = "发送解绑验证码";
+                        }
+                        setCountDowntime(btnObj,btnObjTxt);
+					}
+					var d = dialog({
+						width: 450,
+						height: 130,
+						title: '手机验证码',
+						lock: true,
+						backdropOpacity:0.4,
+						content:data.info,
+						onclose: function (){
+
+						}
+					}).showModal();
+					d.addEventListener('cancelBtn', function(){
+						d.close()
+					});
+                }
+            })
+
+		}
+
+
+		</if>
+		//点击发送邮箱验证码
+		function sendEmailCode(email){
+			var email = email;
+            var vcode  = $("#vcode").val();
+			if(email!=""){
+				$.ajax({
+					type: 'POST',
+	     			url: "{:U('Shop/Ajax/sendEmailVerify')}",
+					data: {
+					    email:email,
+						type:3,
+						vcode:vcode
+					},
+					dataType: 'json',
+					success: function(data) {
+			          var d = dialog({content:data.info}).show();
+			          setTimeout(function () {
+					  d.close().remove();
+					  }, 1500); 
+			        }
+				})
+			}
+		}
+
+    /**
+     *验证码倒计时
+     *@param  countdown    倒计时设置时间
+     *@param  obj          点击按钮
+     *@param  objValue     按钮显示文本
+     * */
+    var countdown=120;
+    function setCountDowntime(obj,objValue) {
+        var ob = obj;
+        if (countdown == 0) {
+            $(ob).removeClass("disabled");
+            $(ob).removeAttr("disabled");
+            if(objValue!=""){
+                $(ob).val("发送解绑验证码");
+            }else{
+                $(ob).val(objValue);
+            }
+            countdown = 120;
+            return;
+        } else {
+            $(ob).addClass("disabled");
+            $(ob).attr("disabled", true);
+            $(ob).val("重新发送(" + countdown + ")");
+            countdown--;
+        }
+        setTimeout(function() {
+            setCountDowntime(obj,objValue)
+        },1000)
+    }
+	</script>

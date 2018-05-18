@@ -1,0 +1,22 @@
+<div class="h-top">
+    <div class="w1200">
+        <div class="fr clearfix">
+            <empty name="Think.session.shop.id">
+                <a href="{:U('Shop/Login/index')}" class="m">登录</a>
+                <a href="{:U('Shop/Login/register')}" class="m">注册</a>
+                <else/>
+                <a href="{:U('Shop/UserOrder/orderlist')}">我的订单</a>
+                <span class="line">/</span>
+                <a href="{:U('Shop/Users/index')}">个人中心<span class="pointer"></span></a>
+            </empty>
+            <span class="line">/</span>
+            <a href="{:U('Shop/Cart/index')}">购物车</a>
+            <span class="line">/</span>
+            <a href="javascript:;">客服服务<span class="pointer"></span></a>
+            <span class="line">/</span>
+            <a href="{:U('Mobile/Index/index')}">手机逛3好</a>
+            <span class="line">/</span>
+            <a href="javascript:;">更多<span class="pointer"></span></a>
+        </div>
+    </div>
+</div>

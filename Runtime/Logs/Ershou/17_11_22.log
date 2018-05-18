@@ -1,0 +1,1081 @@
+[ 2017-11-22T16:03:54+08:00 ] ::1 /somegood/Ershou/goods/detail
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [2048] Declaration of Common\Model\RegionModel::add() should be compatible with Think\Model::add($data = '', $options = Array, $replace = false) D:\xampps\htdocs\somegood\Apps\Common\Model\RegionModel.class.php 第 5 行.
+NOTIC: [2048] Declaration of Common\Model\RegionModel::save() should be compatible with Think\Model::save($data = '', $options = Array) D:\xampps\htdocs\somegood\Apps\Common\Model\RegionModel.class.php 第 5 行.
+SQL: SHOW COLUMNS FROM `sg_region` [ RunTime:0.0070s ]
+SQL: SHOW COLUMNS FROM `sg_region` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `sg_region` WHERE `name` = '深圳' LIMIT 1   [ RunTime:0.0040s ]
+NOTIC: [2048] Declaration of Common\Model\ShGoodsModel::add() should be compatible with Think\Model::add($data = '', $options = Array, $replace = false) D:\xampps\htdocs\somegood\Apps\Common\Model\ShGoodsModel.class.php 第 204 行.
+SQL: SHOW COLUMNS FROM `sg_sh_goods` [ RunTime:0.0470s ]
+NOTIC: [8] Undefined index: HTTP_REFERER D:\xampps\htdocs\somegood\Apps\Ershou\Controller\GoodsController.class.php 第 174 行.
+SQL: SHOW COLUMNS FROM `sg_sh_goods` [ RunTime:0.0150s ]
+SQL: SHOW COLUMNS FROM `sg_order_goods` [ RunTime:0.0390s ]
+SQL: SELECT g.*,gc.title AS category_name,u.uid,u.user_name,u.avatar,u.nick_name,u.mobile,r.pid,r.name AS area_name,r.merger_name AS region,IFNULL(t.totalSaleCount,0) as sale_counts FROM sg_sh_goods g LEFT JOIN sg_goods_category AS gc ON g.category_id = gc.id LEFT JOIN sg_users AS u ON g.user_id = u.uid LEFT JOIN sg_region AS r ON g.area_id = r.id LEFT JOIN ( SELECT o.store_id,SUM(o.counts) as totalSaleCount FROM sg_order_goods o GROUP BY o.store_id  ) as t on u.uid=t.store_id   WHERE g.id = 0 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT COUNT(*) AS tp_count FROM sg_sh_goods g WHERE g.status = 1 AND `user_id` = null LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_sh_goods` [ RunTime:0.0030s ]
+SQL: UPDATE `sg_sh_goods` SET `browse_num`=browse_num+3 WHERE `id` = 0 [ RunTime:0.0010s ]
+NOTIC: [8] Undefined index: original_img D:\xampps\htdocs\somegood\Apps\Ershou\Controller\GoodsController.class.php 第 188 行.
+NOTIC: [8] Undefined index: user_id D:\xampps\htdocs\somegood\Apps\Ershou\Controller\GoodsController.class.php 第 194 行.
+NOTIC: [8] Undefined index: user_id D:\xampps\htdocs\somegood\Apps\Ershou\Controller\GoodsController.class.php 第 195 行.
+NOTIC: [8] Undefined index: goods_title D:\xampps\htdocs\somegood\Apps\Ershou\Controller\GoodsController.class.php 第 204 行.
+NOTIC: [2] unserialize() expects parameter 1 to be string, array given D:\xampps\htdocs\somegood\Apps\Ershou\Controller\GoodsController.class.php 第 206 行.
+NOTIC: [2] unserialize() expects parameter 1 to be string, array given D:\xampps\htdocs\somegood\Apps\Ershou\Controller\GoodsController.class.php 第 207 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: goods_title D:\xampps\htdocs\somegood\Runtime\Cache\Ershou\55f3097c1428ad91d94f61a862ddf204.php 第 37 行.
+NOTIC: [8] Undefined index: id D:\xampps\htdocs\somegood\Runtime\Cache\Ershou\55f3097c1428ad91d94f61a862ddf204.php 第 38 行.
+NOTIC: [8] Undefined index: goods_price D:\xampps\htdocs\somegood\Runtime\Cache\Ershou\55f3097c1428ad91d94f61a862ddf204.php 第 42 行.
+NOTIC: [8] Undefined index: goods_num D:\xampps\htdocs\somegood\Runtime\Cache\Ershou\55f3097c1428ad91d94f61a862ddf204.php 第 43 行.
+NOTIC: [8] Undefined index: browse_num D:\xampps\htdocs\somegood\Runtime\Cache\Ershou\55f3097c1428ad91d94f61a862ddf204.php 第 44 行.
+NOTIC: [8] Undefined index: lng D:\xampps\htdocs\somegood\Runtime\Cache\Ershou\55f3097c1428ad91d94f61a862ddf204.php 第 49 行.
+NOTIC: [8] Undefined index: lat D:\xampps\htdocs\somegood\Runtime\Cache\Ershou\55f3097c1428ad91d94f61a862ddf204.php 第 49 行.
+NOTIC: [8] Undefined index: goods_desc D:\xampps\htdocs\somegood\Runtime\Cache\Ershou\55f3097c1428ad91d94f61a862ddf204.php 第 60 行.
+NOTIC: [8] Undefined variable: remarkList D:\xampps\htdocs\somegood\Runtime\Cache\Ershou\55f3097c1428ad91d94f61a862ddf204.php 第 62 行.
+NOTIC: [8] Undefined index: user_id D:\xampps\htdocs\somegood\Runtime\Cache\Ershou\55f3097c1428ad91d94f61a862ddf204.php 第 82 行.
+NOTIC: [8] Undefined index: nick_name D:\xampps\htdocs\somegood\Runtime\Cache\Ershou\55f3097c1428ad91d94f61a862ddf204.php 第 83 行.
+NOTIC: [8] Undefined index: nick_name D:\xampps\htdocs\somegood\Runtime\Cache\Ershou\55f3097c1428ad91d94f61a862ddf204.php 第 85 行.
+NOTIC: [8] Undefined index: sale_counts D:\xampps\htdocs\somegood\Runtime\Cache\Ershou\55f3097c1428ad91d94f61a862ddf204.php 第 96 行.
+NOTIC: [8] Undefined index: store_status D:\xampps\htdocs\somegood\Runtime\Cache\Ershou\55f3097c1428ad91d94f61a862ddf204.php 第 100 行.
+NOTIC: [8] Undefined index: user_id D:\xampps\htdocs\somegood\Runtime\Cache\Ershou\55f3097c1428ad91d94f61a862ddf204.php 第 109 行.
+NOTIC: [8] Undefined index: goods_num D:\xampps\htdocs\somegood\Runtime\Cache\Ershou\55f3097c1428ad91d94f61a862ddf204.php 第 135 行.
+NOTIC: [8] Undefined index: goods_num D:\xampps\htdocs\somegood\Runtime\Cache\Ershou\55f3097c1428ad91d94f61a862ddf204.php 第 135 行.
+NOTIC: [8] Use of undefined constant id - assumed 'id' D:\xampps\htdocs\somegood\Runtime\Cache\Ershou\55f3097c1428ad91d94f61a862ddf204.php 第 138 行.
+NOTIC: [8] Undefined index: id D:\xampps\htdocs\somegood\Runtime\Cache\Ershou\55f3097c1428ad91d94f61a862ddf204.php 第 138 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.026002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.026002s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-11-22T16:03:57+08:00 ] ::1 /somegood/Ershou/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+NOTIC: [2048] Declaration of Common\Model\RegionModel::add() should be compatible with Think\Model::add($data = '', $options = Array, $replace = false) D:\xampps\htdocs\somegood\Apps\Common\Model\RegionModel.class.php 第 5 行.
+NOTIC: [2048] Declaration of Common\Model\RegionModel::save() should be compatible with Think\Model::save($data = '', $options = Array) D:\xampps\htdocs\somegood\Apps\Common\Model\RegionModel.class.php 第 5 行.
+SQL: SHOW COLUMNS FROM `sg_region` [ RunTime:0.0070s ]
+SQL: SHOW COLUMNS FROM `sg_region` [ RunTime:0.0060s ]
+SQL: SELECT * FROM `sg_region` WHERE `name` = '深圳' LIMIT 1   [ RunTime:0.0050s ]
+SQL: SHOW COLUMNS FROM `sg_adv` [ RunTime:0.0340s ]
+SQL: SHOW COLUMNS FROM `sg_adv` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `sg_adv` ORDER BY sort_num ASC,id DESC LIMIT 4   [ RunTime:0.0140s ]
+SQL: SHOW COLUMNS FROM `sg_keywords` [ RunTime:0.0800s ]
+SQL: SELECT * FROM `sg_keywords` ORDER BY count DESC LIMIT 0,4   [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `sg_goods_category` [ RunTime:0.0060s ]
+SQL: SHOW COLUMNS FROM `sg_goods_category` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `sg_goods_category` WHERE `is_index` = 1 AND `is_sh` = 1 ORDER BY sort_num,id desc  LIMIT 8   [ RunTime:0.0160s ]
+SQL: SHOW COLUMNS FROM `sg_region` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `sg_region` WHERE `pid` = 1988  [ RunTime:0.0040s ]
+SQL: SELECT * FROM `sg_region` WHERE `pid` = 1989  [ RunTime:0.0040s ]
+SQL: SELECT * FROM `sg_region` WHERE `pid` = 1990  [ RunTime:0.0040s ]
+SQL: SELECT * FROM `sg_region` WHERE `pid` = 1991  [ RunTime:0.0040s ]
+SQL: SELECT * FROM `sg_region` WHERE `pid` = 1992  [ RunTime:0.0040s ]
+SQL: SELECT * FROM `sg_region` WHERE `pid` = 1993  [ RunTime:0.0040s ]
+SQL: SELECT * FROM `sg_region` WHERE `pid` = 1994  [ RunTime:0.0040s ]
+SQL: SELECT * FROM `sg_region` WHERE `pid` = 1995  [ RunTime:0.0050s ]
+SQL: SELECT * FROM `sg_region` WHERE `pid` = 1996  [ RunTime:0.0040s ]
+SQL: SELECT * FROM `sg_region` WHERE `pid` = 1997  [ RunTime:0.0040s ]
+SQL: SELECT * FROM `sg_region` WHERE `pid` = 1998  [ RunTime:0.0040s ]
+SQL: SELECT * FROM `sg_region` WHERE `name` = '深圳市' LIMIT 1   [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `sg_want` [ RunTime:0.0290s ]
+SQL: SELECT * FROM `sg_want` WHERE `w_overtime` > 1511337837 AND `status` = 1 AND `w_region` IN ('1989','1990','1991','1992','1993','1994','1995','1996','1997','1998','') AND `w_id` > 0 LIMIT 10   [ RunTime:0.0040s ]
+NOTIC: [2048] Declaration of Common\Model\UsersModel::save() should be compatible with Think\Model::save($data = '', $options = Array) D:\xampps\htdocs\somegood\Apps\Common\Model\UsersModel.class.php 第 216 行.
+SQL: SHOW COLUMNS FROM `sg_users` [ RunTime:0.0080s ]
+SQL: SELECT `nick_name`,`mobile` FROM `sg_users` WHERE ( 1=1 AND uid='820' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_goods_category` [ RunTime:0.0070s ]
+SQL: SELECT `title` FROM `sg_goods_category` WHERE ( 1=1 AND id='8' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT `merger_name`,`pid`,`name` FROM `sg_region` WHERE ( 1=1 AND id='1991' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT `nick_name`,`mobile` FROM `sg_users` WHERE ( 1=1 AND uid='820' ) LIMIT 1   [ RunTime:0.0020s ]
+SQL: SELECT `title` FROM `sg_goods_category` WHERE ( 1=1 AND id='8' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT `merger_name`,`pid`,`name` FROM `sg_region` WHERE ( 1=1 AND id='1991' ) LIMIT 1   [ RunTime:0.0020s ]
+SQL: SELECT `nick_name`,`mobile` FROM `sg_users` WHERE ( 1=1 AND uid='820' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT `title` FROM `sg_goods_category` WHERE ( 1=1 AND id='8' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT `merger_name`,`pid`,`name` FROM `sg_region` WHERE ( 1=1 AND id='1991' ) LIMIT 1   [ RunTime:0.0020s ]
+SQL: SELECT `nick_name`,`mobile` FROM `sg_users` WHERE ( 1=1 AND uid='820' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT `title` FROM `sg_goods_category` WHERE ( 1=1 AND id='8' ) LIMIT 1   [ RunTime:0.0020s ]
+SQL: SELECT `merger_name`,`pid`,`name` FROM `sg_region` WHERE ( 1=1 AND id='1991' ) LIMIT 1   [ RunTime:0.0020s ]
+SQL: SELECT `nick_name`,`mobile` FROM `sg_users` WHERE ( 1=1 AND uid='820' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT `title` FROM `sg_goods_category` WHERE ( 1=1 AND id='8' ) LIMIT 1   [ RunTime:0.0020s ]
+SQL: SELECT `merger_name`,`pid`,`name` FROM `sg_region` WHERE ( 1=1 AND id='1991' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT `nick_name`,`mobile` FROM `sg_users` WHERE ( 1=1 AND uid='820' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT `title` FROM `sg_goods_category` WHERE ( 1=1 AND id='8' ) LIMIT 1   [ RunTime:0.0020s ]
+SQL: SELECT `merger_name`,`pid`,`name` FROM `sg_region` WHERE ( 1=1 AND id='1991' ) LIMIT 1   [ RunTime:0.0010s ]
+NOTIC: [2048] Declaration of Common\Model\ShGoodsModel::add() should be compatible with Think\Model::add($data = '', $options = Array, $replace = false) D:\xampps\htdocs\somegood\Apps\Common\Model\ShGoodsModel.class.php 第 204 行.
+SQL: SHOW COLUMNS FROM `sg_sh_goods` [ RunTime:0.0060s ]
+SQL: SHOW COLUMNS FROM `sg_sh_goods` [ RunTime:0.0060s ]
+SQL: SELECT g.*,gc.id AS catid,gc.title AS category_name,u.nick_name,u.avatar FROM sg_sh_goods g LEFT JOIN sg_goods_category AS gc ON g.category_id = gc.id LEFT JOIN sg_users AS u ON g.user_id = u.uid  WHERE `is_rec` = 1 AND g.status = 1 AND g.area_id IN ('1989','1990','1991','1992','1993','1994','1995','1996','1997','1998','') ORDER BY ACOS(SIN((22.598102 * 3.1415) / 180 ) *SIN((g.lat * 3.1415) / 180 ) + COS((22.598102 * 3.1415) / 180 ) 
+                        * COS((g.lat * 3.1415) / 180 ) *COS((114.000709* 3.1415) / 180 - (g.lng * 3.1415) / 180 ) ) * 6380 asc LIMIT 10   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined variable: keywords D:\xampps\htdocs\somegood\Runtime\Cache\Ershou\030c5bb84feae27f35f7f3a4e5d3272b.php 第 46 行.
+NOTIC: [8] Undefined variable: hotKeywords D:\xampps\htdocs\somegood\Runtime\Cache\Ershou\030c5bb84feae27f35f7f3a4e5d3272b.php 第 102 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.056003s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.056003s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.002000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-11-22T16:05:43+08:00 ] ::1 /somegood/Ershou/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [2048] Declaration of Common\Model\RegionModel::add() should be compatible with Think\Model::add($data = '', $options = Array, $replace = false) D:\xampps\htdocs\somegood\Apps\Common\Model\RegionModel.class.php 第 5 行.
+NOTIC: [2048] Declaration of Common\Model\RegionModel::save() should be compatible with Think\Model::save($data = '', $options = Array) D:\xampps\htdocs\somegood\Apps\Common\Model\RegionModel.class.php 第 5 行.
+SQL: SHOW COLUMNS FROM `sg_region` [ RunTime:0.0040s ]
+SQL: SHOW COLUMNS FROM `sg_region` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_region` WHERE `name` = '深圳' LIMIT 1   [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `sg_goods_category` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `sg_goods_category` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_goods_category` WHERE `is_index` = 1 AND `is_sh` = 1 ORDER BY sort_num,id desc  LIMIT 8   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_region` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_region` WHERE `pid` = 1988  [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_region` WHERE `pid` = 1989  [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_region` WHERE `pid` = 1990  [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_region` WHERE `pid` = 1991  [ RunTime:0.0020s ]
+SQL: SELECT * FROM `sg_region` WHERE `pid` = 1992  [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_region` WHERE `pid` = 1993  [ RunTime:0.0020s ]
+SQL: SELECT * FROM `sg_region` WHERE `pid` = 1994  [ RunTime:0.0040s ]
+SQL: SELECT * FROM `sg_region` WHERE `pid` = 1995  [ RunTime:0.0020s ]
+SQL: SELECT * FROM `sg_region` WHERE `pid` = 1996  [ RunTime:0.0020s ]
+SQL: SELECT * FROM `sg_region` WHERE `pid` = 1997  [ RunTime:0.0020s ]
+SQL: SELECT * FROM `sg_region` WHERE `pid` = 1998  [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_region` WHERE `name` = '深圳市' LIMIT 1   [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `sg_want` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_want` WHERE `w_overtime` > 1511337943 AND `status` = 1 AND `w_region` IN ('1989','1990','1991','1992','1993','1994','1995','1996','1997','1998','') AND `w_id` > 0 LIMIT 10   [ RunTime:0.0020s ]
+NOTIC: [2048] Declaration of Common\Model\UsersModel::save() should be compatible with Think\Model::save($data = '', $options = Array) D:\xampps\htdocs\somegood\Apps\Common\Model\UsersModel.class.php 第 216 行.
+SQL: SHOW COLUMNS FROM `sg_users` [ RunTime:0.0020s ]
+SQL: SELECT `nick_name`,`mobile` FROM `sg_users` WHERE ( 1=1 AND uid='820' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_goods_category` [ RunTime:0.0030s ]
+SQL: SELECT `title` FROM `sg_goods_category` WHERE ( 1=1 AND id='8' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT `merger_name`,`pid`,`name` FROM `sg_region` WHERE ( 1=1 AND id='1991' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT `nick_name`,`mobile` FROM `sg_users` WHERE ( 1=1 AND uid='820' ) LIMIT 1   [ RunTime:0.0020s ]
+SQL: SELECT `title` FROM `sg_goods_category` WHERE ( 1=1 AND id='8' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT `merger_name`,`pid`,`name` FROM `sg_region` WHERE ( 1=1 AND id='1991' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT `nick_name`,`mobile` FROM `sg_users` WHERE ( 1=1 AND uid='820' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT `title` FROM `sg_goods_category` WHERE ( 1=1 AND id='8' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT `merger_name`,`pid`,`name` FROM `sg_region` WHERE ( 1=1 AND id='1991' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT `nick_name`,`mobile` FROM `sg_users` WHERE ( 1=1 AND uid='820' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT `title` FROM `sg_goods_category` WHERE ( 1=1 AND id='8' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT `merger_name`,`pid`,`name` FROM `sg_region` WHERE ( 1=1 AND id='1991' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT `nick_name`,`mobile` FROM `sg_users` WHERE ( 1=1 AND uid='820' ) LIMIT 1   [ RunTime:0.0040s ]
+SQL: SELECT `title` FROM `sg_goods_category` WHERE ( 1=1 AND id='8' ) LIMIT 1   [ RunTime:0.0020s ]
+SQL: SELECT `merger_name`,`pid`,`name` FROM `sg_region` WHERE ( 1=1 AND id='1991' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT `nick_name`,`mobile` FROM `sg_users` WHERE ( 1=1 AND uid='820' ) LIMIT 1   [ RunTime:0.0020s ]
+SQL: SELECT `title` FROM `sg_goods_category` WHERE ( 1=1 AND id='8' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT `merger_name`,`pid`,`name` FROM `sg_region` WHERE ( 1=1 AND id='1991' ) LIMIT 1   [ RunTime:0.0000s ]
+NOTIC: [2048] Declaration of Common\Model\ShGoodsModel::add() should be compatible with Think\Model::add($data = '', $options = Array, $replace = false) D:\xampps\htdocs\somegood\Apps\Common\Model\ShGoodsModel.class.php 第 204 行.
+SQL: SHOW COLUMNS FROM `sg_sh_goods` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `sg_sh_goods` [ RunTime:0.0020s ]
+SQL: SELECT g.*,gc.id AS catid,gc.title AS category_name,u.nick_name,u.avatar FROM sg_sh_goods g LEFT JOIN sg_goods_category AS gc ON g.category_id = gc.id LEFT JOIN sg_users AS u ON g.user_id = u.uid  WHERE `is_rec` = 1 AND g.status = 1 AND g.area_id IN ('1989','1990','1991','1992','1993','1994','1995','1996','1997','1998','') ORDER BY ACOS(SIN((22.598102 * 3.1415) / 180 ) *SIN((g.lat * 3.1415) / 180 ) + COS((22.598102 * 3.1415) / 180 ) 
+                        * COS((g.lat * 3.1415) / 180 ) *COS((114.000709* 3.1415) / 180 - (g.lng * 3.1415) / 180 ) ) * 6380 asc LIMIT 10   [ RunTime:0.0020s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined variable: keywords D:\xampps\htdocs\somegood\Runtime\Cache\Ershou\030c5bb84feae27f35f7f3a4e5d3272b.php 第 46 行.
+NOTIC: [8] Undefined variable: hotKeywords D:\xampps\htdocs\somegood\Runtime\Cache\Ershou\030c5bb84feae27f35f7f3a4e5d3272b.php 第 102 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.013000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.013000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-11-22T16:06:28+08:00 ] ::1 /somegood/Ershou/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [2048] Declaration of Common\Model\RegionModel::add() should be compatible with Think\Model::add($data = '', $options = Array, $replace = false) D:\xampps\htdocs\somegood\Apps\Common\Model\RegionModel.class.php 第 5 行.
+NOTIC: [2048] Declaration of Common\Model\RegionModel::save() should be compatible with Think\Model::save($data = '', $options = Array) D:\xampps\htdocs\somegood\Apps\Common\Model\RegionModel.class.php 第 5 行.
+SQL: SHOW COLUMNS FROM `sg_region` [ RunTime:0.0060s ]
+SQL: SHOW COLUMNS FROM `sg_region` [ RunTime:0.0060s ]
+SQL: SELECT * FROM `sg_region` WHERE `name` = '深圳' LIMIT 1   [ RunTime:0.0050s ]
+SQL: SHOW COLUMNS FROM `sg_goods_category` [ RunTime:0.0060s ]
+SQL: SHOW COLUMNS FROM `sg_goods_category` [ RunTime:0.0060s ]
+SQL: SELECT * FROM `sg_goods_category` WHERE `is_index` = 1 AND `is_sh` = 1 ORDER BY sort_num,id desc  LIMIT 8   [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `sg_region` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_region` WHERE `pid` = 1988  [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_region` WHERE `pid` = 1989  [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_region` WHERE `pid` = 1990  [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_region` WHERE `pid` = 1991  [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_region` WHERE `pid` = 1992  [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_region` WHERE `pid` = 1993  [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_region` WHERE `pid` = 1994  [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_region` WHERE `pid` = 1995  [ RunTime:0.0040s ]
+SQL: SELECT * FROM `sg_region` WHERE `pid` = 1996  [ RunTime:0.0020s ]
+SQL: SELECT * FROM `sg_region` WHERE `pid` = 1997  [ RunTime:0.0020s ]
+SQL: SELECT * FROM `sg_region` WHERE `pid` = 1998  [ RunTime:0.0020s ]
+SQL: SELECT * FROM `sg_region` WHERE `name` = '深圳市' LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_want` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_want` WHERE `w_overtime` > 1511337988 AND `status` = 1 AND `w_region` IN ('1989','1990','1991','1992','1993','1994','1995','1996','1997','1998','') AND `w_id` > 0 LIMIT 10   [ RunTime:0.0010s ]
+NOTIC: [2048] Declaration of Common\Model\UsersModel::save() should be compatible with Think\Model::save($data = '', $options = Array) D:\xampps\htdocs\somegood\Apps\Common\Model\UsersModel.class.php 第 216 行.
+SQL: SHOW COLUMNS FROM `sg_users` [ RunTime:0.0030s ]
+SQL: SELECT `nick_name`,`mobile` FROM `sg_users` WHERE ( 1=1 AND uid='820' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_goods_category` [ RunTime:0.0020s ]
+SQL: SELECT `title` FROM `sg_goods_category` WHERE ( 1=1 AND id='8' ) LIMIT 1   [ RunTime:0.0020s ]
+SQL: SELECT `merger_name`,`pid`,`name` FROM `sg_region` WHERE ( 1=1 AND id='1991' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT `nick_name`,`mobile` FROM `sg_users` WHERE ( 1=1 AND uid='820' ) LIMIT 1   [ RunTime:0.0020s ]
+SQL: SELECT `title` FROM `sg_goods_category` WHERE ( 1=1 AND id='8' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT `merger_name`,`pid`,`name` FROM `sg_region` WHERE ( 1=1 AND id='1991' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT `nick_name`,`mobile` FROM `sg_users` WHERE ( 1=1 AND uid='820' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT `title` FROM `sg_goods_category` WHERE ( 1=1 AND id='8' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT `merger_name`,`pid`,`name` FROM `sg_region` WHERE ( 1=1 AND id='1991' ) LIMIT 1   [ RunTime:0.0020s ]
+SQL: SELECT `nick_name`,`mobile` FROM `sg_users` WHERE ( 1=1 AND uid='820' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT `title` FROM `sg_goods_category` WHERE ( 1=1 AND id='8' ) LIMIT 1   [ RunTime:0.0020s ]
+SQL: SELECT `merger_name`,`pid`,`name` FROM `sg_region` WHERE ( 1=1 AND id='1991' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT `nick_name`,`mobile` FROM `sg_users` WHERE ( 1=1 AND uid='820' ) LIMIT 1   [ RunTime:0.0020s ]
+SQL: SELECT `title` FROM `sg_goods_category` WHERE ( 1=1 AND id='8' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT `merger_name`,`pid`,`name` FROM `sg_region` WHERE ( 1=1 AND id='1991' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT `nick_name`,`mobile` FROM `sg_users` WHERE ( 1=1 AND uid='820' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT `title` FROM `sg_goods_category` WHERE ( 1=1 AND id='8' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT `merger_name`,`pid`,`name` FROM `sg_region` WHERE ( 1=1 AND id='1991' ) LIMIT 1   [ RunTime:0.0020s ]
+NOTIC: [2048] Declaration of Common\Model\ShGoodsModel::add() should be compatible with Think\Model::add($data = '', $options = Array, $replace = false) D:\xampps\htdocs\somegood\Apps\Common\Model\ShGoodsModel.class.php 第 204 行.
+SQL: SHOW COLUMNS FROM `sg_sh_goods` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `sg_sh_goods` [ RunTime:0.0030s ]
+SQL: SELECT g.*,gc.id AS catid,gc.title AS category_name,u.nick_name,u.avatar FROM sg_sh_goods g LEFT JOIN sg_goods_category AS gc ON g.category_id = gc.id LEFT JOIN sg_users AS u ON g.user_id = u.uid  WHERE `is_rec` = 1 AND g.status = 1 AND g.area_id IN ('1989','1990','1991','1992','1993','1994','1995','1996','1997','1998','') ORDER BY ACOS(SIN((22.598102 * 3.1415) / 180 ) *SIN((g.lat * 3.1415) / 180 ) + COS((22.598102 * 3.1415) / 180 ) 
+                        * COS((g.lat * 3.1415) / 180 ) *COS((114.000709* 3.1415) / 180 - (g.lng * 3.1415) / 180 ) ) * 6380 asc LIMIT 10   [ RunTime:0.0020s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: keywords D:\xampps\htdocs\somegood\Runtime\Cache\Ershou\030c5bb84feae27f35f7f3a4e5d3272b.php 第 46 行.
+NOTIC: [8] Undefined variable: hotKeywords D:\xampps\htdocs\somegood\Runtime\Cache\Ershou\030c5bb84feae27f35f7f3a4e5d3272b.php 第 102 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.025002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.025002s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-11-22T16:06:29+08:00 ] ::1 /somegood/Ershou/Want/detail.html?id=6
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [2048] Declaration of Common\Model\RegionModel::add() should be compatible with Think\Model::add($data = '', $options = Array, $replace = false) D:\xampps\htdocs\somegood\Apps\Common\Model\RegionModel.class.php 第 5 行.
+NOTIC: [2048] Declaration of Common\Model\RegionModel::save() should be compatible with Think\Model::save($data = '', $options = Array) D:\xampps\htdocs\somegood\Apps\Common\Model\RegionModel.class.php 第 5 行.
+SQL: SHOW COLUMNS FROM `sg_region` [ RunTime:0.0080s ]
+SQL: SHOW COLUMNS FROM `sg_region` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `sg_region` WHERE `name` = '深圳' LIMIT 1   [ RunTime:0.0060s ]
+SQL: SHOW COLUMNS FROM `sg_want` [ RunTime:0.0060s ]
+SQL: UPDATE `sg_want` SET `browser_num`=browser_num+1 WHERE `w_id` = 6 [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `sg_want` [ RunTime:0.0060s ]
+SQL: SELECT * FROM `sg_want` WHERE `w_id` = 6 LIMIT 1   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.014001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.014001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-11-22T16:06:30+08:00 ] ::1 /somegood/Ershou/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [2048] Declaration of Common\Model\RegionModel::add() should be compatible with Think\Model::add($data = '', $options = Array, $replace = false) D:\xampps\htdocs\somegood\Apps\Common\Model\RegionModel.class.php 第 5 行.
+NOTIC: [2048] Declaration of Common\Model\RegionModel::save() should be compatible with Think\Model::save($data = '', $options = Array) D:\xampps\htdocs\somegood\Apps\Common\Model\RegionModel.class.php 第 5 行.
+SQL: SHOW COLUMNS FROM `sg_region` [ RunTime:0.0060s ]
+SQL: SHOW COLUMNS FROM `sg_region` [ RunTime:0.0060s ]
+SQL: SELECT * FROM `sg_region` WHERE `name` = '深圳' LIMIT 1   [ RunTime:0.0080s ]
+SQL: SHOW COLUMNS FROM `sg_goods_category` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `sg_goods_category` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `sg_goods_category` WHERE `is_index` = 1 AND `is_sh` = 1 ORDER BY sort_num,id desc  LIMIT 8   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_region` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_region` WHERE `pid` = 1988  [ RunTime:0.0090s ]
+SQL: SELECT * FROM `sg_region` WHERE `pid` = 1989  [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_region` WHERE `pid` = 1990  [ RunTime:0.0020s ]
+SQL: SELECT * FROM `sg_region` WHERE `pid` = 1991  [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_region` WHERE `pid` = 1992  [ RunTime:0.0020s ]
+SQL: SELECT * FROM `sg_region` WHERE `pid` = 1993  [ RunTime:0.0020s ]
+SQL: SELECT * FROM `sg_region` WHERE `pid` = 1994  [ RunTime:0.0020s ]
+SQL: SELECT * FROM `sg_region` WHERE `pid` = 1995  [ RunTime:0.0020s ]
+SQL: SELECT * FROM `sg_region` WHERE `pid` = 1996  [ RunTime:0.0020s ]
+SQL: SELECT * FROM `sg_region` WHERE `pid` = 1997  [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_region` WHERE `pid` = 1998  [ RunTime:0.0020s ]
+SQL: SELECT * FROM `sg_region` WHERE `name` = '深圳市' LIMIT 1   [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `sg_want` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `sg_want` WHERE `w_overtime` > 1511337990 AND `status` = 1 AND `w_region` IN ('1989','1990','1991','1992','1993','1994','1995','1996','1997','1998','') AND `w_id` > 0 LIMIT 10   [ RunTime:0.0030s ]
+NOTIC: [2048] Declaration of Common\Model\UsersModel::save() should be compatible with Think\Model::save($data = '', $options = Array) D:\xampps\htdocs\somegood\Apps\Common\Model\UsersModel.class.php 第 216 行.
+SQL: SHOW COLUMNS FROM `sg_users` [ RunTime:0.0040s ]
+SQL: SELECT `nick_name`,`mobile` FROM `sg_users` WHERE ( 1=1 AND uid='820' ) LIMIT 1   [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `sg_goods_category` [ RunTime:0.0030s ]
+SQL: SELECT `title` FROM `sg_goods_category` WHERE ( 1=1 AND id='8' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT `merger_name`,`pid`,`name` FROM `sg_region` WHERE ( 1=1 AND id='1991' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT `nick_name`,`mobile` FROM `sg_users` WHERE ( 1=1 AND uid='820' ) LIMIT 1   [ RunTime:0.0020s ]
+SQL: SELECT `title` FROM `sg_goods_category` WHERE ( 1=1 AND id='8' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT `merger_name`,`pid`,`name` FROM `sg_region` WHERE ( 1=1 AND id='1991' ) LIMIT 1   [ RunTime:0.0020s ]
+SQL: SELECT `nick_name`,`mobile` FROM `sg_users` WHERE ( 1=1 AND uid='820' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT `title` FROM `sg_goods_category` WHERE ( 1=1 AND id='8' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT `merger_name`,`pid`,`name` FROM `sg_region` WHERE ( 1=1 AND id='1991' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT `nick_name`,`mobile` FROM `sg_users` WHERE ( 1=1 AND uid='820' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT `title` FROM `sg_goods_category` WHERE ( 1=1 AND id='8' ) LIMIT 1   [ RunTime:0.0020s ]
+SQL: SELECT `merger_name`,`pid`,`name` FROM `sg_region` WHERE ( 1=1 AND id='1991' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT `nick_name`,`mobile` FROM `sg_users` WHERE ( 1=1 AND uid='820' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT `title` FROM `sg_goods_category` WHERE ( 1=1 AND id='8' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT `merger_name`,`pid`,`name` FROM `sg_region` WHERE ( 1=1 AND id='1991' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT `nick_name`,`mobile` FROM `sg_users` WHERE ( 1=1 AND uid='820' ) LIMIT 1   [ RunTime:0.0020s ]
+SQL: SELECT `title` FROM `sg_goods_category` WHERE ( 1=1 AND id='8' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT `merger_name`,`pid`,`name` FROM `sg_region` WHERE ( 1=1 AND id='1991' ) LIMIT 1   [ RunTime:0.0020s ]
+NOTIC: [2048] Declaration of Common\Model\ShGoodsModel::add() should be compatible with Think\Model::add($data = '', $options = Array, $replace = false) D:\xampps\htdocs\somegood\Apps\Common\Model\ShGoodsModel.class.php 第 204 行.
+SQL: SHOW COLUMNS FROM `sg_sh_goods` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `sg_sh_goods` [ RunTime:0.0060s ]
+SQL: SELECT g.*,gc.id AS catid,gc.title AS category_name,u.nick_name,u.avatar FROM sg_sh_goods g LEFT JOIN sg_goods_category AS gc ON g.category_id = gc.id LEFT JOIN sg_users AS u ON g.user_id = u.uid  WHERE `is_rec` = 1 AND g.status = 1 AND g.area_id IN ('1989','1990','1991','1992','1993','1994','1995','1996','1997','1998','') ORDER BY ACOS(SIN((22.598102 * 3.1415) / 180 ) *SIN((g.lat * 3.1415) / 180 ) + COS((22.598102 * 3.1415) / 180 ) 
+                        * COS((g.lat * 3.1415) / 180 ) *COS((114.000709* 3.1415) / 180 - (g.lng * 3.1415) / 180 ) ) * 6380 asc LIMIT 10   [ RunTime:0.0020s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: keywords D:\xampps\htdocs\somegood\Runtime\Cache\Ershou\030c5bb84feae27f35f7f3a4e5d3272b.php 第 46 行.
+NOTIC: [8] Undefined variable: hotKeywords D:\xampps\htdocs\somegood\Runtime\Cache\Ershou\030c5bb84feae27f35f7f3a4e5d3272b.php 第 102 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.023002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.023002s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.002000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-11-22T16:06:39+08:00 ] ::1 /somegood/Ershou/Goods/category.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [2048] Declaration of Common\Model\RegionModel::add() should be compatible with Think\Model::add($data = '', $options = Array, $replace = false) D:\xampps\htdocs\somegood\Apps\Common\Model\RegionModel.class.php 第 5 行.
+NOTIC: [2048] Declaration of Common\Model\RegionModel::save() should be compatible with Think\Model::save($data = '', $options = Array) D:\xampps\htdocs\somegood\Apps\Common\Model\RegionModel.class.php 第 5 行.
+SQL: SHOW COLUMNS FROM `sg_region` [ RunTime:0.0200s ]
+SQL: SHOW COLUMNS FROM `sg_region` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `sg_region` WHERE `name` = '深圳' LIMIT 1   [ RunTime:0.0050s ]
+SQL: SHOW COLUMNS FROM `sg_goods_category` [ RunTime:0.0060s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined variable: catId D:\xampps\htdocs\somegood\Runtime\Cache\Ershou\f38acac42f2ace6792b9e129e304a906.php 第 32 行.
+NOTIC: [8] Undefined variable: catId D:\xampps\htdocs\somegood\Runtime\Cache\Ershou\f38acac42f2ace6792b9e129e304a906.php 第 32 行.
+NOTIC: [8] Undefined variable: catId D:\xampps\htdocs\somegood\Runtime\Cache\Ershou\f38acac42f2ace6792b9e129e304a906.php 第 32 行.
+NOTIC: [8] Undefined variable: catId D:\xampps\htdocs\somegood\Runtime\Cache\Ershou\f38acac42f2ace6792b9e129e304a906.php 第 32 行.
+NOTIC: [8] Undefined variable: catId D:\xampps\htdocs\somegood\Runtime\Cache\Ershou\f38acac42f2ace6792b9e129e304a906.php 第 32 行.
+NOTIC: [8] Undefined variable: catId D:\xampps\htdocs\somegood\Runtime\Cache\Ershou\f38acac42f2ace6792b9e129e304a906.php 第 32 行.
+NOTIC: [8] Undefined variable: catId D:\xampps\htdocs\somegood\Runtime\Cache\Ershou\f38acac42f2ace6792b9e129e304a906.php 第 32 行.
+NOTIC: [8] Undefined variable: catId D:\xampps\htdocs\somegood\Runtime\Cache\Ershou\f38acac42f2ace6792b9e129e304a906.php 第 32 行.
+NOTIC: [8] Undefined variable: catId D:\xampps\htdocs\somegood\Runtime\Cache\Ershou\f38acac42f2ace6792b9e129e304a906.php 第 32 行.
+NOTIC: [8] Undefined variable: catId D:\xampps\htdocs\somegood\Runtime\Cache\Ershou\f38acac42f2ace6792b9e129e304a906.php 第 32 行.
+NOTIC: [8] Undefined variable: catId D:\xampps\htdocs\somegood\Runtime\Cache\Ershou\f38acac42f2ace6792b9e129e304a906.php 第 32 行.
+NOTIC: [8] Undefined variable: catId D:\xampps\htdocs\somegood\Runtime\Cache\Ershou\f38acac42f2ace6792b9e129e304a906.php 第 32 行.
+NOTIC: [8] Undefined variable: catId D:\xampps\htdocs\somegood\Runtime\Cache\Ershou\f38acac42f2ace6792b9e129e304a906.php 第 32 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.027002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.027002s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-11-22T16:06:40+08:00 ] ::1 /somegood/Ershou/Goods/list.html?catid=1
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [2048] Declaration of Common\Model\RegionModel::add() should be compatible with Think\Model::add($data = '', $options = Array, $replace = false) D:\xampps\htdocs\somegood\Apps\Common\Model\RegionModel.class.php 第 5 行.
+NOTIC: [2048] Declaration of Common\Model\RegionModel::save() should be compatible with Think\Model::save($data = '', $options = Array) D:\xampps\htdocs\somegood\Apps\Common\Model\RegionModel.class.php 第 5 行.
+SQL: SHOW COLUMNS FROM `sg_region` [ RunTime:0.0070s ]
+SQL: SHOW COLUMNS FROM `sg_region` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_region` WHERE `name` = '深圳' LIMIT 1   [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `sg_goods_category` [ RunTime:0.0040s ]
+SQL: SHOW COLUMNS FROM `sg_goods_category` [ RunTime:0.0040s ]
+SQL: SELECT `id` FROM `sg_goods_category` WHERE `class_list` LIKE '%,1,%'  [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_region` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_region` WHERE `name` = '深圳市' LIMIT 1   [ RunTime:0.0020s ]
+NOTIC: [2048] Declaration of Common\Model\ShGoodsModel::add() should be compatible with Think\Model::add($data = '', $options = Array, $replace = false) D:\xampps\htdocs\somegood\Apps\Common\Model\ShGoodsModel.class.php 第 204 行.
+SQL: SHOW COLUMNS FROM `sg_sh_goods` [ RunTime:0.0040s ]
+SQL: SHOW COLUMNS FROM `sg_sh_goods` [ RunTime:0.0040s ]
+SQL: SELECT COUNT(*) AS tp_count FROM sg_sh_goods g LEFT JOIN sg_goods_category AS gc ON g.category_id = gc.id LEFT JOIN sg_users AS u ON g.user_id = u.uid  WHERE `category_id` IN ('1','13','16','17','46','49','50','51','52','53','54','55') AND g.status = 1 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT g.*,gc.id AS catid,gc.title AS category_name,u.nick_name,u.avatar FROM sg_sh_goods g LEFT JOIN sg_goods_category AS gc ON g.category_id = gc.id LEFT JOIN sg_users AS u ON g.user_id = u.uid  WHERE `category_id` IN ('1','13','16','17','46','49','50','51','52','53','54','55') AND g.status = 1 ORDER BY ACOS(SIN((22.598102 * 3.1415) / 180 ) *SIN((g.lat * 3.1415) / 180 ) + COS((22.598102 * 3.1415) / 180 )
+                              * COS((g.lat * 3.1415) / 180 ) *COS((114.000709* 3.1415) / 180 - (g.lng * 3.1415) / 180 ) ) * 6380 asc LIMIT 0,10   [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_goods_category` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `sg_region` WHERE ( pid=1988 )  [ RunTime:0.0040s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: hotKeywords D:\xampps\htdocs\somegood\Runtime\Cache\Ershou\26c979883919660a68d953908d654b74.php 第 103 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.037002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.037002s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-11-22T16:06:40+08:00 ] ::1 /somegood/Ershou/Goods/category.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [2048] Declaration of Common\Model\RegionModel::add() should be compatible with Think\Model::add($data = '', $options = Array, $replace = false) D:\xampps\htdocs\somegood\Apps\Common\Model\RegionModel.class.php 第 5 行.
+NOTIC: [2048] Declaration of Common\Model\RegionModel::save() should be compatible with Think\Model::save($data = '', $options = Array) D:\xampps\htdocs\somegood\Apps\Common\Model\RegionModel.class.php 第 5 行.
+SQL: SHOW COLUMNS FROM `sg_region` [ RunTime:0.0070s ]
+SQL: SHOW COLUMNS FROM `sg_region` [ RunTime:0.0060s ]
+SQL: SELECT * FROM `sg_region` WHERE `name` = '深圳' LIMIT 1   [ RunTime:0.0050s ]
+
+[ 2017-11-22T16:06:41+08:00 ] ::1 /somegood/Ershou/Goods/detail/id/2.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [2048] Declaration of Common\Model\RegionModel::add() should be compatible with Think\Model::add($data = '', $options = Array, $replace = false) D:\xampps\htdocs\somegood\Apps\Common\Model\RegionModel.class.php 第 5 行.
+NOTIC: [2048] Declaration of Common\Model\RegionModel::save() should be compatible with Think\Model::save($data = '', $options = Array) D:\xampps\htdocs\somegood\Apps\Common\Model\RegionModel.class.php 第 5 行.
+SQL: SHOW COLUMNS FROM `sg_region` [ RunTime:0.0070s ]
+SQL: SHOW COLUMNS FROM `sg_region` [ RunTime:0.0150s ]
+SQL: SELECT * FROM `sg_region` WHERE `name` = '深圳' LIMIT 1   [ RunTime:0.0140s ]
+NOTIC: [2048] Declaration of Common\Model\ShGoodsModel::add() should be compatible with Think\Model::add($data = '', $options = Array, $replace = false) D:\xampps\htdocs\somegood\Apps\Common\Model\ShGoodsModel.class.php 第 204 行.
+SQL: SHOW COLUMNS FROM `sg_sh_goods` [ RunTime:0.0160s ]
+SQL: SHOW COLUMNS FROM `sg_sh_goods` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `sg_order_goods` [ RunTime:0.0020s ]
+SQL: SELECT g.*,gc.title AS category_name,u.uid,u.user_name,u.avatar,u.nick_name,u.mobile,r.pid,r.name AS area_name,r.merger_name AS region,IFNULL(t.totalSaleCount,0) as sale_counts FROM sg_sh_goods g LEFT JOIN sg_goods_category AS gc ON g.category_id = gc.id LEFT JOIN sg_users AS u ON g.user_id = u.uid LEFT JOIN sg_region AS r ON g.area_id = r.id LEFT JOIN ( SELECT o.store_id,SUM(o.counts) as totalSaleCount FROM sg_order_goods o GROUP BY o.store_id  ) as t on u.uid=t.store_id   WHERE g.id = '2' LIMIT 1   [ RunTime:0.0020s ]
+SQL: SELECT COUNT(*) AS tp_count FROM sg_sh_goods g WHERE g.status = 1 AND `user_id` = 820 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_sh_goods` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `sg_favorites` [ RunTime:0.0050s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `sg_favorites` WHERE `fuser_id` = 843 AND `favorite_id` = 2 AND `favorite_type` = 1 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT g.*,gc.id AS catid,gc.title AS category_name,u.nick_name,u.avatar FROM sg_sh_goods g LEFT JOIN sg_goods_category AS gc ON g.category_id = gc.id LEFT JOIN sg_users AS u ON g.user_id = u.uid  WHERE g.is_rec = 1 AND g.status = 1 AND g.user_id = '820' ORDER BY g.update_time desc, g.id desc LIMIT 10   [ RunTime:0.0020s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined variable: remarkList D:\xampps\htdocs\somegood\Runtime\Cache\Ershou\55f3097c1428ad91d94f61a862ddf204.php 第 62 行.
+NOTIC: [8] Undefined variable: remarkList D:\xampps\htdocs\somegood\Runtime\Cache\Ershou\55f3097c1428ad91d94f61a862ddf204.php 第 62 行.
+NOTIC: [8] Undefined variable: remarkList D:\xampps\htdocs\somegood\Runtime\Cache\Ershou\55f3097c1428ad91d94f61a862ddf204.php 第 62 行.
+NOTIC: [8] Undefined index: store_status D:\xampps\htdocs\somegood\Runtime\Cache\Ershou\55f3097c1428ad91d94f61a862ddf204.php 第 100 行.
+NOTIC: [8] Use of undefined constant id - assumed 'id' D:\xampps\htdocs\somegood\Runtime\Cache\Ershou\55f3097c1428ad91d94f61a862ddf204.php 第 138 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.018002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.018002s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-11-22T16:06:42+08:00 ] ::1 /somegood/Ershou/Order/confirmOrder.html?id=2
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [2048] Declaration of Common\Model\ShGoodsModel::add() should be compatible with Think\Model::add($data = '', $options = Array, $replace = false) D:\xampps\htdocs\somegood\Apps\Common\Model\ShGoodsModel.class.php 第 6 行.
+SQL: SHOW COLUMNS FROM `sg_sh_goods` [ RunTime:0.0050s ]
+SQL: SHOW COLUMNS FROM `sg_sh_goods` [ RunTime:0.0040s ]
+SQL: SELECT g.id,g.user_id,g.goods_title,g.goods_price,g.logistics_price,g.goods_num,g.goods_thumb,g.status,u.mobile,u.nick_name,u.avatar FROM sg_sh_goods g LEFT JOIN sg_users AS u ON g.user_id = u.uid  WHERE g.id = '2' LIMIT 1   [ RunTime:0.0100s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `sg_users_address` [ RunTime:0.0020s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `sg_users_address` WHERE ( user_id=843 ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_users_address` [ RunTime:0.0020s ]
+SQL: SELECT ua.*,r.id,r.name as rname,o.name as oname,i.name as iname FROM sg_users_address ua LEFT JOIN sg_region AS r ON ua.district = r.id LEFT JOIN sg_region AS o ON ua.city = o.id LEFT JOIN sg_region AS i ON ua.province = i.id  WHERE `is_default` = 1 AND `user_id` = '843' LIMIT 1   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Use of undefined constant consignee - assumed 'consignee' D:\xampps\htdocs\somegood\Runtime\Cache\Ershou\0d0ddd7733e1bcdbaa5c39039502a3b0.php 第 31 行.
+NOTIC: [8] Use of undefined constant mobile - assumed 'mobile' D:\xampps\htdocs\somegood\Runtime\Cache\Ershou\0d0ddd7733e1bcdbaa5c39039502a3b0.php 第 32 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.018001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.018001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-11-22T16:06:48+08:00 ] ::1 /somegood/Ershou/Order/submitOrder.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [2048] Declaration of Common\Model\ShGoodsModel::add() should be compatible with Think\Model::add($data = '', $options = Array, $replace = false) D:\xampps\htdocs\somegood\Apps\Common\Model\ShGoodsModel.class.php 第 6 行.
+SQL: SHOW COLUMNS FROM `sg_sh_goods` [ RunTime:0.0050s ]
+SQL: SHOW COLUMNS FROM `sg_sh_goods` [ RunTime:0.0040s ]
+SQL: SELECT g.id,g.user_id,g.goods_title,g.goods_price,g.logistics_price,g.goods_num,g.goods_thumb,g.status,u.mobile,u.nick_name,u.avatar FROM sg_sh_goods g LEFT JOIN sg_users AS u ON g.user_id = u.uid  WHERE g.id = '2' LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_users_address` [ RunTime:0.0040s ]
+SQL: SHOW COLUMNS FROM `sg_users_address` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `sg_users_address` WHERE `user_id` = 843 AND `address_id` = 182 LIMIT 1   [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0050s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0060s ]
+SQL: INSERT INTO `sg_order` (`order_sn`,`money`,`address_id`,`delivery_way`,`status`,`add_time`,`pay_type`,`seller_id`,`original_price`,`uid`,`coupon_id`,`share_bill`,`is_son`,`is_used`,`parent_order_sn`) VALUES ('201711229667718286','11.00','182','1','0','1511338008','1','820','11.00','843','0','0','2','1','201711229667718286') [ RunTime:0.0230s ]
+SQL: SHOW COLUMNS FROM `sg_order_goods` [ RunTime:0.0050s ]
+SQL: INSERT INTO `sg_order_goods` (`order_sn`,`goods_id`,`goods_title`,`goods_thumb`,`goods_price`,`store_id`,`is_used_goods`,`counts`) VALUES ('201711229667718286','2','标题','20171108/5a0270e924417.jpg','11','0','1','1') [ RunTime:0.0090s ]
+SQL: SHOW COLUMNS FROM `sg_order_logistics` [ RunTime:0.0040s ]
+SQL: INSERT INTO `sg_order_logistics` (`order_sn`,`pay_money`,`type`) VALUES ('201711229667718286','0.00','0') [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_sh_goods` [ RunTime:0.0040s ]
+SQL: SELECT `goods_num` FROM `sg_sh_goods` WHERE `id` = 2 LIMIT 1   [ RunTime:0.0010s ]
+SQL: UPDATE `sg_sh_goods` SET `goods_num`=goods_num-1 WHERE `id` = 2 [ RunTime:0.0010s ]
+
+[ 2017-11-22T16:12:55+08:00 ] ::1 /somegood/Ershou/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [2048] Declaration of Common\Model\RegionModel::add() should be compatible with Think\Model::add($data = '', $options = Array, $replace = false) D:\xampps\htdocs\somegood\Apps\Common\Model\RegionModel.class.php 第 5 行.
+NOTIC: [2048] Declaration of Common\Model\RegionModel::save() should be compatible with Think\Model::save($data = '', $options = Array) D:\xampps\htdocs\somegood\Apps\Common\Model\RegionModel.class.php 第 5 行.
+SQL: SHOW COLUMNS FROM `sg_region` [ RunTime:0.0080s ]
+SQL: SHOW COLUMNS FROM `sg_region` [ RunTime:0.0060s ]
+SQL: SELECT * FROM `sg_region` WHERE `name` = '深圳' LIMIT 1   [ RunTime:0.0050s ]
+SQL: SHOW COLUMNS FROM `sg_keywords` [ RunTime:0.0060s ]
+SQL: SELECT * FROM `sg_keywords` ORDER BY count DESC LIMIT 0,4   [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `sg_goods_category` [ RunTime:0.0050s ]
+SQL: SHOW COLUMNS FROM `sg_goods_category` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_goods_category` WHERE `is_index` = 1 AND `is_sh` = 1 ORDER BY sort_num,id desc  LIMIT 8   [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `sg_region` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_region` WHERE `pid` = 1988  [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_region` WHERE `pid` = 1989  [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_region` WHERE `pid` = 1990  [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_region` WHERE `pid` = 1991  [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_region` WHERE `pid` = 1992  [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_region` WHERE `pid` = 1993  [ RunTime:0.0020s ]
+SQL: SELECT * FROM `sg_region` WHERE `pid` = 1994  [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_region` WHERE `pid` = 1995  [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_region` WHERE `pid` = 1996  [ RunTime:0.0020s ]
+SQL: SELECT * FROM `sg_region` WHERE `pid` = 1997  [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_region` WHERE `pid` = 1998  [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_region` WHERE `name` = '深圳市' LIMIT 1   [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `sg_want` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_want` WHERE `w_overtime` > 1511338375 AND `status` = 1 AND `w_region` IN ('1989','1990','1991','1992','1993','1994','1995','1996','1997','1998','') AND `w_id` > 0 LIMIT 10   [ RunTime:0.0010s ]
+NOTIC: [2048] Declaration of Common\Model\UsersModel::save() should be compatible with Think\Model::save($data = '', $options = Array) D:\xampps\htdocs\somegood\Apps\Common\Model\UsersModel.class.php 第 216 行.
+SQL: SHOW COLUMNS FROM `sg_users` [ RunTime:0.0030s ]
+SQL: SELECT `nick_name`,`mobile` FROM `sg_users` WHERE ( 1=1 AND uid='820' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_goods_category` [ RunTime:0.0040s ]
+SQL: SELECT `title` FROM `sg_goods_category` WHERE ( 1=1 AND id='8' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT `merger_name`,`pid`,`name` FROM `sg_region` WHERE ( 1=1 AND id='1991' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT `nick_name`,`mobile` FROM `sg_users` WHERE ( 1=1 AND uid='820' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT `title` FROM `sg_goods_category` WHERE ( 1=1 AND id='8' ) LIMIT 1   [ RunTime:0.0020s ]
+SQL: SELECT `merger_name`,`pid`,`name` FROM `sg_region` WHERE ( 1=1 AND id='1991' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT `nick_name`,`mobile` FROM `sg_users` WHERE ( 1=1 AND uid='820' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT `title` FROM `sg_goods_category` WHERE ( 1=1 AND id='8' ) LIMIT 1   [ RunTime:0.0020s ]
+SQL: SELECT `merger_name`,`pid`,`name` FROM `sg_region` WHERE ( 1=1 AND id='1991' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT `nick_name`,`mobile` FROM `sg_users` WHERE ( 1=1 AND uid='820' ) LIMIT 1   [ RunTime:0.0020s ]
+SQL: SELECT `title` FROM `sg_goods_category` WHERE ( 1=1 AND id='8' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT `merger_name`,`pid`,`name` FROM `sg_region` WHERE ( 1=1 AND id='1991' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT `nick_name`,`mobile` FROM `sg_users` WHERE ( 1=1 AND uid='820' ) LIMIT 1   [ RunTime:0.0020s ]
+SQL: SELECT `title` FROM `sg_goods_category` WHERE ( 1=1 AND id='8' ) LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT `merger_name`,`pid`,`name` FROM `sg_region` WHERE ( 1=1 AND id='1991' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT `nick_name`,`mobile` FROM `sg_users` WHERE ( 1=1 AND uid='820' ) LIMIT 1   [ RunTime:0.0020s ]
+SQL: SELECT `title` FROM `sg_goods_category` WHERE ( 1=1 AND id='8' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT `merger_name`,`pid`,`name` FROM `sg_region` WHERE ( 1=1 AND id='1991' ) LIMIT 1   [ RunTime:0.0020s ]
+NOTIC: [2048] Declaration of Common\Model\ShGoodsModel::add() should be compatible with Think\Model::add($data = '', $options = Array, $replace = false) D:\xampps\htdocs\somegood\Apps\Common\Model\ShGoodsModel.class.php 第 204 行.
+SQL: SHOW COLUMNS FROM `sg_sh_goods` [ RunTime:0.0040s ]
+SQL: SHOW COLUMNS FROM `sg_sh_goods` [ RunTime:0.0030s ]
+SQL: SELECT g.*,gc.id AS catid,gc.title AS category_name,u.nick_name,u.avatar FROM sg_sh_goods g LEFT JOIN sg_goods_category AS gc ON g.category_id = gc.id LEFT JOIN sg_users AS u ON g.user_id = u.uid  WHERE `is_rec` = 1 AND g.status = 1 AND g.area_id IN ('1989','1990','1991','1992','1993','1994','1995','1996','1997','1998','') ORDER BY ACOS(SIN((22.598102 * 3.1415) / 180 ) *SIN((g.lat * 3.1415) / 180 ) + COS((22.598102 * 3.1415) / 180 ) 
+                        * COS((g.lat * 3.1415) / 180 ) *COS((114.000709* 3.1415) / 180 - (g.lng * 3.1415) / 180 ) ) * 6380 asc LIMIT 10   [ RunTime:0.0020s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined variable: keywords D:\xampps\htdocs\somegood\Runtime\Cache\Ershou\030c5bb84feae27f35f7f3a4e5d3272b.php 第 46 行.
+NOTIC: [8] Undefined variable: hotKeywords D:\xampps\htdocs\somegood\Runtime\Cache\Ershou\030c5bb84feae27f35f7f3a4e5d3272b.php 第 102 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.027001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.027001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.001001s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002001s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-11-22T16:12:57+08:00 ] ::1 /somegood/Ershou/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [2048] Declaration of Common\Model\RegionModel::add() should be compatible with Think\Model::add($data = '', $options = Array, $replace = false) D:\xampps\htdocs\somegood\Apps\Common\Model\RegionModel.class.php 第 5 行.
+NOTIC: [2048] Declaration of Common\Model\RegionModel::save() should be compatible with Think\Model::save($data = '', $options = Array) D:\xampps\htdocs\somegood\Apps\Common\Model\RegionModel.class.php 第 5 行.
+SQL: SHOW COLUMNS FROM `sg_region` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `sg_region` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `sg_region` WHERE `name` = '深圳' LIMIT 1   [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `sg_goods_category` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `sg_goods_category` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_goods_category` WHERE `is_index` = 1 AND `is_sh` = 1 ORDER BY sort_num,id desc  LIMIT 8   [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `sg_region` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_region` WHERE `pid` = 1988  [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_region` WHERE `pid` = 1989  [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_region` WHERE `pid` = 1990  [ RunTime:0.0020s ]
+SQL: SELECT * FROM `sg_region` WHERE `pid` = 1991  [ RunTime:0.0010s ]
+SQL: SELECT * FROM `sg_region` WHERE `pid` = 1992  [ RunTime:0.0020s ]
+SQL: SELECT * FROM `sg_region` WHERE `pid` = 1993  [ RunTime:0.0020s ]
+SQL: SELECT * FROM `sg_region` WHERE `pid` = 1994  [ RunTime:0.0020s ]
+SQL: SELECT * FROM `sg_region` WHERE `pid` = 1995  [ RunTime:0.0020s ]
+SQL: SELECT * FROM `sg_region` WHERE `pid` = 1996  [ RunTime:0.0020s ]
+SQL: SELECT * FROM `sg_region` WHERE `pid` = 1997  [ RunTime:0.0020s ]
+SQL: SELECT * FROM `sg_region` WHERE `pid` = 1998  [ RunTime:0.0020s ]
+SQL: SELECT * FROM `sg_region` WHERE `name` = '深圳市' LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_want` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_want` WHERE `w_overtime` > 1511338377 AND `status` = 1 AND `w_region` IN ('1989','1990','1991','1992','1993','1994','1995','1996','1997','1998','') AND `w_id` > 0 LIMIT 10   [ RunTime:0.0010s ]
+NOTIC: [2048] Declaration of Common\Model\UsersModel::save() should be compatible with Think\Model::save($data = '', $options = Array) D:\xampps\htdocs\somegood\Apps\Common\Model\UsersModel.class.php 第 216 行.
+SQL: SHOW COLUMNS FROM `sg_users` [ RunTime:0.0030s ]
+SQL: SELECT `nick_name`,`mobile` FROM `sg_users` WHERE ( 1=1 AND uid='820' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_goods_category` [ RunTime:0.0020s ]
+SQL: SELECT `title` FROM `sg_goods_category` WHERE ( 1=1 AND id='8' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT `merger_name`,`pid`,`name` FROM `sg_region` WHERE ( 1=1 AND id='1991' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT `nick_name`,`mobile` FROM `sg_users` WHERE ( 1=1 AND uid='820' ) LIMIT 1   [ RunTime:0.0020s ]
+SQL: SELECT `title` FROM `sg_goods_category` WHERE ( 1=1 AND id='8' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT `merger_name`,`pid`,`name` FROM `sg_region` WHERE ( 1=1 AND id='1991' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT `nick_name`,`mobile` FROM `sg_users` WHERE ( 1=1 AND uid='820' ) LIMIT 1   [ RunTime:0.0020s ]
+SQL: SELECT `title` FROM `sg_goods_category` WHERE ( 1=1 AND id='8' ) LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT `merger_name`,`pid`,`name` FROM `sg_region` WHERE ( 1=1 AND id='1991' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT `nick_name`,`mobile` FROM `sg_users` WHERE ( 1=1 AND uid='820' ) LIMIT 1   [ RunTime:0.0020s ]
+SQL: SELECT `title` FROM `sg_goods_category` WHERE ( 1=1 AND id='8' ) LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT `merger_name`,`pid`,`name` FROM `sg_region` WHERE ( 1=1 AND id='1991' ) LIMIT 1   [ RunTime:0.0020s ]
+SQL: SELECT `nick_name`,`mobile` FROM `sg_users` WHERE ( 1=1 AND uid='820' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT `title` FROM `sg_goods_category` WHERE ( 1=1 AND id='8' ) LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT `merger_name`,`pid`,`name` FROM `sg_region` WHERE ( 1=1 AND id='1991' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT `nick_name`,`mobile` FROM `sg_users` WHERE ( 1=1 AND uid='820' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT `title` FROM `sg_goods_category` WHERE ( 1=1 AND id='8' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT `merger_name`,`pid`,`name` FROM `sg_region` WHERE ( 1=1 AND id='1991' ) LIMIT 1   [ RunTime:0.0010s ]
+NOTIC: [2048] Declaration of Common\Model\ShGoodsModel::add() should be compatible with Think\Model::add($data = '', $options = Array, $replace = false) D:\xampps\htdocs\somegood\Apps\Common\Model\ShGoodsModel.class.php 第 204 行.
+SQL: SHOW COLUMNS FROM `sg_sh_goods` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `sg_sh_goods` [ RunTime:0.0030s ]
+SQL: SELECT g.*,gc.id AS catid,gc.title AS category_name,u.nick_name,u.avatar FROM sg_sh_goods g LEFT JOIN sg_goods_category AS gc ON g.category_id = gc.id LEFT JOIN sg_users AS u ON g.user_id = u.uid  WHERE `is_rec` = 1 AND g.status = 1 AND g.area_id IN ('1989','1990','1991','1992','1993','1994','1995','1996','1997','1998','') ORDER BY ACOS(SIN((22.598102 * 3.1415) / 180 ) *SIN((g.lat * 3.1415) / 180 ) + COS((22.598102 * 3.1415) / 180 ) 
+                        * COS((g.lat * 3.1415) / 180 ) *COS((114.000709* 3.1415) / 180 - (g.lng * 3.1415) / 180 ) ) * 6380 asc LIMIT 10   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: keywords D:\xampps\htdocs\somegood\Runtime\Cache\Ershou\030c5bb84feae27f35f7f3a4e5d3272b.php 第 46 行.
+NOTIC: [8] Undefined variable: hotKeywords D:\xampps\htdocs\somegood\Runtime\Cache\Ershou\030c5bb84feae27f35f7f3a4e5d3272b.php 第 102 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.015001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-11-22T16:26:56+08:00 ] ::1 /somegood/Ershou/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [2048] Declaration of Common\Model\RegionModel::add() should be compatible with Think\Model::add($data = '', $options = Array, $replace = false) D:\xampps\htdocs\somegood\Apps\Common\Model\RegionModel.class.php 第 5 行.
+NOTIC: [2048] Declaration of Common\Model\RegionModel::save() should be compatible with Think\Model::save($data = '', $options = Array) D:\xampps\htdocs\somegood\Apps\Common\Model\RegionModel.class.php 第 5 行.
+SQL: SHOW COLUMNS FROM `sg_region` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `sg_region` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `sg_region` WHERE `name` = '深圳' LIMIT 1   [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `sg_keywords` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_keywords` ORDER BY count DESC LIMIT 0,4   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_goods_category` [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `sg_goods_category` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `sg_goods_category` WHERE `is_index` = 1 AND `is_sh` = 1 ORDER BY sort_num,id desc  LIMIT 8   [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `sg_region` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_region` WHERE `pid` = 1988  [ RunTime:0.0020s ]
+SQL: SELECT * FROM `sg_region` WHERE `pid` = 1989  [ RunTime:0.0020s ]
+SQL: SELECT * FROM `sg_region` WHERE `pid` = 1990  [ RunTime:0.0020s ]
+SQL: SELECT * FROM `sg_region` WHERE `pid` = 1991  [ RunTime:0.0020s ]
+SQL: SELECT * FROM `sg_region` WHERE `pid` = 1992  [ RunTime:0.0020s ]
+SQL: SELECT * FROM `sg_region` WHERE `pid` = 1993  [ RunTime:0.0010s ]
+SQL: SELECT * FROM `sg_region` WHERE `pid` = 1994  [ RunTime:0.0010s ]
+SQL: SELECT * FROM `sg_region` WHERE `pid` = 1995  [ RunTime:0.0020s ]
+SQL: SELECT * FROM `sg_region` WHERE `pid` = 1996  [ RunTime:0.0020s ]
+SQL: SELECT * FROM `sg_region` WHERE `pid` = 1997  [ RunTime:0.0010s ]
+SQL: SELECT * FROM `sg_region` WHERE `pid` = 1998  [ RunTime:0.0010s ]
+SQL: SELECT * FROM `sg_region` WHERE `name` = '深圳市' LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_want` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_want` WHERE `w_overtime` > 1511339215 AND `status` = 1 AND `w_region` IN ('1989','1990','1991','1992','1993','1994','1995','1996','1997','1998','') AND `w_id` > 0 LIMIT 10   [ RunTime:0.0010s ]
+NOTIC: [2048] Declaration of Common\Model\UsersModel::save() should be compatible with Think\Model::save($data = '', $options = Array) D:\xampps\htdocs\somegood\Apps\Common\Model\UsersModel.class.php 第 216 行.
+SQL: SHOW COLUMNS FROM `sg_users` [ RunTime:0.0030s ]
+SQL: SELECT `nick_name`,`mobile` FROM `sg_users` WHERE ( 1=1 AND uid='820' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_goods_category` [ RunTime:0.0030s ]
+SQL: SELECT `title` FROM `sg_goods_category` WHERE ( 1=1 AND id='8' ) LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT `merger_name`,`pid`,`name` FROM `sg_region` WHERE ( 1=1 AND id='1991' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT `nick_name`,`mobile` FROM `sg_users` WHERE ( 1=1 AND uid='820' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT `title` FROM `sg_goods_category` WHERE ( 1=1 AND id='8' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT `merger_name`,`pid`,`name` FROM `sg_region` WHERE ( 1=1 AND id='1991' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT `nick_name`,`mobile` FROM `sg_users` WHERE ( 1=1 AND uid='820' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT `title` FROM `sg_goods_category` WHERE ( 1=1 AND id='8' ) LIMIT 1   [ RunTime:0.0020s ]
+SQL: SELECT `merger_name`,`pid`,`name` FROM `sg_region` WHERE ( 1=1 AND id='1991' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT `nick_name`,`mobile` FROM `sg_users` WHERE ( 1=1 AND uid='820' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT `title` FROM `sg_goods_category` WHERE ( 1=1 AND id='8' ) LIMIT 1   [ RunTime:0.0020s ]
+SQL: SELECT `merger_name`,`pid`,`name` FROM `sg_region` WHERE ( 1=1 AND id='1991' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT `nick_name`,`mobile` FROM `sg_users` WHERE ( 1=1 AND uid='820' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT `title` FROM `sg_goods_category` WHERE ( 1=1 AND id='8' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT `merger_name`,`pid`,`name` FROM `sg_region` WHERE ( 1=1 AND id='1991' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT `nick_name`,`mobile` FROM `sg_users` WHERE ( 1=1 AND uid='820' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT `title` FROM `sg_goods_category` WHERE ( 1=1 AND id='8' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT `merger_name`,`pid`,`name` FROM `sg_region` WHERE ( 1=1 AND id='1991' ) LIMIT 1   [ RunTime:0.0020s ]
+NOTIC: [2048] Declaration of Common\Model\ShGoodsModel::add() should be compatible with Think\Model::add($data = '', $options = Array, $replace = false) D:\xampps\htdocs\somegood\Apps\Common\Model\ShGoodsModel.class.php 第 204 行.
+SQL: SHOW COLUMNS FROM `sg_sh_goods` [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `sg_sh_goods` [ RunTime:0.0020s ]
+SQL: SELECT g.*,gc.id AS catid,gc.title AS category_name,u.nick_name,u.avatar FROM sg_sh_goods g LEFT JOIN sg_goods_category AS gc ON g.category_id = gc.id LEFT JOIN sg_users AS u ON g.user_id = u.uid  WHERE `is_rec` = 1 AND g.status = 1 AND g.area_id IN ('1989','1990','1991','1992','1993','1994','1995','1996','1997','1998','') ORDER BY ACOS(SIN((22.598102 * 3.1415) / 180 ) *SIN((g.lat * 3.1415) / 180 ) + COS((22.598102 * 3.1415) / 180 ) 
+                        * COS((g.lat * 3.1415) / 180 ) *COS((114.000709* 3.1415) / 180 - (g.lng * 3.1415) / 180 ) ) * 6380 asc LIMIT 10   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined variable: keywords D:\xampps\htdocs\somegood\Runtime\Cache\Ershou\030c5bb84feae27f35f7f3a4e5d3272b.php 第 46 行.
+NOTIC: [8] Undefined variable: hotKeywords D:\xampps\htdocs\somegood\Runtime\Cache\Ershou\030c5bb84feae27f35f7f3a4e5d3272b.php 第 102 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.014001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.014001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-11-22T16:26:58+08:00 ] ::1 /somegood/Ershou/Goods/category.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [2048] Declaration of Common\Model\RegionModel::add() should be compatible with Think\Model::add($data = '', $options = Array, $replace = false) D:\xampps\htdocs\somegood\Apps\Common\Model\RegionModel.class.php 第 5 行.
+NOTIC: [2048] Declaration of Common\Model\RegionModel::save() should be compatible with Think\Model::save($data = '', $options = Array) D:\xampps\htdocs\somegood\Apps\Common\Model\RegionModel.class.php 第 5 行.
+SQL: SHOW COLUMNS FROM `sg_region` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `sg_region` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `sg_region` WHERE `name` = '深圳' LIMIT 1   [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `sg_goods_category` [ RunTime:0.0020s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: catId D:\xampps\htdocs\somegood\Runtime\Cache\Ershou\f38acac42f2ace6792b9e129e304a906.php 第 32 行.
+NOTIC: [8] Undefined variable: catId D:\xampps\htdocs\somegood\Runtime\Cache\Ershou\f38acac42f2ace6792b9e129e304a906.php 第 32 行.
+NOTIC: [8] Undefined variable: catId D:\xampps\htdocs\somegood\Runtime\Cache\Ershou\f38acac42f2ace6792b9e129e304a906.php 第 32 行.
+NOTIC: [8] Undefined variable: catId D:\xampps\htdocs\somegood\Runtime\Cache\Ershou\f38acac42f2ace6792b9e129e304a906.php 第 32 行.
+NOTIC: [8] Undefined variable: catId D:\xampps\htdocs\somegood\Runtime\Cache\Ershou\f38acac42f2ace6792b9e129e304a906.php 第 32 行.
+NOTIC: [8] Undefined variable: catId D:\xampps\htdocs\somegood\Runtime\Cache\Ershou\f38acac42f2ace6792b9e129e304a906.php 第 32 行.
+NOTIC: [8] Undefined variable: catId D:\xampps\htdocs\somegood\Runtime\Cache\Ershou\f38acac42f2ace6792b9e129e304a906.php 第 32 行.
+NOTIC: [8] Undefined variable: catId D:\xampps\htdocs\somegood\Runtime\Cache\Ershou\f38acac42f2ace6792b9e129e304a906.php 第 32 行.
+NOTIC: [8] Undefined variable: catId D:\xampps\htdocs\somegood\Runtime\Cache\Ershou\f38acac42f2ace6792b9e129e304a906.php 第 32 行.
+NOTIC: [8] Undefined variable: catId D:\xampps\htdocs\somegood\Runtime\Cache\Ershou\f38acac42f2ace6792b9e129e304a906.php 第 32 行.
+NOTIC: [8] Undefined variable: catId D:\xampps\htdocs\somegood\Runtime\Cache\Ershou\f38acac42f2ace6792b9e129e304a906.php 第 32 行.
+NOTIC: [8] Undefined variable: catId D:\xampps\htdocs\somegood\Runtime\Cache\Ershou\f38acac42f2ace6792b9e129e304a906.php 第 32 行.
+NOTIC: [8] Undefined variable: catId D:\xampps\htdocs\somegood\Runtime\Cache\Ershou\f38acac42f2ace6792b9e129e304a906.php 第 32 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.011000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.011000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-11-22T16:26:59+08:00 ] ::1 /somegood/Ershou/Goods/list.html?catid=1
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [2048] Declaration of Common\Model\RegionModel::add() should be compatible with Think\Model::add($data = '', $options = Array, $replace = false) D:\xampps\htdocs\somegood\Apps\Common\Model\RegionModel.class.php 第 5 行.
+NOTIC: [2048] Declaration of Common\Model\RegionModel::save() should be compatible with Think\Model::save($data = '', $options = Array) D:\xampps\htdocs\somegood\Apps\Common\Model\RegionModel.class.php 第 5 行.
+SQL: SHOW COLUMNS FROM `sg_region` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `sg_region` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_region` WHERE `name` = '深圳' LIMIT 1   [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `sg_goods_category` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `sg_goods_category` [ RunTime:0.0020s ]
+SQL: SELECT `id` FROM `sg_goods_category` WHERE `class_list` LIKE '%,1,%'  [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `sg_region` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `sg_region` WHERE `name` = '深圳市' LIMIT 1   [ RunTime:0.0020s ]
+NOTIC: [2048] Declaration of Common\Model\ShGoodsModel::add() should be compatible with Think\Model::add($data = '', $options = Array, $replace = false) D:\xampps\htdocs\somegood\Apps\Common\Model\ShGoodsModel.class.php 第 204 行.
+SQL: SHOW COLUMNS FROM `sg_sh_goods` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `sg_sh_goods` [ RunTime:0.0030s ]
+SQL: SELECT COUNT(*) AS tp_count FROM sg_sh_goods g LEFT JOIN sg_goods_category AS gc ON g.category_id = gc.id LEFT JOIN sg_users AS u ON g.user_id = u.uid  WHERE `category_id` IN ('1','13','16','17','46','49','50','51','52','53','54','55') AND g.status = 1 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT g.*,gc.id AS catid,gc.title AS category_name,u.nick_name,u.avatar FROM sg_sh_goods g LEFT JOIN sg_goods_category AS gc ON g.category_id = gc.id LEFT JOIN sg_users AS u ON g.user_id = u.uid  WHERE `category_id` IN ('1','13','16','17','46','49','50','51','52','53','54','55') AND g.status = 1 ORDER BY ACOS(SIN((22.598102 * 3.1415) / 180 ) *SIN((g.lat * 3.1415) / 180 ) + COS((22.598102 * 3.1415) / 180 )
+                              * COS((g.lat * 3.1415) / 180 ) *COS((114.000709* 3.1415) / 180 - (g.lng * 3.1415) / 180 ) ) * 6380 asc LIMIT 0,10   [ RunTime:0.0020s ]
+SQL: SELECT * FROM `sg_goods_category` WHERE `id` = 1 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `sg_region` WHERE ( pid=1988 )  [ RunTime:0.0030s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined variable: hotKeywords D:\xampps\htdocs\somegood\Runtime\Cache\Ershou\26c979883919660a68d953908d654b74.php 第 103 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.024002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.024002s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.002000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-11-22T16:26:59+08:00 ] ::1 /somegood/Ershou/Goods/category.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [2048] Declaration of Common\Model\RegionModel::add() should be compatible with Think\Model::add($data = '', $options = Array, $replace = false) D:\xampps\htdocs\somegood\Apps\Common\Model\RegionModel.class.php 第 5 行.
+NOTIC: [2048] Declaration of Common\Model\RegionModel::save() should be compatible with Think\Model::save($data = '', $options = Array) D:\xampps\htdocs\somegood\Apps\Common\Model\RegionModel.class.php 第 5 行.
+SQL: SHOW COLUMNS FROM `sg_region` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `sg_region` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `sg_region` WHERE `name` = '深圳' LIMIT 1   [ RunTime:0.0020s ]
+
+[ 2017-11-22T16:27:00+08:00 ] ::1 /somegood/Ershou/Goods/detail/id/2.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001001s ]
+NOTIC: [2048] Declaration of Common\Model\RegionModel::add() should be compatible with Think\Model::add($data = '', $options = Array, $replace = false) D:\xampps\htdocs\somegood\Apps\Common\Model\RegionModel.class.php 第 5 行.
+NOTIC: [2048] Declaration of Common\Model\RegionModel::save() should be compatible with Think\Model::save($data = '', $options = Array) D:\xampps\htdocs\somegood\Apps\Common\Model\RegionModel.class.php 第 5 行.
+SQL: SHOW COLUMNS FROM `sg_region` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `sg_region` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `sg_region` WHERE `name` = '深圳' LIMIT 1   [ RunTime:0.0020s ]
+NOTIC: [2048] Declaration of Common\Model\ShGoodsModel::add() should be compatible with Think\Model::add($data = '', $options = Array, $replace = false) D:\xampps\htdocs\somegood\Apps\Common\Model\ShGoodsModel.class.php 第 204 行.
+SQL: SHOW COLUMNS FROM `sg_sh_goods` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `sg_sh_goods` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `sg_order_goods` [ RunTime:0.0020s ]
+SQL: SELECT g.*,gc.title AS category_name,u.uid,u.user_name,u.avatar,u.nick_name,u.mobile,r.pid,r.name AS area_name,r.merger_name AS region,IFNULL(t.totalSaleCount,0) as sale_counts FROM sg_sh_goods g LEFT JOIN sg_goods_category AS gc ON g.category_id = gc.id LEFT JOIN sg_users AS u ON g.user_id = u.uid LEFT JOIN sg_region AS r ON g.area_id = r.id LEFT JOIN ( SELECT o.store_id,SUM(o.counts) as totalSaleCount FROM sg_order_goods o GROUP BY o.store_id  ) as t on u.uid=t.store_id   WHERE g.id = '2' LIMIT 1   [ RunTime:0.0020s ]
+SQL: SELECT COUNT(*) AS tp_count FROM sg_sh_goods g WHERE g.status = 1 AND `user_id` = 820 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_sh_goods` [ RunTime:0.0030s ]
+SQL: UPDATE `sg_sh_goods` SET `browse_num`=browse_num+2 WHERE `id` = 2 [ RunTime:0.0390s ]
+SQL: SHOW COLUMNS FROM `sg_favorites` [ RunTime:0.0030s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `sg_favorites` WHERE `fuser_id` = 843 AND `favorite_id` = 2 AND `favorite_type` = 1 LIMIT 1   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: remarkList D:\xampps\htdocs\somegood\Runtime\Cache\Ershou\55f3097c1428ad91d94f61a862ddf204.php 第 62 行.
+NOTIC: [8] Undefined variable: remarkList D:\xampps\htdocs\somegood\Runtime\Cache\Ershou\55f3097c1428ad91d94f61a862ddf204.php 第 62 行.
+NOTIC: [8] Undefined variable: remarkList D:\xampps\htdocs\somegood\Runtime\Cache\Ershou\55f3097c1428ad91d94f61a862ddf204.php 第 62 行.
+NOTIC: [8] Undefined index: store_status D:\xampps\htdocs\somegood\Runtime\Cache\Ershou\55f3097c1428ad91d94f61a862ddf204.php 第 100 行.
+NOTIC: [8] Use of undefined constant id - assumed 'id' D:\xampps\htdocs\somegood\Runtime\Cache\Ershou\55f3097c1428ad91d94f61a862ddf204.php 第 138 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.021001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.022001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001001s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001001s ]
+
+[ 2017-11-22T16:27:01+08:00 ] ::1 /somegood/Ershou/Order/confirmOrder.html?id=2
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [2048] Declaration of Common\Model\ShGoodsModel::add() should be compatible with Think\Model::add($data = '', $options = Array, $replace = false) D:\xampps\htdocs\somegood\Apps\Common\Model\ShGoodsModel.class.php 第 6 行.
+SQL: SHOW COLUMNS FROM `sg_sh_goods` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `sg_sh_goods` [ RunTime:0.0030s ]
+SQL: SELECT g.id,g.user_id,g.goods_title,g.goods_price,g.logistics_price,g.goods_num,g.goods_thumb,g.status,u.mobile,u.nick_name,u.avatar FROM sg_sh_goods g LEFT JOIN sg_users AS u ON g.user_id = u.uid  WHERE g.id = '2' LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `sg_users_address` [ RunTime:0.0020s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `sg_users_address` WHERE ( user_id=843 ) LIMIT 1   [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `sg_users_address` [ RunTime:0.0020s ]
+SQL: SELECT ua.*,r.id,r.name as rname,o.name as oname,i.name as iname FROM sg_users_address ua LEFT JOIN sg_region AS r ON ua.district = r.id LEFT JOIN sg_region AS o ON ua.city = o.id LEFT JOIN sg_region AS i ON ua.province = i.id  WHERE `is_default` = 1 AND `user_id` = '843' LIMIT 1   [ RunTime:0.0020s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Use of undefined constant consignee - assumed 'consignee' D:\xampps\htdocs\somegood\Runtime\Cache\Ershou\0d0ddd7733e1bcdbaa5c39039502a3b0.php 第 31 行.
+NOTIC: [8] Use of undefined constant mobile - assumed 'mobile' D:\xampps\htdocs\somegood\Runtime\Cache\Ershou\0d0ddd7733e1bcdbaa5c39039502a3b0.php 第 32 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.011001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.011001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-11-22T16:27:02+08:00 ] ::1 /somegood/Ershou/Order/submitOrder.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [2048] Declaration of Common\Model\ShGoodsModel::add() should be compatible with Think\Model::add($data = '', $options = Array, $replace = false) D:\xampps\htdocs\somegood\Apps\Common\Model\ShGoodsModel.class.php 第 6 行.
+SQL: SHOW COLUMNS FROM `sg_sh_goods` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `sg_sh_goods` [ RunTime:0.0030s ]
+SQL: SELECT g.id,g.user_id,g.goods_title,g.goods_price,g.logistics_price,g.goods_num,g.goods_thumb,g.status,u.mobile,u.nick_name,u.avatar FROM sg_sh_goods g LEFT JOIN sg_users AS u ON g.user_id = u.uid  WHERE g.id = '2' LIMIT 1   [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `sg_users_address` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `sg_users_address` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `sg_users_address` WHERE `user_id` = 843 AND `address_id` = 182 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0020s ]
+SQL: INSERT INTO `sg_order` (`order_sn`,`money`,`address_id`,`delivery_way`,`status`,`add_time`,`pay_type`,`seller_id`,`original_price`,`uid`,`coupon_id`,`share_bill`,`is_son`,`is_used`,`parent_order_sn`) VALUES ('201711222629651564','11.00','182','1','0','1511339222','1','820','11.00','843','0','0','2','1','201711222629651564') [ RunTime:0.0110s ]
+SQL: SHOW COLUMNS FROM `sg_order_goods` [ RunTime:0.0030s ]
+SQL: INSERT INTO `sg_order_goods` (`order_sn`,`goods_id`,`goods_title`,`goods_thumb`,`goods_price`,`store_id`,`is_used_goods`,`counts`) VALUES ('201711222629651564','2','标题','20171108/5a0270e924417.jpg','11','0','1','1') [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `sg_order_logistics` [ RunTime:0.0020s ]
+SQL: INSERT INTO `sg_order_logistics` (`order_sn`,`pay_money`,`type`) VALUES ('201711222629651564','0.00','0') [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_sh_goods` [ RunTime:0.0030s ]
+SQL: SELECT `goods_num` FROM `sg_sh_goods` WHERE `id` = 2 LIMIT 1   [ RunTime:0.0010s ]
+SQL: UPDATE `sg_sh_goods` SET `goods_num`=goods_num-1 WHERE `id` = 2 [ RunTime:0.0010s ]
+
+[ 2017-11-22T16:37:38+08:00 ] ::1 /somegood/Ershou/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [2048] Declaration of Common\Model\RegionModel::add() should be compatible with Think\Model::add($data = '', $options = Array, $replace = false) D:\xampps\htdocs\somegood\Apps\Common\Model\RegionModel.class.php 第 5 行.
+NOTIC: [2048] Declaration of Common\Model\RegionModel::save() should be compatible with Think\Model::save($data = '', $options = Array) D:\xampps\htdocs\somegood\Apps\Common\Model\RegionModel.class.php 第 5 行.
+SQL: SHOW COLUMNS FROM `sg_region` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `sg_region` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_region` WHERE `name` = '深圳' LIMIT 1   [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `sg_keywords` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_keywords` ORDER BY count DESC LIMIT 0,4   [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `sg_goods_category` [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `sg_goods_category` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `sg_goods_category` WHERE `is_index` = 1 AND `is_sh` = 1 ORDER BY sort_num,id desc  LIMIT 8   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_region` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_region` WHERE `pid` = 1988  [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_region` WHERE `pid` = 1989  [ RunTime:0.0020s ]
+SQL: SELECT * FROM `sg_region` WHERE `pid` = 1990  [ RunTime:0.0020s ]
+SQL: SELECT * FROM `sg_region` WHERE `pid` = 1991  [ RunTime:0.0020s ]
+SQL: SELECT * FROM `sg_region` WHERE `pid` = 1992  [ RunTime:0.0020s ]
+SQL: SELECT * FROM `sg_region` WHERE `pid` = 1993  [ RunTime:0.0020s ]
+SQL: SELECT * FROM `sg_region` WHERE `pid` = 1994  [ RunTime:0.0020s ]
+SQL: SELECT * FROM `sg_region` WHERE `pid` = 1995  [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_region` WHERE `pid` = 1996  [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_region` WHERE `pid` = 1997  [ RunTime:0.0020s ]
+SQL: SELECT * FROM `sg_region` WHERE `pid` = 1998  [ RunTime:0.0020s ]
+SQL: SELECT * FROM `sg_region` WHERE `name` = '深圳市' LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_want` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_want` WHERE `w_overtime` > 1511339858 AND `status` = 1 AND `w_region` IN ('1989','1990','1991','1992','1993','1994','1995','1996','1997','1998','') AND `w_id` > 0 LIMIT 10   [ RunTime:0.0010s ]
+NOTIC: [2048] Declaration of Common\Model\UsersModel::save() should be compatible with Think\Model::save($data = '', $options = Array) D:\xampps\htdocs\somegood\Apps\Common\Model\UsersModel.class.php 第 216 行.
+SQL: SHOW COLUMNS FROM `sg_users` [ RunTime:0.0030s ]
+SQL: SELECT `nick_name`,`mobile` FROM `sg_users` WHERE ( 1=1 AND uid='820' ) LIMIT 1   [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `sg_goods_category` [ RunTime:0.0020s ]
+SQL: SELECT `title` FROM `sg_goods_category` WHERE ( 1=1 AND id='8' ) LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT `merger_name`,`pid`,`name` FROM `sg_region` WHERE ( 1=1 AND id='1991' ) LIMIT 1   [ RunTime:0.0020s ]
+SQL: SELECT `nick_name`,`mobile` FROM `sg_users` WHERE ( 1=1 AND uid='820' ) LIMIT 1   [ RunTime:0.0020s ]
+SQL: SELECT `title` FROM `sg_goods_category` WHERE ( 1=1 AND id='8' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT `merger_name`,`pid`,`name` FROM `sg_region` WHERE ( 1=1 AND id='1991' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT `nick_name`,`mobile` FROM `sg_users` WHERE ( 1=1 AND uid='820' ) LIMIT 1   [ RunTime:0.0020s ]
+SQL: SELECT `title` FROM `sg_goods_category` WHERE ( 1=1 AND id='8' ) LIMIT 1   [ RunTime:0.0030s ]
+SQL: SELECT `merger_name`,`pid`,`name` FROM `sg_region` WHERE ( 1=1 AND id='1991' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT `nick_name`,`mobile` FROM `sg_users` WHERE ( 1=1 AND uid='820' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT `title` FROM `sg_goods_category` WHERE ( 1=1 AND id='8' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT `merger_name`,`pid`,`name` FROM `sg_region` WHERE ( 1=1 AND id='1991' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT `nick_name`,`mobile` FROM `sg_users` WHERE ( 1=1 AND uid='820' ) LIMIT 1   [ RunTime:0.0020s ]
+SQL: SELECT `title` FROM `sg_goods_category` WHERE ( 1=1 AND id='8' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT `merger_name`,`pid`,`name` FROM `sg_region` WHERE ( 1=1 AND id='1991' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT `nick_name`,`mobile` FROM `sg_users` WHERE ( 1=1 AND uid='820' ) LIMIT 1   [ RunTime:0.0020s ]
+SQL: SELECT `title` FROM `sg_goods_category` WHERE ( 1=1 AND id='8' ) LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT `merger_name`,`pid`,`name` FROM `sg_region` WHERE ( 1=1 AND id='1991' ) LIMIT 1   [ RunTime:0.0010s ]
+NOTIC: [2048] Declaration of Common\Model\ShGoodsModel::add() should be compatible with Think\Model::add($data = '', $options = Array, $replace = false) D:\xampps\htdocs\somegood\Apps\Common\Model\ShGoodsModel.class.php 第 204 行.
+SQL: SHOW COLUMNS FROM `sg_sh_goods` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `sg_sh_goods` [ RunTime:0.0030s ]
+SQL: SELECT g.*,gc.id AS catid,gc.title AS category_name,u.nick_name,u.avatar FROM sg_sh_goods g LEFT JOIN sg_goods_category AS gc ON g.category_id = gc.id LEFT JOIN sg_users AS u ON g.user_id = u.uid  WHERE `is_rec` = 1 AND g.status = 1 AND g.area_id IN ('1989','1990','1991','1992','1993','1994','1995','1996','1997','1998','') ORDER BY ACOS(SIN((22.598102 * 3.1415) / 180 ) *SIN((g.lat * 3.1415) / 180 ) + COS((22.598102 * 3.1415) / 180 ) 
+                        * COS((g.lat * 3.1415) / 180 ) *COS((114.000709* 3.1415) / 180 - (g.lng * 3.1415) / 180 ) ) * 6380 asc LIMIT 10   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: keywords D:\xampps\htdocs\somegood\Runtime\Cache\Ershou\030c5bb84feae27f35f7f3a4e5d3272b.php 第 46 行.
+NOTIC: [8] Undefined variable: hotKeywords D:\xampps\htdocs\somegood\Runtime\Cache\Ershou\030c5bb84feae27f35f7f3a4e5d3272b.php 第 102 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.014001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.014001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+

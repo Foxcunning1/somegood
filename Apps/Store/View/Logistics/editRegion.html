@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0,user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>订单管理</title>
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/scripts/artdialog/ui-dialog.css" />
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/css/pagination.css" />
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/statics/admin/css/icon/iconfont.css" />
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/statics/admin/css/style.css" />
+    <script type="text/javascript" src="__PUBLIC__/scripts/jquery/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="__PUBLIC__/scripts/jquery/jquery.form.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="__PUBLIC__/scripts/jquery/Validform_v5.3.2_min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/scripts/artdialog/dialog-plus-min.js"></script>
+    <script type="text/javaScript">
+        var region_exists = "选定的地区已经存在。";
+    </script>
+    <script type="text/javaScript">
+        var url = "{:U('Store/Logistics/getRegionList')}";
+        /*
+         *城市三级联动
+         */
+        function getRegionList(objBox,typId,url){
+            if(typId!=''){
+                $.ajax({
+                    url:url,
+                    type:"post",
+                    dataType:'json',
+                    data:{id:typId},
+                    success:function(data){
+                        $("#"+objBox).html('<option value="" selected>请选择...</option>');
+                        if(objBox=="selCities"){
+                            $("#selDistricts").html('<option value="" selected>请选择...</option>');
+                        }
+                        $.each(data.data,function(idx,item){
+                            $("<option value="+item.id+">"+item.name+"</option>").appendTo($("#"+objBox));
+                        });
+                    }
+                });
+            }
+        }
+    </script>
+</head>
+<body style="background-color: #fff">
+
+<!--工具栏-->
+<div id="expressBox" class="express-box">
+    <form class="express-form" name="theForm" id="expressForm" method="post" url="{:U('Store/Logistics/editRegion')}" style="background:#FFF">
+        <fieldset>
+            <table class="edit-table edit-table-1">
+                    <tbody><tr>
+                        <td class="label">配送区域名称:</td>
+                        <td><input type="text" name="data[name]" maxlength="60" size="30" value="{$info.name}"><span class="require-field">*</span></td>
+                    </tr>
+
+                    <tr id="base_fee">
+                        <td class="label">首重费用</td>
+                        <td><input type="text" name="data[first_heavy]" maxlength="60" size="20" value="{$info.first_heavy}">元/Kg<span class="require-field">*</span></td>
+                    </tr>
+
+                    <tr id="step_fee">
+                        <td class="label">续重费用</td>
+                        <td><input type="text" name="data[con_heavy]" maxlength="60" size="20" value="{$info.con_heavy}">元/Kg<span class="require-field">*</span></td>
+                    </tr>
+
+                    <tr id="free_money">
+                        <td class="label">免费额度:</td>
+                        <td><input type="text" name="data[free]" maxlength="60" size="20" value="{$info.free}">元<span class="require-field">*店铺订单金额达到此数则免运费</span></td>
+                    </tr>
+                    </tbody>
+            </table>
+        </fieldset>
+        <fieldset>
+            <table class="edit-table edit-table-2">
+                <tbody><tr>
+                    <td id="regionCell" class="title">
+                        <volist name="info.rs" id="vo">
+                            <input type='checkbox' name='regions[]' value='{$vo}' checked='true' />{$info.ns.$key}
+                            <input type="hidden" name="region_names[]" value="{$info.ns.$key}">
+                        </volist>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span>国家： </span>
+                        <select name="country" id="selCountries" size="10">
+                            <option selected="selected" value="0">中国</option>
+                        </select>
+                        <span>省份： </span>
+                        <select name="province" id="selProvinces" onchange="getRegionList('selCities',this.value,url)" size="10">
+                            <option value="" selected>请选择...</option>
+                            <volist name="list" id="item">
+                            <option value="{$item.id}">{$item.name}</option>
+                            </volist>
+                        </select>
+                        <span>城市： </span>
+                        <select name="city" id="selCities" onchange="getRegionList('selDistricts',this.value,url)" size="10">
+                            <option value="" selected>请选择...</option>
+                        </select>
+                        <span>区/县：</span>
+                        <select name="district" id="selDistricts" size="10">
+                            <option value="" selected>请选择...</option>
+                        </select>
+                        <span><input type="button" value="添加" class="button" onclick="addRegion()"></span>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </fieldset>
+        <table class="edit-table-3">
+            <tbody><tr>
+                <td colspan="2" align="center">
+                    <input type="hidden" name="lid" value="{$lid}">
+                    <input type="hidden" name="id" value="{$info.id}">
+                    <input type="hidden" name="returnUrl" id="returnUrl" value="{$returnUrl}">
+                    <input type="hidden" name="action" value="{$action}">
+                    <input type="submit" value=" 确定 " class="button">
+                    <input type="reset" value=" 重置 " class="button">
+                </td>
+            </tr>
+            </tbody></table>
+    </form>
+</div>
+<script>
+
+    /**
+     * 添加一个区域
+     */
+    function addRegion()
+    {
+        var selCountry  = document.forms['theForm'].elements['country'];
+        var selProvince = document.forms['theForm'].elements['province'];
+        var selCity     = document.forms['theForm'].elements['city'];
+        var selDistrict = document.forms['theForm'].elements['district'];
+        var regionCell  = document.getElementById("regionCell");
+
+        if (selDistrict.selectedIndex > 0)
+        {
+            regionId = selDistrict.options[selDistrict.selectedIndex].value;
+            regionName = selDistrict.options[selDistrict.selectedIndex].text;
+        }
+        else
+        {
+            if (selCity.selectedIndex > 0)
+            {
+                regionId = selCity.options[selCity.selectedIndex].value;
+                regionName = selCity.options[selCity.selectedIndex].text;
+            }
+            else
+            {
+                if (selProvince.selectedIndex > 0)
+                {
+                    regionId = selProvince.options[selProvince.selectedIndex].value;
+                    regionName = selProvince.options[selProvince.selectedIndex].text;
+                }
+                else
+                {
+                    if (selCountry.selectedIndex >= 0)
+                    {
+                        regionId = selCountry.options[selCountry.selectedIndex].value;
+                        regionName = selCountry.options[selCountry.selectedIndex].text;
+                    }
+                    else
+                    {
+                        return;
+                    }
+                }
+            }
+        }
+
+        // 检查该地区是否已经存在
+        exists = false;
+        for (i = 0; i < document.forms['theForm'].elements.length; i++)
+        {
+            if (document.forms['theForm'].elements[i].type=="checkbox")
+            {
+                if (document.forms['theForm'].elements[i].value == regionId)
+                {
+                    exists = true;
+                    alert(region_exists);
+                }
+            }
+        }
+        // 创建checkbox
+        if (!exists)
+        {
+            regionCell.innerHTML += "<input type='checkbox' name='regions[]' value='" + regionId + "' checked='true' /> " + regionName + "&nbsp;&nbsp;";
+            regionCell.innerHTML += "<input type='hidden' name='region_names[]' value='" + regionName + "'/>";
+        }
+    }
+    $(function(){
+        /*表单验证*/
+        $("#expressForm").Validform({
+            tiptype:4,
+            callback:function(form){
+                $(form).ajaxSubmit({
+                    success: showResponse,
+                    url: $("#expressForm").attr("url"),
+                    type: "post",
+                    dataType: "json",
+                    timeout: 60000
+                });
+                return false;
+            }
+        });
+        //表单提交后
+        function showResponse(data, textStatus) {
+            if (data.status == 1) { //成功
+                var d = dialog({content:"操作成功！"}).show();
+                window.setInterval(function(){
+                    d.close().remove();
+                    jumpToUrl($("#returnUrl").val())},1000);
+            }else{ //失败
+                var d = dialog({content:data.info}).show();
+                window.setInterval(function(){
+                    d.close().remove();
+                    },1000);
+            }
+        }
+        function jumpToUrl(url){
+            location.href = url;
+        }
+    })
+</script>
+<!--/工具栏-->
+</body>
+</html>

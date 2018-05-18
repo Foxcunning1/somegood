@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no" />
+    <import type="css" file="statics.mobile.css.public,statics.mobile.css.style" />
+    <import type="js" file="scripts.zepto.zepto#min,scripts.zepto.zepto#miniDialog" />
+    <script type="text/javascript" src="__PUBLIC__/statics/mobile/js/rem.js" fu-psd="720" fu-min="50" fu-max="100"></script>
+    <title>{$web_title}</title>
+    <script type="text/javascript">
+        //调用微信JS api 支付
+        //     详见微信开发文档   公众号支付->微信内H5调起支付 
+        function jsApiCall()
+        {
+            WeixinJSBridge.invoke(
+                    'getBrandWCPayRequest',
+                    {$jsApiParameters},
+                    function(res){
+                        WeixinJSBridge.log(res.err_msg);
+                        //alert(res.err_code+res.err_desc+res.err_msg);  //这里是信息提示。可以加判断做跳转，支付成功后也都会回到这里提示信息。具体你可以参考手册里面的信息。
+                    }
+            );
+        }
+        function callPay()
+        {
+            if (typeof WeixinJSBridge == "undefined"){
+                //alert('nul');
+                if( document.addEventListener ){
+                    document.addEventListener('WeixinJSBridgeReady', jsApiCall, false);
+                }else if (document.attachEvent){
+                    document.attachEvent('WeixinJSBridgeReady', jsApiCall);
+                    document.attachEvent('onWeixinJSBridgeReady', jsApiCall);
+                }
+            }else{
+                jsApiCall();
+            }
+            //调用弹出层
+            $("body").minDialog({content:"<div class=\"payTipsBox\"><button class=\"completedBtn\">已完成支付</button><button class=\"errorBtn\">支付遇到问题</button></div>"});
+            //支付完成跳转地址
+            var payCompletedUrl = "{$complete_url}";
+            //支付完成跳转
+            $(".completedBtn").on("touchstart",function(){
+                window.location.href = payCompletedUrl;
+            })
+            //支付失败关闭窗口
+            $(".errorBtn").on("touchstart",function(){
+                parent.$("body").find(".dialogMainBox").remove();
+                parent.$("body").find(".dialogMask").remove();
+            })
+        }
+    </script>
+</head>
+<body>
+    <div class="page-title">
+        <!--返回按钮-->
+        <div class="back-box">
+            <a href="{:U('Mobile/Users/index')}" class="icons icon-back"></a>
+        </div>
+        <h2 class="title">订单支付</h2>
+        <!--返回按钮-->
+    </div>
+	<div class="payConfirmBox">
+		<div class="payAmountTitle"><p>该笔订单支付金额为</p><p><span>￥{$real_pay}</span></p></div>
+		<div class="payContainer">
+		    <div class="payBtnBox">
+		    	<button type="button" class="payBtn" onclick="callPay();">立即支付</button>
+		    </div>
+	    </div>
+    </div>
+</body>
+</html>

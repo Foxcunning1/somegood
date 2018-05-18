@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>3好连锁店商城首页</title>
+    <meta name="keywords" content="{$web_keywords}"/>
+    <meta name="description" content="{$web_description}" />
+    <link type="text/css" rel="stylesheet" href="__PUBLIC__/statics/shop/css/public.css">
+    <link type="text/css" rel="stylesheet" href="__PUBLIC__/statics/shop/css/style.css">
+    <script type="text/javascript" src="__PUBLIC__/scripts/jquery/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript"  src="__PUBLIC__/statics/shop/js/jquery.SuperSlide.2.1.1.js"></script>
+    <style>
+        .w900 { width: 900px; height: 100%; margin: 0 auto}
+        .s-h-middle {border-bottom: 1px solid #e5e5e5;}
+        .s-h-middle .logo { margin-right: 200px;}
+        .s-h-middle .hot-search a { padding: 0 10px; color: #666; }
+        .s-h-middle .search-form {width: 450px; float:left;margin-right: 10px;}
+        .s-h-middle .search-form input { width: 300px; float:left;}
+        .s-h-bottom { position: relative; background-color: #e5e5e5;}
+        .seller-header { height: 100px; }
+        .seller-header .s-logo { display: block; width: 80px; height: 80px;margin: 10px 0}
+        .s-h-bottom .all-goods { width: 190px; background-color: #499e39; color: #fff; text-align: center; position: relative;}
+        .s-h-bottom .all-goods .triangle { position: absolute; right: 15px; top: 16px; width: 0; height: 0; font-size: 0; line-height: 0; border-width: 4px; border-style: solid; border-color: #fff #499e39 #499e39; transition: all .3s ease}
+        .s-h-bottom .all-goods-box { width: 190px; position: absolute; top: 36px; left:0; background-color: #fff; z-index: 5; display: none;}
+        .s-h-bottom .all-goods:hover .all-goods-box { display: block}
+        .s-h-bottom .all-goods:hover .triangle { transform: rotate(180deg);}
+        .s-h-bottom .all-goods-box li {position: relative; }
+        .s-h-bottom .all-goods-box li .disc { display: block; float:left; width: 3px; height: 3px; background-color: #000; margin: 13px 0 14px 20px;}
+        .s-h-bottom .all-goods-box li a { display: block; height: 30px; line-height: 30px; padding-left: 30px; border-bottom: 1px solid #eee; color: #222; text-align: left; }
+        .s-h-bottom .all-goods-box li span { position: absolute; right: 5px; top: 10px; font-family: "宋体"; color: #666; line-height: 1;transition: all .3s ease}
+        .s-h-bottom .all-goods-box li:hover { background-color: #eee;}
+        .s-h-bottom .all-goods-box li:hover span { transform: rotate(90deg);}
+        .s-h-bottom .list-2 { width: 190px; position: absolute; left: 190px;top: 0; background-color: #fff; display: none;}
+        .s-h-bottom .all-goods-box li:hover .list-2 { display: block;}
+        .s-h-bottom .list-2 li { background-color: #fff}
+        .s-h-bottom .list-2 li .disc { background-color: #222;}
+        .s-h-bottom .list-2 li a { color: #222;}
+        .s-h-bottom .list-2 li:hover a { color: #333;}
+        .s-h-bottom .list-2 li:hover .disc { background-color: #333}
+        .s-h-bottom .nav-ul { padding-left: 0; border-bottom: 1px solid #f5f5f5; overflow: hidden;}
+        .s-h-bottom .nav-ul li a { font-weight: normal; font-size: 14px; color: #222;}
+        .s-h-bottom .nav-ul li.list:hover a { background-color: #499e39; color: #fff;}
+        .s-slider { height: 400px; width: 100%; position: relative; overflow: hidden; }
+        .s-slider .bd li {  width: 100%; height: 400px; }
+        .s-good-box .goods-box { padding: 20px 0; overflow: hidden; display: none;}
+        .s-good-box .goods-box li { padding: 0 5px; background-color: #fff; width: 290px; float:left; text-align: center;font-size: 14px;}
+        .s-good-box .goods-box li img { display: block; width: 160px; height: 130px; margin: 15px auto; transition: all .4s ease;}
+        .s-good-box .goods-box li .txt { display: block; height: 36px; line-height: 18px; color: #333; word-break: break-all; overflow: hidden; }
+        .s-good-box .goods-box .price { display: block; height: 24px; line-height: 24px; color: #e9424b;}
+        .s-good-box .goods-box li:hover .txt { color: #e9424b;}
+        .s-good-box .goods-box li:hover img { transform: translateX(3px)}
+        /*店铺样式*/
+        .seller-submit { display: block; width: 100px; height: 38px; line-height: 38px; background-color: #499e39; color: #fff; font-size: 16px; border: none; cursor: pointer;}
+        .seller-title { width: 600px; height: 100px; line-height: 100px; font-size: 30px; text-align: center;  margin: 0 auto;}
+        .seller-title li { width: 200px;float:left; }
+        .seller-title li a {display: block;height: 40px; line-height: 40px;border-right: 1px solid #e5e5e5; color: #999; margin: 30px 0;}
+        .seller-title li.select a { color: #333; }
+    </style>
+</head>
+<body>
+<div class="header">
+    <include file="Public/header" />
+        <div class="h-middle s-h-middle clearfix">
+            <div class="w1200">
+                <a href="{:U('Shop/Index/index')}" class="fl"><img src="__PUBLIC__/statics/shop/images/logo_market.png" alt="logo" class="logo"/></a>
+                <div class="search-box fl">
+                    <form class="search-form" method="post" action="{:U('Shop/Goods/sellerDetail')}">
+                        <i class="icons icon-search"></i>
+                        <input type="text" name="keywords" placeholder="搜好物" value="{$keywords}">
+                        <input type="hidden" name="id" value="{$seller_id}">
+                        <button type="submit" class="seller-submit fl">搜本店</button>
+                    </form>
+                    <div class="hot-search">
+                        <a href="javascript:;">女装</a>
+                        <a href="javascript:;">衣柜</a>
+                        <a href="javascript:;">双十一</a>
+                    </div>
+                </div>
+                <div class="my-cart fr">
+                    <a href="{:U('Shop/Cart/index')}" class="mini-cart-open">
+                        <i class="icons icon-cart"></i>
+                        <span class="txt">我的购物车</span>
+                        <span class="goods-num">0</span>
+                    </a>
+                    <div class="my-cart-line"></div>
+                    <div class="mini-cart-box">
+                        <h4>全部商品</h4>
+                        <div class="items-list">
+                        </div>
+                        <div class="cart-to-box">
+                            <div class="total-box">
+                                共<span class="cart-num">0</span>件商品　共计<span class="cart-total-money">¥ 0</span>
+                            </div>
+                            <a href="{:U('Shop/Cart/index')}" class="to-cart-a">去购物车</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="seller-header">
+            <div class="w900">
+                <a href="{:U('Seller/Goods/enter_shop')}" class="fl"><img src="" alt="店铺logo" class="logo s-logo"/></a>
+            </div>
+        </div>
+        <div class="h-bottom s-h-bottom">
+            <div class="w900">
+                <div class="all-goods fl">
+                    本店所有商品
+                    <span class="triangle"></span>
+                    <div class="all-goods-box">
+                        <ul>
+                            <volist name="column_list" id="cl">
+                                <eq name="cl.parent_id" value="0">
+                                    <li>
+                                        <i class="disc"></i>
+                                        <a href="{:U('Shop/Goods/sellerDetail')}?id={$seller_id}&column={$cl.id}">{$cl.name}</a>
+                                        <span>&gt;</span>
+                                        <div class="list-2">
+                                            <ul>
+                                                <volist name="column_list" id="sl">
+                                                    <eq name="sl.parent_id" value="$cl.id">
+                                                        <li><i class="disc"></i><a href="{:U('Shop/Goods/sellerDetail')}?id={$seller_id}&column={$sl.id}">{$sl.name}</a></li>
+                                                    </eq>
+                                                </volist>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                </eq>
+                            </volist>
+                        </ul>
+                    </div>
+                </div>
+                <ul class="nav-ul fl">
+                    <li><a href="{:U('Shop/Goods/sellerDetail')}?id={$seller_id}">首页</a></li>
+                    <volist name="column_list" id="col">
+                        <eq name="col.is_index" value="1">
+                            <li class="list"><a href="{:U('Shop/Goods/sellerDetail')}?id={$seller_id}&column={$col.id}">{$col.name}</a></li>
+                        </eq>
+                    </volist>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="s-slider">
+        <div class="bd">
+            <ul>
+                <li style="background:url('__PUBLIC__/statics/shop/images/banner1.jpg') no-repeat center center;"></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!--<div class="seller-title">
+    <ul>
+        <li class="select"><a href="javascript:;">全部</a></li>
+        <li><a href="javascript:;">新品</a></li>
+        <li><a href="javascript:;">热卖</a></li>
+    </ul>
+</div>-->
+<div class="s-good-box">
+    <div class="goods-box" style="display: block;">
+        <div class="w900">
+            <ul>
+                <volist name="list" id="item">
+                    <li>
+                        <a href="{:U('Shop/Goods/goods' , array('id' => $item['id']))}">
+                            <img src="__PUBLIC__/uploads/{$item.goods_thumb}" alt="" />
+                            <span class="txt">{$item.goods_title}</span>
+                            <span class="price">￥{$item.price}</span>
+                        </a>
+                    </li>
+                </volist>
+            </ul>
+        </div>
+    </div>
+   <!-- <div class="goods-box">
+        <div class="w900">
+            <ul>
+                <volist name="list" id="item">
+                    <li>
+                        <a href="{:U('Shop/Goods/goods' , array('id' => $item['id']))}">
+                            <img src="__PUBLIC__/uploads/{$item.goods_thumb}" alt="" />
+                            <span class="txt">{$item.goods_title}</span>
+                            <span class="price">￥{$item.price}</span>
+                        </a>
+                    </li>
+                </volist>
+            </ul>
+        </div>
+    </div>
+    <div class="goods-box">
+        <div class="w900">
+            <ul>
+                <volist name="list" id="item">
+                    <li>
+                        <a href="{:U('Shop/Goods/goods' , array('id' => $item['id']))}">
+                            <img src="__PUBLIC__/uploads/{$item.goods_thumb}" alt="" />
+                            <span class="txt">{$item.goods_title}</span>
+                            <span class="price">￥{$item.price}</span>
+                        </a>
+                    </li>
+                </volist>
+            </ul>
+        </div>
+    </div>-->
+</div>
+<div class="line40"></div>
+<include file="Public/footer" />
+<script>
+    /*全部新品热卖切换*/
+    $(".seller-title").find("li").click(function(){
+        $(this).addClass("select").siblings().removeClass("select");
+        $(".s-good-box").find(".goods-box").eq($(this).index()).show().siblings().hide();
+    })
+</script>
+</body>
+</html>

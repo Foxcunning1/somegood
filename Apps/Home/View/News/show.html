@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>{$web_title}</title>
+    <meta name="keywords" content="{$web_keywords}"/>
+    <meta name="description" content="{$web_description}" />
+    <import type="css" file="statics.home.css.public,statics.home.css.style,statics.home.css.animate,statics.home.css.scrollanim#min" />
+    <!--[if lte IE 9]>
+    <import type="js" file="scripts.js.html5shiv#min" />
+    <![endif]-->
+    <import type="js" file="statics.home.js.jquery-1#11#2#min,statics.home.js.jquery#SuperSlide#2#1#1,statics.home.js.totop" />
+</head>
+<body>
+<include file="Public/header" />
+    <section class="news-slider"></section>
+    <script>
+        $(".slider").slide({ mainCell: ".bd ul", effect:"leftLoop", autoPlay:true, prevCell:".prev",nextCell:".next"});
+    </script>
+    <article class="floor1 news-info-floor1">
+        <div class="w1200">
+            <h2>{$info.title}</h2>
+            <div class="info clearfix">
+                {$info.content|htmlspecialchars_decode}
+            </div>
+            <div class="page-box clearfix">
+                <div class="left fl">
+                    <empty name="preInfo">
+                        <p><span class="fl">上一篇：</span><a href="javascript:;">亲，木有了！</a></p>
+                        <else/>
+                        <p><span class="fl">上一篇：</span><a href="{:U('Home/News/show')}?id={$preInfo.aid}" class="fl">{$preInfo.title}</a></p>
+                    </empty>
+                    <empty name="nextInfo">
+                        <p><span class="fl">上一篇：</span><a href="javascript:;">亲，木有了！</a></p>
+                        <else/>
+                        <p><span class="fl">下一篇：</span><a href="{:U('Home/News/show')}?id={$nextInfo.aid}" class="fl">{$nextInfo.title}</a></p>
+                    </empty>
+                </div>
+            </div>
+        </div>
+    </article>
+    <include file="Public/footer" />
+</body>
+</html>

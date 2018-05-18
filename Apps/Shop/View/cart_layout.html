@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>3好连锁店商城首页</title>
+    <meta name="keywords" content="{$web_keywords}"/>
+    <meta name="description" content="{$web_description}" />
+    <link rel="stylesheet" href="__PUBLIC__/statics/shop/css/cart.css">
+    <link rel="stylesheet" href="__PUBLIC__/statics/shop/css/public.css">
+    <link rel="stylesheet" href="__PUBLIC__/scripts/artdialog/ui-dialog.css">
+    <script type="text/javascript" src="__PUBLIC__/scripts/jquery/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/statics/shop/js/common.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/statics/shop/js/cart.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/scripts/artdialog/dialog-plus-min.js"></script>
+</head>
+<body>
+<div class="header cart-header">
+    <include file="Public/header" />
+    <div class="w1200">
+        <div class="h-middle clearfix">
+            <a href="{:U("Index/index")}" class="fl"><img src="__PUBLIC__/statics/shop/images/logo_market.png" alt="logo" class="logo"/></a>
+            <div class="search-box fr">
+                <form class="search-form">
+                    <i class="icons icon-search"></i>
+                    <input type="text" placeholder="搜好物">
+                    <button type="submit" class="submit">搜索</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{__CONTENT__}
+<include file="Public/footer" />
+</body>
+</html>

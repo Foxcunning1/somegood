@@ -1,0 +1,24 @@
+<volist name="list" id="vo" >
+
+<div class="mode-item mode-tab" data-sid="{$key}"  >
+	<div class="mode-item-tit">
+		<h4>配送方式</h4>
+	</div>
+	<div class="mode-tab-nav">
+		<select class="mode-tab-item" name="delivery[{$key}][id]" style="width:108px;height:25px;" >
+			<option value="" style="width:108px;height:25px;" >--请选择--</option>
+			<volist name="vo" id="vs" >
+			<option value="{$vs.id}" style="width:108px;height:25px;" >{$vs.value}</option>
+			</volist>
+		</select>
+		<!-- <ul> -->
+			<!-- <li class="mode-tab-item curr">快递运输</li> -->
+			<!-- <li class="mode-tab-item" data-logisticsid="{$vo.id}">{$vo.value}</li>
+		</ul> -->
+	</div>
+	<!-- <input type="checkbox" name="delivery[{$k}][{$vo.seller_id}]" checked="checked" value="" style="display:none;">
+	<input type="checkbox" name="delivery[{$k}][{$vo.id}]" checked="checked" value="" style="display:none;">
+	<input type="checkbox" name="delivery[{$k}][{$vo.value}]" checked="checked" value="" style="display:none;"> -->
+</div>
+
+</volist>

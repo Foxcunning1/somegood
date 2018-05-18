@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>图片预览</title>
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/statics/mobile/css/public.css" />
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/statics/mobile/css/style.css" />
+    <script type="text/javascript" charset="utf-8" src="__PUBLIC__/scripts/zepto/zepto.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="__PUBLIC__/scripts/TouchSlide/TouchSlide.1.1.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/statics/mobile/js/rem.js"></script>
+</head>
+<body>
+<div class="preview-box">
+    <div class="page-title preview-box-title">
+        <!--返回按钮-->
+        <div class="back-box">
+            <a href="javascript:history.go(-1);" class="icons icon-back"></a>
+        </div>
+        <!--返回按钮-->
+        <!--标题-->
+        <h2 class="title pageState"></h2>
+        <!--标题-->
+    </div>
+    <div class="preview-slider" id="previewSlider">
+        <div class="hd">
+
+        </div>
+        <div class="bd">
+            <ul>
+                <volist name="pic" id="vo" >
+                <li><img src="__PUBLIC__/uploads/{$vo}" class="js-smartPhoto" alt="详情图片1"/></li>
+                </volist>
+            </ul>
+        </div>
+    </div>
+</div>
+<script>
+    TouchSlide({slideCell:"#previewSlider",mainCell:".bd ul",autoPlay:false,pageStateCell:".pageState"});
+</script>
+</body>
+</html>

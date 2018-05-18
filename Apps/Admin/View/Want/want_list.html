@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0,user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>求购信息管理</title>
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/scripts/artdialog/ui-dialog.css" />
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/statics/admin/css/icon/iconfont.css" />
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/statics/admin/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/css/pagination.css" />
+    <script type="text/javascript" charset="utf-8" src="__PUBLIC__/scripts/jquery/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="__PUBLIC__/scripts/jquery/Validform_v5.3.2_min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="__PUBLIC__/scripts/artdialog/dialog-plus-min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="__PUBLIC__/statics/admin/js/common.js"></script>
+    <script type="text/javascript" charset="utf-8" src="__PUBLIC__/statics/admin/js/laymain.js"></script>
+    <script type="text/javascript">
+        //菜单获取
+        var ajax_url="{:U('Admin/Index/ajax')}";
+        //站点列表获取
+        var ajax_site_url = "<?php echo U('Site/sajax');?>";
+        //单击修改的ajax地址
+        var pajax_url="{:U('Admin/Ajax/doubleClickModify')}";
+
+        function doPostBack(objId) {
+            if(objId == 'btnDelete') {
+                $('#goodsForm').submit();
+            }
+            if(objId == 'btnSearch'){
+                $('#searchForm').submit();
+            }
+        }
+    </script>
+</head>
+<body class="mainbody">
+
+    <!--导航栏-->
+    <div class="location">
+        <a href="javascript:history.back(-1);" class="back"><i class="iconfont icon-up"></i><span>返回上一页</span></a>
+        <a href="{:U('Index/center')}" class="home"><i class="iconfont icon-home"></i><span>首页</span></a>
+        <i class="arrow iconfont icon-arrow-right"></i>
+        <span>求购信息列表</span>
+    </div>
+    <!--/导航栏-->
+
+    <!--工具栏-->
+    <div id="floatHead" class="toolbar-wrap">
+        <div class="toolbar">
+        	<div class="box-wrap">
+                <a class="menu-btn"></a>
+                <form action="{:U('Want/index')}" method="post" id="searchForm">
+                    <div class="l-list">
+                        <ul class="icon-list">
+                            <li><a href="javascript:void(0);" onclick="checkAll(this);"><i class="iconfont icon-check"></i><span>全选</span></a></li>
+                            <li><a onclick="ExePostBack('btnDelete','本操作会删除求购信息，是否继续？')" id="btnDelete" href="javascript:void(0);"><i class="iconfont icon-delete"></i><span>删除</span></a></li>
+	                    </ul>
+                        <div class="menu-list">
+
+                            <div class="rule-single-select">
+                                <select name="cate_id" onchange="doPostBack('btnSearch')" id="categoryId">
+                                    <option value="">所有类别</option>
+                                    <volist name="cate_list" id="item">
+                                        <option <if condition="$item['id'] eq $cate_id"> selected="selected" </if> value="{$item.id}"><neq name="item.count" value="1">{$item['count']|fill_up_string="&nbsp;&nbsp;"}├</neq> {$item.title}</option>
+                                    </volist>
+                                </select>
+                            </div>
+                            <div class="rule-single-select">
+                                <select name="property" onchange="doPostBack('btnSearch')" id="property">
+                                    <volist name="property_list" id="item">
+                                        <option <if condition="$key eq $property"> selected="selected" </if> value="{$key}" >{$item}</option>
+                                    </volist>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="r-list">
+                        <input name="keywords" type="text" id="txtKeywords" class="keyword" />
+                        <a id="btnSearch" class="btn-search" onclick="doPostBack('btnSearch');"><i class="iconfont icon-search"></i></a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!--/工具栏-->
+
+    <!--列表-->
+    <div class="table-container">
+
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="ltable">
+            <tr>
+                <th width="6%">选择</th>
+                <th align="left" width="14%">发布人【ID】</th>
+                <th align="left" width="6%">求购类别</th>
+                <th align="left" width="12%">标题</th>
+                <th align="left" width="12%">联系人【电话】</th>
+                <th align="left" width="6%">价格</th>
+                <th align="left" width="6%">地区</th>
+                <th align="left" width="6%">发布时间</th>
+                <th align="left" width="6%">更新时间</th>
+                <th align="left" width="6%">状态</th>
+                <th align="left" width="3%">排序</th>
+                <th width="6%">操作</th>
+            </tr>
+            <form method="post" action="{:U('Want/del')}" id="goodsForm">
+                <volist name="list" id="item">
+                    <tr>
+                        <td align="center">
+                            <span class="checkall" style="vertical-align:middle;">
+                                <input type="checkbox" name="w_id[]" value="{$item.w_id}" />
+                            </span>
+                        </td>
+                        <td>{$item.user_name}【{$item.w_uid}】</td>
+                        <td>{$item.cate_title}</td>
+                        <td>{$item.w_title}</td>
+                        <td >{$item.user_name}【{$item.mobile}】</td>
+                        <td><if condition="$item.w_min eq null && $item.w_max eq null">面议<elseif condition="$item.w_min eq null"/>{$item.w_max}元以内<else/>{$item.w_min}—{$item.w_max}</if></td>
+                        <td>{$item.region}</td>
+                        <td>{$item.w_addtime|date='Y-m-d H:i:s',###}</td>
+                        <td>{$item.w_updatetime|date='Y-m-d H:i:s',###}</td>
+                        <td><if condition="$item.status eq 0" >待审核<elseif condition="$item.status eq 1"/>已审核<else/>不显示</if></td>
+                        <td onclick="editField(this,'want','w_id','sort_num','{$item.w_id}',pajax_url,0,'{$item.sort_num}',0)">{$item.sort_num}</td>
+                        <td align="center">
+                            <a href="{:U('Want/detail',array('w_id' => $item['w_id']))}">查看</a>|
+                            <a href="{:U('Want/del',array('w_id' => $item['w_id']))}">删除</a>
+                        </td>
+                    </tr>
+                </volist>
+            </form>
+
+        </table>
+
+    </div>
+    <!--/列表-->
+	<!--内容底部-->
+    <div class="line20"></div>
+    <div class="pagelist">
+        <div id="PageContent" class="default">{$page}</div>
+    </div>
+    <!--/内容底部-->
+
+</body>
+</html>

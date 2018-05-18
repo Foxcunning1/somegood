@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>我的优惠卷</title>
+    <import type="css" file="statics.mobile.css.public,statics.mobile.css.user" />
+    <import type="js" file="scripts.zepto.zepto#min,scripts.zepto.zepto#cookie#min" />
+    <script type="text/javascript" src="__PUBLIC__/statics/mobile/js/rem.js" fu-psd="720" fu-min="50" fu-max="100"></script>
+</head>
+<body>
+<div class="page-title">
+    <!--返回按钮-->
+    <div class="to-back-box">
+        <a href="javascript:history.back();" class="icons icon-back"></a>
+    </div>
+    <!--返回按钮-->
+    <!--标题-->
+    <h2 class="title">我的优惠卷</h2>
+    <!--标题-->
+</div>
+<!--没有优惠券-->
+<if condition=" $couponNum eq 0 ">
+  <div class="no-coupon">
+      <div class="nc-img"></div>
+      <p>很遗憾</p>
+      <span>您未有可使用的优惠卷！</span>
+  </div>
+  <div class="coupon-bar">
+      <a href="javascript:void(0);" class="make-sure">确定</a>
+  </div>
+<else/>
+<div class="already-title">
+    <ul>
+          <li class="sel"><a href="{:U('UserOrder/coupon',array('action'=>'canUse'))}" class="available">可用优惠卷<em id="available">({$couponNum}个)</em></a></li>
+          <li><a href="{:U('UserOrder/coupon',array('action'=>'cantUse'))}" class="unavailable">不可用优惠卷<em id="unavailable">({$cantUseCouponNum}个)</em></a></li>
+    </ul>
+</div>
+<!--点击选项卡控制near-content显示和隐藏-->
+<div class="already-content-box pd-t08">
+    <!--可用-->
+    <volist name="can_use" id='vo'>
+      <if condition="$action eq canUse">
+      <if condition="$vo['can_use'] eq 1">
+        <else />
+        <if condition="$vo['can_use'] neq 1">
+      </if>
+    <div class="already-content available-coupon">
+        <!--优惠券-->
+        <div class="new-coupon">
+          <a class="coupon-link" href="{:U('UserOrder/selectCouponInfo')}?id={$vo.coupon_id}&return_url={$returnUrl}">
+            <div class="new-bdcolor bd-bd">
+                <div class="newCou-bg dq-bg"></div>
+                <div class="newCou-item dq-icon-color">
+                    <div class="newCou-title ">优惠券</div>
+                    <div class="newCou-content cf">
+                        <div class="fl">
+                            <div class="ci-left">
+                                <strong id="dicon0000-0116-0169-6911" name="dicons" class="pic-ch"></strong>
+                            </div>
+                            <div class="newCou-l">
+                                <div class="newCou-pri-content">
+                                    <em>￥</em>
+                                    <span class="newCou-price">{$vo[type_money]}</span>
+                                </div>
+                                <span class="newCou-info">满{$vo[min_goods_amount]}可用</span>
+                            </div>
+                        </div>
+                        <div class="newCou-r">
+                            <span class="newCou-date-name">{$vo[type_name]}</span>
+                            <span class="newCou-date-content">{$vo['use_start_date']|date="Y.m.d",###}-{$vo['use_end_date']|date="Y.m.d",###}</span>
+                            <!-- {$vo['datetime']|date="Y-m-d H:i:s",###} -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </a>
+        </div>
+    </div>
+  </if>
+    </volist>
+</div>
+</if>
+<script type="text/javascript">
+    /*在线宝贝和失效宝贝切换*/
+    $(".already-title ul").find("li").on("touchstart",function(){
+        var index = $(this).index();
+        $(this).addClass("sel").siblings().removeClass("sel");
+        $(".already-content-box").find(".already-content").eq(index).show().siblings().hide();
+    })
+   /*优惠券选中函数*/
+    function couponAddCheck(obj){
+        $(obj).toggleClass("pic-ched");
+        /*确定按钮出现*/
+        $(".coupon-bar").show();
+    }
+</script>
+</body>
+</html>

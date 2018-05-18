@@ -1,0 +1,130 @@
+<!Doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>店铺管理中心</title>
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <import type="css" file="statics.store.css.store-public,statics.store.css.store-style,css.toastr" />
+    <import type="js" file="scripts.jquery.jquery-1#11#2#min,scripts.toastr.toastr,scripts.zepto.lazyload#min" />
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/scripts/artdialog/ui-dialog.css" />
+    <script type="text/javascript" src="__PUBLIC__/scripts/artdialog/dialog-plus-min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/statics/admin/js/uploader.js"></script>
+</head>
+<body style="background-color: #edf1f2;">
+<div class="left-menu">
+    <div class="user-box">
+        <div class="img-box"><img src="__PUBLIC__/statics/mobile/images/default_img.png" data-original="__PUBLIC__/uploads/{$store.logo}_c200x200" alt="" width="70" height="70" /></div>
+        <div class="name-box">{$store.store_name}</div>
+    </div>
+    <ul class="ul-1">
+        <li>
+            <a href="javascript:;" class="ul-1-a"><i class="icons icon-order"></i><span>店铺订单</span><i class="pointer">&gt;</i></a>
+            <ul class="ul-2">
+                <li><a href="{:U('Store/Order/index')}?pageType=1" target="StoreContent">待发货</a></li>
+                <li><a href="{:U('Store/Order/index')}?pageType=2" target="StoreContent">待完成</a></li>
+                <li><a href="{:U('Store/Order/index')}?pageType=3" target="StoreContent">已完成</a></li>
+                <li><a href="{:U('Store/Order/index')}?pageType=0" target="StoreContent">待付款</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="javascript:;" class="ul-1-a"><i class="icons icon-sell"></i><span>店铺商品</span><i class="pointer">&gt;</i></a>
+            <ul class="ul-2">
+                <li><a href="{:U('Store/Goods/index')}?pageType=sale" target="StoreContent">在售</a></li>
+                <li><a href="{:U('Store/Goods/index')}?pageType=off" target="StoreContent">已失效</a></li>
+            </ul>
+        </li>
+        <li><a href="{:U('Store/Order/settlement')}" target="StoreContent" class="ul-1-a"><i class="icons icon-settlement"></i><span>订单结算</span><i class="pointer">&gt;</i></a></li>
+        <li><a href="{:U('Store/Index/storePhotos')}" target="StoreContent" class="ul-1-a"><i class="icons icon-settlement"></i><span>店铺相册</span><i class="pointer">&gt;</i></a></li>
+    </ul>
+</div>
+<div class="fixed-title">
+    <div class="logo fl"><a href="{:U('Store/Index/index')}"><img src="__PUBLIC__/statics/store/images/logo.png" alt="logo" width="153" height="38"/></a></div>
+    <div class="a-box fr">
+        <a href="{:U('Store/Index/notice')}" target="StoreContent" class="update"><i class="icons icon-update"></i>消息(<span id="noticeNum">0</span>)</a>
+        <a href="{:U('Store/Index/setting')}" target="StoreContent" class="update"><i class="icons icon-setting"></i><span>设置</span></a>
+        <a href="{:U('Store/Login/loginOut')}" class="update"><i class="icons icon-quite"></i><span>退出</span></a>
+    </div>
+</div>
+<div class="containter">
+    <div class="containter-box" style="background-color: #fff;">
+        <iframe src="{:U('Store/Order/settlement')}" name="StoreContent"></iframe>
+        <div class="clear"></div>
+    </div>
+</div>
+
+<script>
+    function playSound()
+    {
+        var borswer = window.navigator.userAgent.toLowerCase();
+        if ( borswer.indexOf( "ie" ) >= 0 )
+        {
+            //IE内核浏览器
+            var strEmbed = '<embed name="embedPlay" src="__PUBLIC__/statics/store/audio/notice.wav" autostart="true" hidden="true" loop="false"></embed>';
+            if ( $( "body" ).find( "embed" ).length <= 0 )
+                $( "body" ).append( strEmbed );
+            var embed = document.embedPlay;
+            //浏览器不支持 audion，则使用 embed 播放
+            embed.volume = 100;
+        } else
+        {
+            //非IE内核浏览器
+            var strAudio = "<audio id='audioPlay' src='__PUBLIC__/statics/store/audio/notice.wav' hidden='true'>";
+            if ( $( "body" ).find( "audio" ).length <= 0 )
+                $( "body" ).append( strAudio );
+            var audio = document.getElementById( "audioPlay" );
+            //浏览器支持 audion
+            audio.play();
+        }
+    }
+    //通知框设置
+    toastr.options = {
+        "closeButton": true,
+        "debug": false,
+        "positionClass": "toast-top-right",
+        "onclick": null,
+        "showDuration": "300",
+        "hideDuration": "1000",
+        "timeOut": "7000",
+        "extendedTimeOut": "1000",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "fadeIn",
+        "hideMethod": "fadeOut"
+    }
+    function getting(){
+        $.ajax({
+            url:"{:U('Store/Index/getNotice')}",
+            dataType:'json',
+            success:function(data) {
+            if (data.data.audit_num >0){
+                toastr.info("您有"+data.data.audit_num+"件商品待审核,请尽快处理")
+            }
+            if (data.data.wait_num >0){
+                toastr.warning("您有"+data.data.wait_num+"条订单待发货,请尽快发货")
+            }
+            if (data.data.audit_num >0 || data.data.wait_num >0){
+                playSound();
+            }
+            $("#noticeNum").html(data.data.totalCount);
+        }
+        })
+    };
+    window.setInterval(function(){getting();},300000);
+
+
+    $(".ul-1-a").click(function(){
+        $(this).addClass("selected").siblings().removeClass("selected");
+        $(this).parent().find(".ul-2").slideToggle(300);
+    })
+    $(function(){
+        getting();
+        //图片延迟加载
+        $(".img-box img").lazyload({effect : "fadeIn"});
+    })
+    $(".tab-ul li").click(function(){
+     $(this).addClass("sel").siblings().removeClass("sel");
+    })
+</script>
+</body>
+</html>

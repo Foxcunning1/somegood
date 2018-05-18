@@ -1,0 +1,198 @@
+@charset "utf-8";
+/* css reset */
+html,body,header,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,a,abbr,address,big,em,img,q,small,strike,strong,
+sub,sup,tt,var,i,dl,dt,dd,ol,ul,li,form,fieldset,label,table,caption,tbody,thead,tfoot,tr,th,td,article,
+aside,canvas,details,figure,figcaption,header,footer,menu,nav,output,section,time,mark,audio,
+video,input,select,button{margin:0;padding:0;border:0; font-family:PingFangSC-Regular,Helvetica,"Droid Sans",Arial,sans-serif;font-style:normal;font-weight:normal;}
+ul,ol,li{list-style: none;}
+html {font-size: 100px; width: 100%; height: 100%; -webkit-text-size-adjust:100%; -ms-text-size-adjust:100%; max-width: 640px; min-width: 320px; margin: 0 auto; line-height:1; }
+q, blockquote { quotes:none; }
+a, img { border:none; -webkit-touch-callout: none; display: inline-block;}
+a { -webkit-tap-highlight-color: rgba(255, 255, 255, 0);  -webkit-user-select: none;  -moz-user-focus: none;  -moz-user-select: none;text-decoration: none; font-size: 0.24rem}
+table { border-collapse:collapse; border-spacing:0; }
+input,button,textarea{ outline: none; border: none;tap-highlight-color:rgba(0,0,0,0);-webkit-tap-highlight-color:rgba(0,0,0,0);font-family:"Microsoft YaHei";}
+input,textarea{ text-indent: 0; background: transparent; border: 0 none; resize:none; outline:none;  /*清除选中效果的默认蓝色边框 */ -webkit-appearance:none;  /*清除浏览器默认的样式 */ line-height: normal; /*光标问题*/ color: #666;}
+input { line-height: normal !important}
+input:focus { color: #8b8791;}
+.fl{ float:left; }
+.fr{ float:right; }
+.clear { display: block; height: 0; font-size: 0; clear: both}
+.page-box { padding-bottom: 1.5rem !important; overflow: hidden;}
+.pd-t18 { padding-top: 1.63rem !important}
+.pd-t08 { padding-top: 0.86rem !important}
+.notData { margin:0; padding:0; text-align: center; line-height: 0.7rem; color: #666; font-size: 0.24rem;}
+.noscroll,
+/*.noscroll body {overflow: hidden;  }*/
+.noscroll body { position: relative; }
+
+
+/*公用头部样式*/
+.page-title { width: 100%;height: 0.86rem; background-color: #00b190; position: fixed; max-width: 640px; z-index: 35;}
+.position-title { width: 100%; position: fixed; margin: 0 auto; top: 0; z-index: 35;}
+.page-title .to-back-box {  width: 0.6rem; height: 0.6rem; position: absolute; left: 0.15rem; top: 0.1rem; z-index: 35;}
+.page-title .to-menu-box { width: 0.6rem; height: 0.6rem;position: absolute; right: 0.15rem; top: 0.1rem;z-index: 35;}
+.page-title h2.title {font-size: 0.3rem; font-weight: normal; color: #fff; text-align: center; line-height: 0.86rem; margin: 0 0.8rem;}
+.page-title h2.title a { color: #fff;}
+/*公用底部样式*/
+.footer { width: 100%; height: 1rem; position: fixed; left: 0;bottom: 0; background-color: #fff; box-shadow: -3px 0 10px #ccc; z-index: 35}
+.footer ul { display: flex; z-index: 5; margin:0 !important}
+.footer ul li {flex: 1; text-align: center; position:relative}
+.footer ul li a { font-size: 0.2rem !important;color: #333; position: relative; display: block; height: 1rem; }
+.footer ul li a i {margin: 0.15rem auto 0.1rem;}
+.footer ul li a span {display: block; margin: 0 auto}
+.footer ul li a span { margin-top: 0.1rem}
+.footer ul li .icon-num { display: block; padding: 0 3px; position: absolute; right: 0.4rem; top: -0.15rem; background-color: #fff; border: 1px solid #ec343a; color: #ec343a; font-size: 12px; border-radius: 0.12rem;}
+.footer ul li.sel a{color: #00b190}
+.footer ul li a i {display:block; background: url(../images/icon.png) no-repeat; background-size: 3rem 3rem}
+.footer ul li a .icon-home {width: 0.38rem; height: 0.38rem;background-position: 0 0;}
+.footer ul li a .icon-classify{width: 0.38rem; height: 0.38rem; background-position: 0 -0.45rem;}
+.footer ul li a .icon-cart{width: 0.38rem; height: 0.38rem; background-position: 0 -0.84rem; }
+.footer ul li a .icon-mine{width: 0.38rem; height: 0.38rem;background-position: 0 -1.22rem;}
+.footer ul li.sel a .icon-home {width: 0.38rem; height: 0.38rem; background-position: -0.45rem 0;}
+.footer ul li.sel a .icon-classify{ background-position: -0.45rem -0.43rem;}
+.footer ul li.sel a .icon-cart{ background-position: -0.45rem -0.83rem;}
+.footer ul li.sel a .icon-mine{background-position: -0.45rem -1.22rem;}
+/*店铺底部样式*/
+.shop-store .impression { padding: 0.2rem 0; border-bottom: 1px solid #e7e7e7; overflow: hidden; }
+.shop-store .impression ul li a { display: block; border-right: 1px solid #e5e5e5;}
+.shop-store .impression ul li:nth-child(4) a { border-right: none;}
+.shop-store .impression li span:nth-child(1) { font-size: 0.24rem; font-weight: normal; color: #333; line-height: 0.3rem;}
+.shop-store .impression li span:nth-child(2) { font-size: 0.24rem; line-height: 0.3rem; color: #999; }
+.shop-menu-bar {display: -webkit-box;  display: -moz-box; display: -ms-flexbox; display: -webkit-flex; display: flex; position: fixed; bottom: 0; left: 0; width: 100%; background-color:#fff; border-top: 1px solid #e7e7e7;z-index: 3;}
+.shop-menu-bar > a {-webkit-box-flex: 1; -moz-box-flex: 1; -webkit-flex: 1;  -ms-flex: 1;  flex: 1; display: block; height: 0.8rem; line-height: 0.8rem; text-align: center; color: #666; position: relative;}
+.shop-menu-bar > a span { display: inline-block; font-size: 0.24rem}
+.shop-menu-bar > a:nth-child(1),.shop-menu-bar > a:nth-child(2) { border-right: 1px solid #e7e7e7}
+.shop-menu-box { position: fixed; right: 0.1rem; bottom: -20rem; border: 1px solid #e5e5e5; border-radius: 4px;  background-color: #fff; transition: all 0.3s ease;}
+.products-menu {position: absolute; bottom: -1rem;  right: 0.10rem; text-align: center; background-color: #fff; border: 1px solid #e5e5e5; border-radius: 3px; height: 0; transition: all 0.3s ease;}
+.shop-menu-box > a,.products-menu > a { display: block;line-height: 0.4rem; padding: 0.1rem 0.2rem;  font-size: 0.24rem;  border-bottom: 1px solid #f1f1f1; color: #999; text-align: center;}
+.shop-menu-box:after,.products-menu:after{ display:block; content:''; width: 12px; height:12px; background: url('../images/icon.png') no-repeat; background-size: 3rem 3rem;  background-position: -0.64rem -1.65rem; position: absolute;left: 50%; margin-left: -6px; bottom: -11px; z-index: 2; }
+.shop-menu-box a:last-child,.products-menu a:last-child{ border: none}
+.shop-menu-box.click,.products-menu.click { bottom: 1.1rem;  height: auto;}
+/*icon图标 样式*/
+.icons { display:block; background: url(../images/icon.png) no-repeat; background-size: 3rem 3rem}
+.icon-release { width: 0.26rem; height: 0.26rem; margin: 0.04rem auto;  background-position: 0 -1.96rem;}
+.icon-search-small { width: 0.24rem; height: 0.24rem; background-position: -2.75rem 0; position: absolute; left: 0.2rem; top: 0.2rem; }
+.icon-search-big {  width: 0.24rem; height: 0.24rem; background-position: -2.75rem 0; position: absolute; left: 0.21rem; top: 0.20rem; }
+.icon-location {display: inline-block; width: 0.22rem; height: 0.24rem; background-position: -2.80rem -1.33rem; margin:0 0.1rem 0 0;vertical-align: middle}
+.icon-chat {  width: 0.24rem; height: 0.24rem; background-position: -2.76rem -0.28rem; margin-right: 0.2rem;}
+.icon-close { width:0.28rem; height:0.28rem; background-position: 0 -1.66rem; margin: 0.15rem 0 0.2rem 0.2rem}
+.icon-like { width: 0.34rem; height: 0.3rem;background-position: -1.27rem -1.16rem;vertical-align: middle; margin-right: 0.15rem;display: inline-block;}
+.icon-like-yet { width: 0.28rem; height: 0.26rem;background-position: -2.32rem -0.90rem;  margin: 0.05rem 0.1rem 0 0}
+.icon-like-index { width: 0.3rem; height: 0.26rem; background-position: -2.74rem -0.52rem; margin: 0 0.1rem 0 0}
+.icon-like-index-on { width: 0.26rem; height: 0.24rem; background-position: -2.33rem -0.90rem;}
+.icon-clock {  display: inline-block; width: 0.26rem; height: 0.26rem; background-position: -2.76rem -1.06rem; margin: -2px 5px 0 0;vertical-align: middle;}
+.icon-more { width: 0.16rem; height:0.3rem;  margin-top:0.12rem;  background-position: 0 -2.28rem; }
+.icon-guarantee { width: 0.22rem; height:0.22rem; background-position: -1.68rem -0.26rem; margin-top: 0.14rem;}
+.icon-identification { width: 0.74rem; height: 0.25rem; margin: 0.1rem auto; background-position: -0.89rem 0;}
+.icon-identification-not-yet { width: 0.74rem; height: 0.25rem; margin: 0.05rem auto 0; background-position: -0.89rem -0.27rem;}
+.icon-reputation { width: 0.62rem; height: 0.22rem; background-position: -0.88rem -0.54rem; position: absolute; top: 0.1rem ; right: -0.7rem; }
+.icon-share { width:0.34rem; height: 0.38rem; margin-right: 0.2rem; background-position: -0.50rem -2.62rem;z-index: 35;}
+.icon-back { width:0.20rem; height: 0.38rem; margin-left: 0.2rem; background-position: 0 -2.62rem; z-index: 35;}
+.page-title .icon-back { margin-top: 0.1rem;}
+.icon-back-gray { background-position: -0.28rem -2.62rem;}
+.goods-filter .area-choose li.sel .icon-select,
+.applys-filter .area-choose li.sel .icon-select{ width:0.20rem; height:0.18rem; position: absolute; right: 0.1rem ;top: 0.2rem; background-position: -0.45rem -2.1rem; }
+.icon-setting {width: 0.28rem; height: 0.28rem; background-position: -0.45rem -2.27rem; margin: 0.05rem 0.2rem 0 0;transform: scale(1.4)}
+.icon-already-release {width: 0.3rem; height: 0.3rem; background-position: -2.32rem 0.02rem; margin: 0 auto;}
+.icon-already-sell {width: 0.3rem; height: 0.3rem; background-position: -2.34rem -0.30rem;}
+.icon-my-release {width: 0.28rem; height: 0.28rem; background-position: -2.32rem -0.58rem; margin: 0.28rem 0.2rem 0 0;transform: scale(1.2)}
+.icon-my-buy {width: 0.28rem; height: 0.24rem; background-position: -2.34rem -2.73rem; margin: 0.28rem 0.2rem 0 0;transform: scale(1.2)}
+.icon-my-coupon {width: 0.28rem; height: 0.24rem; background-position: -2.34rem -1.66rem; margin: 0.28rem 0.2rem 0 0;transform: scale(1.2)}
+.icon-my-collection {width: 0.28rem; height: 0.24rem; background-position: -2.34rem -1.14rem; margin: 0.28rem 0.2rem 0 0;transform: scale(1.2)}
+.icon-my-authentication {width: 0.28rem; height: 0.28rem; background-position: -2.34rem -1.38rem; margin: 0.28rem 0.2rem 0 0;transform: scale(1.2)}
+.icon-help {width: 0.28rem; height: 0.28rem; background-position: -2.34rem -1.92rem; margin: 0.28rem 0.2rem 0 0;transform: scale(1.2)}
+.icon-customer {width: 0.28rem; height: 0.28rem; background-position: -2.34rem -2.19rem; margin: 0.28rem 0.2rem 0 0;transform: scale(1.2)}
+.icon-join {width: 0.28rem; height: 0.26rem; background-position: -2.34rem -2.46rem; margin: 0.28rem 0.2rem 0 0;transform: scale(1.2)}
+.icon-ask { width: 0.22rem ;height: 0.32rem; background-position:-1.98rem -0.29rem; margin: 0.15rem 0.2rem 0 0;}
+.icon-wchat { width: 0.46rem; height: 0.37rem; background: url("../images/icon_wchat.png") no-repeat; background-size: cover; position: absolute; left: 0.2rem; top: 0.15rem;}
+.icon-relax { display: inline-block; width: 0.20rem; height: 0.20rem;background-position: -1.68rem 0; vertical-align: middle; margin: -3px 7px 0 0;}
+.icon-checkbox,.icon-checkboxall { width: 0.24rem; height: 0.23rem; background-position: -1.67rem -0.49rem; transform: scale(1.4)}
+.icon-delete {width:0.28rem; height:0.26rem; background-position: -2.76rem -2.16rem}
+.icon-tel { width: 0.22rem; height: 0.22rem; background-position: -2.80rem -2.46rem; margin-right: 0.1rem;}
+.icon-close-overlay { width: 0.4rem; height: 0.4rem; background-position: 0 -1.66rem; margin: 0.15rem 0.2rem 0 0}
+.icon-home-bottom { width: 0.30rem; height: 0.30rem; background-position:-1.28rem -1.80rem; margin: 0.15rem auto 0}
+.icon-cart-bottom { width: 0.30rem; height: 0.30rem; background-position: -1.27rem -2.08rem;  margin: 0.15rem auto 0}
+.icon-to-be-payed { width: 0.34rem; height: 0.30rem; background-position:-0.86rem -0.78rem}
+.icon-to-be-received { width: 0.34rem; height: 0.3rem; background-position:-0.86rem -1.08rem}
+.icon-shipped { width: 0.34rem; height: 0.3rem; background-position:-0.86rem -1.70rem}
+.icon-customer-service { width: 0.34rem; height: 0.3rem; background-position:-0.86rem -1.40rem}
+.icon-my-address{ width: 0.28rem; height: 0.32rem; background-position:-2.34rem -0.24rem;margin: 0.28rem 0.2rem 0 0;transform: scale(1.2)}
+.icon-my-sell { width: 0.28rem; height: 0.24rem; background-position:-1.93rem -0.69rem; margin: 0.28rem 0.2rem 0 0; transform: scale(1.4)}
+.icon-invalid { width: 0.28rem; height: 0.28rem; background-position:-2.34rem 0; margin: 0.28rem 0.2rem 0 0; transform: scale(1.2) rotate(90deg)}
+.icon-my-want { width: 0.3rem; height: 0.3rem; background-position:-1.94rem -0.67rem; margin: 0.12rem 0.2rem 0 0;}
+.icon-address-editor { width: 0.4rem; height: 0.38rem; background-position:-1.24rem -0.78rem; margin: 0.1rem auto}
+.icon-my-order { width: 0.28rem; height: 0.28rem;background-position:-1.95rem -0.97rem;margin: 0.25rem 0.2rem 0 0;transform: scale(1.2)}
+.icon-shelves { width: 0.24rem; height: 0.26rem;background-position:-1.98rem -1.26rem;margin: 0.15rem 0.2rem 0 0}
+.icon-off-the-shelf { width: 0.24rem; height: 0.26rem;background-position:-1.98rem -1.50rem;margin: 0.15rem 0.2rem 0 0}
+.icon-settlement {width: 0.28rem; height: 0.26rem;background-position:-1.94rem -1.82rem;margin: 0.25rem 0.2rem 0 0;transform: scale(1.2)}
+.icon-virtual-currency {width: 0.28rem; height: 0.28rem;background-position:-1.94rem -2.1rem;margin: 0.28rem 0.2rem 0 0;transform: scale(1.2)}
+.icon-address-delete {width: 0.4rem; height: 0.38rem; background-position:-0.85rem -2.02rem;margin: 0.1rem auto}
+.icon-complete { width: 0.32rem; height: 0.32rem; background-position:-1.96rem -2.65rem; margin:0 auto;}
+.icon-fail { width: 0.32rem; height: 0.32rem; background-position:-1.96rem -2.32rem; margin:0 auto;}
+.icon-shop-home { width: 0.30rem; height: 0.30rem; background-position:-1.28rem -1.80rem; vertical-align: middle; margin: -5px 0.15rem 0 0;display: inline-block}
+.icon-shop-contact{ width: 0.30rem; height: 0.30rem; background-position:-1.30rem -2.68rem; vertical-align: middle; margin: -5px 0.15rem 0 0;display: inline-block}
+.icon-shop-products { width: 0.30rem; height: 0.30rem; background-position:-1.28rem -2.40rem; vertical-align: middle; margin: -5px 0.15rem 0 0;display: inline-block}
+.icon-step-name { width: 0.26rem ;height: 0.26rem; background-position:-1.66rem -1.32rem;  vertical-align: middle;margin-right: 5px;display: inline-block}
+.icon-step-phone {width: 0.26rem ;height: 0.26rem;background-position:-1.66rem -1rem; vertical-align: middle;margin-right: 5px;display: inline-block}
+.icon-step-shop {width: 0.26rem ;height: 0.26rem; background-position:-1.66rem -1.6rem; vertical-align: middle;margin-right: 5px;display: inline-block}
+.icon-wuliu {width: 0.26rem ;height: 0.26rem; background-position:-1.66rem -1.86rem; vertical-align: middle;margin-right: 5px;display: inline-block}
+.icon-home {width: 0.38rem; height: 0.38rem;background-position: 0 0;margin: 0 auto 0.1rem}
+.icon-classify{width: 0.38rem; height: 0.38rem; background-position: 0 -0.43rem; margin: 0 auto 0.1rem}
+.icon-cart{width: 0.38rem; height: 0.38rem; background-position: 0 -0.83rem; margin: 0 auto 0.1rem}
+.icon-mine{width: 0.38rem; height: 0.38rem;background-position: 0 -1.22rem;margin: 0 auto 0.1rem}
+.icon-delivery { width: 0.28rem; height: 0.26rem;background-position:-1.94rem -1.29rem;margin: 0.25rem 0.2rem 0 0;transform: scale(1.2)}
+.icon-delivering { width: 0.28rem; height: 0.26rem;background-position:-1.94rem -1.56rem;margin: 0.25rem 0.2rem 0 0;transform: scale(1.2)}
+.icon-selled {width: 0.28rem; height: 0.24rem; background-position:-2.34rem 0; margin: 0.28rem 0.2rem 0 0; transform: scale(1.2)}
+.icon-fabu {width: 0.28rem; height: 0.26rem;background-position:-1.94rem -2.36rem;margin: 0.25rem 0.2rem 0 0;transform: scale(1.2)}
+.icon-search-seller { width: 0.24rem; height: 0.24rem; background-position: -2.75rem 0; transform: scale(1.5); margin: 0.15rem 0.1rem 0 0;}
+/*隐藏的*/
+.fixed-box .icon-mine {background: url('../images/icon.png') no-repeat; background-position: 0 -1.22rem; background-size: 3rem 3rem;}
+.fixed-box .icon-classify {background: url('../images/icon.png') no-repeat; background-position: 0 -0.43rem; background-size: 3rem 3rem;}
+.fixed-box .icon-cart {background: url('../images/icon.png') no-repeat; background-position: 0 -0.83rem; background-size: 3rem 3rem;}
+.fixed-box .icon-home{background: url('../images/icon.png') no-repeat; background-position: 0 0; background-size: 3rem 3rem;}
+/*ufooter 的*/
+.ufooter .icon-mine {background: url('../images/icon_1.png') no-repeat; background-position: 0 -1.22rem; background-size: 3rem 3rem;}
+.ufooter .icon-classify {background: url('../images/icon_1.png') no-repeat; background-position: 0 -0.43rem; background-size: 3rem 3rem;}
+.ufooter .icon-cart {background: url('../images/icon_1.png') no-repeat; background-position: 0 -0.81rem; background-size: 3rem 3rem;}
+.ufooter .icon-home {background: url('../images/icon_1.png') no-repeat; background-position: 0 0; background-size: 3rem 3rem;}
+/*通用弹出窗口样式*/
+.dialogMask{ top:0; left:0; width:100%; height:100%; background-color:#000; opacity:0.25; position:fixed; z-index:37;}
+.dialogMainBox{width: 80%; top:30%; left:50%; margin-left: -40%; background:#fff; color: #333; border-radius:5px; position:fixed; z-index:38; overflow:hidden;}
+.dialogBox{ top:0; left:0; padding:5px 0; position:relative; z-index:17;}
+.dialogTitle{ padding:5px 0 10px 10px; line-height:20px; padding-right:40px; border-bottom:1px solid #e3e3e3; position:relative; overflow:hidden;}
+.dialogTitle h3{ font-size:14px; font-weight:normal; color:#333; float:left;}
+.dialogTitle .dialogCloseBtn{ top:4px; right:5px; width:20px; height:20px; font-size:14px; line-height: 20px; text-align: center; color:#999; cursor:pointer; position:absolute;}
+.dialogTitle .dialogCloseBtn:hover{ color:#333;}
+.dialogContent{ padding:10px; line-height: 30px; font-size:14px; clear:both; text-align: center;}
+.dialogContent p{ line-height:24px; margin: 10px 0; text-align: center; }
+.dialogContent button { border: 0; outline: 0; padding: 5px 12px; display: inline-block;margin: 0 10px; color: #fff; border-radius: 3px;}
+.dialogContent button:nth-child(1) { background:rgb(254, 140, 25);}
+.dialogContent button:nth-child(2) { background: #00B9CF;}
+.dialogTools { padding: 10px; height: 30px; line-height: 30px; text-align: center}
+.dialogTools a.btn { display: inline-block; padding: 0 20px; color: #333; vertical-align: top; margin: 0 10px; border-radius: 3px; font-size:14px;}
+.dialogTools a.cancelBtn { border: 1px solid #e5e5e5; color: #333}
+.dialogTools a.confirmBtn { border: 1px solid #00B9CF; background-color: #00B9CF;color: #fff}
+
+/*验证信息提示*/
+.validateSuccess,.validateError{display: block;padding-left:0.30rem;color:#53BD17;height:0.2rem;line-height:0.2rem;position:absolute;top:0.23rem;right:0.1rem;text-align:left; font-size: 12px}
+.validateSuccess{color:#53BD17;  background: url("../images/valid_icons.png") no-repeat; background-size: 0.8rem 0.8rem; background-position: -0.32rem -0.18rem}
+.validateError{color:#EE5023;background: url("../images/valid_icons.png") no-repeat ; background-size: 0.8rem 0.8rem; background-position: -0.15rem -0.38rem}
+.demoForm .validateSuccess,.demoForm .validateError{position:absolute;top:43px;left:5px;}
+.form-dd .validateSuccess,.form-dd .validateError { left: 0; top: 0.8rem}
+
+/*Ajax加载loading效果*/
+.loading-box{ left:50%; top:50%; margin-left:-25px; margin-top: -25px; width:50px; height:50px; border-radius:5px; background-color: rgba(0,0,0,0.3); position: absolute; z-index: 999; }
+.loadEffect{width: 40px;height: 40px; position: relative;margin:5px;}
+.loadEffect span{display: inline-block;width: 10px; height: 4px; border-top-left-radius: 3px;border-bottom-left-radius: 3px;background: #fff;position: absolute;-webkit-animation: load 1.04s ease infinite;  }
+@-webkit-keyframes load{
+    0%{opacity: 1;}
+    100%{opacity: 0.2;}
+}
+.loadEffect span:nth-child(1){left: 0;top: 50%;margin-top:-2px; -webkit-animation-delay:0.13s;}
+.loadEffect span:nth-child(2){left: 3px;top: 6px;-webkit-transform: rotate(45deg);-webkit-animation-delay:0.26s;}
+.loadEffect span:nth-child(3){left: 50%;top: 3px;margin-left: -5px;-webkit-transform: rotate(90deg);-webkit-animation-delay:0.39s;}
+.loadEffect span:nth-child(4){top: 6px;right:3px;-webkit-transform: rotate(135deg);-webkit-animation-delay:0.52s;  }
+.loadEffect span:nth-child(5){right: 0;top: 50%;margin-top:-2px;-webkit-transform: rotate(180deg);-webkit-animation-delay:0.65s;}
+.loadEffect span:nth-child(6){right: 3px;bottom:6px;-webkit-transform: rotate(225deg);-webkit-animation-delay:0.78s;  }
+.loadEffect span:nth-child(7){bottom: 3px;left: 50%;margin-left: -5px;-webkit-transform: rotate(270deg);-webkit-animation-delay:0.91s;  }
+.loadEffect span:nth-child(8){bottom: 6px; left: 3px;-webkit-transform: rotate(315deg);-webkit-animation-delay:1.04s;  }

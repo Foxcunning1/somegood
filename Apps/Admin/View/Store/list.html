@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0,user-scalable=no" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<title>店铺列表</title>
+  <link rel="stylesheet" type="text/css" href="__PUBLIC__/scripts/artdialog/ui-dialog.css" />
+  <link rel="stylesheet" type="text/css" href="__PUBLIC__/statics/admin/css/icon/iconfont.css" />
+  <link rel="stylesheet" type="text/css" href="__PUBLIC__/statics/admin/css/style.css" />
+  <link rel="stylesheet" type="text/css" href="__PUBLIC__/css/pagination.css" />
+  <script type="text/javascript" charset="utf-8" src="__PUBLIC__/scripts/jquery/jquery-1.11.2.min.js"></script>
+  <script type="text/javascript" charset="utf-8" src="__PUBLIC__/scripts/artdialog/dialog-plus-min.js"></script>
+  <script type="text/javascript" charset="utf-8" src="__PUBLIC__/scripts/jquery/jquery.lazyload.min.js"></script>
+  <script type="text/javascript" charset="utf-8" src="__PUBLIC__/statics/admin/js/common.js"></script>
+  <script type="text/javascript" charset="utf-8" src="__PUBLIC__/statics/admin/js/laymain.js"></script>
+</head>
+
+<body class="mainbody">
+<script type="text/javascript">
+    //菜单获取
+    var ajax_url="{:U('Index/ajax')}";
+    //站点列表获取
+    var ajax_site_url = "<?php echo U('Site/sajax');?>";
+
+    function doPostBack(obj){
+        if(obj=='btnEnable'){
+          $("#status").attr("value",'1')
+          $("#listForm2").submit();
+        }else if(obj=='btnDisable'){
+          $("#status").attr("value",'3');
+          $("#listForm2").submit();
+        }else{
+          $("#listForm1").submit();
+        }
+    }
+    $(function () {
+        //图片延迟加载
+        $(".pic img").lazyload({ effect: "fadeIn" });
+        //点击图片链接
+        $(".pic img").click(function () {
+            var linkUrl = $(this).parent().parent().find(".foot a").attr("href");
+            if (linkUrl != "") {
+                location.href = linkUrl; //跳转到修改页面
+            }
+        });
+    });
+</script>
+
+<!--导航栏-->
+<div class="location">
+  <a href="javascript:history.back();" class="back"><i class="iconfont icon-up"></i><span>返回上一页</span></a>
+  <a href="{:U('Index/center')}" class="home"><i class="iconfont icon-home"></i><span>首页</span></a>
+  <i class="arrow iconfont icon-arrow-right"></i>
+  <span>店铺列表</span>
+</div>
+<!--/导航栏-->
+
+<!--工具栏-->
+<form method="post" action="{:U('Store/index')}" id="listForm1">
+<div id="floatHead" class="toolbar-wrap">
+      <div class="toolbar">
+        <div class="box-wrap">
+          <a class="menu-btn"></a>
+          <div class="l-list">
+            <div class="menu-list">
+              <div class="rule-single-select">
+                <select name="area_id" id="area_id" onchange="javascript:doPostBack('area_id')">
+                  	<option value="" <if condition="$area eq 0"> selected="selected"</if> >所有区域</option>
+                    <volist name="area_list" id="vo" >
+                  	<option value="{$vo['id']}" <if condition="$vo['id'] eq $area_id"> selected="selected"</if>>{$vo['name']}</option>
+                    </volist>
+                </select>
+              </div>
+            </div>
+            <div class="menu-list">
+              <div class="rule-single-select">
+                <select name="property" onchange="doPostBack('property')" id="property">
+                  <volist name="property_list" id="item">
+                    <option <if condition="$key eq $property"> selected="selected" </if> value="{$key}" >{$item}</option>
+                  </volist>
+                </select>
+              </div>
+            </div>
+            <div class="r-list">
+              <input name="keywords" type="text" id="txtKeywords" class="keyword" value="{$keywords}" />
+              <a id="btnSearch" class="btn-search" onclick="doPostBack('btnSearch');"><i class="iconfont icon-search"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+</div>
+</form>
+<!--/工具栏-->
+
+<!--列表-->
+<div class="table-container">
+<form method="post" action="" id="">
+    <input type="hidden" id="status" name="status" value=""/>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="ltable">
+  <tr>
+    <th align="left"  colspan="2" style="padding-left: 30px">店铺</th>
+    <th width="12%">区域</th>
+    <th width="25%">地址</th>
+    <th width="12%">状态</th>
+    <th width="12%">操作</th>
+  </tr>
+<volist name="list" id="vo" >
+  <tr>
+    <td width="64">
+      <a href="{:U('Store/add')}?action=edit&id={$vo['sid']}"  class="user-avatar">
+        <if condition="$vo['logo']"><img width="64" height="64" src="__PUBLIC__/uploads/{$vo['logo']}_c100x100" /><else />
+          <i class="iconfont icon-user-full"></i>
+        </if>
+      </a>
+    </td>
+    <td>
+      <div class="user-box">
+        <h4><b><notempty name="vo.user_name">{$vo.user_name}&nbsp;-&nbsp;</notempty><notempty name="vo.store_name">{$vo.store_name}&nbsp;-&nbsp;</notempty>{$vo.mobile}</b></h4>
+        <i>注册时间：<eq name="vo.reg_time" value="0">-<else/>{$vo['reg_time']|date='Y/m/d h:i',###}</eq></i>
+      </div>
+    </td>
+    <td align="center">{$vo['region']}</td>
+    <td align="center">{$vo['address']}</td>
+    <td align="center">
+    <if condition="$vo['status'] eq 1">正常</if>
+    <if condition="$vo['status'] eq 2">待审核</if>
+    <if condition="$vo['status'] eq 3">禁用</if>
+    </td>
+    <td align="center"><a href="{:U('Store/add')}?action=edit&id={$vo['sid']}">查看</a></td>
+  </tr>
+</volist>
+</table>
+</form>
+</div>
+<!--/列表-->
+<div class="line20"></div>
+<!--内容底部-->
+<div class="pagelist">
+    <div id="PageContent" class="default">{$page}</div>
+</div>
+<!--/内容底部-->
+</body>
+</html>

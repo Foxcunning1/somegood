@@ -1,0 +1,85 @@
+<layout name="user_layout" />
+<!--Content start-->
+<div id="vipCenterContent" class="user-center">
+	<div class="w1200">
+		<div class="left-menu-list fl" id="leftMenu">
+			<include file="Public/user_menu"/>
+		</div>
+		<div class="right-show fr">
+			<!--系统消息-->
+			<div class="u-tab-head">
+				<p style="line-height: 40px;">
+					<a href="{:U('Shop/Users/coupon',array('pageType' => 'can_use'))}" <if condition="$pageType eq 'can_use'">class="selected"</if> >优惠券</a>
+					<a href="{:U('Shop/Users/coupon',array('pageType' => 'used'))}" <if condition="$pageType eq 'used'">class="selected"</if> >已使用</a>
+					&nbsp;&nbsp;&nbsp;&nbsp;您当前可使用的优惠券总金额为：<b style="color:#f00;">{$sum}</b>元
+				</p>
+			</div>
+			<div class="u-tab-content">
+				<div class="title-div">
+					<strong>
+						<if condition="($type eq 0) OR ($type eq '')">
+						优惠券来源明细
+						<else/>
+						抵扣明细
+						</if>
+					</strong>
+				</div>
+				<eq name="pageType" value="can_use">
+				<table class="mtable" border="0" cellpadding="0" cellspacing="0" width="100%">
+					<tbody>
+					<tr>
+						<th align="center">ID</th>
+						<th align="center">类型</th>
+						<th align="center">适用范围</th>
+						<th align="center">可用时间</th>
+					</tr>
+					<empty name="list">
+						<tr><td colspan="5" align="center">亲，您还没有可用的优惠券！</td></tr>
+					</empty>
+						<volist name="list" id="item">
+							<tr>
+								<td align="center">{$item.coupon_id}</td>
+								<td align="center">{$item.type_name}</td>
+								<td align="left">
+									<eq name="item.is_all" value="1">
+										全场通用
+										<else/>
+										{$item.goods_category}
+									</eq>
+								</td>
+								<td align="center">{$item.use_start_date|date='Y-m-d H:i:s',###}--{$item.use_end_date|date='Y-m-d H:i:s',###}</td>
+							</tr>
+						</volist>
+					</tbody>
+				</table>
+				<else/>
+				<table class="mtable" border="0" cellpadding="0" cellspacing="0" width="100%">
+					<tbody>
+					<tr>
+						<th align="center">ID</th>
+						<th align="center">类型</th>
+						<th align="center">订单号</th>
+						<th align="center">抵扣时间</th>
+					</tr>
+					<empty name="list">
+						<tr><td colspan="5" align="center">亲，您还没有抵扣记录！</td></tr>
+					</empty>
+						<volist name="list" id="item">
+							<tr>
+								<td align="center">{$item.coupon_id}</td>
+								<td align="center">{$item.type_name}</td>
+								<td align="center">{$item.order_sn}</td>
+								<td align="center">{$item.used_time|date='Y-m-d H:i:s',###}</td>
+							</tr>
+						</volist>
+					</tbody>
+				</table>
+				</eq>
+				<div class="flickr right">{$page}</div>
+			</div>
+			<!--/系统消息-->
+		</div>
+	</div>
+</div>
+<!--end Content-->
+<div class="clear"></div>

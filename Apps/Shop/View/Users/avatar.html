@@ -1,0 +1,58 @@
+<layout name="user_layout" />
+    <link rel="stylesheet" href="__PUBLIC__/statics/shop/css/jquery.jcrop.css" type="text/css">
+	<script type="text/javascript" src="__PUBLIC__/statics/shop/js/webuploader.min.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/statics/shop/js/jquery.jcrop.min.js"></script>
+	<script type="text/javascript" charset="utf-8" src="__PUBLIC__/statics/shop/js/avatar.js"></script>
+	<!--vipCenterContent start-->
+	<div id="vipCenterContent" class="user-center">
+		<div class="w1200">
+		    <div class="left-menu-list fl" id="leftMenu">
+				<include file="Public/user_menu"/>
+			</div>
+			<div class="right-show fr" style="margin-top:0;">
+			      <!--会员头像-->
+			      <div class="u-tab-content">
+			        <div class="title-div">
+			          <strong>头像设置--{$info.user_name}</strong>
+			        </div>
+			        <p><strong>设置我的新头像</strong></p>
+			        <p>如果您还没有设置自己的头像，系统会显示为默认头像，您需要自己上传一张新照片来作为自己的个人头像。</p>
+			        <p>上传成功后，请裁剪合适的头像确认保存后才能生效。</p>
+			        <div class="line20"></div>
+			        <div id="upload-box" class="upload-box"></div>
+			        <div class="cropper-wraper">
+			          <div class="cropper-box">
+			            <img id="target" src="__PUBLIC__/<if condition="$info['avatar'] eq ''">statics/mobile/images/default_img.png<else/>uploads/{$info.avatar}</if>" width="350" height="350" />
+			          </div>
+			          <div class="cropper-view">
+			            <div class="img-box">
+			                <img id="preview" src="<if condition="$info['avatar'] eq ''">__PUBLIC__/statics/common/images/user-avatar.png<else/>__PUBLIC__/uploads/{$info.avatar}</if>" />
+			              <span>头像预览</span>
+			            </div>
+			            <div class="btn-box">
+			              <p><strong>头像预览区</strong></p>
+			              <p><input name="btnSubmit" type="button" class="btn" value="确定保存" onclick="CropSubmit(this);" /></p>
+			              <p class="tip">提示：生成头像大小180*180相素上传图片后，左侧选取图片合适大小，点击下面的保存按钮。</p>
+			            </div>
+			          </div>
+			      </div>
+			      <form id="uploadForm" name="uploadForm" url="{:U('Shop/Users/avatarCrop')}">
+			        <input id="hideFileName" name="hideFileName" type="hidden" />
+			        <input id="hideFileExtension" name="hideFileExtension" type="hidden" />
+			        <input id="hideX1" name="hideX1" type="hidden" value="0" />
+			        <input id="hideY1" name="hideY1" type="hidden" value="0" />
+			        <input id="hideWidth" name="hideWidth" type="hidden" value="0" />
+			        <input id="hideHeight" name="hideHeight" type="hidden" value="0" />
+			      </form>
+			      <!--/会员头像-->
+			</div>
+		</div>
+	</div>
+	<!--end vipCenterContent-->
+	<div class="clear"></div>
+	<script type="text/javascript">
+	  //初始化上传头像组件
+	  $(function(){
+	      initWebUploader("__PUBLIC__","{:U('Shop/Users/uploadImg')}");
+	  });
+	  </script>

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>{$web_title}</title>
+    <import type="css" file="statics.ershou.css.public,statics.ershou.css.style,css.smartphoto" />
+    <import type="js" file="scripts.zepto.zepto#min,scripts.zepto.zepto#fx,scripts.zepto.zepto#miniDialog,scripts.zepto.zepto#cookie#min,statics.ershou.js.common,scripts.zepto.lazyload#min,scripts.js.smartphoto#min" />
+    <script type="text/javascript" src="__PUBLIC__/statics/ershou/js/rem.js" fu-psd="720" fu-min="50" fu-max="100"></script>
+    <script type="text/javascript">
+        var usersLng = {$Think.session.lng};//用户所在的经纬度
+        var usersLat = {$Think.session.lat};
+        if(isWeixin()) {
+            usersLng = parseFloat(localStorage.getItem("longitude"));
+            usersLat = parseFloat(localStorage.getItem("latitude"));
+        }
+    </script>
+</head>
+<body>
+<!--详情图滚动图-->
+<div class="page-title">
+    <!--返回按钮-->
+    <div class="back-box">
+        <a href="javascript:history.back();" class="icons icon-back"></a>
+    </div>
+    <h2 class="title">商品详情</h2>
+    <!--返回按钮-->
+</div>
+<!--商品详情-->
+<div class="goods-detail" style="padding-top: 1rem">
+    <div class="g-info">
+        <div class="product-name">
+            <span>{$info.goods_title}</span>
+            <input type="hidden" name="goods_id" value="{$info.id}" id="goodsIdInput">
+            <div class="collection"><i class="icons icon-like <eq name="favNum" value="1">like</eq>"></i><span>收藏</span></div>
+        </div>
+        <div class="product-price-m" style="display:flex;">
+            <em class="fl" style="flex:1;">¥<span class="big-price">{$info.goods_price}</span><span class="small-price"></span></em>
+            <span  style="flex:1; text-align: center; font-size:0.22rem; color:#999;">数量：{$info.goods_num}件</span>
+            <span class="view fr"  style="flex:1; text-align: right;"><span id="viewNum">{$info.browse_num}</span>次浏览</span>
+        </div>
+        <div class="location">
+            <a href="javascript:void(0);" class="location-a">
+            <i class="icons icon-location fl"></i>
+            <span>距离您约<em data-lng="{$info.lng}" data-lat="{$info.lat}" class="distance address">0</em> km </span>
+            </a>
+        </div>
+    </div>
+</div>
+
+<!--商品详情-->
+<!--商品描述-->
+<div class="goods-desc">
+    <div class="title">商品描述</div>
+    <div class="desc">
+        <div class="goods-desc-box">{$info.goods_desc}</div>
+        <div class="goods-detail-img">
+            <notempty name="photoList">
+            <for start="0" end="count($photoList)">
+                <a href="__PUBLIC__/uploads/{:$photoList[$i]}" class="js-img-viwer"><img data-original="__PUBLIC__/uploads/{:$photoList[$i]}_c720x-" src="__PUBLIC__/statics/ershou/images/default_img.png" alt="{$remarkList[$i]}" /></a>
+            </for>
+            </notempty>
+        </div>
+    </div>
+</div>
+<!--商品描述-->
+<script>
+    window.addEventListener('load',function(){
+        new smartPhoto(".js-img-viwer");
+        new smartPhoto(".js-img-viwer-fit");
+    });
+</script>
+<script>
+
+    $(function(){
+        $(".goods-detail-img img").lazyload({effect : "fadeIn"});
+    });
+</script>
+<!--所属店铺-->
+<div class="belong-store">
+    <div class="items-user">
+        <a href="{:U('Ershou/Store/myShop',array('shopid'=>$info['user_id']))}">
+            <img src="<empty name="info.avatar">__PUBLIC__/statics/ershou/images/default_img.png<else/>__PUBLIC__/uploads/{$info.avatar}_c200x200</empty>" alt="{$info.nick_name}" class="user-img fl" />
+            <div class="name-and-time fl">
+                <span class="name">{$info.nick_name}<i class="icons icon-reputation"></i></span>
+            </div>
+        </a>
+    </div>
+    <div class="impression">
+        <ul>
+            <li>
+                <span>{$info.goods_count}件</span>
+                <span>在售宝贝</span>
+            </li>
+            <li>
+                <span>{$info.sale_counts}件</span>
+                <span>成功卖出</span>
+            </li>
+            <li>
+              <if condition="$info['store_status'] eq 1">
+                <span><i class="icons icon-identification"></i></span>
+                <span>已认证</span>
+                <else />
+                <span><i class="icons icon-identification-not-yet"></i></span>
+                <span>未认证</span>
+              </if>
+            </li>
+            <!-- class="icons icon-identification" -->
+        </ul>
+    </div>
+    <div class="check-store-box"><a href="{:U('Ershou/Store/myShop',array('shopid'=>$info['user_id']))}" class="check-store">查看店铺</a></div>
+</div>
+<!--所属店铺-->
+<!--推荐-->
+<div class="for-you-recommend page-box">
+    <div class="title">推荐</div>
+    <div class="fy-content">
+        <ul>
+            <volist name="userRecGoodsList" id="item" empty="$empty">
+            <li>
+                <a href="{:U('Ershou/Goods/detail',array('id'=>$item['id']))}">
+                    <img src="__PUBLIC__/uploads/{$item.goods_thumb}" alt="{$item.goods_title}" />
+                    <div class="product-name">
+                        <span>{$item.goods_title}</span>
+                    </div>
+                    <div class="product-price-m">
+                        <em class="fl">¥<span class="big-price">{$item.goods_price}</span></em>
+                    </div>
+                </a>
+            </li>
+            </volist>
+        </ul>
+    </div>
+</div>
+<!--推荐-->
+<div class="add-to-cart">
+    <a href="{:U('Index/index')}" class="to-home"><i class="icons icon-home-bottom"></i><span>首页</span></a>
+    <a href="javascript:void(0);" class="to-cart"><i class="icons icon-like <eq name="favNum" value="1">like</eq>"></i><span>收藏</span> </a>
+    <a href="<if condition="$info['goods_num'] eq 0">javascript:;<else/>{:U('Ershou/Order/confirmOrder')}?id={$info.id}</if>" class="add-cart <if condition="$info['goods_num'] eq 0">disable</if>">立即购买</a>
+</div>
+<form id="cartform" action="" method="post" >
+  <input type="hidden" name="goods_id" id="goodsId" value="{$info[id]}" />
+</form>
+<!--公用底部-->
+<!--公用底部-->
+<script>
+    //获取购物车商品的数量
+    $(function(){
+        calcDistance(".distance");//绑定计算距离
+    })
+    //收藏商品
+    function popupa(info){
+        $("body").minDialog({
+            isAutoClose:true,
+            closeTime:500,
+            content: "<p>"+info+"</p>"
+        });
+    }
+    $(".collection").on('touchstart',function(){
+        var goods_id =$(this).prev().val();
+        $.ajax({
+            method:'post',
+            dataType:'json',
+            url: "{:U('Mobile/Goods/collect')}",
+            data:{
+                    "goods_id":goods_id,
+                    "favorite_type":1
+                 },
+            async:false,
+            success:function(data){
+                if (data.status == 1) {
+                    $(".icon-like").toggleClass("like");
+                }
+                popupa(data.info);
+            }
+        });
+    })
+    $("a.to-cart").on('touchstart',function(){
+        var goods_id =$("#goodsIdInput").val();
+        $.ajax({
+            method:'post',
+            dataType:'json',
+            url: "{:U('Mobile/Goods/collect')}",
+            data:{
+                    "goods_id":goods_id,
+                    "favorite_type":1
+                 },
+            async:false,
+            success:function(data){
+                if (data.status == 1) {
+                    $(".icon-like").toggleClass("like");
+                }
+                popupa(data.info);
+            }
+        });
+    })
+    /*分享引导弹出*/
+    $(".icon-share").on("touchstart",function(){
+        $(".over-lay-share").show();
+        $("body").css("overflow","hidden");
+    })
+    $("img.know").on("touchstart",function(){
+        $(".over-lay-share").hide();
+        $("body").css("overflow","auto");
+    })
+</script>
+</body>
+</html>

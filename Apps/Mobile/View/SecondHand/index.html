@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>3好连锁店</title>
+    <import type="css" file="statics.mobile.css.public,statics.mobile.css.user,statics.mobile.css.style" />
+    <import type="js" file="scripts.zepto.zepto#min,scripts.zepto.lazyload#min,statics.mobile.js.common" />
+    <script type="text/javascript" src="__PUBLIC__/statics/mobile/js/rem.js" fu-psd="720" fu-min="50" fu-max="100"></script>
+</head>
+<body>
+<!--店铺主页-->
+<div class="seller-shop-inner">
+    <div class="name fl">
+        <span>{$info.nick_name}</span>
+    </div>
+    <div class="head-portrait fr">
+        <a href="{:U('Users/setting',array('type'=>'user_img'))}">
+            <img src="__PUBLIC__/statics/mobile/images/default_img.png" data-original="__PUBLIC__/uploads/{$info.avatar}_c200x200" alt="卖家头像" class="user-img fl"/>
+        </a>
+    </div>
+    <!--返回按钮和分享-->
+    <!--<div class="to-back-box">-->
+    <!--<a href="javascript:history.go(-1);" class="icons icon-back"></a>-->
+    <!--</div>-->
+    <!--<h2 class="title">{$info.company_name}</h2>-->
+    <!--<div class="to-menu-box">-->
+    <!--<i class="icons icon-share"></i>-->
+    <!--</div>-->
+    <!--&lt;!&ndash;返回按钮和分享&ndash;&gt;-->
+
+</div>
+<!--店铺主页-->
+<div class="inner-store belong-store my-store">
+    <div class="impression">
+        <ul>
+            <li>
+                <a href="{:U('Mobile/SecondHand/order')}?pageType=1">
+                    <span class="red">{$wait_send_num}件</span>
+                    <span>待发货</span>
+                </a>
+            </li>
+            <li>
+                <a href="{:U('Mobile/SecondHand/goodsManage')}?pageType=sale">
+                    <span class="red">{$on_sale_num}件</span>
+                    <span>在售</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+<!--所属店铺-->
+<div class="user-section">
+    <div class="sec-content">
+        <ul class="items">
+            <li>
+                <i class="icons icon-my-order"></i>
+                <a href="{:U('Mobile/SecondHand/order')}?pageType=1">
+                    <span class="fl">我的订单</span><i class="icons icon-more fr"></i><span class="num fr" id="buyNum"><!--0--></span>
+                </a>
+            </li>
+            <li>
+                <i class="icons icon-selled"></i>
+                <a href="{:U('Mobile/SecondHand/goodsManage')}?pageType=success">
+                    <span class="fl">我卖出的</span><i class="icons icon-more fr"></i><span class="num fr" id="mySellNum">{$success_num}</span>
+                </a>
+            </li>
+            <li>
+                <i class="icons icon-my-release"></i>
+                <a href="{:U('Mobile/SecondHand/goodsManage')}?pageType=sale">
+                    <span class="fl">我的发布</span><i class="icons icon-more fr"></i><span class="num fr" id="releaseNum">{$goods_num}</span>
+                </a>
+            </li>
+            <li>
+                <i class="icons icon-settlement"></i>
+                <a href="{:U('Mobile/SecondHand/settlement')}">
+                    <span class="fl">我的结算</span><i class="icons icon-more fr"></i>
+                </a>
+            </li>
+
+            <li>
+                <i class="icons icon-fabu"></i>
+                <a href="{:U('Mobile/SecondHand/publish')}">
+                    <span class="fl">发布商品</span><i class="icons icon-more fr"></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+<!--商品筛选部分-->
+<!--公用底部-->
+<include file="Public/ufooter" />
+<!--公用底部-->
+<script>
+    $(function(){
+        //图片延迟加载
+        $(".head-portrait a img").lazyload({effect : "fadeIn"});
+    })
+    /*分享引导弹出*/
+    $(".icon-share").on("touchstart",function(){
+        $(".over-lay-share").show();
+        $("body").css("overflow","hidden");
+    })
+    $("img.know").on("touchstart",function(e){
+        $(".over-lay-share").hide();
+        $("body").css("overflow","auto");
+        e.preventDefault();
+
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+	<div class="footer">
+        <ul>
+            <li><a href="{:U('Mobile/Index/index')}"><i class="icons icon-home"></i><span>首页</span></a></li>
+            <li><a href="{:U('Mobile/Goods/category')}"><i class="icons icon-classify"></i><span>分类</span></a></li>
+            <li><a href="{:U('Mobile/Cart/index')}"><i class="icons icon-cart"></i><span class="icon-num" id="cartNum">0</span><span>购物车</span></a></li>
+            <li id="shopKeepper"><a href="<eq name="$Think.session.mobile.store_id" value="0">{:U('Mobile/Users/index')}<else/>javascript:void(0);</eq>"><i class="icons icon-mine"></i><span>我的</span></a></li>
+        </ul>
+    </div>
+    <div style="height: 1rem;width: 100%; position: fixed; bottom: 0; right:0;z-index: 1">
+        <neq name="$Think.session.mobile.store_id" value="0">
+            <div class="shopkeeper-box products-menu">
+                <a href="{:U('Mobile/Users/index')}">会员中心</a>
+                <a href="{:U('Mobile/SecondHand/index')}">二手管理</a>
+                <a href="{:U('Mobile/Store/index')}">店铺管理</a>
+				<a href="{:U('Mobile/Seller/index')}">商家管理</a>
+            </div>
+        </neq>
+    </div>
+    <script type="text/javascript">
+
+        /*店铺管理动画*/
+        $("#shopKeepper").on("click",function(event){
+            $(".shopkeeper-box").toggleClass("click");
+            event.stopPropagation();
+        })
+        /*点击其他地方关闭右下角可选入口*/
+        $(document).bind('click',function(e){
+            var e = e || window.event; //浏览器兼容性
+            var elem = e.target || e.srcElement;
+            while (elem) { //循环判断至跟节点，防止点击的是div子元素
+                if (elem.id && elem.id=='test') {
+                    return;
+                }
+                elem = elem.parentNode;
+            }
+            $(".shopkeeper-box").addClass("click");
+            $(".shopkeeper-box").removeClass("click");
+        })
+        /*公用底部点击样式变换*/
+        $(".footer ul").find("li").on("click",function(){
+            $(this).addClass("sel").siblings().removeClass("sel");
+
+        })
+
+
+        $(function() {
+			//获取购物车商品的数量
+            $.ajax({
+                type: 'POST',
+                url: "{:U('Mobile/Cart/getCartNum')}",
+                dataType: 'json',
+                success: function (data) {
+                    if (data.status == 1) {
+                        $("#cartNum").text(data.data);
+                    } else {
+                        $("#cartNum").text("0");
+                    }
+                }
+            })
+			//获取是否是商家或店铺
+			$.ajax({
+                type: 'POST',
+                url: "{:U('Mobile/Cart/isWho')}",
+                dataType: 'json',
+                success: function (data) {
+                    if (data.status == 1) {
+					//alert(data.data.isStore);
+						if (data.data.isSeller == 0) {
+							$(".shopkeeper-box.products-menu").children('a').eq(3).text("品牌推广");
+						}
+						if (data.data.isStore == 0) {
+							$(".shopkeeper-box.products-menu").children('a').eq(2).text("加盟店申请");
+						}
+                    }
+                }
+            })
+        })
+    </script>
+    <include file="Public/wxshare" />

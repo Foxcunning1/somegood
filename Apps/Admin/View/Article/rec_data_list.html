@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0,user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>推荐位内容列表</title>
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/scripts/artdialog/ui-dialog.css" />
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/statics/admin/css/icon/iconfont.css" />
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/statics/admin/css/style.css" />
+    <link href="__PUBLIC__/css/pagination.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" charset="utf-8" src="__PUBLIC__/scripts/jquery/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="__PUBLIC__/scripts/artdialog/dialog-plus-min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="__PUBLIC__/scripts/jquery/jquery.lazyload.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="__PUBLIC__/statics/admin/js/common.js"></script>
+    <script type="text/javascript" charset="utf-8" src="__PUBLIC__/statics/admin/js/laymain.js"></script>
+    <script type="text/javascript" charset="utf-8" src="__PUBLIC__/scripts/jquery/jquery.form.min.js"></script>
+    <script type="text/javascript">
+        //菜单获取
+        var ajax_url="{:U('Index/ajax')}";
+        //站点列表获取
+        var ajax_site_url = "<?php echo U('Site/sajax');?>";
+        //单击修改的ajax地址
+        var pajax_url="{:U('Ajax/doubleClickModify')}";
+
+        function doPostBack(objId) {
+            if(objId == 'btnDelete') {
+                $('#recForm').submit();
+            }else{
+                $('#searchForm').submit();
+            }
+        }
+        $(function () {
+            //图片延迟加载
+            $(".pic img").lazyload({ effect: "fadeIn" });
+            //点击图片链接
+            $(".pic img").click(function () {
+                var linkUrl = $(this).parent().parent().find(".foot a").attr("href");
+                if (linkUrl != "") {
+                    location.href = linkUrl; //跳转到修改页面
+                }
+            });
+        });
+    </script>
+</head>
+
+<body class="mainbody">
+    </div>
+    <!--导航栏-->
+    <div class="location">
+        <a href="javascript:history.back(-1);" class="back"><i class="iconfont icon-up"></i><span>返回上一页</span></a>
+        <a href="{:U('Index/center')}" class="home"><i class="iconfont icon-home"></i><span>首页</span></a>
+        <i class="arrow iconfont icon-arrow-right"></i>
+        <span>推荐位内容</span>
+    </div>
+    <!--/导航栏-->
+
+    <!--工具栏-->
+    <div id="floatHead" class="toolbar-wrap">
+        <div class="toolbar">
+            <div class="box-wrap">
+                <a class="menu-btn"></a>
+                <form action="{:U('recData')}" method="post" id="searchForm">
+                    <div class="l-list">
+                        <ul class="icon-list">
+                            <li><a class="all" href="javascript:void(0);" onclick="checkAll(this)"><i></i><span>全选</span></a></li>
+                            <li><a onclick="ExePostBack('btnDelete')" id="btnDelete" class="del" href="javascript:void(0);"><i></i><span>删除</span></a></li>
+                        </ul>
+                    </div>
+                    <div class="r-list">
+                        <input type="hidden" name="id" value="{$id}">
+                        <input name="keywords" type="text" id="txtKeywords" class="keyword" />
+                        <a id="btnSearch" class="btn-search" onclick="doPostBack('btnSearch');">查询</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!--/工具栏-->
+
+    <!--列表-->
+    <div class="table-container">
+        <form action="{:U('recDataDel')}" id="recForm" method="post">
+            <input type="hidden" name="type" id="type" value=""/>
+            <input type="hidden" name="move" id="move" value="">
+            <!--文字列表-->
+            <table width="100%" border="0" cellspacing="0" cellpadding="0" class="ltable">
+                <tr>
+                    <th width="6%">选择</th>
+                    <th align="left" >文章ID</th>
+                    <th align="left">文章标题</th>
+                    <th align="left">排序</th>
+                    <th>操作</th>
+                </tr>
+                <volist name="list" id="item">
+                    <tr>
+                        <td align="center">
+                            <span class="checkall" style="vertical-align:middle;">
+                                <input type="checkbox" name="ids[]" value="{$item.id}" />
+                            </span>
+                        </td>
+                        <td>{$item.article_id}</td>
+                        <td>{$item.title}</td>
+                        <td>{$item.sort_num}</td>
+                        <td align="center">
+                            <a href="javascript:void(0);" onclick="showInfo({$item['article_id']})" title="修改" class="edit">修改</a>
+                            <!--&nbsp;|-->
+                            <!--<a href="{:U('recData' , array('id' => $item['id']))}" title="原文" class="edit">原文</a>-->
+                        </td>
+                    </tr>
+                </volist>
+            </table>
+            <!--/文字列表-->
+        </form>
+    </div>
+    <!--/列表-->
+
+    <!--内容底部-->
+    <div class="line20"></div>
+    <div class="pagelist">
+        <div class="l-btns">
+            <span>显示</span><span>{:C('PAGE_SIZE')}</span><span>条/页</span>
+        </div>
+        <div id="PageContent" class="default">{$page}</div>
+    </div>
+    <!--/内容底部-->
+<script type="text/javascript">
+    function showInfo(id) {
+        top.dialog({
+            width: 700,
+            title: '编辑文章内容',
+            lock: true,
+            url: "{:U('Add')}?action=edit&recdata=1&is_ajax=1"+"&id="+id
+        }).showModal();
+
+    }
+</script>
+</body>
+</html>

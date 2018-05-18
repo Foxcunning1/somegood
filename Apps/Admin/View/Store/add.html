@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0,user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>店铺信息审核</title>
+    <link href="__PUBLIC__/scripts/artdialog/ui-dialog.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/statics/admin/css/icon/iconfont.css" />
+    <link href="__PUBLIC__/statics/admin/css/style.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" charset="utf-8" src="__PUBLIC__/scripts/jquery/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="__PUBLIC__/scripts/jquery/Validform_v5.3.2_min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="__PUBLIC__/scripts/artdialog/dialog-plus-min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="__PUBLIC__/statics/admin/js/laymain.js"></script>
+    <script type="text/javascript" charset="utf-8" src="__PUBLIC__/statics/admin/js/common.js"></script>
+</head>
+
+<body class="mainbody">
+<form method="post" action="{:U('add')}" id="wantForm">
+    <!--导航栏-->
+    <div class="location">
+        <a href="javascript:history.back(-1);" class="back"><i class="iconfont icon-up"></i><span>返回上一页</span></a>
+        <a href="{:U('Index/center')}" class="home"><i class="iconfont icon-home"></i><span>首页</span></a>
+        <i class="arrow iconfont icon-arrow-right"></i>
+        <span>店铺信息审核</span>
+    </div>
+    <div class="line10"></div>
+    <!--/导航栏-->
+
+    <!--内容-->
+    <div id="floatHead" class="content-tab-wrap">
+        <div class="content-tab">
+            <div class="content-tab-ul-wrap">
+                <ul>
+                    <li><a class="selected" href="javascript:void(0);">店铺信息</a></li>
+                    <li><a href="javascript:void(0);">认证信息</a></li>
+                    <li><a href="javascript:void(0);">坐标拾取</a></li>
+                    <li><a href="javascript:void(0);">货柜格子</a></li>
+                    <li><a href="javascript:void(0);">广告位</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="tab-content">
+        <dl>
+            <dt>店铺名称</dt>
+            <input type="hidden" name="sid" value="{$info.sid}"/>
+            <dd><input name="data[store_name]" type="text" value="{$info.store_name}" id="txtTitle" class="input normal" datatype="*1-100"/> <span class="Validform_checktip">*店铺中文名称</span></dd>
+        </dl>
+        <dl>
+            <dt>店铺别名</dt>
+            <dd><input name="data[alias_name]" type="text" value="{$info.alias_name}"  class="input normal" datatype="*1-100"/></dd>
+        </dl>
+        <dl>
+            <dt>LOGO</dt>
+            <dd>
+                <if condition="$info['logo']"><img width="64" height="64" src="__PUBLIC__/uploads/{$info['logo']}_c100x100" /><else />
+                    <i class="iconfont icon-user-full" style="font-size: 34px; color:#ddd;"></i>
+                </if>
+            </dd>
+        </dl>
+        <dl>
+            <dt>店铺手机号</dt>
+            <dd><input name="data[mobile]" type="text" value="{$info.mobile}"  class="input normal" datatype="*1-100"/></dd>
+        </dl>
+        <dl>
+            <dt>QQ</dt>
+            <dd><input name="data[qq]" type="text" value="{$info.qq}"  class="input normal" datatype="*1-100"/></dd>
+        </dl>
+        <dl>
+            <dt>Email</dt>
+            <dd><input name="data[email]" type="text" value="{$info.email}"  class="input normal" datatype="*1-100"/></dd>
+        </dl>
+        <eq name="action" value="edit">
+            <dl>
+                <dt>申请时间</dt>
+                <dd>{$info.reg_time|date='Y-m-d H:i:s',###}</dd>
+            </dl>
+        </eq>
+        <dl>
+            <dt>店铺类型</dt>
+            <dd>
+                <div class="rule-multi-radio">
+                    <span id="rblStatus1">
+                        <volist name="storeTypeList" id="st">
+                            <input id="rblStatus_{$key}"  type="radio" name="data[store_type]" value="{$st.id}" <if condition="$info.store_type eq $st['id']"> checked="checked" </if> /><label for="rblStatus_{$key}">{$st.type_name}</label>
+                        </volist>
+                    </span>
+                </div>
+            </dd>
+        </dl>
+        <dl>
+            <dt>所属地区：</dt>
+            <dd>
+                <div class="rule-single-select">
+                    <select name="province_id" id="province" onchange="loadRegion('province',2,'city','{:U('Admin/Ajax/getRegionList')}');"  class="select">
+                        <option value="0">省份/直辖市</option>
+                        <volist name="provinceList" id="v">
+                            <option value="{$v.id}" <if condition="$provinceId eq $v['id']"> selected="selected"</if> >{$v.name}</option>
+                        </volist>
+                    </select>
+                </div>
+                <div class="rule-single-select">
+                    <select name="city" id="city" class="select" onchange="loadRegion('city',3,'town','{:U('Admin/Ajax/getRegionList')}');">
+                        <option value="0">请选择</option>
+                        <volist name="cityList" id="vo">
+                            <option value="{$vo.id}" <if condition="$cityId eq $vo['id']"> selected="selected"</if>>{$vo.name}</option>
+                        </volist>
+                    </select>
+                </div>
+                <div class="rule-single-select">
+                    <select name="data[area_id]" id="town" class="select" datatype="*">
+                        <option value="0">请选择</option>
+                        <volist name="townList" id="voo">
+                            <option value="{$voo.id}" <if condition="$info['area_id'] eq $voo['id']"> selected="selected"</if>>{$voo.name}</option>
+                        </volist>
+                    </select>
+                </div>
+            </dd>
+        </dl>
+        <dl>
+            <dt>地址</dt>
+            <dd><input name="data[address]" type="text" value="{$info.address}"  class="input normal" datatype="*1-100"/> <span class="Validform_checktip">*详细地址</span></dd>
+        </dl>
+        <dl>
+            <dt>状态</dt>
+            <dd>
+                <div class="rule-multi-radio">
+                    <span id="rblStatus">
+                        <volist name="status_list" id="item">
+                            <input id="rblStatus_{$key}"  type="radio" name="data[status]" value="{$key}" onclick="checkStatus(this.value);" <if condition="$info.status eq $key"> checked="checked" </if> /><label for="rblStatus_{$key}">{$item}</label>
+                        </volist>
+                    </span>
+                </div>
+            </dd>
+        </dl>
+        <script>
+            function checkStatus(status){
+                if(status==3){
+                    $('#error_reason').show();
+                }else{
+                    $('#error_reason').hide();
+                }
+            }
+        </script>
+        <dl>
+            <dt>是否推荐</dt>
+            <dd>
+                <div class="rule-multi-radio">
+                    <input id="is_rec_1" type="radio" name="data[is_rec]" value="1" <eq name="info.is_rec" value="1">checked="checked"</eq> /><label for="is_rec_1">是</label>
+                    <input id="is_rec_0" type="radio" name="data[is_rec]" value="0" <eq name="info.is_rec" value="0">checked="checked"</eq> /><label for="is_recs_0">否</label>
+                </div>
+            </dd>
+        </dl>
+        <dl id="error_reason" style="display: none">
+            <dt>原因</dt>
+            <dd>
+                <textarea name="error_reason"  cols="50" rows="10">{$info.error_reason}</textarea>
+                <span class="Validform_checktip">*审核失败原因</span>
+            </dd>
+        </dl>
+    </div>
+    <div class="tab-content" style="display:none">
+        <dl>
+            <dt>店主姓名</dt>
+            <dd>{$info.owner}【{$info.user_mobile}】</dd>
+        </dl>
+        <dl>
+            <dt>手机号</dt>
+            <dd>{$info.mobile}</dd>
+        </dl>
+        <dl>
+            <dt>身份证号</dt>
+            <dd>{$info.idcard}</dd>
+        </dl>
+        <dl>
+            <dt>身份证正面</dt>
+            <dd>
+                <if condition="$info['idcard_z']"><img width="80" height="65" src="__PUBLIC__/uploads/{$info['idcard_z']}_c100x100" /><else />
+                    <i class="iconfont icon-pic" style="font-size: 44px; color:#ddd;"></i>
+                </if>
+            </dd>
+        </dl>
+        <dl>
+            <dt>身份证反面</dt>
+            <dd>
+                <if condition="$info['idcard_f']"><img width="80" height="65" src="__PUBLIC__/uploads/{$info['idcard_f']}_c100x100" /><else />
+                    <i class="iconfont icon-pic" style="font-size: 44px; color:#ddd;"></i>
+                </if>
+            </dd>
+        </dl>
+    </div>
+    <div class="tab-content">
+        <dl>
+            <dt>地图拾取</dt>
+            <dd>
+                <input name="coordinate" type="text" id="txtCoordinate" value="<if condition="$info['lng'] neq '' and $info['lat'] neq ''">{$info.lng},{$info.lat}</if>" class="input normal" />
+            </dd>
+        </dl>
+        <dl>
+            <dd>
+                <iframe height="960" width="100%" id="mapIframe" src="http://api.map.baidu.com/lbsapi/getpoint/index.html?qq-pf-to=pcqq.group"></iframe>
+            </dd>
+        </dl>
+    </div>
+    <div class="tab-content" style="display:none">
+        <dl>
+            <dt>申请数量</dt>
+            <dd><input type="number" id="box_num" class="input small" name="data[box_num]" value="{$info.box_num}">个</dd>
+        </dl>
+        <dl>
+            <dt>当前已设置</dt>
+            <dd id="box_count">{$box.count}个</dd>
+        </dl>
+        <dl id="boxAddButton">
+            <dt>添加</dt>
+            <dd>
+                <div class="rule-single-select">
+                    <select id="boxSize">
+                        <volist name="boxSize" id="bs">
+                            <option value="{$bs.id}">{$bs.l}*{$bs.w}*{$bs.h}mm³</option>
+                        </volist>
+                    </select>
+                </div>
+                <input type="button" class="btn" value="添加" onclick="addBox();">
+            </dd>
+        </dl>
+        <dl>
+            <dt>当前格子</dt>
+            <dd>
+                <table width="40%" border="0" cellspacing="0" cellpadding="0" class="ltable">
+                    <tbody>
+                    <tr>
+                        <th width="10%">编码</th>
+                        <th width="20%">规格</th>
+                        <th width="10%">操作</th>
+
+                    </tr>
+                    </tbody>
+                    <tbody id="box_list">
+                    <volist name="box.list" id="bl">
+                        <tr id="box_{$bl.id}">
+                            <th width="10%">{$bl.sn}</th>
+                            <th width="20%">{$bl.l}*{$bl.w}*{$bl.h}mm³</th>
+                            <th width="10%"><eq name="bl.is_lock" value="0"><a href="javascrit:;" onclick="delBox({$bl.id})">删除</a><else/>已锁定</eq></th>
+                        </tr>
+                    </volist>
+                    </tbody>
+                </table>
+            </dd>
+        </dl>
+
+    </div>
+    <div class="tab-content" style="display:none">
+        <dl>
+            <dt>当前已设置</dt>
+            <dd id="pos_count">{$pos.count}个</dd>
+        </dl>
+        <dl id="posAddButton">
+            <dt>添加</dt>
+            <dd>
+                <div class="rule-single-select">
+                    <select id="storePos">
+                        <volist name="storePos" id="p">
+                            <option value="{$p.id}">{$p.title}</option>
+                        </volist>
+                    </select>
+                </div>
+                <input type="button" class="btn" value="添加" onclick="addPos();">
+            </dd>
+        </dl>
+        <dl>
+            <dt>当前广告位</dt>
+            <dd>
+                <table width="40%" border="0" cellspacing="0" cellpadding="0" class="ltable">
+                    <tbody>
+                        <tr>
+                            <th width="10%">ID</th>
+                            <th width="20%">规格</th>
+                            <th width="10%">操作</th>
+                            
+                        </tr>
+                    </tbody>
+                    <tbody id="pos_list">
+                    <volist name="pos.list" id="pl">
+                        <tr id="pos_{$pl.id}">
+                            <th width="10%">{$pl.id}</th>
+                            <th width="20%">{$pl.title}---{$pl.width}*{$pl.height}mm</th>
+                            <th width="10%"><eq name="pl.is_lock" value="0"><a href="javascrit:;" onclick="delPos({$pl.id})">删除</a><else/>已锁定</eq></th>
+                        </tr>
+                    </volist>
+                    </tbody>
+                </table>
+            </dd>
+        </dl>
+
+    </div>
+
+    <!--/内容-->
+
+    <!--工具栏-->
+    <div class="page-footer">
+        <div class="btn-wrap">
+            <input type="hidden" name="id" value="{$info.sid}" />
+            <input type="hidden" name="user_id" value="{$info.user_id}" />
+            <input type="hidden" name="returnUrl" value="{$returnUrl}">
+            <input type="hidden" name="old_status" value="{$info.status}">
+            <input type="hidden" name="mobile" value="{$info.mobile}">
+            <input type="hidden" name="owner" value="{$info.owner}">
+            <input type="hidden" name="action" value="{$action}">
+            <input type="hidden" name="delIds" id="delIds">
+            <input type="hidden" name="delPosIds" id="delPosIds">
+            <input type="submit" name="btnSubmit" value="提交保存" id="btnSubmit" class="btn" />
+            <input name="btnReturn" type="button" value="返回上一页" class="btn yellow" onclick="javascript:history.back();" />
+        </div>
+    </div>
+    <!--/工具栏-->
+
+</form>
+<script type="text/javascript">
+    $(function(){
+        /*修复百度地图在不可视的选项卡中无法显示*/
+        $("#mapIframe").load(function(){
+            $(".tab-content").eq(2).hide();
+        });
+    })
+    var delIds="";
+    function delBox(id) {
+         $("#box_"+id).remove();
+         delIds +=","+id;
+         $("#delIds").val(delIds)
+    }
+    var num=1;
+    function addBox() {
+        var box_num=$("#box_num").val();
+        var chked = $("#box_list tr").length;
+        if(chked<box_num){
+            var id=$("#boxSize option:selected").val();
+            var v=$("#boxSize option:selected").text();
+            $("#box_list").append("<tr> <th width='10%'>新增格子" + num + "<input type='hidden' name='box_size_list[]' value='" + id + "' /> </th> <th width='20%'>" + v + "</th> <th width='10%'><a href='javascrit:;' onclick='del(this)'>删除</a></th> </tr>");
+            num++;
+        }else{
+            alert("已达到该店铺申请格子数量")
+        }
+    }
+
+
+    /***店铺广告位操作*****/
+
+    var delPosIds="";
+    function delPos(id) {
+        $("#pos_"+id).remove();
+        delPosIds +=","+id;
+        $("#delPosIds").val(delPosIds)
+    }
+
+    var posNum=1;
+    function addPos() {
+        var id=$("#storePos option:selected").val();
+        var v=$("#storePos option:selected").text();
+        $("#pos_list").append("<tr> <th width='10%'>新增广告位" + posNum + "<input type='hidden' name='adv_pos_list[]' value='" + id + "' /> </th> <th width='20%'>" + v + "</th> <th width='10%'><a href='javascrit:;' onclick='del(this)'>删除</a></th> </tr>");
+        posNum ++;
+    }
+    function del(obj){
+        obj.parentNode.parentNode.remove();
+    }
+</script>
+</body>
+</html>

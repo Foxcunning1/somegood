@@ -1,0 +1,130 @@
+<layout name="user_layout" />
+<div class="user-center">
+    <div class="w1200">
+        <div class="left-menu-list fl" id="leftMenu">
+            <include file="Public/user_menu"/>
+        </div>
+        <div class="right-show fr">
+            <!--系统消息-->
+            <div class="u-tab-head">
+                <p>
+                    <volist name=":C('FRONT_ORDER_STATUS_LIST')" id="item">
+                        <a href="{:U('UserOrder/orderlist',array('status' => $key))}" <if condition="$status eq $key">class="selected"</if> >{$item}</a>
+                    </volist>
+                </p>
+            </div>
+            <div class="u-tab-content">
+                <empty name="list">
+                    <p style="text-align:center;">暂无订单！</p>
+                    <else/>
+                    <table class="shop-order-table">
+                        <thead>
+                        <tr>
+                            <th>订单详情</th>
+                            <th>收货人</th>
+                            <th>金额</th>
+                            <th>订单状态</th>
+                            <th>操作</th>
+                        </tr>
+                        </thead>
+                        <!--订单-->
+                        <volist name="list" id="item" key="k">
+                            <tbody>
+                            <tr class="sep-row">
+                                <td colspan="5"></td>
+                            </tr>
+                            <tr class="tr-th">
+                                <td colspan="5">
+                                    <span class="gap"></span>
+                                    <span class="dealtime" title="2017-11-19 12:33:22">2017-11-19 12:33:22</span>
+                                    <span class="number">
+    								订单号：<a href="javascript:;">{$item.order_sn}</a>
+    							</span>
+                                </td>
+                            </tr>
+                            <tr class="tr-bd">
+                                <td>
+                                    <div class="goods-item p-3235700">
+                                        <div class="p-img"><a href="javascript:;"><img src="__PUBLIC__/uploads/{$item.tb}_c200x200" alt="商品图" /></a></div>
+                                        <div class="p-msg">
+                                            <div class="p-name">{$item.goods_title}</div>
+                                        </div>
+                                        <div class="goods-number">X{$item.counts}</div>
+                                    </div>
+                                </td>
+                                <td rowspan="1">
+                                    <div class="consignee tooltip">
+                                        <span class="txt">{$item.consignee}</span>
+                                    </div>
+                                </td>
+                                <td rowspan="1">
+                                    <div class="amount">
+                                        <span>总额 ¥{$item.money}</span>
+                                    </div>
+                                </td>
+                                <td rowspan="1">
+                                    <div class="status">
+                                        <!--订单的三个状态-->
+                                        <!--1-->
+                                        <span class="order-status ftx-01">
+                                            <if condition="$item['status'] eq 0"> 待付款
+                                            <elseif condition="$item['status'] eq 1"/>待发货
+                                            <elseif condition="$item['status'] eq 2"/>待收货
+                                            <else /> 已完成
+                                            </if>
+                                        </span>
+                                        <br/>
+                                        <!--2-->
+                                        <span class="order-status ftx-02">请上门自提</span>
+                                        <br/>
+                                        <div class="tooltip">
+                                            <i class="auto-icon"></i>
+                                            跟踪
+                                            <i class="circle-icon"></i>
+                                            <div class="prompt-01">
+                                                <div class="pc">
+                                                    <div class="p-tit">普通快递</div>
+                                                    <div class="logistics-cont">
+                                                        <ul>
+                                                            <li class="first">
+                                                                <i class="node-icon"></i>
+                                                                <a href="">【长沙市】 您的订单在京东【长沙师范学院南校区京东派】上架完成，请上门自提</a>
+                                                                <br>您的订单预计2017-11-20送达您手中
+                                                                <div class="ftx-13">2017-11-20 08:47:31</div>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="p-arrow"></div>
+                                            </div>
+                                        </div>
+                                        <!--3-->
+                                        <span class="order-status ftx-03">已完成</span>
+                                        <br/>
+                                        <a href="{:U('Shop/UserOrder/detail',array('order_sn'=>$item['order_sn']))}">订单详情</a>
+                                    </div>
+                                </td>
+                                <td rowspan="1">
+                                    <a href="javascript:;" class="a-link order-cancel">取消订单</a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </volist>
+                    </table>
+
+                </empty>
+                <div class="page-foot">
+                    <div class="flickr right">{$page}</div>
+                </div>
+            </div>
+            <input id="turl" value="{:U('UserOrder/orderlist',array('status'=>$status))}" type="hidden"><!--存在跳转的URL值-->
+            <!--/系统消息-->
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>
+<script type="text/javascript">
+    function submit() {
+        $('#orderForm').submit();
+    };
+</script>

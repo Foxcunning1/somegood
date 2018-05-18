@@ -1,0 +1,69 @@
+<layout name="user_layout"/>
+<!--vipCenterContent start-->
+<script type="text/javascript" charset="utf-8" src="__PUBLIC__/scripts/js/region.js"></script>
+<script type="text/javascript" charset="utf-8" src="__PUBLIC__/statics/shop/js/WdatePicker.js"></script>
+<script type="text/javascript">
+    $(function () {
+        //初始化表单
+        AjaxInitForm('#getVirtualCashForm', '#btnSubmit', 1);
+        AjaxInitForm('#costVirtualCashForm', '#btnSubmit', 1);
+    });
+</script>
+<div id="vipCenterContent" class="user-center">
+    <div class="w1200">
+        <div class="left-menu-list fl" id="leftMenu">
+            <include file="Public/user_menu"/>
+        </div>
+        <div class="right-show fr">
+            <div class="u-tab-head">
+                <p>
+                    <a class="selected">我的购物币</a>
+                </p>
+            </div>
+            <div class="u-tab-content">
+                <div class="title-div">
+                    <strong>已获得</strong>
+                </div>
+                <form url="{:U('Shop/Users/virtualCash')}" id="getVirtualCashForm" name="getVirtualCashForm">
+                    <div class="address-box get-cash-box">
+                        <dl>
+                            <dd><span class="fl">分享给朋友获得购物币！！！！</span><span class="number fl">+11</span><span class=" date fr">2017-11-11</span></dd>
+                        </dl>
+                        <dl>
+                            <dd><span class="fl">分享给朋友获得购物币！！！！</span><span class="number fl">+11</span><span class=" date fr">2017-11-11</span></dd>
+                        </dl>
+                        <dl>
+                            <dd><span class="fl">分享给朋友获得购物币！！！！</span><span class="number fl">+11</span><span class=" date fr">2017-11-11</span></dd>
+                        </dl>
+                        <dl>
+                            <dd><span class="fl">分享给朋友获得购物币！！！！</span><span class="number fl">+11</span><span class=" date fr">2017-11-11</span></dd>
+                        </dl>
+                        <dl>
+                            <dd><span class="fl">分享给朋友获得购物币！！！！</span><span class="number fl">+11</span><span class=" date fr">2017-11-11</span></dd>
+                        </dl>
+                        <dl>
+                            <dd><span class="fl">分享给朋友获得购物币！！！！</span><span class="number fl">+11</span><span class=" date fr">2017-11-11</span></dd>
+                        </dl>
+                    </div>
+                </form>
+                <div class="line40"></div>
+                <div class="title-div">
+                    <strong>已抵扣</strong>
+                </div>
+                <form url="{:U('Shop/Users/virtualCash')}" id="costVirtualCashForm" name="costVirtualCashForm">
+                    <div class="address-box cost-cash-box">
+                        <dl>
+                            <dd><span class="fl">买东西花了！！！！</span><span class="number fl">-11</span><span class=" date fr">2017-11-11</span></dd>
+                        </dl>
+                        <dl>
+                            <dd><span class="fl">买东西花了！！！！</span><span class="number fl">-11</span><span class=" date fr">2017-11-11</span></dd>
+                        </dl>
+                    </div>
+                </form>
+            </div>
+            <!--/修改资料-->
+        </div>
+    </div>
+</div>
+<!--end vipCenterContent-->
+<div class="clear"></div>

@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0,user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>订单管理</title>
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/scripts/artdialog/ui-dialog.css" />
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/css/pagination.css" />
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/statics/admin/css/icon/iconfont.css" />
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/statics/admin/css/style.css" />
+    <script type="text/javascript" src="__PUBLIC__/scripts/jquery/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/scripts/artdialog/dialog-plus-min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="__PUBLIC__/statics/admin/js/transport.js"></script>
+    <script type="text/javascript" charset="utf-8" src="__PUBLIC__/statics/admin/js/express-common.js"></script>
+    <script type="text/javascript" charset="utf-8" src="__PUBLIC__/statics/admin/js/validator.js"></script>
+    <script type="text/javascript" charset="utf-8" src="__PUBLIC__/statics/admin/js/express-region.js"></script>
+    <script type="text/javascript" charset="utf-8" src="__PUBLIC__/statics/admin/js/utils.js"></script>
+    <script type="text/javaScript">
+        <!--
+        // 这里把JS用到的所有语言都赋值到这里
+        var process_request = "正在处理您的请求...";
+        var todolist_caption = "记事本";
+        var todolist_autosave = "自动保存";
+        var todolist_save = "保存";
+        var todolist_clear = "清除";
+        var todolist_confirm_save = "是否将更改保存到记事本？";
+        var todolist_confirm_clear = "是否清空内容？";
+        var no_area_name = "配送区域名称不能为空。";
+        var del_shipping_area = "请先删除该配送区域，然后重新添加。";
+        var invalid_free_mondy = "免费额度不能为空且必须是一个整数。";
+        var blank_shipping_area = "配送区域的所辖区域不能为空。";
+        var lang_remove = "移除";
+        var lang_remove_confirm = "您确定要移除该地区吗？";
+        var lang_disabled = "禁用";
+        var lang_enabled = "启用";
+        var lang_setup = "设置";
+        var lang_region = "地区";
+        var lang_shipping = "配送方式";
+        var region_exists = "选定的地区已经存在。";
+        //-->
+    </script>
+</head>
+<body class="mainbody">
+<!--导航栏-->
+<div class="location">
+    <a href="javascript:history.back(-1);" class="back"><i></i><span>返回上一页</span></a>
+    <a href="{:U('Index/center')}" class="home"><i></i><span>首页</span></a>
+    <i class="arrow"></i>
+    <span>快递</span>
+</div>
+<!--/导航栏-->
+
+<!--工具栏-->
+<div id="expressBox" class="express-box">
+    <form class="express-form" name="theForm" id="expressForm" method="post" action="shipping_area.php"  onsubmit="return validate()" style="background:#FFF">
+        <fieldset>
+            <table class="edit-table edit-table-1">
+                    <tbody><tr>
+                        <td class="label">配送区域名称:</td>
+                        <td><input type="text" name="shipping_area_name" maxlength="60" size="30" value="1"><span class="require-field">*</span></td>
+                    </tr>
+                    <tr>
+                        <td class="label">费用计算方式:</td>
+                        <td>
+                            <label for="label1"><input type="radio" id="label1" checked="true" onclick="compute_mode('yto','weight')" name="fee_compute_mode" value="by_weight">按重量计算</label>
+                            <label for="label2"><input type="radio"  id="label2" onclick="compute_mode('yto','number')" name="fee_compute_mode" value="by_number">按商品件数计算</label>
+                        </td>
+                    </tr>
+
+                    <tr id="item_fee" style="display:none">
+                        <td class="label">单件商品费用：</td>
+                        <td><input type="text" name="item_fee" maxlength="60" size="20" value="10"><span class="require-field">*</span></td>
+                    </tr>
+
+                    <tr id="base_fee">
+                        <td class="label">首重费用</td>
+                        <td><input type="text" name="base_fee" maxlength="60" size="20" value="5"><span class="require-field">*</span></td>
+                    </tr>
+
+                    <tr id="step_fee">
+                        <td class="label">续重费用</td>
+                        <td><input type="text" name="step_fee" maxlength="60" size="20" value="5"><span class="require-field">*</span></td>
+                    </tr>
+
+                    <tr id="free_money">
+                        <td class="label">免费额度:</td>
+                        <td><input type="text" name="free_money" maxlength="60" size="20" value="1123"><span class="require-field">*</span></td>
+                    </tr>
+
+                    <tr id="pay_fee">
+                        <td class="label">货到付款支付费用：</td>
+                        <td><input type="text" name="pay_fee" maxlength="60" size="20" value="123"><span class="require-field">*</span></td>
+                    </tr>
+                    </tbody>
+            </table>
+        </fieldset>
+        <fieldset>
+            <table class="edit-table edit-table-2">
+                <tbody><tr>
+                    <td id="regionCell" class="title">
+                        <label for="label3"><input type="checkbox" id="label3" name="regions[]" value="" checked="true"> 东城区&nbsp;&nbsp;</label>
+                        <label for="label4"><input type="checkbox" id="label4" name="regions[]" value="" checked="true"> 中国&nbsp;&nbsp;</label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span>国家： </span>
+                        <select name="country" id="selCountries" onchange="region.changed(this, 1, 'selProvinces')" size="10">
+                            <option value="1">中国</option>
+                        </select>
+                        <span>省份： </span>
+                        <select name="province" id="selProvinces" onchange="region.changed(this, 2, 'selCities')" size="10">
+                            <option value="">请选择...</option>
+                            <option value="2">北京</option>
+                            <option value="3">安徽</option>
+                            <option value="4">福建</option>
+                            <option value="5">甘肃</option>
+                            <option value="6">广东</option>
+                        </select>
+                        <span>城市： </span>
+                        <select name="city" id="selCities" onchange="region.changed(this, 3, 'selDistricts')" size="10">
+                            <option value="">请选择...</option>
+                        </select>
+                        <span>区/县：</span>
+                        <select name="district" id="selDistricts" size="10">
+                            <option value="">请选择...</option>
+                        </select>
+                        <span><input type="button" value="+" class="button" onclick="addRegion()"></span>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </fieldset>
+        <table class="edit-table-3">
+            <tbody><tr>
+                <td colspan="2" align="center">
+                    <input type="submit" value=" 确定 " class="button">
+                    <input type="reset" value=" 重置 " class="button">
+                    <input type="hidden" name="act" value="update">
+                    <input type="hidden" name="id" value="7">
+                    <input type="hidden" name="shipping" value="2">
+                </td>
+            </tr>
+            </tbody></table>
+    </form>
+</div>
+<!--/工具栏-->
+
+<script type="text/javaScript">
+
+
+    region.isAdmin = true;
+    onload = function()
+    {
+        document.forms['theForm'].elements['shipping_area_name'].focus();
+
+        var selCountry = document.forms['theForm'].elements['country'];
+        if (selCountry.selectedIndex <= 0)
+        {
+            selCountry.selectedIndex = 0;
+        }
+
+        region.loadProvinces(selCountry.options[selCountry.selectedIndex].value);
+
+        // 开始检查订单
+        startCheckOrder();
+    }
+
+    /**
+     * 检查表单输入的数据
+     */
+    function validate()
+    {
+        validator = new Validator("theForm");
+
+        validator.required('shipping_area_name', no_area_name);
+        validator.isInt('free_money', invalid_free_mondy, true);
+
+        var regions_chk_cnt = 0;
+        for (i=0; i<document.getElementsByName('regions[]').length; i++)
+        {
+            if (document.getElementsByName('regions[]')[i].checked == true)
+            {
+                regions_chk_cnt++;
+            }
+        }
+
+        if (regions_chk_cnt == 0)
+        {
+            validator.addErrorMsg(blank_shipping_area);
+        }
+
+        return validator.passed();
+    }
+
+    /**
+     * 添加一个区域
+     */
+    function addRegion()
+    {
+        var selCountry  = document.forms['theForm'].elements['country'];
+        var selProvince = document.forms['theForm'].elements['province'];
+        var selCity     = document.forms['theForm'].elements['city'];
+        var selDistrict = document.forms['theForm'].elements['district'];
+        var regionCell  = document.getElementById("regionCell");
+
+        if (selDistrict.selectedIndex > 0)
+        {
+            regionId = selDistrict.options[selDistrict.selectedIndex].value;
+            regionName = selDistrict.options[selDistrict.selectedIndex].text;
+        }
+        else
+        {
+            if (selCity.selectedIndex > 0)
+            {
+                regionId = selCity.options[selCity.selectedIndex].value;
+                regionName = selCity.options[selCity.selectedIndex].text;
+            }
+            else
+            {
+                if (selProvince.selectedIndex > 0)
+                {
+                    regionId = selProvince.options[selProvince.selectedIndex].value;
+                    regionName = selProvince.options[selProvince.selectedIndex].text;
+                }
+                else
+                {
+                    if (selCountry.selectedIndex >= 0)
+                    {
+                        regionId = selCountry.options[selCountry.selectedIndex].value;
+                        regionName = selCountry.options[selCountry.selectedIndex].text;
+                    }
+                    else
+                    {
+                        return;
+                    }
+                }
+            }
+        }
+
+        // 检查该地区是否已经存在
+        exists = false;
+        for (i = 0; i < document.forms['theForm'].elements.length; i++)
+        {
+            if (document.forms['theForm'].elements[i].type=="checkbox")
+            {
+                if (document.forms['theForm'].elements[i].value == regionId)
+                {
+                    exists = true;
+                    alert(region_exists);
+                }
+            }
+        }
+        // 创建checkbox
+        if (!exists)
+        {
+            regionCell.innerHTML += "<input type='checkbox' name='regions[]' value='" + regionId + "' checked='true' /> " + regionName + "&nbsp;&nbsp;";
+        }
+    }
+
+    /**
+     * 配送费用计算方式
+     */
+    function compute_mode(shipping_code,mode)
+    {
+        var base_fee  = document.getElementById("base_fee");
+        var step_fee  = document.getElementById("step_fee");
+        var item_fee  = document.getElementById("item_fee");
+        if(shipping_code == 'post_mail' || shipping_code == 'post_express')
+        {
+            var step_fee1  = document.getElementById("step_fee1");
+        }
+
+        if(mode == 'number')
+        {
+            item_fee.style.display = '';
+            base_fee.style.display = 'none';
+            step_fee.style.display = 'none';
+            if(shipping_code == 'post_mail' || shipping_code == 'post_express')
+            {
+                step_fee1.style.display = 'none';
+            }
+        }
+        else
+        {
+            item_fee.style.display = 'none';
+            base_fee.style.display = '';
+            step_fee.style.display = '';
+            if(shipping_code == 'post_mail' || shipping_code == 'post_express')
+            {
+                step_fee1.style.display = '';
+            }
+        }
+    }
+
+
+</script>
+<script type="text/javaScript">
+    document.onmousemove=function(e)
+        {
+            var obj = Utils.srcElement(e);
+            if (typeof(obj.onclick) == 'function' && obj.onclick.toString().indexOf('listTable.edit') != -1)
+            {
+                obj.title = '点击修改内容';
+                obj.style.cssText = 'background: #278296;';
+                obj.onmouseout = function(e)
+                {
+                    this.style.cssText = '';
+                }
+            }
+            else if (typeof(obj.href) != 'undefined' && obj.href.indexOf('listTable.sort') != -1)
+            {
+                obj.title = '点击对列表排序';
+            }
+        }
+
+
+
+    var MyTodolist;
+    function showTodoList(adminid)
+    {
+        if(!MyTodolist)
+        {
+            var global = $import("../js/global.js","js");
+            global.onload = global.onreadystatechange= function()
+            {
+                if(this.readyState && this.readyState=="loading")return;
+                var md5 = $import("js/md5.js","js");
+                md5.onload = md5.onreadystatechange= function()
+                {
+                    if(this.readyState && this.readyState=="loading")return;
+                    var todolist = $import("js/todolist.js","js");
+                    todolist.onload = todolist.onreadystatechange = function()
+                    {
+                        if(this.readyState && this.readyState=="loading")return;
+                        MyTodolist = new Todolist();
+                        MyTodolist.show();
+                    }
+                }
+            }
+        }
+        else
+        {
+            if(MyTodolist.visibility)
+            {
+                MyTodolist.hide();
+            }
+            else
+            {
+                MyTodolist.show();
+            }
+        }
+    }
+
+    if (Browser.isIE)
+    {
+        onscroll = function()
+        {
+            //document.getElementById('calculator').style.top = document.body.scrollTop;
+            document.getElementById('popMsg').style.top = (document.body.scrollTop + document.body.clientHeight - document.getElementById('popMsg').offsetHeight) + "px";
+        }
+    }
+
+    if (document.getElementById("listDiv"))
+    {
+        document.getElementById("listDiv").onmouseover = function(e)
+        {
+            obj = Utils.srcElement(e);
+
+            if (obj)
+            {
+                if (obj.parentNode.tagName.toLowerCase() == "tr") row = obj.parentNode;
+                else if (obj.parentNode.parentNode.tagName.toLowerCase() == "tr") row = obj.parentNode.parentNode;
+                else return;
+
+                for (i = 0; i < row.cells.length; i++)
+                {
+                    if (row.cells[i].tagName != "TH") row.cells[i].style.backgroundColor = '#F4FAFB';
+                }
+            }
+
+        }
+
+        document.getElementById("listDiv").onmouseout = function(e)
+        {
+            obj = Utils.srcElement(e);
+
+            if (obj)
+            {
+                if (obj.parentNode.tagName.toLowerCase() == "tr") row = obj.parentNode;
+                else if (obj.parentNode.parentNode.tagName.toLowerCase() == "tr") row = obj.parentNode.parentNode;
+                else return;
+
+                for (i = 0; i < row.cells.length; i++)
+                {
+                    if (row.cells[i].tagName != "TH") row.cells[i].style.backgroundColor = '#FFF';
+                }
+            }
+        }
+
+        document.getElementById("listDiv").onclick = function(e)
+        {
+            var obj = Utils.srcElement(e);
+
+            if (obj.tagName == "INPUT" && obj.type == "checkbox")
+            {
+                if (!document.forms['listForm'])
+                {
+                    return;
+                }
+                var nodes = document.forms['listForm'].elements;
+                var checked = false;
+
+                for (i = 0; i < nodes.length; i++)
+                {
+                    if (nodes[i].checked)
+                    {
+                        checked = true;
+                        break;
+                    }
+                }
+
+                if(document.getElementById("btnSubmit"))
+                {
+                    document.getElementById("btnSubmit").disabled = !checked;
+                }
+                for (i = 1; i <= 10; i++)
+                {
+                    if (document.getElementById("btnSubmit" + i))
+                    {
+                        document.getElementById("btnSubmit" + i).disabled = !checked;
+                    }
+                }
+            }
+        }
+
+    }
+
+
+</script>
+
+
+</body>
+</html>

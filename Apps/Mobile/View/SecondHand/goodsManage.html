@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>已发布</title>
+    <link rel="stylesheet" href="__PUBLIC__/dist/dropload.css">
+    <import type="css" file="statics.mobile.css.public,statics.mobile.css.user" />
+    <import type="js" file="scripts.zepto.zepto#min,scripts.zepto.zepto#miniDialog,statics.mobile.js.common,scripts.zepto.timeago,scripts.zepto.lazyload#min" />
+    <script type="text/javascript" src="__PUBLIC__/statics/mobile/js/rem.js" fu-psd="720" fu-min="50" fu-max="100"></script>
+
+</head>
+<body>
+    <div class="page-title">
+        <!--返回按钮-->
+        <div class="to-back-box">
+            <a href="{:U('Mobile/SecondHand/index')}" class="icons icon-back"></a>
+        </div>
+        <!--返回按钮-->
+        <!--标题-->
+        <h2 class="title">我的发布</h2>
+        <!--标题-->
+    </div>
+    <div class="already-title">
+        <ul>
+            <li class="<if condition='$pageType eq sale'>sel</if>"><a href="{:U('Mobile/SecondHand/goodsManage')}?pageType=sale">上架</a></li>
+            <li class="<if condition='$pageType eq success'>sel</if>"><a href="{:U('Mobile/SecondHand/goodsManage')}?pageType=success">卖出</a></li>
+        </ul>
+    </div>
+    <!--点击选项卡控制near-content显示和隐藏-->
+    <div class="already-content-box">
+        <div class="already-content">
+            <!--商品列表-->
+            <ul class="apply-list search-list"></ul>
+        </div>
+    </div>
+    <!--公用底部-->
+    <include file="Public/ufooter" />
+    <!--公用底部-->
+    <script>
+        $(function(){
+            $(".g-img a img").lazyload({effect : "fadeIn"});
+            /*公用底部点击样式变换 放再公用的layout里面*/
+            $(".footer ul").find("li").on("touchstart",function(){
+                $(this).addClass("sel").siblings().removeClass("sel");
+            })
+        })
+        //删除
+        function delMyGoods(id) {
+            if(confirm("确定删除么？")){
+                var delUrl='{:U('Mobile/SecondHand/delGoods')}';
+                $.ajax({
+                    url:delUrl,
+                    type:"post",
+                    dataType:"json",
+                    data:{
+                        'id':id,
+                    },
+                    success:function(data){
+
+                        $("body").minDialog({
+                            isAutoClose: true,
+                            closeTime: 800,
+                            content:data.data,
+                        });
+                        if(data.status=1){
+                            $("#gl"+id).remove();
+                        }
+                    },
+                    error:function(){
+                        $("body").minDialog({
+                            isAutoClose: true,
+                            closeTime: 800,
+                            content:"删除失败",
+                        });
+                    }
+                })
+            }
+
+        }
+        $(function(){
+            /*公用底部点击样式变换 放再公用的layout里面*/
+            $(".footer ul").find("li").on("touchstart",function(){
+                $(this).addClass("sel").siblings().removeClass("sel");
+            })
+            $(".timeago").timeago();
+        })
+    </script>
+    <!-- jQuery1.7以上 或者 Zepto 二选一，不要同时都引用 -->
+    <script src="__PUBLIC__/dist/dropload.min.js"></script>
+    <script>
+        var page=1; //当前页的页码
+        var allpage={$pageCount}; //总页码，会从后台获
+        var pageType='{$pageType}'; //页面类型，会从后台获
+        var ajaxUrl="{:U('Mobile/SecondHand/goodsManage')}?{$pageType}";//ajax请求地址
+        $(function(){
+            var dropload = $('.already-content').dropload({
+                scrollArea : window,
+                loadDownFn : function(me){
+                    if(page<=allpage){
+                        $.ajax({
+                            url:ajaxUrl,
+                            type:"post",
+                            dataType:"json",
+                            data:{
+                                'p':page,
+                                'pageType':pageType,
+                            },
+                            success:function(data){
+                                var str='';
+                                $.each(data.data.list,function(index, gl) {
+                                    str +=" <li id='gl"+gl.id+"'>";
+                                    str +="     <div class=\"g-img fl\"><a href=\"{:U('Ershou/Goods/detail')}?id="+gl.id+"\"><img src=\"__PUBLIC__/statics/mobile/images/default_img.png\" data-original=\"__PUBLIC__/uploads/"+gl.goods_thumb+"_c200x200\" alt=\""+gl.id+gl.goods_title+"\" /></a></div>";
+                                    str +="     <div class=\"g-info\">";
+                                    str +="<a href=\"{:U('Ershou/Goods/detail')}?id="+gl.id+"\">";
+                                    str +="         <div class=\"product-name\">";
+                                    str +="             <span>"+gl.goods_title+"</span>";
+                                    str +="         </div>";
+                                    str +="         <div class=\"product-price-m\">";
+                                    str +="             <em>¥<span class=\"big-price\">"+gl.goods_price+"</span></em>";
+                                    str +="             <span class=\"time fr\"><i class=\"icons icon-clock\"></i><time class=\"timeago\" datetime=\""+date('Y-m-d H:i:s',""+gl['add_time']+"")+"\"></time>发布</span>";
+                                    str +="         </div>";
+                                    str +="</a>";
+                                    str +="         <div class=\"call-him\">";
+                                    str +=" <div class=\"operate-box\" onclick=\"return updateMyGoods('{:U('Ershou/Goods/detail')}?id="+gl.id+"');\"><i class=\"icons icon-deleted fl\"></i><span class=\"fr\">查看</span></div>"
+                                    str +="         </div>";
+                                    str +="     </div>";
+                                    str +="  </li>";
+                                })
+                                $('.search-list').append(str);
+                                $(".timeago").timeago();
+                                $(".g-img a img").lazyload({effect : "fadeIn"});
+                                // 每次数据加载完，必须重置
+                                me.resetload();
+                                allpage=data.data.pageCount;
+                            },
+                            error: function(xhr, type){
+                                alert('Ajax error!');
+                                // 即使加载出错，也得重置
+                                me.resetload();
+                            }
+                        });
+                        page++;
+                    }else{
+                        // 锁定
+                        me.lock();
+                        // 无数据
+                        me.noData();
+                        me.resetload();
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

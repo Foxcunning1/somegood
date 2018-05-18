@@ -1,0 +1,274 @@
+<!Doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>评价</title>
+    <link rel="stylesheet" href="../css/user.css" type="text/css" />
+    <script type="text/javascript" charset="utf-8" src="../js/zepto.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="../js/jquery.form.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="../js/zepto.validateForm.js"></script>
+    <script type="text/javascript" src="js/star.js"></script>
+    <script type="text/javascript" src="../js/rem.js" fu-psd="720" fu-min="50" fu-max="100"></script>
+</head>
+<body>
+<div class="dialog-content" style="width: 800px; height: auto; position: absolute; left: 200px; top: 200px;padding: 20px;  border: 1px solid #d6d6d6;overflow: hidden;">
+    <div class="comment-add">
+        <form name="comment_form" id="comment_form" url="http://www.116cs.com/2.html">
+            <div class="subcon">
+                <dl>
+                    <dt>订单号：</dt>
+                    <a class="order-item-tips"><a href="javascript;void(0);"></a><span class="order-number">5132646513256</span></a></dd>
+                </dl>
+                <dl>
+                    <dt>商品符合度：</dt>
+                    <dd style="height: 60px;">
+                        <div class="goods-comm">
+                            <div class="goods-comm-stars">
+                                <div id="rate-comm-1" class="rate-comm fl">
+                                </div>
+                                <input type="hidden" name="orderCommentScore1" id="orderCommentScore1" errormsg="请填写商品符合度" datatype="*" sucmsg="通过验证">
+                                <span class="Validform_checktip"></span>
+                            </div>
+                        </div>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>商品满意度：</dt>
+                    <dd style="height: 60px;">
+                        <div class="goods-comm">
+                            <div class="goods-comm-stars">
+                                <div id="rate-comm-2" class="rate-comm fl">
+                                </div>
+                                <input type="hidden" name="orderCommentScore2" id="orderCommentScore2" errormsg="请填写满意度" datatype="*" sucmsg="通过验证">
+                                <span class="Validform_checktip"></span>
+                            </div>
+                        </div>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>评价：</dt>
+                    <dd class="editor">
+                        <textarea id="serviceContent" name="serviceContent" class="input" datatype="s" errormsg="请填写评价" sucmsg="通过验证"></textarea>
+                    </dd>
+                </dl>
+                <!--<div class="div-title"><span class="icon-tip"></span><h3>请填写服务人员评价</h3></div>-->
+                <!--<dl>-->
+                <!--<dt>满意度：</dt>-->
+                <!--<dd style="height: 60px;">-->
+                <!--<div class="goods-comm">-->
+                <!--<div class="goods-comm-stars">-->
+                <!--<div id="rate-comm-2" class="rate-comm fl">  -->
+                <!--</div>-->
+                <!--<input type="hidden" name="seviceCommentScore" id="seviceCommentScore" errormsg="请填写满意度" datatype="*" sucmsg="通过验证">-->
+                <!--<span class="Validform_checktip"></span>-->
+                <!--</div>-->
+                <!--</div>-->
+                <!--</dd>-->
+                <!--</dl>-->
+                <!--<dl>-->
+                <!--<dt>评价：</dt>-->
+                <!--<dd class="editor">-->
+                <!--<textarea id="orderContent" name="orderContent" class="input" datatype="s" errormsg="请填写评价" sucmsg="通过验证"></textarea>-->
+                <!--</dd>-->
+                <!--</dl>  -->
+                <!--</div>-->
+                <div class="subcon">
+                    <input type="hidden" name="txtGoodsImpress" id="txtGoodsImpress">
+                    <input type="submit" id="btnSubmit" name="submit" class="fr submit-btn" value="提交评价（Ctrl+Enter）">
+                    <span>验证码：</span>
+                    <input type="text" id="txtCode" name="txtCode" class="input small" datatype="s4-4" errormsg="请填写4位验证码" sucmsg="通过验证">
+                    <a href="javascript:void(0);">
+                        <img src="verify_code.ashx" alt="" width="80" height="22" class="code-img" /> 看不清楚？
+                    </a>
+                    <span class="Validform_checktip"></span>
+                </div>
+        </form>
+    </div>
+</div>
+</body>
+<script type="text/javascript">
+    $(function () {
+        //打分
+        var options1 = {
+            max: 5,
+            title_format: function (value) {
+                var title = '';
+                switch (value) {
+                    case 1:
+                        title = '很不满意';
+                        break;
+                    case 2:
+                        title = '不满意';
+                        break;
+                    case 3:
+                        title = '一般';
+                        break;
+                    case 4:
+                        title = '满意';
+                        break;
+                    case 5:
+                        title = '非常满意';
+                        break;
+                    default:
+                        title = value;
+                        break;
+                }
+                return title;
+            },
+            obj: "#orderCommentScore1",
+            image: 'images/stars.jpg',
+            imageAll: 'images/stars-all.gif',
+            info_format: function (value) {
+                var info = '';
+                switch (value) {
+                    case 1:
+                        info = '<div class="info-box">1分&nbsp;很不满意</div>';
+                        break;
+                    case 2:
+                        info = '<div class="info-box">2分&nbsp;不满意</div>';
+                        break;
+                    case 3:
+                        info = '<div class="info-box">3分&nbsp;一般</div>';
+                        break;
+                    case 4:
+                        info = '<div class="info-box">4分&nbsp;满意</div>';
+                        break;
+                    case 5:
+                        info = '<div class="info-box">5分&nbsp;非常满意</div>';
+                        break;
+                    default:
+                        info = value;
+                        break;
+                }
+                return info;
+            }
+        }
+        //打分
+        var options2 = {
+            max: 5,
+            title_format: function (value) {
+                var title = '';
+                switch (value) {
+                    case 1:
+                        title = '很不满意';
+                        break;
+                    case 2:
+                        title = '不满意';
+                        break;
+                    case 3:
+                        title = '一般';
+                        break;
+                    case 4:
+                        title = '满意';
+                        break;
+                    case 5:
+                        title = '非常满意';
+                        break;
+                    default:
+                        title = value;
+                        break;
+                }
+                return title;
+            },
+            obj: "#orderCommentScore2",
+            image: 'images/stars.jpg',
+            imageAll: 'images/stars-all.gif',
+            info_format: function (value) {
+                var info = '';
+                switch (value) {
+                    case 1:
+                        info = '<div class="info-box">1分&nbsp;很不满意</div>';
+                        break;
+                    case 2:
+                        info = '<div class="info-box">2分&nbsp;不满意</div>';
+                        break;
+                    case 3:
+                        info = '<div class="info-box">3分&nbsp;一般</div>';
+                        break;
+                    case 4:
+                        info = '<div class="info-box">4分&nbsp;满意</div>';
+                        break;
+                    case 5:
+                        info = '<div class="info-box">5分&nbsp;非常满意</div>';
+                        break;
+                    default:
+                        info = value;
+                        break;
+                }
+                return info;
+            },
+            after_click:function(value){
+                //$("#seviceCommentScore").val(value);
+                alert(value);
+            }
+        }
+        $('#rate-comm-1').rater(options1);
+        $('#rate-comm-2').rater(options2);
+    });
+    /*初始化选中*/
+    itemBindClick(".service-impression-ul");
+    itemBindClick(".order-impression-ul");
+
+
+
+    /*验证*/
+    $("#comment_form").Validform({
+        tiptype:4,
+        callback:function(form){
+            $(form).ajaxSubmit({
+                success: dialogHide,
+                url: $("#comment_form").attr("url"),
+                type: "post",
+                dataType: "json",
+                timeout: 60000
+            });
+        }
+    });
+    function dialogHide(data,textStatus) {
+        if (data.status == 1) { //成功
+            //writeJscript(data.data,data.info);
+            $(".dialog-content").hide();
+        }else{ //失败
+
+        }
+    }
+
+
+    /*自定义添加再绑定时间函数*/
+    function itemBindClick(obj){
+        /*off()先解绑再绑定避免重复绑定*/
+        $(obj).find("li.item").off().on('click',function(){
+            if($(this).hasClass("choose")){
+                $(this).removeClass("choose");
+                $(this).find("input[type='checkbox']").removeAttr("checked");
+            }else{
+                $(this).addClass("choose");
+                $(this).find("input[type='checkbox']").attr("checked","checked");
+            }
+        })
+    }
+
+    /*自定义添加标签函数*/
+    function addLl(obj1,obj2,obj3){
+        var value = $(obj1).val();
+        if(value){
+            $(obj1).hide();
+            $(obj2).show();
+            $(obj1).parent("li.self-add").before("<li class='item choose'>"+value+"<input type='checkbox' name='impressionTips' value="+value+" checked='checked' class='checkbox-input'></li>");
+            $(obj1).val("");
+            itemBindClick(obj3);
+        }else{
+            $(obj2).show();
+            $(obj1).hide();
+        }
+        itemBindClick(".service-impression-ul");
+    }
+</script>
+</html>
+

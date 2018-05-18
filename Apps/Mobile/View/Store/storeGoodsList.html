@@ -1,0 +1,168 @@
+<eq name="isAjax" value="1">
+    <volist name="list" id="item">
+        <div class="con-items" id="item{$item.id}">
+            <a href="javascript:void(0);">
+                <div class="items-user">
+                    <div class="floor floor-1">
+                        <span class="name fl">{$item.goods_title}</span>
+                        <span class="price fr">￥<em>{$item.price}</em></span>
+                    </div>
+                    <div class="floor floor-2">
+                        <span class="price fl">商品编码：<em>{$item.goods_sn}</em></span>
+                        <span class="time fr"><i class="icons icon-clock"></i><time class="timeago" datetime="{$item.add_time|date='Y-m-d H:i:s',###}"/>发布</span>
+                    </div>
+                    <div class="floor floor-2">
+                        <span class="price fl">库存：<em>{$item.stock}</em></span>
+                        <span class="time fr">销量：<em>{$item.sales_volume}</em></span>
+                    </div>
+                </div>
+                <div class="items-img-box">
+                    <ul>
+                        <volist name="item[plist]" id="pl">
+                            <if condition="$key lt 3">
+                            <li><img src="__PUBLIC__/statics/mobile/images/default_img.png" data-original="__PUBLIC__/uploads/{$pl}_c200x200" alt="{$item.rlist.$key}"></li>
+                            </if>
+                        </volist>
+                    </ul>
+                </div>
+                <p class="items-title">{$item.content}</p>
+            </a>
+            <div class="other-box">
+                <a href="{:U('Mobile/Goods/detail')}?id={$item.sg_id}" class="examine-btn fr">查看</a>
+                <eq name="pageType" value="sale">
+                    <a href="javascript:void(0);" data-value="{$item.is_new}"  onclick="updateGoodsParam('{$item.sg_id}','new',this)" class="examine-btn fr" <eq name="item.is_new" value="1"> style="color:snow;background: #00b190;"</eq>>最新</a>
+                    <a href="javascript:void(0);" data-value="{$item.is_hot}"  onclick="updateGoodsParam('{$item.sg_id}','hot',this)" class="examine-btn fr" <eq name="item.is_hot" value="1"> style="color:snow;background: #00b190;"</eq>>热卖</a>
+                    <a href="javascript:void(0);" data-value="{$item.is_rec}"  onclick="updateGoodsParam('{$item.sg_id}','rec',this)" class="examine-btn fr" <eq name="item.is_rec" value="1"> style="color:snow;background: #00b190;"</eq>>推荐</a>
+                    <a href="javascript:void(0);" data-value="{$item.is_top}"  onclick="updateGoodsParam('{$item.sg_id}','top',this)" class="examine-btn fr" <eq name="item.is_top" value="1"> style="color:snow;background: #00b190;"</eq>>置顶</a>
+                </eq>
+            </div>
+        </div>
+    </volist>
+<else/>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>{$pageTitle}</title>
+    <link rel="stylesheet" href="__PUBLIC__/dist/dropload.css">
+    <import type="css" file="statics.mobile.css.public,statics.mobile.css.style" />
+    <import type="js" file="scripts.zepto.zepto#min,scripts.zepto.zepto#miniDialog,scripts.zepto.timeago,scripts.zepto.lazyload#min,statics.mobile.js.common" />
+    <script type="text/javascript" src="__PUBLIC__/statics/mobile/js/rem.js" fu-psd="720" fu-min="50" fu-max="100"></script>
+</head>
+<body>
+
+<div class="page-title">
+    <!--返回按钮-->
+    <div class="back-box">
+        <a href="{:U('Mobile/Store/index')}" class="icons icon-back"></a>
+    </div>
+    <h2 class="title">{$pageTitle}</h2>
+    <!--返回按钮-->
+</div>
+<div class="shop-goods-list-box">
+    <div class="shop-admin-box pd-t08"></div>
+</div>
+<!--footer-->
+<include file="Public/ufooter" />
+<!--footer-->
+<script>
+    /*商品属性处理*/
+    function updateGoodsParam(id,param,obj) {
+        var status= $(obj).attr("data-value");
+        if(status==1){
+            var num=0;
+        }else if(status==0){
+            var num=1;
+        }
+
+        $.ajax({
+            url:"{:U('Mobile/Store/updateGoodsParam')}",
+            type:"post",
+            dataType:"json",
+            data:{
+                'id':id,
+                'param':param,
+                'status':num,
+            },
+            success:function(data){
+                if(data.status==1){
+                    $(obj).attr("data-value",num);
+                    if(num==1){
+                        $(obj).attr("style",'color:snow;background: #00b190;');
+                    }else if(num==0){
+                        $(obj).attr("style",'');
+                    }
+                }else{
+                    $("body").minDialog({
+                        isAutoClose: true,
+                        closeTime: 500,
+                        content:data.info,
+                    })
+                }
+            }
+        });
+    }
+    $(function(){
+        $(".items-img-box ul li img").lazyload({effect : "fadeIn"});
+        /*公用底部点击样式变换 放再公用的layout里面*/
+        $(".footer ul").find("li").on("touchstart",function(){
+            $(this).addClass("sel").siblings().removeClass("sel");
+        })
+        $(".timeago").timeago();
+    })
+</script>
+<!-- jQuery1.7以上 或者 Zepto 二选一，不要同时都引用 -->
+<script src="__PUBLIC__/dist/dropload.min.js"></script>
+<script>
+    var page=1; //当前页的页码
+    var allpage={$pageCount}; //总页码，会从后台获
+    var pageType='{$pageType}'; //页面类型，会从后台获
+    var ajaxUrl="{:U('Mobile/Store/storeGoodsList')}?pageType={$pageType}";//ajax请求地址
+    $(function(){
+        var dropload = $('.shop-goods-list-box').dropload({
+            scrollArea : window,
+            loadDownFn : function(me){
+                if(page<=allpage){
+                    $.ajax({
+                        url:ajaxUrl,
+                        type:"post",
+                        dataType:"html",
+                        data:{
+                            'p':page,
+                            'pageType':pageType,
+                        },
+                        success:function(data){
+                            var str = data;
+                            $('.shop-admin-box').append(str);
+                            $(".timeago").timeago();
+                            $(".items-img-box ul li img").lazyload({effect : "fadeIn"});
+                            // 每次数据加载完，必须重置
+                            me.resetload();
+                            allpage = {$pageCount};
+                        },
+                        error: function(xhr, type){
+                            alert('Ajax error!');
+                            // 即使加载出错，也得重置
+                            me.resetload();
+                        }
+                    });
+                    page++;
+                }else{
+                    // 锁定
+                    me.lock();
+                    // 无数据
+                    me.noData();
+                    me.resetload();
+                }
+            }
+        });
+    });
+</script>
+</body>
+</html>
+</eq>

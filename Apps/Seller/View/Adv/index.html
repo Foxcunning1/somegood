@@ -1,0 +1,93 @@
+<!Doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>商品列表</title>
+	<meta name="keywords" content="" />
+	<meta name="description" content="" />
+	<import type="css" file="statics.store.css.store-public,statics.store.css.store-style,scripts.artdialog.ui-dialog,css.pagination" />
+	<import type="js" file="scripts.jquery.jquery-1#11#2#min,scripts.artdialog.dialog-plus-min,scripts.jquery.jquery#lazyload#min" />
+</head>
+<body style="background-color: #edf1f2;overflow-y: auto;">
+<div class="tab-box">
+	<ul class="tab-ul fl">
+		<li <eq name="type" value="online"> class="sel"</eq>><a href="{:U('Seller/Adv/index',array('type'=>'online'))}">线上推广</a><div class="move"></div></li>
+		<li <eq name="type" value="store"> class="sel"</eq>><a href="{:U('Seller/Adv/index',array('type'=>'store'))}">线下店铺推广</a><div class="move"></div></li>
+	</ul>
+</div>
+<div class="info-box">
+	<table class="info-table">
+		<switch name="type">
+			<case value="store">
+				<thead>
+				<tr>
+					<th>序号</th>
+					<th>广告名称</th>
+					<th>店铺名称</th>
+					<th>所在区域</th>
+					<th>地址</th>
+					<th>广告位类型</th>
+					<th>广告位ID</th>
+					<th>开始时间</th>
+					<th>结束时间</th>
+					<th>状态</th>
+					<!-- <th>操作</th> -->
+				</tr>
+				</thead>
+				<tbody>
+				<volist name="list" id="vo">
+					<tr>
+						<td>{$vo.id}</td>
+						<td>{$vo.title}</td>
+						<td>{$vo.store_name}</td>
+						<td>{$vo.area}</td>
+						<td>{$vo.address}</td>
+						<td>{$vo.pos_title}</td>
+						<td>{$vo.adv_id}</td>
+						<td align="center">{$vo.begin_time|date='Y-m-d  H:i:s',###}</td>
+						<td align="center">{$vo.end_time|date='Y-m-d  H:i:s',###}</td>
+						<td align="center">
+					<span>
+						<eq name="vo.is_delivery" value="1">
+							<b style="color: green">已投放</b>
+							<else/>
+							待投放
+						</eq>
+					</span>
+						</td>
+					</tr>
+				</volist>
+				</tbody>
+			</case>
+			<case value="online">
+				<thead>
+				<tr>
+					<th>序号</th>
+					<th>广告名称</th>
+					<th>所属广告位</th>
+					<th>链接URL</th>
+					<th>开始时间</th>
+					<th>结束时间</th>
+				</tr>
+				</thead>
+				<tbody>
+				<volist name="list" id="vo">
+					<tr>
+						<td>{$vo.id}</td>
+						<td>{$vo.title}</td>
+						<td>{$vo.pos_title}</td>
+						<td>{$vo.url}</td>
+						<td align="center">{$vo.begin_time|date='Y-m-d  H:i:s',###}</td>
+						<td align="center">{$vo.end_time|date='Y-m-d  H:i:s',###}</td>
+					</tr>
+				</volist>
+				</tbody>
+			</case>
+		</switch>
+	</table>
+</div>
+<div class="pagelist">
+	<div id="PageContent" class="default">{$pageShow}</div>
+</div>
+</body>
+</html>

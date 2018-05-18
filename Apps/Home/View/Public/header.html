@@ -1,0 +1,29 @@
+ <!--以下内容作为header-->
+    <div class="header-top">
+        <div class="w1200">
+            <a href="{:U('Seller/Index/index')}" class="fr"><eq name="Think.session.mobile.is_seller" value="1">卖家中心<else/>品牌推广</eq></a>
+            <a href="{:U('Store/Index/index')}" class="fr"><eq name="Think.session.mobile.is_store" value="1">加盟店中心<else/>申请加盟</eq></a>
+        </div>
+    </div>
+    <header>
+        <div class="w1200">
+            <a href="/" class="logo fl"><img src="__PUBLIC__/statics/home/images/logo.png" alt="logo"/></a>
+            <div class="tel-box fr">
+                <p>全国服务电话</p>
+                <p><img src="__PUBLIC__/statics/home/images/gray_tel.png" alt="" class="tel" width="20" height="21"/><span>0755-23999161</span></p>
+            </div>
+        </div>
+    </header>
+    <nav>
+        <div class="w1200">
+            <ul>
+                <li <eq name="isCur" value="0">class="selected"</eq>><a href="/">首页</a></li>
+                <li <eq name="isCur" value="1">class="selected"</eq>><a href="{:U('Home/About/profile')}">平台介绍</a></li>
+                <li <eq name="isCur" value="2">class="selected"</eq>><a href="{:U('Home/Case/list')}">案例展示</a></li>
+                <li style="display: none;"<eq name="isCur" value="3">class="selected"</eq>><a href="{:U('Home/About/team')}">团队支持</a></li>
+                <li <eq name="isCur" value="4">class="selected"</eq>><a href="{:U('Home/News/list')}">新闻资讯</a></li>
+                <li <eq name="isCur" value="5">class="selected"</eq>><a href="{:U('Home/About/contact')}">联系我们</a></li>
+            </ul>
+        </div>
+    </nav>
+    <!--以下内容作为header-->

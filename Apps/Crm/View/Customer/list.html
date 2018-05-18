@@ -1,0 +1,244 @@
+<eq name="isAjax" value="1">
+    <volist name="list" id="item">
+        <tbody>
+        <tr>
+            <td>品牌</td>
+            <td>{$item.company_name}</td>
+        </tr>
+        <tr>
+            <td>主营业务</td>
+            <td>{$item.products}</td>
+        </tr>
+        <tr>
+            <td>联系人</td>
+            <td>{$item.consignee}</td>
+        </tr>
+        <tr>
+            <td>投放</td>
+            <td>{$item.delivery_type}</td>
+        </tr>
+        <tr>
+            <td>电话</td>
+            <td><a href="tel:{$item.mobile}">{$item.mobile}</a></td>
+        </tr>
+        <tr>
+            <td>地址</td>
+            <td>{$item.address}</td>
+        </tr>
+        <tr>
+            <td colspan="2" style="text-align: right;width:100%;">
+                <span style="float:left;">{$item.add_time|date="Y-m-d",###}</span>
+                <span class="operate-bar">
+                    {$item.operator}
+                    <eq name="item.status" value="0">
+                    <a href="javascript:;" class="select" data-value="{$item.id}-1">有意向</a><a href="javascript:;" data-value="{$item.id}-2">没意向</a>
+                    </eq>
+                </span>
+            </td>
+        </tr>
+        </tbody>
+    </volist>
+ <else/>
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+        <meta name="format-detection" content="telephone=no" />
+        <title>客户资料查看</title>
+        <import type="css" file="dist.dropload" />
+        <import type="js" file="scripts.zepto.zepto#min,dist.dropload#min" />
+        <script type="text/javascript" src="__PUBLIC__/statics/mobile/js/rem.js"></script>
+        <style type="text/css">
+            * { margin: 0; padding: 0; box-sizing: border-box;}
+            body { max-width:640px; min-width: 320px; font-size: 0.24rem; }
+            ul,li { list-style: none;}
+            a { text-decoration: none; }
+            .data-box .title-box { width: 100%; position: fixed; top: 0;}
+            .data-box .title { height: 0.8rem; line-height: 0.8rem; font-size:0.3rem; background-color: #00b190; color: #fff; text-align: center;  }
+            .data-box .tab-box { height: 0.7rem; line-height: 0.7rem; background-color: #fff; color: #666; border-bottom: 1px solid #e5e5e5}
+            .data-box .tab-box ul {display: -webkit-box;  display: -moz-box; display: -ms-flexbox; display: -webkit-flex; display: flex;}
+            .data-box .tab-box ul li { -webkit-box-flex: 1; border-right:1px solid #f3f3f3; -moz-box-flex: 1; -webkit-flex: 1;  -ms-flex: 1;  flex: 1; text-align: center;}
+            .data-box .tab-box ul li:nth-child(3){border-right:none;}
+            .data-box .tab-box ul li.select { color: #00b190}
+            .data-box .tab-box ul li a{ display: block; color:#444;}
+            .data-box .tab-box ul li.select a{ color: #00b190}
+            .data-box .tab-box ul li span{ color:#ff6500; font-family: "Arial", "Microsoft Yahei", "sans-serif"}
+            .data-content { padding: 1.6rem 0.15rem 0; min-height: 100%; background-color: #f3f3f3; overflow: auto;}
+            .data-content tbody { margin-bottom: 0.2rem; padding: 0.2rem 0.1rem; display: table-caption; background-color: #fff;  text-align: left;}
+            table { border-collapse: collapse; width: 100%;}
+            table tr td{ width: 20%; height: 0.5rem; line-height: 0.4rem; padding-left: 0.1rem;}
+            table tr td:nth-child(2n) { color: #444; display: table-cell; width: 80%;}
+            table tr td:nth-child(2n+1) { color: #999;  text-align:justify; text-align-last:justify; }
+            table tr:nth-child(3) td:nth-child(2) { line-height: 0.3rem}
+            table tr td span{ margin-top:0.1rem; float:right;}
+            table tr td a {  border: 1px solid #e5e5e5; padding: 3px 0.1rem; margin: 0 0.1rem; font-size: 0.2rem; color: #666; border-radius: 0.05rem; border: 1px solid #00b190; color: #00b190;}
+        </style>
+    </head>
+    <body>
+        <div class="data-box">
+            <div class="title-box">
+                <div class="title">客户资料</div>
+                <div class="tab-box">
+                    <ul>
+                        <li <eq name="time" value="0">class="select"</eq>><a href="{:U('Crm/Customer/list')}">全部 (<span>{$allCount}</span>)</a></li>
+                        <li <eq name="time" value="1">class="select"</eq>><a href="{:U('Crm/Customer/list')}?time=1">昨天 (<span>{$yesterdayCount}</span>)</a></li>
+                        <li <eq name="time" value="2">class="select"</eq>><a href="{:U('Crm/Customer/list')}?time=2">前天 (<span>{$beforeDayCount}</span>)</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="data-content">
+                <div class="data-wrap" id="data-box">
+                    <table id="data-list">
+                        <volist name="list" id="item">
+                        <tbody>
+                            <tr>
+                                <td>品牌</td>
+                                <td>{$item.company_name}</td>
+                            </tr>
+                            <tr>
+                                <td>主营业务</td>
+                                <td>{$item.products}</td>
+                            </tr>
+                            <tr>
+                                <td>联系人</td>
+                                <td>{$item.consignee}</td>
+                            </tr>
+                            <tr>
+                                <td>投放</td>
+                                <td>{$item.delivery_type}</td>
+                            </tr>
+                            <tr>
+                                <td>电话</td>
+                                <td><a href="tel:{$item.mobile}">{$item.mobile}</a></td>
+                            </tr>
+                            <tr>
+                                <td>地址</td>
+                                <td>{$item.address}</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" style="text-align:left; width:100%">
+                                    <span style="float:left;">{$item.add_time|date="Y-m-d",###}</span>
+                                    <span class="operate-bar">
+                                        {$item.operator}
+                                        <eq name="item.status" value="0">
+                                            <a href="javascript:;" class="select" data-value="{$item.id}-1">有意向</a><a href="javascript:;" data-value="{$item.id}-2">没意向</a>
+                                        </eq>
+                                    </span>
+                                </td>
+                            </tr>
+                        </tbody>
+                        </volist>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <script>
+            $(".tab-box").find("li").on("click",function(){
+                $(this).addClass("select").siblings().removeClass("select");
+                $(".data-content").find(".data-wrap").eq($(this).index()).show().siblings().hide();
+            })
+            setStatus();
+            function setStatus(){
+                $("tbody td").find("a").on("click",function(){
+                    var _this = $(this);
+                    var value = $(this).attr("data-value");
+                    var status = 0;
+                    var id = 0;
+                    if(typeof(value)!="undefined"){
+                        var arr = value.split("-");
+                        if(arr.length>0){
+                            id = arr[0];
+                            status = arr[1];
+                            $.ajax({
+                                url:"{:U('Crm/Customer/setStatus')}",
+                                type:"post",
+                                dataType:"json",
+                                data:{
+                                    'id':id,
+                                    'status':status
+                                },
+                                success:function(data){
+                                    if(data.status==1){
+                                        _this.parent("span.operate-bar").html(data.data);
+                                    }else{
+                                        alert("设置失败");
+                                    }
+                                },
+                                error: function(xhr, type){
+                                    alert('Ajax error!');
+                                }
+                            });
+                        }
+                    }
+                })
+            }
+            //滚动页面ajax自动获取下一页内容
+            var page=2; //有效求购的页码
+            var totalPage = {$pageCount}; //有效求购页的总页码，会从后台获
+            //ajax请求地址
+            var ajaxUrl="{:U('Crm/Customer/list')}?time={$time}&isajax=1";
+            <if condition="$pageCount gt 1">
+            $(function(){
+                var tabLoadEnd = false;
+                var dropload = $('#data-box').dropload({
+                    scrollArea : window,
+                    loadDownFn : function(me){
+                        // 加载菜单一的数据
+                        if(page <= totalPage){
+                            $.ajax({
+                                url:ajaxUrl,
+                                type:"post",
+                                dataType:"html",
+                                data:{
+                                    'p':page
+                                },
+                                success:function(data){
+                                    if(data!=""){
+                                        $('#data-list').append(data);
+                                    }
+                                    // 每次数据加载完，必须重置
+                                    me.resetload();
+                                    totalPage = {$pageCount};
+                                    setStatus();
+                                },
+                                error: function(xhr, type){
+                                    alert('Ajax error!');
+                                    // 即使加载出错，也得重置
+                                    me.resetload();
+                                }
+                            });
+                            page++;
+                        }else{
+                            // 数据加载完
+                            tabLoadEnd = true;
+                            // 锁定
+                            me.lock();
+                            // 无数据
+                            me.noData();
+                            me.resetload();
+                        }
+                        // 加载菜单二的数据
+                    }
+                });
+                // 如果数据没有加载完
+                if(!tabLoadEnd){
+                    // 解锁
+                    dropload.unlock();
+                    dropload.noData(false);
+                }else{
+                    // 锁定
+                    dropload.lock('down');
+                    dropload.noData();
+                }
+                // 重置
+                dropload.resetload();
+            });
+            </if>
+        </script>
+    </body>
+    </html>
+</eq>

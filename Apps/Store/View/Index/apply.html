@@ -1,0 +1,179 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>店铺申请</title>
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/statics/admin/css/icon/iconfont.css" />
+    <import type="css" file="statics.shop.css.public,statics.shop.css.user,scripts.artdialog.ui-dialog" />
+    <import type="js" file="scripts.jquery.jquery-1#11#2#min,scripts.artdialog.dialog-plus-min,scripts.jquery.jquery#form#min,scripts.jquery.Validform_v5#3#2_min" />
+    <script type="text/javascript" src="__PUBLIC__/statics/admin/js/common.js"></script>
+    <script type="text/javaScript">
+        var url = "{:U('Store/Index/getRegionList')}";
+        /*
+         *城市三级联动
+         */
+        function getRegionList(objBox,typId,url){
+            if(typId!=''){
+                $.ajax({
+                    url:url,
+                    type:"post",
+                    dataType:'json',
+                    data:{id:typId},
+                    success:function(data){
+                        $("#"+objBox).html('<option value="" selected>请选择...</option>');
+                        if(objBox=="selCities"){
+                            $("#selDistricts").html('<option value="" selected>请选择...</option>');
+                        }
+                        $.each(data.data,function(idx,item){
+                            $("<option value="+item.id+">"+item.name+"</option>").appendTo($("#"+objBox));
+                        });
+                    }
+                });
+            }
+        }
+    </script>
+</head>
+<body style="background-color: #f5f5f5;">
+    <div class="login-header">
+        <div class="w1200">
+            <a href="javascript:;"><img src="__PUBLIC__/statics/shop/images/login_logo.png" alt="login_logo" /></a>
+        </div>
+    </div>
+	<div class="container">
+    	<div class="reg-wrap apply-wrap">
+            <div class="form-content-box">
+                <form name="regForm" id="regForm" url="{:U('Store/Index/apply')}">
+                <div class="login-items-box">
+                    <div class="login-items-option">
+                        <div class="login-title">
+                            <h2>加盟店申请</h2>
+                        </div>
+                    </div>
+                    <div class="login-items-option">
+                        <input type="text" name="data[store_name]" id="store_name" placeholder="输入店铺名称" dataType="s" class="input" value="{$info.store_name}"/>
+                        <i class="option-title">店铺名称</i>
+                    </div>
+                    <div class="login-items-option clearfix" style="border: 1px solid #e5e5e5; border-radius: 3px;">
+                        <div class="dt">所在位置</div>
+                        <div class="dd">
+                            <select name="province" id="selProvinces" onchange="getRegionList('selCities',this.value,url)" class="input small">
+                                <option value="" selected>--请选择--</option>
+                                <volist name="list" id="item">
+                                    <option value="{$item.id}">{$item.name}</option>
+                                </volist>
+                            </select>
+                            <select name="city" id="selCities" onchange="getRegionList('selDistricts',this.value,url)" class="input small">
+                                <option value="" selected>--请选择--</option>
+                            </select>
+                            <select name="district" id="selDistricts" class="input small">
+                                <option value="" selected>--请选择--</option>
+                            </select>
+                            <input type="hidden" name="data[area_list]" id="area_list" class="required" value="{$info.area_list}" />
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="login-items-option">
+                        <input type="text" name="data[address]" id="address" dataType="s" placeholder="输入店铺详细地址" class="input" value="{$info.address}"/>
+                        <i class="option-title">详细地址</i>
+                    </div>
+                    <div class="login-items-option">
+                        <div class="rule-single-select">
+                            <select name="data[store_type]" >
+                                <option value="">请选择店铺类型</option>
+                                <volist name="type_list" id="st">
+                                    <option value="{$st.id}" >{$st.type_name}</option>
+                                </volist>
+                            </select>
+                        </div>
+                        <i class="option-title">店铺类型</i>
+                    </div>
+                    <div class="login-items-option">
+                        <input type="text" name="data[box_num]" id="box_num" dataType="n"  placeholder="输入您想放置的货柜格子数" class="input" value="{$info.box_num}" />
+                        <i class="option-title">申请格子数</i>
+                    </div>
+                    <div class="login-items-option">
+                        <input type="text" name="data[mobile]" id="mobile" dataType="/^1[3-9]\d{9}$/" maxlength="11" placeholder="请输入手机号" class="input"  value="{$info.mobile}" />
+                        <i class="option-title">手机号码</i>
+                    </div>
+                    <div class="login-items-option">
+                        <input type="text" name="data[owner]" id="owner" dataType="s"  placeholder="输入您的真实姓名" class="input" value="{$info.owner}" />
+                        <i class="option-title">真实姓名</i>
+                    </div>
+                    <div class="login-items-option">
+                        <input type="submit" class="submitBtn" id="btnSubmit" value="立即申请" />
+                    </div>
+                    <div class="login-items-option">
+                        <p>点击“立即申请”，即表示您同意并愿意遵守《<a class="agreeBtn" id="agreeBtn" href="javascript:;">注册许可协议</a>》</p>
+                    </div>
+                </div>
+            </form>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        //初始化验证表单
+        $(function(){
+            $("#regForm").Validform({
+                tiptype:3,
+                callback:function(form){
+                    //AJAX提交表单
+                    $(form).ajaxSubmit({
+                        beforeSubmit: showRequest,
+                        success: showResponse,
+                        error: showError,
+                        url: $("#regForm").attr("url"),
+                        type: "post",
+                        dataType: "json",
+                        timeout: 60000
+                    });
+                    return false;
+                }
+            });
+            //表单提交前
+            function showRequest(formData, jqForm, options) {
+                $("#btnSubmit").val("正在提交...")
+                $("#btnSubmit").prop("disabled", true);
+            }
+            //表单提交后
+            //表单提交后(传统登录)
+            function showResponse(data, textStatus) {
+                if (data.status == 1) {
+                    //成功
+                    var d = dialog({content:data.info}).show();
+                    var type="{$type}";
+                    window.setInterval(function(){
+                        d.close().remove();
+                        location.href = "{:U('Home/Index/index')}";
+                    },1000);
+                    $("#btnSubmit").val("立即申请")
+                    $("#btnSubmit").prop("disabled", false);
+                }else{
+                    //失败
+                    var d = dialog({content:data.info}).show();
+                    window.setInterval(function(){
+                        d.close().remove();
+                    },1000);
+                }
+            }
+            //表单提交出错
+            function showError(XMLHttpRequest, textStatus, errorThrown) {
+                dialog({title:'提示', content:"状态：" + textStatus + "；出错提示：" + errorThrown, okValue:'确定', ok:function (){}}).showModal();
+                $("#btnSubmit").val("重新提交");
+                $("#btnSubmit").prop("disabled", false);
+            };
+            //注册协议弹出事件
+            $("#agreeBtn").click(function(){
+                var d = top.dialog({
+                    width: 950,
+                    title: '会员注册协议',
+                    lock: true,
+                    url: "{:U('Shop/Login/agreement')}"
+                }).showModal();
+                d.addEventListener('agreement', function(){
+                    d.close();
+                });
+            })
+        })
+    </script>
+</body>
+</html>

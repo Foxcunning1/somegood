@@ -1,0 +1,155 @@
+<eq name='isAjax' value='1'>
+    <volist name="list" id="vo">
+        <div class="shop-item">
+            <div class="shop-ctbox">
+                <span class="shop-name fl">{$vo.store_name}</span>
+                <eq name="vo.is_delivery" value="0">
+                    <span class="shop-apart fr"><span class="distance apart">即将投放</span></span>
+                    <else/>
+                    <eq name="vo.is_onsale" value="1">
+                        <span class="shop-apart fr"><span class="distance apart"><eq name="vo.stock" value="0">售罄<else/>库存{$vo.stock}</eq></span></span>
+                        <span class="shop-apart fr"><span class="distance apart">销量{$vo.sales_volume}</span></span>
+                        <else/>
+                        <span class="shop-apart fr"><span class="distance apart">已下架</span></span>
+                    </eq>
+                </eq>
+            </div>
+            <div class="shop-ctbox" style="font-size:initial;">
+                <i class="icons icon-location fl"></i>
+                <span class="address" >{$vo.area_name}</span>
+            </div>
+        </div>
+    </volist>
+<else/>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>{$web_title}</title>
+    <import type="css" file="statics.mobile.css.public,statics.mobile.css.style" />
+    <import type="js" file="scripts.zepto.zepto#min,scripts.zepto.zepto#fx,scripts.zepto.zepto#miniDialog,scripts.TouchSlide.TouchSlide#1#1,scripts.zepto.zepto#cookie#min,statics.mobile.js.zepto#fly#min,statics.mobile.js.common,scripts.zepto.lazyload#min,dist.dropload#min"/>
+    <script type="text/javascript" src="__PUBLIC__/statics/mobile/js/rem.js" fu-psd="720" fu-min="50" fu-max="100"></script>
+</head>
+<body>
+<div class="page-title">
+    <!--返回按钮-->
+    <div class="back-box">
+        <a href="javascript:history.go(-1);" class="icons icon-back"></a>
+    </div>
+    <h2 class="title">商品投放店铺</h2>
+    <!--返回按钮-->
+</div>
+<div class="tab-page-box">
+    <div class="tab-page">
+        <!--详情图滚动图-->
+        <div class="goods-info-slider" id="goodsInfoSlider">
+            <div class="hd">
+                <ul>
+                    <li class="on"></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </div>
+            <div class="bd">
+                <ul>
+                    <volist name="info.plist" id="vo" >
+                        <li><a href="{:U('Mobile/Goods/preview')}?id={$info.id}"><img src="__PUBLIC__/statics/mobile/images/default_img.png" data-original="__PUBLIC__/uploads/{$vo}_c200x200" class="js-smartPhoto" alt="{$info.rlist.$key}"/></a></li>
+                    </volist>
+                </ul>
+            </div>
+        </div>
+        <script>TouchSlide({slideCell:"#goodsInfoSlider",mainCell:".bd ul",autoPlay:true});</script>
+        <!--详情图滚动图-->
+        <!--分享引导-->
+        <div class="over-lay-share">
+            <img src="__PUBLIC__/statics/mobile/images/know.png" alt="我知道了" class="know">
+            <img src="__PUBLIC__/statics/mobile/images/pointer.png" alt="点击右上角分享按钮分享产品" class="pointer">
+        </div>
+        <!--分享引导-->
+        <div class="over-lay-small"></div>
+        <div class="goods-detail">
+            <div class="g-info">
+                <div class="product-name">
+                    <span>{$info.goods_title}</span>
+                </div>
+                <div class="product-price-m" style="display:flex;">
+                    <span  style="flex:1; text-align: center; font-size:0.22rem; color:#999;"></span>
+                    <span  style="flex:1; text-align: center; font-size:0.22rem; color:#999;">线上库存:{$info.online_stock}</span>
+                    <span class="view fr"  style="flex:1; text-align: right;">
+                        <span>线上销量:{$info.online_sales_volume}</span>
+                    </span>
+                </div>
+                <div class="product-price-m" style="display:flex;">
+                    <em class="fl" style="flex:1;">
+                        ¥<span class="big-price" >{$info.price}</span>
+                        <span class="small-price" style="text-decoration: line-through;color:black;">{$info.market_price}</span>
+                    </em>
+                    <span  style="flex:1; text-align: center; font-size:0.22rem; color:#999;">在售商家：{$info.store_count}家</span>
+                    <span class="view fr"  style="flex:1; text-align: right;">
+                        <span id="viewNum">线下销量{$info.total_sales_volume}</span>
+                    </span>
+                </div>
+
+            </div>
+        </div>
+<!--商品在售店铺列表-->
+        <div class="sale-shop-list"></div>
+    </div>
+</div>
+<!--商品在售店铺列表-->
+
+<!--公用底部-->
+<include file="Public/ufooter" />
+<!--公用底部-->
+<script>
+    var page=1; //当前页的页码
+    var allpage={$pageCount}; //总页码，会从后台获
+    var id='{$info.id}'; //商品ID，会从后台获
+    var ajaxUrl="{:U('Mobile/Seller/deliveryStoreList')}";//ajax请求地址
+    $(function(){
+        var dropload = $('.shop-goods-list-box').dropload({
+            scrollArea : window,
+            loadDownFn : function(me){
+                if(page<=allpage){
+                    $.ajax({
+                        url:ajaxUrl,
+                        type:"post",
+                        dataType:"html",
+                        data:{
+                            'p':page,
+                            'id':id,
+                        },
+                        success:function(data){
+                            var str = data;
+                            $('.sale-shop-list').append(str);
+                            $(".bd ul li img").lazyload({effect : "fadeIn"});
+                            // 每次数据加载完，必须重置
+                            me.resetload();
+                            allpage = {$pageCount};
+                        },
+                        error: function(xhr, type){
+                            alert('Ajax error!');
+                            // 即使加载出错，也得重置
+                            me.resetload();
+                        }
+                    });
+                    page++;
+                }else{
+                    // 锁定
+                    me.lock();
+                    // 无数据
+                    me.noData();
+                    me.resetload();
+                }
+            }
+        });
+    });
+</script>
+</body>
+</html>
+</eq>

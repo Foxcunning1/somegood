@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>我的购物币</title>
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/statics/mobile/css/public.css" />
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/statics/mobile/css/cart.css" />
+    <script type="text/javascript" charset="utf-8" src="__PUBLIC__/scripts/zepto/zepto.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="__PUBLIC__/scripts/zepto/zepto.miniDialog.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/statics/mobile/js/rem.js" fu-psd="720" fu-min="50" fu-max="100"></script>
+</head>
+<body>
+<div class="page-title">
+    <!--返回按钮-->
+    <div class="to-back-box">
+        <a href="javascript:history.back(-1);" class="icons icon-back"></a>
+    </div>
+    <!--返回按钮-->
+    <!--标题-->
+    <h2 class="title">我的购物币</h2>
+    <!--标题-->
+</div>
+<style>
+    .bill-box { padding: 0.15rem; overflow: hidden; background-color: #fff; font-size: 0.22rem}
+    .bill-box .bill-item {  width: 100%; height: 0.7rem; line-height: 0.7rem; border-bottom: 1px solid #f1f1f1;}
+    .bill-box .bill-item .bill { color: #f23030; padding-right: 0.2rem;}
+    .bill-box .bill-item input.use-bill { display: inline-block; height: 0.3rem; line-height: 0.3rem; padding: 0.2rem 0.2rem 0.2rem 0; text-align: right;}
+    .bill-box .bill-info .title,.bill-box .bill-item span.left { font-size: 0.22rem;font-weight: bold; height: 0.7rem; line-height: 0.7rem;}
+    .bill-box .bill-info { line-height: 0.3rem ;font-size: 0.22rem;}
+    .bill-box .bill-info p { padding: 0 0.2rem;}
+</style>
+<form method="post" class="bill-form" id="billForm" action="{:U('Mobile/UserOrder/updataShareBill')}">
+    <div class="bill-box pd-t08">
+        <div class="bill-item"><span class="left fl">购物币总额：</span><span class="bill all-bill fr">{$userShallBill}</span></div>
+        <div class="bill-item"><span class="left fl">可使用：</span>
+          <input type="number"  id="billMoney" name="billMoney" class="bill use-bill fr" value="" placeholder="可使用抵扣金额<if condition="$userShallBill egt $shareBill">{$Think.config.share_bill}<else />{$userShallBill}</if>元"/>
+          <input type="hidden" id="billMoney1" name="billMoney1" value="">
+        </div>
+        <div class="bill-info">
+            <div class="title">购物币使用规则：</div>
+            <p>购物币每满1可以抵扣1元</p>
+            <p>一个订单最多可以使用{$Think.config.share_bill}元</p>
+        </div>
+    </div>
+    <div class="add-address-box">
+        <input type="hidden" name="returnUlr" value="{$returnUrl}" />
+        <a href="javascript:;" class="add-address-btn bill-pay-btn">好了</a>
+    </div>
+</form>
+
+<script>
+    $(function(){
+        /*验证输入的数字是否合法
+         * Param         int           num               数量
+         * Return        bool                            返回bool值
+         */
+         var allBillNum = 0;
+         if($(".all-bill").text()!=""&&$(".all-bill").text()!="0"){
+            allBillNum = Number(parseFloat($(".all-bill").text()).toFixed(2));//用户可用的虚拟币
+         }
+         //判断是否超过最大的可用虚拟币
+         if (allBillNum >= {$Think.config.share_bill}) {
+             allBillNum = parseFloat({$Think.config.share_bill});
+         }
+         $("#billMoney").on("keyup",function(){
+              if($(this).val()!=""){
+                 var billVal = Number(parseFloat($(this).val()).toFixed(2));
+                 if( billVal>0 && billVal>allBillNum ){
+                    $(this).val("0");
+                    minDialogTips("亲,您不能使用那么多金币!");
+                 }
+              }
+         })
+        $(".bill-pay-btn").on("touchstart",function(){
+            if($(".all-bill").text()!=""&&$(".all-bill").text()!="0"){
+                var billNum = 0;
+                if($(".use-bill").val()!=""){
+                    billNum = Number(parseFloat($(".use-bill").val()).toFixed(2));//输入的抵扣金币
+                    if(billNum <= allBillNum){
+                      //alert(billNum);
+                        $('#billMoney1').attr('value',billNum);
+                        $(".use-bill").attr("disabled","disabled");
+                        $("#billForm").submit();
+                    }else{
+                        minDialogTips("亲,您还没有那么多购物币!");
+                    }
+                }else{
+                    minDialogTips("亲,您还没填写抵用金额呢!");
+                }
+            }else{
+                //没有可用的虚拟币
+                minDialogTips("亲,您没有可用的购物币!");
+                $(".use-bill").val("0");
+            }
+        })
+    })
+    //提示错误
+    function minDialogTips(tipsContent){
+      $("body").minDialog({
+          isAutoClose:true,
+          isCloseAll:true,
+          closeTime:1000,
+          content: tipsContent
+      });
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html style="height:auto;">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no" />
+    <link rel="stylesheet" href="__PUBLIC__/dist/dropload.css">
+    <import type="css" file="statics.mobile.css.public,statics.mobile.css.user" />
+    <import type="js" file="scripts.zepto.zepto#min,scripts.zepto.zepto#miniDialog,statics.mobile.js.common" />
+    <script type="text/javascript" src="__PUBLIC__/statics/mobile/js/rem.js" fu-psd="720" fu-min="50" fu-max="100"></script>
+    <title>我的寻宝</title>
+</head>
+<body style="height: auto;">
+
+<div class="page-title">
+    <!--返回按钮-->
+    <div class="to-back-box">
+        <a href="javascript:history.back();" class="icons icon-back"></a>
+    </div>
+    <!--返回按钮-->
+    <!--标题-->
+    <h2 class="title">在线寻宝</h2>
+    <!--标题-->
+</div>
+<div class="already-title">
+    <ul class="tab">
+        <li class="item sel"><a href="javascript:void(0)">在线寻宝</a></li>
+        <li class="item"><a  href="javascript:void(0)">已失效</a></li>
+    </ul>
+</div>
+<div class="my-apply-list">
+    <ul class="apply-noimg-list"></ul>
+    <ul class="apply-noimg-list"></ul>
+</div>
+</div>
+<!--公用底部-->
+<include file="Public/ufooter" />
+<!--公用底部-->
+<!-- jQuery1.7以上 或者 Zepto 二选一，不要同时都引用 -->
+<script src="__PUBLIC__/dist/dropload.min.js"></script>
+<script>
+    $(function(){
+        /*公用底部点击样式变换 放再公用的layout里面*/
+        $(".footer ul").find("li").on("touchstart",function(){
+            $(this).addClass("sel").siblings().removeClass("sel");
+        })
+    })
+    //删除
+    function delMywant(id) {
+        var delUrl='{:U('Mobile/Users/delWant')}';
+        $.ajax({
+            url:delUrl,
+            type:"post",
+            dataType:"json",
+            data:{
+                'ids':id,
+            },
+            success:function(data){
+                if(data.status=1){
+                    $("#"+id).remove();
+                }
+                $("body").minDialog({
+                    isMask:true,
+                    isAutoClose:true,
+                    isCloseAll:true,
+                    closeTime:800,
+                    content:data.info,
+                });
+            },
+            error:function(){
+                $("body").minDialog({
+                    isMask:true,
+                    isAutoClose:true,
+                    isCloseAll:true,
+                    closeTime:800,
+                    content:data.info,
+                });
+            }
+        })
+    }
+    var page0=1; //有效求购的页码
+    var page1=1; //过期求购的页码
+    var allpage0={$pageCount0}; //有效求购页的总页码，会从后台获
+    var allpage1={$pageCount1}; //过期求购页的总页码，会从后台获
+    var ajaxUrl="{:U('Mobile/Users/want')}";//ajax请求地址
+    $(function(){
+        var itemIndex = 0;
+        var tab1LoadEnd = false;
+        var tab2LoadEnd = false;
+        // tab
+        $('.tab .item').on('click',function(){
+            var $this = $(this);
+            itemIndex = $this.index();
+            $this.addClass('sel').siblings('.item').removeClass('sel');
+            $('.apply-noimg-list').eq(itemIndex).show().siblings('.apply-noimg-list').hide();
+
+            // 如果选中菜单一
+            if(itemIndex == '0'){
+                // 如果数据没有加载完
+                if(!tab1LoadEnd){
+                    // 解锁
+                    dropload.unlock();
+                    dropload.noData(false);
+                }else{
+                    // 锁定
+                    dropload.lock('down');
+                    dropload.noData();
+                }
+                // 如果选中菜单二
+            }else if(itemIndex == '1'){
+                if(!tab2LoadEnd){
+                    // 解锁
+                    dropload.unlock();
+                    dropload.noData(false);
+                }else{
+                    // 锁定
+                    dropload.lock('down');
+                    dropload.noData();
+                }
+            }
+            // 重置
+            dropload.resetload();
+        });
+        // dropload
+        var dropload = $('.my-apply-list').dropload({
+            scrollArea : window,
+            loadDownFn : function(me){
+                // 加载菜单一的数据
+                if(itemIndex == '0'){
+                    if(page0<=allpage0){
+                        $.ajax({
+                            url:ajaxUrl,
+                            type:"post",
+                            dataType:"json",
+                            data:{
+                                'is_ajax':1,
+                                'vali':'gt',
+                                'p':page0
+                            },
+                            success:function(data){
+                                var str='';
+                                $.each(data.data.list,function(index, vo) {
+                                    var money;
+                                    if(vo['w_max']==0){
+                                        money="面议";
+                                    }else if(vo['w_min']>0 && vo['w_max']>0){
+                                        money="￥"+vo['w_min']+"到￥"+vo['w_max'];
+                                    }else{
+                                        money="￥"+vo['w_max']+"以内";
+                                    }
+
+                                    str +="<li id='"+vo['w_id']+"'> ";
+                                    str += "<div class=\"floor floor-1\"><a href=\"javascript:void(0);\" class='name fl'>"+vo['w_title']+"</a><span class=\"price fr\">"+money+"</span></div>";
+                                    str += "<div class=\"floor floor-2\"><i class=\"icons icon-location fl\"></i><span class=\"fl\">"+vo['area']+"</span></div>";
+                                    str += "<div class=\"floor floor-3\"><span class=\"time fr\">更新时间:"+date('Y-m-d',""+vo['w_overtime']+"")+"</span> <a href=\"javascript:void(0);\"  onclick=\"return delMywant("+vo['w_id']+");\" class='fr'><i class=\"icons icon-deleted fl\"></i><span class=\"delete fr\">删除</span></a>";
+                                    str += "<a href=\"{:U('Mobile/Users/addWant',array('action'=>'edit'))}?w_id="+vo['w_id']+"\" class='fr'><i class=\"icons icon-deleted fl\"></i><span class=\"update fr\">更新</span></a>";
+                                    str +="</div>";
+                                    str +="</li>";
+                                })
+                                // 为了测试，延迟1秒加载
+                                $('.apply-noimg-list').eq(itemIndex).append(str);
+                                // 每次数据加载完，必须重置
+                                me.resetload();
+                                allpage0=data.data.pageCount;
+                            },
+                            error: function(xhr, type){
+                                alert('Ajax error!');
+                                // 即使加载出错，也得重置
+                                me.resetload();
+                            }
+                        });
+                        page0++;
+                    }else{
+                        // 数据加载完
+                        tab1LoadEnd = true;
+                        // 锁定
+                        me.lock();
+                        // 无数据
+                        me.noData();
+                        me.resetload();
+                    }
+                    // 加载菜单二的数据
+                }else if(itemIndex == '1'){
+                    if(page1<=allpage1){
+                        $.ajax({
+                            url:ajaxUrl,
+                            type:"post",
+                            dataType:"json",
+                            data:{
+                                'is_ajax':1,
+                                'vali':'lt',
+                                'p':page1
+                            },
+                            success:function(data){
+                                var str='';
+                                $.each(data.data.list,function(index, vo) {
+                                    var money;
+                                    if(vo['w_max']==0){
+                                        money="面议";
+                                    }else if(vo['w_min']>0 && vo['w_max']>0){
+                                        money="￥"+vo['w_min']+"到￥"+vo['w_max'];
+                                    }else{
+                                        money="￥"+vo['w_max']+"以内";
+                                    }
+                                    str +="<li> ";
+                                    str += "<div class=\"title\"><a href=\"{:U('Mobile/Want/detail')}?id="+vo['w_id']+"\">"+vo['w_title']+"</a></div>";
+                                    str += "<div class=\"location\"><i class=\"icons icon-location fl\"></i><span class=\"fl\">"+vo['area']+"</span></div>";
+                                    str += "<div class=\"price-and-time\"><span class=\"price fl\">"+money+"</span><span class=\"time fl\">更新时间:"+date('Y-m-d',""+vo['w_overtime']+"")+"</span></div>";
+                                    str += "<div class=\"call-him\"> <a href=\"{:U('Mobile/Users/addWant',array('action'=>'edit'))}?w_id="+vo['w_id']+"\" ><i class=\"icons icon-deleted fl\"></i><span class=\"fr\">更新</span></a>";
+                                    str += "<div class=\"call-him\"> <a href=\"javascript:void(0);\"  onclick=\"return delMywant("+vo['w_id']+");\"><i class=\"icons icon-deleted fl\"></i><span class=\"fr\">删除</span></a>";
+                                    str +="</div>";
+                                    str +="</li>";
+                                })
+                                // 为了测试，延迟1秒加载
+                                $('.apply-noimg-list').eq(itemIndex).append(str);
+                                // 每次数据加载完，必须重置
+                                me.resetload();
+                                allpage1=data.data.pageCount;
+                            },
+                            error: function(xhr, type){
+                                alert('Ajax error!');
+                                // 即使加载出错，也得重置
+                                me.resetload();
+                            }
+                        });
+                        page1++;
+                    }else{
+                        // 数据加载完
+                        tab2LoadEnd = true;
+                        // 锁定
+                        me.lock();
+                        // 无数据
+                        me.noData();
+                        me.resetload();
+                    }
+                }
+            }
+        });
+    });
+</script>
+</body>
+</html>

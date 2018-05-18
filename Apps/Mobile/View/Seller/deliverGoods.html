@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>发货</title>
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/statics/mobile/css/public.css" />
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/statics/mobile/css/cart.css" />
+    <script type="text/javascript" charset="utf-8" src="__PUBLIC__/scripts/zepto/zepto.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="__PUBLIC__/scripts/zepto/zepto.validateForm.js"></script>
+    <script type="text/javascript" charset="utf-8" src="__PUBLIC__/scripts/zepto/zepto.miniDialog.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/statics/mobile/js/rem.js" fu-psd="720" fu-min="50" fu-max="100"></script>
+</head>
+<body>
+<div class="page-title">
+    <!--返回按钮-->
+    <div class="to-back-box">
+        <a href="javascript:history.go(-1)" class="icons icon-back"></a>
+    </div>
+    <h2 class="title">发货</h2>
+    <!--返回按钮-->
+</div>
+<div class="deliver-box">
+    <form class="deliver-form" id="deliverForm" url="{:U('Mobile/Seller/deliverGoods')}" >
+        <dl>
+            <dt>物流公司:</dt>
+            <dd>
+                <input type="text" disabled="disabled" name="" value="{$lname}">
+            </dd>
+        </dl>
+        <dl>
+            <dt>物流单号:</dt>
+            <dd>
+                <input type="text" name="data[logistics_sn]" placeholder="物流单号" class="required" id="logistics_sn" sucmsg="通过验证" value=""/>
+            </dd>
+        </dl>
+        <input type="hidden" name="data[order_sn]" value="{$Think.get.order_sn}">
+        <input type="submit" value="提交" class="deliver-btn"/>
+    </form>
+</div>
+<script>
+    /*表单验证*/
+    $("#deliverForm").validateForm({return_url:'{$returnUrl}',isBindDel:true});
+</script>
+</body>
+</html>

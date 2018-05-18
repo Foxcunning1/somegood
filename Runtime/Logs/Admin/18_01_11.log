@@ -1,0 +1,762 @@
+[ 2018-01-11T14:36:30+08:00 ] ::1 /somegood/Admin/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.013001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.013001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.002000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.003000s ]
+
+[ 2018-01-11T14:36:32+08:00 ] ::1 /somegood/Admin/login/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.013001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.013001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-01-11T14:36:33+08:00 ] ::1 /somegood/Admin/Login/login.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_admin` [ RunTime:0.0070s ]
+SQL: SELECT COUNT(*) AS tp_count FROM sg_admin a LEFT JOIN sg_admin_role AS ar ON a.r_id = ar.role_id   WHERE `admin_name` = '18664988205' LIMIT 1   [ RunTime:0.0290s ]
+
+[ 2018-01-11T14:36:39+08:00 ] ::1 /somegood/Admin/Login/login.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_admin` [ RunTime:0.0020s ]
+SQL: SELECT COUNT(*) AS tp_count FROM sg_admin a LEFT JOIN sg_admin_role AS ar ON a.r_id = ar.role_id   WHERE `admin_name` = 'admin' LIMIT 1   [ RunTime:0.0020s ]
+SQL: SELECT * FROM sg_admin a LEFT JOIN sg_admin_role AS ar ON a.r_id = ar.role_id   WHERE `admin_name` = 'admin' LIMIT 1   [ RunTime:0.0010s ]
+NOTIC: [8] Undefined offset: 0 D:\xampps\htdocs\somegood\Apps\Admin\Controller\LoginController.class.php 第 84 行.
+SQL: UPDATE `sg_admin` SET `last_ip`='0.0.0.0',`add_time`='1515652599' WHERE `id` = 1 [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_admin_log` [ RunTime:0.0350s ]
+SQL: INSERT INTO `sg_admin_log` (`admin_id`,`admin_name`,`action_type`,`note`,`login_ip`,`login_time`) VALUES ('1','admin','login','用户登录','0.0.0.0','1515652599') [ RunTime:0.0020s ]
+
+[ 2018-01-11T14:36:40+08:00 ] ::1 /somegood/Admin/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.018001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.019001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-01-11T14:36:40+08:00 ] ::1 /somegood/Admin/Index/center.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_admin` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `sg_admin` WHERE ( id=1 ) LIMIT 1   [ RunTime:0.0070s ]
+SQL: select version() [ RunTime:0.0020s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.053003s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.053003s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-01-11T14:36:40+08:00 ] ::1 /somegood/Admin/Ajax/getSystemNav.html?time=0.631060940732123
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: sub_html D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 89 行.
+NOTIC: [8] Undefined variable: sub_html D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 89 行.
+NOTIC: [8] Undefined index: childs D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 98 行.
+NOTIC: [8] Undefined index: childs D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 98 行.
+NOTIC: [8] Undefined index: childs D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 98 行.
+NOTIC: [8] Undefined index: childs D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 98 行.
+NOTIC: [8] Undefined index: childs D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 98 行.
+NOTIC: [8] Undefined variable: sub_html D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 89 行.
+NOTIC: [8] Undefined index: childs D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 98 行.
+NOTIC: [8] Undefined index: childs D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 98 行.
+NOTIC: [8] Undefined variable: sub_html D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 89 行.
+NOTIC: [8] Undefined variable: sub_html D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 89 行.
+NOTIC: [8] Undefined index: childs D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 98 行.
+NOTIC: [8] Undefined index: childs D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 98 行.
+NOTIC: [8] Undefined index: childs D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 98 行.
+NOTIC: [8] Undefined variable: sub_html D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 89 行.
+NOTIC: [8] Undefined index: childs D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 98 行.
+NOTIC: [8] Undefined variable: sub_html D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 89 行.
+NOTIC: [8] Undefined variable: sub_html D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 89 行.
+NOTIC: [8] Undefined index: childs D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 98 行.
+NOTIC: [8] Undefined index: childs D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 98 行.
+NOTIC: [8] Undefined variable: sub_html D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 89 行.
+NOTIC: [8] Undefined index: childs D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 98 行.
+NOTIC: [8] Undefined index: childs D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 98 行.
+NOTIC: [8] Undefined variable: sub_html D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 89 行.
+NOTIC: [8] Undefined index: childs D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 98 行.
+NOTIC: [8] Undefined variable: sub_html D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 89 行.
+NOTIC: [8] Undefined variable: sub_html D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 89 行.
+NOTIC: [8] Undefined index: childs D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 98 行.
+NOTIC: [8] Undefined index: childs D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 98 行.
+NOTIC: [8] Undefined index: childs D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 98 行.
+NOTIC: [8] Undefined variable: sub_html D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 89 行.
+NOTIC: [8] Undefined index: childs D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 98 行.
+NOTIC: [8] Undefined variable: sub_html D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 89 行.
+NOTIC: [8] Undefined index: childs D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 98 行.
+NOTIC: [8] Undefined index: childs D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 98 行.
+NOTIC: [8] Undefined variable: sub_html D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 89 行.
+NOTIC: [8] Undefined variable: sub_html D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 89 行.
+NOTIC: [8] Undefined index: childs D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 98 行.
+NOTIC: [8] Undefined index: childs D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 98 行.
+NOTIC: [8] Undefined index: childs D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 98 行.
+NOTIC: [8] Undefined index: childs D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 98 行.
+NOTIC: [8] Undefined index: childs D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 98 行.
+NOTIC: [8] Undefined variable: sub_html D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 89 行.
+NOTIC: [8] Undefined index: childs D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 98 行.
+NOTIC: [8] Undefined index: childs D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 98 行.
+NOTIC: [8] Undefined index: childs D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 98 行.
+NOTIC: [8] Undefined variable: sub_html D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 89 行.
+NOTIC: [8] Undefined variable: sub_html D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 89 行.
+NOTIC: [8] Undefined index: childs D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 98 行.
+NOTIC: [8] Undefined index: childs D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 98 行.
+NOTIC: [8] Undefined variable: sub_html D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 89 行.
+NOTIC: [8] Undefined index: childs D:\xampps\htdocs\somegood\Apps\Admin\Controller\BaseController.class.php 第 98 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-01-11T14:36:40+08:00 ] ::1 /somegood/Admin/Index/getNotice.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_notice` [ RunTime:0.0070s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `sg_notice` WHERE `time` < 1515652600 AND `to` = 'admin' AND `is_readed` = 0 AND `type` = 'auditStore' LIMIT 1   [ RunTime:0.0020s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `sg_notice` WHERE `time` < 1515652600 AND `to` = 'admin' AND `is_readed` = 0 AND `type` = 'auditSeller' LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `sg_notice` WHERE `time` < 1515652600 AND `to` = 'admin' AND `is_readed` = 0 AND `type` = 'waitDelivery' LIMIT 1   [ RunTime:0.0020s ]
+
+[ 2018-01-11T14:36:43+08:00 ] ::1 /somegood/Admin/Seller/check
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_admin` [ RunTime:0.0030s ]
+SQL: SELECT `r_id` FROM `sg_admin` WHERE `id` = 1 AND `is_lock` = 0 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_admin_role` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_admin_role` WHERE ( role_id=1 ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_admin_role_value` [ RunTime:0.0280s ]
+SQL: SELECT * FROM `sg_admin_role_value` WHERE `role_id` = 1  [ RunTime:0.0060s ]
+SQL: SHOW COLUMNS FROM `sg_users_seller` [ RunTime:0.0030s ]
+NOTIC: [8] Undefined variable: condition D:\xampps\htdocs\somegood\Apps\Admin\Controller\SellerController.class.php 第 47 行.
+NOTIC: [8] Undefined variable: pageCondition D:\xampps\htdocs\somegood\Apps\Admin\Controller\SellerController.class.php 第 47 行.
+SQL: SHOW COLUMNS FROM `sg_users_seller` [ RunTime:0.0690s ]
+SQL: SELECT COUNT(*) AS tp_count FROM sg_users_seller us LEFT JOIN sg_users AS u on u.uid = us.user_id  LIMIT 1   [ RunTime:0.0170s ]
+SQL: SELECT us.*,u.is_seller FROM sg_users_seller us LEFT JOIN sg_users AS u on u.uid = us.user_id  LIMIT 0,10   [ RunTime:0.0330s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined variable: returnUrl D:\xampps\htdocs\somegood\Runtime\Cache\Admin\6e39ac020954cbedb788d95c7196e285.php 第 101 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.030002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.030002s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.002000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002000s ]
+
+[ 2018-01-11T14:36:50+08:00 ] ::1 /somegood/Admin/Seller/detail/id/843.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_admin` [ RunTime:0.0070s ]
+SQL: SELECT `r_id` FROM `sg_admin` WHERE `id` = 1 AND `is_lock` = 0 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_admin_role` [ RunTime:0.0060s ]
+SQL: SELECT * FROM `sg_admin_role` WHERE ( role_id=1 ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_admin_role_value` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `sg_admin_role_value` WHERE `role_id` = 1  [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_users_seller` [ RunTime:0.0200s ]
+SQL: SELECT us.*,u.id_cardnum,u.id_cardphoto,u.is_seller,group_concat(gc.title) as category_name FROM sg_users_seller us LEFT JOIN sg_users AS u on u.uid = us.user_id LEFT JOIN sg_users_seller_category AS usc on usc.user_id = us.user_id LEFT JOIN sg_goods_category AS gc on gc.id = usc.cat_id  WHERE ( us.user_id=843 )  [ RunTime:0.0420s ]
+NOTIC: [8] Undefined index: id_cardphoto D:\xampps\htdocs\somegood\Apps\Admin\Controller\SellerController.class.php 第 119 行.
+NOTIC: [8] Undefined variable: region_one D:\xampps\htdocs\somegood\Apps\Admin\Controller\SellerController.class.php 第 123 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: sid D:\xampps\htdocs\somegood\Runtime\Cache\Admin\e72fa048b3acc14c0565b08278121af9.php 第 46 行.
+NOTIC: [8] Undefined index: counts D:\xampps\htdocs\somegood\Runtime\Cache\Admin\e72fa048b3acc14c0565b08278121af9.php 第 51 行.
+NOTIC: [8] Undefined index: error_reason D:\xampps\htdocs\somegood\Runtime\Cache\Admin\e72fa048b3acc14c0565b08278121af9.php 第 102 行.
+NOTIC: [8] Undefined index: idcard_z D:\xampps\htdocs\somegood\Runtime\Cache\Admin\e72fa048b3acc14c0565b08278121af9.php 第 123 行.
+NOTIC: [8] Undefined index: idcard_f D:\xampps\htdocs\somegood\Runtime\Cache\Admin\e72fa048b3acc14c0565b08278121af9.php 第 130 行.
+NOTIC: [8] Undefined index: lng D:\xampps\htdocs\somegood\Runtime\Cache\Admin\e72fa048b3acc14c0565b08278121af9.php 第 139 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.024002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.024002s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-01-11T14:36:51+08:00 ] ::1 /somegood/Admin/Seller/detail.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_admin` [ RunTime:0.0070s ]
+SQL: SELECT `r_id` FROM `sg_admin` WHERE `id` = 1 AND `is_lock` = 0 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_admin_role` [ RunTime:0.0060s ]
+SQL: SELECT * FROM `sg_admin_role` WHERE ( role_id=1 ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_admin_role_value` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `sg_admin_role_value` WHERE `role_id` = 1  [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_users` [ RunTime:0.0070s ]
+SQL: UPDATE `sg_users` SET `is_seller`='1' WHERE ( uid=843 ) [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `sg_admin_log` [ RunTime:0.0050s ]
+SQL: INSERT INTO `sg_admin_log` (`admin_id`,`admin_name`,`action_type`,`note`,`login_ip`,`login_time`) VALUES ('1','admin','edit','成功更新了ID为843的卖家申请信息!','0.0.0.0','1515652611') [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_store` [ RunTime:0.0050s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `sg_store` WHERE ( user_id=843 ) LIMIT 1   [ RunTime:0.0010s ]
+
+[ 2018-01-11T14:36:53+08:00 ] ::1 /somegood/Admin/Seller/check
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_admin` [ RunTime:0.0070s ]
+SQL: SELECT `r_id` FROM `sg_admin` WHERE `id` = 1 AND `is_lock` = 0 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_admin_role` [ RunTime:0.0060s ]
+SQL: SELECT * FROM `sg_admin_role` WHERE ( role_id=1 ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_admin_role_value` [ RunTime:0.0060s ]
+SQL: SELECT * FROM `sg_admin_role_value` WHERE `role_id` = 1  [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_users_seller` [ RunTime:0.0060s ]
+NOTIC: [8] Undefined variable: condition D:\xampps\htdocs\somegood\Apps\Admin\Controller\SellerController.class.php 第 47 行.
+NOTIC: [8] Undefined variable: pageCondition D:\xampps\htdocs\somegood\Apps\Admin\Controller\SellerController.class.php 第 47 行.
+SQL: SHOW COLUMNS FROM `sg_users_seller` [ RunTime:0.0060s ]
+SQL: SELECT COUNT(*) AS tp_count FROM sg_users_seller us LEFT JOIN sg_users AS u on u.uid = us.user_id  LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT us.*,u.is_seller FROM sg_users_seller us LEFT JOIN sg_users AS u on u.uid = us.user_id  LIMIT 0,10   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: returnUrl D:\xampps\htdocs\somegood\Runtime\Cache\Admin\6e39ac020954cbedb788d95c7196e285.php 第 101 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.010001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.010001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-01-11T14:41:42+08:00 ] ::1 /somegood/Admin/Index/getNotice.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+ERR: Think\Controller:ajaxReturn方法不存在！
+
+[ 2018-01-11T14:46:42+08:00 ] ::1 /somegood/Admin/Index/getNotice.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+ERR: Think\Controller:ajaxReturn方法不存在！
+
+[ 2018-01-11T14:51:42+08:00 ] ::1 /somegood/Admin/Index/getNotice.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+ERR: Think\Controller:ajaxReturn方法不存在！
+
+[ 2018-01-11T14:56:41+08:00 ] ::1 /somegood/Admin/Index/getNotice.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+ERR: Think\Controller:ajaxReturn方法不存在！
+
+[ 2018-01-11T15:01:42+08:00 ] ::1 /somegood/Admin/Index/getNotice.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+ERR: Think\Controller:ajaxReturn方法不存在！
+
+[ 2018-01-11T15:06:42+08:00 ] ::1 /somegood/Admin/Index/getNotice.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+ERR: Think\Controller:ajaxReturn方法不存在！
+
+[ 2018-01-11T15:11:42+08:00 ] ::1 /somegood/Admin/Index/getNotice.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+ERR: Think\Controller:ajaxReturn方法不存在！
+
+[ 2018-01-11T15:16:42+08:00 ] ::1 /somegood/Admin/Index/getNotice.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+ERR: Think\Controller:ajaxReturn方法不存在！
+
+[ 2018-01-11T15:21:42+08:00 ] ::1 /somegood/Admin/Index/getNotice.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+ERR: Think\Controller:ajaxReturn方法不存在！
+
+[ 2018-01-11T15:26:42+08:00 ] ::1 /somegood/Admin/Index/getNotice.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+ERR: Think\Controller:ajaxReturn方法不存在！
+
+[ 2018-01-11T15:31:42+08:00 ] ::1 /somegood/Admin/Index/getNotice.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+ERR: Think\Controller:ajaxReturn方法不存在！
+
+[ 2018-01-11T15:36:42+08:00 ] ::1 /somegood/Admin/Index/getNotice.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+ERR: Think\Controller:ajaxReturn方法不存在！
+
+[ 2018-01-11T15:41:42+08:00 ] ::1 /somegood/Admin/Index/getNotice.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+ERR: Think\Controller:ajaxReturn方法不存在！
+
+[ 2018-01-11T15:46:42+08:00 ] ::1 /somegood/Admin/Index/getNotice.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+ERR: Think\Controller:ajaxReturn方法不存在！
+
+[ 2018-01-11T15:51:42+08:00 ] ::1 /somegood/Admin/Index/getNotice.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+ERR: Think\Controller:ajaxReturn方法不存在！
+
+[ 2018-01-11T15:56:42+08:00 ] ::1 /somegood/Admin/Index/getNotice.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+ERR: Think\Controller:ajaxReturn方法不存在！
+
+[ 2018-01-11T16:01:42+08:00 ] ::1 /somegood/Admin/Index/getNotice.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+ERR: Think\Controller:ajaxReturn方法不存在！
+
+[ 2018-01-11T16:06:42+08:00 ] ::1 /somegood/Admin/Index/getNotice.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+ERR: Think\Controller:ajaxReturn方法不存在！
+
+[ 2018-01-11T16:11:42+08:00 ] ::1 /somegood/Admin/Index/getNotice.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+ERR: Think\Controller:ajaxReturn方法不存在！
+
+[ 2018-01-11T16:16:42+08:00 ] ::1 /somegood/Admin/Index/getNotice.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+ERR: Think\Controller:ajaxReturn方法不存在！
+
+[ 2018-01-11T16:21:42+08:00 ] ::1 /somegood/Admin/Index/getNotice.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+ERR: Think\Controller:ajaxReturn方法不存在！
+
+[ 2018-01-11T16:26:42+08:00 ] ::1 /somegood/Admin/Index/getNotice.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+ERR: Think\Controller:ajaxReturn方法不存在！
+
+[ 2018-01-11T16:31:42+08:00 ] ::1 /somegood/Admin/Index/getNotice.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+ERR: Think\Controller:ajaxReturn方法不存在！
+
+[ 2018-01-11T16:36:42+08:00 ] ::1 /somegood/Admin/Index/getNotice.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+ERR: Think\Controller:ajaxReturn方法不存在！
+
+[ 2018-01-11T16:41:42+08:00 ] ::1 /somegood/Admin/Index/getNotice.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+ERR: Think\Controller:ajaxReturn方法不存在！
+
+[ 2018-01-11T16:46:42+08:00 ] ::1 /somegood/Admin/Index/getNotice.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+ERR: Think\Controller:ajaxReturn方法不存在！
+
+[ 2018-01-11T16:51:42+08:00 ] ::1 /somegood/Admin/Index/getNotice.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+ERR: Think\Controller:ajaxReturn方法不存在！
+
+[ 2018-01-11T16:56:42+08:00 ] ::1 /somegood/Admin/Index/getNotice.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+ERR: Think\Controller:ajaxReturn方法不存在！
+
+[ 2018-01-11T17:01:42+08:00 ] ::1 /somegood/Admin/Index/getNotice.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+ERR: Think\Controller:ajaxReturn方法不存在！
+
+[ 2018-01-11T17:06:42+08:00 ] ::1 /somegood/Admin/Index/getNotice.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+ERR: Think\Controller:ajaxReturn方法不存在！
+
+[ 2018-01-11T17:11:42+08:00 ] ::1 /somegood/Admin/Index/getNotice.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+ERR: Think\Controller:ajaxReturn方法不存在！
+
+[ 2018-01-11T17:16:42+08:00 ] ::1 /somegood/Admin/Index/getNotice.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001001s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002001s ]
+ERR: Think\Controller:ajaxReturn方法不存在！
+
+[ 2018-01-11T17:21:42+08:00 ] ::1 /somegood/Admin/Index/getNotice.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+ERR: Think\Controller:ajaxReturn方法不存在！
+
+[ 2018-01-11T17:26:42+08:00 ] ::1 /somegood/Admin/Index/getNotice.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+ERR: Think\Controller:ajaxReturn方法不存在！
+
+[ 2018-01-11T17:31:42+08:00 ] ::1 /somegood/Admin/Index/getNotice.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+ERR: Think\Controller:ajaxReturn方法不存在！
+
+[ 2018-01-11T17:36:42+08:00 ] ::1 /somegood/Admin/Index/getNotice.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+ERR: Think\Controller:ajaxReturn方法不存在！
+
+[ 2018-01-11T17:41:42+08:00 ] ::1 /somegood/Admin/Index/getNotice.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+ERR: Think\Controller:ajaxReturn方法不存在！
+
+[ 2018-01-11T17:46:42+08:00 ] ::1 /somegood/Admin/Index/getNotice.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001001s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001001s ]
+ERR: Think\Controller:ajaxReturn方法不存在！
+
+[ 2018-01-11T17:51:42+08:00 ] ::1 /somegood/Admin/Index/getNotice.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.001000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+ERR: Think\Controller:ajaxReturn方法不存在！
+
+[ 2018-01-11T17:56:42+08:00 ] ::1 /somegood/Admin/Index/getNotice.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+ERR: Think\Controller:ajaxReturn方法不存在！
+
+[ 2018-01-11T18:01:42+08:00 ] ::1 /somegood/Admin/Index/getNotice.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001001s ]
+ERR: Think\Controller:ajaxReturn方法不存在！
+
+[ 2018-01-11T18:06:42+08:00 ] ::1 /somegood/Admin/Index/getNotice.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+ERR: Think\Controller:ajaxReturn方法不存在！
+
+[ 2018-01-11T18:11:42+08:00 ] ::1 /somegood/Admin/Index/getNotice.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+ERR: Think\Controller:ajaxReturn方法不存在！
+
+[ 2018-01-11T18:16:42+08:00 ] ::1 /somegood/Admin/Index/getNotice.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+ERR: Think\Controller:ajaxReturn方法不存在！
+

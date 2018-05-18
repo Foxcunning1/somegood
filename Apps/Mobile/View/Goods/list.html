@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>{$web_title}</title>
+    <import type="css" file="statics.mobile.css.public,statics.mobile.css.style,dist.dropload" />
+    <import type="js" file="scripts.zepto.zepto#min,scripts.zepto.zepto#cookie#min,scripts.zepto.zepto#fx,statics.mobile.js.region,scripts.zepto.timeago,statics.mobile.js.common,dist.dropload#min,scripts.zepto.lazyload#min" />
+    <script type="text/javascript" src="__PUBLIC__/statics/mobile/js/rem.js" fu-psd="720" fu-min="50" fu-max="100"></script><script src=""></script>
+    <script type="text/javascript">
+        var usersLng = {$Think.session.lng};//用户所在的经纬度
+        var usersLat = {$Think.session.lat};
+        if(isWeixin()) {
+            usersLng = parseFloat(localStorage.getItem("longitude"));
+            usersLat = parseFloat(localStorage.getItem("latitude"));
+        }
+        var defaultCatId = "{$catid}";
+    </script>
+</head>
+<body>
+<!--头部-->
+<div class="list-header">
+    <a class="home-logo fl" href="/Mobile"><img src="__PUBLIC__/statics/mobile/images/logo.png" alt="" class="logo fl"></a>
+    <div class="search-wrap">
+        <i id="cancelBtn" class="icons icon-close fl"></i>
+        <form class="search-form" id="searchForm" name="searchForm" method="get" action="{:U('Mobile/Search/list')}">
+            <input type="text" class="search-input" name="keywords" id="keywords"  placeholder="请输入关键词" value="{$keywords}">
+            <i class="icons icon-search-small"></i>
+            <a href="javascript:void(0);" id="searchBtn" class="search-big-box"><i class="icons icon-search-big"></i></a>
+        </form>
+    </div>
+    <div class="category-menu fr">
+        <a href="{:U('Mobile/Users/publish')}"></a>
+    </div>
+</div>
+<div class="search-mask">
+    <div class="prompt-box">
+        <div class="current-search-box" id="searchOptionBox">
+        </div>
+        <notempty name="searchedKeywordsList">
+            <div class="search-history">
+                <h4>最近搜索：</h4>
+                <div class="history-word hot-word">
+                    <volist name="searchedKeywordsList" id="item">
+                        <span><a href="{:U('Mobile/Search/list')}?keywords={$item.keyword}">{$item.keyword}</a></span>
+                    </volist>
+                </div>
+            </div>
+        </notempty>
+        <div class="search-interest">
+            <h4>热搜：</h4>
+            <div class="hot-word">
+                <volist name="hotKeywords" id="vo">
+                    <span><a href="{:U('Mobile/Search/list')}?keywords={$item.keyword}">{$vo.keyword}</a></span>
+                </volist>
+            </div>
+        </div>
+    </div>
+</div>
+<!--导航-->
+<div class="fixed-box">
+    <div class="hide-nav">
+        <ul>
+            <li><a href="{:U('Mobile/Index/index')}"><i class="icons icon-home"></i><span>首页</span></a></li>
+            <li><a href="{:U('Mobile/Goods/category')}"><i class="icons icon-classify"></i><span>分类</span></a></li>
+            <li><a href="{:U('Mobile/Cart/index')}"><i class="icons icon-cart"></i><span class="icon-num" id="cartNum" style="display: none">0</span><span>购物车</span></a></li>
+            <li><a href="{:U('Mobile/Users/index')}"><i class="icons icon-mine"></i><span>我的</span></a></li>
+        </ul>
+    </div>
+    <!--导航-->
+    <!--商品筛选部分-->
+    <div class="goods-filter">
+        <ul class="filter-ul">
+            <li class="orderBtn sell <eq name="order" value="0">selected</eq>" data-status="0"><span>综合</span></li>
+            <li class="orderBtn sell <eq name="order" value="1">selected</eq>" data-status="1"><span>销量</span></li>
+            <li class="orderBtn price <if condition="($order eq '2') OR ($order eq '3')">selected</if> <eq name="order" value="3">click</eq>" data-status="<eq name="order" value="2">{$order}</eq><eq name="order" value="3">3</eq>"><span>价格</span></li>
+            <li class="filter"><span>筛选</span></li>
+        </ul>
+    </div>
+    <!--商品筛选部分-->
+</div>
+<!--商品列表-->
+<div class="page-box list-page-box">
+    <ul class="search-list">
+        <volist name="list" id="vo">
+        <li>
+            <a href="{:U('Mobile/Goods/detail',array('id'=>$vo['id']))}">
+                <div class="g-img"><img data-original="__PUBLIC__/uploads/{$vo.goods_thumb}_c200x200" src="__PUBLIC__/statics/mobile/images/default_img.png" alt="{$vo.goods_title}" /></div>
+                <div class="g-info">
+                    <div class="product-name">
+                        <span>{$vo.goods_title}</span>
+                    </div>
+                    <div class="product-price-m">
+                        <em>¥<span class="small-price">{$vo.price}</span></em>
+                    </div>
+                    <div class="location-and-time">
+                        <span class="location fl">在售商家:{$vo.store_count}</span>
+                        <span class="time fr">总销量:{$vo.total_sales_volume}</span>
+                    </div>
+                </div>
+            </a>
+        </li>
+        </volist>
+    </ul>
+</div>
+<!--商品列表-->
+<div class="over-lay"></div>
+<div class="over-lay-small"></div>
+<!--商品筛选-->
+<div class="kinds-box">
+    <div class="kind-filter">
+        <i class="icons icon-close-overlay fl"></i>
+        <span class="fl">筛选</span>
+    </div>
+    <div class="filter-box">
+        <div class="category-title">
+            <span class="fl">商品分类</span>
+            <span class="fr" id="choosed" style="margin-right:20px;">所有分类</span>
+            <i class="icon-pointer"></i>
+            <input type="hidden" name="catid" id="categoryId" value="{$catid}" />
+        </div>
+        <div class="left-classify-box" style="position: absolute; top: 0.71rem; bottom: 0; overflow: auto;">
+            <div class="left-over-box" style="padding: 0; height: 100%; ">
+                <ul>
+                    <volist name="categoryList" id="vo" empty="$empty">
+                        <li <if condition="$vo.id eq $bigCatId">class="sel"</if> data-id="{$vo.id}"><a href="javascript:;">{$vo.title}</a></li>
+                    </volist>
+                </ul>
+            </div>
+        </div>
+        <!--右边分类展示-->
+        <div class="right-show-box" style="position: absolute; top: 0.71rem; bottom:0; overflow: auto;">
+            <div class="right-show-box-content" style="padding:0; height: 100%;">
+                <div class="category-lists" id="categoryBox" ></div>
+            </div>
+        </div>
+    </div>
+    <div class="tools-btn-box">
+        <a class="cancleBtn" href="javascirpt:;">取消</a>
+        <a class="submit-btn" id="submitBtn" href="javascript:;">确定</a>
+    </div>
+</div>
+<!--商品筛选-->
+<!--隐藏搜索部分 主页和产品列表页可以公用-->
+<script type="text/javascript">
+    $(function(){
+        /*懒加载*/
+        $(".fy-content li img").lazyload({effect : "fadeIn"});
+        /*关闭搜索*/
+        $("i.icon-close").on("click",function(){
+            $(".icon-search-small").show();
+            $(".list-header .icon-close").hide();
+            $(".search-mask").hide();
+            $(".search-big-box").hide();
+            $(".list-header").removeClass("on-focus");
+            $("body").css("overflow","auto");
+        })
+        /*搜索提交*/
+        $("#searchBtn").on("touchstart",function(){
+            var keywords = $("#keywords").val();
+            if(keywords!=""){
+                $("#searchForm").submit();
+            }
+        })
+        /*点击搜索框获取焦点*/
+        $(".search-input").on("click",function(){
+            $(".icon-search-small").hide();
+            $(".list-header .icon-close").show();
+            $(".search-mask").show();
+            $(".search-big-box").show();
+            $(".list-header").addClass("on-focus");
+            $("body").css("overflow","hidden");
+        })
+        /*头部搜索框动画*/
+        $(window).scroll(function(){
+            var sTop = $(window).scrollTop();
+            if(sTop >= 100){
+                $(".a-wrap").hide();
+                $(".header-bottom").addClass("scroll-style");
+            }else{
+                $(".a-wrap").show();
+                $(".header-bottom").removeClass("scroll-style");
+            }
+        })
+    });
+</script>
+<script type="text/javascript">
+    var inputChange = {
+        input:function(obj){
+            var obj = document.getElementById(obj);
+            var inputLock = false;
+            function doing(obj){
+                $("#searchOptionBox").html("");
+                var keywords = $("#keywords").val();
+                if(keywords!=""){
+                    //组合搜索下拉
+                    var searchOptionStr = "";
+                    searchOptionStr += "<div class=\"search-item-option\">";
+                    var typeStr = "";
+                    var defaultText = "的商品";
+                    searchOptionStr += "<span><a href=\"{:U('Mobile/Search/list')}?keywords="+keywords
+                        + typeStr + "\">搜索<em>“"+keywords+"”</em>" + defaultText + "</a></span>";
+                    searchOptionStr += "</div>";
+                    $("#searchOptionBox").append(searchOptionStr);
+                }
+            }
+            obj.addEventListener('compositionstart', function() {
+                inputLock = true;
+            });
+            obj.addEventListener('compositionend', function(event) {
+                inputLock = false;
+                doing(event.target);
+            })
+            obj.addEventListener('input', function(event) {
+                if (!inputLock) {
+                    doing(event.target);
+                    event.returnValue = false;
+                }
+            });
+        }
+    }
+    $(function(){
+        inputChange.input("keywords");
+    })
+</script>
+<script type="text/javascript">
+    //initRegionDataList("#region-list",{$area_id});
+    //筛选菜单点击及默认效果
+    var ajaxCategoryUrl = "{:U('Mobile/Goods/category')}";//Ajax获取分类地址
+    $(function(){
+        //给头部设置默认颜色
+        $("#header").css("background","#00b190");
+        //图片延迟加载
+        $(".search-list li img").lazyload({effect : "fadeIn"});
+        //点击排序
+        $(".orderBtn").on("touchstart",function(){
+            var orderType = $(this).attr("data-status");
+            var jumpUrl = "{:U('Mobile/Goods/list')}?catid={$catid}&order="+orderType;
+            if($(this).hasClass("price")){
+                if(orderType=="3"){
+                    jumpUrl = "{:U('Mobile/Goods/list')}?catid={$catid}&order=2";
+                }else{
+                    jumpUrl = "{:U('Mobile/Goods/list')}?catid={$catid}&order=3";
+                }
+            }
+            window.location.href = jumpUrl;
+        })
+        //筛选提交
+        $("#submitBtn").on("touchstart",function(){
+            var catid = $("#categoryId").val();
+            if(catid!=""){
+                jumpUrl = "{:U('Mobile/Goods/list')}?catid="+catid+"&order={$order}";
+                window.location.href = jumpUrl;
+            }
+        })
+        /*筛选取消*/
+        $(".cancleBtn").on("touchstart",function(){
+            $(".kinds-box").animate({"left":"100%"},300,function(){
+                $(".kinds-box").hide();
+                $(".over-lay").hide();
+                $("body").css({"overflow":"auto"});
+            });
+        })
+        //发布的日期与现在间隔的时间
+        $(".timeago").timeago();
+        //经纬度计算
+        $(".distance").each(function(){
+            var lng = parseFloat($(this).attr("data-lng"));
+            var lat = parseFloat($(this).attr("data-lat"));
+            var distance = getFlatternDistance(usersLat,usersLng,lat,lng);
+            $(this).text(distance);
+        })
+        //筛选菜单选项卡点击效果
+        //默认第一个选项卡被选中
+        var defaultId = 0;
+        if($(".left-classify-box").find("li.sel").length>0){
+            defaultId = $(".left-classify-box").find("li.sel").eq(0).attr("data-id");
+        }else{
+            $(".left-classify-box").find("li").eq(0).addClass("sel");
+            defaultId = $(".left-classify-box").find("li").eq(0).attr("data-id");
+        }
+        if(typeof(defaultId!="undefined")) {
+            menuTabChangeAjax(defaultCatId,defaultId, "#categoryBox", ajaxCategoryUrl);
+        }
+        $(".left-classify-box").find("li").on("click",function(){
+            $(this).addClass("sel").siblings().removeClass("sel");
+            if(typeof($(this).attr("data-id"))!="undefined"){
+                var id = $(this).attr("data-id");
+                menuTabChangeAjax(defaultCatId,id,"#categoryBox",ajaxCategoryUrl);
+            }
+        })
+    })
+    /*筛选滑出*/
+    $(".goods-filter li.filter").on("click",function(){
+        $(".over-lay").show();
+        $(".kinds-box").show().animate({"left":"15%"},300,function(){
+            $(".tools-btn-box").addClass("tools-btn-box-show");
+            $('html').addClass('noscroll');
+            $("body").css("overflow-y","hidden");
+        });
+
+    })
+    /*筛选隐藏*/
+    $(".over-lay").on("click",function(){
+        $(".tools-btn-box").removeClass("tools-btn-box-show");
+        $(".kinds-box").animate({"left":"100%"},300,function(){
+            $(".kinds-box").hide();
+            $(".over-lay").hide();
+            $('html').removeClass('noscroll');
+            $("body").css({"overflow-y":"auto"});
+        });
+
+    })
+    /*筛选隐藏*/
+    $(".kind-filter .icon-close-overlay").on("click",function(){
+        $(".kinds-box").animate({"left":"100%"},300,function(){
+            $(".kinds-box").hide();
+            $(".over-lay").hide();
+            $('html').removeClass('noscroll');
+            $("body").css({"overflow-y":"auto"});
+        });
+    })
+    /*顶部隐藏导航显示*/
+    $(".category-menu").on("click",function(){
+        if($(this).hasClass("open")){
+            $(this).removeClass("open");
+            $(".hide-nav").hide();
+            $(".list-page-box").removeClass("up");
+        }else{
+            $(this).addClass("open");
+            $(".hide-nav").show();
+            $(".list-page-box").addClass("up");
+        }
+    })
+    //获取购物车商品的数量
+    $(function() {
+        $.ajax({
+            type: 'POST',
+            url: "{:U('Mobile/Cart/getCartNum')}",
+            dataType: 'json',
+            success: function (data) {
+                if (data.status == 1) {
+                    $("#cartNum").text(data.data);
+                } else {
+                    $("#cartNum").text("0");
+                }
+            }
+        })
+    })
+
+    //滚动页面ajax自动获取下一页内容
+    var page=2; //有效求购的页码
+    var totalPage = {$pageCount}; //有效求购页的总页码，会从后台获
+    var ajaxUrl="{:U('Mobile/Goods/list')}?catid={$catid}&order={$order}&isajax=1";//ajax请求地址
+    $(function(){
+        var tabLoadEnd = false;
+        // dropload
+        var dropload = $('.page-box').dropload({
+            scrollArea : window,
+            loadDownFn : function(me){
+                // 加载菜单一的数据
+                    if(page <= totalPage){
+                        $.ajax({
+                            url:ajaxUrl,
+                            type:"post",
+                            dataType:"json",
+                            data:{
+                                'p':page
+                            },
+                            success:function(data){
+                                var str='';
+                                $.each(data.data.list,function(index, vo) {
+                                    str += "<li> ";
+                                    str += "<a href=\"{:U('Mobile/Goods/detail')}?id="+vo['id']+"\">";
+                                    str += "<div class=\"g-img\"><img data-original=\"__PUBLIC__/uploads/"+ vo['goods_thumb']+"_c200x200\" src=\"__PUBLIC__/statics/mobile/images/default_img.png\" alt=\""+vo['goods_title']+"\" /></div>";
+                                    str += "<div class=\"g-info\">";
+                                    str += "<div class=\"product-name\">";
+                                    str += "<span>"+vo['goods_title']+"</span>";
+                                    str += "</div>";
+                                    str += "<div class=\"product-price-m\">";
+                                    str += "<em>¥<span class=\"small-price\">"+vo['price']+"</span></em>";
+                                    str += "</div>";
+                                    str += "<div class=\"location-and-time\">";
+                                    str += "<span class=\"location fl\">在售商家："+vo['store_count']+"</span>";
+                                    str += "<span class=\"time fr\"><i class=\"icons icon-clock\"></i><time class=\"timeago\" datetime=\""+date('Y-m-d',""+vo['audit_time']+"")+"\"></time></span>";
+                                    str += "</div>";
+                                    str += "</div>";
+                                    str += "</a>";
+                                    str += "</li>";
+                                })
+                                // 为了测试，延迟1秒加载
+                                $('.search-list').append(str);
+                                //图片延迟加载
+                                $(".search-list li img").lazyload({effect : "fadeIn"});
+                                // 每次数据加载完，必须重置
+                                me.resetload();
+                                totalPage = data.data.pageCount;
+                            },
+                            error: function(xhr, type){
+                                alert('Ajax error!');
+                                // 即使加载出错，也得重置
+                                me.resetload();
+                            }
+                        });
+                        page++;
+                    }else{
+                        // 数据加载完
+                        tabLoadEnd = true;
+                        // 锁定
+                        me.lock();
+                        // 无数据
+                        me.noData();
+                        me.resetload();
+                    }
+                    // 加载菜单二的数据
+            }
+        });
+        // 如果数据没有加载完
+        if(!tabLoadEnd){
+            // 解锁
+            dropload.unlock();
+            dropload.noData(false);
+        }else{
+            // 锁定
+            dropload.lock('down');
+            dropload.noData();
+        }
+        // 重置
+        dropload.resetload();
+    });
+</script>
+<include file="Public/wxshare" />
+</body>
+</html>

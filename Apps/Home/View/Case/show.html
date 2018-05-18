@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>{$web_title}</title>
+    <meta name="keywords" content="{$web_keywords}"/>
+    <meta name="description" content="{$web_description}" />
+    <import type="css" file="statics.home.css.public,statics.home.css.style" />
+    <!--[if lte IE 9]>
+    <import type="js" file="scripts.js.html5shiv#min" />
+    <![endif]-->
+    <import type="js" file="statics.home.js.zepto#min,statics.home.js.zepto#fx" />
+</head>
+<body>
+<include file="Public/header" />
+    <section class="case-slider"></section>
+    <article class="floor1 case-info-floor1">
+        <div class="w1200">
+            <h2 data-kui-anim="fadeInRightFast">精选案例--<span>{$info.title}</span></h2>
+            <div class="line" data-kui-anim="fadeInRightNormal"></div>
+            <div class="info clearfix">
+                {$info.content|htmlspecialchars_decode}
+            </div>
+            <div class="page-box clearfix">
+                <div class="left fl">
+                    <empty name="preInfo">
+                        <p><span class="fl">上一个：</span><a href="javascript:;">亲，木有了！</a></p>
+                        <else/>
+                        <p><span class="fl">上一个：</span><a href="{:U('Home/Case/show')}?id={$preInfo.aid}" class="fl">{$preInfo.title}</a></p>
+                    </empty>
+                    <empty name="nextInfo">
+                        <p><span class="fl">上一个：</span><a href="javascript:;">亲，木有了！</a></p>
+                        <else/>
+                        <p><span class="fl">下一个：</span><a href="{:U('Home/Case/show')}?id={$nextInfo.aid}" class="fl">{$nextInfo.title}</a></p>
+                    </empty>
+                </div>
+            </div>
+        </div>
+    </article>
+    <include file="Public/footer" />
+</body>
+</html>

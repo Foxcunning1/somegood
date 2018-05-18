@@ -1,0 +1,48 @@
+<!Doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>商品列表</title>
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <import type="css" file="statics.store.css.store-public,statics.store.css.store-style,scripts.artdialog.ui-dialog,css.pagination" />
+    <import type="js" file="scripts.jquery.jquery-1#11#2#min,scripts.artdialog.dialog-plus-min,scripts.jquery.jquery#lazyload#min" />
+</head>
+<body style="background-color: #edf1f2;overflow-y: auto;">
+<div class="tab-box">
+    <ul class="tab-ul fl">
+        <li <eq name="pageType" value="all"> class="sel"</eq>><a href="{:U('Seller/Goods/index',array('type'=>'all'))}">全部</a><div class="move"></div></li>
+        <li <eq name="pageType" value="wait"> class="sel"</eq>><a href="{:U('Seller/Goods/index',array('type'=>'wait'))}">待投放</a><div class="move"></div></li>
+        <li <eq name="pageType" value="ing"> class="sel"</eq>><a href="{:U('Seller/Goods/index',array('type'=>'ing'))}">投放中</a><div class="move"></div></li>
+    </ul>
+</div>
+<div class="info-box">
+    <div class="goods-list-box">
+        <!--<div class="all-select-box">-->
+            <!--<label for="allSelect" id="allSelectLabel"><input type="checkbox" id="allSelect"/>全选</label>-->
+            <!--<a href="javascript:;"  class="print-a">批量打印</a>-->
+        <!--</div>-->
+        <form action="{:U('Store/Goods/printList')}" class="goods-form" id="goodsForm" method="post" target="_blank">
+            <volist name="list" id="item">
+                <div class="goods-item" id="item{$item.id}">
+                    <!--<input type="checkbox" name="ids[]" value="{$item.id}"/>-->
+                    <a href="{:U('Seller/Goods/sellerDelivery')}?id={$item.id}" class="img-a-box btn-info"><img src="__PUBLIC__/statics/mobile/images/default_img.png" data-original="__PUBLIC__/uploads/{$item.goods_thumb}_c200x200" alt="{$item.goods_title}"></a>
+                    <a href="{:U('Seller/Goods/sellerDelivery')}?id={$item.id}" class="desc btn-info">{$item.goods_title}</a>
+                    <div class="price">￥<span>{$item.price}</span></div>
+                    <div class="price"><span><eq name="item.status" value="0">(待投放)</eq> <eq name="item.status" value="1">(投放中)</eq>目前{$item.store_count}家店在售</span></div>
+                    <div class="price">线下总销量<span><if condition="$item.sales_volume eq 0">0<else/>{$item.sales_volume}</if></span></div>
+                    <div class="price">线上销量<span>{$item.online_sales_volume}</span></div>
+                    <div class="goods-btn-box">
+                        <!--待发货的商品的按钮-->
+                        <a href="{:U('Seller/Goods/sellerDelivery')}?id={$item.id}"  class="btn-info">详情</a>
+                    </div>
+                </div>
+            </volist>
+        </form>
+    </div>
+</div>
+<div class="pagelist">
+    <div id="PageContent" class="default">{$pageShow}</div>
+</div>
+</body>
+</html>

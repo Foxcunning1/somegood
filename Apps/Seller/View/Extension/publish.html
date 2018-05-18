@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>3好连锁店商城首页</title>
+    <meta name="keywords" content="{$web_keywords}"/>
+    <meta name="description" content="{$web_description}" />
+<!--vipCenterContent start-->
+    <link type="text/css" rel="stylesheet" href="__PUBLIC__/statics/shop/css/public.css">
+    <link type="text/css" rel="stylesheet" href="__PUBLIC__/statics/shop/css/user.css">
+    <link type="text/css" rel="stylesheet" href="__PUBLIC__/kindeditor/themes/default/default.css">
+    <link type="text/css" rel="stylesheet" href="__PUBLIC__/scripts/jquery/jquery.selectlist.css" >
+    <script type="text/javascript" src="__PUBLIC__/scripts/jquery/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/scripts/jquery/jquery.form.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/scripts/jquery/Validform_v5.3.2_min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/statics/shop/js/common.js"></script>
+    <script type="text/javascript" charset="utf-8" src="__PUBLIC__/scripts/js/share-code.js"></script>
+    <script type="text/javascript" charset="utf-8" src="__PUBLIC__/scripts/jquery/jquery.cookie.js"></script>
+    <script type="text/javascript" charset="utf-8" src="__PUBLIC__/statics/shop/js/webuploader.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="__PUBLIC__/kindeditor/kindeditor-all.js"></script>
+    <script type="text/javascript" charset="utf-8" src="__PUBLIC__/statics/shop/js/uploader.js"></script>
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/scripts/artdialog/ui-dialog.css" />
+    <script type="text/javascript" src="__PUBLIC__/scripts/artdialog/dialog-plus-min.js"></script>
+    <script type="text/javascript">
+        var uploadType = 'image';
+        $(function(){
+            //初始化上传控件
+            $(".upload-img").InitUploader({modeltype:'goods_type', sendurl: "{:U('Seller/Base/uploadFile')}", swf: "__PUBLIC__/scripts/webuploader/uploader.swf"});
+            $(".upload-album").InitUploader({ modeltype:'goods_type',btntext: "批量上传", multiple: true, sendurl: "{:U('Seller/Base/uploadFile')}", swf: "__PUBLIC__/scripts/webuploader/uploader.swf" });
+            //设置封面图片的样式
+            $(".photo-list ul li .img-box img").each(function () {
+                if ($(this).attr("src") == $("#hidFocusPhoto").val()) {
+                    $(this).parent().addClass("selected");
+                }
+            });
+            //初始化编辑器
+            var editorMini = KindEditor.create('.txtContent', {
+                width: '100%',
+                height: '250px',
+                filterMode: false, //默认不过滤HTML
+                resizeType: 1,
+                uploadJson: "{:U('Base/uploadFile',array('action' => 'EditorFile'))}",
+                fileManagerJson: '__PUBLIC__/kindeditor/php/file_manager_json.php',
+                allowFileManager: true,
+                items: [
+                    'source', 'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
+                    'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
+                    'insertunorderedlist', '|', 'image', 'link', 'fullscreen']
+            });
+        });
+    </script>
+    <script type="text/javascript">
+        $(function () {
+            //初始化表单
+            AjaxInitForm('#infoForm', '#btnSubmit', 1);
+        });
+    </script>
+
+</head>
+<body>
+    <div class="u-tab-content">
+    <div class="title-div">
+        <strong>发布产品</strong>
+    </div>
+    <div class="form-box">
+        <form name="infoForm" id="infoForm" url="{:U('Seller/SellerGoods/publish')}">
+            <!--商品信息-->
+            <dl class="required">
+                <dt><i>*</i>商品名称：</dt>
+                <dd>
+                    <input name="data[goods_title]" id="txtTitle" type="text" class="input txt"  datatype="*1-150" nullmsg="请输入商品名称" value="{$info.goods_title}" />
+                </dd>
+            </dl>
+            <dl class="required">
+                <dt><i>*</i>所属分类：</dt>
+                <dd>
+                    <select name="data[category_id]" id="goodsNameStyle" datatype="*" class="input normal" datatype="*" style="padding:0;height: 32px; line-height: 32px;">
+                        <option value="">请选择类别</option>
+                        <volist name="category_list" id="item">
+                            <option <if condition="$item['id'] eq $info['category_id']"> selected="selected" </if> value="{$item.id}"><neq name="item.count" value="1">{$item['count']|fill_up_string=""}├</neq> {$item.title}</option>
+                        </volist>
+                    </select>
+                </dd>
+            </dl>
+            <dl>
+                <dt><i>*</i>价格：</dt>
+                <dd>
+                    <input name="data[price]" id="txtPrice" type="text" class="input txt small"  datatype="*" nullmsg="请输入商品价格" value="{$info.price}" />
+                </dd>
+            </dl>
+            <dl>
+                <dt><i>*</i>市场价：</dt>
+                <dd>
+                    <input name="data[market_price]" id="market_price" type="text" class="input txt small"  datatype="*" nullmsg="请输入市场价" value="{$info.market_price}" />
+                </dd>
+            </dl>
+            <dl class="required">
+                <dt><i>*</i>缩略图：</dt>
+                <dd>
+                    <input name="data[goods_thumb]" id="txtThumb" type="text" class="input txt upload-path" value="{$info.goods_thumb}" />
+                    <div class="upload-box upload-img"></div>
+                </dd>
+            </dl>
+            <dl id="div_albums_container">
+                <dt>图片相册：</dt>
+                <dd>
+                    <div class="upload-box upload-album"></div>
+                    <input name="hidFocusPhoto" type="hidden" id="hidFocusPhoto" class="focus-photo" value="{$info.thumb}" />
+                    <div class="photo-list">
+                        <ul>
+                            <volist name="info.plist" id="vo">
+                                <li>
+                                    <input type="hidden" name="photo[]" value="{$vo}" />
+                                    <input type="hidden" name="rphoto[]" value="{$info.rlist.$k}" />
+                                    <div class="img-box" onClick="setFocusImg(this);">
+                                        <img src="__PUBLIC__/uploads/{$vo}_c120x120" bigsrc="__PUBLIC__/uploads/{$vo}" realpath="{$vo}" />
+                                        <span class="remark"><i><if condition="$info.rlist.$key eq ''">暂无描述<else/>{$info.rlist.$key}</if></i></span>
+                                    </div>
+                                    <a href="javascript:;" onClick="setRemark(this);">描述</a>
+                                    <a href="javascript:;" onClick="delImg(this);">删除</a>
+                                </li>
+                            </volist>
+                        </ul>
+                    </div>
+                </dd>
+            </dl>
+
+            <dl>
+                <dt>商品简介：</dt>
+                <dd>
+                    <textarea name="data[content]" class="input" style="width:300px;height:80px;" id="content">{$info.content}</textarea>
+                </dd>
+            </dl>
+            <dl>
+                <dt>商品参数：</dt>
+                <dd>
+                    <textarea name="data[params]" class="txtContent" style="width:300px;height:80px;" id="params">{$info.params}</textarea>
+                </dd>
+            </dl>
+            <dl class="required">
+                <dt><i>*</i>商品详情：</dt>
+                <dd>
+                    <textarea name="data[details]" class="txtContent" style="visibility:hidden;" id="details">{$info.details}</textarea>
+                </dd>
+            </dl>
+
+            <dl>
+                <dt></dt>
+                <dd>
+                    <input name="btnSubmit" id="btnSubmit" type="submit" class="btn btn-success" value="确认修改" />
+                </dd>
+            </dl>
+         <!--/商品信息-->
+        </form>
+    </div>
+</body>
+</html>
+
+
+

@@ -1,0 +1,176 @@
+/*头部样式*/
+header { width: 100%; height: 0.8rem; line-height: 0.8rem;  max-width: 640px; min-width: 320px; background: #2d2d2d url(../images/topbg.png) no-repeat center center; background-size: cover;position: fixed; top: 0; z-index: 35;}
+header h2 { font-size: 0.28rem; text-align: center; color: #fff;}
+header .back-to { display: block; width: 0.24rem; height: 0.4rem; position: absolute; left: 0.2rem; top: 0.2rem;  background: url(../images/mobile_icon.png) no-repeat center center; background-position: -0.48rem 0; background-size: 2rem 2rem; text-indent: -99999px}
+.menu-icon { position: absolute; top: 0.2rem; right: 0.2rem; width: 0.4rem; height: 0.4rem; background: url(../images/mobile_icon.png) no-repeat center center; background-position: 0 0; background-size: 2rem 2rem;}
+.case-info-header { height: 0.7rem; width: 100%; max-width: 640px; min-width: 320px; position: fixed; top: 0 ; left:0; background: none;}
+
+
+/*主题样式*/
+article.containter { width: 100%; padding-top: 0.8rem; max-width: 640px; min-width: 320px;  transition: all .3s ease}
+article.containter.animate { right: 20%; }
+/*slider样式*/
+.slider{width: 100%; height: 3rem;  position: relative; background-color: #ccc; margin-bottom: 0.15rem; overflow: hidden;}
+.slider .hd { width: 100%;  position: absolute;  bottom: 0.15rem;  text-align: center; height: 0.14rem; line-height: 0.14rem; z-index: 22}
+.slider .hd ul { font-size: 0;}
+.slider .hd li { display: inline-block; width: 0.14rem; height: 0.14rem; border-radius: 0.07rem; margin: 0 0.08rem; font-size: 0; line-height:0;  background-color: #fff; vertical-align: top;}
+.slider .hd li.on { background-color: #25ebc7; width: 0.28rem; }
+.slider .bd li { height: 3rem;}
+.slider .bd li img { display: block;width: 100%; height: 3rem;}
+
+/*nav样式*/
+nav { margin: 0 0.1rem; padding: 0.3rem 0.5rem; background-color: rgba(0,0,0,.5); overflow: hidden;}
+nav ul li { width: 45%; margin: 0.05rem 2.5%; float:left; background-color: #fff; }
+nav ul li a { display: block; width: 100%; height: 0.5rem; line-height: 0.5rem; text-align: center; color: #333; font-size: 0.24rem}
+/*floor-1样式*/
+section.floor { padding: 0.5rem 0; overflow: hidden; text-align: center; }
+section.floor h2 { height: 0.6rem; line-height: 0.6rem; font-size: 0.24rem; font-weight: bold; color: #7fcf65}
+section.floor h2 span { color: #666; font-size: 0.24rem; font-weight: bold;}
+section.floor .line { width: 1.75rem; margin: 0 auto; height: 0.07rem; background: url(../images/line_bg.png) no-repeat center center;}
+section.floor-1 .bg-section { width: 100%; height:2.8rem; margin-top: 0.1rem; background: url(../images/section_bg_1.jpg) no-repeat center center; background-size: cover;}
+/*floor-2样式*/
+section.floor-2 { width: 100%; height: 3.5rem; background: url(../images/section_bg_2.jpg) no-repeat center center; background-size: cover; }
+section.floor-2 h2 { color: #fff; height: 0.6rem; line-height: 0.6rem; margin-bottom: 0.2rem;}
+section.floor-2 h3 { font-size: 0.16rem; color: #fff; height: 0.3rem; line-height: 0.3rem; }
+section.floor-2 h3:nth-child(3),section.floor-2 h3:nth-child(5),section.floor-2 h3:nth-child(7) { margin-bottom: 0.2rem;}
+section.floor-2 .contact-us-a { display: block; width: 2rem; height:0.5rem; line-height:0.5rem; font-size: 0.22rem; color: #ff6537; background-color: #fff; border-radius: 0.1rem; margin: 0 auto;}
+/*floor-3样式*/
+section.floor-3 .bg-section { width: 100%; height: 2.8rem; margin-top: 0.2rem; background: url(../images/section_bg_3.png) no-repeat center center; background-size: 100% 100% ;}
+/*floor-4样式*/
+section.floor-4 { height: 2.8rem; background-color: #5cac4d}
+section.floor-4 h2 { font-size: 0.22rem; height: 0.4rem; line-height: 0.4rem; font-weight: bold; color: #fff;}
+section.floor-4 .bg-section { width: 100%; height: 2.8rem; background: url(../images/section_bg_4.png) no-repeat center center; background-size: 100% 100% ;}
+/*floor-5样式*/
+section.floor-5 { width: 100%; }
+section.floor-5 .img-section { margin-top: 0.4rem; padding: 0 0.15rem; }
+section.floor-5 .img-section > a { font-size:0}
+section.floor-5 .img-section figcaption a { display: block; width: 100%; text-overflow: ellipsis; white-space: nowrap; overflow: hidden; height: 0.35rem; line-height: 0.35rem; margin-bottom: 0.15rem; color: #666; text-align: left;}
+.news-list-section li {padding: 0.15rem; border-bottom: 1px dashed #e5e5e5;}
+.news-list-section li a {text-align: left; height: 0.3rem; line-height: 0.3rem; text-overflow: ellipsis; display: -webkit-box; display: box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; word-break: break-word; color: #666; font-size: 0.22rem;  overflow: hidden; }
+/*floor-6样式*/
+section.floor-6 { background-color: #f0f0f0}
+section.floor-6 li{ display: inline;width: 50%; float:left; margin-bottom: 0.15rem;}
+section.floor-6 li img { display: block; width: 94%;height: 2rem; margin: 0 auto; }
+section.floor-6 .img-section { padding: 0.25rem 0;}
+/*copt-right样式*/
+.copy-right .fixed-to-top { height: 0.6rem; background-color: rgba(0,0,0,0.4);}
+#totop { position: fixed; right: 0.2rem; bottom: 1.05rem; z-index: 33; display: none;}
+#totop img { display: block; width: 0.5rem; height: 0.5rem;}
+.copy-right .p-box { padding: 0.2rem 0; }
+.copy-right p { line-height: 0.3rem; text-align: center; font-size: 0.22rem; color: #666;}
+.copy-right p a { color: #666;}
+/*平台介绍样式*/
+section.title { height: 0.6rem; line-height: 0.6rem; padding: 0  0.15rem; font-size: 0.24rem; color: #333; border-bottom: 2px solid #e0e0e0;}
+section.title span { padding-left: 8px; border-left: 5px solid #333; }
+section.content { padding: 0.15rem; overflow: hidden; color: #666; font-size: 0.22rem;}
+section.content .txt-box { text-align: left; line-height: 0.35rem;}
+section.content .txt-box span { display: block; margin-bottom: 0.3rem;}
+.txt-img { margin: 0 0.2rem 0 0; float:left}
+.recommend-box { margin-bottom: 0.2rem;}
+.recommend-box img { display: block; width: 100%; height: auto;}
+/*案例展示*/
+.case-containter .content { padding: 0.1rem; background-color: #f3f3f3}
+section.content ul li { width: 48%; float:left; margin: 0 1% 0.2rem; background-color: #fff; text-align: center; }
+section.content ul li a { display: block; color: #666; margin: 5px;}
+section.content ul li a img { display: block; width:96%; height: 100%; margin: 0 auto 0.1rem; }
+section.content ul li a span { display: block; line-height: 0.4rem; height: 0.4rem;}
+.page-list-box { height: 0.6rem; margin-bottom: 0.2rem; text-align: center; color: #666; font-size: 0.24rem;}
+.page-list-box .page { height: 0.4rem; line-height: 0.4rem; }
+.page-list-box .prev-page { margin: 0.1rem 0 0.1rem 0.2rem;}
+.page-list-box .next-page { margin: 0.1rem 0.2rem 0.1rem 0;}
+.page-list-box .curr-page { display: inline-block; width: 100px; margin: 0.1rem auto }
+/*案例详情样式*/
+.case-info-slider { height: 6.4rem; width: 6.4rem; position: relative;}
+.case-info-slider .bd li img { display: block; height: 6.4rem; width: 6.4rem;}
+.case-title { height: 0.8rem; line-height: 0.4rem; width: 90%; padding: 0 5%; -ms-text-overflow: ellipsis; text-overflow: ellipsis; white-space: nowrap; overflow: hidden; color: #999; font-size: 0.22rem; position: absolute; bottom: 0; }
+section.price { height: 0.8rem; line-height: 0.8rem; color: #999; font-size: 0.26rem; padding: 0 0.3rem; border-bottom: 1px solid #e3e3e3}
+.case-tab { height: 0.6rem; line-height: 0.6rem; border-bottom: 1px solid #e3e3e3;}
+.case-tab ul { display: -webkit-box;  display: -moz-box; display: -ms-flexbox; display: -webkit-flex; display: flex;}
+.case-tab ul li {-webkit-box-flex: 1; -moz-box-flex: 1; -webkit-flex: 1;  -ms-flex: 1;  flex: 1;}
+.case-tab ul li a {display: block; color: #666; font-size: 0.22rem; text-align: left; padding: 0 0.15rem; font-weight: bold}
+.case-info-containter dl { width: 100%; line-height: 0.5rem; font-size: 0.22rem; color: #999; overflow: hidden;}
+.case-info-containter dl dt {width: 20%; float:left; }
+.case-info-containter dl dd {width: 80%; float:left;  text-overflow: ellipsis; white-space: nowrap; overflow: hidden;}
+.case-info-containter p { line-height: 0.4rem; margin-bottom: 0.1rem; font-size: 0.24rem; text-align: center; color: #666;}
+.case-item-banner { margin: 0.4rem 0 0.2rem}
+.case-item-banner img { display: block; width: 100%;}
+.down-title { margin-bottom: 0.4rem;}
+.down-title span { display: block; line-height: 0.3rem; text-align: center}
+.down-title span.first { height: 0.6rem; line-height: 0.6rem; border-bottom: 1px solid #f3f3f3;}
+.down-title span.icon { display: block; margin: -3px auto 0; width: 0; height: 0; font-size: 0; line-height: 0; border-width: 6px; border-style: solid; border-color: #5cab4c #fff #fff;}
+.delivery-tips { margin: 0.6rem 0; overflow: hidden;}
+.delivery-tips li { width: 100% !important; text-align: center}
+.delivery-tips li img { display: block; width: 1.5rem; height: 1.5rem; margin: 0 auto 0.2rem;}
+.delivery-tips li span { display: block; height: 0.35rem; line-height: 0.35rem; color: #999}
+.delivery-tips li span.bold { font-size: 0.24rem; color: #666;}
+.real-img-box { margin: 0.4rem 0;}
+.real-img-box img { display: block; width: 100%; }
+/*新闻资讯样式*/
+section.content .news-ul li { width: 100%; margin: 0; padding: 0.15rem 0; border-bottom: 1px dashed #e5e5e5; }
+section.content .news-ul li a { text-align: left; height: 0.3rem; line-height: 0.3rem; text-overflow: ellipsis; display: -webkit-box; display: box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; word-break: break-word; color: #666; font-size: 0.22rem; margin:0; overflow: hidden;}
+/*新闻详情样式*/
+.case-info-header .a-do { display: block; width: 0.4rem; height: 0.4rem;}
+.case-info-header .to-home { margin: 0.15rem 0 0.15rem 0;  background: #fff url(../images/mobile_icon.png) no-repeat center center;  background-size: 2rem 2rem; background-position: -1.15rem -1.58rem; border-radius: 50%; float:right;}
+.case-info-header .to-share { background: #fff url(../images/mobile_icon.png) no-repeat center center; background-position: -1.15rem -1.18rem; background-size: 2rem 2rem;  margin: 0.15rem 0.2rem; border-radius: 50%; float:right;}
+.info-title {font-size:0.24rem; height: 0.7rem; line-height: 0.35rem; color: #333; padding: 0.15rem 0.15rem 0 ;}
+.info-time {font-size:0.22rem; height: 0.3rem; line-height: 0.3rem; color: #999; padding: 0 0.15rem; margin-top: 0.05rem;}
+.info-content { line-height: 0.35rem; font-size: 0.22rem; border-bottom: 1px dashed #e5e5e5;}
+.info-content .small-title { display: block; color: #666; height: 0.3rem; line-height: 0.3rem; margin: 0.2rem 0; font-size: 0.22rem;}
+.source { padding: 0.15rem;  border-bottom: 1px solid #e5e5e5; overflow: hidden;}
+.source div,.read-siblings div {  height: 0.3rem; line-height: 0.3rem; font-size: 0.22rem; margin-bottom: 0.15rem;}
+.source div span {color: #999}
+.source div a { color: #666}
+.read-siblings { padding: 0.15rem; overflow: hidden; }
+.read-siblings div span,.read-siblings div a { color: #666}
+.read-siblings div span { width: 20%; font-size: 0.22rem}
+.read-siblings div a { width: 80%;text-overflow: ellipsis; white-space:nowrap; overflow: hidden;font-size: 0.22rem}
+/*我们的团队样式*/
+.team-main-img { display: block; width: 100%; height: 3rem; margin-bottom: 0.2rem;}
+.team-info p span{ height: 0.35rem; line-height: 0.35rem; font-size: 0.22rem;color: #999}
+.team-info p:nth-child(1) span { color: #333; font-weight: bold}
+/*联系我们样式*/
+.contact-main-img { display: block; width: 100%; margin-bottom: 0.2rem;}
+.contact-info p { padding: 0 0.2rem; overflow: hidden; }
+.contact-info p span{ height: 0.4rem; line-height: 0.4rem; font-size: 0.22rem;color: #666}
+/*底部样式*/
+aside {  width: 20%; height: 100%; position: fixed; top: 0.8rem; left:100%; background-color: rgba(0,0,0,1); z-index: 30;transition: .3s ease}
+aside ul li a { padding: 0.15rem 0; text-align: center; display: block; font-size: .24rem;  white-space: nowrap; text-overflow: ellipsis; color: #fff; font-weight: normal; border-bottom: 0; overflow: hidden; width: 100%;}
+aside ul li a img { display: inline-block; width: 0.4rem; height: 0.4rem; margin: 0 auto}
+aside ul li a span { display: block; line-height: 0.4rem; }
+aside.animate { left: 80%; }
+.over-lay { position: fixed; top: 0.8rem; bottom: 0; left:0; width: 80%; height: 100%; background-color: rgba(0,0,0,0);z-index: 29; display: none;}
+.over-lay.show { display: block; }
+aside li:nth-child(1) { animation-delay: 0.08s}
+aside li:nth-child(2) { animation-delay: 0.16s}
+aside li:nth-child(3) { animation-delay: 0.24s}
+aside li:nth-child(4) { animation-delay: 0.32s}
+aside li:nth-child(5) { animation-delay: 0.40s}
+aside li:nth-child(6) { animation-delay: 0.48s}
+.icons { display: block; width: 0.4rem; height: 0.4rem; margin: 0 auto; }
+.icons-home { background: url(../images/mobile_icon.png) no-repeat center center; background-position: -1.6rem -1.6rem; background-size: 2rem 2rem;}
+.icons-profile { background: url(../images/mobile_icon.png) no-repeat center center; background-position: 0 -0.8rem; background-size: 2rem 2rem;}
+.icons-case { background: url(../images/mobile_icon.png) no-repeat center center; background-position: 0 -0.4rem; background-size: 2rem 2rem;}
+.icons-team { background: url(../images/mobile_icon.png) no-repeat center center; background-position: -1.6rem -0.4rem; background-size: 2rem 2rem;}
+.icons-news { background: url(../images/mobile_icon.png) no-repeat center center; background-position: 0 -1.6rem; background-size: 2rem 2rem;}
+.icons-contact { background: url(../images/mobile_icon.png) no-repeat center center; background-position: -1.6rem 0; background-size: 2rem 2rem;}
+
+
+/*动画*/
+.fadeInRightFast{ animation: fadeInRight 0.6s ease-in-out;}
+.fadeInRightNormal{ animation: 0.3s fadeInRight 0.2s ease-in-out;}
+.fadeInRightSlow{ animation: fadeInRight 1s ease-in-out;}
+
+.fadeInLeftFast{ animation: fadeInLeft 0.6s ease-in-out;}
+.fadeInLeftNormal{ animation: fadeInLeft 0.8s ease-in-out;}
+.fadeInLeftSlow{ animation: fadeInLeft 1s ease-in-out;}
+
+.fadeInUpFast{ animation: fadeInUp 0.6s ease-in-out;}
+.fadeInUpNormal{ animation: fadeInUp 0.8s ease-in-out;}
+.fadeInUpSlow{ animation: fadeInUp 1s ease-in-out;}
+
+.fadeInDownFast{ animation: fadeInDown 0.6s ease-in-out;}
+.fadeInDownNormal{ animation: fadeInDown 0.8s ease-in-out;}
+.fadeInDownSlow{ animation: fadeInDown 1s ease-in-out;}
+
+
+

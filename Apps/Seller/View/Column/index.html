@@ -1,0 +1,143 @@
+<!Doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>卖家管理中心</title>
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+	<import type="css" file="statics.store.css.store-public,statics.store.css.store-style,css.pagination,css.ui-dialog" />
+	<import type="js" file="scripts.jquery.jquery-1#11#2#min,scripts.artdialog.dialog-plus-min,scripts.zepto.lazyload#min" />
+</head>
+<body>
+	<div class="info-box logistics-box">
+		<div class="all-select-box">
+			<a href="javascript:;" class="add-logistics-btn" data-value="0">+ 新增</a>
+		</div>
+	    <div class="box-title">
+	        <div class="th th-info">名称</div>
+	        <div class="th th-do">操作</div>
+	    </div>
+	    <div class="list-box">
+			<!--提供4个样式-->
+			<div class="item" id="logistics_list">
+				<volist name="list" id='vo'>
+					<div class="item-content">
+						<div class="th th-info" style="text-align: left;padding-left: 50px;">
+							<eq name="vo.count" value="2">——</eq>
+							{$vo.name}
+						</div>
+						<div class="th th-do"  id="planStatus_{$vo.id}">
+							<eq name="vo.count" value="1">
+								<a href="javascript:void(0);" class="btn all-select-box" data-value="{$vo.id}">添加子栏目</a>
+										<eq name="vo.is_index" value="0">
+											<a href="javascript:void(0);" class="btn {$index}" onclick="changeIndex('{$vo.id}',1);">设为导航</a>
+											<else/>
+											<a href="javascript:void(0);" class="btn" onclick="changeIndex('{$vo.id}',0);">取消导航</a>
+										</eq>
+								<else/>
+							</eq>
+								<a href="javascript:void(0);" class="btn">删除</a>
+
+						</div>
+						<div class="clear"></div>
+					</div>
+				</volist>
+			</div>
+	    </div>
+	</div>
+	<div class="pagelist">
+		<div id="PageContent" class="default">{$pageShow}</div>
+	</div>
+</div>
+<script>
+    function editRemarks(obj,objId,old_value){
+        var value=$(obj).text();
+        if(value){
+            $(obj).html("<input class='focusInput' type='text' id="+objId+" name='remarks' value="+value+">");
+            $(obj).children("input").focus().blur(function(){
+                if($(obj).children("input").val()!=old_value){
+                    $.ajax({
+                        type: "POST",
+                        url: "{:U('Seller/Logistics/editRemarks')}",
+                        dataType: 'json',
+                        data: "id="+objId+"&value="+ $(obj).children("input").val()+"&old_value="+old_value,
+                    });
+                }else{
+                    $(obj).html(old_value);
+                }
+            });
+        }
+    }
+
+    /*导航设置*/
+    function changeIndex(id,change) {
+        $.ajax({
+            type: "POST",
+            url: "{:U('Seller/column/changeIndex')}",
+            data: {"id":id,"change":change},
+            dataType: 'json',
+            success: function(data){
+                if(data.status==1){
+                    var d = dialog({content:data.info}).show();
+                    setTimeout(function () {
+                        d.close().remove();
+                        window.location.href="{:U('Seller/Column/index')}";
+                    }, 1500);
+                }else{
+                    var d = dialog({content:data.info}).show();
+                    setTimeout(function () {
+                        d.close().remove();
+                    }, 1500);
+                }
+            }
+        });
+    }
+
+	/*新增*/
+	$(".info-box").find(".all-select-box").click(function() {
+	    var parent_id=$(this).attr('data-value');
+		var d = top.dialog({
+			title:"新增",
+			width: 350,
+			height:130,
+			content: "<div class='set-out-form'>" +
+			"<form method='post' id='deliverForm' class='column-form' url='{:U('Seller/Column/addColumn')}'>" +
+			"<dl>" +
+			"<dt>选择父栏目</dt>" +
+			"<dd>" +
+			"<select name='data[parent_id]' id='parent_id'>" +
+            "<option value='0'>顶级栏目</option>" +
+			<volist name="list" id="item">
+			<eq name="item.parent_id" value="0">
+			"<option value='{$item.id}' <if condition='$item.id eq "+parent_id+"'>selected</if>>{$item.name}</option>" +
+            </eq>
+			</volist>
+			"</select>" +
+			"</dd>" +
+			"</dl>" +
+			"<dl>" +
+			"<dt>名称</dt>" +
+			"<dd>" +
+			"<input type='text' id='name' name='data[name]' placeholder='栏目名'></dd>" +
+			"</dl>" +
+            "<dl>" +
+            "<dt>排序</dt>" +
+            "<dd>" +
+            "<input type='text' id='sort_num' name='data[sort_num]' placeholder='排序,数字越小越靠前'></dd>" +
+            "</dl>" +
+			"</form>" +
+			"</div>",
+			okValue: '确定',
+			ok: function () {
+                parent.bindSubmitBtn(parent_id);
+				this.title('提交中…');
+				return true;
+			},
+			cancelValue: '取消',
+			cancel: function () {}
+		}).showModal();
+	})
+
+</script>
+</body>
+</html>

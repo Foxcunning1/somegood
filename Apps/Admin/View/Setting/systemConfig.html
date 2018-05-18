@@ -1,0 +1,524 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0,user-scalable=no" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <title>系统参数设置</title>
+  <link href="__PUBLIC__/scripts/artdialog/ui-dialog.css" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" type="text/css" href="__PUBLIC__/statics/admin/css/icon/iconfont.css" />
+  <link href="__PUBLIC__/statics/admin/css/style.css" rel="stylesheet" type="text/css" />
+  <script type="text/javascript" src="__PUBLIC__/scripts/jquery/jquery-1.11.2.min.js"></script>
+  <script type="text/javascript" src="__PUBLIC__/scripts/jquery/Validform_v5.3.2_min.js"></script>
+  <script type="text/javascript" src="__PUBLIC__/scripts/artdialog/dialog-plus-min.js"></script>
+  <script type="text/javascript" src="__PUBLIC__/statics/admin/js/common.js"></script>
+  <script type="text/javascript" src="__PUBLIC__/statics/admin/js/laymain.js"></script>
+  <script type="text/javascript">
+    var uploadType = 'image';
+    $(function () {
+      //初始化表单验证
+      $("#systemConfig").initValidform();
+    });
+  </script>
+</head>
+
+<body class="mainbody">
+<form method="post" action="{:U('Admin/Setting/systemConfig')}" id="systemConfig">
+  <!--导航栏-->
+  <div class="location">
+    <a href="javascript:history.back(-1);" class="back"><i class="iconfont icon-up"></i><span>返回上一页</span></a>
+    <a href="{:U('Index/center')}" class="home"><i class="iconfont icon-home"></i><span>首页</span></a>
+    <i class="arrow iconfont icon-arrow-right"></i>
+    <span>系统参数设置</span>
+  </div>
+  <div class="line10"></div>
+  <!--/导航栏-->
+
+  <!--内容-->
+  <div id="floatHead" class="content-tab-wrap">
+    <div class="content-tab">
+      <div class="content-tab-ul-wrap">
+        <ul>
+          <li><a class="selected" href="javascript:;">系统基本信息</a></li>
+          <li><a href="javascript:;">功能权限设置</a></li>
+          <li><a href="javascript:;">邮件发送设置</a></li>
+          <li><a href="javascript:;">文件上传设置</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!--主站基本信息-->
+  <div class="tab-content">
+    <dl>
+      <dt>主站名称</dt>
+      <dd>
+        <input name="web_name" type="text" value="{:C('WEB_NAME')}" id="webname" class="input normal" datatype="*2-255" sucmsg=" " />
+        <span class="Validform_checktip">*任意字符，控制在255个字符内</span>
+      </dd>
+    </dl>
+    <dl>
+      <dt>主站域名</dt>
+      <dd>
+        <input name="web_url" type="text" value="{:C('WEB_URL')}" id="weburl" class="input normal" datatype="url" sucmsg=" " />
+        <span class="Validform_checktip">*以“http://”开头，不能绑定到频道分类</span>
+      </dd>
+    </dl>
+    <dl>
+      <dt>公司名称</dt>
+      <dd>
+        <input name="web_company" type="text" value="{:C('WEB_COMPANY')}" id="webcompany" class="input normal" />
+      </dd>
+    </dl>
+    <dl>
+      <dt>通讯地址</dt>
+      <dd>
+        <input name="web_address" type="text" value="{:C('WEB_ADDRESS')}" id="webaddress" class="input normal" />
+      </dd>
+    </dl>
+    <dl>
+      <dt>客服电话</dt>
+      <dd>
+        <input name="web_tel" type="text" value="{:C('WEB_TEL')}" id="webtel" class="input normal" />
+        <span class="Validform_checktip">*非必填，区号+电话号码</span>
+      </dd>
+    </dl>
+    <dl>
+      <dt>传真号码</dt>
+      <dd>
+        <input name="web_fax" type="text" value="{:C('WEB_FAX')}" id="webfax" class="input normal" />
+        <span class="Validform_checktip">*非必填，区号+传真号码</span>
+      </dd>
+    </dl>
+    <dl>
+      <dt>管理员邮箱</dt>
+      <dd>
+        <input name="web_mail" type="text" value="{:C('WEB_MAIL')}" id="webmail" class="input normal" />
+      </dd>
+    </dl>
+    <dl>
+      <dt>主站备案号</dt>
+      <dd>
+        <input name="web_record" type="text" value="{:C('WEB_RECORD')}" id="webcord" class="input normal" />
+      </dd>
+    </dl>
+    <dl>
+      <dt>通知时间间隔</dt>
+      <dd>
+        <input name="interval" type="text" value="{:C('INTERVAL')}" id="interval" class="input normal" datatype="n1-2"/>
+      </dd>
+    </dl>
+  </div>
+  <!--/网站基本信息-->
+
+
+  <!--功能权限设置-->
+  <div class="tab-content" style="display:none">
+    <dl>
+      <dt>网站安装目录</dt>
+      <dd>
+        <input name="web_path" type="text" value="{:C('WEB_PATH')}" id="webpath" class="input txt" datatype="*1-100" sucmsg=" " />
+        <span class="Validform_checktip">*根目录输入“/”，其它输入“/目录名/”</span>
+      </dd>
+    </dl>
+    <dl>
+      <dt>后台管理目录</dt>
+      <dd>
+        <input name="web_manage_path" type="text" value="{:C('WEB_MANAGE_PATH')}" id="webmanagepath" class="input txt" datatype="*1-100" sucmsg=" " />
+        <span class="Validform_checktip">*默认admin，其它请输入目录名，否则无法进入后台</span>
+      </dd>
+    </dl>
+    <dl>
+      <dt>URL重写开关</dt>
+      <dd>
+        <div class="rule-multi-radio">
+          <span id="staticstatus">
+            <volist name="static_status_list" id="value">
+              <input id="staticstatus_{$key}" type="radio" name="static_status" value="{$key}" <if condition="$status.staticStatus eq $key"> checked="checked" </if> /><label for="staticstatus_{$key}">{$value}</label>
+            </volist>
+          </span>
+        </div>
+        <span class="Validform_checktip">*URL配置规则</span>
+      </dd>
+    </dl>
+    <dl>
+      <dt>静态URL后缀</dt>
+      <dd>
+        <input name="static_extension" type="text" value="{:C('STATIC_EXTENSION')}" id="staticextension" class="input small" datatype="*1-100" sucmsg=" " />
+        <span class="Validform_checktip">*扩展名，不包括“.”，访问或生成时将会替换此值，如：aspx、html</span>
+      </dd>
+    </dl>
+    <dl>
+      <dt>开启会员功能</dt>
+      <dd>
+        <div class="rule-single-checkbox">
+          <input id="memberstatus" type="checkbox" name="member_status" <if condition="$status.memberStatus eq 'on'">checked="checked" </if> />
+        </div>
+        <span class="Validform_checktip">*关闭后关联会员的内容将失效</span>
+      </dd>
+    </dl>
+    <dl>
+      <dt>开启评论审核</dt>
+      <dd>
+        <div class="rule-single-checkbox">
+          <input id="commentstatus" type="checkbox" name="comment_status" <if condition="$status.commentStatus eq 'on'">checked="checked" </if>/>
+        </div>
+        <span class="Validform_checktip">*开启后评论将会审核才显示</span>
+      </dd>
+    </dl>
+    <dl>
+      <dt>开启管理日志</dt>
+      <dd>
+        <div class="rule-single-checkbox">
+          <input id="logstatus" type="checkbox" name="log_status" <if condition="$status.logStatus eq 'on'">checked="checked" </if>/>
+        </div>
+        <span class="Validform_checktip">*开启后将会记录管理员在后台的操作日志</span>
+      </dd>
+    </dl>
+    <dl>
+      <dt>是否开启网站</dt>
+      <dd>
+        <div class="rule-single-checkbox">
+          <input id="webstatus" type="checkbox" name="web_status" <if condition="$status.webStatus eq 'on'">checked="checked" </if>/>
+        </div>
+        <span class="Validform_checktip">*关闭后网站前台将不能访问</span>
+      </dd>
+    </dl>
+    <dl>
+      <dt>网站关闭原因</dt>
+      <dd>
+      <textarea name="web_close_reason" rows="2" cols="20" id="webclosereason" class="input">{:C('WEB_CLOSE_REASON')}</textarea>
+        <span class="Validform_checktip">支持HTML</span>
+      </dd>
+    </dl>
+    <dl>
+      <dt>是否开启访问统计</dt>
+      <dd>
+        <div class="rule-single-checkbox">
+          <input id="visitstats" type="checkbox" name="visit_Status" <if condition="$status.visitStatus eq 'on'">checked="checked" </if>/>
+        </div>
+        <span class="Validform_checktip">*开启后将会记录访问站点的信息</span>
+      </dd>
+    </dl>
+    <dl>
+      <dt>网站统计代码</dt>
+      <dd>
+      <textarea name="web_count_code" rows="2" cols="20" id="webcountcode" class="input">{:C('WEB_COUNT_CODE')}</textarea>
+        <span class="Validform_checktip">支持HTML</span>
+      </dd>
+    </dl>
+  </div>
+  <!--/功能权限设置-->
+
+  <!--邮件发送设置-->
+  <div class="tab-content" style="display:none">
+    <dl>
+      <dt>SMTP服务器</dt>
+      <dd>
+        <input name="email_smtp" type="text" value="{:C('EMAIL_SMTP')}" id="emailsmtp" class="input normal" datatype="*0-100" sucmsg=" " />
+        <span class="Validform_checktip">*发送邮件的SMTP服务器地址</span>
+      </dd>
+    </dl>
+    <dl>
+      <dt>SSL加密连接</dt>
+      <dd>
+        <div class="rule-single-checkbox">
+          <input id="email_ssl" type="checkbox" name="emailssl" value="SSL" <if condition="$status.sslStatus eq 'SSL'">checked="checked" </if>/>
+        </div>
+        <span class="Validform_checktip">*是否启用SSL加密连接</span>
+      </dd>
+    </dl>
+    <dl>
+      <dt>SMTP端口</dt>
+      <dd>
+        <input name="email_port" type="text" value="{:C('EMAIL_PORT')}" id="emailport" class="input small" datatype="n" sucmsg=" " />
+        <span class="Validform_checktip">*SMTP服务器的端口，大部分服务商都支持25端口</span>
+      </dd>
+    </dl>
+    <dl>
+      <dt>发件人地址</dt>
+      <dd>
+        <input name="email_from" type="text" value="{:C('EMAIL_FROM')}" id="emailfrom" class="input normal" datatype="e" sucmsg=" " />
+        <span class="Validform_checktip">*发件人的邮箱地址</span>
+      </dd>
+    </dl>
+    <dl>
+      <dt>邮箱账号</dt>
+      <dd>
+        <input name="email_user_name" type="text" value="{:C('EMAIL_USER_NAME')}" id="emailusername" class="input normal" datatype="*0-100" sucmsg=" " />
+        <span class="Validform_checktip">*</span>
+      </dd>
+    </dl>
+    <dl>
+      <dt>邮箱密码</dt>
+      <dd>
+        <input name="email_password" type="password" id="emailpassword" class="input normal" datatype="*0-100" sucmsg=" " value="{:C('EMAIL_PASSWORD')}" />
+        <span class="Validform_checktip">*</span>
+      </dd>
+    </dl>
+    <dl>
+      <dt>发件人昵称</dt>
+      <dd>
+        <input name="email_nickname" type="text" value="{:C('EMAIL_NICKNAME')}" id="emailnickname" class="input normal" datatype="*0-50" sucmsg=" " />
+        <span class="Validform_checktip">*对方收到邮件时显示的昵称</span>
+      </dd>
+    </dl>
+  </div>
+  <!--/邮件发送设置-->
+
+  <!--上传配置-->
+  <div class="tab-content" style="display:none">
+    <dl>
+      <dt>文件上传目录</dt>
+      <dd>
+        <input name="file_path" type="text" value="{:C('FILE_PATH')}" id="filepath" class="input txt" datatype="*2-100" sucmsg=" " />
+        <span class="Validform_checktip">*文件保存的目录名，自动创建根目录下</span>
+      </dd>
+    </dl>
+    <dl>
+      <dt>文件保存方式</dt>
+      <dd>
+        <div class="rule-single-select">
+          <select name="file_save" id="filesave" datatype="*" sucmsg=" ">
+            <volist name="file_save_list" id="value">
+              <option value="{$key}" <if condition="$status.fileSave eq $key"> selected="selected" </if> >{$value}</option>
+            </volist>
+          </select>
+        </div>
+      </dd>
+    </dl>
+    <dl>
+      <dt>子目录保存层次</dt>
+      <dd>
+        <input name="hash_level" type="text" value="{:C('HASH_LEVEL')}" id="hashlevel" class="input small" datatype="n" sucmsg=" " />
+        <span class="Validform_checktip">*数字代表子目录到底保存几层</span>
+      </dd>
+    </dl>
+    <dl>
+      <dt>子目录创建方式</dt>
+      <dd>
+        <div class="rule-multi-radio">
+          <span id="subtype">
+            <volist name="subtype_list" id="value">
+              <input id="subtype_{$key}" type="radio" name="subtype" value="{$value}" <if condition="$status.subType eq $value"> checked="checked" </if> /><label for="subtype_{$key}">{$value}</label>
+            </volist>
+          </span>
+        </div>
+      </dd>
+    </dl>
+    <dl>
+      <dt>子目录保存上传文件</dt>
+      <dd>
+        <div class="rule-single-checkbox">
+          <input id="autosub" type="checkbox" name="auto_sub" <if condition="$status.autoSub eq 'on'">checked="checked" </if>/>
+        </div>
+        <span class="Validform_checktip">*开启后将使用子目录保存上传文件</span>
+      </dd>
+    </dl>
+    <dl>
+      <dt>编辑器图片</dt>
+      <dd>
+        <div class="rule-multi-radio">
+          <span id="fileremote">
+            <volist name="file_remote_list" id="value">
+              <input id="fileremote_{$key}" type="radio" name="file_remote" value="{$key}" <if condition="$status.fileRemote eq $key"> checked="checked" </if> /><label for="fileremote_{$key}">{$value}</label>
+            </volist>
+          </span>
+        </div>
+      </dd>
+    </dl>
+    <dl>
+      <dt>文件上传类型</dt>
+      <dd>
+        <input name="file_extension" type="text" value="{:C('FILE_EXTENSION')}" id="fileextension" class="input normal" datatype="*1-500" sucmsg=" " />
+        <span class="Validform_checktip">*以英文的逗号分隔开，如：“zip,rar”</span>
+      </dd>
+    </dl>
+    <dl>
+      <dt>视频上传类型</dt>
+      <dd>
+        <input name="video_extension" type="text" value="{:C('VIDEO_EXTENSION')}" id="videoextension" class="input normal" datatype="*1-500" sucmsg=" " />
+        <span class="Validform_checktip">*以英文的逗号分隔开，如：“mp4,flv”</span>
+      </dd>
+    </dl>
+    <dl>
+      <dt>附件上传大小</dt>
+      <dd>
+        <input name="attach_size" type="text" value="{:C('ATTACH_SIZE')}" id="attachsize" class="input small" datatype="n" sucmsg=" " /> KB
+        <span class="Validform_checktip">*超过设定的文件大小不予上传，0不限制</span>
+      </dd>
+    </dl>
+    <dl>
+      <dt>视频上传大小</dt>
+      <dd>
+        <input name="video_size" type="text" value="{:C('VIDEO_SIZE')}" id="videosize" class="input small" datatype="n" sucmsg=" " /> KB
+        <span class="Validform_checktip">*超过设定的文件大小不予上传，0不限制</span>
+      </dd>
+    </dl>
+    <dl>
+      <dt>图片上传大小</dt>
+      <dd>
+        <input name="img_size" type="text" value="{:C('IMG_SIZE')}" id="imgsize" class="input small" datatype="n" sucmsg=" " /> KB
+        <span class="Validform_checktip">*超过设定的图片大小不予上传，0不限制</span>
+      </dd>
+    </dl>
+    <dl>
+      <dt>图片最大尺寸</dt>
+      <dd>
+        <input name="img_max_height" type="text" value="{:C('IMG_MAX_HEIGHT')}" id="imgmaxheight" class="input small" datatype="n" sucmsg=" " /> ×
+        <input name="img_max_width" type="text" value="{:C('IMG_MAX_WIDTH')}" id="imgmaxwidth" class="input small" datatype="n" sucmsg=" " /> px
+        <span class="Validform_checktip">*左边高度，右边宽度，超出自动裁剪，0为不受限制</span>
+      </dd>
+    </dl>
+    <dl>
+      <dt>缩略图生成尺寸</dt>
+      <dd>
+        <input name="thumb_nail_height" type="text" value="{:C('THUMB_NAIL_HEIGHT')}" id="thumbnailheight" class="input small" datatype="n" sucmsg=" " /> ×
+        <input name="thumb_nail_width" type="text" value="{:C('THUMB_NAIL_WIDTH')}" id="thumbnailwidth" class="input small" datatype="n" sucmsg=" " /> px
+        <span class="Validform_checktip">*左边高度，右边宽度，0为不生成缩略图</span>
+      </dd>
+    </dl>
+    <dl>
+      <dt>缩略图生成方式</dt>
+      <dd>
+        <div class="rule-multi-radio">
+          <span id="thumbnailmode">
+            <volist name="thumb_nail_model_list" id="value">
+              <input id="thumbnailmode_{$key}" type="radio" name="thumb_nail_mode" value="{$key}" <if condition="$status.thumbNailMode eq $key"> checked="checked" </if> /><label for="thumbnailmode_{$key}">{$value}</label>
+            </volist>
+          </span>
+        </div>
+      </dd>
+    </dl>
+    <dl>
+      <dt>图片水印类型</dt>
+      <dd>
+        <div class="rule-multi-radio">
+          <span id="watermarktype">
+            <volist name="water_mark_type_list" id="value">
+              <input id="watermarktype_{$key}" type="radio" name="water_mark_type" value="{$key}" <if condition="$status.waterMarkType eq $key"> checked="checked" </if> /><label for="watermarktype_{$key}">{$value}</label>
+            </volist>
+          </span>
+        </div>
+      </dd>
+    </dl>
+    <dl>
+      <dt>图片水印位置</dt>
+      <dd>
+        <div class="rule-multi-radio">
+          <span id="watermarkposition">
+            <volist name="water_mark_position_list" id="value">
+              <input id="watermarkposition_{$key}" type="radio" name="water_mark_position" value="{$key}" <if condition="$status.waterMarkPosition eq $key"> checked="checked" </if> /><label for="watermarkposition_{$key}">{$value}</label>
+            </volist>
+           </span>
+        </div>
+      </dd>
+    </dl>
+    <dl>
+      <dt>图片生成质量</dt>
+      <dd>
+        <input name="water_mark_img_quality" type="text" value="{:C('WATER_MARK_IMG_QUALITY')}" id="watermarkimgquality" class="input small" datatype="n" sucmsg=" " />
+        <span class="Validform_checktip">*只适用于加水印的jpeg格式图片.取值范围 0-100, 0质量最低, 100质量最高, 默认80</span>
+      </dd>
+    </dl>
+    <dl>
+      <dt>图片水印文件</dt>
+      <dd>
+        <input name="water_mark_pic" type="text" value="{:C('WATER_MARK_PIC')}" id="watermarkpic" class="input txt" datatype="s2-100" sucmsg=" " />
+        <span class="Validform_checktip">*需存放在站点目录下，如图片不存在将使用文字水印</span>
+      </dd>
+    </dl>
+    <dl>
+      <dt>水印透明度</dt>
+      <dd>
+        <input name="water_mark_transparency" type="text" value="{:C('WATER_MARK_TRANSPARENCY')}" id="watermarktransparency" class="input small" datatype="n" sucmsg=" " />
+        <span class="Validform_checktip">*取值范围1--10 (10为不透明)</span>
+      </dd>
+    </dl>
+    <dl>
+      <dt>水印文字</dt>
+      <dd>
+        <input name="water_mark_text" type="text" value="{:C('WATER_MARK_TEXT')}" id="watermarktext" class="input txt" datatype="s2-100" sucmsg=" " />
+        <span class="Validform_checktip">*文字水印的内容</span>
+      </dd>
+    </dl>
+    <dl>
+      <dt>文字字体</dt>
+      <dd>
+        <div class="rule-single-select up">
+          <select name="water_mark_font" id="watermarkfont">
+            <volist name="water_mark_font_list" id="value">
+              <option value="{$value}" <if condition="$status.waterMarkFont eq $value"> selected="selected" </if> >{$value}</option>
+            </volist>
+         <!--   <option value="Arial">Arial</option>
+            <option value="Arial Black">Arial Black</option>
+            <option value="Batang">Batang</option>
+            <option value="BatangChe">BatangChe</option>
+            <option value="Comic Sans MS">Comic Sans MS</option>
+            <option value="Courier New">Courier New</option>
+            <option value="Dotum">Dotum</option>
+            <option value="DotumChe">DotumChe</option>
+            <option value="Estrangelo Edessa">Estrangelo Edessa</option>
+            <option value="Franklin Gothic Medium">Franklin Gothic Medium</option>
+            <option value="Gautami">Gautami</option>
+            <option value="Georgia">Georgia</option>
+            <option value="Gulim">Gulim</option>
+            <option value="GulimChe">GulimChe</option>
+            <option value="Gungsuh">Gungsuh</option>
+            <option value="GungsuhChe">GungsuhChe</option>
+            <option value="Impact">Impact</option>
+            <option value="Latha">Latha</option>
+            <option value="Lucida Console">Lucida Console</option>
+            <option value="Lucida Sans Unicode">Lucida Sans Unicode</option>
+            <option value="Mangal">Mangal</option>
+            <option value="Marlett">Marlett</option>
+            <option value="Microsoft Sans Serif">Microsoft Sans Serif</option>
+            <option value="MingLiU">MingLiU</option>
+            <option value="MS Gothic">MS Gothic</option>
+            <option value="MS Mincho">MS Mincho</option>
+            <option value="MS PGothic">MS PGothic</option>
+            <option value="MS PMincho">MS PMincho</option>
+            <option value="MS UI Gothic">MS UI Gothic</option>
+            <option value="MV Boli">MV Boli</option>
+            <option value="Palatino Linotype">Palatino Linotype</option>
+            <option value="PMingLiU">PMingLiU</option>
+            <option value="Raavi">Raavi</option>
+            <option value="Shruti">Shruti</option>
+            <option value="Sylfaen">Sylfaen</option>
+            <option value="Symbol">Symbol</option>
+            <option selected="selected" value="Tahoma">Tahoma</option>
+            <option value="Times New Roman">Times New Roman</option>
+            <option value="Trebuchet MS">Trebuchet MS</option>
+            <option value="Tunga">Tunga</option>
+            <option value="Verdana">Verdana</option>
+            <option value="Webdings">Webdings</option>
+            <option value="Wingdings">Wingdings</option>
+            <option value="仿宋_GB2312">仿宋_GB2312</option>
+            <option value="宋体">宋体</option>
+            <option value="新宋体">新宋体</option>
+            <option value="楷体_GB2312">楷体_GB2312</option>
+            <option value="黑体">黑体</option>-->
+          </select>
+        </div>
+        <input name="water_mark_font_size" type="text" value="{:C('WATER_MARK_FONT_SIZE')}" id="watermarkfontsize" class="input small" datatype="n" sucmsg=" " /> px
+        <span class="Validform_checktip">*文字水印的字体和大小 </span>
+      </dd>
+    </dl>
+  </div>
+  <!--/上传配置-->
+
+  <!--/内容-->
+
+  <!--工具栏-->
+  <div class="page-footer">
+    <div class="btn-wrap">
+      <input type="submit" name="btnSubmit" value="提交保存" id="btnSubmit" class="btn" />
+      <input name="btnReturn" type="button" value="返回上一页" class="btn yellow" onclick="javascript:history.back(-1);" />
+    </div>
+  </div>
+  <!--/工具栏-->
+</form>
+</body>
+</html>

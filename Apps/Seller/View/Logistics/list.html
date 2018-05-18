@@ -1,0 +1,131 @@
+<!Doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>卖家管理中心</title>
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+	<import type="css" file="statics.store.css.store-public,statics.store.css.store-style,css.pagination,css.ui-dialog" />
+	<import type="js" file="scripts.jquery.jquery-1#11#2#min,scripts.artdialog.dialog-plus-min,scripts.zepto.lazyload#min" />
+	<script type="text/javascript" charset="utf-8" src="__PUBLIC__/scripts/jquery/jquery.form.min.js"></script>
+</head>
+<body>
+	<div class="info-box distribution-box">
+		<div class="all-select-box">
+			<a href="{:U('Seller/Logistics/editRegion',array('lid'=>$logistics_id,'action'=>'add'))}" class="add-logistics-btn">+ 新增</a>
+			<a href="javascript:;"  class="print-a">批量删除</a>
+		</div>
+	    <div class="box-title">
+	        <div class="th th-info">
+				<label for="allSelect" id="allSelectLabel"><input type="checkbox" id="allSelect"/>全选</label>
+			</div>
+			<div class="th th-status">配送区域</div>
+	        <div class="th th-do">操作</div>
+	    </div>
+	    <div class="list-box">
+			<!--提供4个样式-->
+			<form action="{:U('Seller/Logistics/delRegion')}" method="post" id="regionForm">
+			<div class="item" id="logistics_list">
+				<volist name="list" id='vo'>
+					<div class="item-content" id="region_{$vo.id}">
+						<div class="th th-status">
+							<input type="checkbox" name="ids[]" value="{$vo.id}"/>
+							{$vo.name}
+						</div>
+						<div class="th th-info">
+							{$vo.logistics_region_name}
+						</div>
+						<div class="th th-do" >
+							<a href="javascript:void(0);" onclick="delRegion('{$vo.id}')" class="btn">删除</a>
+							<a href="{:U('Seller/Logistics/editRegion',array('id'=>$vo[id],'lid'=>$logistics_id,'action'=>'edit'))}" class="btn">修改</a>
+						</div>
+						<div class="clear"></div>
+					</div>
+				</volist>
+			</div>
+			</form>
+	    </div>
+	</div>
+	<div class="pagelist">
+		<div id="PageContent" class="default">{$pageShow}</div>
+	</div>
+</div>
+	<script>
+		function delRegion(ids) {
+            $.ajax({
+                url:"{:U('Seller/Logistics/delRegion')}",
+                type:"post",
+                dataType:"json",
+                data:{
+                    'ids':ids,
+                },
+                success:function(data){
+                    if(data.status==1){
+                        var d = dialog({content:data.info}).show();
+                        setTimeout(function () {
+                            d.close().remove();
+                        }, 1500);
+                        $("#region_"+ids).remove();
+                    }else{
+                        var d = dialog({content:data.info}).show();
+                        setTimeout(function () {
+                            d.close().remove();
+                        }, 1500);
+                    }
+                }
+            });
+        }
+        $(".print-a").click(function(){
+                if($(".item-content").find("input:checkbox:checked").length){
+                    $('#regionForm').ajaxSubmit({
+                        url: $("#regionForm").attr("url"),
+                        type: "post",
+                        dataType: "json",
+                        success: function(data){
+                            var d = dialog({content:data.info}).show();
+                            setTimeout(function () {
+                                d.close().remove();
+                            }, 1500);
+                            window.location.reload();
+						}
+                    });
+                }else{
+                    var d = dialog({title:"温馨提示",content:"请选择要删除的配送区域！！！"}).show();
+                    setTimeout(function () {
+                        d.close().remove();
+                    }, 1500);
+                }
+        })
+		/*全选*/
+        function allChecked(obj){
+            if($(obj).find("input").is(":checked")){
+                $(".item-content").find("input[type='checkbox']").prop("checked",true);
+            }else{
+                $(".item-content").find("input[type='checkbox']").prop("checked",false);
+
+            }
+        }
+		/*单选*/
+        function allsingle(obj){
+            var Len = $(".item-content").find("input:checkbox:checked").length;
+            var len = $(".item-content").find("input:checkbox").length;
+            if($(obj).is(":checked")){
+                $(obj).prop("checked",true);
+                if(Len==len){
+                    $("#allSelectLabel").find("input").prop("checked",true);
+                }
+            }else{
+                $(obj).prop("checked",false);
+                $("#allSelectLabel").find("input").prop("checked",false);
+            }
+
+        }
+        $("#allSelectLabel").click(function(){
+            allChecked(this);
+        })
+        $(".item-content").find("input[type='checkbox']").click(function(){
+            allsingle(this);
+        })
+	</script>
+</body>
+</html>

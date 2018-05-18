@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>{$web_title}</title>
+    <import type="css" file="statics.mobile.css.public,statics.mobile.css.style,dist.dropload" />
+    <import type="js" file="scripts.zepto.zepto#min,scripts.zepto.zepto#cookie#min,dist.dropload#min,statics.mobile.js.common" />
+    <script type="text/javascript" src="__PUBLIC__/statics/mobile/js/rem.js" fu-psd="720" fu-min="50" fu-max="100"></script>
+    <style type="text/css">
+        .container{ padding-top:0.9rem; overflow: hidden;}
+        .article-title{ margin:0 0.2rem; padding:0 0.2rem; line-height:0.75rem; font-size:0.3rem; color:#333;  text-align: center; border-bottom:1px solid #e3e3e3;}
+        .article-content{ padding:0.2rem; line-height:0.4rem; font-size:0.24rem; }
+    </style>
+</head>
+<body style="background:#fff;">
+    <div class="page-title position-title">
+        <!--返回按钮-->
+        <div class="back-box">
+            <a href="{:U('Mobile/Help/center',array('cat_id'=>$info['cid']))}" class="icons icon-back"></a>
+        </div>
+        <h2 class="title">帮助中心</h2>
+        <!--返回按钮-->
+    </div>
+    <div class="container">
+        <div class="content-box">
+            <div class="article-title">
+                {$info.title}
+            </div>
+            <div class="article-content">
+                {$info.content}
+            </div>
+        </div>
+    </div>
+    <!--公用底部-->
+    <include file="Public/footer" />
+    <!--公用底部-->
+</body>
+</html>

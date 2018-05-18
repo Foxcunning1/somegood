@@ -1,0 +1,451 @@
+[ 2017-11-16T15:00:47+08:00 ] ::1 /somegood/shop/goods/goodsList
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [2048] Declaration of Common\Model\RegionModel::add() should be compatible with Think\Model::add($data = '', $options = Array, $replace = false) D:\xampps\htdocs\somegood\Apps\Common\Model\RegionModel.class.php 第 5 行.
+NOTIC: [2048] Declaration of Common\Model\RegionModel::save() should be compatible with Think\Model::save($data = '', $options = Array) D:\xampps\htdocs\somegood\Apps\Common\Model\RegionModel.class.php 第 5 行.
+SQL: SHOW COLUMNS FROM `sg_region` [ RunTime:0.0080s ]
+SQL: SHOW COLUMNS FROM `sg_region` [ RunTime:0.0060s ]
+SQL: SELECT * FROM `sg_region` WHERE `name` = '深圳' LIMIT 1   [ RunTime:0.0050s ]
+SQL: SHOW COLUMNS FROM `sg_goods` [ RunTime:0.0070s ]
+SQL: SELECT COUNT(*) AS tp_count FROM sg_goods g WHERE g.status > 0 LIMIT 1   [ RunTime:0.0020s ]
+SQL: SELECT g.id,g.status,g.add_time,g.online_stock,g.online_sales_volume,g.goods_thumb,g.original_img,g.goods_title,g.price,g.content,gc.title AS category_name,SUM(sd.sales_volume) as sales_volume FROM sg_goods g LEFT JOIN sg_goods_category AS gc ON g.category_id = gc.id LEFT JOIN sg_seller_delivery AS sd ON g.id = sd.sg_id  WHERE g.status > 0 GROUP BY g.id ORDER BY  update_time desc,id desc LIMIT 0,10   [ RunTime:0.0080s ]
+SQL: SHOW COLUMNS FROM `sg_seller_delivery` [ RunTime:0.0080s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `sg_seller_delivery` WHERE `sg_id` = 2 AND `is_onsale` = 1 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `sg_seller_delivery` WHERE `sg_id` = 3 AND `is_onsale` = 1 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `sg_seller_delivery` WHERE `sg_id` = 1 AND `is_onsale` = 1 LIMIT 1   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: web_keywords D:\xampps\htdocs\somegood\Runtime\Cache\Shop\93b3d743ac6d4ab58af58d7002030603.php 第 6 行.
+NOTIC: [8] Undefined variable: web_description D:\xampps\htdocs\somegood\Runtime\Cache\Shop\93b3d743ac6d4ab58af58d7002030603.php 第 7 行.
+NOTIC: [8] Undefined variable: catId D:\xampps\htdocs\somegood\Runtime\Cache\Shop\93b3d743ac6d4ab58af58d7002030603.php 第 307 行.
+NOTIC: [8] Undefined variable: category D:\xampps\htdocs\somegood\Runtime\Cache\Shop\93b3d743ac6d4ab58af58d7002030603.php 第 314 行.
+NOTIC: [8] Undefined variable: parent_id D:\xampps\htdocs\somegood\Runtime\Cache\Shop\93b3d743ac6d4ab58af58d7002030603.php 第 314 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.011001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.011001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:-0.011000s ]
+NOTIC: [8] Undefined variable: web_keywords D:\xampps\htdocs\somegood\Runtime\Cache\Shop\93b3d743ac6d4ab58af58d7002030603.php 第 6 行.
+NOTIC: [8] Undefined variable: web_description D:\xampps\htdocs\somegood\Runtime\Cache\Shop\93b3d743ac6d4ab58af58d7002030603.php 第 7 行.
+NOTIC: [8] Undefined variable: catId D:\xampps\htdocs\somegood\Runtime\Cache\Shop\93b3d743ac6d4ab58af58d7002030603.php 第 307 行.
+NOTIC: [8] Undefined variable: category D:\xampps\htdocs\somegood\Runtime\Cache\Shop\93b3d743ac6d4ab58af58d7002030603.php 第 314 行.
+NOTIC: [8] Undefined variable: parent_id D:\xampps\htdocs\somegood\Runtime\Cache\Shop\93b3d743ac6d4ab58af58d7002030603.php 第 314 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.009000s ]
+INFO: [ view_parse ] --END-- [ RunTime:-0.002000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:-0.009000s ]
+NOTIC: [2] Cannot modify header information - headers already sent by (output started at D:\xampps\htdocs\somegood\ThinkPHP\Library\Think\View.class.php:95) D:\xampps\htdocs\somegood\ThinkPHP\Library\Think\View.class.php 第 91 行.
+NOTIC: [2] Cannot modify header information - headers already sent by (output started at D:\xampps\htdocs\somegood\ThinkPHP\Library\Think\View.class.php:95) D:\xampps\htdocs\somegood\ThinkPHP\Library\Think\View.class.php 第 92 行.
+NOTIC: [2] Cannot modify header information - headers already sent by (output started at D:\xampps\htdocs\somegood\ThinkPHP\Library\Think\View.class.php:95) D:\xampps\htdocs\somegood\ThinkPHP\Library\Think\View.class.php 第 93 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-11-16T15:00:47+08:00 ] ::1 /somegood/shop/images/floor_bg1.jpg
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-11-16T15:00:47+08:00 ] ::1 /somegood/shop/images/floor_bg1.jpg
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-11-16T15:01:51+08:00 ] ::1 /somegood/shop/index/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined variable: web_keywords D:\xampps\htdocs\somegood\Runtime\Cache\Shop\ae708c66cec6f9d7ecb4a80282dd4c4a.php 第 6 行.
+NOTIC: [8] Undefined variable: web_description D:\xampps\htdocs\somegood\Runtime\Cache\Shop\ae708c66cec6f9d7ecb4a80282dd4c4a.php 第 7 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.016001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.016001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.002000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-11-16T15:03:21+08:00 ] ::1 /somegood/shop/cart/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: web_title D:\xampps\htdocs\somegood\Runtime\Cache\Shop\c788990fb2e6a2df7ebba0fae9e2dfd3.php 第 5 行.
+NOTIC: [8] Undefined variable: info1 D:\xampps\htdocs\somegood\Runtime\Cache\Shop\c788990fb2e6a2df7ebba0fae9e2dfd3.php 第 66 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Shop\c788990fb2e6a2df7ebba0fae9e2dfd3.php 第 66 行.
+NOTIC: [8] Undefined index: id D:\xampps\htdocs\somegood\Runtime\Cache\Shop\c788990fb2e6a2df7ebba0fae9e2dfd3.php 第 69 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.025002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.025002s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-11-16T15:03:22+08:00 ] ::1 /somegood/shop/cart/__TMPL__js/cart.js
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+ERR: 非法操作:__TMPL__js
+
+[ 2017-11-16T15:03:50+08:00 ] ::1 /somegood/shop/goods/detail
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+ERR: 非法操作:detail
+
+[ 2017-11-16T15:03:56+08:00 ] ::1 /somegood/shop/goods/goods
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [2048] Declaration of Common\Model\RegionModel::add() should be compatible with Think\Model::add($data = '', $options = Array, $replace = false) D:\xampps\htdocs\somegood\Apps\Common\Model\RegionModel.class.php 第 5 行.
+NOTIC: [2048] Declaration of Common\Model\RegionModel::save() should be compatible with Think\Model::save($data = '', $options = Array) D:\xampps\htdocs\somegood\Apps\Common\Model\RegionModel.class.php 第 5 行.
+SQL: SHOW COLUMNS FROM `sg_region` [ RunTime:0.0070s ]
+SQL: SHOW COLUMNS FROM `sg_region` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `sg_region` WHERE `name` = '深圳' LIMIT 1   [ RunTime:0.0060s ]
+SQL: SELECT `id`,`name` FROM `sg_region` WHERE ( pid=1988 )  [ RunTime:0.0060s ]
+SQL: SHOW COLUMNS FROM `sg_goods` [ RunTime:0.0060s ]
+SQL: SELECT group_concat(id) as cid FROM `sg_region` WHERE ( pid=1988 ) LIMIT 1   [ RunTime:0.0040s ]
+SQL: SELECT COUNT(*) AS tp_count FROM sg_goods g LEFT JOIN sg_seller_delivery AS sd ON sd.sg_id = g.id LEFT JOIN sg_store AS s ON s.sid = sd.store_id LEFT JOIN sg_region AS r ON r.id = s.area_id  WHERE g.id = 0 AND sd.is_onsale = 1 AND sd.is_delivery = 1 AND s.area_id IN ('1989','1990','1991','1992','1993','1994','1995','1996','1997','1998') LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT sd.id,g.original_img,g.goods_title,g.params,g.length,g.width,g.height,g.content,sd.stock,g.market_price,g.material,g.color,g.brand,g.process,g.goods_sn,gc.title,g.price,g.browse_num,s.store_name,r.shortname,s.lng,s.lat,round(6378.138*2*asin(sqrt(pow(sin( (22.598102*pi()/180-s.lat*pi()/180)/2),2)+cos(22.598102*pi()/180)*cos(s.lat*pi()/180)* pow(sin( (114.000709*pi()/180-s.lng*pi()/180)/2),2)))*1000)*0.001 as distance FROM sg_goods g LEFT JOIN sg_seller_delivery AS sd ON sd.sg_id = g.id LEFT JOIN sg_store AS s ON s.sid = sd.store_id LEFT JOIN sg_goods_category AS gc ON gc.id = g.category_id LEFT JOIN sg_region AS r ON r.id = s.area_id  WHERE g.id = 0 AND sd.is_onsale = 1 AND sd.is_delivery = 1 AND s.area_id IN ('1989','1990','1991','1992','1993','1994','1995','1996','1997','1998') ORDER BY distance ASC LIMIT 0,8   [ RunTime:0.0010s ]
+NOTIC: [8] Undefined variable: sel_area D:\xampps\htdocs\somegood\Apps\Mobile\Controller\GoodsController.class.php 第 188 行.
+SQL: SHOW COLUMNS FROM `sg_goods` [ RunTime:0.0060s ]
+NOTIC: [8] Undefined offset: 0 D:\xampps\htdocs\somegood\Apps\Mobile\Controller\GoodsController.class.php 第 208 行.
+NOTIC: [8] Undefined offset: 0 D:\xampps\htdocs\somegood\Apps\Mobile\Controller\GoodsController.class.php 第 212 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: web_keywords D:\xampps\htdocs\somegood\Runtime\Cache\Shop\f1589efb03b3b3a12c2a32464522e780.php 第 6 行.
+NOTIC: [8] Undefined variable: web_description D:\xampps\htdocs\somegood\Runtime\Cache\Shop\f1589efb03b3b3a12c2a32464522e780.php 第 7 行.
+NOTIC: [8] Undefined variable: catId D:\xampps\htdocs\somegood\Runtime\Cache\Shop\f1589efb03b3b3a12c2a32464522e780.php 第 640 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Shop\f1589efb03b3b3a12c2a32464522e780.php 第 648 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Shop\f1589efb03b3b3a12c2a32464522e780.php 第 653 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Shop\f1589efb03b3b3a12c2a32464522e780.php 第 653 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Shop\f1589efb03b3b3a12c2a32464522e780.php 第 653 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Shop\f1589efb03b3b3a12c2a32464522e780.php 第 683 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.018001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.018001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.002000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.003000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:-0.019001s ]
+NOTIC: [8] Undefined variable: web_keywords D:\xampps\htdocs\somegood\Runtime\Cache\Shop\f1589efb03b3b3a12c2a32464522e780.php 第 6 行.
+NOTIC: [8] Undefined variable: web_description D:\xampps\htdocs\somegood\Runtime\Cache\Shop\f1589efb03b3b3a12c2a32464522e780.php 第 7 行.
+NOTIC: [8] Undefined variable: catId D:\xampps\htdocs\somegood\Runtime\Cache\Shop\f1589efb03b3b3a12c2a32464522e780.php 第 640 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Shop\f1589efb03b3b3a12c2a32464522e780.php 第 648 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Shop\f1589efb03b3b3a12c2a32464522e780.php 第 653 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Shop\f1589efb03b3b3a12c2a32464522e780.php 第 653 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Shop\f1589efb03b3b3a12c2a32464522e780.php 第 653 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Shop\f1589efb03b3b3a12c2a32464522e780.php 第 683 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.016001s ]
+INFO: [ view_parse ] --END-- [ RunTime:-0.003000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.002000s ]
+INFO: [ view_filter ] --END-- [ RunTime:-0.016001s ]
+NOTIC: [2] Cannot modify header information - headers already sent by (output started at D:\xampps\htdocs\somegood\ThinkPHP\Library\Think\View.class.php:95) D:\xampps\htdocs\somegood\ThinkPHP\Library\Think\View.class.php 第 91 行.
+NOTIC: [2] Cannot modify header information - headers already sent by (output started at D:\xampps\htdocs\somegood\ThinkPHP\Library\Think\View.class.php:95) D:\xampps\htdocs\somegood\ThinkPHP\Library\Think\View.class.php 第 92 行.
+NOTIC: [2] Cannot modify header information - headers already sent by (output started at D:\xampps\htdocs\somegood\ThinkPHP\Library\Think\View.class.php:95) D:\xampps\htdocs\somegood\ThinkPHP\Library\Think\View.class.php 第 93 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-11-16T15:03:57+08:00 ] ::1 /somegood/shop/images/floor_bg1.jpg
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-11-16T15:03:57+08:00 ] ::1 /somegood/shop/images/floor_bg1.jpg
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-11-16T15:04:42+08:00 ] ::1 /somegood/shop/goods/goods
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [2048] Declaration of Common\Model\RegionModel::add() should be compatible with Think\Model::add($data = '', $options = Array, $replace = false) D:\xampps\htdocs\somegood\Apps\Common\Model\RegionModel.class.php 第 5 行.
+NOTIC: [2048] Declaration of Common\Model\RegionModel::save() should be compatible with Think\Model::save($data = '', $options = Array) D:\xampps\htdocs\somegood\Apps\Common\Model\RegionModel.class.php 第 5 行.
+SQL: SHOW COLUMNS FROM `sg_region` [ RunTime:0.0080s ]
+SQL: SHOW COLUMNS FROM `sg_region` [ RunTime:0.0060s ]
+SQL: SELECT * FROM `sg_region` WHERE `name` = '深圳' LIMIT 1   [ RunTime:0.0050s ]
+SQL: SELECT `id`,`name` FROM `sg_region` WHERE ( pid=1988 )  [ RunTime:0.0050s ]
+SQL: SHOW COLUMNS FROM `sg_goods` [ RunTime:0.0080s ]
+SQL: SELECT group_concat(id) as cid FROM `sg_region` WHERE ( pid=1988 ) LIMIT 1   [ RunTime:0.0050s ]
+SQL: SELECT COUNT(*) AS tp_count FROM sg_goods g LEFT JOIN sg_seller_delivery AS sd ON sd.sg_id = g.id LEFT JOIN sg_store AS s ON s.sid = sd.store_id LEFT JOIN sg_region AS r ON r.id = s.area_id  WHERE g.id = 0 AND sd.is_onsale = 1 AND sd.is_delivery = 1 AND s.area_id IN ('1989','1990','1991','1992','1993','1994','1995','1996','1997','1998') LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT sd.id,g.original_img,g.goods_title,g.params,g.length,g.width,g.height,g.content,sd.stock,g.market_price,g.material,g.color,g.brand,g.process,g.goods_sn,gc.title,g.price,g.browse_num,s.store_name,r.shortname,s.lng,s.lat,round(6378.138*2*asin(sqrt(pow(sin( (22.598102*pi()/180-s.lat*pi()/180)/2),2)+cos(22.598102*pi()/180)*cos(s.lat*pi()/180)* pow(sin( (114.000709*pi()/180-s.lng*pi()/180)/2),2)))*1000)*0.001 as distance FROM sg_goods g LEFT JOIN sg_seller_delivery AS sd ON sd.sg_id = g.id LEFT JOIN sg_store AS s ON s.sid = sd.store_id LEFT JOIN sg_goods_category AS gc ON gc.id = g.category_id LEFT JOIN sg_region AS r ON r.id = s.area_id  WHERE g.id = 0 AND sd.is_onsale = 1 AND sd.is_delivery = 1 AND s.area_id IN ('1989','1990','1991','1992','1993','1994','1995','1996','1997','1998') ORDER BY distance ASC LIMIT 0,8   [ RunTime:0.0030s ]
+NOTIC: [8] Undefined variable: sel_area D:\xampps\htdocs\somegood\Apps\Mobile\Controller\GoodsController.class.php 第 188 行.
+SQL: SHOW COLUMNS FROM `sg_goods` [ RunTime:0.0090s ]
+NOTIC: [8] Undefined offset: 0 D:\xampps\htdocs\somegood\Apps\Mobile\Controller\GoodsController.class.php 第 208 行.
+NOTIC: [8] Undefined offset: 0 D:\xampps\htdocs\somegood\Apps\Mobile\Controller\GoodsController.class.php 第 212 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: web_keywords D:\xampps\htdocs\somegood\Runtime\Cache\Shop\f1589efb03b3b3a12c2a32464522e780.php 第 6 行.
+NOTIC: [8] Undefined variable: web_description D:\xampps\htdocs\somegood\Runtime\Cache\Shop\f1589efb03b3b3a12c2a32464522e780.php 第 7 行.
+NOTIC: [8] Undefined variable: catId D:\xampps\htdocs\somegood\Runtime\Cache\Shop\f1589efb03b3b3a12c2a32464522e780.php 第 640 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Shop\f1589efb03b3b3a12c2a32464522e780.php 第 648 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Shop\f1589efb03b3b3a12c2a32464522e780.php 第 653 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Shop\f1589efb03b3b3a12c2a32464522e780.php 第 653 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Shop\f1589efb03b3b3a12c2a32464522e780.php 第 653 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Shop\f1589efb03b3b3a12c2a32464522e780.php 第 683 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.015001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.002000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-11-16T15:04:42+08:00 ] ::1 /somegood/shop/images/floor_bg1.jpg
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-11-16T15:04:43+08:00 ] ::1 /somegood/shop/goods/goods
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [2048] Declaration of Common\Model\RegionModel::add() should be compatible with Think\Model::add($data = '', $options = Array, $replace = false) D:\xampps\htdocs\somegood\Apps\Common\Model\RegionModel.class.php 第 5 行.
+NOTIC: [2048] Declaration of Common\Model\RegionModel::save() should be compatible with Think\Model::save($data = '', $options = Array) D:\xampps\htdocs\somegood\Apps\Common\Model\RegionModel.class.php 第 5 行.
+SQL: SHOW COLUMNS FROM `sg_region` [ RunTime:0.0080s ]
+SQL: SHOW COLUMNS FROM `sg_region` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `sg_region` WHERE `name` = '深圳' LIMIT 1   [ RunTime:0.0060s ]
+SQL: SELECT `id`,`name` FROM `sg_region` WHERE ( pid=1988 )  [ RunTime:0.0050s ]
+SQL: SHOW COLUMNS FROM `sg_goods` [ RunTime:0.0080s ]
+SQL: SELECT group_concat(id) as cid FROM `sg_region` WHERE ( pid=1988 ) LIMIT 1   [ RunTime:0.0050s ]
+SQL: SELECT COUNT(*) AS tp_count FROM sg_goods g LEFT JOIN sg_seller_delivery AS sd ON sd.sg_id = g.id LEFT JOIN sg_store AS s ON s.sid = sd.store_id LEFT JOIN sg_region AS r ON r.id = s.area_id  WHERE g.id = 0 AND sd.is_onsale = 1 AND sd.is_delivery = 1 AND s.area_id IN ('1989','1990','1991','1992','1993','1994','1995','1996','1997','1998') LIMIT 1   [ RunTime:0.0020s ]
+SQL: SELECT sd.id,g.original_img,g.goods_title,g.params,g.length,g.width,g.height,g.content,sd.stock,g.market_price,g.material,g.color,g.brand,g.process,g.goods_sn,gc.title,g.price,g.browse_num,s.store_name,r.shortname,s.lng,s.lat,round(6378.138*2*asin(sqrt(pow(sin( (22.598102*pi()/180-s.lat*pi()/180)/2),2)+cos(22.598102*pi()/180)*cos(s.lat*pi()/180)* pow(sin( (114.000709*pi()/180-s.lng*pi()/180)/2),2)))*1000)*0.001 as distance FROM sg_goods g LEFT JOIN sg_seller_delivery AS sd ON sd.sg_id = g.id LEFT JOIN sg_store AS s ON s.sid = sd.store_id LEFT JOIN sg_goods_category AS gc ON gc.id = g.category_id LEFT JOIN sg_region AS r ON r.id = s.area_id  WHERE g.id = 0 AND sd.is_onsale = 1 AND sd.is_delivery = 1 AND s.area_id IN ('1989','1990','1991','1992','1993','1994','1995','1996','1997','1998') ORDER BY distance ASC LIMIT 0,8   [ RunTime:0.0020s ]
+NOTIC: [8] Undefined variable: sel_area D:\xampps\htdocs\somegood\Apps\Mobile\Controller\GoodsController.class.php 第 188 行.
+SQL: SHOW COLUMNS FROM `sg_goods` [ RunTime:0.0070s ]
+NOTIC: [8] Undefined offset: 0 D:\xampps\htdocs\somegood\Apps\Mobile\Controller\GoodsController.class.php 第 208 行.
+NOTIC: [8] Undefined offset: 0 D:\xampps\htdocs\somegood\Apps\Mobile\Controller\GoodsController.class.php 第 212 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: web_keywords D:\xampps\htdocs\somegood\Runtime\Cache\Shop\f1589efb03b3b3a12c2a32464522e780.php 第 6 行.
+NOTIC: [8] Undefined variable: web_description D:\xampps\htdocs\somegood\Runtime\Cache\Shop\f1589efb03b3b3a12c2a32464522e780.php 第 7 行.
+NOTIC: [8] Undefined variable: catId D:\xampps\htdocs\somegood\Runtime\Cache\Shop\f1589efb03b3b3a12c2a32464522e780.php 第 640 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Shop\f1589efb03b3b3a12c2a32464522e780.php 第 648 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Shop\f1589efb03b3b3a12c2a32464522e780.php 第 653 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Shop\f1589efb03b3b3a12c2a32464522e780.php 第 653 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Shop\f1589efb03b3b3a12c2a32464522e780.php 第 653 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Shop\f1589efb03b3b3a12c2a32464522e780.php 第 683 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.014001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.014001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-11-16T15:04:43+08:00 ] ::1 /somegood/shop/images/floor_bg1.jpg
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-11-16T15:04:43+08:00 ] ::1 /somegood/shop/images/floor_bg1.jpg
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-11-16T15:04:44+08:00 ] ::1 /somegood/shop/goods/goods
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [2048] Declaration of Common\Model\RegionModel::add() should be compatible with Think\Model::add($data = '', $options = Array, $replace = false) D:\xampps\htdocs\somegood\Apps\Common\Model\RegionModel.class.php 第 5 行.
+NOTIC: [2048] Declaration of Common\Model\RegionModel::save() should be compatible with Think\Model::save($data = '', $options = Array) D:\xampps\htdocs\somegood\Apps\Common\Model\RegionModel.class.php 第 5 行.
+SQL: SHOW COLUMNS FROM `sg_region` [ RunTime:0.0080s ]
+SQL: SHOW COLUMNS FROM `sg_region` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `sg_region` WHERE `name` = '深圳' LIMIT 1   [ RunTime:0.0060s ]
+SQL: SELECT `id`,`name` FROM `sg_region` WHERE ( pid=1988 )  [ RunTime:0.0060s ]
+SQL: SHOW COLUMNS FROM `sg_goods` [ RunTime:0.0100s ]
+SQL: SELECT group_concat(id) as cid FROM `sg_region` WHERE ( pid=1988 ) LIMIT 1   [ RunTime:0.0060s ]
+SQL: SELECT COUNT(*) AS tp_count FROM sg_goods g LEFT JOIN sg_seller_delivery AS sd ON sd.sg_id = g.id LEFT JOIN sg_store AS s ON s.sid = sd.store_id LEFT JOIN sg_region AS r ON r.id = s.area_id  WHERE g.id = 0 AND sd.is_onsale = 1 AND sd.is_delivery = 1 AND s.area_id IN ('1989','1990','1991','1992','1993','1994','1995','1996','1997','1998') LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT sd.id,g.original_img,g.goods_title,g.params,g.length,g.width,g.height,g.content,sd.stock,g.market_price,g.material,g.color,g.brand,g.process,g.goods_sn,gc.title,g.price,g.browse_num,s.store_name,r.shortname,s.lng,s.lat,round(6378.138*2*asin(sqrt(pow(sin( (22.598102*pi()/180-s.lat*pi()/180)/2),2)+cos(22.598102*pi()/180)*cos(s.lat*pi()/180)* pow(sin( (114.000709*pi()/180-s.lng*pi()/180)/2),2)))*1000)*0.001 as distance FROM sg_goods g LEFT JOIN sg_seller_delivery AS sd ON sd.sg_id = g.id LEFT JOIN sg_store AS s ON s.sid = sd.store_id LEFT JOIN sg_goods_category AS gc ON gc.id = g.category_id LEFT JOIN sg_region AS r ON r.id = s.area_id  WHERE g.id = 0 AND sd.is_onsale = 1 AND sd.is_delivery = 1 AND s.area_id IN ('1989','1990','1991','1992','1993','1994','1995','1996','1997','1998') ORDER BY distance ASC LIMIT 0,8   [ RunTime:0.0020s ]
+NOTIC: [8] Undefined variable: sel_area D:\xampps\htdocs\somegood\Apps\Mobile\Controller\GoodsController.class.php 第 188 行.
+SQL: SHOW COLUMNS FROM `sg_goods` [ RunTime:0.0070s ]
+NOTIC: [8] Undefined offset: 0 D:\xampps\htdocs\somegood\Apps\Mobile\Controller\GoodsController.class.php 第 208 行.
+NOTIC: [8] Undefined offset: 0 D:\xampps\htdocs\somegood\Apps\Mobile\Controller\GoodsController.class.php 第 212 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: web_keywords D:\xampps\htdocs\somegood\Runtime\Cache\Shop\f1589efb03b3b3a12c2a32464522e780.php 第 6 行.
+NOTIC: [8] Undefined variable: web_description D:\xampps\htdocs\somegood\Runtime\Cache\Shop\f1589efb03b3b3a12c2a32464522e780.php 第 7 行.
+NOTIC: [8] Undefined variable: catId D:\xampps\htdocs\somegood\Runtime\Cache\Shop\f1589efb03b3b3a12c2a32464522e780.php 第 640 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Shop\f1589efb03b3b3a12c2a32464522e780.php 第 648 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Shop\f1589efb03b3b3a12c2a32464522e780.php 第 653 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Shop\f1589efb03b3b3a12c2a32464522e780.php 第 653 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Shop\f1589efb03b3b3a12c2a32464522e780.php 第 653 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Shop\f1589efb03b3b3a12c2a32464522e780.php 第 683 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.013001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.013001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-11-16T15:04:44+08:00 ] ::1 /somegood/shop/images/floor_bg1.jpg
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-11-16T15:04:44+08:00 ] ::1 /somegood/shop/images/floor_bg1.jpg
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-11-16T15:14:31+08:00 ] ::1 /somegood/shop/index/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: web_keywords D:\xampps\htdocs\somegood\Runtime\Cache\Shop\ae708c66cec6f9d7ecb4a80282dd4c4a.php 第 6 行.
+NOTIC: [8] Undefined variable: web_description D:\xampps\htdocs\somegood\Runtime\Cache\Shop\ae708c66cec6f9d7ecb4a80282dd4c4a.php 第 7 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.017001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.017001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.003000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-11-16T15:15:52+08:00 ] ::1 /somegood/shop/login/register
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.033002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.033002s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-11-16T15:15:52+08:00 ] ::1 /somegood/Shop/Code/verify.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-11-16T15:19:03+08:00 ] ::1 /somegood/shop/index/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined variable: web_keywords D:\xampps\htdocs\somegood\Runtime\Cache\Shop\ae708c66cec6f9d7ecb4a80282dd4c4a.php 第 6 行.
+NOTIC: [8] Undefined variable: web_description D:\xampps\htdocs\somegood\Runtime\Cache\Shop\ae708c66cec6f9d7ecb4a80282dd4c4a.php 第 7 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.016001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.016001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.003000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+

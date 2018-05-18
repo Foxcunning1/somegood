@@ -1,0 +1,40 @@
+<!Doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>店铺管理中心</title>
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <import type="css" file="statics.store.css.store-public,statics.store.css.store-style,css.pagination" />
+    <import type="js" file="scripts.jquery.jquery-1#11#2#min,scripts.jquery.jquery#form#min,scripts.jquery.Validform_v5#3#2_min,scripts.artdialog.dialog-plus-min" />
+</head>
+<body style="background-color: #edf1f2;">
+    <div class="setting-tab-box">
+        <ul class="setting-tab-ul">
+            <li class="two sel"><a href="javascript:void(0);"><span class="pic"></span><span class="txt">消息通知</span></a><div class="move"></div></li>
+        </ul>
+    </div>
+    <div class="setting-info-box" >
+        <a href="{:U('Store/Index/read')}?id=all" class="all-readed">全部已读</a>
+        <div class="setting-item" style="display: block">
+            <ul class="massage-ul">
+                <volist name="list" id="vo">
+                    <li  <eq name="vo.is_readed" value="1">class="sel" </eq>>
+                        <h3><span class="<eq name="vo.type" value="audit">system<else/>order-push</eq>">【<eq name="vo.type" value="audit">待审核<else/>代发货</eq>】</span>
+                            <a href="{:U('Store/Index/read')}?id={$vo.id}">{$vo.content}</a></h3>
+                        <div class="time">{$vo.time|date="Y-m-d H:i:s",###}</div>
+                    </li>
+                </volist>
+            </ul>
+        </div>
+    </div>
+    <div class="pagelist">
+        <div id="PageContent" class="default">{$pageShow}</div>
+    </div>
+    <script>
+        $(".all-readed").click(function(){
+            $(".massage-ul").find("li").addClass("sel");
+        })
+    </script>
+</body>
+</html>

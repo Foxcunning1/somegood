@@ -1,0 +1,193 @@
+<layout name="goods_layout"/>
+<!--商品列表-->
+<div class="list-container">
+    <div class="w1200">
+        <div class="bread-crumbs">您现在的位置：<a href="{:C('MARKET_DOMAIN')}">首页</a>&nbsp; &gt;&nbsp;
+            <if condition="$catId gt 0">
+                <volist name="cinfo.breadCrumbs" key="ke" id="ca">
+                    <a href="{:C('MARKET_DOMAIN')}{:U('Goods/goodsList',array('category_id'=>$ca['id']))}">{$ca.title}</a>
+                    <if condition="($ke neq count($cinfo['breadCrumbs'])) OR (count($cinfo['breadCrumbs']) eq 0)">&nbsp;&gt;&nbsp;</if>
+                </volist>
+            </if>
+        </div>
+        <div class="order-wrap">
+            <div class="img-wrap fl"><img id="goodsPhoto" src="__PUBLIC__/uploads/{$pic['0']}" alt="{$info.goods_title}"></div>
+            <div class="info-wrap fl">
+                <div class="goods-title"><h2>{$info.goods_title}</h2></div>
+                <div class="goods-solgan">
+                    <p class="tags">{$info.goods_sub_title}</p>
+                </div>
+                <div class="item-goods">
+                    <dl class="price-dl">
+                        <dt>价&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;格：</dt>
+                        <dd><span class="goods-price">￥<b class="unit-price">{$info.price}</b></span></dd>
+                    </dl>
+                    <!--<dl class="shop-dl">-->
+                        <!--<dt>在售店铺：</dt>-->
+                        <!--<dd>-->
+                            <!--<a id="onSellShop" href="javascript:;">请选择在售店铺</a>-->
+
+                        <!--</dd>-->
+                    <!--</dl>-->
+                    <div class="line20"></div>
+                    <dl class="btn-dl">
+                        <dd>
+                            <eq name="info.is_onsale" value="1">
+                                <a href="javascript:void(0);" id="addCart" class="itemBtn addBtn">加入购物车</a>
+                                <else/>
+                                <a href="javascript:void(0);"  class="itemBtn disable">已下架</a>
+                            </eq>
+
+                            <a href="javascript:void(0);" id="favorite" class="favoriteBtn itemBtn"<eq name="favNum" value="1">class="addBtn itemBtn" >取消<else/> >加入</eq>收藏</a>
+
+                        </dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+        <div class="description">
+            <div class="goods-seller fl">
+                <h2>{$info.company_name}</h2>
+                <div class="s-info">
+                    <p>全部宝贝：<span>{$counts}</span></p>
+                    <p>销量：<span>{$online_sales_volume}</span></p>
+                </div>
+                <a href="{:U('Shop/Goods/sellerDetail')}?id={$info.user_id}" class="enter">进入商家</a>
+            </div>
+            <div class="combination fl">
+                <div class="com-title">
+                    <ul>
+                        <li class="sel fl">详情介绍</li>
+                        <eq name="info.is_extension" value="1">
+                            <li class="fl" id="onSellShop">在售店铺</li>
+                        </eq>
+                    </ul>
+                </div>
+                <div class="com-content">
+                    <div class="content-item" style="display: block;">
+                        {$info.content|htmlspecialchars_decode}
+                    </div>
+                    <div class="content-item">
+                        <div class="shop-list-box">
+                            <ul>
+                                <input type="hidden" name="store_id" id="store_id" value="0"/>
+                                <input type="hidden" name="seller_delivery_id" id="seller_delivery_id" value="0"/>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clear"></div>
+        <div class="line40"></div>
+    </div>
+</div>
+<!--底部-->
+<script>
+    /*菜单显示*/
+    $(".all-category").hover(function(){
+        $(".category-box").show();
+    },function(){
+        $(".category-box").hide();
+    })
+    /**/
+    $(".category-box").hover(function(){
+        $(this).show();
+    },function(){
+        $(this).hide();
+    })
+    /*切换在售店铺和详情*/
+    $(".com-title ul").find("li").click(function(){
+        $(this).addClass("sel").siblings().removeClass("sel");
+        $(".com-content").find(".content-item").eq($(this).index()).show().siblings().hide();
+    })
+    /*二级菜单显示*/
+    $(".category-box-ul").find("li").hover(function(){
+        $(this).find(".category-box-content").show().siblings("li").find(".category-box-content").hide();
+    },function(){
+        $(this).find(".category-box-content").hide();
+    })
+    /*在售店铺选择*/
+    $("#onSellShop").click(function(){
+        var goodsId = {$goodsId};
+        $.ajax({
+            type: "POST",
+            url: "{:U('Shop/Goods/goods')}",
+            dataType:"json",
+            data:{
+                'id':goodsId
+            },
+            success:function(data,textStatus){
+                var list = data.data;
+                var str = '';
+                $.each(list,function(index,val){
+                    str +="<li data-id='"+val.id+"' data-storeId='"+val.store_id+"' ><a href=\"javascript:;\">"+val.store_name+"</a></li>";
+                })
+                $(".shop-list-box").html(str);
+                bindStoreListEvent();
+            }
+        })
+    })
+    /*在售店铺绑定事假函数*/
+    function bindStoreListEvent(){
+        $(".shop-list-box li").click(function(){
+            $(this).addClass("select").siblings().removeClass("select");
+            $("#store_id").val($(this).attr("data-storeId"));
+            $("#seller_delivery_id").val($(this).attr("data-id"));
+        })
+    }
+
+    /*加入购物车*/
+    $("#addCart").on("click",function(){
+        var goods_id = {$goodsId};//商品ID
+        var seller_delivery_id = $("#seller_delivery_id").val(); //seller_delivery的id
+        var goods_num = 1;//添加购物车数量
+        // if(goods_num <= goods_count){
+        $.ajax({
+            type: "POST",
+            dataType:'json',
+            url:"{:U('Shop/Cart/addGoods')}",
+            data:{"goods_id":goods_id,"seller_delivery_id":seller_delivery_id,"goods_num":goods_num},
+            success: function(data) {
+                //接收后台返回的结果
+                if (data.status == 1) {
+                    var num=$('.cart-num').text();
+                    var d = parseInt(num)+parseInt(1);
+                }
+                var d = dialog({content:data.info}).show();
+                window.setTimeout(function(){
+                    d.close().remove();
+                },1000);
+                getCartGoods();
+            }
+        });
+        // }
+        //return false;
+    })
+
+    /**收藏*/
+    $("#favorite").on("click",function(){
+
+        var goods_id = {$goodsId};//商品ID
+        $.ajax({
+            method:'post',
+            dataType:'json',
+            url: "{:U('Shop/Goods/collect')}",
+            data:{"goods_id":goods_id},
+            async:false,
+            success:function(data){
+                if (data.status == 1) {
+                    $("#favorite").toggleClass("addBtn");
+                    $("#favorite").text(data.data);
+                }
+                var d = dialog({content:data.info}).show();
+                window.setTimeout(function(){
+                    d.close().remove();
+                },1000);
+            }
+        });
+
+        // }
+        //return false;
+    })
+</script>

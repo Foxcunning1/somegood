@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0,user-scalable=no" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <title>优惠券列表</title>
+  <link rel="stylesheet" type="text/css" href="__PUBLIC__/scripts/artdialog/ui-dialog.css" />
+  <link rel="stylesheet" type="text/css" href="__PUBLIC__/statics/admin/css/icon/iconfont.css" />
+  <link rel="stylesheet" type="text/css" href="__PUBLIC__/statics/admin/css/style.css" />
+  <link rel="stylesheet" type="text/css" href="__PUBLIC__/css/pagination.css" />
+  <script type="text/javascript" charset="utf-8" src="__PUBLIC__/scripts/jquery/jquery-1.11.2.min.js"></script>
+  <script type="text/javascript" charset="utf-8" src="__PUBLIC__/scripts/jquery/Validform_v5.3.2_min.js"></script>
+  <script type="text/javascript" charset="utf-8" src="__PUBLIC__/scripts/artdialog/dialog-plus-min.js"></script>
+  <script type="text/javascript" charset="utf-8" src="__PUBLIC__/statics/admin/js/common.js"></script>
+  <script type="text/javascript" charset="utf-8" src="__PUBLIC__/statics/admin/js/laymain.js"></script>
+  <script type="text/javascript">
+      //菜单获取
+      var ajax_url="{:U('Index/ajax')}";
+      //站点列表获取
+      var ajax_site_url = "<?php echo U('Site/sajax');?>";
+
+
+      function doPostBack(objId) {
+          if(objId == 'btnDelete') {
+              $('#couponForm').submit();
+          }
+          if(objId == 'btnSearch'){
+              $('#searchForm').submit();
+          }
+      }
+      function confirmAct()
+      {
+          if(confirm('此操作无法恢复，删除优惠券可能造成不必要的纠纷，确定要删除么？？？？'))
+          {
+              return true;
+          }
+          return false;
+      }
+  </script>
+</head>
+<body class="mainbody">
+
+<!--导航栏-->
+<div class="location">
+  <a href="javascript:history.back(-1);" class="back"><i class="iconfont icon-up"></i><span>返回上一页</span></a>
+  <a href="{:U('Index/center')}" class="home"><i class="iconfont icon-home"></i><span>首页</span></a>
+  <i class="arrow iconfont icon-arrow-right"></i>
+  <span><if condition="$status eq 'reduction'">优惠券回收站<else/>优惠券列表</if></span>
+</div>
+<!--/导航栏-->
+
+<!--工具栏-->
+<div id="floatHead" class="toolbar-wrap">
+  <div class="toolbar">
+    <div class="box-wrap">
+      <a class="menu-btn"></a>
+        <div class="l-list">
+          <ul class="icon-list">
+            <li><a href="javascript:void(0);" onclick="checkAll(this);"><i class="iconfont icon-check"></i><span>全选</span></a></li>
+            <li><a onclick="ExePostBack('btnDelete','删除优惠券类型可能会造成纠纷，确定删除？')" id="btnDelete" href="javascript:void(0);"><i class="iconfont icon-delete"></i><span>删除</span></a></li>
+          <if condition="$status eq 'list'">
+            <li><a href="{:U('Coupon/list',array('status'=>'reduction','coupon_type_id'=>$coupon_type_id,'send_type'=>$send_type))}"><i class="iconfont icon-build"></i><span>回收站</span></a></li>
+            <else/>
+            <li><a href="{:U('Coupon/list',array('status'=>'list','coupon_type_id'=>$coupon_type_id,'send_type'=>$send_type))}"><i class="iconfont icon-up"></i><span>返回列表</span></a></li>
+          </if>
+          </ul>
+        </div>
+    </div>
+  </div>
+</div>
+<!--/工具栏-->
+
+<!--列表-->
+<div class="table-container">
+
+  <table width="100%" border="0" cellspacing="0" cellpadding="0" class="ltable">
+    <tr>
+      <th>选择</th>
+      <if condition="$send_type eq 2"><th>序列号</th></if>
+      <th>优惠券类型</th>
+      <th>订单号</th>
+      <th>使用会员</th>
+      <th>使用时间</th>
+      <if condition="$send_type eq 1"><th>短信通知</th></if>
+      <th>操作</th>
+    </tr>
+    <form method="post" action="{:U('Coupon/del',array('status'=>'deleted'))}" id="couponForm">
+      <volist name="list" id="item">
+        <tr>
+          <td align="center">
+            <span class="checkall" style="vertical-align:middle;">
+                <input type="checkbox" name="ids[]" value="{$item.coupon_id}" />
+            </span>
+          </td>
+          <if condition="$send_type eq 2"><td align="center">{$item.coupon_sn}</td></if>
+          <td align="center">{$item.type_name}</td>
+          <td align="center">{$item.order_sn}</td>
+          <td align="center">{$item.nick_name}</td>
+          <td align="center"><if condition="$item['used_time'] eq 0">未使用<else/>{$item.used_time|date='Y-m-d H:i:s',###}</if></td>
+          <if condition="$send_type eq 1"><td align="center"><if condition="$itemp['emailed'] eq 0">未通知<else/>已通知</if></td></if>
+          <td align="center">
+          <if condition="$status eq 'reduction'">
+            <a href="{:U('Coupon/del')}?status=reduction&ids={$item.coupon_id}">还原</a>|
+            <a href="{:U('Coupon/del')}?status=deleted&ids={$item.coupon_id}" onclick="return confirmAct();">彻底删除</a>
+            <else/>
+              <a href="{:U('Coupon/del')}?status=del&ids={$item.coupon_id}" onclick="return confirmAct();">删除</a>
+          </if>
+          </td>
+        </tr>
+      </volist>
+    </form>
+
+  </table>
+
+</div>
+<!--/列表-->
+<!--内容底部-->
+<div class="line20"></div>
+<div class="pagelist">
+  <div class="l-btns">
+    <span>显示</span><span>{:C('COUPON_PAGE_SIZE')}</span><span>条/页</span>
+  </div>
+  <div id="PageContent" class="default">{$page}</div>
+</div>
+<!--/内容底部-->
+
+</body>
+</html>

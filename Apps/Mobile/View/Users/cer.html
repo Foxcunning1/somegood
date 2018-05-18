@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>{$page_title}</title>
+    <import type="css" file="statics.mobile.css.public,statics.mobile.css.user" />
+    <import type="js" file="scripts.zepto.zepto#min" />
+    <script type="text/javascript" src="__PUBLIC__/statics/mobile/js/rem.js" fu-psd="720" fu-min="50" fu-max="100"></script>
+</head>
+<body>
+<div class="page-title">
+    <!--返回按钮-->
+    <div class="to-back-box">
+        <a href="javascript:history.back();" class="icons icon-back"></a>
+    </div>
+    <!--返回按钮-->
+    <!--标题-->
+    <h2 class="title">认证信息</h2>
+    <!--标题-->
+</div>
+<div class="change-box confirm-box">
+    <!--实名认证-->
+    <dl><dt>真实姓名: </dt><dd>{$info.real_name}</dd></dt></dl>
+    <dl><dt>身份证号:</dt><dd>{$info.id_cardnum}</dd></dt></dl>
+    <div class="img-box" onClick="setFocusImg(this);">
+        <img src="__PUBLIC__/Uploads/{$plist[0]}" bigsrc="__PUBLIC__/Uploads/{$plist[0]}" realpath="{$plist[0]}" />
+        <img src="__PUBLIC__/Uploads/{$plist[1]}" bigsrc="__PUBLIC__/Uploads/{$plist[1]}" realpath="{$plist[1]}" />
+    </div>
+</div>
+<!--公用底部-->
+<include file="Public/ufooter" />
+<!--公用底部-->
+</body>
+</html>

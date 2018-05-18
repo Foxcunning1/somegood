@@ -1,0 +1,1319 @@
+[ 2018-01-15T16:25:08+08:00 ] ::1 /somegood/Seller/Goods/enter_shop.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.007000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.007000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-01-15T16:25:10+08:00 ] ::1 /somegood/Seller/Login/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: returnUrl D:\xampps\htdocs\somegood\Runtime\Cache\Seller\15d1e2de814c3836b0df076c67740b54.php 第 49 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.005000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.005000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001001s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001001s ]
+
+[ 2018-01-15T16:25:11+08:00 ] ::1 /somegood/Seller/Login/login.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `sg_users` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_users` WHERE `mobile` = '18664988205' LIMIT 1   [ RunTime:0.0020s ]
+SQL: SELECT u.uid,`password`,`salt`,u.mobile as mobile,u.error_num,u.error_time,ug.* FROM sg_users u LEFT JOIN sg_users_group as ug ON ug.gid = u.group_id  WHERE u.mobile = '18664988205' LIMIT 1   [ RunTime:0.0020s ]
+SQL: UPDATE `sg_users` SET `error_num`='0',`error_time`='0' WHERE `mobile` = '18664988205' [ RunTime:0.0010s ]
+NOTIC: [8] Undefined index: is_seller D:\xampps\htdocs\somegood\Apps\Seller\Controller\LoginController.class.php 第 29 行.
+NOTIC: [8] Undefined index: is_store D:\xampps\htdocs\somegood\Apps\Seller\Controller\LoginController.class.php 第 30 行.
+NOTIC: [8] Undefined index: remeber D:\xampps\htdocs\somegood\Apps\Seller\Controller\LoginController.class.php 第 31 行.
+
+[ 2018-01-15T16:25:12+08:00 ] ::1 /somegood/Seller/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [2048] Declaration of Common\Model\UsersModel::save() should be compatible with Think\Model::save($data = '', $options = Array) D:\xampps\htdocs\somegood\Apps\Common\Model\UsersModel.class.php 第 5 行.
+SQL: SHOW COLUMNS FROM `sg_users` [ RunTime:0.0040s ]
+SQL: SHOW COLUMNS FROM `sg_users_seller` [ RunTime:0.0030s ]
+SQL: SELECT `uid`,s.company_name,u.avatar FROM sg_users_seller s LEFT JOIN sg_users AS u on s.user_id = u.uid  WHERE `user_id` = null LIMIT 1   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.006001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.006001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-01-15T16:25:12+08:00 ] ::1 /somegood/Seller/Order/settlement.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0040s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `sg_order` WHERE ( status=3 or status=6 ) AND `seller_id` = 843 AND `is_son` <> '0' AND `order_sn` LIKE '%' ORDER BY add_time DESC,id DESC LIMIT 1   [ RunTime:0.0010s ]
+NOTIC: [8] Undefined variable: count D:\xampps\htdocs\somegood\Apps\Common\Model\OrderModel.class.php 第 888 行.
+SQL: SELECT `order_sn`,`original_price`,original_price * 0.8 as store_money,`status`,`complete_time` FROM `sg_order` WHERE ( status=3 or status=6 ) AND `seller_id` = 843 AND `is_son` <> '0' AND `order_sn` LIKE '%' ORDER BY add_time DESC,id DESC LIMIT 0,10   [ RunTime:0.0010s ]
+SQL: SELECT SUM(original_price) AS tp_sum FROM `sg_order` WHERE `status` = 6 AND `seller_id` = 843 LIMIT 1   [ RunTime:0.0020s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `sg_order` WHERE `status` = 6 AND `seller_id` = 843 AND `settlement_time` BETWEEN 1515859200 AND 1515945600 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT SUM(original_price) AS tp_sum FROM `sg_order` WHERE `status` = 6 AND `seller_id` = 843 AND `settlement_time` BETWEEN 1515859200 AND 1515945600 LIMIT 1   [ RunTime:0.0020s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `sg_order` WHERE `status` = 6 AND `seller_id` = 843 AND `settlement_time` BETWEEN 1515945600 AND 1516032000 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT SUM(original_price) AS tp_sum FROM `sg_order` WHERE `status` = 6 AND `seller_id` = 843 AND `settlement_time` BETWEEN 1515945600 AND 1516032000 LIMIT 1   [ RunTime:0.0020s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Use of undefined constant all - assumed 'all' D:\xampps\htdocs\somegood\Runtime\Cache\Seller\4925a80900a29c1b88bde9b8ab9d3b6b.php 第 28 行.
+NOTIC: [8] Use of undefined constant ing - assumed 'ing' D:\xampps\htdocs\somegood\Runtime\Cache\Seller\4925a80900a29c1b88bde9b8ab9d3b6b.php 第 29 行.
+NOTIC: [8] Use of undefined constant ed - assumed 'ed' D:\xampps\htdocs\somegood\Runtime\Cache\Seller\4925a80900a29c1b88bde9b8ab9d3b6b.php 第 30 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.015001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-01-15T16:25:12+08:00 ] ::1 /somegood/Seller/Index/getNotice.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `sg_notice` [ RunTime:0.0090s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `sg_notice` WHERE `time` < 1516004712 AND `to` = 'seller' AND `s_id` = 843 AND `is_readed` = 0 AND `type` = 'waitSend' LIMIT 1   [ RunTime:0.0050s ]
+
+[ 2018-01-15T16:25:23+08:00 ] ::1 /somegood/Seller/Goods/enter_shop.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+ERR: 非法操作:enter_shop
+
+[ 2018-01-15T17:42:26+08:00 ] ::1 /somegood/seller/index/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [2048] Declaration of Common\Model\UsersModel::save() should be compatible with Think\Model::save($data = '', $options = Array) D:\xampps\htdocs\somegood\Apps\Common\Model\UsersModel.class.php 第 5 行.
+SQL: SHOW COLUMNS FROM `sg_users` [ RunTime:0.0070s ]
+SQL: SHOW COLUMNS FROM `sg_users_seller` [ RunTime:0.0080s ]
+SQL: SELECT `uid`,s.company_name,u.avatar FROM sg_users_seller s LEFT JOIN sg_users AS u on s.user_id = u.uid  WHERE `user_id` = null LIMIT 1   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.006000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.006000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-01-15T17:42:26+08:00 ] ::1 /somegood/Seller/Order/settlement.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0040s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `sg_order` WHERE ( status=3 or status=6 ) AND `seller_id` = 843 AND `is_son` <> '0' AND `order_sn` LIKE '%' ORDER BY add_time DESC,id DESC LIMIT 1   [ RunTime:0.0010s ]
+NOTIC: [8] Undefined variable: count D:\xampps\htdocs\somegood\Apps\Common\Model\OrderModel.class.php 第 888 行.
+SQL: SELECT `order_sn`,`original_price`,original_price * 0.8 as store_money,`status`,`complete_time` FROM `sg_order` WHERE ( status=3 or status=6 ) AND `seller_id` = 843 AND `is_son` <> '0' AND `order_sn` LIKE '%' ORDER BY add_time DESC,id DESC LIMIT 0,10   [ RunTime:0.0010s ]
+SQL: SELECT SUM(original_price) AS tp_sum FROM `sg_order` WHERE `status` = 6 AND `seller_id` = 843 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `sg_order` WHERE `status` = 6 AND `seller_id` = 843 AND `settlement_time` BETWEEN 1515859200 AND 1515945600 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT SUM(original_price) AS tp_sum FROM `sg_order` WHERE `status` = 6 AND `seller_id` = 843 AND `settlement_time` BETWEEN 1515859200 AND 1515945600 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `sg_order` WHERE `status` = 6 AND `seller_id` = 843 AND `settlement_time` BETWEEN 1515945600 AND 1516032000 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT SUM(original_price) AS tp_sum FROM `sg_order` WHERE `status` = 6 AND `seller_id` = 843 AND `settlement_time` BETWEEN 1515945600 AND 1516032000 LIMIT 1   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Use of undefined constant all - assumed 'all' D:\xampps\htdocs\somegood\Runtime\Cache\Seller\4925a80900a29c1b88bde9b8ab9d3b6b.php 第 28 行.
+NOTIC: [8] Use of undefined constant ing - assumed 'ing' D:\xampps\htdocs\somegood\Runtime\Cache\Seller\4925a80900a29c1b88bde9b8ab9d3b6b.php 第 29 行.
+NOTIC: [8] Use of undefined constant ed - assumed 'ed' D:\xampps\htdocs\somegood\Runtime\Cache\Seller\4925a80900a29c1b88bde9b8ab9d3b6b.php 第 30 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.007000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.007000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-01-15T17:42:26+08:00 ] ::1 /somegood/Seller/Index/getNotice.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `sg_notice` [ RunTime:0.0030s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `sg_notice` WHERE `time` < 1516009346 AND `to` = 'seller' AND `s_id` = 843 AND `is_readed` = 0 AND `type` = 'waitSend' LIMIT 1   [ RunTime:0.0010s ]
+
+[ 2018-01-15T17:42:28+08:00 ] ::1 /somegood/Seller/Index/column.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002001s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002001s ]
+SQL: SHOW COLUMNS FROM `sg_goods` [ RunTime:0.0090s ]
+SQL: SHOW COLUMNS FROM `sg_seller_column` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `sg_seller_column` WHERE `user_id` = 843 ORDER BY id DESC , parent_id ASC  [ RunTime:0.0110s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: pageShow D:\xampps\htdocs\somegood\Runtime\Cache\Seller\c6a1f06b3c85f527d73aa93ca66fa23a.php 第 40 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.014001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.014001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-01-15T17:42:35+08:00 ] ::1 /somegood/Seller/Logistics/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_seller_logistics` [ RunTime:0.0070s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `sg_seller_logistics` WHERE `users_id` = 843 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `sg_seller_logistics` WHERE `users_id` = 843 LIMIT 0,10   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_logistics` [ RunTime:0.0070s ]
+SQL: SELECT `id`,`name` FROM `sg_logistics` WHERE ( 1=1 AND id='59' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_seller_logistics_region` [ RunTime:0.0060s ]
+SQL: SELECT * FROM `sg_seller_logistics_region` WHERE ( 1=1 AND seller_logistics_id='18' )  [ RunTime:0.0010s ]
+SQL: SELECT `id`,`name` FROM `sg_logistics` WHERE ( 1=1 AND id='54' ) LIMIT 1   [ RunTime:0.0020s ]
+SQL: SELECT * FROM `sg_seller_logistics_region` WHERE ( 1=1 AND seller_logistics_id='19' )  [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_logistics` [ RunTime:0.0060s ]
+SQL: SELECT * FROM `sg_logistics` ORDER BY sort_num ASC  [ RunTime:0.0020s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.015001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-01-15T17:42:37+08:00 ] ::1 /somegood/Seller/Index/column.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_goods` [ RunTime:0.0060s ]
+SQL: SHOW COLUMNS FROM `sg_seller_column` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `sg_seller_column` WHERE `user_id` = 843 ORDER BY id DESC , parent_id ASC  [ RunTime:0.0020s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: pageShow D:\xampps\htdocs\somegood\Runtime\Cache\Seller\c6a1f06b3c85f527d73aa93ca66fa23a.php 第 40 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.006000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.006000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-01-15T17:42:38+08:00 ] ::1 /somegood/Seller/Logistics/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_seller_logistics` [ RunTime:0.0180s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `sg_seller_logistics` WHERE `users_id` = 843 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `sg_seller_logistics` WHERE `users_id` = 843 LIMIT 0,10   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_logistics` [ RunTime:0.0060s ]
+SQL: SELECT `id`,`name` FROM `sg_logistics` WHERE ( 1=1 AND id='59' ) LIMIT 1   [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `sg_seller_logistics_region` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `sg_seller_logistics_region` WHERE ( 1=1 AND seller_logistics_id='18' )  [ RunTime:0.0010s ]
+SQL: SELECT `id`,`name` FROM `sg_logistics` WHERE ( 1=1 AND id='54' ) LIMIT 1   [ RunTime:0.0020s ]
+SQL: SELECT * FROM `sg_seller_logistics_region` WHERE ( 1=1 AND seller_logistics_id='19' )  [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_logistics` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `sg_logistics` ORDER BY sort_num ASC  [ RunTime:0.0020s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.007001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.007001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-01-15T17:42:39+08:00 ] ::1 /somegood/Seller/Order/settlement.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0080s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0070s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `sg_order` WHERE ( status=3 or status=6 ) AND `seller_id` = 843 AND `is_son` <> '0' AND `order_sn` LIKE '%' ORDER BY add_time DESC,id DESC LIMIT 1   [ RunTime:0.0020s ]
+NOTIC: [8] Undefined variable: count D:\xampps\htdocs\somegood\Apps\Common\Model\OrderModel.class.php 第 888 行.
+SQL: SELECT `order_sn`,`original_price`,original_price * 0.8 as store_money,`status`,`complete_time` FROM `sg_order` WHERE ( status=3 or status=6 ) AND `seller_id` = 843 AND `is_son` <> '0' AND `order_sn` LIKE '%' ORDER BY add_time DESC,id DESC LIMIT 0,10   [ RunTime:0.0010s ]
+SQL: SELECT SUM(original_price) AS tp_sum FROM `sg_order` WHERE `status` = 6 AND `seller_id` = 843 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `sg_order` WHERE `status` = 6 AND `seller_id` = 843 AND `settlement_time` BETWEEN 1515859200 AND 1515945600 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT SUM(original_price) AS tp_sum FROM `sg_order` WHERE `status` = 6 AND `seller_id` = 843 AND `settlement_time` BETWEEN 1515859200 AND 1515945600 LIMIT 1   [ RunTime:0.0020s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `sg_order` WHERE `status` = 6 AND `seller_id` = 843 AND `settlement_time` BETWEEN 1515945600 AND 1516032000 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT SUM(original_price) AS tp_sum FROM `sg_order` WHERE `status` = 6 AND `seller_id` = 843 AND `settlement_time` BETWEEN 1515945600 AND 1516032000 LIMIT 1   [ RunTime:0.0020s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Use of undefined constant all - assumed 'all' D:\xampps\htdocs\somegood\Runtime\Cache\Seller\4925a80900a29c1b88bde9b8ab9d3b6b.php 第 28 行.
+NOTIC: [8] Use of undefined constant ing - assumed 'ing' D:\xampps\htdocs\somegood\Runtime\Cache\Seller\4925a80900a29c1b88bde9b8ab9d3b6b.php 第 29 行.
+NOTIC: [8] Use of undefined constant ed - assumed 'ed' D:\xampps\htdocs\somegood\Runtime\Cache\Seller\4925a80900a29c1b88bde9b8ab9d3b6b.php 第 30 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.006000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.006000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-01-15T17:42:41+08:00 ] ::1 /somegood/Seller/Adv/index/type/online.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `sg_adv` [ RunTime:0.0060s ]
+SQL: SHOW COLUMNS FROM `sg_seller_adv_log` [ RunTime:0.0060s ]
+SQL: SELECT COUNT(*) AS tp_count FROM sg_seller_adv_log sal WHERE `seller_id` = 843 LIMIT 1   [ RunTime:0.0040s ]
+SQL: SELECT `adv_id` FROM `sg_seller_adv_log` WHERE `seller_id` = 843 AND `type` = 0  [ RunTime:0.0010s ]
+NOTIC: [8] Undefined index: list D:\xampps\htdocs\somegood\Apps\Seller\Controller\AdvController.class.php 第 27 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: pageShow D:\xampps\htdocs\somegood\Runtime\Cache\Seller\b14dd73e57a635bed7418efa8ccb31e9.php 第 78 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.029002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.029002s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-01-15T17:42:41+08:00 ] ::1 /somegood/Seller/Adv/index/type/store.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_adv` [ RunTime:0.0060s ]
+SQL: SHOW COLUMNS FROM `sg_seller_adv_log` [ RunTime:0.0060s ]
+SQL: SELECT COUNT(*) AS tp_count FROM sg_seller_adv_log sal WHERE `seller_id` = 843 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT sal.id,sal.title,sal.img_url,s.store_name,r.name as area,s.address,sap.title as pos_title,sal.adv_id,sal.begin_time,sal.end_time,sal.is_delivery FROM sg_seller_adv_log sal LEFT JOIN sg_store AS s on sal.store_id = s.sid LEFT JOIN sg_region AS r on s.area_id = r.id LEFT JOIN sg_store_adv_position AS sap on sal.adv_position = sap.id  WHERE `seller_id` = '843' AND `type` = 1 ORDER BY sal.is_delivery ASC, sal.seller_id DESC LIMIT 0,15   [ RunTime:0.0510s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: pageShow D:\xampps\htdocs\somegood\Runtime\Cache\Seller\b14dd73e57a635bed7418efa8ccb31e9.php 第 78 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.015001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-01-15T17:42:43+08:00 ] ::1 /somegood/Seller/Extension/index/type/all.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `sg_goods` [ RunTime:0.0060s ]
+NOTIC: [8] Undefined variable: pageCondition D:\xampps\htdocs\somegood\Apps\Seller\Controller\ExtensionController.class.php 第 31 行.
+SQL: SELECT COUNT(*) AS tp_count FROM sg_goods g WHERE `user_id` = 843 AND `is_extension` = 1 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT g.id,g.is_onsale,g.is_extension,g.length,g.width,g.height,g.status,g.add_time,g.online_stock,g.online_sales_volume,g.goods_thumb,g.original_img,g.goods_title,g.price,g.content,gc.title AS category_name,SUM(sd.sales_volume) as sales_volume FROM sg_goods g LEFT JOIN sg_goods_category AS gc ON g.category_id = gc.id LEFT JOIN sg_seller_delivery AS sd ON g.id = sd.sg_id  WHERE `user_id` = '843' AND `is_extension` = 1 GROUP BY g.id ORDER BY sales_volume DESC LIMIT 0,10   [ RunTime:0.0060s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.025002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.025002s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-01-15T17:42:44+08:00 ] ::1 /somegood/Seller/Extension/index/type/wait.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001001s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001001s ]
+SQL: SHOW COLUMNS FROM `sg_goods` [ RunTime:0.0080s ]
+SQL: SELECT COUNT(*) AS tp_count FROM sg_goods g WHERE `user_id` = 843 AND g.status = 0 AND `is_extension` = 1 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT g.id,g.is_onsale,g.is_extension,g.length,g.width,g.height,g.status,g.add_time,g.online_stock,g.online_sales_volume,g.goods_thumb,g.original_img,g.goods_title,g.price,g.content,gc.title AS category_name,SUM(sd.sales_volume) as sales_volume FROM sg_goods g LEFT JOIN sg_goods_category AS gc ON g.category_id = gc.id LEFT JOIN sg_seller_delivery AS sd ON g.id = sd.sg_id  WHERE `user_id` = '843' AND g.status = 0 AND `is_extension` = 1 GROUP BY g.id ORDER BY sales_volume DESC LIMIT 0,10   [ RunTime:0.0140s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.009001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.009001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-01-15T17:42:44+08:00 ] ::1 /somegood/Seller/Extension/index/type/ing.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_goods` [ RunTime:0.0080s ]
+SQL: SELECT COUNT(*) AS tp_count FROM sg_goods g WHERE `user_id` = 843 AND g.status > 0 AND `is_extension` = 1 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT g.id,g.is_onsale,g.is_extension,g.length,g.width,g.height,g.status,g.add_time,g.online_stock,g.online_sales_volume,g.goods_thumb,g.original_img,g.goods_title,g.price,g.content,gc.title AS category_name,SUM(sd.sales_volume) as sales_volume FROM sg_goods g LEFT JOIN sg_goods_category AS gc ON g.category_id = gc.id LEFT JOIN sg_seller_delivery AS sd ON g.id = sd.sg_id  WHERE `user_id` = '843' AND g.status > 0 AND `is_extension` = 1 GROUP BY g.id ORDER BY sales_volume DESC LIMIT 0,10   [ RunTime:0.0070s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.009001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.009001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-01-15T17:42:46+08:00 ] ::1 /somegood/Seller/Goods/publish.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_goods` [ RunTime:0.0050s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: web_keywords D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 6 行.
+NOTIC: [8] Undefined variable: web_description D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 7 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 71 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 79 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 86 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 92 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 98 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 104 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 111 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 117 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 123 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 130 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 138 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 141 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 159 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 165 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 171 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Seller\048fade287fe297c753279dadac6cff5.php 第 178 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.031001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.031001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-01-15T17:42:46+08:00 ] ::1 /somegood/Seller/Goods/index/type/all.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_goods` [ RunTime:0.0060s ]
+NOTIC: [8] Undefined variable: pageCondition D:\xampps\htdocs\somegood\Apps\Seller\Controller\GoodsController.class.php 第 30 行.
+SQL: SELECT COUNT(*) AS tp_count FROM sg_goods g WHERE `user_id` = 843 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT g.id,g.is_onsale,g.is_extension,g.length,g.width,g.height,g.status,g.add_time,g.online_stock,g.online_sales_volume,g.goods_thumb,g.original_img,g.goods_title,g.price,g.content,gc.title AS category_name,SUM(sd.sales_volume) as sales_volume FROM sg_goods g LEFT JOIN sg_goods_category AS gc ON g.category_id = gc.id LEFT JOIN sg_seller_delivery AS sd ON g.id = sd.sg_id  WHERE `user_id` = '843' GROUP BY g.id ORDER BY sales_volume DESC LIMIT 0,10   [ RunTime:0.0060s ]
+SQL: SHOW COLUMNS FROM `sg_seller_delivery` [ RunTime:0.0040s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `sg_seller_delivery` WHERE `sg_id` = 2 AND `is_onsale` = 1 LIMIT 1   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.021001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.021001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-01-15T17:42:47+08:00 ] ::1 /somegood/Seller/Goods/index/type/sale.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+SQL: SHOW COLUMNS FROM `sg_goods` [ RunTime:0.0070s ]
+SQL: SELECT COUNT(*) AS tp_count FROM sg_goods g WHERE `user_id` = 843 AND g.is_onsale = 1 LIMIT 1   [ RunTime:0.0020s ]
+SQL: SELECT g.id,g.is_onsale,g.is_extension,g.length,g.width,g.height,g.status,g.add_time,g.online_stock,g.online_sales_volume,g.goods_thumb,g.original_img,g.goods_title,g.price,g.content,gc.title AS category_name,SUM(sd.sales_volume) as sales_volume FROM sg_goods g LEFT JOIN sg_goods_category AS gc ON g.category_id = gc.id LEFT JOIN sg_seller_delivery AS sd ON g.id = sd.sg_id  WHERE `user_id` = '843' AND g.is_onsale = 1 GROUP BY g.id ORDER BY sales_volume DESC LIMIT 0,10   [ RunTime:0.0050s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001001s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001001s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.008001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.008001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-01-15T17:42:48+08:00 ] ::1 /somegood/Seller/Goods/index/type/off.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `sg_goods` [ RunTime:0.0070s ]
+SQL: SELECT COUNT(*) AS tp_count FROM sg_goods g WHERE `user_id` = 843 AND g.is_onsale = 0 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT g.id,g.is_onsale,g.is_extension,g.length,g.width,g.height,g.status,g.add_time,g.online_stock,g.online_sales_volume,g.goods_thumb,g.original_img,g.goods_title,g.price,g.content,gc.title AS category_name,SUM(sd.sales_volume) as sales_volume FROM sg_goods g LEFT JOIN sg_goods_category AS gc ON g.category_id = gc.id LEFT JOIN sg_seller_delivery AS sd ON g.id = sd.sg_id  WHERE `user_id` = '843' AND g.is_onsale = 0 GROUP BY g.id ORDER BY sales_volume DESC LIMIT 0,10   [ RunTime:0.0060s ]
+SQL: SHOW COLUMNS FROM `sg_seller_delivery` [ RunTime:0.0060s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `sg_seller_delivery` WHERE `sg_id` = 2 AND `is_onsale` = 1 LIMIT 1   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.010001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.010001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-01-15T17:42:50+08:00 ] ::1 /somegood/Seller/Order/index.html?pageType=1
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002001s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003001s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0140s ]
+SQL: SELECT COUNT(*) AS tp_count FROM ( SELECT o.*,s.sid,group_concat(g.id) as g_id,group_concat(og.goods_title) as goods_title,group_concat(og.goods_thumb) as goods_thumb,ol.logistics_sn,ol.type,a.consignee,a.mobile,a.address FROM sg_order o LEFT JOIN sg_order_goods AS og ON o.order_sn=og.order_sn LEFT JOIN sg_store AS s ON og.store_id=s.sid LEFT JOIN sg_goods AS g ON og.goods_id=g.id LEFT JOIN sg_order_logistics AS ol ON ol.order_sn=o.order_sn LEFT JOIN sg_users_address AS a ON a.address_id=o.address_id  WHERE o.seller_id = '843' AND o.status = '1' GROUP BY o.order_sn  ) a LIMIT 1   [ RunTime:0.0100s ]
+SQL: SELECT o.*,s.sid,group_concat(g.id) as g_id,group_concat(og.goods_title) as goods_title,group_concat(og.goods_thumb) as goods_thumb,ol.logistics_sn,ol.type,a.consignee,a.mobile,a.address FROM sg_order o LEFT JOIN sg_order_goods AS og ON o.order_sn=og.order_sn LEFT JOIN sg_store AS s ON og.store_id=s.sid LEFT JOIN sg_goods AS g ON og.goods_id=g.id LEFT JOIN sg_order_logistics AS ol ON ol.order_sn=o.order_sn LEFT JOIN sg_users_address AS a ON a.address_id=o.address_id  WHERE o.seller_id = '843' AND o.status = '1' GROUP BY o.order_sn LIMIT 0,8   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_logistics` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `sg_logistics` ORDER BY sort_num ASC  [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Use of undefined constant Seller - assumed 'Seller' D:\xampps\htdocs\somegood\Runtime\Cache\Seller\0aebc54fc85d6df0c67d366da2f6fa7f.php 第 107 行.
+NOTIC: [8] Use of undefined constant Order - assumed 'Order' D:\xampps\htdocs\somegood\Runtime\Cache\Seller\0aebc54fc85d6df0c67d366da2f6fa7f.php 第 107 行.
+NOTIC: [2] Division by zero D:\xampps\htdocs\somegood\Runtime\Cache\Seller\0aebc54fc85d6df0c67d366da2f6fa7f.php 第 107 行.
+NOTIC: [8] Use of undefined constant index - assumed 'index' D:\xampps\htdocs\somegood\Runtime\Cache\Seller\0aebc54fc85d6df0c67d366da2f6fa7f.php 第 107 行.
+NOTIC: [2] Division by zero D:\xampps\htdocs\somegood\Runtime\Cache\Seller\0aebc54fc85d6df0c67d366da2f6fa7f.php 第 107 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.027001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.027001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-01-15T17:42:50+08:00 ] ::1 /somegood/Seller/Order/index.html?pageType=2
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0070s ]
+SQL: SELECT COUNT(*) AS tp_count FROM ( SELECT o.*,s.sid,group_concat(g.id) as g_id,group_concat(og.goods_title) as goods_title,group_concat(og.goods_thumb) as goods_thumb,ol.logistics_sn,ol.type,a.consignee,a.mobile,a.address FROM sg_order o LEFT JOIN sg_order_goods AS og ON o.order_sn=og.order_sn LEFT JOIN sg_store AS s ON og.store_id=s.sid LEFT JOIN sg_goods AS g ON og.goods_id=g.id LEFT JOIN sg_order_logistics AS ol ON ol.order_sn=o.order_sn LEFT JOIN sg_users_address AS a ON a.address_id=o.address_id  WHERE o.seller_id = '843' AND o.status = '2' GROUP BY o.order_sn  ) a LIMIT 1   [ RunTime:0.0060s ]
+SQL: SELECT o.*,s.sid,group_concat(g.id) as g_id,group_concat(og.goods_title) as goods_title,group_concat(og.goods_thumb) as goods_thumb,ol.logistics_sn,ol.type,a.consignee,a.mobile,a.address FROM sg_order o LEFT JOIN sg_order_goods AS og ON o.order_sn=og.order_sn LEFT JOIN sg_store AS s ON og.store_id=s.sid LEFT JOIN sg_goods AS g ON og.goods_id=g.id LEFT JOIN sg_order_logistics AS ol ON ol.order_sn=o.order_sn LEFT JOIN sg_users_address AS a ON a.address_id=o.address_id  WHERE o.seller_id = '843' AND o.status = '2' GROUP BY o.order_sn LIMIT 0,8   [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `sg_logistics` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `sg_logistics` ORDER BY sort_num ASC  [ RunTime:0.0030s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Use of undefined constant Seller - assumed 'Seller' D:\xampps\htdocs\somegood\Runtime\Cache\Seller\0aebc54fc85d6df0c67d366da2f6fa7f.php 第 107 行.
+NOTIC: [8] Use of undefined constant Order - assumed 'Order' D:\xampps\htdocs\somegood\Runtime\Cache\Seller\0aebc54fc85d6df0c67d366da2f6fa7f.php 第 107 行.
+NOTIC: [2] Division by zero D:\xampps\htdocs\somegood\Runtime\Cache\Seller\0aebc54fc85d6df0c67d366da2f6fa7f.php 第 107 行.
+NOTIC: [8] Use of undefined constant index - assumed 'index' D:\xampps\htdocs\somegood\Runtime\Cache\Seller\0aebc54fc85d6df0c67d366da2f6fa7f.php 第 107 行.
+NOTIC: [2] Division by zero D:\xampps\htdocs\somegood\Runtime\Cache\Seller\0aebc54fc85d6df0c67d366da2f6fa7f.php 第 107 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.009001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.009001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-01-15T17:42:51+08:00 ] ::1 /somegood/Seller/Order/index.html?pageType=3
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0070s ]
+SQL: SELECT COUNT(*) AS tp_count FROM ( SELECT o.*,s.sid,group_concat(g.id) as g_id,group_concat(og.goods_title) as goods_title,group_concat(og.goods_thumb) as goods_thumb,ol.logistics_sn,ol.type,a.consignee,a.mobile,a.address FROM sg_order o LEFT JOIN sg_order_goods AS og ON o.order_sn=og.order_sn LEFT JOIN sg_store AS s ON og.store_id=s.sid LEFT JOIN sg_goods AS g ON og.goods_id=g.id LEFT JOIN sg_order_logistics AS ol ON ol.order_sn=o.order_sn LEFT JOIN sg_users_address AS a ON a.address_id=o.address_id  WHERE o.seller_id = '843' AND ( o.status=3 OR o.status=6 ) GROUP BY o.order_sn  ) a LIMIT 1   [ RunTime:0.0070s ]
+SQL: SELECT o.*,s.sid,group_concat(g.id) as g_id,group_concat(og.goods_title) as goods_title,group_concat(og.goods_thumb) as goods_thumb,ol.logistics_sn,ol.type,a.consignee,a.mobile,a.address FROM sg_order o LEFT JOIN sg_order_goods AS og ON o.order_sn=og.order_sn LEFT JOIN sg_store AS s ON og.store_id=s.sid LEFT JOIN sg_goods AS g ON og.goods_id=g.id LEFT JOIN sg_order_logistics AS ol ON ol.order_sn=o.order_sn LEFT JOIN sg_users_address AS a ON a.address_id=o.address_id  WHERE o.seller_id = '843' AND ( o.status=3 OR o.status=6 ) GROUP BY o.order_sn LIMIT 0,8   [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `sg_logistics` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `sg_logistics` ORDER BY sort_num ASC  [ RunTime:0.0020s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Use of undefined constant Seller - assumed 'Seller' D:\xampps\htdocs\somegood\Runtime\Cache\Seller\0aebc54fc85d6df0c67d366da2f6fa7f.php 第 107 行.
+NOTIC: [8] Use of undefined constant Order - assumed 'Order' D:\xampps\htdocs\somegood\Runtime\Cache\Seller\0aebc54fc85d6df0c67d366da2f6fa7f.php 第 107 行.
+NOTIC: [2] Division by zero D:\xampps\htdocs\somegood\Runtime\Cache\Seller\0aebc54fc85d6df0c67d366da2f6fa7f.php 第 107 行.
+NOTIC: [8] Use of undefined constant index - assumed 'index' D:\xampps\htdocs\somegood\Runtime\Cache\Seller\0aebc54fc85d6df0c67d366da2f6fa7f.php 第 107 行.
+NOTIC: [2] Division by zero D:\xampps\htdocs\somegood\Runtime\Cache\Seller\0aebc54fc85d6df0c67d366da2f6fa7f.php 第 107 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.010001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.010001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-01-15T17:42:52+08:00 ] ::1 /somegood/Seller/Order/index.html?pageType=0
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0070s ]
+SQL: SELECT COUNT(*) AS tp_count FROM ( SELECT o.*,s.sid,group_concat(g.id) as g_id,group_concat(og.goods_title) as goods_title,group_concat(og.goods_thumb) as goods_thumb,ol.logistics_sn,ol.type,a.consignee,a.mobile,a.address FROM sg_order o LEFT JOIN sg_order_goods AS og ON o.order_sn=og.order_sn LEFT JOIN sg_store AS s ON og.store_id=s.sid LEFT JOIN sg_goods AS g ON og.goods_id=g.id LEFT JOIN sg_order_logistics AS ol ON ol.order_sn=o.order_sn LEFT JOIN sg_users_address AS a ON a.address_id=o.address_id  WHERE o.seller_id = '843' AND o.status = '0' GROUP BY o.order_sn  ) a LIMIT 1   [ RunTime:0.0070s ]
+SQL: SELECT o.*,s.sid,group_concat(g.id) as g_id,group_concat(og.goods_title) as goods_title,group_concat(og.goods_thumb) as goods_thumb,ol.logistics_sn,ol.type,a.consignee,a.mobile,a.address FROM sg_order o LEFT JOIN sg_order_goods AS og ON o.order_sn=og.order_sn LEFT JOIN sg_store AS s ON og.store_id=s.sid LEFT JOIN sg_goods AS g ON og.goods_id=g.id LEFT JOIN sg_order_logistics AS ol ON ol.order_sn=o.order_sn LEFT JOIN sg_users_address AS a ON a.address_id=o.address_id  WHERE o.seller_id = '843' AND o.status = '0' GROUP BY o.order_sn LIMIT 0,8   [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `sg_logistics` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `sg_logistics` ORDER BY sort_num ASC  [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Use of undefined constant Seller - assumed 'Seller' D:\xampps\htdocs\somegood\Runtime\Cache\Seller\0aebc54fc85d6df0c67d366da2f6fa7f.php 第 107 行.
+NOTIC: [8] Use of undefined constant Order - assumed 'Order' D:\xampps\htdocs\somegood\Runtime\Cache\Seller\0aebc54fc85d6df0c67d366da2f6fa7f.php 第 107 行.
+NOTIC: [2] Division by zero D:\xampps\htdocs\somegood\Runtime\Cache\Seller\0aebc54fc85d6df0c67d366da2f6fa7f.php 第 107 行.
+NOTIC: [8] Use of undefined constant index - assumed 'index' D:\xampps\htdocs\somegood\Runtime\Cache\Seller\0aebc54fc85d6df0c67d366da2f6fa7f.php 第 107 行.
+NOTIC: [2] Division by zero D:\xampps\htdocs\somegood\Runtime\Cache\Seller\0aebc54fc85d6df0c67d366da2f6fa7f.php 第 107 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.011001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.011001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-01-15T17:42:54+08:00 ] ::1 /somegood/Seller/Index/column.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_goods` [ RunTime:0.0070s ]
+SQL: SHOW COLUMNS FROM `sg_seller_column` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `sg_seller_column` WHERE `user_id` = 843 ORDER BY id DESC , parent_id ASC  [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: pageShow D:\xampps\htdocs\somegood\Runtime\Cache\Seller\c6a1f06b3c85f527d73aa93ca66fa23a.php 第 40 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.010001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.010001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-01-15T17:43:47+08:00 ] ::1 /somegood/Seller/Index/addColumn.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_seller_column` [ RunTime:0.0040s ]
+SQL: INSERT INTO `sg_seller_column` (`parent_id`,`name`,`user_id`) VALUES ('0','苹果','843') [ RunTime:0.0590s ]
+
+[ 2018-01-15T17:43:49+08:00 ] ::1 /somegood/Seller/Index/column.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_goods` [ RunTime:0.0070s ]
+SQL: SHOW COLUMNS FROM `sg_seller_column` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `sg_seller_column` WHERE `user_id` = 843 ORDER BY id DESC , parent_id ASC  [ RunTime:0.0020s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: pageShow D:\xampps\htdocs\somegood\Runtime\Cache\Seller\c6a1f06b3c85f527d73aa93ca66fa23a.php 第 40 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.012001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.012001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-01-15T17:44:23+08:00 ] ::1 /somegood/Seller/Index/addColumn.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_seller_column` [ RunTime:0.0060s ]
+SQL: INSERT INTO `sg_seller_column` (`parent_id`,`name`,`user_id`) VALUES ('4','苹果','843') [ RunTime:0.0550s ]
+
+[ 2018-01-15T17:44:25+08:00 ] ::1 /somegood/Seller/Index/column.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_goods` [ RunTime:0.0080s ]
+SQL: SHOW COLUMNS FROM `sg_seller_column` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `sg_seller_column` WHERE `user_id` = 843 ORDER BY id DESC , parent_id ASC  [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: pageShow D:\xampps\htdocs\somegood\Runtime\Cache\Seller\c6a1f06b3c85f527d73aa93ca66fa23a.php 第 40 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.008000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.008000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-01-15T17:44:31+08:00 ] ::1 /somegood/Seller/Index/column.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_goods` [ RunTime:0.0100s ]
+SQL: SHOW COLUMNS FROM `sg_seller_column` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `sg_seller_column` WHERE `user_id` = 843 ORDER BY id DESC , parent_id ASC  [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: pageShow D:\xampps\htdocs\somegood\Runtime\Cache\Seller\c6a1f06b3c85f527d73aa93ca66fa23a.php 第 40 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.008001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.008001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-01-15T17:44:32+08:00 ] ::1 /somegood/Seller/Index/column.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_goods` [ RunTime:0.0080s ]
+SQL: SHOW COLUMNS FROM `sg_seller_column` [ RunTime:0.0110s ]
+SQL: SELECT * FROM `sg_seller_column` WHERE `user_id` = 843 ORDER BY id DESC , parent_id ASC  [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: pageShow D:\xampps\htdocs\somegood\Runtime\Cache\Seller\c6a1f06b3c85f527d73aa93ca66fa23a.php 第 40 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.007000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.007000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-01-15T17:47:15+08:00 ] ::1 /somegood/Seller/Index/column.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+SQL: SHOW COLUMNS FROM `sg_goods` [ RunTime:0.0080s ]
+SQL: SHOW COLUMNS FROM `sg_seller_column` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `sg_seller_column` WHERE `user_id` = 843 ORDER BY id DESC , parent_id ASC  [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: pageShow D:\xampps\htdocs\somegood\Runtime\Cache\Seller\c6a1f06b3c85f527d73aa93ca66fa23a.php 第 40 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.009001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.009001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-01-15T17:47:26+08:00 ] ::1 /somegood/Seller/Index/getNotice.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+SQL: SHOW COLUMNS FROM `sg_notice` [ RunTime:0.0070s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `sg_notice` WHERE `time` < 1516009646 AND `to` = 'seller' AND `s_id` = 843 AND `is_readed` = 0 AND `type` = 'waitSend' LIMIT 1   [ RunTime:0.0010s ]
+
+[ 2018-01-15T17:48:00+08:00 ] ::1 /somegood/seller/index/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [2048] Declaration of Common\Model\UsersModel::save() should be compatible with Think\Model::save($data = '', $options = Array) D:\xampps\htdocs\somegood\Apps\Common\Model\UsersModel.class.php 第 5 行.
+SQL: SHOW COLUMNS FROM `sg_users` [ RunTime:0.0050s ]
+SQL: SHOW COLUMNS FROM `sg_users_seller` [ RunTime:0.0050s ]
+SQL: SELECT `uid`,s.company_name,u.avatar FROM sg_users_seller s LEFT JOIN sg_users AS u on s.user_id = u.uid  WHERE `user_id` = null LIMIT 1   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.007000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.007000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-01-15T17:48:01+08:00 ] ::1 /somegood/Seller/Order/settlement.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0080s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0080s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `sg_order` WHERE ( status=3 or status=6 ) AND `seller_id` = 843 AND `is_son` <> '0' AND `order_sn` LIKE '%' ORDER BY add_time DESC,id DESC LIMIT 1   [ RunTime:0.0010s ]
+NOTIC: [8] Undefined variable: count D:\xampps\htdocs\somegood\Apps\Common\Model\OrderModel.class.php 第 888 行.
+SQL: SELECT `order_sn`,`original_price`,original_price * 0.8 as store_money,`status`,`complete_time` FROM `sg_order` WHERE ( status=3 or status=6 ) AND `seller_id` = 843 AND `is_son` <> '0' AND `order_sn` LIKE '%' ORDER BY add_time DESC,id DESC LIMIT 0,10   [ RunTime:0.0020s ]
+SQL: SELECT SUM(original_price) AS tp_sum FROM `sg_order` WHERE `status` = 6 AND `seller_id` = 843 LIMIT 1   [ RunTime:0.0020s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `sg_order` WHERE `status` = 6 AND `seller_id` = 843 AND `settlement_time` BETWEEN 1515859200 AND 1515945600 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT SUM(original_price) AS tp_sum FROM `sg_order` WHERE `status` = 6 AND `seller_id` = 843 AND `settlement_time` BETWEEN 1515859200 AND 1515945600 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `sg_order` WHERE `status` = 6 AND `seller_id` = 843 AND `settlement_time` BETWEEN 1515945600 AND 1516032000 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT SUM(original_price) AS tp_sum FROM `sg_order` WHERE `status` = 6 AND `seller_id` = 843 AND `settlement_time` BETWEEN 1515945600 AND 1516032000 LIMIT 1   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Use of undefined constant all - assumed 'all' D:\xampps\htdocs\somegood\Runtime\Cache\Seller\4925a80900a29c1b88bde9b8ab9d3b6b.php 第 28 行.
+NOTIC: [8] Use of undefined constant ing - assumed 'ing' D:\xampps\htdocs\somegood\Runtime\Cache\Seller\4925a80900a29c1b88bde9b8ab9d3b6b.php 第 29 行.
+NOTIC: [8] Use of undefined constant ed - assumed 'ed' D:\xampps\htdocs\somegood\Runtime\Cache\Seller\4925a80900a29c1b88bde9b8ab9d3b6b.php 第 30 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.006001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.006001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-01-15T17:48:01+08:00 ] ::1 /somegood/Seller/Index/getNotice.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `sg_notice` [ RunTime:0.0060s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `sg_notice` WHERE `time` < 1516009681 AND `to` = 'seller' AND `s_id` = 843 AND `is_readed` = 0 AND `type` = 'waitSend' LIMIT 1   [ RunTime:0.0020s ]
+
+[ 2018-01-15T17:48:02+08:00 ] ::1 /somegood/Seller/Index/column.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001001s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001001s ]
+SQL: SHOW COLUMNS FROM `sg_goods` [ RunTime:0.0090s ]
+SQL: SHOW COLUMNS FROM `sg_seller_column` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `sg_seller_column` WHERE `user_id` = 843 ORDER BY id DESC , parent_id ASC  [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: pageShow D:\xampps\htdocs\somegood\Runtime\Cache\Seller\c6a1f06b3c85f527d73aa93ca66fa23a.php 第 40 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.005000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.005000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-01-15T17:53:01+08:00 ] ::1 /somegood/Seller/Index/getNotice.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_notice` [ RunTime:0.0030s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `sg_notice` WHERE `time` < 1516009981 AND `to` = 'seller' AND `s_id` = 843 AND `is_readed` = 0 AND `type` = 'waitSend' LIMIT 1   [ RunTime:0.0030s ]
+
+[ 2018-01-15T17:58:01+08:00 ] ::1 /somegood/Seller/Index/getNotice.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_notice` [ RunTime:0.0070s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `sg_notice` WHERE `time` < 1516010281 AND `to` = 'seller' AND `s_id` = 843 AND `is_readed` = 0 AND `type` = 'waitSend' LIMIT 1   [ RunTime:0.0010s ]
+
+[ 2018-01-15T18:03:01+08:00 ] ::1 /somegood/Seller/Index/getNotice.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_notice` [ RunTime:0.0060s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `sg_notice` WHERE `time` < 1516010581 AND `to` = 'seller' AND `s_id` = 843 AND `is_readed` = 0 AND `type` = 'waitSend' LIMIT 1   [ RunTime:0.0020s ]
+
+[ 2018-01-15T18:08:01+08:00 ] ::1 /somegood/Seller/Index/getNotice.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `sg_notice` [ RunTime:0.0020s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `sg_notice` WHERE `time` < 1516010881 AND `to` = 'seller' AND `s_id` = 843 AND `is_readed` = 0 AND `type` = 'waitSend' LIMIT 1   [ RunTime:0.0010s ]
+

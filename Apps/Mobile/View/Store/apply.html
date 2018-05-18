@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>加盟店<eq name="action" value="edit">信息更新<else/>申请</eq></title>
+    <import type="css" file="statics.mobile.css.public,statics.mobile.css.user,statics.mobile.css.zepto#select#dialog,statics.mobile.css.zepto#select#area,statics.mobile.css.webuploader" />
+    <import type="js" file="statics.mobile.js.jquery-1#10#2#min,statics.mobile.js.webuploader,statics.mobile.js.uploader,scripts.js.region,scripts.zepto.zepto#select#dialog,scripts.zepto.zepto#select#area,scripts.zepto.zepto#miniDialog,scripts.zepto.zepto#validateForm,statics.mobile.js.common"/>
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/css/mobileSelect.css">
+    <script src="__PUBLIC__/scripts/js/mobileSelect.js" type="text/javascript"></script>
+    <script type="text/javascript" src="__PUBLIC__/statics/mobile/js/rem.js" fu-psd="720" fu-min="50" fu-max="100"></script>
+    <script type="text/javascript">
+        var uploadType = 'image';
+        $(function(){
+            $(".upload-album").InitUploader({ btntext: "批量上传", multiple: true, sendurl: "{:U('Mobile/Member/uploadFile')}", swf: "/116cs/Public/JS/webuploader/uploader.swf" });
+        })
+    </script>
+</head>
+<body>
+<div class="page-title">
+    <!--返回按钮-->
+    <div class="to-back-box">
+        <a href="javascript:history.back();" class="icons icon-back"></a>
+    </div>
+    <h2 class="title">加盟店<eq name="action" value="add">申请<else/>信息查看</eq></h2>
+    <!--返回按钮-->
+</div>
+<!--商品筛选-->
+<div style="padding-top: 0.86rem;">
+    <empty name="info">
+        <div class="welcome-join">
+            <div class="title">欢迎加入三好连锁</div>
+            <p>线上提交加入申请，三好连锁平台审核成功后即有您的店铺信息</p>
+        </div>
+    </empty>
+    <form url="{:U('Mobile/Store/apply')}" method="post" class="shop-apply-form form-box page-box" id="shopApplyForm">
+        <div class="examine-status-box animate <if condition="$isStore eq 1">examined<elseif condition="$info"/>examining<else /></if>"></div>
+        <div class="title">基本信息</div>
+        <dl>
+            <dt>店铺名称</dt>
+            <dd><empty name="info"><input type="text" placeholder="输入店铺名称" class="required" name="data[store_name]" value="{$info.store_name}" required><else/><span class="txt">{$info.store_name}</span></empty></dd>
+        </dl>
+        <dl>
+            <dt>所在位置</dt>
+            <dd>
+                <empty name="info">
+                    <input type="text" name="area_text" id="areaText" data-value="{$info.area_list}" class="required" placeholder="点击选择区域 "
+                           value="<if condition="$info['area_id'] gt 1">{$info.region}</if>" />
+                    <input type="hidden" name="data[area_list]"  class="required" value="{$info.area_list}" />
+                    <else/><span class="txt">{$info.region}</span></empty>
+            </dd>
+        </dl>
+        <script>
+            //初始化所有城市JS
+            var selectArea = new MobileSelectArea();
+            var defaultArea = "{$info.area_list}";
+            var areaName = "{$info.region}";
+            var areaArr = ['','',''];
+            if(areaName!=""){
+                areaArr = areaName.split(' ');
+            }
+            selectArea.init({trigger:'#areaText',data:cityJson,default:0,text:areaArr,value:defaultArea,position:"bottom"});
+        </script>
+
+        <dl>
+            <dt>详细地址</dt>
+            <dd><empty name="info"><input type="text" placeholder="输入店铺详细地址" name="data[address]" class="required" value="{$info.address}" required><else/><span class="txt">{$info.address}</span></empty></dd>
+        </dl>
+        <dl>
+            <dt>店铺类型</dt>
+            <dd>
+                <div id="trigger">
+                    <empty name="info">
+                        <span class="trigger-span" obj-id="goods-category-box" id="goods-category-span"><if condition="$info.store_type neq null"><span class="txt">{$info.type_name}</span><else/>请选择店铺类型</if></span></div>
+                <input type="hidden" name="data[store_type]" id="storeType" value="{$info.store_type}">
+                <else/><span class="txt">{$info.type_name}</span></empty>
+            </dd>
+        </dl>
+        <dl>
+            <dt>主营产品</dt>
+            <dd><empty name="info"><input type="text" placeholder="输入店铺主营产品" name="data[products]" class="required" value="{$info.products}" required><else/><span class="txt">{$info.products}</span></empty></dd>
+        </dl>
+        <dl>
+            <dt>店铺电话</dt>
+            <dd><empty name="info"><input type="text" placeholder="输入店铺电话" name="data[phone]" value="{$info.phone}" required><else/><span class="txt">{$info.phone}</span></empty></dd>
+        </dl>
+        <dl>
+            <dt>营业时间</dt>
+            <dd><empty name="info"><input type="text" placeholder="营业时间,如8:00-16:00" name="data[business_hours]" value="{$info.business_hours}" required><else/><span class="txt">{$info.business_hours}</span></empty></dd>
+        </dl>
+        <dl>
+            <dt>手机号</dt>
+            <dd><empty name="info"><input type="text" title="手机号格式不正确" pattern="^1[3-9]\d{9}$" required placeholder="输入你的手机号" class="required mobile" name="data[mobile]" value="{$info.mobile}"><else/><span class="txt">{$info.mobile}</span></empty></dd>
+        </dl>
+        <dl>
+            <dt>真实姓名</dt>
+            <dd><empty name="info"><input type="text" placeholder="输入你的真实姓名" class="required" name="data[owner]" value="{$info.owner}"><else/><span class="txt">{$info.owner}</span></empty></dd>
+        </dl>
+        <script type="text/javascript">
+            // 添加全局站点信息
+            var BASE_URL = '/webuploader';
+        </script>
+        <input type="hidden" name="returnUrl" value="{$returnUrl}">
+        <input type="hidden" name="action" value="{$action}">
+        <empty name="info">
+            <button type="submit" class="apply-btn" id="phoneLoginBtn"><eq name="action" value="edit">更新<else/>申请</eq></button>
+            <p class="txt">点击申请，表示您已阅读并同意<a class="agreement" id="agreement" href="{:U('Mobile/Help/agreement')}">《用户注册协议》</a></p>
+            <else/>
+            <dl>
+                <dt>相册</dt>
+                <dd>
+                    <ul class="tip-ul">
+                        <volist name="plist" id="p">
+                            <li><a href="javascript:;"><img data-original="__PUBLIC__/uploads/{$p}_c200x200" src="__PUBLIC__/statics/mobile/images/default_img.png" alt="{$rlist.$key}"/></a></li>
+                        </volist>
+                    </ul>
+                </dd>
+            </dl>
+        </empty>
+    </form>
+</div>
+<!--公用底部-->
+<include file="Public/footer" />
+<!--公用底部-->
+<script>
+    $("#shopApplyForm").validateForm({isAutoClose: true,closeTime: 1500,return_url:"{$returnUrl}"});
+    <empty name="info">
+            /*加盟店申请 分类选择js*/
+        $(function(){
+            //给Id绑定事件
+            var Idname="#trigger";
+            //弹出插件
+            selectOption(Idname);
+            //点击弹出插件
+            function selectOption(Idname){
+                $(Idname).on('touchstart',function(){
+                    var mobileSelect2 = new MobileSelect({
+                        trigger: Idname,
+                        title: '店铺分类',
+                        wheels: [
+                            {
+                                data:
+                                    eval({$storeTypeList})
+                            },
+                        ],
+                        position:[0], //初始化定位 打开时默认选中的哪个 如果不填默认为0
+                        transitionEnd:function(indexArr, data){
+                            console.log(data);
+                        },
+                        cancel:function(indexArr, data){
+                            $(".mobileSelect").remove();
+                            if ($(Idname).next().hasClass('select')) {
+                                $(Idname).children("a").removeClass('select');
+                            }
+                        },
+                        callback:function(indexArr, data){
+                            $("#storeType").val((data[0].id));
+                            $(".mobileSelect.mobileSelect-show").remove();
+                        }
+                    });
+                })
+            }
+        })
+        </empty>
+</script>
+</body>
+</html>

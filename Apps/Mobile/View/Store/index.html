@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>3好连锁店铺列表页</title>
+    <import type="css" file="statics.mobile.css.public,statics.mobile.css.user" />
+    <import type="js" file="scripts.zepto.zepto#min,scripts.zepto.lazyload#min,statics.mobile.js.common" />
+    <script type="text/javascript" src="__PUBLIC__/statics/mobile/js/rem.js" fu-psd="720" fu-min="50" fu-max="100"></script>
+    <style type="text/css">
+        .icon-photo{ margin-top:0.25rem; margin-right:0.17rem; width: 0.32rem; height: 0.32rem; background: url(__PUBLIC__/statics/mobile/images/photo_icon.png) no-repeat center center; background-size:cover; display: inline-block;}
+    </style>
+</head>
+<body>
+<!--店铺主页-->
+<div class="shop-inner">
+    <!--返回按钮和分享-->
+    <div class="top-tips">
+        <a href="javascript:history.go(-1);" class="icons icon-back fl"></a>
+        <a href="{:U('Mobile/Store/apply')}" class="setting-box fr"><i class="icons icon-setting"></i></a>
+    </div>
+    <div class="head-portrait">
+        <a href="{:U('Users/setting',array('type'=>'user_img','is_store'=>1))}" class="fl">
+            <img src="__PUBLIC__/statics/mobile/images/default_img.png" data-original="__PUBLIC__/uploads/{$store.logo}_c200x200" alt="卖家头像" class="user-img" />
+        </a>
+    </div>
+    <div class="name-funs">
+        <h3>{$store.store_name}</h3>
+        <div class="follow"><span id="follow-num">{$attention}</span>人关注</div>
+    </div>
+    <!--<h2 class="title">{$store.store_name}</h2>-->
+    <!--返回按钮和分享-->
+</div>
+<!--店铺主页-->
+<div class="belong-store">
+    <div class="impression">
+        <ul>
+            <li>
+                <a href="{:U('Mobile/Store/storeGoodsList')}?pageType=sale">
+                    <span class="red">{$on_sale_num}件</span>
+                    <span>在售</span>
+                </a>
+            </li>
+            <li>
+                <a href="{:U('Mobile/Store/storeGoodsList')}?pageType=off">
+                    <span class="red">{$off_sale_num}件</span>
+                    <span>已失效</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+<!--所属店铺-->
+<div class="user-section">
+    <div class="sec-content">
+        <ul class="items">
+            <li>
+                <i class="icons icon-my-order"></i>
+                <a href="{:U('Mobile/Store/storeOrder')}?pageType=1">
+                    <span class="fl">我的订单</span><i class="icons icon-more fr"></i><span class="num fr" id="buyNum"><!--0--></span>
+                </a>
+            </li>
+            <li>
+                <i class="icons icon-my-sell"></i>
+                <a href="{:U('Mobile/Store/storeGoodsList')}?pageType=sale">
+                    <span class="fl">在售</span><i class="icons icon-more fr"></i><span class="num fr" id="releaseNum"><!--{$on_sale_num}--></span>
+                </a>
+            </li>
+            <li>
+                <i class="icons icon-settlement"></i>
+                <a href="{:U('Mobile/Store/settlement')}">
+                    <span class="fl">我的结算</span><i class="icons icon-more fr"></i>
+                </a>
+            </li>
+            <li>
+                <i class="icons icon-photo"></i>
+                <a href="{:U('Mobile/Store/photos')}">
+                    <span class="fl">店铺相册</span><i class="icons icon-more fr"></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+<!--商品筛选部分-->
+<!--公用底部-->
+<include file="Public/ufooter" />
+<!--公用底部-->
+<script>
+    $(function(){
+        //图片延迟加载
+        $(".head-portrait a img").lazyload({effect : "fadeIn"});
+    })
+</script>
+</body>
+</html>

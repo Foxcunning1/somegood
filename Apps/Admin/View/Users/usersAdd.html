@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0,user-scalable=no" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<title>编辑会员</title>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/scripts/artdialog/ui-dialog.css" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/statics/admin/css/icon/iconfont.css" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/statics/admin/css/style.css" />
+<script type="text/javascript" src="__PUBLIC__/scripts/jquery/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/scripts/jquery/Validform_v5.3.2_min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/scripts/artdialog/dialog-plus-min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/scripts/webuploader/webuploader.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/scripts/datepicker/WdatePicker.js"></script>
+<script type="text/javascript" src="__PUBLIC__/statics/admin/js/uploader.js"></script>
+<script type="text/javascript" src="__PUBLIC__/statics/admin/js/common.js"></script>
+<script type="text/javascript" src="__PUBLIC__/statics/admin/js/laymain.js"></script>
+<script type="text/javascript">
+    var  uploadType = 'image';
+    $(function () {
+        //初始化表单验证
+       $("#usersForm").initValidform();
+       $(".upload-img").InitUploader({modeltype:'user', sendurl: "{:U('Admin/Base/uploadFile')}", swf: "__PUBLIC__/scripts/webuploader/uploader.swf"});
+    });
+</script>
+</head>
+
+<body class="mainbody">
+<form method="post" action="{:U('Admin/Users/usersAdd')}" id="usersForm">
+<!--导航栏-->
+<div class="location">
+  <a href="{:U('Admin/Users/usersList')}" class="back"><i class="iconfont icon-up"></i><span>返回列表页</span></a>
+  <a href="{:U('Admin/Index/center')}" class="home"><i class="iconfont icon-home"></i><span>首页</span></a>
+  <i class="arrow iconfont icon-arrow-right"></i>
+  <a href="{:U('Admin/Users/usersList')}"><span>会员管理</span></a>
+  <i class="arrow iconfont icon-arrow-right"></i>
+  <span>编辑会员</span>
+</div>
+<div class="line10"></div>
+<!--/导航栏-->
+
+<!--内容-->
+<div id="floatHead" class="content-tab-wrap">
+  <div class="content-tab">
+    <div class="content-tab-ul-wrap">
+      <ul>
+        <li><a class="selected" href="javascript:;">基本资料</a></li>
+        <li><a href="javascript:;">账户信息</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="tab-content">
+  <dl>
+    <dt>所属组别</dt>
+    <dd>
+      <div class="rule-single-select">
+        <select name="data[group_id]" id="ddlGroupId" datatype="*" errormsg="请选择组别" sucmsg=" ">
+        	<option value="">请选择组别...</option>
+            <volist name="groupList" id="vo" >
+            <option value="{$vo['gid']}" <if condition="$info['group_id'] eq $vo['gid']"> selected="selected" </if>>{$vo['group_name']}</option>
+            </volist>
+        </select>
+      </div>
+    </dd>
+  </dl>
+  <dl>
+    <dt>用户状态</dt>
+    <dd>
+      <div class="rule-multi-radio">
+        <input id="rblStatus_1" type="radio" name="user_status" value="1" <if condition="$info['status'] eq 1 or $info['status'] eq null"> checked="checked" </if>  /><label for="rblStatus_1">正常</label>
+        <input id="rblStatus_2" type="radio" name="user_status" value="2" <if condition="$info['status'] eq 2"> checked="checked" </if> /><label for="rblStatus_2">待审核</label>
+      </div>
+      <span class="Validform_checktip">*</span>
+    </dd>
+  </dl>
+  <dl>
+    <dt>是否禁用</dt>
+    <dd>
+      <div class="rule-multi-radio">
+        <input id="rblIsLock_0" type="radio" name="data[is_lock]" value="0" <if condition="$info['is_lock'] eq 0 or $info['status'] eq null"> checked="checked" </if>  /><label for="rblIsLock_0">否</label>
+        <input id="rblIsLock_1" type="radio" name="data[is_lock]" value="1" <if condition="$info['is_lock'] eq 1"> checked="checked" </if> /><label for="rblIsLock_1">是</label>
+      </div>
+      <span class="Validform_checktip">*禁用账户无法登录</span>
+    </dd>
+  </dl>
+  <dl>
+    <dt>实名状态</dt>
+    <dd>
+      <div class="rule-multi-radio">
+        <input id="rblAuthStatus_0" type="radio" name="data['auth_status']" value="0" <if condition="$info['auth_status'] eq 0 or $info['auth_status'] eq 0"> checked="checked" </if>  /><label for="rblAuthStatus_0">未认证</label>
+        <input id="rblAuthStatus_1" type="radio" name="data['auth_status']" value="1" <if condition="$info['auth_status'] eq 1 or $info['auth_status'] eq '1'"> checked="checked" </if>  /><label for="rblAuthStatus_1">待认证</label>
+        <input id="rblAuthStatus_2" type="radio" name="data['auth_status']" value="2" <if condition="$info['auth_status'] eq 2"> checked="checked" </if> /><label for="rblAuthStatus_2">已认证</label>
+      </div>
+      <span class="Validform_checktip">*</span>
+    </dd>
+  </dl>
+  <dl>
+    <dt>用户名</dt>
+    <dd><input name="data[user_name]" type="text" <if condition="$info['user_name']"> value="{$info['user_name']}" readonly="readonly"<else /> value=""</if> id="txtUserName" class="input normal" datatype="*2-100"  sucmsg=" " ajaxurl="{:U('Admin/Ajax/validateUsersName',array('old_name'=>$info['user_name']))}" /> <span class="Validform_checktip">*登录的用户名，支持中文</span></dd>
+  </dl>
+  <dl <if condition="$type eq 'ajax'">style="display:none;"</if>>
+    <dt>登录密码</dt>
+    <dd><input name="data[password]" type="password" id="txtPassword" class="input normal" datatype="*6-20" nullmsg="请设置密码" errormsg="密码范围在6-20位之间" sucmsg=" " <if condition="$info['password'] or $action eq add"> value="123ee456" <else /> value="" </if> /> <span class="Validform_checktip">*登录的密码，至少6位</span></dd>
+  </dl>
+  <dl <if condition="$type eq 'ajax'">style="display:none;"</if>>
+    <dt >确认密码</dt>
+    <dd><input name="txtPassword1" type="password" id="txtPassword1" class="input normal" datatype="*" recheck="data[password]" nullmsg="请再输入一次密码" errormsg="两次输入的密码不一致" sucmsg=" " <if condition="$info['password'] or $action eq add"> value="123ee456" <else /> value="" </if> /> <span class="Validform_checktip">*再次输入密码</span></dd>
+  </dl>
+  <dl>
+    <dt>所属地区：</dt> 
+    <dd>
+      <div class="rule-single-select">
+      <select name="province_id" id="province" onchange="loadRegion('province',2,'city','{:U('Admin/Ajax/getRegionList')}');"  class="select">
+        <option value="0">省份/直辖市</option>
+        <volist name="provinceList" id="v">
+        <option value="{$v.id}" <if condition="$provinceId eq $v['id']"> selected="selected"</if> >{$v.name}</option>
+        </volist>
+      </select>
+      </div>
+      <div class="rule-single-select">
+      <select name="city" id="city" class="select" onchange="loadRegion('city',3,'town','{:U('Admin/Ajax/getRegionList')}');">
+        <option value="0">请选择</option>
+        <volist name="cityList" id="vo">
+        <option value="{$vo.id}" <if condition="$cityId eq $vo['id']"> selected="selected"</if>>{$vo.name}</option>
+        </volist>
+      </select>
+      </div>
+      <div class="rule-single-select">
+      <select name="data[area_id]" id="town" class="select" datatype="*">
+        <option value="0">请选择</option>
+        <volist name="townList" id="voo">
+        <option value="{$voo.id}" <if condition="$info['area_id'] eq $voo['id']"> selected="selected"</if>>{$voo.name}</option>
+        </volist>
+      </select>
+      </div>
+    </dd>
+  </dl>
+  <dl>
+    <dt>真实姓名</dt>
+    <dd><input name="data[real_name]" type="text" id="real_name" class="input normal" value="{$info.real_name}" /></dd>
+  </dl>
+  <dl>
+    <dt>手机号码</dt>
+    <dd><input name="data[mobile]" type="text" value="{$info.mobile}" id="txtMobile" class="input normal" ajaxurl="{:U('Admin/Ajax/validateUsersMobile',array('old_name'=>$info['mobile']))}" /></dd>
+  </dl>
+  <dl>
+    <dt>微信结算二维码</dt>
+    <dd>
+        <input name="data[wx_account_qrcode]" type="text" id="txtWxAccountQrcode" class="input normal upload-path preview" value="{$info.wx_account_qrcode}" />
+        <div class="upload-box upload-img"></div>
+        <notempty name="info.wx_account_qrcode">
+        <a href="javascript:;" photoPath="{$info.wx_account_qrcode}" class="previewBtn">点击查看</a>
+        </notempty>
+    </dd>
+  </dl>
+</div>
+
+<div class="tab-content" style="display:none;">
+  <dl>
+    <dt>邮箱账号</dt>
+    <dd><input name="data[email]" type="text" value="{$info['email']}" id="txtEmail" class="input normal" datatype="*0-50" sucmsg=" " /> <span class="Validform_checktip">*取回密码时用到</span></dd>
+  </dl>
+  <dl>
+    <dt>用户昵称</dt>
+    <dd><input name="data[nick_name]" type="text" value="{$info.nick_name}" id="txtNickName" class="input normal" /></dd>
+  </dl>
+  <dl>
+    <dt>上传头像</dt>
+    <dd>
+      <input name="data[avatar]" type="text" value="{$info.avatar}" id="txtAvatar" class="input normal upload-path preview" />
+      <div class="upload-box upload-img"></div>
+      <notempty name="info.avatar">
+      <a href="javascript:;" photoPath="{$info.avatar}" class="previewBtn">点击查看</a>
+      </notempty>
+    </dd>
+  </dl>
+  <dl>
+    <dt>用户性别</dt>
+    <dd>
+      <div class="rule-multi-radio">
+        <span id="rblSex">
+        <input id="rblSex_0" type="radio" name="data[user_sex]" value="0" <if condition="$info['sex'] eq 0"> checked="checked"</if> /><label for="rblSex_0">保密</label>
+        <input id="rblSex_1" type="radio" name="data[user_sex]" value="1" <if condition="$info['sex'] eq 1 or $info['sex'] eq null"> checked="checked"</if> /><label for="rblSex_1">男</label>
+        <input id="rblSex_2" type="radio" name="data[user_sex]" value="2" <if condition="$info['sex'] eq 2"> checked="checked"</if> /><label for="rblSex_2">女</label></span>
+      </div>
+    </dd>
+  </dl>
+  <dl>
+    <dt>生日日期</dt>
+    <dd>
+      <input name="data[birthday]" type="text" id="txtBirthday" class="input rule-date-input" onFocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" datatype="/^\s*$|^\d{4}\-\d{1,2}\-\d{1,2}$/" errormsg="请选择正确的日期" sucmsg=" " value="<if condition="$info['birthday'] eq 0 or $info['birthday'] eq ''">{$now_time|date='Y-m-d',###}<else/>{$info.birthday|date='Y-m-d',###}</if>" />
+    </dd>
+  </dl>
+  <dl>
+    <dt>通讯地址</dt>
+    <dd><input name="data[address]" type="text" id="address" class="input normal" value="{$info['address']}" /></dd>
+  </dl>
+  <dl>
+    <dt>QQ号码</dt>
+    <dd><input name="data[qq]" type="text" id="txtQQ" class="input normal" value="{$info['qq']}" /></dd>
+  </dl>
+  <dl>
+    <dt>注册时间</dt>
+    <dd><span id="lblRegTime"><if condition="$info['reg_time']">{$info.reg_time|date='Y/m/d h:i',###}<else/>-</if></span></dd>
+  </dl>
+  <dl>
+    <dt>注册IP</dt>
+    <dd><span id="lblRegIP"><if condition="$info['reg_ip']">{$info.reg_ip}<else/>-</if></span></dd>
+  </dl>
+  <dl>
+    <dt>最近登录时间</dt>
+    <dd><span id="lblLastTime"><if condition="$info['last_time']">{$info.last_time|date='Y/m/d h:i',###}<else/>-</if></span></dd>
+  </dl>
+  <dl>
+    <dt>最近登录IP</dt>
+    <dd><span id="lblLastIP"><if condition="$info['last_ip']">{$info.last_ip}<else/>-</if></span></dd>
+  </dl>
+</div>
+<!--/内容-->
+
+<!--工具栏-->
+<div class="page-footer">
+  <div class="btn-wrap">
+    <input type="hidden" name="action" value="{$action}" />
+    <input type="hidden" name="type" value="{$type}" />
+    <input type="hidden" name="id" value="{$info.uid}" />
+    <input type="hidden" name="password" value="{$info.password}" />
+    <input type="hidden" name="returnUrl" value="{$returnUrl}" />
+    <input type="submit" name="btnSubmit" value="提交保存" id="btnSubmit" class="btn" />
+    <if condition="$type eq 'ajax'">
+        <input name="cancel" id="cancelBtn" type="button" value="取消" class="btn yellow" />
+    <else/>
+        <input name="btnReturn" type="button" value="返回上一页" class="btn yellow" onClick="javascript:history.back(-1);" />
+    </if>
+  </div>
+</div>
+<!--/工具栏-->
+
+</form>
+<script type="text/javascript">
+$(function(){
+  <if condition="$type eq 'ajax'">
+  var dialog = top.dialog.get(window);
+  $('#cancelBtn').on('click', function () {
+    dialog.close(); // 关闭（隐藏）对话框
+    dialog.remove();         // 主动销毁对话框
+    return false;
+  });
+  </if>
+  //预览二维码
+  $(".previewBtn").click(function(){
+      var photoPath = "__PUBLIC__/uploads/"+$(this).attr("photoPath");
+      createPhotoPreview(photoPath);
+  })
+})
+</script>
+</body>
+</html>

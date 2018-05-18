@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0,user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>编辑商品类别</title>
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/scripts/artdialog/ui-dialog.css" />
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/css/pagination.css" />
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/statics/admin/css/icon/iconfont.css" />
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/statics/admin/css/style.css" />
+    <script type="text/javascript" src="__PUBLIC__/scripts/jquery/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/scripts/jquery/Validform_v5.3.2_min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/scripts/artdialog/dialog-plus-min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/statics/admin/js/laymain.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/statics/admin/js/common.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            //初始化表单验证
+            $("#categoryForm").initValidform();
+        });
+    </script>
+</head>
+
+<body class="mainbody">
+<form method="post" action="{:U('Admin/Seller/industrysTypeAdd')}" id="categoryForm">
+    <!--导航栏-->
+    <div class="location">
+        <a href="{:U('Admin/Seller/industrysTyp')}" class="back"><i class="iconfont icon-up"></i><span>返回列表页</span></a>
+        <a href="{:U('Index/center')}" class="home"><i class="iconfont icon-home"></i><span>首页</span></a>
+        <i class="arrow iconfont icon-arrow-right"></i>
+        <a href="{:U('Admin/Seller/industrysType')}"><span>卖家类型</span></a>
+        <i class="arrow iconfont icon-arrow-right"></i>
+        <span>编辑类型</span>
+    </div>
+    <div class="line10"></div>
+    <!--/导航栏-->
+
+    <!--内容-->
+    <div id="floatHead" class="content-tab-wrap">
+        <div class="content-tab">
+            <div class="content-tab-ul-wrap">
+                <ul>
+                    <li><a class="selected" href="javascript:void(0);">基本选项</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="tab-content">
+        <dl>
+            <dt>所属父类型</dt>
+            <dd>
+                <div class="rule-single-select">
+                    <select name="data[parent_id]" id="ddlParentId">
+                        <option value="0">无父级分类</option>
+                        <volist name="industyrs_type_list" id="item">
+                                <option <if condition="$item['id'] eq $info['parent_id']"> selected="selected" </if> value="{$item.id}"><neq name="item.count" value="1">{$item['count']|fill_up_string="&nbsp;&nbsp;"}├</neq> {$item.title}</option>
+                        </volist>
+                    </select>
+                </div>
+            </dd>
+        </dl>
+        <dl>
+            <dt>排序数字</dt>
+            <dd>
+                <input name="data[sort_num]" type="text" value="{$info.sort_num}" id="txtSortId" class="input small" datatype="n" sucmsg=" " />
+                <span class="Validform_checktip">*数字，越小越向前</span>
+            </dd>
+        </dl>
+        <dl>
+            <dt>类别名称</dt>
+            <dd><input name="data[title]" type="text" value="{$info.title}" id="txtTitle" class="input normal" datatype="*1-100"/> <span class="Validform_checktip">*类别中文名称，100字符内</span></dd>
+        </dl>
+    </div>
+
+    <!--/内容-->
+
+    <!--工具栏-->
+    <div class="page-footer">
+        <div class="btn-wrap">
+            <input type="hidden" name="action" value="{$action}" />
+            <input type="hidden" name="id" value="{$info.id}" />
+            <input type="hidden" name="returnUrl" value="{$returnUrl}"/>
+            <input type="submit" name="btnSubmit" value="提交保存" id="btnSubmit" class="btn" />
+            <input name="btnReturn" type="button" value="返回上一页" class="btn yellow" onclick="javascript:history.back();" />
+        </div>
+    </div>
+    <!--/工具栏-->
+
+</form>
+</body>
+</html>

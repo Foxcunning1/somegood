@@ -1,0 +1,78 @@
+<!Doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>卖家管理中心</title>
+	<meta name="keywords" content="" />
+	<meta name="description" content="" />
+	<import type="css" file="statics.store.css.store-public,statics.store.css.store-style,scripts.artdialog.ui-dialog,css.pagination" />
+	<import type="js" file="scripts.jquery.jquery-1#11#2#min,scripts.artdialog.dialog-plus-min" />
+</head>
+<body style="background-color: #edf1f2;">
+<div class="all-money-box">
+	<div class="left fl">
+		<div class="top">{$info.goods_title}</div>
+		<div class="center">{$info.content}</div>
+		<div class="bottom">￥<span class="get-in">{$info.price}元</span></div>
+	</div>
+	<div class="right fl">
+		<dl>
+			<dt>销售/库存状况</dt>
+			<dd>线下总销量:{$info.total_sales_volume}<span class="today-in"></span></dd>
+			<dd>线上销量:{$info.online_sales_volume}<span class="today-in"></span></dd>
+			<dd>线上库存:{$info.online_stock}<span class="today-in"></span></dd>
+			<dd></dd>
+		</dl>
+	</div>
+</div>
+
+<div class="info-box">
+	<table class="info-table">
+		<thead>
+		<tr>
+			<th>序号</th>
+			<th>卖家名称</th>
+			<th>所在区域</th>
+			<th>卖家地址</th>
+			<th>库存</th>
+			<th>销量</th>
+			<th>过期时间</th>
+			<th>状态</th>
+			<!-- <th>操作</th> -->
+		</tr>
+		</thead>
+		<tbody>
+		<volist name="list" id="vo">
+			<tr>
+				<td>{$vo.id}</td>
+				<td>{$vo.store_name}</td>
+				<td>{$vo.area_name}</td>
+				<td>{$vo.address}</td>
+				<td>{$vo.stock}</td>
+				<td>{$vo.sales_volume}</td>
+				<td>
+					<neq name="vo.is_delivery" value="0">
+						{$vo['end_time']|date="Y-m-d ",###}
+					</neq>
+				</td>
+				<td>
+					<eq name="vo.is_delivery" value="0">
+						未投放
+						<else/>
+						<gt name="vo.end_time" value="">
+							在售
+							<else/>
+							已过期
+						</gt>
+					</eq>
+				</td>
+			</tr>
+		</volist>
+		</tbody>
+	</table>
+</div>
+<div class="pagelist">
+	<div id="PageContent" class="default">{$list['page']}</div>
+</div>
+</body>
+</html>

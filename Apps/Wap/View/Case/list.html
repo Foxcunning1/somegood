@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>{$web_title}</title>
+    <meta name="keywords" content="{$web_keywords}"/>
+    <meta name="description" content="{$web_description}" />
+    <import type="css" file="statics.wap.css.public,statics.wap.css.style" />
+    <!--[if lt IE9]>
+    <import type="js" file="scripts.js.jshtml5shiv#min" />
+    <![endif]-->
+    <import type="js" file="statics.wap.js.zepto#min,statics.wap.js.zepto#fx,statics.wap.js.rem" />
+</head>
+<body>
+    <!--include header-->
+    <header>
+        <a href="javascript:history.go(-1);" class="back-to"><</a>
+        <h2>案例展示</h2>
+        <div class="menu-icon"></div>
+    </header>
+    <article class="containter case-containter">
+        <section class="title"><span>案例展示</span></section>
+        <section class="content">
+            <ul>
+                <volist name="caseList" id="item">
+                <li>
+                    <a href="{:U('Wap/Case/show')}?id={$item.aid}"><img src="__PUBLIC__/uploads/{$item.img_url}" alt="{$item.title}" /><span>{$item.title}</span></a>
+                </li>
+                </volist>
+            </ul>
+        </section>
+        <include file="Public/footer" />
+    </article>
+    <include file="Public/nav" />
+</body>
+</html>

@@ -1,0 +1,79 @@
+<eq name="isAjax" value="1">
+    <volist name="newsList" id="item" empty="$empty">
+        <li>
+            <a href="{:U('Home/News/show')}?id={$item.aid}" class="square-a"><span class="date">{$item.add_time|date='d',###}</span><span class="year-month">{$item.add_time|date='Y/m',###}</span></a>
+            <div class="right-txt">
+                <a href="{:U('Home/News/show')}?id={$item.aid}">{$item.title}</a>
+                <p>{$item.summary}</p>
+            </div>
+        </li>
+    </volist>
+<else/>
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>{$web_title}</title>
+    <meta name="keywords" content="{$web_keywords}"/>
+    <meta name="description" content="{$web_description}" />
+    <import type="css" file="statics.home.css.public,statics.home.css.style,statics.home.css.animate,statics.home.css.scrollanim#min" />
+    <!--[if lte IE 9]>
+    <import type="js" file="scripts.js.html5shiv#min" />
+    <![endif]-->
+    <import type="js" file="statics.home.js.jquery-1#11#2#min,statics.home.js.jquery#SuperSlide#2#1#1,statics.home.js.totop" />
+</head>
+<body>
+<include file="Public/header" />
+    <section class="news-slider"></section>
+    <article class="floor1 news-floor1">
+        <div class="w1200">
+            <h2 data-kui-anim="fadeInRightFast">新闻中心-<span>NEWS</span></h2>
+            <div class="line" data-kui-anim="fadeInRightNormal"></div>
+            <section class="news-section clearfix" data-kui-anim="fadeInRightSlow">
+                <ul id="newsList">
+                    <volist name="newsList" id="item" empty="$empty">
+                    <li>
+                        <a href="{:U('Home/News/show')}?id={$item.aid}" class="square-a"><span class="date">{$item.add_time|date='d',###}</span><span class="year-month">{$item.add_time|date='Y/m',###}</span></a>
+                        <div class="right-txt">
+                            <a href="{:U('Home/News/show')}?id={$item.aid}">{$item.title}</a>
+                            <p>{$item.summary}</p>
+                        </div>
+                    </li>
+                    </volist>
+                </ul>
+                <div class="cut-page-box">{$ajaxShow}</div>
+            </section>
+        </div>
+    </article>
+    <include file="Public/footer" />
+    <div id="loadingBox" style="top:0; height:0; width:100%; height:100%;position:fixed; background-color:rgba(255,255,255,0.7); display: none;">
+        <div class="loading-box" style="top:50%; left:50%; margin-top:-8px; margin-left-8px;width:16px; height:16px; position: fixed;"><img alt="正在加载" width="16" height="16" src="__PUBLIC__/statics/home/images/loading.gif" /></div>
+    </div>
+    <script type="text/javascript">
+        $(function(){
+            $(".cut-page-box a").click(function(){
+                if(!$(this).hasClass("current")){
+                    var pageUrl = $(this).attr("pageurl");
+                    if(typeof(pageUrl)!="undefined"){
+                        $(this).addClass("current").siblings("a").removeClass("current");
+                        $.ajax({
+                            url: pageUrl+"?is_ajax=1", //ajax地址
+                            type:"get",
+                            dataType:'html',
+                            beforeSend: function(){
+                                $("#loadingBox").fadeIn();
+                            },
+                            success:function(data){
+                                //提交成功
+                                $("#loadingBox").fadeOut();
+                                $("#newsList").html(data);
+                            }
+                        })
+                    }
+                }
+            })
+        })
+    </script>
+</body>
+</html>
+</eq>

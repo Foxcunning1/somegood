@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>{$web_title}</title>
+    <import type="css" file="statics.mobile.css.public,statics.mobile.css.style" />
+    <import type="js" file="scripts.zepto.zepto#min,statics.mobile.js.common" />
+    <script type="text/javascript" src="__PUBLIC__/statics/mobile/js/rem.js" fu-psd="720" fu-min="50" fu-max="100"></script>
+    <style type="text/css">
+        .right-show-box{ background-color: #fff;}
+    </style>
+</head>
+<body>
+    <div class="page-title position-title">
+        <!--返回按钮-->
+        <div class="back-box">
+            <a href="javascript:history.back();" class="icons icon-back"></a>
+        </div>
+        <h2 class="title">商品分类</h2>
+        <!--返回按钮-->
+    </div>
+    <!--左边分类-->
+    <div class="left-classify-box">
+        <div class="left-over-box">
+            <ul>
+                <li <eq name="pid" value="0">class="sel"</eq> data-id="0"><a href="javascript:void(0);">热门推荐</a></li>
+                <volist name="categoryList" id="vo" empty="$empty">
+                    <li <if condition="$vo.id eq $catId">class="sel"</if> data-id="{$vo.id}"><a href="javascript:void(0);">{$vo.title}</a></li>
+                </volist>
+            </ul>
+        </div>
+    </div>
+    <!--左边分类-->
+    <!--右边分类展示-->
+    <div class="right-show-box">
+        <div class="right-show-box-content">
+            <div class="category-lists">
+                <div class="right-section">
+                    <div class="section-top"><span>猜你喜欢</span></div>
+                    <div class="section-bottom">
+                        <ul>
+                            <volist name="recCategoryList" id="item">
+                            <li><a href="{:U('Mobile/Goods/list')}?catid={$item.id}"><img src="__PUBLIC__/uploads/{$item.img_url}" alt=""/><span>{$item.title}</span></a></li>
+                            </volist>
+                        </ul>
+                    </div>
+                </div>
+                <div class="right-section">
+                    <div class="section-top"><span>热门分类</span></div>
+                    <div class="section-bottom">
+                        <ul>
+                            <volist name="hotCategoryList" id="item">
+                                <li><a href="{:U('Mobile/Goods/list')}?catid={$item.id}"><img src="__PUBLIC__/uploads/{$item.img_url}" alt=""/><span>{$item.title}</span></a></li>
+                            </volist>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="right-show-box" style="display: none;">
+        <div class="right-show-box-content" id="categoryBox"></div>
+    </div>
+    <!--公用底部-->
+    <include file="Public/footer" />
+    <!--公用底部-->
+    <script>
+        $(function(){
+            //左侧菜单点击
+            $(".left-classify-box").find("li").on("click",function(){
+                $(this).addClass("sel").siblings().removeClass("sel");
+                if(typeof($(this).attr("data-id"))!="undefined"){
+                    var ajaxUrl = "{:U('Mobile/Goods/category')}";
+                    var id = $(this).attr("data-id");
+                    $(".right-show-box").hide();
+                    if(id=="0"){
+                        $(".right-show-box").eq(0).show();
+                    }else{
+                        $(".right-show-box").eq(1).show();
+                        $.ajax({
+                            url:ajaxUrl,
+                            type:"post",
+                            dataType:"json",
+                            data: {
+                                'id': id
+                            },
+                            cache: true,
+                            beforeSend:function(){
+                                $(".right-show-box-content").append("<div id=\"loadingBox\" class=\"loading-box\"><div class=\"loadEffect\"><span></span> <span></span> <span></span><span></span> <span></span> <span></span> <span></span> <span></span> </div> </div>");
+                            },
+                            success:function(data){
+                                if(data.status==1){
+                                    $("#categoryBox").html("");
+                                    var strHtml = "";
+                                    $.each(data.data,function(index,val){
+                                        strHtml += "<div class=\"right-section\">";
+                                        strHtml += "<div class=\"section-top\"><span>" +val['title']+ "</span></div>";
+                                        strHtml += "<div class=\"section-bottom\">";
+                                        strHtml += "<ul>";
+                                        var tempHtml = "";
+                                        if(typeof(val['children'])!="undefined") {
+                                            $.each(val['children'],function(i,sub){
+                                                tempHtml += "<li><a href=\"{:U('Mobile/Goods/list')}?catid="+sub['id']+"\"><img src=\"__PUBLIC__/uploads/"+sub['img_url']+"\" alt=\""+sub['title']+"\"/><span>"+sub['title']+"</span></a></li>"
+                                            })
+                                        }
+                                        strHtml += tempHtml;
+                                        strHtml += "</ul>";
+                                        strHtml += "</div>";
+                                        strHtml += "</div>";
+
+                                    });
+                                    $("#categoryBox").html(strHtml);
+                                }
+                            },
+                            complete:function(){
+                                $("#loadingBox").remove();
+                            }
+                        });
+                    }
+                }
+            })
+        })
+        /*设置分类盒子高度*/
+        $(function(){
+            var H = $(window).height();
+            var headH = $(".position-title").height();
+            var footerH = $(".footer").height();
+            $(".left-over-box").height(H-headH-footerH);
+            $(".right-show-box-content").height(H-headH-footerH);
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>{$page_title}</title>
+    <import type="css" file="statics.mobile.css.public,statics.mobile.css.user" />
+    <import type="js" file="scripts.zepto.zepto#min,scripts.zepto.lazyload#min,statics.mobile.js.common" />
+    <script type="text/javascript" src="__PUBLIC__/statics/mobile/js/rem.js" fu-psd="720" fu-min="50" fu-max="100"></script>
+</head>
+<body>
+    <div class="user-top">
+        <div class="img-box">
+            <a href="{:U('Users/setting',array('type'=>'user_img'))}">
+            <img src="__PUBLIC__/statics/mobile/images/default_img.png" data-original="__PUBLIC__/uploads/{$user.avatar}_c200x200" style="border-radius: 50%;" alt="会员头像" />
+            </a>
+        </div>
+        <h3>{$user.nick_name}</h3>
+        <a href="{:U('Mobile/Users/setting')}" class="setting-box"><i class="icons icon-setting"></i></a>
+    </div>
+    <div class="user-section">
+        <div class="sec-title">
+            <h3 class="fl">我的订单</h3>
+            <a href="{:U('Mobile/Users/orderIndex')}" class="fr"><span class="check-order fl">查看全部订单</span><i class="icons icon-more fl"></i></a>
+        </div>
+        <div class="sec-content">
+            <ul class="already">
+                <li><a href="{:U('Mobile/Users/orderIndex',array('status'=>'0'))}"><i class="icons icon-to-be-payed"></i><span>待付款</span></a></li>
+                <li><a href="{:U('Mobile/Users/orderIndex',array('status'=>'2'))}"><i class="icons icon-to-be-received"></i><span>待收货</span></a></li>
+                <li><a href="{:U('Mobile/Users/orderIndex',array('status'=>'3'))}"><i class="icons icon-shipped"></i><span>已完成</span></a></li>
+                <li><a href="{:U('Mobile/Users/orderIndex')}"><i class="icons icon-customer-service"></i><span>全部</span></a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="user-section">
+        <div class="sec-content">
+            <ul class="items">
+                <li>
+                    <i class="icons icon-my-collection"></i>
+                    <a href="{:U('Mobile/Users/favorites')}">
+                        <span class="fl">我的收藏</span><i class="icons icon-more fr"></i><span class="num fr" id="collectionNum">{$favorite_num}</span>
+                    </a>
+                </li>
+                <li>
+                    <i class="icons icon-my-authentication"></i>
+                    <if condition="$auth eq 1"><a href="{:U('Mobile/Users/setting',array('type'=>'id_confirm'))}"><span class="fl">我的认证</span><i class="icons icon-more fr"></i><span class="num fr" id="Authenticationing">审核中</span></a>
+                        <elseif condition="$auth eq 2"/>
+                        <a href="{:U('Mobile/Users/cer')}"/><span class="fl">我的认证</span><i class="icons icon-more fr"></i><span class="num fr" id="Authentication">已认证</span></a>
+                    <else/>
+                        <a href="{:U('Mobile/Users/setting',array('type'=>'id_confirm'))}"><span class="fl">我的认证</span><i class="icons icon-more fr"></i><span class="num fr" id="notAuthentication">点击认证</span></a>
+                    </if>
+
+                </li>
+                <li>
+                    <i class="icons icon-my-address"></i>
+                    <a href="{:U('Mobile/UserOrder/receipt')}"><span class="fl">我的收货地址</span><i class="icons icon-more fr"></i><span class="num fr" id="address">{$address_info}</span>
+                    </a>
+                </li>
+                <li>
+                    <i class="icons icon-my-coupon"></i>
+                    <a href="{:U('Mobile/Users/coupon')}?pageType=can_use"><span class="fl">我的优惠券</span><i class="icons icon-more fr"></i><span class="num fr" id="couponNum">{$coupon_num}</span>
+                    </a>
+                </li>
+                <li>
+                    <i class="icons icon-virtual-currency"></i>
+                    <a href="{:U('Mobile/Users/virtualCash')}"><span class="fl">我的购物币</span><i class="icons icon-more fr"></i></span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="user-section page-box">
+        <div class="sec-content">
+            <ul class="items">
+                <li>
+                    <i class="icons icon-help"></i>
+                    <a href="{:U('Mobile/Help/center')}"><span class="fl">帮助中心</span><i class="icons icon-more fr"></i></a>
+                </li>
+                <li style="display: none;">
+                    <i class="icons icon-customer"></i>
+                    <a href="{:U('Mobile/Contact/index')}"><span class="fl">联系客服</span><i class="icons icon-more fr"></i></a>
+                </li>
+                <li>
+                    <i class="icons icon-join"></i>
+                    <if condition="$store['status'] eq 1">
+                        <a href="{:U('Mobile/Store/index')}"><span class="fl">我的店铺</span><i class="icons icon-more fr"></i></a>
+                        <elseif condition="$store['status'] eq  2"/>
+                        <a href="{:U('Mobile/Store/apply')}?action=edit"><span class="fl">加盟店申请</span><i class="icons icon-more fr"></i><span class="num fr" id="store">审核中</span></a>
+                        <elseif condition="$store['status'] eq  3"/>
+                        <a href="{:U('Mobile/Contact/index')}"><span class="fl">我的店铺</span><i class="icons icon-more fr"></i><span class="num fr" id="store1">暂停使用,请联系客服</span></a>
+                        <else/>
+                        <a href="{:U('Mobile/Store/apply')}?action=add"><span class="fl">加盟店申请</span><i class="icons icon-more fr"></i></a>
+                    </if>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!--公用底部-->
+    <include file="Public/ufooter" />
+    <!--公用底部-->
+</body>
+<script>
+
+    $(function(){
+        /*公用底部点击样式变换 放再公用的layout里面*/
+        $(".img-box a img").lazyload({effect : "fadeIn"});
+        $(".footer ul").find("li").on("touchstart",function(){
+            $(this).addClass("sel").siblings().removeClass("sel");
+        })
+    })
+
+
+</script>
+</html>

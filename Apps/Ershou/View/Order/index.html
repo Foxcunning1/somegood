@@ -1,0 +1,321 @@
+<eq name="isAjax" value="1">
+  <volist name="list" id="vs">
+    <div class="item">
+        <div class="only-position">
+            <a href="{:U('Users/orderdetail',array('order_sn'=>$vs['order_sn']))}" class="shop-a fl" >订单号:{$vs['order_sn']}</a>
+            <input type="hidden" name="order_sn" value="{$vs['order_sn']}">
+            <if condition="$vs['status'] eq 3 or $vs['status'] eq 6"><a  href="javascript:void(0);" class="icons icon-delete del fr" ></a></if>
+            <if condition="$vs['status'] eq 0"><span class="fr" style="font-size:0.20rem; color:red;">等待付款</span></if>
+            <if condition="$vs['status'] eq 1"><span class="fr" style="font-size:0.20rem; color:red;">等待发货</span></if>
+            <if condition="$vs['status'] eq 2"><span class="fr" style="font-size:0.20rem; color:red;">等待收货</span></if>
+            <div style="clear:both"></div>
+            <if condition="$vs['status'] eq 3 or $vs['status'] eq 6"><div class="signet"></div></if>
+        </div>
+        <div class="imgs-box">
+            <volist name="vs['goods_thumb']" id="vd">
+                  <img src="__PUBLIC__/uploads/{$vd}_c200x200" alt="" style="margin-left:10px;">
+            </volist>
+        </div>
+        <div class="split-row">
+           <div class="tr-operate">
+               <if condition="$vs['is_son'] eq 0 ">
+                  <span class="ftx-13 fl">订单状态:已拆分</span>
+               </if>
+              <span class="fr">订单金额:{$vs['money']}</span>
+          </div>
+        </div>
+        <div class="bottom-bar">
+            <div class="imb-btn-box fr" >
+              <if condition="$vs['status'] eq 0 and ($vs['is_son'] eq 0 or $vs['is_son'] eq 2)">
+              <a href="{:U('Mobile/Wxpay/index')}?order_sn={$vs.order_sn}" class="go-to-pay fr">去支付</a>
+              </if>
+              <if condition="$vs['status'] eq 0"><a href="javascript:void(0);" class="go-to-pay fr cancelOrder" >取消订单</a></if>
+              <if condition="($vs['status'] eq 1) and ($vs['delivery_way']  eq 1)">
+              <a href="https://m.kuaidi100.com/index_all.html?type=$vs['code']&postid=$vs['logistics_sn']&callbackurl=$callbackurl" class="view-logistics fr">查看物流</a>
+              </if>
+              <if condition="($vs['status'] eq 2) and ($vs['delivery_way'] eq 1)">
+                <input type="hidden" name="" value="{$vs['id']}">
+              <a href="javascript:void(0);" class="view-logistics fr">确认收货</a>
+              <a href="https://m.kuaidi100.com/index_all.html?type=$vs['code']&postid=$vs['logistics_sn']&callbackurl=$callbackurl" class="view-logistics fr">查看物流</a>
+              </if>
+              <if condition="$vs['status'] eq 3 or $vs['status'] eq 6">
+              <a href="javascript:void(0);" class="evaluation fr" >立即评价</a>
+              </if>
+            </div>
+        </div>
+    </div>
+  </volist>
+<else/>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>订单管理</title>
+    <import type="css" file="statics.ershou.css.public,statics.ershou.css.user,dist.dropload" />
+    <import type="js" file="scripts.zepto.zepto#min,statics.ershou.js.common,scripts.zepto.zepto#fx,scripts.zepto.zepto#miniDialog,dist.dropload#min" />
+    <script type="text/javascript" src="__PUBLIC__/statics/ershou/js/rem.js" fu-psd="720" fu-min="50" fu-max="100"></script>
+</head>
+<body>
+<div class="page-title">
+    <!--返回按钮-->
+    <div class="to-back-box">
+        <a href="javascript:history.back();" class="icons icon-back"></a>
+    </div>
+    <!--返回按钮-->
+    <!--标题-->
+    <h2 class="title">订单管理</h2>
+    <!--标题-->
+</div>
+<div class="already-title pd-t08">
+    <ul>
+
+        <li <if condition="$status eq 100">class="sel"</if>><a href="{:U('Users/orderIndex',array('status'=>'100'))}">全部</a></li>
+        <li <if condition="$status eq 0">class="sel"</if>><a href="{:U('Users/orderIndex',array('status'=>'0'))}">待付款</a></li>
+        <li <if condition="$status eq 1">class="sel"</if>><a href="{:U('Users/orderIndex',array('status'=>'1'))}">待发货</a></li>
+        <li <if condition="$status eq 2">class="sel"</if>><a href="{:U('Users/orderIndex',array('status'=>'2'))}">待收货</a></li>
+        <li <if condition="$status eq 3">class="sel"</if>><a href="{:U('Users/orderIndex',array('status'=>'3'))}">已完成</a></li>
+    </ul>
+</div>
+<!--点击选项卡控制near-content显示和隐藏-->
+<!--全部-->
+<div class="div_orderlist  pd-t18" id="orderListBox">
+    <div class="allOrders">
+        <volist name="list" id="vs">
+          <div class="item">
+              <div class="only-position">
+                  <a href="{:U('Mobile/Users/orderdetail',array('order_sn'=>$vs['order_sn']))}" class="shop-a fl" >订单号:{$vs['order_sn']}</a>
+                  <input type="hidden" name="order_sn" value="{$vs['order_sn']}">
+                  <if condition="$vs['status'] eq 3 or $vs['status'] eq 6"><a  href="javascript:void(0);" class="icons icon-delete del fr" ></a></if>
+                  <if condition="$vs['status'] eq 0"><span class="fr" style="font-size:0.20rem; color:red;">等待付款</span></if>
+                  <if condition="$vs['status'] eq 1"><span class="fr" style="font-size:0.20rem; color:red;">等待发货</span></if>
+                  <if condition="$vs['status'] eq 2"><span class="fr" style="font-size:0.20rem; color:red;">等待收货</span></if>
+                  <div style="clear:both"></div>
+                  <if condition="$vs['status'] eq 3 or $vs['status'] eq 6"><div class="signet"></div></if>
+              </div>
+              <div class="imgs-box">
+                  <volist name="vs['goods_thumb']" id="vd">
+                        <img src="__PUBLIC__/uploads/{$vd}_c200x200" alt="" style="margin-left:10px;">
+                  </volist>
+              </div>
+              <div class="split-row">
+                 <div class="tr-operate">
+                     <if condition="$vs['is_son'] eq 0 ">
+                        <span class="ftx-13 fl">订单状态:已拆分</span>
+                     </if>
+                    <span class="fr">订单金额:{$vs['money']}</span>
+                </div>
+              </div>
+              <div class="bottom-bar">
+                  <div class="imb-btn-box fr" >
+                    <if condition="$vs['status'] eq 0 and ($vs['is_son'] eq 0 or $vs['is_son'] eq 2)">
+                    <a href="{:U('Mobile/Wxpay/index')}?order_sn={$vs.order_sn}" class="go-to-pay fr">去支付</a>
+                    </if>
+                    <input type="hidden" name="" value="{$vs['order_sn']}">
+                    <if condition="$vs['status'] eq 0"><a href="javascript:void(0);" class="go-to-pay fr cancelOrder" >取消订单</a></if>
+                    <if condition="($vs['status'] eq 1) and ($vs['delivery_way']  eq 1)">
+                    <a href="https://m.kuaidi100.com/index_all.html?type=$vs['code']&postid=$vs['logistics_sn']&callbackurl=$callbackurl" class="view-logistics fr">查看物流</a>
+                    </if>
+                    <if condition="($vs['status'] eq 2) and ($vs['delivery_way'] eq 1)">
+                      <input type="hidden" name="" value="{$vs['id']}">
+                    <a href="javascript:void(0);" class="view-logistics fr">确认收货</a>
+                    <a href="https://m.kuaidi100.com/index_all.html?type=$vs['code']&postid=$vs['logistics_sn']&callbackurl=$callbackurl" class="view-logistics fr">查看物流</a>
+                    </if>
+                    <if condition="$vs['status'] eq 3 or $vs['status'] eq 6">
+                    <a href="javascript:void(0);" class="evaluation fr" >立即评价</a>
+                    </if>
+                  </div>
+              </div>
+          </div>
+        </volist>
+    </div>
+</div>
+<!--公用底部-->
+<include file="Public/footer" />
+<!--公用底部-->
+<!--加载-->
+<div class="is-loading" style="height: 35px; padding-top: 2px; display: none;">
+    <em></em>
+    <span>加载中...</span>
+</div>
+</body>
+<script>
+    $(function(){
+      $('.imb-btn-box a').css("margin-left","5px");
+    })
+
+    //取消订单 回滚各种币
+    $('.cancelOrder').on('touchstart',function(){
+      var order_sn=$(this).prev().val();
+      var fh=$(this);
+      $("body").minDialog({isConfirm:true,content:'真的要取消这个订单?',btnConfirm:'当然',btnCancal:'等一下'},function(){
+          $(".confirmBtn").click(function(){
+              $.ajax({
+                  url:"{:U('Mobile/UserOrder/cancelOrder')}",
+                  type:"post",
+                  dataType:"json",
+                  data:{
+                      'order_sn':order_sn,
+                  },
+                  success:function(data,textStatus){
+                    if (data.status==1) {
+                        fh.parent().parent().parent().remove();
+                    }else {
+                        alert('error!');
+                    }
+                  },
+                  error: function(xhr, type){
+                      alert('Ajax error!');
+                      // 即使加载出错，也得重置
+                  }
+              });
+          })
+      })
+    })
+
+    //确认收货
+    $(".view-logistics").on('touchstart',function(){
+      //订单id
+      var id=$(this).prev().val();
+      var fh = $(this);
+      $("body").minDialog({isConfirm:true,content:'您确定收到货了吗?'},function(){
+          $(".confirmBtn").click(function(){
+              $.ajax({
+                  url:"{:U('Mobile/Users/comfirm')}",
+                  type:"post",
+                  dataType:"json",
+                  data:{
+                      'id':id,
+                  },
+                  success:function(data,textStatus){
+                    if (data.status==1) {
+                        fh.parent().parent().parent().remove();
+                    }else {
+                        alert('error!');
+                    }
+                  },
+                  error: function(xhr, type){
+                      alert('Ajax error!');
+                      // 即使加载出错，也得重置
+                  }
+              });
+          })
+      })
+
+    })
+
+    //滚动页面ajax自动获取下一页内容
+    var page=2; //有效求购的页码
+    var totalPage = {$pageCount}; //有效求购页的总页码，会从后台获
+    var ajaxUrl="{:U('Mobile/Users/orderIndex')}";//ajax请求地址
+    $(function(){
+        var tabLoadEnd = false;
+        // dropload
+        var dropload = $('#orderListBox').dropload({
+            scrollArea : window,
+            loadDownFn : function(me){
+                // 加载菜单一的数据
+                    if(page <= totalPage){
+                        $.ajax({
+                            url:ajaxUrl,
+                            type:"post",
+                            dataType:"html",
+                            data:{
+                                'p':page,
+                                'status':{$status}
+                            },
+                            success:function(data){
+                                var str = data;
+                                // 为了测试，延迟1秒加载
+                                $('.allOrders').append(str);
+                                $(function(){
+                                  $('.imb-btn-box a').css("margin-left","5px");
+                                })
+                                // 每次数据加载完，必须重置
+                                me.resetload();
+                                totalPage = {$pageCount};
+                            },
+                            error: function(xhr, type){
+                                alert('Ajax error!');
+                                // 即使加载出错，也得重置
+                                me.resetload();
+                            }
+                        });
+                        page++;
+                    }else{
+                        // 数据加载完
+                        tabLoadEnd = true;
+                        // 锁定
+                        me.lock();
+                        // 无数据
+                        me.noData();
+                        me.resetload();
+                    }
+                    // 加载菜单二的数据
+            }
+        });
+        // 如果数据没有加载完
+        if(!tabLoadEnd){
+            // 解锁
+            dropload.unlock();
+            dropload.noData(false);
+        }else{
+            // 锁定
+            dropload.lock('down');
+            dropload.noData();
+        }
+        // 重置
+        dropload.resetload();
+    });
+
+      //删除订单
+      $(".icon-delete").on('touchstart',function(){
+        var order_sn = $(this).prev().val();
+        var fh=$(this);
+        $("body").minDialog({content:'确认删除此订单?',isConfirm:true,btnConfirm:'删除'},function(){
+          $(".confirmBtn").click(function(){
+            deleteMyGoods(fh);
+            ajaxDelOrder(order_sn);
+          })
+        });
+        })
+
+        //删除订单函数
+      function ajaxDelOrder(order_sn){
+        $.ajax({
+          method:'post',
+          dataType:'json',
+          url:"{:U('Users/delOrder')}",
+          data:{order_sn:order_sn},
+          async:false,
+          error:function(request){
+            var info ='服务器有点问题!';
+            //popupa(info);
+          },
+          success:function(data){
+            if (data.status == 1) {
+
+            }else {
+              alert('error');
+            }
+
+          }
+      })
+    }
+
+    $(".already-title").find("li").on("touchstart",function(){
+        var index = $(this).index();
+        $(this).addClass("sel").siblings().removeClass("sel");
+        $(".div_orderlist").find(".allOrders").eq(index).show().siblings().hide();
+    })
+    /*删除订单函数*/
+    function deleteMyGoods(obj){
+        $(obj).parent().parent().remove();
+    }
+</script>
+</html>
+</eq>

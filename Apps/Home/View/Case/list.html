@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>{$web_title}</title>
+    <meta name="keywords" content="{$web_keywords}"/>
+    <meta name="description" content="{$web_description}" />
+    <import type="css" file="statics.home.css.public,statics.home.css.style,statics.home.css.animate,statics.home.css.scrollanim#min" />
+    <!--[if lte IE 9]>
+    <import type="js" file="scripts.js.html5shiv#min" />
+    <![endif]-->
+    <import type="js" file="statics.home.js.jquery-1#11#2#min,statics.home.js.jquery#SuperSlide#2#1#1,statics.home.js.totop" />
+</head>
+<body>
+<include file="Public/header" />
+    <section class="case-slider"></section>
+    <article class="floor1 case-floor1">
+        <div class="w1200">
+            <h2 data-kui-anim="fadeInRightFast">客户案例-<span>CASE</span></h2>
+            <div class="line" data-kui-anim="fadeInRightNormal"></div>
+            <section class="case-section clearfix">
+                <ul>
+                    <volist name="caseList" id="item">
+                    <li>
+                        <a href="{:U('Home/Case/show')}?id={$item.aid}" class="case-a"><img src="__PUBLIC__/uploads/{$item.img_url}" alt="{$item.title}" width="290" height="180"/></a>
+                    </li>
+                    </volist>
+                </ul>
+                <div class="clear"></div>
+            </section>
+        </div>
+        <div class="clear"></div>
+    </article>
+    <include file="Public/footer" />
+    <script>
+        $(function(){
+            $(".case-section li:even").addClass("fadeInUpSlow");
+            $(".case-section li:odd").addClass("fadeInDownSlow");
+        })
+    </script>
+</body>
+</html>

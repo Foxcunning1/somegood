@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0,user-scalable=no" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<title>会员参数设置</title>
+<link href="__PUBLIC__/scripts/artdialog/ui-dialog.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/statics/admin/css/icon/iconfont.css" />
+<link href="__PUBLIC__/statics/admin/css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="__PUBLIC__/scripts/jquery/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/scripts/jquery/Validform_v5.3.2_min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/scripts/artdialog/dialog-plus-min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/statics/admin/js/common.js"></script>
+<script type="text/javascript" src="__PUBLIC__/statics/admin/js/laymain.js"></script>
+<script type="text/javascript">
+    $(function () {
+        //初始化表单验证
+        $("#settingForm").initValidform();
+    });
+</script>
+</head>
+
+<body class="mainbody">
+<form method="post" action="{:U('Admin/Users/usersSetting')}" id="settingForm">
+<!--导航栏-->
+<div class="location">
+  <a href="javascript:history.back(-1);" class="back"><i class="iconfont icon-up"></i><span>返回上一页</span></a>
+  <a href="{:U('Admin/Index/center')}" class="home"><i class="iconfont icon-home"></i><span>首页</span></a>
+  <i class="arrow iconfont icon-arrow-right"></i>
+  <a href="{:U('Admin/Users/usersList')}">会员管理</a>
+  <i class="arrow iconfont icon-arrow-right"></i>
+  <a href="{:U('Admin/Users/usersSetting')}">会员设置</a>
+  <i class="arrow iconfont icon-arrow-right"></i>
+  <span>参数设置</span>
+</div>
+<div class="line10"></div>
+<!--/导航栏-->
+
+<!--内容-->
+<div id="floatHead" class="content-tab-wrap">
+  <div class="content-tab">
+    <div class="content-tab-ul-wrap">
+      <ul>
+        <li><a class="selected" href="javascript:;">基本参数设置</a></li>
+        <li><a href="javascript:;">用户积分策略</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!--用户参数设置-->
+<div class="tab-content">
+  <dl>
+    <dt>新用户注册设置</dt>
+    <dd>
+      <div class="rule-multi-radio">
+        <span id="reg_status"><input id="reg_status_0" type="radio" name="data[reg_status]" value="0" <if condition="C('reg_status') eq '0'">checked="checked" </if> /><label for="reg_status_0">关闭注册</label><input id="reg_status_1" type="radio" name="data[reg_status]" value="1" <if condition="C('reg_status') eq '1'">checked="checked" </if> /><label for="reg_status_1">开放注册</label></span>
+      </div>
+    </dd> 
+  </dl>
+
+  <dl>
+    <dt>新用户注册审核</dt>
+    <dd>
+      <div class="rule-single-checkbox">
+          <input id="is_verify" type="checkbox" name="data[is_verify]" value="1" <if condition="C('is_verify') eq '1'">checked="checked" </if>/>
+      </div>
+      <span class="Validform_checktip">*是否需要人工审核通过后才能登录</span>
+    </dd>
+  </dl>
+  <dl>
+    <dt>是否启用注册邀请码</dt>
+    <dd>
+      <div class="rule-single-checkbox">
+          <input id="is_invite" type="checkbox" name="data[is_invite]" value="1" <if condition="C('is_invite') eq '1'">checked="checked" </if>/>
+      </div>
+      <span class="Validform_checktip">*是否启用注册码邀请</span>
+    </dd>
+  </dl>
+  <dl>
+    <dt>欢迎短消息类型</dt>
+    <dd>
+      <div class="rule-multi-radio">
+        <span id="reg_msg_status"><input id="reg_msg_status_0" type="radio" name="data[reg_msg_status]" <if condition="C('reg_msg_status') eq '0'">checked="checked" </if> value="0" /><label for="reg_msg_status_0">不发送</label><input id="reg_msg_status_1" type="radio" name="data[reg_msg_status]" value="1" <if condition="C('reg_msg_status') eq '1'">checked="checked" </if> /><label for="reg_msg_status_1">站内消息</label><input id="reg_msg_status_2" type="radio" name="data[reg_msg_status]" <if condition="C('reg_msg_status') eq '2'">checked="checked" </if> value="2" /><label for="reg_msg_status_2">发送邮件</label></span>
+      </div>
+    </dd>
+  </dl>
+  <dl>
+    <dt>欢迎短消息内容</dt>
+    <dd>
+      <textarea name="data[reg_msg_txt]" rows="2" cols="20" id="reg_msg_txt" class="input">{:C("reg_msg_txt")}</textarea>
+      <span class="Validform_checktip">支持HTML</span>
+    </dd>
+  </dl>
+  <dl>
+    <dt>用户名保留关健字</dt>
+    <dd>
+      <input name="data[reg_keywords]" type="text" value="{:C("reg_keywords")}" id="reg_keywords" class="input normal" />
+      <span class="Validform_checktip">*以英文逗号“,”分隔开</span>
+    </dd>
+  </dl>
+  <dl>
+    <dt>IP注册间隔限制</dt>
+    <dd>
+      <input name="data[ip_time_limit]" type="text" value="{:C("ip_time_limit")}" id="ip_time_limit" class="input small" datatype="n" sucmsg=" " /> 小时
+      <span class="Validform_checktip">*同一IP的注册间隔，0为不限制</span>
+    </dd>
+  </dl>
+  <dl>
+    <dt>手机验证码有效期</dt>
+    <dd>
+      <input name="data[reg_sms_expired]" type="text" value="{:C("reg_sms_expired")}" id="regsmsexpired" class="input small" datatype="n" sucmsg=" " /> 分钟
+      <span class="Validform_checktip">*新用户手机验证码有效期，整数须大于0</span>
+    </dd>
+  </dl>
+  <dl>
+    <dt>邮件验证有效期</dt>
+    <dd>
+      <input name="data[reg_email_expired]" type="text" value="{:C("reg_email_expired")}" id="reg_email_expired" class="input small" datatype="n" sucmsg=" " /> 天
+      <span class="Validform_checktip">*新用户注册链接及验证邮件有效期，整数须大于0</span>
+    </dd>
+  </dl>
+  <dl>
+    <dt>员工分组ID</dt>
+    <dd>
+      <input name="data[employee_gid]" type="text" value="{:C("employee_gid")}" id="employee_gid" class="input small" datatype="n" sucmsg=" " />
+      <span class="Validform_checktip">*公司内部员工默认分组</span>
+    </dd>
+  </dl>
+  <dl>
+    <dt>注册协议内容</dt>
+    <dd>
+      <textarea name="data[regrules_txt]" rows="2" cols="20" id="reg_rulestxt" class="input">{:C("regrules_txt")}</textarea>
+      <span class="Validform_checktip">支持HTML</span>
+    </dd>
+  </dl>
+</div>
+<!--/用户参数设置-->
+
+<!--用户积分策略-->
+<div class="tab-content" style="display:none">
+  <dl>
+    <dt>现金/积分兑换比例</dt>
+    <dd>
+      <input name="data[point_cashrate]" type="text" value="{:C('point_cashrate')}" id="point_cashrate" class="input small" datatype="n" sucmsg=" " /> 个
+      <span class="Validform_checktip">*1元等于多少个积分，0为禁用兑换功能</span>
+    </dd>
+  </dl>
+  <dl>
+    <dt>邀请注册获得积分</dt>
+    <dd>
+      <input name="data[invite_point]" type="text" value="{:C('invite_point')}" id="invite_point" class="input small" datatype="n" sucmsg=" " /> 分
+      <span class="Validform_checktip">*邀请一个注册成功用户所获得的积分</span>
+    </dd>
+  </dl>
+  <dl>
+    <dt>邀请注册获得资金</dt>
+    <dd>
+      <input name="data[virtual_money]" type="text" value="{:C('virtual_money')}" id="virtual_money" class="input small" datatype="n" sucmsg=" " /> 金币
+      <span class="Validform_checktip">*邀请一个注册成功用户所获得的资金</span>
+    </dd>
+  </dl>
+  <dl>
+    <dt>每天登录获得积分</dt>
+    <dd>
+      <input name="data[login_point]" type="text" value="{:C('login_point')}" id="login_point" class="input small" datatype="n" sucmsg=" " /> 分
+      <span class="Validform_checktip">*会员每天登录获得的积分，一天只赠送一次</span>
+    </dd>
+  </dl>
+</div>
+<!--/用户积分策略-->
+
+<!--内容-->
+
+<!--工具栏-->
+<div class="page-footer">
+  <div class="btn-wrap">
+	 <input type="submit" name="btnSubmit" value="提交保存" id="btnSubmit" class="btn" />
+     <input name="btnReturn" type="button" value="返回上一页" class="btn yellow" onclick="javascript:history.back(-1);" />
+  </div>
+</div>
+<!--/工具栏-->
+</form>
+</body>
+</html>

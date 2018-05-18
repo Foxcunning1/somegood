@@ -1,0 +1,166 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0,user-scalable=no" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<title>编辑后台导航</title>
+<link href="__PUBLIC__/scripts/artdialog/ui-dialog.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/statics/admin/css/icon/iconfont.css" />
+<link href="__PUBLIC__/statics/admin/css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="__PUBLIC__/scripts/jquery/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/scripts/jquery/Validform_v5.3.2_min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/scripts/artdialog/dialog-plus-min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/scripts/webuploader/webuploader.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/statics/admin/js/uploader.js"></script>
+<script type="text/javascript" src="__PUBLIC__/statics/admin/js/common.js"></script>
+<script type="text/javascript" src="__PUBLIC__/statics/admin/js/laymain.js"></script>
+<script type="text/javascript">
+    var uploadType = 'image';
+    $(function () {
+        //初始化表单验证
+        $("#navForm").initValidform();
+        $(".upload-img").InitUploader({modeltype:'system_nav', sendurl: "{:U('Admin/Base/uploadFile')}", swf: "__PUBLIC__/scripts/webuploader/uploader.swf"});
+    });
+</script>
+</head>
+
+<body class="mainbody">
+<form method="post" name="systemNav" id="navForm" action="{:U('Setting/done')}">
+<!--导航栏-->
+<div class="location">
+  <a href="{:U('Admin/Setting/index')}" class="back"><i class="iconfont icon-up"></i><span>返回列表页</span></a>
+  <a href="{:U('Admin/Index/center')}" class="home"><i class="iconfont icon-home"></i><span>首页</span></a>
+  <i class="arrow iconfont icon-arrow-right"></i>
+  <a href="{:U('AdminSetting/index')}"><span>导航列表</span></a>
+  <i class="arrow iconfont icon-arrow-right"></i>
+  <span>编辑后台导航</span>
+</div>
+<div class="line10"></div>
+<!--/导航栏-->
+
+<!--内容-->
+<div class="content-tab-wrap">
+  <div id="floatHead" class="content-tab">
+    <div class="content-tab-ul-wrap">
+      <ul>
+        <li><a href="javascript:;" class="selected">后台导航信息</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="tab-content">
+    <dl>
+        <dt>上级导航</dt>
+        <dd>
+            <div class="rule-single-select">
+                <select name="parent_id" id="parent_id">
+                    <option <if condition="$info['parent_id'] eq 0 "> selected="selected" </if> value="0">无父级导航</option>
+                    <volist name="nav_list" id="vo" key="k">
+                        <option <if condition="$vo['id'] eq $info['parent_id']"> selected="selected" </if> value="{$vo.id}"><neq name="vo.count" value="1">{$vo['count']|fill_up_string="&nbsp;&nbsp;"}├</neq> {$vo.title}</option>
+                    </volist>
+                </select>
+            </div>
+        </dd>
+    </dl>
+    <dl>
+        <dt>排序数字</dt>
+        <dd>
+            <input name="sort_num" type="text" value="{$info.sort_num}" id="sort_num" class="input small" datatype="n" sucmsg=" " />
+            <span class="Validform_checktip">*数字，越小越向前</span>
+        </dd>
+    </dl>
+    <dl>
+        <dt>是否隐藏</dt>
+        <dd>
+            <div class="rule-single-checkbox">
+                <input id="is_lock" type="checkbox" <if condition="$info['is_lock'] eq 1 "> checked="checked" </if> name="is_lock" />
+            </div>
+            <span class="Validform_checktip">*隐藏后不显示在界面导航菜单中。</span>
+        </dd>
+    </dl>
+    <dl>
+        <dt>导航标题</dt>
+        <dd><input name="title" type="text" value="{$info.title}" id="title" class="input normal" datatype="*1-100" sucmsg=" " /> <span class="Validform_checktip">*导航中文标题，100字符内</span></dd>
+    </dl>
+    <dl>
+        <dt>副标题</dt>
+        <dd>
+            <input name="sub_title" type="text" value="{$info.sub_title}" id="sub_title" class="input normal" datatype="*0-100" sucmsg=" " />
+            <span class="Validform_checktip">非必填，当导航拥有两个名称时使用</span>
+        </dd>
+    </dl>
+    <dl>
+        <dt>调用别名</dt>
+        <dd>
+            <input name="name" type="text" value="{$info.name}" id="name" class="input normal" <if condition="$info.channel_id neq 0">readonly="readonly"</if> datatype="/^[a-zA-Z0-9\-\_]{2,50}$/" errormsg="请填写正确的ID" sucmsg="" ajaxurl="{:U('Admin/Ajax/validateSystemNav')}?old_name={$info.name}" />
+            <span class="Validform_checktip">权限控制名称，只允许字母、数字、下划线</span>
+        </dd>
+    </dl>
+    <dl>
+        <dt>自定义图标</dt>
+        <dd>
+            <input name="txtIconUrl" type="text" value="{$info.icon}" maxlength="255" id="txtIconUrl" class="input normal upload-path" />
+            <div class="upload-box upload-img"></div>
+        </dd>
+    </dl>
+    <dl>
+        <dt>链接地址</dt>
+        <dd>
+            <input name="link_url" type="text" maxlength="255" id="link_url" class="input normal" value="{$info.link_url}" />
+            <span class="Validform_checktip">当前管理目录，有子导航不用填</span>
+        </dd>
+    </dl>
+    <dl>
+        <dt>备注说明</dt>
+        <dd>
+            <textarea name="remark" rows="2" cols="20" id="remark" class="input">{$info.remark}</textarea>
+            <span class="Validform_checktip">非必填，可为空</span>
+        </dd>
+    </dl>
+    <dl>
+        <dt>权限资源</dt>
+        <dd>
+            <div class="rule-multi-porp">
+                <span id="cblActionType">
+                <input id="cblActionType_0" type="checkbox" name="action_type[]" <if condition="strpos($info['action_type'],'show') gt -1 ">checked="checked" </if>  value="show" />
+                <label for="cblActionType_0">显示(Show)</label>
+                <input id="cblActionType_1" type="checkbox" name="action_type[]" <if condition="strpos($info['action_type'],'view') gt -1 ">checked="checked" </if> value="view" />
+                <label for="cblActionType_1">查看(View)</label>
+                <input id="cblActionType_2" type="checkbox" name="action_type[]" <if condition="strpos($info['action_type'],'add') gt -1 ">checked="checked" </if> value="add" />
+                <label for="cblActionType_2">添加(Add)</label>
+                <input id="cblActionType_3" type="checkbox" name="action_type[]" <if condition="strpos($info['action_type'],'edit') gt -1 ">checked="checked" </if> value="edit" />
+                <label for="cblActionType_3">修改(Edit)</label>
+                <input id="cblActionType_4" type="checkbox" name="action_type[]" <if condition="strpos($info['action_type'],'delete') gt -1 ">checked="checked" </if> value="delete"/>
+                <label for="cblActionType_4">删除(Delete)</label>
+                <input id="cblActionType_5" type="checkbox" name="action_type[]" <if condition="strpos($info['action_type'],'Audit') gt -1 ">checked="checked" </if> value="Audit" />
+                <label for="cblActionType_5">审核(Audit)</label>
+                <input id="cblActionType_6" type="checkbox" name="action_type[]" <if condition="strpos($info['action_type'],'Reply') gt -1 ">checked="checked" </if> value="Reply" />
+                <label for="cblActionType_6">回复(Reply)</label>
+                <input id="cblActionType_7" type="checkbox" name="action_type[]" <if condition="strpos($info['action_type'],'Copy') gt -1 ">checked="checked" </if> value="Copy" />
+                <label for="cblActionType_7">复制(Copy)</label>
+                <input id="cblActionType_8" type="checkbox" name="action_type[]" <if condition="strpos($info['action_type'],'Import') gt -1 ">checked="checked" </if> value="Import" />
+                <label for="cblActionType_8">导入(Import)</label>
+                <input id="cblActionType_9" type="checkbox" name="action_type[]" <if condition="strpos($info['action_type'],'Export') gt -1 ">checked="checked" </if> value="Export" />
+                <label for="cblActionType_9">导出(Export)</label>
+                </span>
+            </div>
+        </dd>
+    </dl>
+</div>
+<!--/内容-->
+
+<!--工具栏-->
+<div class="page-footer">
+    <div class="btn-list">
+        <input type="hidden" name="action" value="{$action}" />
+        <input type="hidden" name="id" value="{$info.id}" />
+        <input type="submit" name="btnSubmit" value="提交保存" id="btnSubmit" class="btn" />
+        <input name="btnReturn" type="button" value="返回上一页" class="btn yellow" onclick="javascript:history.back(-1);" />
+    </div>
+    <div class="clear"></div>
+</div>
+<!--/工具栏-->
+</form>
+</body>
+</html>

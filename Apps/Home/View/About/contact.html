@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>{$web_title}</title>
+    <meta name="keywords" content="{$web_keywords}"/>
+    <meta name="description" content="{$web_description}" />
+    <import type="css" file="statics.home.css.public,statics.home.css.style,statics.home.css.animate,statics.home.css.scrollanim#min,scripts.artdialog.ui-dialog" />
+    <!--[if lte IE 9]>
+    <import type="js" file="scripts.js.html5shiv#min" />
+    <![endif]-->
+    <import type="js" file="statics.home.js.jquery-1#11#2#min,scripts.artdialog.dialog-plus-min,scripts.jquery.jquery#form#min,scripts.jquery.Validform_v5#3#2_min,statics.home.js.jquery#SuperSlide#2#1#1,statics.home.js.totop" />
+    <style type="text/css">
+        .form-box dd{ position:  relative;}
+        .form-box dd span{ top:32px; left:0; position: absolute;}
+    </style>
+</head>
+<body>
+<include file="Public/header" />
+    <section class="contact-slider"></section>
+    <article class="floor1 contact-floor1">
+        <div class="w1200">
+            <h2 data-kui-anim="fadeInRightFast">联系我们</h2>
+            <div class="line" data-kui-anim="fadeInRightNormal"></div>
+            <section class="contact-section clearfix">
+                <ul>
+                    <li>
+                        <div class="contact-icon icon-1" data-kui-anim="fadeInRightFast"><img src="__PUBLIC__/statics/home/images/contact_icon_1.png" alt=""/></div>
+                        <div class="line-x" data-kui-anim="fadeInRightNormal"></div>
+                        <span data-kui-anim="fadeInRightNormal">客服</span>
+                        <span data-kui-anim="fadeInRightSlow">400 9005 116</span>
+                    </li>
+                    <li>
+                        <div class="contact-icon icon-2" data-kui-anim="fadeInRightFast"><img src="__PUBLIC__/statics/home/images/contact_icon_2.png" alt=""/></div>
+                        <div class="line-x" data-kui-anim="fadeInRightNormal"><img src="__PUBLIC__/statics/home/images/line_x.png" alt="" /></div>
+                        <span data-kui-anim="fadeInRightNormal">QQ</span>
+                        <span data-kui-anim="fadeInRightSlow">19136676</span>
+                    </li>
+                    <li>
+                        <div class="contact-icon icon-3" data-kui-anim="fadeInRightFast"><img src="__PUBLIC__/statics/home/images/contact_icon_3.png" alt=""/></div>
+                        <div class="line-x" data-kui-anim="fadeInRightNormal"><img src="__PUBLIC__/statics/home/images/line_x.png" alt="" /></div>
+                        <span data-kui-anim="fadeInRightNormal">邮箱</span>
+                        <span data-kui-anim="fadeInRightSlow">info@billcome.com</span>
+                    </li>
+                    <li class="last">
+                        <div class="contact-icon icon-4" data-kui-anim="fadeInRightFast"><img src="__PUBLIC__/statics/home/images/contact_icon_4.png" alt=""/></div>
+                        <div class="line-x" data-kui-anim="fadeInRightNormal"><img src="__PUBLIC__/statics/home/images/line_x.png" alt="" /></div>
+                        <span data-kui-anim="fadeInRightNormal">地址</span>
+                        <span data-kui-anim="fadeInRightSlow">深圳市南山区田寮大厦1001</span>
+                    </li>
+                </ul>
+            </section>
+        </div>
+    </article>
+    <article class="floor2 contact-floor2">
+        <div class="w1200">
+            <section class="form-section clearfix" data-kui-anim="fadeInRightFast">
+                <div class="title">发表您的留言</div>
+                <div class="form-box">
+                    <form id="feedbackForm" name="feedbackForm" url="{:U('Home/Ajax/addFeedback')}">
+                        <dl class="part-1">
+                            <dt>姓名：</dt>
+                            <dd>
+                                <input type="text" class="input" datatype="s2-4" name="data[name]" placeholder="请输入姓名" />
+                            </dd>
+                        </dl>
+                        <dl class="part-1">
+                            <dt>邮箱：</dt>
+                            <dd><input type="input" class="input" datatype="s2-4" name="data[email]" id="email" placeholder="您的电子邮箱">  </dd>
+                        </dl>
+                        <dl class="part-1">
+                            <dt>电话：</dt>
+                            <dd><input type="tel" class="input" datatype="m" name="data[mobile]" datatype="/^1[3458]{1}[0-9]{9}$/" id="mobile" placeholder="您的手机号"></dd>
+                        </dl>
+                        <div class="clear"></div>
+                        <dl class="part-2 clearfix">
+                            <dt>内容：</dt>
+                            <dd><textarea class="input" datatype="*" name="data[content]"></textarea></dd>
+                        </dl>
+                        <dl class="part-2 clearfix">
+                            <dt></dt>
+                            <dd><button type="submit" class="submit" id="btnSubmit" value="提交留言">提交留言</button></dd>
+                        </dl>
+                    </form>
+                </div>
+            </section>
+        </div>
+    </article>
+    <include file="Public/footer" />
+    <script type="text/javascript">
+        //初始化验证表单
+        $(function(){
+            $("#feedbackForm").Validform({
+                tiptype:3,
+                callback:function(form){
+                    //AJAX提交表单
+                    $(form).ajaxSubmit({
+                        beforeSubmit: showRequest,
+                        success: showResponse,
+                        error: showError,
+                        url: $("#feedbackForm").attr("url"),
+                        type: "post",
+                        dataType: "json",
+                        timeout: 60000
+                    });
+                    return false;
+                }
+            });
+            //表单提交前
+            function showRequest(formData, jqForm, options) {
+                $("#btnSubmit").val("正在提交...")
+                $("#btnSubmit").prop("disabled", true);
+            }
+            //表单提交后
+            //表单提交后(传统登录)
+            function showResponse(data, textStatus) {
+                if (data.status == 1) { //成功
+                    var d = dialog({content:"提交成功！"}).show();
+                    window.setInterval(function(){
+                        d.close().remove();
+                        $('#feedbackForm')[0].reset()},1000);
+                    $("#btnSubmit").val("提交留言")
+                    $("#btnSubmit").prop("disabled", false);
+                }else{ //失败
+                    var d = dialog({content:data.info}).show();
+                }
+            }
+            //表单提交出错
+            function showError(XMLHttpRequest, textStatus, errorThrown) {
+                dialog({title:'提示', content:"状态：" + textStatus + "；出错提示：" + errorThrown, okValue:'确定', ok:function (){}}).showModal();
+                $("#btnSubmit").val("再次提交");
+                $("#btnSubmit").prop("disabled", false);
+            }
+        })
+    </script>
+</body>
+</html>

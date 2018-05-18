@@ -1,0 +1,147 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0,user-scalable=no" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<title>会员消费日志管理</title>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/scripts/artdialog/ui-dialog.css" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/pagination.css" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/statics/admin/css/icon/iconfont.css" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/statics/admin/css/style.css" />
+<script type="text/javascript" src="__PUBLIC__/scripts/jquery/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/scripts/artdialog/dialog-plus-min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/scripts/datepicker/WdatePicker.js"></script>
+<script type="text/javascript" charset="utf-8" src="__PUBLIC__/statics/admin/js/laymain.js"></script>
+<script type="text/javascript" charset="utf-8" src="__PUBLIC__/statics/admin/js/common.js"></script>
+<script type="text/javascript">
+	function doPostBack(objId) {
+		if(objId == 'btnDelete') {
+			$('#usersPurchaseForm').submit();
+		}
+		if(objId == 'btnSearch'){
+            //动态获取删除表单元素中的开始和结束时间
+            var typeValue = $("#type").val();//查询类型
+            var ctypeValue = $("#ctype").val();//消费类型
+            var startTime = $("#txtStartTime").val();
+            var endTime = $("#txtEndTime").val();
+            $('#searchForm').find("#startTime").remove();
+            $('#searchForm').find("#endTime").remove();
+            var inputStr = "";
+            inputStr += "<input type=\"hidden\" name=\"startTime\" id=\"startTime\" value=\""+ startTime +"\" />";
+            inputStr += "<input type=\"hidden\" name=\"endTime\" id=\"endTime\" value=\""+ endTime +"\" />";
+            inputStr += "<input type=\"hidden\" name=\"type\" id=\"utype\" value=\""+ typeValue +"\" />";
+            inputStr += "<input type=\"hidden\" name=\"ctype\" id=\"ctype\" value=\""+ ctypeValue +"\" />";
+            $('#searchForm').append(inputStr);
+            checkFormInputIsEmpty("#startTime");
+            checkFormInputIsEmpty("#endTime");
+			$('#searchForm').submit();
+		}
+	}
+</script>
+</head>
+
+<body class="mainbody">
+<!--导航栏-->
+<div class="location">
+  <a href="javascript:history.back(-1);" class="back"><i class="iconfont icon-up"></i><span>返回上一页</span></a>
+  <a href="{:U('Admin/Index/center')}" class="home"><i class="iconfont icon-home"></i><span>首页</span></a>
+  <i class="arrow iconfont icon-arrow-right"></i>
+  <a href="{:U('Admin/Users/usersList')}">会员管理</a>
+  <i class="arrow iconfont icon-arrow-right"></i>
+  <span>会员消费日志列表</span>
+</div>
+<!--/导航栏-->
+
+<!--工具栏-->
+<div id="floatHead" class="toolbar-wrap">
+  <div class="toolbar">
+    <div class="box-wrap">
+      <a class="menu-btn"><i class="iconfont icon-more"></i></a>
+      <div class="l-list">
+        <ul class="icon-list">
+          <li><a class="all" href="javascript:;" onclick="checkAll(this);"><i class="iconfont icon-check"></i><span>全选</span></a></li>
+          <li><a onclick="return ExeNoCheckPostBack('btnDelete','不选时间段，系统将删除近7天的管理日志，你确定吗？');" id="btnDelete" class="del" href="javascript:;"><i class="iconfont icon-delete"></i><span>删除</span></a></li>
+        </ul>
+        <div class="menu-list">
+          <div class="rule-single-select">
+            <select name="ctype" id="ctype" onchange="javascript:doPostBack('ctype')">
+                <option value="-1" <if condition="$ctype eq -1"> selected="selected"</if>>所有类型</option>
+                <option value="0" <if condition="$ctype eq 0"> selected="selected"</if>>充值</option>
+                <option value="1" <if condition="$ctype eq 1"> selected="selected"</if>>提现</option>
+                <option value="9" <if condition="$ctype eq 2"> selected="selected"</if>>其他</option>
+            </select>
+          </div>
+          <div class="rule-single-select">
+            <select name="type" id="type" onchange="javascript:doPostBack('type')">
+              <option value="0" <if condition="$type eq 0"> selected="selected"</if>>所有属性</option>
+              <option value="1" <if condition="$type eq 1"> selected="selected"</if>>会员名</option>
+              <option value="2" <if condition="$type eq 2"> selected="selected"</if>>会员ID</option>
+            </select>
+          </div>
+          <input name="txtStartTime" type="text" id="txtStartTime" class="input rule-date-input" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" value="{$startTime}" />
+          -
+          <input name="txtEndTime" type="text" id="txtEndTime" class="input rule-date-input" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" value="{$endTime}" />
+        </div>
+      </div>
+      <form action="{:U('Admin/Users/purchaseList')}" method="get" id="searchForm">
+      <div class="r-list">
+        <input name="keywords" type="text" id="txtKeywords" class="keyword" value="{$keywords}" />
+        <a id="btnSearch" class="btn-search" href="javascript:doPostBack('btnSearch')"><i class="iconfont icon-search"></i></a>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!--/工具栏-->
+
+<!--列表-->
+<div class="table-container">
+    <form action="{:U('Admin/Users/purchaseDel')}" id="usersPurchaseForm" method="post">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="ltable">
+      <tr>
+        <th width="5%">选择</th>
+        <th width="10%">用户名</th>
+        <th width="5%">类型</th>
+        <th width="10%">金额</th>
+        <th align="left">冻结资金</th>
+        <th align="left">等级积分</th>
+        <th align="left">消费积分</th>
+        <th align="left">备注</th>
+        <th align="left" width="16%">录入时间</th>
+      </tr>
+      <volist name="list" id="item" empty="$empty">
+      <tr>
+        <td align="center">
+            <span class="checkall" style="vertical-align:middle;"><input id="ids" type="checkbox" name="ids[]" value="{$item['log_id']}" /></span>
+        </td>
+        <td>
+          <a href="{:U('Admin/Users/purchaseList')}?keywords={$item.user_name}">{$item.user_name}</a>
+        </td>
+        <td align="center">
+            <eq name="item.change_type" value="0"><a href="{:U('Admin/Users/purchaseList')}?ctype=0">充值</a></eq>
+            <eq name="item.change_type" value="1"><a href="{:U('Admin/Users/purchaseList')}?ctype=1">提现</a></eq>
+            <eq name="item.change_type" value="9"><a href="{:U('Admin/Users/purchaseList')}?ctype=9">其他</a></eq>
+        </td>
+        <td align="center">{$item.user_money}</td>
+        <td>{$item.frozen_money}</td>
+        <td>{$item.rank_points}</td>
+        <td>{$item.pay_points}</td>
+        <td>{$item.change_note}</td>
+        <td>{$item.change_time|date="Y-m-d H:m:s",###}</td>
+      </tr>
+      </volist>
+    </table>
+    </form>
+</div>
+<!--/列表-->
+<!--内容底部-->
+<div class="line20"></div>
+<div class="pagelist">
+    <div id="PageContent" class="default">{$page}</div>
+</div>
+<!--/内容底部-->
+</body>
+</html>

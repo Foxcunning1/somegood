@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>我的购物币</title>
+    <import type="css" file="statics.mobile.css.public,statics.mobile.css.user" />
+    <import type="js" file="scripts.zepto.zepto#min" />
+    <script type="text/javascript" src="__PUBLIC__/statics/mobile/js/rem.js" fu-psd="720" fu-min="50" fu-max="100"></script>
+</head>
+<body>
+<div class="page-title">
+    <!--返回按钮-->
+    <div class="to-back-box">
+        <a href="javascript:history.back();" class="icons icon-back"></a>
+    </div>
+    <!--返回按钮-->
+    <!--标题-->
+    <h2 class="title">我的购物币</h2>
+    <!--标题-->
+</div>
+<!--没有优惠券-->
+<div class="no-coupon">
+    <div class="nc-img"></div>
+    <p>很遗憾</p>
+    <span>您的购物币为￥0</span>
+</div>
+<div class="coupon-bar">
+    <a href="javascript:void(0);" class="make-sure">确定</a>
+</div>
+<!--没有优惠券-->
+<div class="already-title">
+    <ul>
+        <li class="sel"><a href="javascript:void(0);" class="available">可用购物币<em id="available">(0)</em></a></li>
+        <li><a href="javascript:void(0);" class="unavailable">不可用购物币<em id="unavailable">(0)</em></a></li>
+    </ul>
+</div>
+<!--点击选项卡控制near-content显示和隐藏-->
+<div class="already-content-box page-box pd-t08">
+    <!--可用-->
+    <div class="already-content available-coupon">
+        <!--优惠券-->
+        <div class="new-coupon" id="select0000-0116-0169-6911">
+            <div class="new-bdcolor bd-bd">
+                <div class="newCou-bg dq-bg"></div>
+                <div class="newCou-item dq-icon-color">
+                    <div class="newCou-title ">购物币</div>
+                    <div class="newCou-content cf">
+                        <div class="fl">
+                            <div class="ci-left">
+                                <strong id="dicon0000-0116-0169-6911" name="dicons" class="pic-ch"></strong>
+                            </div>
+                            <div class="newCou-l">
+                                <div class="newCou-pri-content">
+                                    <em>￥</em>
+                                    <span class="newCou-price">100</span>
+                                </div>
+                                <span class="newCou-info">满188可用</span>
+                            </div>
+                        </div>
+                        <div class="newCou-r">
+                            <span class="newCou-date-name">三只松鼠旗舰店</span>
+                            <span class="newCou-date-content">2017.08.15-2017.08.18</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!--不可用-->
+    <div class="already-content unavailable-coupon">
+        <div id="notavailablequan" name="cplist" class="tab-con">
+            <div class="new-coupon">
+                <div class="new-bdcolor nj-new-none bd-bd">
+                    <div class="newCou-bg dq-bg"></div>
+                    <div class="newCou-item dq-icon-color">
+                        <div class="newCou-title ">购物币</div>
+                        <div class="newCou-content cf">
+                            <div class="fl">
+                                <div class="newCou-l">
+                                    <div class="newCou-pri-content nj-content">
+                                        <em>￥</em>
+                                        <span class="newCou-price">200</span>
+                                    </div>
+                                    <span class="newCou-info nnewCou-info">满1500可用</span>
+                                </div>
+                            </div>
+                            <div class="newCou-r nj-r">
+                                <span class="newCou-date-name">仅可购买夏普电视指定型号商品</span>
+                                <span class="newCou-date-content">
+                            2017.08.09
+                            -2017.08.20</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="n-newCou-info sigle-txt-info">
+                        <span class="n-newC-txt sigle-txt">此券不能在全球购中使用</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+<script>
+    /*在线宝贝和失效宝贝切换*/
+    $(".already-title ul").find("li").on("touchstart",function(){
+        var index = $(this).index();
+        $(this).addClass("sel").siblings().removeClass("sel");
+        $(".already-content-box").find(".already-content").eq(index).show().siblings().hide();
+    })
+   /*优惠券选中函数*/
+    function couponAddCheck(obj){
+        $(obj).toggleClass("pic-ched");
+        /*确定按钮出现*/
+        $(".coupon-bar").show();
+    }
+</script>
+</html>

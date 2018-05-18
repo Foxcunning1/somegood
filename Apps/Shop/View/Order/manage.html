@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>{$web_title}</title>
+	<meta name="keywords" content="{:C('MARKET_SEO_KEYWORD')}" />
+	<meta name="description" content="{:C('MARKET_SEO_DESCRIPTION')}" />
+	<link rel="stylesheet" href="__PUBLIC__/statics/shop/css/cart.css" type="text/css">
+	<link rel="stylesheet" href="__PUBLIC__/statics/shop/css/public.css" type="text/css">
+	<link rel="stylesheet" href="__PUBLIC__/scripts/artdialog/ui-dialog.css" type="text/css">
+	<script type="text/javascript" charset="utf-8" src="__PUBLIC__/scripts/jquery/jquery-1.11.2.min.js"></script>
+	<script type="text/javascript" charset="utf-8" src="__PUBLIC__/statics/shop/js/common.js"></script>
+	<script type="text/javascript" charset="utf-8" src="__PUBLIC__/statics/shop/js/totop.js"></script>
+	<script type="text/javascript" charset="utf-8" src="__PUBLIC__/scripts/artdialog/dialog-plus-min.js"></script>
+</head>
+<body>
+<include file="Public/cart_header" />
+<div class="w1200 container mt30">
+	<div class="cart-msg-box">
+		<div class="cart-msg-icon success-msg-icon fl"></div>
+		<div class="cart-msg-tips fr">
+			<h3>订单提交成功！</h3>
+			<p>系统将在<span class="time-box" id="time-box">3</span>秒后跳转至订单中心！未跳转&nbsp;<a id="href" href="{:C('SHOP_DOMAIN')}{:U('Shop/UserOrder/index')}">点击这里&gt;&gt;</a></p>
+		</div>
+	</div>
+</div>
+<div class="line40"></div>
+<script type="text/javascript">
+(function(){
+var wait = document.getElementById('time-box'),href = document.getElementById('href').href;
+var interval = setInterval(function(){
+    var time = --wait.innerHTML;
+    if(time == 0) {
+        location.href = href;
+        clearInterval(interval);
+    };
+}, 1000);
+})();
+</script>
+<include file="Public/footer" />
+<script>
+    $(function () {
+        var modifyPrice = $('#modify_price').val();
+        var totalMoney = "{$total_money}";
+        if(modifyPrice == 1 || totalMoney == 0){
+            $("#submitBtn").removeAttr('disabled');
+        }
+    });
+	/*支付方式选择*/
+    $(".step-cont").find("a.pay").click(function(){
+        $(this).addClass("cur").siblings().removeClass("cur");
+        var payType = $(this).attr('id');
+        $('#payType').val(payType);
+        $("#submitBtn").removeAttr('disabled');
+    });
+    $("#edit").click(function(){
+        alert(1);
+        $("ticket-show").show();
+        // top.dialog({
+        //     title:'发票信息',
+        //     content: ,
+        //     width:600
+        // }).showModal();
+    });
+
+	/*订单计算*/
+    var order_total = (parseFloat($("#total_1").html())+parseFloat($("#total_2").html())).toFixed(2);//订单总额
+    var yhq = parseFloat($("#money_yhq").html()).toFixed(2); //优惠券
+    var fwb = parseFloat($("#money_fwb").html()).toFixed(2); //服务金币
+    var ye = parseFloat($("#can_use_ye").val()).toFixed(2); //余额
+
+    var yf_total = order_total-fwb; //应付
+
+    //订单总额
+    $(".order_total").html(order_total);
+    //服务金币抵扣总额
+    $("#result_fwb").html(fwb);
+    //优惠券抵扣总额
+    //$("#result_yhq").html(yhq);
+    //应付总额
+    $("#pay_total").html(yf_total);
+    //结算余额抵扣初始化
+    $("#result_ye").html(0);
+    //可抵扣余额初始化
+    $("#money_ye").html(ye);
+
+	/*输入可抵扣的余额，并判断*/
+    $("#can_use_ye").blur(function(){
+        var value = parseFloat($(this).val()).toFixed(2);//获取输入的值
+        ye = value;
+        var ye_total = parseFloat($("#ye_total").html()).toFixed(2); //总余额
+        var can_use_ye = parseFloat($("#can_use_ye").val()).toFixed(2); //可用余额
+		/*判断余额不足*/
+        if(ye_total >= can_use_ye){
+            $(".error").hide();
+            $("#money_ye").html(can_use_ye); //可抵扣为输入的值
+            $("#result_ye").html(can_use_ye); //结算时可抵扣为输入的值
+            yf_total = order_total-yhq-fwb-ye; //计算应付总额
+            $("#pay_total").html(yf_total);
+        }else{
+            $(".error").show();//错误提示给用户
+            $("#money_ye").html(0); //输入错误余额抵用值为零
+            $("#result_ye").html(0); //结算时可抵扣为0
+            yf_total = order_total-yhq-fwb; //计算应付总额
+            $("#pay_total").html(yf_total);
+        }
+
+    })
+    function checkForm() {
+        var payType = $('#payType').val();
+        if(payType == '' ){
+            return false;
+        }else{
+            return true;
+        }
+    }
+</script>
+</body>
+</html>

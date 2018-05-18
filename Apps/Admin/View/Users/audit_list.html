@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0,user-scalable=no" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<title>会员审核</title>
+<link href="__PUBLIC__/JS/artdialog/ui-dialog.css" rel="stylesheet" type="text/css" />
+<link href="__TMPL__skin/default/style.css" rel="stylesheet" type="text/css" />
+<link href="__TMPL__css/pagination.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="__PUBLIC__/JS/jquery/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/JS/artdialog/dialog-plus-min.js"></script>
+<script type="text/javascript" charset="utf-8" src="__TMPL__js/laymain.js"></script>
+<script type="text/javascript" charset="utf-8" src="__TMPL__js/common.js"></script>
+</head>
+
+<body class="mainbody">
+<form method="post" action="{:U('Users/audit_done')}" id="listForm">
+<script type="text/javascript">
+var ajax_site_url = "<?php echo U('Site/sajax');?>";
+//初始化系统菜单配置
+var ajax_url = "{:U('Index/ajax')}";
+//初始化页面ajax_url
+var pajax_url="{:U('Setting/ajax')}";
+function doPostBack(obj){
+    if(obj=='btnAudit'){
+     $("#listForm").submit(); 
+    }else if(obj=='lbtnSearch'){
+      var keywords=$("#txtKeywords").val();
+      window.location.href="{:U('Users/audit')}?keywords="+keywords;
+    }
+}
+</script>
+ 
+<!--导航栏-->
+<div class="location">
+  <a href="javascript:history.back(-1);" class="back"><i></i><span>返回上一页</span></a>
+  <a href="{:U('Index/center')}" class="home"><i></i><span>首页</span></a>
+  <i class="arrow"></i>
+  <span>会员管理</span>
+  <i class="arrow"></i>
+  <span>审核用户</span>
+</div>
+<!--/导航栏-->
+
+<!--工具栏-->
+<div id="floatHead" class="toolbar-wrap">
+  <div class="toolbar">
+    <div class="box-wrap">
+      <a class="menu-btn"></a>
+      <div class="l-list">
+        <ul class="icon-list">
+          <li><a class="add" href="{:U('Users/userAdd')}?action=add"><i></i><span>新增</span></a></li>
+          <li><a onclick="return ExePostBack('btnAudit','审核通过后会员正常使用，是否继续？');" id="btnAudit" class="lock" href="javascript:doPostBack('btnAudit')"><i></i><span>审核通过</span></a></li>
+        </ul>
+      </div>
+      <div class="r-list">
+        <input name="txtKeywords" type="text" id="txtKeywords" class="keyword" />
+        <a id="lbtnSearch" class="btn-search" href="javascript:doPostBack('lbtnSearch')">查询</a>
+      </div>
+    </div>
+  </div>
+</div>
+<!--/工具栏-->
+
+<!--列表-->
+<div class="table-container">
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="ltable">
+  <tr>
+    <th width="8%">选择</th>
+    <th align="left">用户名</th>
+    <th align="left" width="12%">会员组</th>
+    <th align="left" width="12%">手机</th>
+    <th align="left" width="12%">邮箱</th>
+    <th width="8%">余额</th>
+    <th width="8%">积分</th>
+    <th width="8%">状态</th>
+  </tr>
+  <volist name="list" id="vo" >
+  <tr>
+    <td align="center">
+      <span class="checkall" style="vertical-align:middle;"><input id="ids" type="checkbox" name="ids[]" value="{$vo['uid']}" /></span>
+    </td>
+    <td>
+      <div class="user-box" style="padding-left:0;">
+        <h4><b><notempty name="vo.user_name">{$vo.user_name}&nbsp;-&nbsp;</notempty><notempty name="vo.company_name">{$vo.company_name}&nbsp;-&nbsp;</notempty>{$vo.mobile}</b></h4>
+        <i>注册时间：<eq name="vo.reg_time" value="0">-<else/>{$vo['reg_time']|date='Y/m/d h:i',###}</eq></i>
+      </div>
+    </td>
+    <td>{$vo['name']}</td>
+    <td>{$vo[email]}</td>
+    <td>{$vo['email']}</td>
+    <td align="center">0.00</td>
+    <td align="center">0</td>
+    <td align="center">待审核</td>
+  </tr>
+  </volist>
+  
+</table>
+
+</div>
+<!--/列表-->
+
+<!--内容底部-->
+<div class="line20"></div>
+<div class="pagelist">
+   <div class="l-btns">
+         <span>显示</span><span>20</span><span>条/页</span> 
+   </div>
+         <div id="PageContent" class="default">{$page}</div>
+</div>
+<!--/内容底部-->
+</form>
+</body>
+</html>

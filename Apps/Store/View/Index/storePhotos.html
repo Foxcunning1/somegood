@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0,user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>编辑宝贝</title>
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/scripts/artdialog/ui-dialog.css" />
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/statics/admin/css/style.css" />
+    <script type="text/javascript" src="__PUBLIC__/scripts/jquery/jquery-1.11.2.min.js"></script>
+    <import type="js" file="scripts.jquery.jquery#form#min" />
+    <script type="text/javascript" src="__PUBLIC__/scripts/jquery/Validform_v5.3.2_min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/scripts/artdialog/dialog-plus-min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/scripts/webuploader/webuploader.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/statics/admin/js/uploader.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/statics/admin/js/common.js"></script>
+    <script type="text/javascript">
+        var uploadType = 'image';
+        $(function () {
+            //初始化上传控件
+            $(".upload-img").InitUploader({modeltype:'goods_type', sendurl: "{:U('Store/Base/uploadFile')}", swf: "__PUBLIC__/scripts/webuploader/uploader.swf"});
+            $(".upload-album").InitUploader({ modeltype:'goods_type',btntext: "批量上传", multiple: true, sendurl: "{:U('Store/Base/uploadFile')}", swf: "__PUBLIC__/scripts/webuploader/uploader.swf" });
+            //设置封面图片的样式
+            $(".photo-list ul li .img-box img").each(function () {
+                if ($(this).attr("src") == $("#hidFocusPhoto").val()) {
+                    $(this).parent().addClass("selected");
+                }
+            });
+
+        });
+    </script>
+</head>
+
+<body>
+<form method="post" url="{:U('Store/Index/storePhotos')}" id="photosForm">
+    <!--导航栏-->
+    <div class="line10"></div>
+    <!--/导航栏-->
+    <!--内容-->
+    <div class="tab-content">
+        <dl id="div_albums_container">
+            <dt>图片相册</dt>
+            <dd>
+                <div class="upload-box upload-album"></div>
+                <input name="hidFocusPhoto" type="hidden" id="hidFocusPhoto" class="focus-photo" value="{$info.goods_thumb}" />
+                <div class="photo-list">
+                    <ul>
+                        <for start="0" end="count($plist)">
+                            <li>
+                                <input type="hidden" name="photo[]" value="{$plist[$i]}" />
+                                <input type="hidden" name="rphoto[]" value="{$rlist[$i]}" />
+                                <div class="img-box" onClick="setFocusImg(this);">
+                                    <img src="__PUBLIC__/uploads/{$plist[$i]}" bigsrc="__PUBLIC__/uploads/{$plist[$i]}" realpath="{$plist[$i]}" />
+                                    <span class="remark"><i><if condition="$rlist[$i] eq ''">暂无描述<else/>{$rlist[$i]}</if></i></span>
+                                </div>
+                                <a href="javascript:;" onclick="setRemark(this);">描述</a>
+                                <a href="javascript:;" onclick="delImg(this);">删除</a>
+                            </li>
+                        </for>
+                    </ul>
+                </div>
+            </dd>
+        </dl>
+    </div>
+    <!--/内容-->
+
+    <!--工具栏-->
+    <div class="page-footer" >
+            <input type="hidden" name="action" value="{$action}" />
+            <input type="hidden" name="id" value="{$info.id}" />
+            <input type="hidden" name="returnUrl" value="{$returnUrl}" />
+            <input type="button" name="btnSubmit" value="提交保存" id="btnSubmit" class="btn" />
+    </div>
+    <!--/工具栏-->
+</form>
+<script>
+    $(function(){
+        //AJAX提交表单
+        $("#btnSubmit").click(function(){
+            $("#photosForm").ajaxSubmit({
+                url: $("#btnSubmit").attr("url"),
+                type: "post",
+                dataType: "json",
+                success: function (data) {
+                    var d = dialog({content:data.info}).show();
+                    window.setTimeout(function(){
+                        d.close().remove();
+                    },1000);
+                },
+            });
+        })
+    })
+</script>
+</body>
+</html>

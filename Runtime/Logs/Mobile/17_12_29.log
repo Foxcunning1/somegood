@@ -1,0 +1,611 @@
+[ 2017-12-29T14:55:20+08:00 ] ::1 /somegood/Mobile/cart/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.007000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.006000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.013000s ]
+SQL: SHOW COLUMNS FROM `sg_cart` [ RunTime:0.0030s ]
+SQL: SELECT COUNT(*) AS tp_count FROM sg_cart c WHERE `phpsessid` = 'qc9263b8q7ji2s8qt7p5sisle5' AND c.user_id = 0 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT c.cart_id,c.real_goods_id,sd.stock,sd.sg_id,g.id,g.online_stock,c.goods_id,c.seller_id,c.store_name,c.store_id,sd.is_onsale as is_on_sale,c.goods_title,c.counts,c.goods_thumb,c.store_name as s_name,c.market_price,c.goods_price FROM sg_cart c LEFT JOIN sg_seller_delivery AS sd ON sd.id = c.goods_id LEFT JOIN sg_goods AS g ON g.id = sd.sg_id  WHERE `phpsessid` = 'qc9263b8q7ji2s8qt7p5sisle5' AND c.user_id = 0  [ RunTime:0.0010s ]
+SQL: SELECT c.*,u.user_name,group_concat(c.store_name) FROM sg_cart c LEFT JOIN sg_users AS u ON u.uid = c.seller_id  WHERE `phpsessid` = 'qc9263b8q7ji2s8qt7p5sisle5' AND c.user_id = 0 GROUP BY c.seller_id  [ RunTime:0.0010s ]
+NOTIC: [8] Undefined index: HTTP_REFERER D:\xampps\htdocs\somegood\Apps\Mobile\Controller\CartController.class.php 第 35 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined variable: Think D:\xampps\htdocs\somegood\Runtime\Cache\Mobile\87fceaacfa5c8d0dd3235647d4c529fb.php 第 34 行.
+NOTIC: [8] Undefined variable:  D:\xampps\htdocs\somegood\Runtime\Cache\Mobile\87fceaacfa5c8d0dd3235647d4c529fb.php 第 34 行.
+NOTIC: [8] Undefined variable: Think D:\xampps\htdocs\somegood\Runtime\Cache\Mobile\87fceaacfa5c8d0dd3235647d4c529fb.php 第 38 行.
+NOTIC: [8] Undefined variable:  D:\xampps\htdocs\somegood\Runtime\Cache\Mobile\87fceaacfa5c8d0dd3235647d4c529fb.php 第 38 行.
+NOTIC: [8] Undefined variable: web_title D:\xampps\htdocs\somegood\Runtime\Cache\Mobile\87fceaacfa5c8d0dd3235647d4c529fb.php 第 145 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.040002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.040002s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-12-29T14:55:21+08:00 ] ::1 /somegood/Mobile/Cart/isWho.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [2048] Declaration of Common\Model\RegionModel::add() should be compatible with Think\Model::add($data = '', $options = Array, $replace = false) D:\xampps\htdocs\somegood\Apps\Common\Model\RegionModel.class.php 第 5 行.
+NOTIC: [2048] Declaration of Common\Model\RegionModel::save() should be compatible with Think\Model::save($data = '', $options = Array) D:\xampps\htdocs\somegood\Apps\Common\Model\RegionModel.class.php 第 5 行.
+SQL: SHOW COLUMNS FROM `sg_region` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `sg_region` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_region` WHERE `name` = '深圳' LIMIT 1   [ RunTime:0.0020s ]
+
+[ 2017-12-29T14:55:21+08:00 ] ::1 /somegood/Mobile/Cart/getCartNum.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [2048] Declaration of Common\Model\RegionModel::add() should be compatible with Think\Model::add($data = '', $options = Array, $replace = false) D:\xampps\htdocs\somegood\Apps\Common\Model\RegionModel.class.php 第 5 行.
+NOTIC: [2048] Declaration of Common\Model\RegionModel::save() should be compatible with Think\Model::save($data = '', $options = Array) D:\xampps\htdocs\somegood\Apps\Common\Model\RegionModel.class.php 第 5 行.
+SQL: SHOW COLUMNS FROM `sg_region` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `sg_region` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `sg_region` WHERE `name` = '深圳' LIMIT 1   [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `sg_cart` [ RunTime:0.0020s ]
+SQL: SELECT SUM(counts) AS tp_sum FROM `sg_cart` WHERE `phpsessid` = 'qc9263b8q7ji2s8qt7p5sisle5' AND `user_id` = 0 LIMIT 1   [ RunTime:0.0010s ]
+
+[ 2017-12-29T14:55:24+08:00 ] ::1 /somegood/Mobile/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [2048] Declaration of Common\Model\RegionModel::add() should be compatible with Think\Model::add($data = '', $options = Array, $replace = false) D:\xampps\htdocs\somegood\Apps\Common\Model\RegionModel.class.php 第 5 行.
+NOTIC: [2048] Declaration of Common\Model\RegionModel::save() should be compatible with Think\Model::save($data = '', $options = Array) D:\xampps\htdocs\somegood\Apps\Common\Model\RegionModel.class.php 第 5 行.
+SQL: SHOW COLUMNS FROM `sg_region` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `sg_region` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `sg_region` WHERE `name` = '深圳' LIMIT 1   [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `sg_adv` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `sg_adv` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_adv` ORDER BY sort_num ASC,id DESC LIMIT 4   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_keywords` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `sg_keywords` ORDER BY count DESC LIMIT 0,4   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_goods` [ RunTime:0.0110s ]
+SQL: SHOW COLUMNS FROM `sg_goods` [ RunTime:0.0020s ]
+SQL: SELECT g.id,g.goods_title,g.price,g.content,gc.title AS category_name,SUM(sd.sales_volume) as sales_volume FROM sg_goods g LEFT JOIN sg_goods_category AS gc ON g.category_id = gc.id LEFT JOIN sg_seller_delivery AS sd ON g.id = sd.sg_id  WHERE g.status = 1 ORDER BY update_time desc, id desc LIMIT 10   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_store_type` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `sg_store_type`  [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_store` [ RunTime:0.0030s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `sg_store` WHERE `status` = 1 LIMIT 1   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: isAjax D:\xampps\htdocs\somegood\Runtime\Cache\Mobile\cfca91beb49811c39e2bad25e2e139a4.php 第 1 行.
+NOTIC: [8] Undefined variable: keywords D:\xampps\htdocs\somegood\Runtime\Cache\Mobile\cfca91beb49811c39e2bad25e2e139a4.php 第 49 行.
+NOTIC: [8] Undefined variable: hotKeywords D:\xampps\htdocs\somegood\Runtime\Cache\Mobile\cfca91beb49811c39e2bad25e2e139a4.php 第 69 行.
+NOTIC: [8] Use of undefined constant img_url - assumed 'img_url' D:\xampps\htdocs\somegood\Runtime\Cache\Mobile\cfca91beb49811c39e2bad25e2e139a4.php 第 99 行.
+NOTIC: [8] Use of undefined constant title - assumed 'title' D:\xampps\htdocs\somegood\Runtime\Cache\Mobile\cfca91beb49811c39e2bad25e2e139a4.php 第 99 行.
+NOTIC: [8] Use of undefined constant title - assumed 'title' D:\xampps\htdocs\somegood\Runtime\Cache\Mobile\cfca91beb49811c39e2bad25e2e139a4.php 第 99 行.
+NOTIC: [8] Use of undefined constant img_url - assumed 'img_url' D:\xampps\htdocs\somegood\Runtime\Cache\Mobile\cfca91beb49811c39e2bad25e2e139a4.php 第 99 行.
+NOTIC: [8] Use of undefined constant title - assumed 'title' D:\xampps\htdocs\somegood\Runtime\Cache\Mobile\cfca91beb49811c39e2bad25e2e139a4.php 第 99 行.
+NOTIC: [8] Use of undefined constant title - assumed 'title' D:\xampps\htdocs\somegood\Runtime\Cache\Mobile\cfca91beb49811c39e2bad25e2e139a4.php 第 99 行.
+NOTIC: [8] Use of undefined constant img_url - assumed 'img_url' D:\xampps\htdocs\somegood\Runtime\Cache\Mobile\cfca91beb49811c39e2bad25e2e139a4.php 第 99 行.
+NOTIC: [8] Use of undefined constant title - assumed 'title' D:\xampps\htdocs\somegood\Runtime\Cache\Mobile\cfca91beb49811c39e2bad25e2e139a4.php 第 99 行.
+NOTIC: [8] Use of undefined constant title - assumed 'title' D:\xampps\htdocs\somegood\Runtime\Cache\Mobile\cfca91beb49811c39e2bad25e2e139a4.php 第 99 行.
+NOTIC: [8] Use of undefined constant img_url - assumed 'img_url' D:\xampps\htdocs\somegood\Runtime\Cache\Mobile\cfca91beb49811c39e2bad25e2e139a4.php 第 99 行.
+NOTIC: [8] Use of undefined constant title - assumed 'title' D:\xampps\htdocs\somegood\Runtime\Cache\Mobile\cfca91beb49811c39e2bad25e2e139a4.php 第 99 行.
+NOTIC: [8] Use of undefined constant title - assumed 'title' D:\xampps\htdocs\somegood\Runtime\Cache\Mobile\cfca91beb49811c39e2bad25e2e139a4.php 第 99 行.
+NOTIC: [8] Use of undefined constant img_url - assumed 'img_url' D:\xampps\htdocs\somegood\Runtime\Cache\Mobile\cfca91beb49811c39e2bad25e2e139a4.php 第 99 行.
+NOTIC: [8] Use of undefined constant title - assumed 'title' D:\xampps\htdocs\somegood\Runtime\Cache\Mobile\cfca91beb49811c39e2bad25e2e139a4.php 第 99 行.
+NOTIC: [8] Use of undefined constant title - assumed 'title' D:\xampps\htdocs\somegood\Runtime\Cache\Mobile\cfca91beb49811c39e2bad25e2e139a4.php 第 99 行.
+NOTIC: [8] Use of undefined constant img_url - assumed 'img_url' D:\xampps\htdocs\somegood\Runtime\Cache\Mobile\cfca91beb49811c39e2bad25e2e139a4.php 第 99 行.
+NOTIC: [8] Use of undefined constant title - assumed 'title' D:\xampps\htdocs\somegood\Runtime\Cache\Mobile\cfca91beb49811c39e2bad25e2e139a4.php 第 99 行.
+NOTIC: [8] Use of undefined constant title - assumed 'title' D:\xampps\htdocs\somegood\Runtime\Cache\Mobile\cfca91beb49811c39e2bad25e2e139a4.php 第 99 行.
+NOTIC: [8] Use of undefined constant img_url - assumed 'img_url' D:\xampps\htdocs\somegood\Runtime\Cache\Mobile\cfca91beb49811c39e2bad25e2e139a4.php 第 99 行.
+NOTIC: [8] Use of undefined constant title - assumed 'title' D:\xampps\htdocs\somegood\Runtime\Cache\Mobile\cfca91beb49811c39e2bad25e2e139a4.php 第 99 行.
+NOTIC: [8] Use of undefined constant title - assumed 'title' D:\xampps\htdocs\somegood\Runtime\Cache\Mobile\cfca91beb49811c39e2bad25e2e139a4.php 第 99 行.
+NOTIC: [8] Use of undefined constant img_url - assumed 'img_url' D:\xampps\htdocs\somegood\Runtime\Cache\Mobile\cfca91beb49811c39e2bad25e2e139a4.php 第 99 行.
+NOTIC: [8] Use of undefined constant title - assumed 'title' D:\xampps\htdocs\somegood\Runtime\Cache\Mobile\cfca91beb49811c39e2bad25e2e139a4.php 第 99 行.
+NOTIC: [8] Use of undefined constant title - assumed 'title' D:\xampps\htdocs\somegood\Runtime\Cache\Mobile\cfca91beb49811c39e2bad25e2e139a4.php 第 99 行.
+NOTIC: [8] Undefined variable: Think D:\xampps\htdocs\somegood\Runtime\Cache\Mobile\cfca91beb49811c39e2bad25e2e139a4.php 第 218 行.
+NOTIC: [8] Undefined variable:  D:\xampps\htdocs\somegood\Runtime\Cache\Mobile\cfca91beb49811c39e2bad25e2e139a4.php 第 218 行.
+NOTIC: [8] Undefined variable: Think D:\xampps\htdocs\somegood\Runtime\Cache\Mobile\cfca91beb49811c39e2bad25e2e139a4.php 第 222 行.
+NOTIC: [8] Undefined variable:  D:\xampps\htdocs\somegood\Runtime\Cache\Mobile\cfca91beb49811c39e2bad25e2e139a4.php 第 222 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.022001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.022001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001001s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002001s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-12-29T14:55:25+08:00 ] ::1 /somegood/Mobile/Cart/getCartNum.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [2048] Declaration of Common\Model\RegionModel::add() should be compatible with Think\Model::add($data = '', $options = Array, $replace = false) D:\xampps\htdocs\somegood\Apps\Common\Model\RegionModel.class.php 第 5 行.
+NOTIC: [2048] Declaration of Common\Model\RegionModel::save() should be compatible with Think\Model::save($data = '', $options = Array) D:\xampps\htdocs\somegood\Apps\Common\Model\RegionModel.class.php 第 5 行.
+SQL: SHOW COLUMNS FROM `sg_region` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `sg_region` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `sg_region` WHERE `name` = '深圳' LIMIT 1   [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `sg_cart` [ RunTime:0.0030s ]
+SQL: SELECT SUM(counts) AS tp_sum FROM `sg_cart` WHERE `phpsessid` = 'qc9263b8q7ji2s8qt7p5sisle5' AND `user_id` = 0 LIMIT 1   [ RunTime:0.0010s ]
+
+[ 2017-12-29T14:55:25+08:00 ] ::1 /somegood/Mobile/Cart/isWho.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+NOTIC: [2048] Declaration of Common\Model\RegionModel::add() should be compatible with Think\Model::add($data = '', $options = Array, $replace = false) D:\xampps\htdocs\somegood\Apps\Common\Model\RegionModel.class.php 第 5 行.
+NOTIC: [2048] Declaration of Common\Model\RegionModel::save() should be compatible with Think\Model::save($data = '', $options = Array) D:\xampps\htdocs\somegood\Apps\Common\Model\RegionModel.class.php 第 5 行.
+SQL: SHOW COLUMNS FROM `sg_region` [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `sg_region` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `sg_region` WHERE `name` = '深圳' LIMIT 1   [ RunTime:0.0020s ]
+
+[ 2017-12-29T14:55:25+08:00 ] ::1 /somegood/Mobile/Index/storeList.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [2048] Declaration of Common\Model\RegionModel::add() should be compatible with Think\Model::add($data = '', $options = Array, $replace = false) D:\xampps\htdocs\somegood\Apps\Common\Model\RegionModel.class.php 第 5 行.
+NOTIC: [2048] Declaration of Common\Model\RegionModel::save() should be compatible with Think\Model::save($data = '', $options = Array) D:\xampps\htdocs\somegood\Apps\Common\Model\RegionModel.class.php 第 5 行.
+SQL: SHOW COLUMNS FROM `sg_region` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `sg_region` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_region` WHERE `name` = '深圳' LIMIT 1   [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `sg_store` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_region` WHERE `name` = '深圳市' LIMIT 1   [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `sg_store` [ RunTime:0.0020s ]
+SQL: SELECT COUNT(*) AS tp_count FROM sg_store s WHERE `status` = 1 AND `is_rec` = 1 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM sg_store s WHERE `status` = 1 AND `is_rec` = 1 ORDER BY ACOS(SIN((22.598102 * 3.1415) / 180 ) *SIN((s.lat * 3.1415) / 180 ) + COS((22.598102 * 3.1415) / 180 )
+                              * COS((s.lat * 3.1415) / 180 ) *COS((114.000709* 3.1415) / 180 - (s.lng * 3.1415) / 180 ) ) * 6380 asc LIMIT 0,10   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.012001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.012001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-12-29T14:55:26+08:00 ] ::1 /somegood/Mobile/Index/storeList.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [2048] Declaration of Common\Model\RegionModel::add() should be compatible with Think\Model::add($data = '', $options = Array, $replace = false) D:\xampps\htdocs\somegood\Apps\Common\Model\RegionModel.class.php 第 5 行.
+NOTIC: [2048] Declaration of Common\Model\RegionModel::save() should be compatible with Think\Model::save($data = '', $options = Array) D:\xampps\htdocs\somegood\Apps\Common\Model\RegionModel.class.php 第 5 行.
+SQL: SHOW COLUMNS FROM `sg_region` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `sg_region` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `sg_region` WHERE `name` = '深圳' LIMIT 1   [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `sg_store` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `sg_region` WHERE `name` = '深圳市' LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_store` [ RunTime:0.0030s ]
+SQL: SELECT COUNT(*) AS tp_count FROM sg_store s WHERE `status` = 1 AND `is_rec` = 1 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM sg_store s WHERE `status` = 1 AND `is_rec` = 1 ORDER BY ACOS(SIN((22.598102 * 3.1415) / 180 ) *SIN((s.lat * 3.1415) / 180 ) + COS((22.598102 * 3.1415) / 180 )
+                              * COS((s.lat * 3.1415) / 180 ) *COS((114.000709* 3.1415) / 180 - (s.lng * 3.1415) / 180 ) ) * 6380 asc LIMIT 10,10   [ RunTime:0.0020s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.012001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.012001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-12-29T14:55:28+08:00 ] ::1 /somegood/Mobile/Store/list.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_store` [ RunTime:0.0070s ]
+NOTIC: [2048] Declaration of Common\Model\RegionModel::add() should be compatible with Think\Model::add($data = '', $options = Array, $replace = false) D:\xampps\htdocs\somegood\Apps\Common\Model\RegionModel.class.php 第 242 行.
+NOTIC: [2048] Declaration of Common\Model\RegionModel::save() should be compatible with Think\Model::save($data = '', $options = Array) D:\xampps\htdocs\somegood\Apps\Common\Model\RegionModel.class.php 第 242 行.
+SQL: SHOW COLUMNS FROM `sg_region` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `sg_region` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `sg_region` WHERE `name` = '深圳市' LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_store` [ RunTime:0.0030s ]
+SQL: SELECT COUNT(*) AS tp_count FROM sg_store s WHERE `status` = 1 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM sg_store s WHERE `status` = 1 ORDER BY ACOS(SIN((22.598102 * 3.1415) / 180 ) *SIN((s.lat * 3.1415) / 180 ) + COS((22.598102 * 3.1415) / 180 )
+                              * COS((s.lat * 3.1415) / 180 ) *COS((114.000709* 3.1415) / 180 - (s.lng * 3.1415) / 180 ) ) * 6380 asc LIMIT 0,10   [ RunTime:0.0020s ]
+SQL: SELECT * FROM `sg_region` WHERE ( pid=1988 )  [ RunTime:0.0030s ]
+NOTIC: [8] Undefined index: count D:\xampps\htdocs\somegood\Apps\Mobile\Controller\StoreController.class.php 第 183 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: web_title D:\xampps\htdocs\somegood\Runtime\Cache\Mobile\7d6279a0a926ae61b007905a00869163.php 第 10 行.
+NOTIC: [8] Undefined variable: shop_id D:\xampps\htdocs\somegood\Runtime\Cache\Mobile\7d6279a0a926ae61b007905a00869163.php 第 28 行.
+NOTIC: [8] Undefined variable: Think D:\xampps\htdocs\somegood\Runtime\Cache\Mobile\7d6279a0a926ae61b007905a00869163.php 第 81 行.
+NOTIC: [8] Undefined variable:  D:\xampps\htdocs\somegood\Runtime\Cache\Mobile\7d6279a0a926ae61b007905a00869163.php 第 81 行.
+NOTIC: [8] Undefined variable: Think D:\xampps\htdocs\somegood\Runtime\Cache\Mobile\7d6279a0a926ae61b007905a00869163.php 第 85 行.
+NOTIC: [8] Undefined variable:  D:\xampps\htdocs\somegood\Runtime\Cache\Mobile\7d6279a0a926ae61b007905a00869163.php 第 85 行.
+NOTIC: [8] Undefined variable: web_title D:\xampps\htdocs\somegood\Runtime\Cache\Mobile\7d6279a0a926ae61b007905a00869163.php 第 164 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.032002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.032002s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-12-29T14:55:28+08:00 ] ::1 /somegood/Mobile/Cart/isWho.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [2048] Declaration of Common\Model\RegionModel::add() should be compatible with Think\Model::add($data = '', $options = Array, $replace = false) D:\xampps\htdocs\somegood\Apps\Common\Model\RegionModel.class.php 第 5 行.
+NOTIC: [2048] Declaration of Common\Model\RegionModel::save() should be compatible with Think\Model::save($data = '', $options = Array) D:\xampps\htdocs\somegood\Apps\Common\Model\RegionModel.class.php 第 5 行.
+SQL: SHOW COLUMNS FROM `sg_region` [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `sg_region` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `sg_region` WHERE `name` = '深圳' LIMIT 1   [ RunTime:0.0010s ]
+
+[ 2017-12-29T14:55:29+08:00 ] ::1 /somegood/Mobile/Store/detail/shopid/10.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_store` [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `sg_store` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `sg_store` WHERE `sid` = 10 LIMIT 1   [ RunTime:0.0010s ]
+NOTIC: [2048] Declaration of Common\Model\UsersModel::save() should be compatible with Think\Model::save($data = '', $options = Array) D:\xampps\htdocs\somegood\Apps\Common\Model\UsersModel.class.php 第 212 行.
+SQL: SHOW COLUMNS FROM `sg_users` [ RunTime:0.0030s ]
+SQL: SELECT `user_name`,`mobile` FROM `sg_users` WHERE ( 1=1 AND uid='823' ) LIMIT 1   [ RunTime:0.0020s ]
+NOTIC: [2048] Declaration of Common\Model\RegionModel::add() should be compatible with Think\Model::add($data = '', $options = Array, $replace = false) D:\xampps\htdocs\somegood\Apps\Common\Model\RegionModel.class.php 第 242 行.
+NOTIC: [2048] Declaration of Common\Model\RegionModel::save() should be compatible with Think\Model::save($data = '', $options = Array) D:\xampps\htdocs\somegood\Apps\Common\Model\RegionModel.class.php 第 242 行.
+SQL: SHOW COLUMNS FROM `sg_region` [ RunTime:0.0030s ]
+SQL: SELECT `merger_name`,`pid`,`name` FROM `sg_region` WHERE ( 1=1 AND id='1991' ) LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `sg_store_type` [ RunTime:0.0020s ]
+SQL: SELECT `type_name` FROM `sg_store_type` WHERE ( 1=1 AND id='2' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_seller_delivery` [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `sg_seller_delivery` [ RunTime:0.0020s ]
+SQL: SELECT COUNT(*) AS tp_count FROM sg_seller_delivery sd LEFT JOIN sg_goods AS g ON sd.sg_id = g.id LEFT JOIN sg_goods_category AS gc ON sd.category_id = gc.id  WHERE `store_id` = '10' AND `is_onsale` = 1 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT sd.*,g.user_id,g.add_time,g.goods_sn,g.content,g.original_img,gc.title AS category_name,s.store_name,s.address,r.name as area_name,st.type_name as store_type FROM sg_seller_delivery sd LEFT JOIN sg_goods AS g ON sd.sg_id = g.id LEFT JOIN sg_goods_category AS gc ON sd.category_id = gc.id LEFT JOIN sg_store AS s ON sd.store_id = s.sid LEFT JOIN sg_region AS r ON s.area_id = r.id LEFT JOIN sg_store_type AS st ON s.store_type = st.id  WHERE `store_id` = '10' AND `is_onsale` = 1 LIMIT 0,10   [ RunTime:0.0020s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: isAjax D:\xampps\htdocs\somegood\Runtime\Cache\Mobile\fe5116b507bd7ddc7f709a721b8ed04e.php 第 1 行.
+NOTIC: [8] Undefined variable: favoriteStatus D:\xampps\htdocs\somegood\Runtime\Cache\Mobile\fe5116b507bd7ddc7f709a721b8ed04e.php 第 52 行.
+NOTIC: [8] Undefined variable: list D:\xampps\htdocs\somegood\Runtime\Cache\Mobile\fe5116b507bd7ddc7f709a721b8ed04e.php 第 84 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.011001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.011001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-12-29T15:05:57+08:00 ] ::1 /somegood/Mobile/Store/detail/shopid/10.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_store` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `sg_store` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_store` WHERE `sid` = 10 LIMIT 1   [ RunTime:0.0010s ]
+NOTIC: [2048] Declaration of Common\Model\UsersModel::save() should be compatible with Think\Model::save($data = '', $options = Array) D:\xampps\htdocs\somegood\Apps\Common\Model\UsersModel.class.php 第 212 行.
+SQL: SHOW COLUMNS FROM `sg_users` [ RunTime:0.0030s ]
+SQL: SELECT `user_name`,`mobile` FROM `sg_users` WHERE ( 1=1 AND uid='823' ) LIMIT 1   [ RunTime:0.0020s ]
+NOTIC: [2048] Declaration of Common\Model\RegionModel::add() should be compatible with Think\Model::add($data = '', $options = Array, $replace = false) D:\xampps\htdocs\somegood\Apps\Common\Model\RegionModel.class.php 第 242 行.
+NOTIC: [2048] Declaration of Common\Model\RegionModel::save() should be compatible with Think\Model::save($data = '', $options = Array) D:\xampps\htdocs\somegood\Apps\Common\Model\RegionModel.class.php 第 242 行.
+SQL: SHOW COLUMNS FROM `sg_region` [ RunTime:0.0020s ]
+SQL: SELECT `merger_name`,`pid`,`name` FROM `sg_region` WHERE ( 1=1 AND id='1991' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_store_type` [ RunTime:0.0020s ]
+SQL: SELECT `type_name` FROM `sg_store_type` WHERE ( 1=1 AND id='2' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_seller_delivery` [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `sg_seller_delivery` [ RunTime:0.0020s ]
+SQL: SELECT COUNT(*) AS tp_count FROM sg_seller_delivery sd LEFT JOIN sg_goods AS g ON sd.sg_id = g.id LEFT JOIN sg_goods_category AS gc ON sd.category_id = gc.id  WHERE `store_id` = '10' AND `is_onsale` = 1 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT sd.*,g.user_id,g.add_time,g.goods_sn,g.content,g.original_img,gc.title AS category_name,s.store_name,s.address,r.name as area_name,st.type_name as store_type FROM sg_seller_delivery sd LEFT JOIN sg_goods AS g ON sd.sg_id = g.id LEFT JOIN sg_goods_category AS gc ON sd.category_id = gc.id LEFT JOIN sg_store AS s ON sd.store_id = s.sid LEFT JOIN sg_region AS r ON s.area_id = r.id LEFT JOIN sg_store_type AS st ON s.store_type = st.id  WHERE `store_id` = '10' AND `is_onsale` = 1 LIMIT 0,10   [ RunTime:0.0020s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: isAjax D:\xampps\htdocs\somegood\Runtime\Cache\Mobile\fe5116b507bd7ddc7f709a721b8ed04e.php 第 1 行.
+NOTIC: [8] Undefined variable: favoriteStatus D:\xampps\htdocs\somegood\Runtime\Cache\Mobile\fe5116b507bd7ddc7f709a721b8ed04e.php 第 52 行.
+NOTIC: [8] Undefined variable: list D:\xampps\htdocs\somegood\Runtime\Cache\Mobile\fe5116b507bd7ddc7f709a721b8ed04e.php 第 84 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.017001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.017001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-12-29T15:05:57+08:00 ] ::1 /somegood/Mobile/Store/detail/shopid/10.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_store` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `sg_store` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `sg_store` WHERE `sid` = 10 LIMIT 1   [ RunTime:0.0020s ]
+NOTIC: [2048] Declaration of Common\Model\UsersModel::save() should be compatible with Think\Model::save($data = '', $options = Array) D:\xampps\htdocs\somegood\Apps\Common\Model\UsersModel.class.php 第 212 行.
+SQL: SHOW COLUMNS FROM `sg_users` [ RunTime:0.0030s ]
+SQL: SELECT `user_name`,`mobile` FROM `sg_users` WHERE ( 1=1 AND uid='823' ) LIMIT 1   [ RunTime:0.0010s ]
+NOTIC: [2048] Declaration of Common\Model\RegionModel::add() should be compatible with Think\Model::add($data = '', $options = Array, $replace = false) D:\xampps\htdocs\somegood\Apps\Common\Model\RegionModel.class.php 第 242 行.
+NOTIC: [2048] Declaration of Common\Model\RegionModel::save() should be compatible with Think\Model::save($data = '', $options = Array) D:\xampps\htdocs\somegood\Apps\Common\Model\RegionModel.class.php 第 242 行.
+SQL: SHOW COLUMNS FROM `sg_region` [ RunTime:0.0030s ]
+SQL: SELECT `merger_name`,`pid`,`name` FROM `sg_region` WHERE ( 1=1 AND id='1991' ) LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `sg_store_type` [ RunTime:0.0020s ]
+SQL: SELECT `type_name` FROM `sg_store_type` WHERE ( 1=1 AND id='2' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_seller_delivery` [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `sg_seller_delivery` [ RunTime:0.0030s ]
+SQL: SELECT COUNT(*) AS tp_count FROM sg_seller_delivery sd LEFT JOIN sg_goods AS g ON sd.sg_id = g.id LEFT JOIN sg_goods_category AS gc ON sd.category_id = gc.id  WHERE `store_id` = '10' AND `is_onsale` = 1 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT sd.*,g.user_id,g.add_time,g.goods_sn,g.content,g.original_img,gc.title AS category_name,s.store_name,s.address,r.name as area_name,st.type_name as store_type FROM sg_seller_delivery sd LEFT JOIN sg_goods AS g ON sd.sg_id = g.id LEFT JOIN sg_goods_category AS gc ON sd.category_id = gc.id LEFT JOIN sg_store AS s ON sd.store_id = s.sid LEFT JOIN sg_region AS r ON s.area_id = r.id LEFT JOIN sg_store_type AS st ON s.store_type = st.id  WHERE `store_id` = '10' AND `is_onsale` = 1 LIMIT 0,10   [ RunTime:0.0020s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: isAjax D:\xampps\htdocs\somegood\Runtime\Cache\Mobile\fe5116b507bd7ddc7f709a721b8ed04e.php 第 1 行.
+NOTIC: [8] Undefined variable: favoriteStatus D:\xampps\htdocs\somegood\Runtime\Cache\Mobile\fe5116b507bd7ddc7f709a721b8ed04e.php 第 52 行.
+NOTIC: [8] Undefined variable: list D:\xampps\htdocs\somegood\Runtime\Cache\Mobile\fe5116b507bd7ddc7f709a721b8ed04e.php 第 84 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.009001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.009001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-12-29T15:05:58+08:00 ] ::1 /somegood/Mobile/Store/detail/shopid/10.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_store` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `sg_store` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_store` WHERE `sid` = 10 LIMIT 1   [ RunTime:0.0010s ]
+NOTIC: [2048] Declaration of Common\Model\UsersModel::save() should be compatible with Think\Model::save($data = '', $options = Array) D:\xampps\htdocs\somegood\Apps\Common\Model\UsersModel.class.php 第 212 行.
+SQL: SHOW COLUMNS FROM `sg_users` [ RunTime:0.0030s ]
+SQL: SELECT `user_name`,`mobile` FROM `sg_users` WHERE ( 1=1 AND uid='823' ) LIMIT 1   [ RunTime:0.0010s ]
+NOTIC: [2048] Declaration of Common\Model\RegionModel::add() should be compatible with Think\Model::add($data = '', $options = Array, $replace = false) D:\xampps\htdocs\somegood\Apps\Common\Model\RegionModel.class.php 第 242 行.
+NOTIC: [2048] Declaration of Common\Model\RegionModel::save() should be compatible with Think\Model::save($data = '', $options = Array) D:\xampps\htdocs\somegood\Apps\Common\Model\RegionModel.class.php 第 242 行.
+SQL: SHOW COLUMNS FROM `sg_region` [ RunTime:0.0020s ]
+SQL: SELECT `merger_name`,`pid`,`name` FROM `sg_region` WHERE ( 1=1 AND id='1991' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_store_type` [ RunTime:0.0030s ]
+SQL: SELECT `type_name` FROM `sg_store_type` WHERE ( 1=1 AND id='2' ) LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `sg_seller_delivery` [ RunTime:0.0050s ]
+SQL: SHOW COLUMNS FROM `sg_seller_delivery` [ RunTime:0.0020s ]
+SQL: SELECT COUNT(*) AS tp_count FROM sg_seller_delivery sd LEFT JOIN sg_goods AS g ON sd.sg_id = g.id LEFT JOIN sg_goods_category AS gc ON sd.category_id = gc.id  WHERE `store_id` = '10' AND `is_onsale` = 1 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT sd.*,g.user_id,g.add_time,g.goods_sn,g.content,g.original_img,gc.title AS category_name,s.store_name,s.address,r.name as area_name,st.type_name as store_type FROM sg_seller_delivery sd LEFT JOIN sg_goods AS g ON sd.sg_id = g.id LEFT JOIN sg_goods_category AS gc ON sd.category_id = gc.id LEFT JOIN sg_store AS s ON sd.store_id = s.sid LEFT JOIN sg_region AS r ON s.area_id = r.id LEFT JOIN sg_store_type AS st ON s.store_type = st.id  WHERE `store_id` = '10' AND `is_onsale` = 1 LIMIT 0,10   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: isAjax D:\xampps\htdocs\somegood\Runtime\Cache\Mobile\fe5116b507bd7ddc7f709a721b8ed04e.php 第 1 行.
+NOTIC: [8] Undefined variable: favoriteStatus D:\xampps\htdocs\somegood\Runtime\Cache\Mobile\fe5116b507bd7ddc7f709a721b8ed04e.php 第 52 行.
+NOTIC: [8] Undefined variable: list D:\xampps\htdocs\somegood\Runtime\Cache\Mobile\fe5116b507bd7ddc7f709a721b8ed04e.php 第 84 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.009001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.009001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-12-29T15:05:58+08:00 ] ::1 /somegood/Mobile/Store/detail/shopid/10.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `sg_store` [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `sg_store` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_store` WHERE `sid` = 10 LIMIT 1   [ RunTime:0.0010s ]
+NOTIC: [2048] Declaration of Common\Model\UsersModel::save() should be compatible with Think\Model::save($data = '', $options = Array) D:\xampps\htdocs\somegood\Apps\Common\Model\UsersModel.class.php 第 212 行.
+SQL: SHOW COLUMNS FROM `sg_users` [ RunTime:0.0040s ]
+SQL: SELECT `user_name`,`mobile` FROM `sg_users` WHERE ( 1=1 AND uid='823' ) LIMIT 1   [ RunTime:0.0010s ]
+NOTIC: [2048] Declaration of Common\Model\RegionModel::add() should be compatible with Think\Model::add($data = '', $options = Array, $replace = false) D:\xampps\htdocs\somegood\Apps\Common\Model\RegionModel.class.php 第 242 行.
+NOTIC: [2048] Declaration of Common\Model\RegionModel::save() should be compatible with Think\Model::save($data = '', $options = Array) D:\xampps\htdocs\somegood\Apps\Common\Model\RegionModel.class.php 第 242 行.
+SQL: SHOW COLUMNS FROM `sg_region` [ RunTime:0.0020s ]
+SQL: SELECT `merger_name`,`pid`,`name` FROM `sg_region` WHERE ( 1=1 AND id='1991' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_store_type` [ RunTime:0.0030s ]
+SQL: SELECT `type_name` FROM `sg_store_type` WHERE ( 1=1 AND id='2' ) LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `sg_seller_delivery` [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `sg_seller_delivery` [ RunTime:0.0020s ]
+SQL: SELECT COUNT(*) AS tp_count FROM sg_seller_delivery sd LEFT JOIN sg_goods AS g ON sd.sg_id = g.id LEFT JOIN sg_goods_category AS gc ON sd.category_id = gc.id  WHERE `store_id` = '10' AND `is_onsale` = 1 LIMIT 1   [ RunTime:0.0020s ]
+SQL: SELECT sd.*,g.user_id,g.add_time,g.goods_sn,g.content,g.original_img,gc.title AS category_name,s.store_name,s.address,r.name as area_name,st.type_name as store_type FROM sg_seller_delivery sd LEFT JOIN sg_goods AS g ON sd.sg_id = g.id LEFT JOIN sg_goods_category AS gc ON sd.category_id = gc.id LEFT JOIN sg_store AS s ON sd.store_id = s.sid LEFT JOIN sg_region AS r ON s.area_id = r.id LEFT JOIN sg_store_type AS st ON s.store_type = st.id  WHERE `store_id` = '10' AND `is_onsale` = 1 LIMIT 0,10   [ RunTime:0.0020s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: isAjax D:\xampps\htdocs\somegood\Runtime\Cache\Mobile\fe5116b507bd7ddc7f709a721b8ed04e.php 第 1 行.
+NOTIC: [8] Undefined variable: favoriteStatus D:\xampps\htdocs\somegood\Runtime\Cache\Mobile\fe5116b507bd7ddc7f709a721b8ed04e.php 第 52 行.
+NOTIC: [8] Undefined variable: list D:\xampps\htdocs\somegood\Runtime\Cache\Mobile\fe5116b507bd7ddc7f709a721b8ed04e.php 第 84 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.009001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.009001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-12-29T15:05:58+08:00 ] ::1 /somegood/Mobile/Store/detail/shopid/10.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_store` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `sg_store` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_store` WHERE `sid` = 10 LIMIT 1   [ RunTime:0.0010s ]
+NOTIC: [2048] Declaration of Common\Model\UsersModel::save() should be compatible with Think\Model::save($data = '', $options = Array) D:\xampps\htdocs\somegood\Apps\Common\Model\UsersModel.class.php 第 212 行.
+SQL: SHOW COLUMNS FROM `sg_users` [ RunTime:0.0020s ]
+SQL: SELECT `user_name`,`mobile` FROM `sg_users` WHERE ( 1=1 AND uid='823' ) LIMIT 1   [ RunTime:0.0010s ]
+NOTIC: [2048] Declaration of Common\Model\RegionModel::add() should be compatible with Think\Model::add($data = '', $options = Array, $replace = false) D:\xampps\htdocs\somegood\Apps\Common\Model\RegionModel.class.php 第 242 行.
+NOTIC: [2048] Declaration of Common\Model\RegionModel::save() should be compatible with Think\Model::save($data = '', $options = Array) D:\xampps\htdocs\somegood\Apps\Common\Model\RegionModel.class.php 第 242 行.
+SQL: SHOW COLUMNS FROM `sg_region` [ RunTime:0.0020s ]
+SQL: SELECT `merger_name`,`pid`,`name` FROM `sg_region` WHERE ( 1=1 AND id='1991' ) LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `sg_store_type` [ RunTime:0.0030s ]
+SQL: SELECT `type_name` FROM `sg_store_type` WHERE ( 1=1 AND id='2' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_seller_delivery` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `sg_seller_delivery` [ RunTime:0.0020s ]
+SQL: SELECT COUNT(*) AS tp_count FROM sg_seller_delivery sd LEFT JOIN sg_goods AS g ON sd.sg_id = g.id LEFT JOIN sg_goods_category AS gc ON sd.category_id = gc.id  WHERE `store_id` = '10' AND `is_onsale` = 1 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT sd.*,g.user_id,g.add_time,g.goods_sn,g.content,g.original_img,gc.title AS category_name,s.store_name,s.address,r.name as area_name,st.type_name as store_type FROM sg_seller_delivery sd LEFT JOIN sg_goods AS g ON sd.sg_id = g.id LEFT JOIN sg_goods_category AS gc ON sd.category_id = gc.id LEFT JOIN sg_store AS s ON sd.store_id = s.sid LEFT JOIN sg_region AS r ON s.area_id = r.id LEFT JOIN sg_store_type AS st ON s.store_type = st.id  WHERE `store_id` = '10' AND `is_onsale` = 1 LIMIT 0,10   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: isAjax D:\xampps\htdocs\somegood\Runtime\Cache\Mobile\fe5116b507bd7ddc7f709a721b8ed04e.php 第 1 行.
+NOTIC: [8] Undefined variable: favoriteStatus D:\xampps\htdocs\somegood\Runtime\Cache\Mobile\fe5116b507bd7ddc7f709a721b8ed04e.php 第 52 行.
+NOTIC: [8] Undefined variable: list D:\xampps\htdocs\somegood\Runtime\Cache\Mobile\fe5116b507bd7ddc7f709a721b8ed04e.php 第 84 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.009000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.009000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-12-29T15:05:58+08:00 ] ::1 /somegood/Mobile/Store/detail/shopid/10.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_store` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `sg_store` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_store` WHERE `sid` = 10 LIMIT 1   [ RunTime:0.0010s ]
+NOTIC: [2048] Declaration of Common\Model\UsersModel::save() should be compatible with Think\Model::save($data = '', $options = Array) D:\xampps\htdocs\somegood\Apps\Common\Model\UsersModel.class.php 第 212 行.
+SQL: SHOW COLUMNS FROM `sg_users` [ RunTime:0.0030s ]
+SQL: SELECT `user_name`,`mobile` FROM `sg_users` WHERE ( 1=1 AND uid='823' ) LIMIT 1   [ RunTime:0.0010s ]
+NOTIC: [2048] Declaration of Common\Model\RegionModel::add() should be compatible with Think\Model::add($data = '', $options = Array, $replace = false) D:\xampps\htdocs\somegood\Apps\Common\Model\RegionModel.class.php 第 242 行.
+NOTIC: [2048] Declaration of Common\Model\RegionModel::save() should be compatible with Think\Model::save($data = '', $options = Array) D:\xampps\htdocs\somegood\Apps\Common\Model\RegionModel.class.php 第 242 行.
+SQL: SHOW COLUMNS FROM `sg_region` [ RunTime:0.0020s ]
+SQL: SELECT `merger_name`,`pid`,`name` FROM `sg_region` WHERE ( 1=1 AND id='1991' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_store_type` [ RunTime:0.0030s ]
+SQL: SELECT `type_name` FROM `sg_store_type` WHERE ( 1=1 AND id='2' ) LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `sg_seller_delivery` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `sg_seller_delivery` [ RunTime:0.0030s ]
+SQL: SELECT COUNT(*) AS tp_count FROM sg_seller_delivery sd LEFT JOIN sg_goods AS g ON sd.sg_id = g.id LEFT JOIN sg_goods_category AS gc ON sd.category_id = gc.id  WHERE `store_id` = '10' AND `is_onsale` = 1 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT sd.*,g.user_id,g.add_time,g.goods_sn,g.content,g.original_img,gc.title AS category_name,s.store_name,s.address,r.name as area_name,st.type_name as store_type FROM sg_seller_delivery sd LEFT JOIN sg_goods AS g ON sd.sg_id = g.id LEFT JOIN sg_goods_category AS gc ON sd.category_id = gc.id LEFT JOIN sg_store AS s ON sd.store_id = s.sid LEFT JOIN sg_region AS r ON s.area_id = r.id LEFT JOIN sg_store_type AS st ON s.store_type = st.id  WHERE `store_id` = '10' AND `is_onsale` = 1 LIMIT 0,10   [ RunTime:0.0020s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined variable: isAjax D:\xampps\htdocs\somegood\Runtime\Cache\Mobile\fe5116b507bd7ddc7f709a721b8ed04e.php 第 1 行.
+NOTIC: [8] Undefined variable: favoriteStatus D:\xampps\htdocs\somegood\Runtime\Cache\Mobile\fe5116b507bd7ddc7f709a721b8ed04e.php 第 52 行.
+NOTIC: [8] Undefined variable: list D:\xampps\htdocs\somegood\Runtime\Cache\Mobile\fe5116b507bd7ddc7f709a721b8ed04e.php 第 84 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.010000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.010000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-12-29T17:23:34+08:00 ] ::1 /somegood/Mobile/Store/detail/shopid/10.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_store` [ RunTime:0.0410s ]
+SQL: SHOW COLUMNS FROM `sg_store` [ RunTime:0.0060s ]
+SQL: SELECT * FROM `sg_store` WHERE `sid` = 10 LIMIT 1   [ RunTime:0.0100s ]
+NOTIC: [2048] Declaration of Common\Model\UsersModel::save() should be compatible with Think\Model::save($data = '', $options = Array) D:\xampps\htdocs\somegood\Apps\Common\Model\UsersModel.class.php 第 212 行.
+SQL: SHOW COLUMNS FROM `sg_users` [ RunTime:0.0620s ]
+SQL: SELECT `user_name`,`mobile` FROM `sg_users` WHERE ( 1=1 AND uid='823' ) LIMIT 1   [ RunTime:0.0010s ]
+NOTIC: [2048] Declaration of Common\Model\RegionModel::add() should be compatible with Think\Model::add($data = '', $options = Array, $replace = false) D:\xampps\htdocs\somegood\Apps\Common\Model\RegionModel.class.php 第 242 行.
+NOTIC: [2048] Declaration of Common\Model\RegionModel::save() should be compatible with Think\Model::save($data = '', $options = Array) D:\xampps\htdocs\somegood\Apps\Common\Model\RegionModel.class.php 第 242 行.
+SQL: SHOW COLUMNS FROM `sg_region` [ RunTime:0.0590s ]
+SQL: SELECT `merger_name`,`pid`,`name` FROM `sg_region` WHERE ( 1=1 AND id='1991' ) LIMIT 1   [ RunTime:0.0130s ]
+SQL: SHOW COLUMNS FROM `sg_store_type` [ RunTime:0.0440s ]
+SQL: SELECT `type_name` FROM `sg_store_type` WHERE ( 1=1 AND id='2' ) LIMIT 1   [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `sg_seller_delivery` [ RunTime:0.0450s ]
+SQL: SHOW COLUMNS FROM `sg_seller_delivery` [ RunTime:0.0030s ]
+SQL: SELECT COUNT(*) AS tp_count FROM sg_seller_delivery sd LEFT JOIN sg_goods AS g ON sd.sg_id = g.id LEFT JOIN sg_goods_category AS gc ON sd.category_id = gc.id  WHERE `store_id` = '10' AND `is_onsale` = 1 LIMIT 1   [ RunTime:0.0630s ]
+SQL: SELECT sd.*,g.user_id,g.add_time,g.goods_sn,g.content,g.original_img,gc.title AS category_name,s.store_name,s.address,r.name as area_name,st.type_name as store_type FROM sg_seller_delivery sd LEFT JOIN sg_goods AS g ON sd.sg_id = g.id LEFT JOIN sg_goods_category AS gc ON sd.category_id = gc.id LEFT JOIN sg_store AS s ON sd.store_id = s.sid LEFT JOIN sg_region AS r ON s.area_id = r.id LEFT JOIN sg_store_type AS st ON s.store_type = st.id  WHERE `store_id` = '10' AND `is_onsale` = 1 LIMIT 0,10   [ RunTime:0.0130s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: isAjax D:\xampps\htdocs\somegood\Runtime\Cache\Mobile\fe5116b507bd7ddc7f709a721b8ed04e.php 第 1 行.
+NOTIC: [8] Undefined variable: favoriteStatus D:\xampps\htdocs\somegood\Runtime\Cache\Mobile\fe5116b507bd7ddc7f709a721b8ed04e.php 第 52 行.
+NOTIC: [8] Undefined variable: list D:\xampps\htdocs\somegood\Runtime\Cache\Mobile\fe5116b507bd7ddc7f709a721b8ed04e.php 第 84 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.014001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.014001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+

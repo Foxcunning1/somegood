@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>{$web_title}</title>
+    <meta name="keywords" content="{$web_keywords}"/>
+    <meta name="description" content="{$web_description}" />
+    <import type="css" file="statics.wap.css.public,statics.wap.css.style,statics.wap.css.animate,statics.wap.css.scrollanim#min" />
+    <!--[if lt IE9]>
+    <import type="js" file="scripts.js.jshtml5shiv#min" />
+    <![endif]-->
+    <import type="js" file="statics.wap.js.zepto#min,statics.wap.js.zepto#fx,statics.wap.js.TouchSlide#1#1,statics.wap.js.rem" />
+</head>
+<body>
+    <header>
+        <h2>三好连锁传媒</h2>
+        <div class="menu-icon"></div>
+    </header>
+    <article class="containter">
+        <section class="slider" id="slider">
+            <div class="hd">
+                <ul>
+                    <li class="on"></li>
+                    <li></li>
+                </ul>
+            </div>
+            <div class="bd">
+                <ul>
+                    <li><img src="__PUBLIC__/statics/wap/images/banner1.jpg" alt="banner1" /></li>
+                    <li><img src="__PUBLIC__/statics/wap/images/banner2.jpg" alt="banner2" /></li>
+                </ul>
+            </div>
+        </section>
+        <script>TouchSlide({slideCell:"#slider",mainCell:".bd ul",autoPlay:true});</script>
+        <nav>
+            <ul>
+                <li class="selected"><a href="/Wap">首页</a></li>
+                <li><a href="{:U('Wap/About/profile')}">平台介绍</a></li>
+                <li><a href="{:U('Wap/Case/list')}">案例展示</a></li>
+                <li style="display: none;"><a href="{:U('Wap/About/team')}">团队支持</a></li>
+                <li><a href="{:U('Wap/News/list')}">新闻资讯</a></li>
+                <li><a href="{:U('Wap/About/contact')}">联系我们</a></li>
+                <li><a href="{:U('Mobile/Index/index')}">3好平台</a></li>
+            </ul>
+        </nav>
+        <section class="floor floor-1">
+            <h2>现在的<span>推广现状</span></h2>
+            <div class="line"></div>
+            <section class="bg-section"></section>
+        </section>
+        <section class="floor floor-2">
+            <h2 data-kui-anim="fadeInRightFast">让推广回归市场本质！</h2>
+            <h3 data-kui-anim="fadeInRightNormal">公平---在这里，没有贵胄平民之分，</h3>
+            <h3 data-kui-anim="fadeInRightNormal">没有竞价排位之说，也没有昂贵的开户费！</h3>
+            <h3 data-kui-anim="fadeInRightNormal">公正---在这里，平台把你的产品放到</h3>
+            <h3 data-kui-anim="fadeInRightNormal">特定的消费群体且人流量大的地方，做到有的放矢！</h3>
+            <h3 data-kui-anim="fadeInRightNormal">公开---在这里，用户不但能看到您的公司介绍，</h3>
+            <h3 data-kui-anim="fadeInRightNormal">还能体验到您的产品带给他们的实体体验！</h3>
+            <a href="javascript:;" class="contact-us-a" data-kui-anim="fadeInUpSlow">联系我们</a>
+        </section>
+        <section class="floor floor-3">
+            <h2 data-kui-anim="fadeInRightFast">三好连锁传媒的<span>三大优势</span></h2>
+            <div class="line" data-kui-anim="fadeInRightSlow"></div>
+            <section class="bg-section" data-kui-anim="fadeInRightNormal"></section>
+        </section>
+        <section class="floor floor-4">
+            <h2 data-kui-anim="fadeInRightFast">三好连锁传媒的合作方向（类型,行业?）</h2>
+            <section class="bg-section" data-kui-anim="fadeInRightNormal"></section>
+        </section>
+        <section class="floor floor-5">
+            <h2 data-kui-anim="fadeInRightFast">我们的<span>新闻中心</span></h2>
+            <div class="line" data-kui-anim="fadeInRightSlow"></div>
+            <section class="img-section" data-kui-anim="fadeInRightNormal">
+                <volist name="topNewsList" id="news">
+                    <a href="{:U('Wap/News/show')}?id={$news.aid}">
+                        <img src="__PUBLIC__/uploads/{$news.img_url}" alt="{$news.title}" width="375" height="147"/>
+                        <figcaption><a href="{:U('Wap/News/show')}?id={$news.aid}">{$news.title|msubstr=0,20}</a></figcaption>
+                    </a>
+                </volist>
+            </section>
+            <section class="news-list-section">
+                <ul>
+                    <!--显示3个好看一些-->
+                    <volist name="newsList" id="item">
+                        <li>
+                            <a href="{:U('Wap/News/show')}?id={$item.aid}">{$item.title|msubstr=0,30}</a>
+                        </li>
+                    </volist>
+                </ul>
+            </section>
+        </section>
+        <section class="floor floor-6">
+            <h2 data-kui-anim="fadeInRightFast">品牌<span>合作</span></h2>
+            <div class="line" data-kui-anim="fadeInRightSlow"></div>
+            <section class="img-section" data-kui-anim="fadeInLeftFast">
+                <ul>
+                    <li><a href="javascript:;"><img src="__PUBLIC__/statics/wap/images/case_1.png" alt="" /></a></li>
+                    <li><a href="javascript:;"><img src="__PUBLIC__/statics/wap/images/case_2.png" alt="" /></a></li>
+                    <li><a href="javascript:;"><img src="__PUBLIC__/statics/wap/images/case_3.png" alt="" /></a></li>
+                    <li><a href="javascript:;"><img src="__PUBLIC__/statics/wap/images/case_4.png" alt="" /></a></li>
+                    <li><a href="javascript:;"><img src="__PUBLIC__/statics/wap/images/case_5.png" alt="" /></a></li>
+                    <li><a href="javascript:;"><img src="__PUBLIC__/statics/wap/images/case_6.png" alt="" /></a></li>
+                    <li><a href="javascript:;"><img src="__PUBLIC__/statics/wap/images/case_7.png" alt="" /></a></li>
+                    <li><a href="javascript:;"><img src="__PUBLIC__/statics/wap/images/case_8.png" alt="" /></a></li>
+                    <li><a href="javascript:;"><img src="__PUBLIC__/statics/wap/images/case_9.png" alt="" /></a></li>
+                    <li><a href="javascript:;"><img src="__PUBLIC__/statics/wap/images/case_10.png" alt="" /></a></li>
+                </ul>
+            </section>
+        </section>
+        <include file="Public/footer" />
+    </article>
+    <include file="Public/nav" />
+</body>
+</html>

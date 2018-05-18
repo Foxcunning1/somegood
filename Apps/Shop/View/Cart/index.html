@@ -1,0 +1,160 @@
+<layout name="cart_layout"/>
+<div class="w1200 container mt30">
+    <!--<if condition="$info eq null">-->
+        <div class="cart-msg-box">
+            <div class="cart-msg-icon fl"></div>
+            <div class="cart-msg-tips fr">
+                    <p>购物车空空的哦~，赶快去选择您想的要的商品吧~ </p>
+                    <p><a href="{:U('Shop/Index/index')}">去选择商品&gt;&gt;</a></p>
+            </div>
+        </div>
+        <!--<else />-->
+        <div class="cart-title">
+            <h3 class="fl">全部商品</h3>
+            <div class="right-tools-box fr">
+                已选商品 <span class="total-price">¥0.00</span><a href="javascript:;" class="submit-btn">结算</a>
+            </div>
+        </div>
+        <div class="cart-table">
+            <div class="th">
+                <div class="chk th-chk fl">
+                    <div class="th-inner"><label class="chk-box allChk" onclick="checkAllCart(this,0);">全选</label></div>
+                </div>
+                <div class="service th-service fl"><div class="th-inner">商品信息</div></div>
+                <div class="price th-price fl"><div class="th-inner">价格</div></div>
+                <div class="amount th-amount fl"><div class="th-inner">数量</div></div>
+                <div class="pay-amount th-pay-amount fl"><div class="th-inner">金额</div></div>
+                <div class="operate th-operate fl"><div class="th-inner">操作</div></div>
+            </div>
+            <div class="cart-list-box">
+                <form name="cartForm" id="cartForm" action="{:U('Shop/Order/settlement')}" method="post" >
+                    <volist name="shop" id="vs">
+                          <div class="show-title">
+                              <span class="shop-location">商家:{$vs[user_name]}</span>
+                          </div>
+                    <notempty name="info">
+                        <div class="service-list mt10" id="normalList">
+                            <volist name="info" id="item">
+                                <if condition="$item['seller_id'] eq $vs['seller_id']" >
+                                <div class="item-box" id="item{$item.cart_id}">
+                                    <if condition="($item['stock'] eq 0 &&  $item['online_stock'] eq 0) || $item['is_on_sale'] eq 0">
+                                    <div class="chk td-chk fl">失效</div>
+                                    <else/>
+                                    <div class="chk td-chk fl"><div class="td-inner"><input type="checkbox" class="chkBox" name="cartIds[]" id="chkBox{$item.cart_id}" value="{$item.cart_id}" /><label isNormal="1" class="chk-box"></label></div></div>
+                                    </if>
+                                    <div class="service td-service fl"><div class="td-inner"><a target="_blank" href="{:U('Goods/goods',array('id'=>$item['real_goods_id']))}">{$item.goods_title}({$item.store_name})</a></div></div>
+                                    <div class="price td-price fl"><div class="td-inner goods-price">¥{$item.goods_price}</div></div>
+                                    <div class="amount td-amount fl">
+                                        <div class="td-inner">
+                                            <div class="amount-box">
+                                                <a class="subtract-icon" href="javascript:;" onclick="updateNumAjaxUrl($(this),{$item.goods_id},{$item.cart_id})">-</a>
+                                                <input type="text" name="itemAmount" disabled="disabled" class="item-amount" value="{$item.counts}" onKeyUp="updateNumAjaxUrl($(this),{$item.goods_id})" />
+                                                <a class="add-icon" href="javascript:;" onclick="updateNumAjaxUrl($(this),{$item.goods_id},{$item.cart_id})">+</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="pay-amount td-pay-amount fl"><div class="td-inner"><span class="amount-money">¥{:number_format(floatval($item['goods_price']*$item['counts']),2,'.','')}</span></div></div>
+                                    <div class="operate td-operate fl">
+                                        <div class="td-inner">
+                                            <a href="javascript:;" data-action="move" goodsid="{$item.goods_id}" cartId="{$item.cart_id}">移入收藏夹</a>
+                                            <a href="javascript:;" data-action="del" goodsid="{$item.cart_id}" cartId="{$item.cart_id}">删除</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                </if>
+                            </volist>
+                        </div>
+                    </notempty>
+                        <div class="line20"></div>
+                </volist>
+                </form>
+            </div>
+        </div>
+        <div class="cart-footer-tools">
+            <div class="smart-float-box">
+                <div class="left-tools fl">
+                    <label class="chk-box allChk" onclick="checkAllCart(this,0)">全选</label>
+                    <a data-action="del" class="operateBtn" href="javascript:;">删除</a>
+                    <a data-action="move" class="operateBtn" href="javascript:;">移入收藏夹</a>
+                </div>
+                <div class="right-tools fr">
+                    <div class="selected-tips fl">
+                        已选商品<span class="total-num">0</span>类
+                    </div>
+                    <div class="total-price-box fr">
+                        合计：<span class="total-price">¥0.00</span>
+                        <a href="javascript:;" class="submit-btn">结算</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <!--</if>-->
+</div>
+<div class="line40"></div>
+<script type="text/javascript">
+    /*-----------------购物车js End-----------------*/
+    $(function(){
+        //初始化所有checkbox为false状态
+        //$("input.chkBox").prop("checked",false);
+    })
+    calcCurrentPrice();   //执行价格计算
+    var ajaxUrlOne = "{:U('Shop/Cart/ajaxUpdateGoodsNum')}";
+    //单选操作
+    $(".service-list").find(".chk-box").click(function(){
+        var isNormal = $(this).attr("isNormal");
+        singleCheckBox(this,isNormal);
+    });
+    //移入收藏夹和删除操作
+    $(".td-operate a").click(function(){
+        var goodsid = $(this).attr("goodsid");
+        var cartId = $(this).attr("cartId");
+        var action = $(this).attr("data-action");
+        var is_dialog = true;
+        var ajaxUrl1="{:U('Shop/Cart/delCartGoods')}";
+        if(action=='move'){
+            //把当前商品移入收藏夹
+            //商品移入ajax
+            removeCartToFavorites(cartId,"{:U('Shop/Cart/addFavorites')}","{:U('Shop/Cart/delCartGoods')}","{:U('Home/Login/login')}","#item",ajaxUrl1);
+        }else{
+            delCartGoodsa(ajaxUrl1,goodsid);
+            dialogContent('删除成功!');
+        }
+    });
+    //dialog插件弹出层提示
+    function dialogContent(content){
+        //弹出框
+        var d = dialog({content:content}).show();
+        window.setTimeout(function(){
+            //删除弹出框
+            d.close().remove()},1000);
+    }
+
+    //底部工具条按钮操作
+    $(".operateBtn").click(function(){
+        var action = $(this).attr("data-action");
+        var is_dialog = true;
+        //获取所有选中的checbox，组合goodsids组合
+        var cartids = "";
+        $("input[type=checkbox]:checked").each(function(){
+            cartids += $(this).val()+",";
+        });
+        if(cartids!=""){
+            cartids = cartids.substring(0, cartids.length-1);
+            //alert(cartids);
+            if(action=='move'){
+                var ajaxUrl1="{:U('Shop/Cart/delCartGoods')}";
+                //把当前商品移入收藏夹
+                    removeCartToFavorites(cartids,"{:U('Shop/Cart/addFavorites')}","{:U('Shop/Cart/delCartGoods')}","{:U('Home/Login/login')}","#item",ajaxUrl1);
+            }else{
+                //ajax删除商品并移除当前行的html
+                var ajaxUrl="{:U('Shop/Cart/delCartGoods')}";
+                delCartGoodsa(ajaxUrl,cartids);
+                dialogContent('删除成功!');
+            }
+        }else{
+            //未选择任何checkbox，dialog弹出提示选择
+            var d = dialog({content:"亲，您还没选择任何一种商品呢！"}).show();
+            window.setInterval(function(){d.close().remove()},1000);
+        }
+    })
+</script>

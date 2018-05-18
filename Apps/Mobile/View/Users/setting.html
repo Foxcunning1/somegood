@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>{$page_title}</title>
+    <import type="css" file="statics.mobile.css.public,statics.mobile.css.user,scripts.sitelogo.sitelogo" />
+    <import type="js" file="scripts.jquery.jquery-1#11#2#min,scripts.webuploader.webuploader#min" />
+    <import type="js" file="statics.mobile.js.common,statics.mobile.js.uploader,scripts.zepto.zepto#validateForm,scripts.zepto.zepto#miniDialog,scripts.zepto.lazyload#min" />
+    <script type="text/javascript" src="__PUBLIC__/statics/mobile/js/rem.js" fu-psd="720" fu-min="50" fu-max="100"></script>
+    <eq name="type" value="id_confirm">
+    <script type="text/javascript">
+        var uploadType = 'image';
+        $(function(){
+            $(".upload-album").InitUploader({ btntext: "", multiple: true, sendurl: "{:U('Mobile/Member/uploadFile')}", swf: "/116cs/Public/JS/webuploader/uploader.swf" });
+        })
+    </script>
+    </eq>
+    <style type="text/css">
+        .avatar-upload{ padding:0 15px;}
+        .upload-btn{ width: 100%; }
+        .avatar-upload input{ top:0; left:0; width: 100%; height:100%; opacity:0; position:absolute; display: block;}
+        .btn-success{ height:40px;}
+        div.alert {
+            padding: 0 15px;
+            margin:10px 15px;
+            border: 1px solid transparent;
+            border-radius: 4px;
+            font-size: 0.22rem;
+            height: 30px; line-height: 30px;
+        }
+    </style>
+</head>
+<body>
+<div class="page-title">
+    <!--返回按钮-->
+    <div class="to-back-box">
+        <a href="javascript:history.back();" class="icons icon-back"></a>
+    </div>
+    <!--返回按钮-->
+    <!--标题-->
+    <h2 class="title"><if condition="$is_store eq 1">店铺LOGO<elseif condition="$is_qrcode eq 1"/>微信收款二维码<else/>个人资料</if></h2>
+    <!--标题-->
+</div>
+<if condition="$type neq ''">
+    <div class="change-box">
+        <eq name="is_store" value="1">
+            <input type="hidden" id="returnUrl" value="{$returnUrl}">
+        </eq>
+        <eq name="type" value="user_img">
+            <!--头像上传-->
+            <import type="css" file="scripts.bootstrap.css.bootstrap#min,scripts.cropper.cropper#min" />
+            <import type="js" file="scripts.cropper.cropper#min,scripts.sitelogo.sitelogo,scripts.bootstrap.js.bootstrap#min" />
+            <span class="list-left fl"><if condition="$is_store eq 1">店铺LOGO<elseif condition="$is_qrcode eq 1"/>微信收款二维码<else/>头像</if></span>
+            <span class="list-info fr">
+                <div class="ibox-content">
+                    <div class="row">
+                        <div id="crop-avatar" class="col-md-6">
+                            <div class="avatar-view" title="修改">
+                                <img src="__PUBLIC__/statics/mobile/images/default_img.png" data-original="__PUBLIC__/uploads/<if condition="$is_store eq 1">{$store_logo}<elseif condition="$is_qrcode eq 1"/>{$info.wx_account_qrcode}<else/>{$info.avatar}</if>_c200x200" alt="头像/LOGO">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </span>
+            <div class="modal fade" id="avatar-modal" aria-hidden="true" aria-labelledby="avatar-modal-label" role="dialog" tabindex="-1">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <form class="avatar-form" action="{:U('Mobile/Users/editAvatar')}<if condition="$is_store eq 1">?is_store=1<elseif condition="$is_qrcode eq 1"/>?is_qrcode=1</if>" enctype="multipart/form-data" method="post">
+                            <div class="modal-header">
+                                <button class="close" data-dismiss="modal" type="button">&times;</button>
+                                <h4 class="modal-title" id="avatar-modal-label">修改</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="avatar-body">
+                                    <div class="row">
+                                        <div class="col-md-9">
+                                            <div class="avatar-wrapper"></div>
+                                        </div>
+                                        <div class="col-md-3" style="display:none;">
+                                            <div class="avatar-preview preview-lg"></div>
+                                            <div class="avatar-preview preview-md"></div>
+                                            <div class="avatar-preview preview-sm"></div>
+                                        </div>
+                                    </div>
+                                    <div class="row avatar-btns">
+                                        <div class="col-md-9" style="display: none;">
+                                            <div class="btn-group">
+                                                <button class="btn" data-method="rotate" data-option="-90" type="button" title="Rotate -90 degrees"><i class="fa fa-undo"></i> 向左旋转</button>
+                                            </div>
+                                            <div class="btn-group">
+                                                <button class="btn" data-method="rotate" data-option="90" type="button" title="Rotate 90 degrees"><i class="fa fa-repeat"></i> 向右旋转</button>
+                                            </div>
+                                        </div>
+                                        <div class="avatar-upload">
+                                            <input class="avatar-src" name="avatar_src" type="hidden" value="__PUBLIC__/uploads/">
+                                            <input class="avatar-data" name="avatar_data" type="hidden">
+                                            <label class="upload-btn" for="avatarInput" style="padding: 6px 12px; font-size: 14px; line-height: 30px;border-radius: 4px; background-color:#07b0fe ; color: #fff; text-align: center; position: relative;">选取图片<input class="avatar-input" id="avatarInput" name="avatar_file" accept="image/jpg,image/jpeg,image/png,image/gif" type="file" /></label>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <button class="btn btn-success btn-block avatar-save" type="submit"><i class="fa fa-save"></i> 保存修改</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="loading" aria-label="Loading" role="img" tabindex="-1"></div>
+        </eq>
+        <form name="myForm" id="myForm" url="{:U('Users/setting')}" class="my-form" method="post">
+            <switch name="type">
+                <case value="user_name">
+                    <!--用户名-->
+                    <dl><dd><input type="text" name="data[user_name]" class="required" value="{$info.user_name}" /></dd></dl>
+                </case>
+                <case value="nick_name">
+                    <!--昵称-->
+                    <dl><dd><input type="text" name="data[nick_name]" class="required" value="{$info.nick_name}" /></dd></dl>
+                </case>
+                <case value="sex">
+                    <!--性别-->
+                    <div class="user-set-list infomation-setlist" style="padding:0">
+                        <ul class="sex-select">
+                            <li dataVal="1">
+                                <i class="fr <if condition="$info['sex'] eq 1">selected</if>"></i><span class="list-left fl">男</span>
+                            </li>
+                            <li dataVal="2">
+                                <i class="fr <if condition="$info['sex'] eq 2">selected</if>"></i><span class="list-left fl">女</span>
+                            </li>
+                            <li dataVal="0">
+                                <i class="fr <if condition="$info['sex'] eq 0">selected</if>"></i><span class="list-left fl">保密</span>
+                            </li>
+                            </ul>
+                            <input type="hidden" name="data[sex]" class="required" id="sex" value="{$info.sex}" />
+                            <script>
+                                $(function(){
+                                    $(".sex-select li").on('touchstart',function(){
+                                        $(".sex-select li").find("i").removeClass("selected");
+                                        $(this).find("i").addClass("selected");
+                                        $("#sex").val($(this).attr("dataVal"));
+                                    })
+                                });
+                            </script>
+                </case>
+                <case value="birthday">
+                    <!--出生日期-->
+                    <import type="css" file="statics.mobile.css.zepto#mdatetimer" />
+                    <import type="js" file="scripts.zepto.zepto#miniDialog,scripts.zepto.zepto#mdatetimer" />
+                    <dl><dd><input type="text" name="data[birthday]" id="birthday" placeholder="点击选择日期" readonly="readonly" value="<notempty name="info['birthday']">{$info.birthday|date='Y-m-d',###}</notempty>" /></dd></dl>
+                    <script>
+                        $(function(){
+                            //生成生日年份
+                            var yearsArr = [];
+                            for(var a=1900;a<=2017;a++){
+                                yearsArr.push(a);
+                            }
+                            $('#birthday').mdatetimer({
+                                mode : 1, //时间选择器模式：1：年月日，2：年月日时分（24小时），3：年月日时分（12小时），4：年月日时分秒。默认：1
+                                format : 2, //时间格式化方式：1：2015年06月10日 17时30分46秒，2：2015-05-10  17:30:46。默认：2
+                                years : yearsArr, //年份数组
+                                nowbtn : false, //是否显示现在按钮
+                                onOk : function(){
+                                },  //点击确定时添加额外的执行函数 默认null
+                                onCancel : function(){
+                                }, //点击取消时添加额外的执行函数 默认null
+                            });
+                        });
+                    </script>
+                </case>
+                <case value="email">
+                    <!--邮箱-->
+                    <dl>
+                        <dd>
+                            <input type="text" name="data[email]" id="email" class="required email" value="{$info.email}" ajaxurl="{:U('Login/checkEmail')}" placeholder="请输入新的邮箱" />
+                        </dd>
+                    </dl>
+                </case>
+                <case value="mobile">
+                    <!--手机-->
+                    <dl>
+                        <dd><input type="text" name="data[mobile]" id="mobile" class="required mobile" ajaxurl="{:U('Login/checkMobile')}" value="{$info.mobile}" maxlength="11" placeholder="请输入手机号码" />
+                            <!--<input type="button" class="send-sms-btn" name="sendSmsBtn" id="sendSmsBtn2" value="点击获取验证码" onclick="sendSmsCode()" /></dd>-->
+                    </dl>
+                </case>
+                <case value="area">
+                    <!--选择区域页面所要引入的文件-->
+                    <import type="css" file="statics.mobile.css.zepto#select#dialog,statics.mobile.css.zepto#select#area" />
+                    <import type="js" file="scripts.zepto.zepto#select#dialog,scripts.zepto.zepto#select#area,scripts.js.region" />
+                    <!--所属区域-->
+                    <dl>
+                        <dd><input type="text" name="area_text" id="areaText" data-value="{$info.area_list}" placeholder="点击选择区域 "
+                               value="<if condition="$info['area_id'] gt 1">{$info.region}</if>" />
+                            <input type="hidden" name="data[area_id]"  class="required" value="{$info.area_list}" />
+                        </dd>
+                    </dl>
+                    <script>
+                        //初始化所有城市JS
+                        var selectArea = new MobileSelectArea();
+                        var defaultArea = "{$info.area_list}";
+                        var areaName = "{$info.region}";
+                        var areaArr = ['','',''];
+                        if(areaName!=""){
+                            areaArr = areaName.split(' ');
+                        }
+                        selectArea.init({trigger:'#areaText',data:cityJson,default:0,text:areaArr,value:defaultArea,position:"bottom"});
+                    </script>
+                </case>
+                <case value="address">
+                    <!--详细地址-->
+                    <dl><dd><input type="text" name="data[address]" class="required" value="{$info.address}" /></dd></dl>
+                </case>
+                <case value="id_confirm">
+                    <!--实名认证-->
+                    <dl><dd><input type="text" name="data[real_name]" class="required" value="{$info.real_name}" placeholder="真实姓名"/></dd></dl>
+                    <dl><dd><input type="text" name="data[id_cardnum]" class="required" value="{$info.id_cardnum}" placeholder="身份证号"/></dd></dl>
+                    <!--图片上传-->
+                    <div id="uploader" class="wu-example release-uploader" style="padding:0">
+                        <div class="queueList">
+                            <div id="dndArea" class="placeholder">
+                                <div class="photo-list">
+                                    <ul>
+                                        <notempty name="plist">
+                                            <for start="0" end="count($plist)">
+                                                <li>
+                                                    <input type="hidden" name="photo[]" value="{$plist[$i]}" />
+                                                    <input type="hidden" name="rphoto[]" value="{$rlist[$i]}" />
+                                                    <div class="img-box" onClick="setFocusImg(this);">
+                                                        <img src="__PUBLIC__/Uploads/{$plist[$i]}" bigsrc="__PUBLIC__/Uploads/{$plist[$i]}" realpath="{$plist[$i]}" />
+                                                        <span class="remark"><i><if condition="$rlist[$i] eq ''">暂无描述<else/>{$rlist[$i]}</if></i></span>
+                                                    </div>
+                                                    <div class="opera-tools"><a class="upload-icons del-icon" href="javascript:;" onclick="delImg(this);">删除</a></div>
+                                                </li>
+                                            </for>
+                                        </notempty>
+                                    </ul>
+                                </div>
+                                <div id="filePicker" class="upload-album"></div>
+                                <input name="hidFocusPhoto" type="hidden" id="hidFocusPhoto" class="focus-photo" value="{$info.goods_thumb}" />
+                            </div>
+                        </div>
+                        <div class="upload-tips-box">亲，请上传身份证正反面照片</div>
+                    </div>
+                    <!--图片上传-->
+                    <input type="hidden" id="returnUrl" value="{:U('Mobile/Users/index')}">
+                </case>
+            </switch>
+            <input type="hidden" id="returnUrl" value="{$returnUrl}">
+            <eq name="type" value="user_img">
+                <button type="button" class="chang-done" onclick="jumpReturn()">确认修改</button>
+                <else/>
+                <button type="submit" class="chang-done">确认修改</button>
+            </eq>
+
+        </form>
+    </div>
+<else/>
+<div class="pd-t08">
+    <div class="user-set-list">
+        <ul>
+            <li style="height: 1rem;line-height: 1rem">
+                <a href="{:U('Users/setting',array('type'=>'user_img'))}">
+                    <span class="list-left fl">头像</span>
+                    <span class="list-info fr" style="margin-top:0.1rem">
+                        <div class="avatar-view" title="修改头像">
+                            <img src="__PUBLIC__/statics/mobile/images/default_img.png" data-original="__PUBLIC__/uploads/{$info.avatar}_c200x200" alt="会员头像">
+                        </div>
+                    </span>
+                </a>
+            </li>
+            <li style="height: 1rem;line-height: 1rem">
+                <a href="{:U('Users/setting',array('type'=>'user_img','is_qrcode'=>1))}">
+                    <span class="list-left fl">收款二维码</span>
+                    <span class="list-info fr" style="margin-top:0.1rem">
+                        <div class="avatar-view" title="收款二维码">
+                            <img src="__PUBLIC__/statics/mobile/images/default_img.png" data-original="__PUBLIC__/uploads/{$info.wx_account_qrcode}_c200x200" alt="收款二维码">
+                        </div>
+                    </span>
+                </a>
+            </li>
+            <li>
+                <a href="{:U('Users/setting',array('type'=>'user_name'))}"><span class="list-left fl">用户名</span><span class="list-info fr">{$info.user_name}</span></a>
+            </li>
+            <li>
+                <a href="{:U('Users/setting',array('type'=>'nick_name'))}"><i class="icons icon-more fr"></i><span class="list-left fl">昵称</span><span class="list-info fr">{$info.nick_name}</span></a>
+            </li>
+            <li>
+                <a href="{:U('Users/setting',array('type'=>'sex'))}"><i class="user-icon fr"></i><span class="list-left fl">性别</span><span class="list-info fr"><if condition="$info['sex'] eq 1">男</if><if condition="$info['sex'] eq 2">女</if><if condition="$info['sex'] eq 0">保密</if></span></a>
+            </li>
+            <li>
+                <a href="{:U('Users/setting',array('type'=>'birthday'))}"><i class="icons icon-more fr"></i><span class="list-left fl">出生日期</span><span class="list-info fr"><notempty name="info['birthday']">{$info.birthday|date='Y-m-d',###}</notempty></span></a>
+            </li>
+            <li>
+                <a href="{:U('Users/setting',array('type'=>'email'))}"><i class="icons icon-more fr"></i><span class="list-left fl">邮箱</span><span class="list-info fr">{:hide_str_replace_star($info['email'])}</span></a>
+            </li>
+            <li>
+                <a href="{:U('Users/setting',array('type'=>'mobile'))}"><i class="icons icon-more fr"></i><span class="list-left fl">手机</span><span class="list-info fr">{:hide_str_replace_star($info['mobile'])}</span></a>
+            </li>
+            <li>
+                <a href="{:U('Users/setting',array('type'=>'area'))}"><i class="icons icon-more fr"></i><span class="list-left fl">所属区域</span><span class="list-info fr">
+                        <if condition="$info['area_id'] gt 1">{$info.region}</if>
+                        </span>
+                </a>
+            </li>
+            <li>
+                <a href="{:U('Users/setting',array('type'=>'address'))}"><i class="icons icon-more fr"></i><span class="list-left fl">详细地址</span><span class="list-info fr">{$info.address}</span></a>
+            </li>
+        </ul>
+    </div>
+</div>
+</if>
+<!--公用底部-->
+<include file="Public/ufooter" />
+<!--公用底部-->
+<script>
+    $(function(){
+    //图片延迟加载
+    $(".avatar-view img").lazyload({effect : "fadeIn"});
+})
+    var return_url = $('#returnUrl').val();
+    $("#myForm").validateForm({return_url:return_url,isBindDel:true,closeTime:1000});
+    function jumpReturn() {
+        $("body").minDialog({
+            isMask:true,
+            isAutoClose:true,
+            isCloseAll:true,
+            closeTime:800,
+            content:"修改成功",
+        });
+        setTimeout(function(){
+            window.location.href=return_url;
+        },800)
+    }
+</script>
+</body>
+</html>

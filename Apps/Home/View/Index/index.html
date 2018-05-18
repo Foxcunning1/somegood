@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>{$web_title}</title>
+    <meta name="keywords" content="{$web_keywords}"/>
+    <meta name="description" content="{$web_description}" />
+    <import type="css" file="statics.home.css.public,statics.home.css.style,statics.home.css.animate,statics.home.css.scrollanim#min" />
+    <!--[if lte IE 9]>
+    <import type="js" file="scripts.js.html5shiv#min" />
+    <![endif]-->
+    <import type="js" file="statics.home.js.jquery-1#11#2#min,statics.home.js.jquery#SuperSlide#2#1#1,statics.home.js.totop" />
+    <script type="text/javascript">
+        var isMobile = navigator.userAgent.toLowerCase().match(/(ipod|iphone|android|coolpad|mmp|smartphone|midp|wap|xoom|symbian|j2me|blackberry|wince)/i) != null;
+        if (isMobile) {
+            //var urlPathName = window.location.pathname;//获取当前URL的文件地址
+            //var urlParam = window.location.search;
+            window.location.href = "http://m.somegood.com.cn/Wap";
+        }else{
+            //window.location.href = "http://wap.somegood.com.cn/";
+        }
+    </script>
+</head>
+<body>
+    <include file="Public/header" />
+    <section class="slider">
+        <a href="javascript:;" class="slider-btn prev"></a>
+        <a href="javascript:;" class="slider-btn next"></a>
+        <div class="bd">
+            <ul>
+                <li style="background: url(__PUBLIC__/statics/home/images/banner1.jpg) no-repeat center center;"></li>
+                <li style="background: url(__PUBLIC__/statics/home/images/banner2.jpg) no-repeat center center;"></li>
+            </ul>
+        </div>
+    </section>
+    <script>
+        $(".slider").slide({ mainCell: ".bd ul", effect:"leftLoop", autoPlay:true, prevCell:".prev",nextCell:".next"});
+    </script>
+    <article class="floor1 home-floor1">
+        <div style="width: 1200px; margin: 0 auto">
+            <h2 data-kui-anim="fadeInRightFast">现在的<span>推广现状</span></h2>
+            <div class="line" data-kui-anim="fadeInRightNormal"></div>
+            <section class="bg-section" style="position:relative;">
+                <div class="part part1" data-kui-anim="fadeInRightNormal"><span>在这个信息爆炸的时代，您却被搞得更加迷茫，遍体鳞伤，</span><span>避处一隅
+那些我们曾经以为的大平台如今却让我们更加伤不起！</span></div>
+                <div class="part part2" data-kui-anim="fadeInLeftSlow">
+                    <div class="left">
+                        <span>阿里6688</span>
+                        <span>百度最低6000起</span>
+                    </div>
+                    <div class="right"><span>开户</span><span>门槛高</span></div>
+                </div>
+                <div class="part part3" data-kui-anim="fadeInRightSlow">
+                    <div class="left">
+                        <span>自顾团队3W起</span>
+                        <span>外包运营10W起</span>
+                    </div>
+                    <div class="right"><span>运营</span><span>成本高</span></div>
+                </div>
+                <div class="part part4" data-kui-anim="fadeInLeftSlow">
+                    <div class="left">
+                        <span>阿里网销宝</span>
+                        <span>百度竞价点击</span>
+                        <span>启动烧钱模式</span>
+                    </div>
+                    <div class="right"><span>竞价</span><span>排名贵</span></div>
+                </div>
+                <div class="part part5" data-kui-anim="fadeInRightSlow">
+                    <div class="left">
+                        <span>阿里: 不用网销宝 就是一根草</span>
+                        <span>百度: 不给竞价 马上往下</span>
+                        <span>自建团队: 工资很贵</span>
+                        <span>外包运营: 合作之前你是爹</span>
+                        <span style="padding-left:73px;">合作之后他是爷</span>
+                    </div>
+                    <div class="right"><span>效果</span><span>不明显</span></div>
+                </div>
+            </section>
+        </div>
+    </article>
+    <article class="floor2 home-floor2 clearfix">
+        <div class="w1200">
+            <section>
+                <h2 data-kui-anim="fadeInRightFast">让推广回归市场本质！</h2>
+                <h3 data-kui-anim="fadeInRightNormal">公平---在这里，没有贵胄平民之分，没有竞价排位之说，也没有昂贵的开户费！</h3>
+                <h3 data-kui-anim="fadeInRightNormal">公正---在这里，平台把你的产品放到特定的消费群体且人流量大的地方，做到有的放矢！</h3>
+                <h3 data-kui-anim="fadeInRightNormal">公开---在这里，用户不但能看到您的公司介绍，还能体验到您的产品带给他们的实体体验！</h3>
+                <a href="javascript:;" class="contact-us-a" data-kui-anim="fadeInUpSlow">联系我们</a>
+            </section>
+        </div>
+    </article>
+    <article class="floor3 home-floor3">
+        <div class="w1200">
+            <h2 data-kui-anim="fadeInRightFast">三好连锁传媒的<span>三大优势</span></h2>
+            <div class="line" data-kui-anim="fadeInRightSlow"></div>
+            <section class="clearfix">
+                <div class="part part1" data-kui-anim="fadeInLeftNormal">
+                    <h3>线下+线上  可推、可售</h3>
+                    <h4>实体店体验的同时</h4>
+                    <h4>搭载微信公众号</h4>
+                    <h4>可推广可直接销售  多管齐下</h4>
+                </div>
+                <div class="part part2" data-kui-anim="fadeInRightNormal">
+                    <h3>方式灵活</h3>
+                    <h4>是否摆放产品 摆放产品数量 推广周期</h4>
+                    <h4>推广店铺数量等均由您灵活决定</h4>
+                </div>
+                <div class="part part3" data-kui-anim="fadeInLeftNormal">
+                    <h3>价格平民</h3>
+                    <h4>价格平民  无竞价排名</h4>
+                    <h4>费用固定可预算</h4>
+                </div>
+                <div class="clear"></div>
+            </section>
+        </div>
+    </article>
+    <article class="floor4 home-floor4">
+        <div class="w1200">
+            <h2 data-kui-anim="fadeInRightFast">三好连锁传媒的合作方向（类型,行业?）</h2>
+            <section class="bg-section clearfix" data-kui-anim="fadeInRightNormal">
+                <ul>
+                    <li>
+                        <figure>
+                            <img src="__PUBLIC__/statics/home/images/section_img_1.png" alt="The Pulpit Rock" width="54" height="54"/>
+                            <figcaption>平台推广</figcaption>
+                            <p>互联网平台</p>
+                            <p>各种APP等</p>
+                            <p>公司VI标识</p>
+                        </figure>
+                    </li>
+                    <li>
+                        <figure>
+                            <img src="__PUBLIC__/statics/home/images/section_img_2.png" alt="The Pulpit Rock" width="54" height="54"/>
+                            <figcaption>产品推广</figcaption>
+                            <p>电子产品</p>
+                            <p>日用品</p>
+                            <p>办公用品</p>
+                            <p>创意产品等</p>
+                        </figure>
+                    </li>
+                    <li>
+                        <figure>
+                            <img src="__PUBLIC__/statics/home/images/section_img_3.png" alt="The Pulpit Rock" width="54" height="54"/>
+                            <figcaption>品牌推广</figcaption>
+                            <p>名酒名茶</p>
+                            <p>名车名表</p>
+                            <p>各种大型活动</p>
+                            <p>企业团体招募等</p>
+                        </figure>
+                    </li>
+                </ul>
+                <div class="clear"></div>
+            </section>
+        </div>
+    </article>
+    <article class="floor5 home-floor5">
+        <div class="w1200">
+            <h2 data-kui-anim="fadeInRightFast">我们的<span>新闻中心</span></h2>
+            <div class="line" data-kui-anim="fadeInRightSlow"></div>
+            <section class="left fl" data-kui-anim="fadeInLeftFast">
+                <figure>
+                    <volist name="topNewsList" id="news">
+                    <a href="{:U('Home/News/show')}?id={$news.aid}">
+                        <img src="__PUBLIC__/uploads/{$news.img_url}" alt="{$news.title}" width="375" height="147"/>
+                        <figcaption><a href="{:U('Home/News/show')}?id={$news.aid}">{$news.title|msubstr=0,20}</a></figcaption>
+                        <p>{$news.summary|msubstr=0,100}</p>
+                    </a>
+                    </volist>
+                </figure>
+            </section>
+            <section class="right fr" data-kui-anim="fadeInRightFast">
+                <volist name="newsList" id="item">
+                <a href="{:U('Home/News/show')}?id={$item.aid}">{$item.title|msubstr=0,30}</a>
+                </volist>
+            </section>
+            <div class="line-box" data-kui-anim="fadeInUpSlow"><img src="__PUBLIC__/statics/home/images/line_down.png" alt=""/></div>
+            <div class="clear"></div>
+        </div>
+    </article>
+    <article class="floor6 home-floor6">
+        <div class="w1200">
+            <h2 data-kui-anim="fadeInRightFast">品牌<span>合作</span></h2>
+            <div class="line" data-kui-anim="fadeInRightSlow"></div>
+            <section class="img-section" data-kui-anim="fadeInLeftFast">
+                <ul>
+                    <li><a href="javascript:;"><img src="__PUBLIC__/statics/home/images/case_1.png" alt="" /></a></li>
+                    <li><a href="javascript:;"><img src="__PUBLIC__/statics/home/images/case_2.png" alt="" /></a></li>
+                    <li><a href="javascript:;"><img src="__PUBLIC__/statics/home/images/case_3.png" alt="" /></a></li>
+                    <li><a href="javascript:;"><img src="__PUBLIC__/statics/home/images/case_4.png" alt="" /></a></li>
+                    <li><a href="javascript:;"><img src="__PUBLIC__/statics/home/images/case_5.png" alt="" /></a></li>
+                    <li><a href="javascript:;"><img src="__PUBLIC__/statics/home/images/case_6.png" alt="" /></a></li>
+                    <li><a href="javascript:;"><img src="__PUBLIC__/statics/home/images/case_7.png" alt="" /></a></li>
+                    <li><a href="javascript:;"><img src="__PUBLIC__/statics/home/images/case_8.png" alt="" /></a></li>
+                    <li><a href="javascript:;"><img src="__PUBLIC__/statics/home/images/case_9.png" alt="" /></a></li>
+                    <li><a href="javascript:;"><img src="__PUBLIC__/statics/home/images/case_10.png" alt="" /></a></li>
+                </ul>
+                <div class="clear"></div>
+            </section>
+        </div>
+    </article>
+    <include file="Public/footer" />
+</body>
+</html>

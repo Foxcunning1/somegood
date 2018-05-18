@@ -1,0 +1,3243 @@
+[ 2017-11-30T09:24:26+08:00 ] ::1 /somegood/shop/goods/goods/id/1
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_goods` [ RunTime:0.0060s ]
+SQL: SELECT COUNT(*) AS tp_count FROM sg_goods g LEFT JOIN sg_seller_delivery AS sd ON sd.sg_id = g.id LEFT JOIN sg_store AS s ON s.sid = sd.store_id LEFT JOIN sg_region AS r ON r.id = s.area_id  WHERE g.id = '1' AND sd.is_onsale = 1 AND sd.is_delivery = 1 LIMIT 1   [ RunTime:0.0020s ]
+SQL: SELECT sd.id,g.original_img,g.goods_title,g.params,g.length,g.width,g.height,g.content,sd.stock,g.market_price,g.material,g.color,g.brand,g.process,g.goods_sn,gc.title,g.price,g.browse_num,s.store_name,r.shortname,s.lng,s.lat,round(6378.138*2*asin(sqrt(pow(sin( (0.75*pi()/180-s.lat*pi()/180)/2),2)+cos(0.75*pi()/180)*cos(s.lat*pi()/180)* pow(sin( (0.75*pi()/180-s.lng*pi()/180)/2),2)))*1000)*0.001 as distance FROM sg_goods g LEFT JOIN sg_seller_delivery AS sd ON sd.sg_id = g.id LEFT JOIN sg_store AS s ON s.sid = sd.store_id LEFT JOIN sg_goods_category AS gc ON gc.id = g.category_id LEFT JOIN sg_region AS r ON r.id = s.area_id  WHERE g.id = '1' AND sd.is_onsale = 1 AND sd.is_delivery = 1 ORDER BY distance ASC LIMIT 0,8   [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `sg_goods` [ RunTime:0.0060s ]
+SQL: UPDATE `sg_goods` SET `browse_num`=browse_num+5 WHERE ( id=1 ) [ RunTime:0.0530s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: web_keywords D:\xampps\htdocs\somegood\Runtime\Cache\Shop\f1589efb03b3b3a12c2a32464522e780.php 第 6 行.
+NOTIC: [8] Undefined variable: web_description D:\xampps\htdocs\somegood\Runtime\Cache\Shop\f1589efb03b3b3a12c2a32464522e780.php 第 7 行.
+NOTIC: [8] Undefined variable: catId D:\xampps\htdocs\somegood\Runtime\Cache\Shop\f1589efb03b3b3a12c2a32464522e780.php 第 241 行.
+NOTIC: [8] Undefined index: goods_sub_title D:\xampps\htdocs\somegood\Runtime\Cache\Shop\f1589efb03b3b3a12c2a32464522e780.php 第 249 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.048003s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.048003s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-11-30T09:24:26+08:00 ] ::1 /somegood/Shop/Cart/getCartGoods.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_cart` [ RunTime:0.0060s ]
+SQL: SELECT * FROM `sg_cart` WHERE `phpsessid` = 'qc9263b8q7ji2s8qt7p5sisle5' AND `user_id` = 0  [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `sg_cart` [ RunTime:0.0050s ]
+SQL: SELECT SUM(counts) AS tp_sum FROM `sg_cart` WHERE `phpsessid` = 'qc9263b8q7ji2s8qt7p5sisle5' AND `user_id` = 0 LIMIT 1   [ RunTime:0.0010s ]
+
+[ 2017-11-30T09:24:45+08:00 ] ::1 /somegood/Shop/Cart/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_cart` [ RunTime:0.0070s ]
+SQL: SELECT COUNT(*) AS tp_count FROM sg_cart c WHERE `phpsessid` = 'qc9263b8q7ji2s8qt7p5sisle5' AND c.user_id = 0 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT c.cart_id,sd.stock,sd.sg_id,g.id,g.online_stock,c.goods_id,c.seller_id,c.store_name,c.store_id,sd.is_onsale as is_on_sale,c.goods_title,c.counts,c.goods_thumb,c.store_name as s_name,c.market_price,c.goods_price FROM sg_cart c LEFT JOIN sg_seller_delivery AS sd ON sd.id = c.goods_id LEFT JOIN sg_goods AS g ON g.id = sd.sg_id  WHERE `phpsessid` = 'qc9263b8q7ji2s8qt7p5sisle5' AND c.user_id = 0  [ RunTime:0.0010s ]
+SQL: SELECT c.*,u.user_name,group_concat(c.store_name) FROM sg_cart c LEFT JOIN sg_users AS u ON u.uid = c.seller_id  WHERE `phpsessid` = 'qc9263b8q7ji2s8qt7p5sisle5' AND c.user_id = 0 GROUP BY c.seller_id  [ RunTime:0.0020s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: web_keywords D:\xampps\htdocs\somegood\Runtime\Cache\Shop\c788990fb2e6a2df7ebba0fae9e2dfd3.php 第 6 行.
+NOTIC: [8] Undefined variable: web_description D:\xampps\htdocs\somegood\Runtime\Cache\Shop\c788990fb2e6a2df7ebba0fae9e2dfd3.php 第 7 行.
+NOTIC: [8] Use of undefined constant Shop - assumed 'Shop' D:\xampps\htdocs\somegood\Runtime\Cache\Shop\c788990fb2e6a2df7ebba0fae9e2dfd3.php 第 54 行.
+NOTIC: [8] Use of undefined constant Index - assumed 'Index' D:\xampps\htdocs\somegood\Runtime\Cache\Shop\c788990fb2e6a2df7ebba0fae9e2dfd3.php 第 54 行.
+NOTIC: [2] Division by zero D:\xampps\htdocs\somegood\Runtime\Cache\Shop\c788990fb2e6a2df7ebba0fae9e2dfd3.php 第 54 行.
+NOTIC: [8] Use of undefined constant index - assumed 'index' D:\xampps\htdocs\somegood\Runtime\Cache\Shop\c788990fb2e6a2df7ebba0fae9e2dfd3.php 第 54 行.
+NOTIC: [2] Division by zero D:\xampps\htdocs\somegood\Runtime\Cache\Shop\c788990fb2e6a2df7ebba0fae9e2dfd3.php 第 54 行.
+NOTIC: [8] Use of undefined constant user_name - assumed 'user_name' D:\xampps\htdocs\somegood\Runtime\Cache\Shop\c788990fb2e6a2df7ebba0fae9e2dfd3.php 第 96 行.
+NOTIC: [8] Undefined index: real_goods_id D:\xampps\htdocs\somegood\Runtime\Cache\Shop\c788990fb2e6a2df7ebba0fae9e2dfd3.php 第 103 行.
+NOTIC: [8] Use of undefined constant user_name - assumed 'user_name' D:\xampps\htdocs\somegood\Runtime\Cache\Shop\c788990fb2e6a2df7ebba0fae9e2dfd3.php 第 96 行.
+NOTIC: [8] Undefined index: real_goods_id D:\xampps\htdocs\somegood\Runtime\Cache\Shop\c788990fb2e6a2df7ebba0fae9e2dfd3.php 第 103 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.013001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.013001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-11-30T09:24:45+08:00 ] ::1 /somegood/Shop/Cart/getCartGoods.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `sg_cart` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `sg_cart` WHERE `phpsessid` = 'qc9263b8q7ji2s8qt7p5sisle5' AND `user_id` = 0  [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `sg_cart` [ RunTime:0.0070s ]
+SQL: SELECT SUM(counts) AS tp_sum FROM `sg_cart` WHERE `phpsessid` = 'qc9263b8q7ji2s8qt7p5sisle5' AND `user_id` = 0 LIMIT 1   [ RunTime:0.0020s ]
+
+[ 2017-11-30T09:24:55+08:00 ] ::1 /somegood/Shop/Order/settlement.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001001s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001001s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0380s ]
+NOTIC: [8] Undefined variable: orderModel D:\xampps\htdocs\somegood\Apps\Shop\Controller\OrderController.class.php 第 68 行.
+SQL: SHOW COLUMNS FROM `sg_users_address` [ RunTime:0.0290s ]
+SQL: SELECT ua.*,r.id,r.name as rname,o.name as oname,i.name as iname FROM sg_users_address ua LEFT JOIN sg_region AS r ON ua.district = r.id LEFT JOIN sg_region AS o ON ua.city = o.id LEFT JOIN sg_region AS i ON ua.province = i.id  WHERE `user_id` = 843 AND `is_show` = 0 ORDER BY is_default DESC  [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `sg_users_address` [ RunTime:0.0050s ]
+SQL: SELECT `address_id` FROM `sg_users_address` WHERE `is_default` = 1 AND `is_show` = 0 AND `user_id` = 843 LIMIT 1   [ RunTime:0.0010s ]
+NOTIC: [8] Undefined variable: cart_id D:\xampps\htdocs\somegood\Apps\Shop\Controller\OrderController.class.php 第 75 行.
+SQL: SHOW COLUMNS FROM `sg_cart` [ RunTime:0.0050s ]
+SQL: SELECT c.seller_id,u.user_name FROM sg_cart c LEFT JOIN sg_users AS u ON u.uid = c.seller_id  WHERE c.cart_id IN ('126','135') GROUP BY c.seller_id ORDER BY c.cart_id ASC  [ RunTime:0.0010s ]
+SQL: SELECT c.*,g.heavy,sd.is_onsale as is_on_sale,sd.stock,sd.sg_id,g.online_stock FROM sg_cart c LEFT JOIN sg_seller_delivery AS sd ON sd.id = c.goods_id LEFT JOIN sg_goods AS g ON g.id = sd.sg_id  WHERE c.cart_id IN ('126','135') ORDER BY store_id DESC  [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_virtual_cash_log` [ RunTime:0.0380s ]
+SQL: SELECT `log_id`,`user_id`,sum(user_money) as c,sum(frozen_money) as b FROM `sg_virtual_cash_log` WHERE ( user_id=843 ) GROUP BY user_id  [ RunTime:0.0020s ]
+NOTIC: [8] Undefined offset: 0 D:\xampps\htdocs\somegood\Apps\Common\Model\OrderModel.class.php 第 239 行.
+NOTIC: [8] Undefined offset: 0 D:\xampps\htdocs\somegood\Apps\Common\Model\OrderModel.class.php 第 239 行.
+SQL: SELECT c.goods_id,c.counts,c.goods_price,gc.id as goods_category FROM sg_cart c LEFT JOIN sg_seller_delivery AS sd ON sd.id = c.goods_id LEFT JOIN sg_goods AS g ON sd.sg_id = g.id LEFT JOIN sg_goods_category AS gc ON gc.id = g.category_id  WHERE ( cart_id=126 )  [ RunTime:0.0010s ]
+SQL: SELECT c.goods_id,c.counts,c.goods_price,gc.id as goods_category FROM sg_cart c LEFT JOIN sg_seller_delivery AS sd ON sd.id = c.goods_id LEFT JOIN sg_goods AS g ON sd.sg_id = g.id LEFT JOIN sg_goods_category AS gc ON gc.id = g.category_id  WHERE ( cart_id=135 )  [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `sg_coupon` [ RunTime:0.0500s ]
+SQL: SHOW COLUMNS FROM `sg_coupon` [ RunTime:0.0050s ]
+SQL: SELECT c.coupon_id,c.coupon_type_id,ct.is_all,ct.type_money,ct.min_goods_amount,ct.type_name,ct.use_start_date,ct.use_end_date FROM sg_coupon c LEFT JOIN sg_coupon_type AS ct ON c.coupon_type_id = ct.type_id  WHERE `user_id` = null AND `min_goods_amount` < 723 AND `used_time` = 0 AND `use_start_date` < 1512005095 AND `use_end_date` > 1512005095  [ RunTime:0.0210s ]
+SQL: SHOW COLUMNS FROM `sg_coupon_type_list` [ RunTime:0.0250s ]
+NOTIC: [8] Undefined index: can_use D:\xampps\htdocs\somegood\Apps\Common\Model\CouponModel.class.php 第 97 行.
+NOTIC: [8] Undefined index: cant_use D:\xampps\htdocs\somegood\Apps\Common\Model\CouponModel.class.php 第 98 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: web_keywords D:\xampps\htdocs\somegood\Runtime\Cache\Shop\93cebf65dcc50234c3f22e1874041112.php 第 6 行.
+NOTIC: [8] Undefined variable: web_description D:\xampps\htdocs\somegood\Runtime\Cache\Shop\93cebf65dcc50234c3f22e1874041112.php 第 7 行.
+NOTIC: [8] Use of undefined constant Shop - assumed 'Shop' D:\xampps\htdocs\somegood\Runtime\Cache\Shop\93cebf65dcc50234c3f22e1874041112.php 第 54 行.
+NOTIC: [8] Use of undefined constant Index - assumed 'Index' D:\xampps\htdocs\somegood\Runtime\Cache\Shop\93cebf65dcc50234c3f22e1874041112.php 第 54 行.
+NOTIC: [2] Division by zero D:\xampps\htdocs\somegood\Runtime\Cache\Shop\93cebf65dcc50234c3f22e1874041112.php 第 54 行.
+NOTIC: [8] Use of undefined constant index - assumed 'index' D:\xampps\htdocs\somegood\Runtime\Cache\Shop\93cebf65dcc50234c3f22e1874041112.php 第 54 行.
+NOTIC: [2] Division by zero D:\xampps\htdocs\somegood\Runtime\Cache\Shop\93cebf65dcc50234c3f22e1874041112.php 第 54 行.
+NOTIC: [8] Undefined variable: isAjax D:\xampps\htdocs\somegood\Runtime\Cache\Shop\93cebf65dcc50234c3f22e1874041112.php 第 65 行.
+NOTIC: [8] Undefined index: num D:\xampps\htdocs\somegood\Runtime\Cache\Shop\93cebf65dcc50234c3f22e1874041112.php 第 201 行.
+NOTIC: [8] Undefined variable: shareBill D:\xampps\htdocs\somegood\Runtime\Cache\Shop\93cebf65dcc50234c3f22e1874041112.php 第 275 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.017001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.017001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-11-30T09:24:55+08:00 ] ::1 /somegood/Shop/Cart/getCartGoods.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `sg_cart` [ RunTime:0.0060s ]
+SQL: SELECT * FROM `sg_cart` WHERE `phpsessid` = 'qc9263b8q7ji2s8qt7p5sisle5' AND `user_id` = 0  [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_cart` [ RunTime:0.0080s ]
+SQL: SELECT SUM(counts) AS tp_sum FROM `sg_cart` WHERE `phpsessid` = 'qc9263b8q7ji2s8qt7p5sisle5' AND `user_id` = 0 LIMIT 1   [ RunTime:0.0010s ]
+
+[ 2017-11-30T09:24:55+08:00 ] ::1 /somegood/Shop/Order/logistics.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `sg_seller_logistics` [ RunTime:0.0360s ]
+SQL: SHOW COLUMNS FROM `sg_users_address` [ RunTime:0.0040s ]
+SQL: SELECT `province`,`city`,`district` FROM `sg_users_address` WHERE ( address_id=330 ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0040s ]
+SQL: SHOW COLUMNS FROM `sg_cart` [ RunTime:0.0040s ]
+SQL: SELECT c.*,g.heavy,sd.is_onsale as is_on_sale,sd.stock,sd.sg_id,g.online_stock FROM sg_cart c LEFT JOIN sg_seller_delivery AS sd ON sd.id = c.goods_id LEFT JOIN sg_goods AS g ON g.id = sd.sg_id  WHERE c.cart_id IN ('126','135') ORDER BY store_id DESC  [ RunTime:0.0010s ]
+NOTIC: [8] Undefined offset: 820 D:\xampps\htdocs\somegood\Apps\Common\Model\SellerLogisticsModel.class.php 第 78 行.
+NOTIC: [8] Undefined index: total_money D:\xampps\htdocs\somegood\Apps\Common\Model\SellerLogisticsModel.class.php 第 78 行.
+NOTIC: [8] Undefined index: total_heavy D:\xampps\htdocs\somegood\Apps\Common\Model\SellerLogisticsModel.class.php 第 79 行.
+NOTIC: [8] Undefined offset: 843 D:\xampps\htdocs\somegood\Apps\Common\Model\SellerLogisticsModel.class.php 第 78 行.
+NOTIC: [8] Undefined index: total_money D:\xampps\htdocs\somegood\Apps\Common\Model\SellerLogisticsModel.class.php 第 78 行.
+NOTIC: [8] Undefined index: total_heavy D:\xampps\htdocs\somegood\Apps\Common\Model\SellerLogisticsModel.class.php 第 79 行.
+SQL: SELECT * FROM `sg_seller_logistics` WHERE `is_on` = 1  [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `sg_logistics` [ RunTime:0.0320s ]
+SQL: SELECT `id`,`name` FROM `sg_logistics` WHERE ( 1=1 AND id='41' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_seller_logistics_region` [ RunTime:0.0280s ]
+SQL: SELECT * FROM `sg_seller_logistics_region` WHERE ( 1=1 AND seller_logistics_id='4' )  [ RunTime:0.0010s ]
+SQL: SELECT `id`,`name` FROM `sg_logistics` WHERE ( 1=1 AND id='35' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `sg_seller_logistics_region` WHERE ( 1=1 AND seller_logistics_id='5' )  [ RunTime:0.0010s ]
+SQL: SELECT `id`,`name` FROM `sg_logistics` WHERE ( 1=1 AND id='64' ) LIMIT 1   [ RunTime:0.0020s ]
+SQL: SELECT * FROM `sg_seller_logistics_region` WHERE ( 1=1 AND seller_logistics_id='12' )  [ RunTime:0.0010s ]
+SQL: SELECT `id`,`name` FROM `sg_logistics` WHERE ( 1=1 AND id='64' ) LIMIT 1   [ RunTime:0.0020s ]
+SQL: SELECT * FROM `sg_seller_logistics_region` WHERE ( 1=1 AND seller_logistics_id='16' )  [ RunTime:0.0010s ]
+SQL: SELECT `id`,`name` FROM `sg_logistics` WHERE ( 1=1 AND id='57' ) LIMIT 1   [ RunTime:0.0020s ]
+SQL: SELECT * FROM `sg_seller_logistics_region` WHERE ( 1=1 AND seller_logistics_id='17' )  [ RunTime:0.0010s ]
+SQL: SELECT `id`,`name` FROM `sg_logistics` WHERE ( 1=1 AND id='59' ) LIMIT 1   [ RunTime:0.0020s ]
+SQL: SELECT * FROM `sg_seller_logistics_region` WHERE ( 1=1 AND seller_logistics_id='18' )  [ RunTime:0.0010s ]
+SQL: SELECT * FROM `sg_seller_logistics` WHERE `is_on` = 1  [ RunTime:0.0020s ]
+SQL: SELECT `id`,`name` FROM `sg_logistics` WHERE ( 1=1 AND id='41' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `sg_seller_logistics_region` WHERE ( 1=1 AND seller_logistics_id='4' )  [ RunTime:0.0020s ]
+SQL: SELECT `id`,`name` FROM `sg_logistics` WHERE ( 1=1 AND id='35' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `sg_seller_logistics_region` WHERE ( 1=1 AND seller_logistics_id='5' )  [ RunTime:0.0020s ]
+SQL: SELECT `id`,`name` FROM `sg_logistics` WHERE ( 1=1 AND id='64' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `sg_seller_logistics_region` WHERE ( 1=1 AND seller_logistics_id='12' )  [ RunTime:0.0010s ]
+SQL: SELECT `id`,`name` FROM `sg_logistics` WHERE ( 1=1 AND id='64' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `sg_seller_logistics_region` WHERE ( 1=1 AND seller_logistics_id='16' )  [ RunTime:0.0010s ]
+SQL: SELECT `id`,`name` FROM `sg_logistics` WHERE ( 1=1 AND id='57' ) LIMIT 1   [ RunTime:0.0020s ]
+SQL: SELECT * FROM `sg_seller_logistics_region` WHERE ( 1=1 AND seller_logistics_id='17' )  [ RunTime:0.0010s ]
+SQL: SELECT `id`,`name` FROM `sg_logistics` WHERE ( 1=1 AND id='59' ) LIMIT 1   [ RunTime:0.0020s ]
+SQL: SELECT * FROM `sg_seller_logistics_region` WHERE ( 1=1 AND seller_logistics_id='18' )  [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: id D:\xampps\htdocs\somegood\Runtime\Cache\Shop\4e89b7202fc691246158a7665120c456.php 第 12 行.
+NOTIC: [8] Undefined index: value D:\xampps\htdocs\somegood\Runtime\Cache\Shop\4e89b7202fc691246158a7665120c456.php 第 12 行.
+NOTIC: [8] Undefined variable: k D:\xampps\htdocs\somegood\Runtime\Cache\Shop\4e89b7202fc691246158a7665120c456.php 第 15 行.
+NOTIC: [8] Undefined index: seller_id D:\xampps\htdocs\somegood\Runtime\Cache\Shop\4e89b7202fc691246158a7665120c456.php 第 15 行.
+NOTIC: [8] Undefined variable: k D:\xampps\htdocs\somegood\Runtime\Cache\Shop\4e89b7202fc691246158a7665120c456.php 第 16 行.
+NOTIC: [8] Undefined index: id D:\xampps\htdocs\somegood\Runtime\Cache\Shop\4e89b7202fc691246158a7665120c456.php 第 16 行.
+NOTIC: [8] Undefined variable: k D:\xampps\htdocs\somegood\Runtime\Cache\Shop\4e89b7202fc691246158a7665120c456.php 第 17 行.
+NOTIC: [8] Undefined index: value D:\xampps\htdocs\somegood\Runtime\Cache\Shop\4e89b7202fc691246158a7665120c456.php 第 17 行.
+NOTIC: [8] Undefined index: id D:\xampps\htdocs\somegood\Runtime\Cache\Shop\4e89b7202fc691246158a7665120c456.php 第 12 行.
+NOTIC: [8] Undefined index: value D:\xampps\htdocs\somegood\Runtime\Cache\Shop\4e89b7202fc691246158a7665120c456.php 第 12 行.
+NOTIC: [8] Undefined variable: k D:\xampps\htdocs\somegood\Runtime\Cache\Shop\4e89b7202fc691246158a7665120c456.php 第 15 行.
+NOTIC: [8] Undefined index: seller_id D:\xampps\htdocs\somegood\Runtime\Cache\Shop\4e89b7202fc691246158a7665120c456.php 第 15 行.
+NOTIC: [8] Undefined variable: k D:\xampps\htdocs\somegood\Runtime\Cache\Shop\4e89b7202fc691246158a7665120c456.php 第 16 行.
+NOTIC: [8] Undefined index: id D:\xampps\htdocs\somegood\Runtime\Cache\Shop\4e89b7202fc691246158a7665120c456.php 第 16 行.
+NOTIC: [8] Undefined variable: k D:\xampps\htdocs\somegood\Runtime\Cache\Shop\4e89b7202fc691246158a7665120c456.php 第 17 行.
+NOTIC: [8] Undefined index: value D:\xampps\htdocs\somegood\Runtime\Cache\Shop\4e89b7202fc691246158a7665120c456.php 第 17 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.007001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.007001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-11-30T09:25:11+08:00 ] ::1 /somegood/Shop/Order/newaddress.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.005001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.005001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-11-30T09:25:22+08:00 ] ::1 /somegood/Shop/Order/addUserAddress.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `sg_users_address` [ RunTime:0.0070s ]
+SQL: UPDATE `sg_users_address` SET `is_default`='0' WHERE `user_id` = 843 AND `is_default` = 1 [ RunTime:0.0570s ]
+SQL: SHOW COLUMNS FROM `sg_users_address` [ RunTime:0.0070s ]
+SQL: INSERT INTO `sg_users_address` (`province`,`city`,`district`,`consignee`,`address`,`mobile`,`user_id`,`is_default`) VALUES ('351','398','404','萨达是','到法国东方','18664988205','843','1') [ RunTime:0.0500s ]
+
+[ 2017-11-30T09:25:24+08:00 ] ::1 /somegood/Shop/Order/receipt.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined variable: orderModel D:\xampps\htdocs\somegood\Apps\Shop\Controller\OrderController.class.php 第 68 行.
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0060s ]
+SQL: SHOW COLUMNS FROM `sg_users_address` [ RunTime:0.0050s ]
+SQL: SELECT ua.*,r.id,r.name as rname,o.name as oname,i.name as iname FROM sg_users_address ua LEFT JOIN sg_region AS r ON ua.district = r.id LEFT JOIN sg_region AS o ON ua.city = o.id LEFT JOIN sg_region AS i ON ua.province = i.id  WHERE `user_id` = 843 AND `is_show` = 0 ORDER BY is_default DESC  [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `sg_users_address` [ RunTime:0.0050s ]
+SQL: SELECT `address_id` FROM `sg_users_address` WHERE `is_default` = 1 AND `is_show` = 0 AND `user_id` = 843 LIMIT 1   [ RunTime:0.0020s ]
+NOTIC: [8] Undefined variable: cart_id D:\xampps\htdocs\somegood\Apps\Shop\Controller\OrderController.class.php 第 75 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.006000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.006000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-11-30T09:25:28+08:00 ] ::1 /somegood/Shop/Order/logistics.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_seller_logistics` [ RunTime:0.0090s ]
+SQL: SHOW COLUMNS FROM `sg_users_address` [ RunTime:0.0060s ]
+SQL: SELECT `province`,`city`,`district` FROM `sg_users_address` WHERE ( address_id=309 ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0070s ]
+SQL: SHOW COLUMNS FROM `sg_cart` [ RunTime:0.0050s ]
+SQL: SELECT c.*,g.heavy,sd.is_onsale as is_on_sale,sd.stock,sd.sg_id,g.online_stock FROM sg_cart c LEFT JOIN sg_seller_delivery AS sd ON sd.id = c.goods_id LEFT JOIN sg_goods AS g ON g.id = sd.sg_id  WHERE c.cart_id IN ('126','135') ORDER BY store_id DESC  [ RunTime:0.0010s ]
+NOTIC: [8] Undefined offset: 820 D:\xampps\htdocs\somegood\Apps\Common\Model\SellerLogisticsModel.class.php 第 78 行.
+NOTIC: [8] Undefined index: total_money D:\xampps\htdocs\somegood\Apps\Common\Model\SellerLogisticsModel.class.php 第 78 行.
+NOTIC: [8] Undefined index: total_heavy D:\xampps\htdocs\somegood\Apps\Common\Model\SellerLogisticsModel.class.php 第 79 行.
+NOTIC: [8] Undefined offset: 843 D:\xampps\htdocs\somegood\Apps\Common\Model\SellerLogisticsModel.class.php 第 78 行.
+NOTIC: [8] Undefined index: total_money D:\xampps\htdocs\somegood\Apps\Common\Model\SellerLogisticsModel.class.php 第 78 行.
+NOTIC: [8] Undefined index: total_heavy D:\xampps\htdocs\somegood\Apps\Common\Model\SellerLogisticsModel.class.php 第 79 行.
+SQL: SELECT * FROM `sg_seller_logistics` WHERE `is_on` = 1  [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `sg_logistics` [ RunTime:0.0060s ]
+SQL: SELECT `id`,`name` FROM `sg_logistics` WHERE ( 1=1 AND id='41' ) LIMIT 1   [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `sg_seller_logistics_region` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_seller_logistics_region` WHERE ( 1=1 AND seller_logistics_id='4' )  [ RunTime:0.0020s ]
+SQL: SELECT `id`,`name` FROM `sg_logistics` WHERE ( 1=1 AND id='35' ) LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `sg_seller_logistics_region` WHERE ( 1=1 AND seller_logistics_id='5' )  [ RunTime:0.0020s ]
+SQL: SELECT `id`,`name` FROM `sg_logistics` WHERE ( 1=1 AND id='64' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `sg_seller_logistics_region` WHERE ( 1=1 AND seller_logistics_id='12' )  [ RunTime:0.0020s ]
+SQL: SELECT `id`,`name` FROM `sg_logistics` WHERE ( 1=1 AND id='64' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `sg_seller_logistics_region` WHERE ( 1=1 AND seller_logistics_id='16' )  [ RunTime:0.0020s ]
+SQL: SELECT `id`,`name` FROM `sg_logistics` WHERE ( 1=1 AND id='57' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `sg_seller_logistics_region` WHERE ( 1=1 AND seller_logistics_id='17' )  [ RunTime:0.0010s ]
+SQL: SELECT `id`,`name` FROM `sg_logistics` WHERE ( 1=1 AND id='59' ) LIMIT 1   [ RunTime:0.0020s ]
+SQL: SELECT * FROM `sg_seller_logistics_region` WHERE ( 1=1 AND seller_logistics_id='18' )  [ RunTime:0.0010s ]
+SQL: SELECT * FROM `sg_seller_logistics` WHERE `is_on` = 1  [ RunTime:0.0020s ]
+SQL: SELECT `id`,`name` FROM `sg_logistics` WHERE ( 1=1 AND id='41' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `sg_seller_logistics_region` WHERE ( 1=1 AND seller_logistics_id='4' )  [ RunTime:0.0020s ]
+SQL: SELECT `id`,`name` FROM `sg_logistics` WHERE ( 1=1 AND id='35' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `sg_seller_logistics_region` WHERE ( 1=1 AND seller_logistics_id='5' )  [ RunTime:0.0020s ]
+SQL: SELECT `id`,`name` FROM `sg_logistics` WHERE ( 1=1 AND id='64' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `sg_seller_logistics_region` WHERE ( 1=1 AND seller_logistics_id='12' )  [ RunTime:0.0010s ]
+SQL: SELECT `id`,`name` FROM `sg_logistics` WHERE ( 1=1 AND id='64' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `sg_seller_logistics_region` WHERE ( 1=1 AND seller_logistics_id='16' )  [ RunTime:0.0010s ]
+SQL: SELECT `id`,`name` FROM `sg_logistics` WHERE ( 1=1 AND id='57' ) LIMIT 1   [ RunTime:0.0020s ]
+SQL: SELECT * FROM `sg_seller_logistics_region` WHERE ( 1=1 AND seller_logistics_id='17' )  [ RunTime:0.0010s ]
+SQL: SELECT `id`,`name` FROM `sg_logistics` WHERE ( 1=1 AND id='59' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `sg_seller_logistics_region` WHERE ( 1=1 AND seller_logistics_id='18' )  [ RunTime:0.0020s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: id D:\xampps\htdocs\somegood\Runtime\Cache\Shop\4e89b7202fc691246158a7665120c456.php 第 12 行.
+NOTIC: [8] Undefined index: value D:\xampps\htdocs\somegood\Runtime\Cache\Shop\4e89b7202fc691246158a7665120c456.php 第 12 行.
+NOTIC: [8] Undefined variable: k D:\xampps\htdocs\somegood\Runtime\Cache\Shop\4e89b7202fc691246158a7665120c456.php 第 15 行.
+NOTIC: [8] Undefined index: seller_id D:\xampps\htdocs\somegood\Runtime\Cache\Shop\4e89b7202fc691246158a7665120c456.php 第 15 行.
+NOTIC: [8] Undefined variable: k D:\xampps\htdocs\somegood\Runtime\Cache\Shop\4e89b7202fc691246158a7665120c456.php 第 16 行.
+NOTIC: [8] Undefined index: id D:\xampps\htdocs\somegood\Runtime\Cache\Shop\4e89b7202fc691246158a7665120c456.php 第 16 行.
+NOTIC: [8] Undefined variable: k D:\xampps\htdocs\somegood\Runtime\Cache\Shop\4e89b7202fc691246158a7665120c456.php 第 17 行.
+NOTIC: [8] Undefined index: value D:\xampps\htdocs\somegood\Runtime\Cache\Shop\4e89b7202fc691246158a7665120c456.php 第 17 行.
+NOTIC: [8] Undefined index: id D:\xampps\htdocs\somegood\Runtime\Cache\Shop\4e89b7202fc691246158a7665120c456.php 第 12 行.
+NOTIC: [8] Undefined index: value D:\xampps\htdocs\somegood\Runtime\Cache\Shop\4e89b7202fc691246158a7665120c456.php 第 12 行.
+NOTIC: [8] Undefined variable: k D:\xampps\htdocs\somegood\Runtime\Cache\Shop\4e89b7202fc691246158a7665120c456.php 第 15 行.
+NOTIC: [8] Undefined index: seller_id D:\xampps\htdocs\somegood\Runtime\Cache\Shop\4e89b7202fc691246158a7665120c456.php 第 15 行.
+NOTIC: [8] Undefined variable: k D:\xampps\htdocs\somegood\Runtime\Cache\Shop\4e89b7202fc691246158a7665120c456.php 第 16 行.
+NOTIC: [8] Undefined index: id D:\xampps\htdocs\somegood\Runtime\Cache\Shop\4e89b7202fc691246158a7665120c456.php 第 16 行.
+NOTIC: [8] Undefined variable: k D:\xampps\htdocs\somegood\Runtime\Cache\Shop\4e89b7202fc691246158a7665120c456.php 第 17 行.
+NOTIC: [8] Undefined index: value D:\xampps\htdocs\somegood\Runtime\Cache\Shop\4e89b7202fc691246158a7665120c456.php 第 17 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.006000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.006000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-11-30T09:25:29+08:00 ] ::1 /somegood/Shop/Order/logistics.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `sg_seller_logistics` [ RunTime:0.0060s ]
+SQL: SHOW COLUMNS FROM `sg_users_address` [ RunTime:0.0060s ]
+SQL: SELECT `province`,`city`,`district` FROM `sg_users_address` WHERE ( address_id=318 ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0070s ]
+SQL: SHOW COLUMNS FROM `sg_cart` [ RunTime:0.0060s ]
+SQL: SELECT c.*,g.heavy,sd.is_onsale as is_on_sale,sd.stock,sd.sg_id,g.online_stock FROM sg_cart c LEFT JOIN sg_seller_delivery AS sd ON sd.id = c.goods_id LEFT JOIN sg_goods AS g ON g.id = sd.sg_id  WHERE c.cart_id IN ('126','135') ORDER BY store_id DESC  [ RunTime:0.0010s ]
+NOTIC: [8] Undefined offset: 820 D:\xampps\htdocs\somegood\Apps\Common\Model\SellerLogisticsModel.class.php 第 78 行.
+NOTIC: [8] Undefined index: total_money D:\xampps\htdocs\somegood\Apps\Common\Model\SellerLogisticsModel.class.php 第 78 行.
+NOTIC: [8] Undefined index: total_heavy D:\xampps\htdocs\somegood\Apps\Common\Model\SellerLogisticsModel.class.php 第 79 行.
+NOTIC: [8] Undefined offset: 843 D:\xampps\htdocs\somegood\Apps\Common\Model\SellerLogisticsModel.class.php 第 78 行.
+NOTIC: [8] Undefined index: total_money D:\xampps\htdocs\somegood\Apps\Common\Model\SellerLogisticsModel.class.php 第 78 行.
+NOTIC: [8] Undefined index: total_heavy D:\xampps\htdocs\somegood\Apps\Common\Model\SellerLogisticsModel.class.php 第 79 行.
+SQL: SELECT * FROM `sg_seller_logistics` WHERE `is_on` = 1  [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_logistics` [ RunTime:0.0060s ]
+SQL: SELECT `id`,`name` FROM `sg_logistics` WHERE ( 1=1 AND id='41' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_seller_logistics_region` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `sg_seller_logistics_region` WHERE ( 1=1 AND seller_logistics_id='4' )  [ RunTime:0.0020s ]
+SQL: SELECT `id`,`name` FROM `sg_logistics` WHERE ( 1=1 AND id='35' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `sg_seller_logistics_region` WHERE ( 1=1 AND seller_logistics_id='5' )  [ RunTime:0.0020s ]
+SQL: SELECT `id`,`name` FROM `sg_logistics` WHERE ( 1=1 AND id='64' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `sg_seller_logistics_region` WHERE ( 1=1 AND seller_logistics_id='12' )  [ RunTime:0.0020s ]
+SQL: SELECT `id`,`name` FROM `sg_logistics` WHERE ( 1=1 AND id='64' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `sg_seller_logistics_region` WHERE ( 1=1 AND seller_logistics_id='16' )  [ RunTime:0.0020s ]
+SQL: SELECT `id`,`name` FROM `sg_logistics` WHERE ( 1=1 AND id='57' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `sg_seller_logistics_region` WHERE ( 1=1 AND seller_logistics_id='17' )  [ RunTime:0.0020s ]
+SQL: SELECT `id`,`name` FROM `sg_logistics` WHERE ( 1=1 AND id='59' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `sg_seller_logistics_region` WHERE ( 1=1 AND seller_logistics_id='18' )  [ RunTime:0.0020s ]
+SQL: SELECT * FROM `sg_seller_logistics` WHERE `is_on` = 1  [ RunTime:0.0010s ]
+SQL: SELECT `id`,`name` FROM `sg_logistics` WHERE ( 1=1 AND id='41' ) LIMIT 1   [ RunTime:0.0020s ]
+SQL: SELECT * FROM `sg_seller_logistics_region` WHERE ( 1=1 AND seller_logistics_id='4' )  [ RunTime:0.0010s ]
+SQL: SELECT `id`,`name` FROM `sg_logistics` WHERE ( 1=1 AND id='35' ) LIMIT 1   [ RunTime:0.0020s ]
+SQL: SELECT * FROM `sg_seller_logistics_region` WHERE ( 1=1 AND seller_logistics_id='5' )  [ RunTime:0.0010s ]
+SQL: SELECT `id`,`name` FROM `sg_logistics` WHERE ( 1=1 AND id='64' ) LIMIT 1   [ RunTime:0.0020s ]
+SQL: SELECT * FROM `sg_seller_logistics_region` WHERE ( 1=1 AND seller_logistics_id='12' )  [ RunTime:0.0010s ]
+SQL: SELECT `id`,`name` FROM `sg_logistics` WHERE ( 1=1 AND id='64' ) LIMIT 1   [ RunTime:0.0020s ]
+SQL: SELECT * FROM `sg_seller_logistics_region` WHERE ( 1=1 AND seller_logistics_id='16' )  [ RunTime:0.0010s ]
+SQL: SELECT `id`,`name` FROM `sg_logistics` WHERE ( 1=1 AND id='57' ) LIMIT 1   [ RunTime:0.0020s ]
+SQL: SELECT * FROM `sg_seller_logistics_region` WHERE ( 1=1 AND seller_logistics_id='17' )  [ RunTime:0.0010s ]
+SQL: SELECT `id`,`name` FROM `sg_logistics` WHERE ( 1=1 AND id='59' ) LIMIT 1   [ RunTime:0.0020s ]
+SQL: SELECT * FROM `sg_seller_logistics_region` WHERE ( 1=1 AND seller_logistics_id='18' )  [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: id D:\xampps\htdocs\somegood\Runtime\Cache\Shop\4e89b7202fc691246158a7665120c456.php 第 12 行.
+NOTIC: [8] Undefined index: value D:\xampps\htdocs\somegood\Runtime\Cache\Shop\4e89b7202fc691246158a7665120c456.php 第 12 行.
+NOTIC: [8] Undefined variable: k D:\xampps\htdocs\somegood\Runtime\Cache\Shop\4e89b7202fc691246158a7665120c456.php 第 15 行.
+NOTIC: [8] Undefined index: seller_id D:\xampps\htdocs\somegood\Runtime\Cache\Shop\4e89b7202fc691246158a7665120c456.php 第 15 行.
+NOTIC: [8] Undefined variable: k D:\xampps\htdocs\somegood\Runtime\Cache\Shop\4e89b7202fc691246158a7665120c456.php 第 16 行.
+NOTIC: [8] Undefined index: id D:\xampps\htdocs\somegood\Runtime\Cache\Shop\4e89b7202fc691246158a7665120c456.php 第 16 行.
+NOTIC: [8] Undefined variable: k D:\xampps\htdocs\somegood\Runtime\Cache\Shop\4e89b7202fc691246158a7665120c456.php 第 17 行.
+NOTIC: [8] Undefined index: value D:\xampps\htdocs\somegood\Runtime\Cache\Shop\4e89b7202fc691246158a7665120c456.php 第 17 行.
+NOTIC: [8] Undefined index: id D:\xampps\htdocs\somegood\Runtime\Cache\Shop\4e89b7202fc691246158a7665120c456.php 第 12 行.
+NOTIC: [8] Undefined index: value D:\xampps\htdocs\somegood\Runtime\Cache\Shop\4e89b7202fc691246158a7665120c456.php 第 12 行.
+NOTIC: [8] Undefined variable: k D:\xampps\htdocs\somegood\Runtime\Cache\Shop\4e89b7202fc691246158a7665120c456.php 第 15 行.
+NOTIC: [8] Undefined index: seller_id D:\xampps\htdocs\somegood\Runtime\Cache\Shop\4e89b7202fc691246158a7665120c456.php 第 15 行.
+NOTIC: [8] Undefined variable: k D:\xampps\htdocs\somegood\Runtime\Cache\Shop\4e89b7202fc691246158a7665120c456.php 第 16 行.
+NOTIC: [8] Undefined index: id D:\xampps\htdocs\somegood\Runtime\Cache\Shop\4e89b7202fc691246158a7665120c456.php 第 16 行.
+NOTIC: [8] Undefined variable: k D:\xampps\htdocs\somegood\Runtime\Cache\Shop\4e89b7202fc691246158a7665120c456.php 第 17 行.
+NOTIC: [8] Undefined index: value D:\xampps\htdocs\somegood\Runtime\Cache\Shop\4e89b7202fc691246158a7665120c456.php 第 17 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.007000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.007000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-11-30T09:25:30+08:00 ] ::1 /somegood/Shop/Order/logistics.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `sg_seller_logistics` [ RunTime:0.0070s ]
+SQL: SHOW COLUMNS FROM `sg_users_address` [ RunTime:0.0070s ]
+SQL: SELECT `province`,`city`,`district` FROM `sg_users_address` WHERE ( address_id=330 ) LIMIT 1   [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0070s ]
+SQL: SHOW COLUMNS FROM `sg_cart` [ RunTime:0.0050s ]
+SQL: SELECT c.*,g.heavy,sd.is_onsale as is_on_sale,sd.stock,sd.sg_id,g.online_stock FROM sg_cart c LEFT JOIN sg_seller_delivery AS sd ON sd.id = c.goods_id LEFT JOIN sg_goods AS g ON g.id = sd.sg_id  WHERE c.cart_id IN ('126','135') ORDER BY store_id DESC  [ RunTime:0.0010s ]
+NOTIC: [8] Undefined offset: 820 D:\xampps\htdocs\somegood\Apps\Common\Model\SellerLogisticsModel.class.php 第 78 行.
+NOTIC: [8] Undefined index: total_money D:\xampps\htdocs\somegood\Apps\Common\Model\SellerLogisticsModel.class.php 第 78 行.
+NOTIC: [8] Undefined index: total_heavy D:\xampps\htdocs\somegood\Apps\Common\Model\SellerLogisticsModel.class.php 第 79 行.
+NOTIC: [8] Undefined offset: 843 D:\xampps\htdocs\somegood\Apps\Common\Model\SellerLogisticsModel.class.php 第 78 行.
+NOTIC: [8] Undefined index: total_money D:\xampps\htdocs\somegood\Apps\Common\Model\SellerLogisticsModel.class.php 第 78 行.
+NOTIC: [8] Undefined index: total_heavy D:\xampps\htdocs\somegood\Apps\Common\Model\SellerLogisticsModel.class.php 第 79 行.
+SQL: SELECT * FROM `sg_seller_logistics` WHERE `is_on` = 1  [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `sg_logistics` [ RunTime:0.0060s ]
+SQL: SELECT `id`,`name` FROM `sg_logistics` WHERE ( 1=1 AND id='41' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_seller_logistics_region` [ RunTime:0.0060s ]
+SQL: SELECT * FROM `sg_seller_logistics_region` WHERE ( 1=1 AND seller_logistics_id='4' )  [ RunTime:0.0020s ]
+SQL: SELECT `id`,`name` FROM `sg_logistics` WHERE ( 1=1 AND id='35' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `sg_seller_logistics_region` WHERE ( 1=1 AND seller_logistics_id='5' )  [ RunTime:0.0020s ]
+SQL: SELECT `id`,`name` FROM `sg_logistics` WHERE ( 1=1 AND id='64' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `sg_seller_logistics_region` WHERE ( 1=1 AND seller_logistics_id='12' )  [ RunTime:0.0020s ]
+SQL: SELECT `id`,`name` FROM `sg_logistics` WHERE ( 1=1 AND id='64' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `sg_seller_logistics_region` WHERE ( 1=1 AND seller_logistics_id='16' )  [ RunTime:0.0020s ]
+SQL: SELECT `id`,`name` FROM `sg_logistics` WHERE ( 1=1 AND id='57' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `sg_seller_logistics_region` WHERE ( 1=1 AND seller_logistics_id='17' )  [ RunTime:0.0020s ]
+SQL: SELECT `id`,`name` FROM `sg_logistics` WHERE ( 1=1 AND id='59' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `sg_seller_logistics_region` WHERE ( 1=1 AND seller_logistics_id='18' )  [ RunTime:0.0020s ]
+SQL: SELECT * FROM `sg_seller_logistics` WHERE `is_on` = 1  [ RunTime:0.0010s ]
+SQL: SELECT `id`,`name` FROM `sg_logistics` WHERE ( 1=1 AND id='41' ) LIMIT 1   [ RunTime:0.0020s ]
+SQL: SELECT * FROM `sg_seller_logistics_region` WHERE ( 1=1 AND seller_logistics_id='4' )  [ RunTime:0.0010s ]
+SQL: SELECT `id`,`name` FROM `sg_logistics` WHERE ( 1=1 AND id='35' ) LIMIT 1   [ RunTime:0.0020s ]
+SQL: SELECT * FROM `sg_seller_logistics_region` WHERE ( 1=1 AND seller_logistics_id='5' )  [ RunTime:0.0010s ]
+SQL: SELECT `id`,`name` FROM `sg_logistics` WHERE ( 1=1 AND id='64' ) LIMIT 1   [ RunTime:0.0020s ]
+SQL: SELECT * FROM `sg_seller_logistics_region` WHERE ( 1=1 AND seller_logistics_id='12' )  [ RunTime:0.0010s ]
+SQL: SELECT `id`,`name` FROM `sg_logistics` WHERE ( 1=1 AND id='64' ) LIMIT 1   [ RunTime:0.0020s ]
+SQL: SELECT * FROM `sg_seller_logistics_region` WHERE ( 1=1 AND seller_logistics_id='16' )  [ RunTime:0.0010s ]
+SQL: SELECT `id`,`name` FROM `sg_logistics` WHERE ( 1=1 AND id='57' ) LIMIT 1   [ RunTime:0.0020s ]
+SQL: SELECT * FROM `sg_seller_logistics_region` WHERE ( 1=1 AND seller_logistics_id='17' )  [ RunTime:0.0010s ]
+SQL: SELECT `id`,`name` FROM `sg_logistics` WHERE ( 1=1 AND id='59' ) LIMIT 1   [ RunTime:0.0020s ]
+SQL: SELECT * FROM `sg_seller_logistics_region` WHERE ( 1=1 AND seller_logistics_id='18' )  [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: id D:\xampps\htdocs\somegood\Runtime\Cache\Shop\4e89b7202fc691246158a7665120c456.php 第 12 行.
+NOTIC: [8] Undefined index: value D:\xampps\htdocs\somegood\Runtime\Cache\Shop\4e89b7202fc691246158a7665120c456.php 第 12 行.
+NOTIC: [8] Undefined variable: k D:\xampps\htdocs\somegood\Runtime\Cache\Shop\4e89b7202fc691246158a7665120c456.php 第 15 行.
+NOTIC: [8] Undefined index: seller_id D:\xampps\htdocs\somegood\Runtime\Cache\Shop\4e89b7202fc691246158a7665120c456.php 第 15 行.
+NOTIC: [8] Undefined variable: k D:\xampps\htdocs\somegood\Runtime\Cache\Shop\4e89b7202fc691246158a7665120c456.php 第 16 行.
+NOTIC: [8] Undefined index: id D:\xampps\htdocs\somegood\Runtime\Cache\Shop\4e89b7202fc691246158a7665120c456.php 第 16 行.
+NOTIC: [8] Undefined variable: k D:\xampps\htdocs\somegood\Runtime\Cache\Shop\4e89b7202fc691246158a7665120c456.php 第 17 行.
+NOTIC: [8] Undefined index: value D:\xampps\htdocs\somegood\Runtime\Cache\Shop\4e89b7202fc691246158a7665120c456.php 第 17 行.
+NOTIC: [8] Undefined index: id D:\xampps\htdocs\somegood\Runtime\Cache\Shop\4e89b7202fc691246158a7665120c456.php 第 12 行.
+NOTIC: [8] Undefined index: value D:\xampps\htdocs\somegood\Runtime\Cache\Shop\4e89b7202fc691246158a7665120c456.php 第 12 行.
+NOTIC: [8] Undefined variable: k D:\xampps\htdocs\somegood\Runtime\Cache\Shop\4e89b7202fc691246158a7665120c456.php 第 15 行.
+NOTIC: [8] Undefined index: seller_id D:\xampps\htdocs\somegood\Runtime\Cache\Shop\4e89b7202fc691246158a7665120c456.php 第 15 行.
+NOTIC: [8] Undefined variable: k D:\xampps\htdocs\somegood\Runtime\Cache\Shop\4e89b7202fc691246158a7665120c456.php 第 16 行.
+NOTIC: [8] Undefined index: id D:\xampps\htdocs\somegood\Runtime\Cache\Shop\4e89b7202fc691246158a7665120c456.php 第 16 行.
+NOTIC: [8] Undefined variable: k D:\xampps\htdocs\somegood\Runtime\Cache\Shop\4e89b7202fc691246158a7665120c456.php 第 17 行.
+NOTIC: [8] Undefined index: value D:\xampps\htdocs\somegood\Runtime\Cache\Shop\4e89b7202fc691246158a7665120c456.php 第 17 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.007000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.007000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-11-30T09:25:32+08:00 ] ::1 /somegood/Shop/Order/delOrderAddress.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0080s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `sg_order` WHERE ( address_id=318 ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_users_address` [ RunTime:0.0070s ]
+SQL: DELETE FROM `sg_users_address` WHERE `address_id` = 318 [ RunTime:0.0490s ]
+
+[ 2017-11-30T09:25:34+08:00 ] ::1 /somegood/Shop/Order/delOrderAddress.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0050s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `sg_order` WHERE ( address_id=309 ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_users_address` [ RunTime:0.0050s ]
+SQL: DELETE FROM `sg_users_address` WHERE `address_id` = 309 [ RunTime:0.0400s ]
+
+[ 2017-11-30T09:25:38+08:00 ] ::1 /somegood/Shop/Order/newaddress.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.005000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.005000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001001s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001001s ]
+
+[ 2017-11-30T09:26:17+08:00 ] ::1 /somegood/Shop/Order/addUserAddress.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001001s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001001s ]
+SQL: SHOW COLUMNS FROM `sg_users_address` [ RunTime:0.0070s ]
+SQL: UPDATE `sg_users_address` SET `is_default`='0' WHERE `user_id` = 843 AND `is_default` = 1 [ RunTime:0.0500s ]
+SQL: SHOW COLUMNS FROM `sg_users_address` [ RunTime:0.0060s ]
+SQL: INSERT INTO `sg_users_address` (`province`,`city`,`district`,`consignee`,`address`,`mobile`,`user_id`,`is_default`) VALUES ('1964','1988','1998','文鹏程','隔圳新村 ','18664988205','843','1') [ RunTime:0.0430s ]
+
+[ 2017-11-30T09:26:18+08:00 ] ::1 /somegood/Shop/Order/receipt.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined variable: orderModel D:\xampps\htdocs\somegood\Apps\Shop\Controller\OrderController.class.php 第 68 行.
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0080s ]
+SQL: SHOW COLUMNS FROM `sg_users_address` [ RunTime:0.0070s ]
+SQL: SELECT ua.*,r.id,r.name as rname,o.name as oname,i.name as iname FROM sg_users_address ua LEFT JOIN sg_region AS r ON ua.district = r.id LEFT JOIN sg_region AS o ON ua.city = o.id LEFT JOIN sg_region AS i ON ua.province = i.id  WHERE `user_id` = 843 AND `is_show` = 0 ORDER BY is_default DESC  [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `sg_users_address` [ RunTime:0.0080s ]
+SQL: SELECT `address_id` FROM `sg_users_address` WHERE `is_default` = 1 AND `is_show` = 0 AND `user_id` = 843 LIMIT 1   [ RunTime:0.0010s ]
+NOTIC: [8] Undefined variable: cart_id D:\xampps\htdocs\somegood\Apps\Shop\Controller\OrderController.class.php 第 75 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.006000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.006000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-11-30T10:17:58+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-11-30T10:19:43+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-11-30T10:19:44+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-11-30T10:20:07+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-11-30T10:20:07+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-11-30T10:20:07+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-11-30T10:20:08+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-11-30T10:20:14+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-11-30T10:20:15+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-11-30T10:20:15+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-11-30T10:20:15+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-11-30T10:20:16+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-11-30T10:20:16+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001001s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001001s ]
+
+[ 2017-11-30T10:20:16+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-11-30T10:20:16+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.001000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-11-30T10:22:42+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-11-30T10:22:43+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-11-30T10:22:43+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-11-30T10:22:44+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-11-30T10:22:45+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-11-30T10:22:45+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-11-30T10:23:14+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-11-30T10:23:43+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [2] Missing argument 1 for WxPayApi::unifiedOrder(), called in D:\xampps\htdocs\somegood\Apps\Shop\Controller\WxpayController.class.php on line 23 and defined D:\xampps\htdocs\somegood\ThinkPHP\Library\Vendor\WxpayPC\WxPay.php 第 24 行.
+NOTIC: [8] Undefined variable: inputObj D:\xampps\htdocs\somegood\ThinkPHP\Library\Vendor\WxpayPC\WxPay.php 第 28 行.
+
+[ 2017-11-30T10:23:51+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-11-30T10:25:11+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-11-30T10:34:43+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-11-30T10:34:44+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-11-30T10:34:44+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-11-30T10:44:20+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-11-30T10:44:21+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-11-30T10:44:21+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-11-30T10:44:21+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-11-30T10:46:30+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-11-30T10:56:07+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-11-30T10:59:16+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001001s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001001s ]
+
+[ 2017-11-30T14:13:55+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-11-30T14:15:11+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [2] require_once(../lib/WxPay.Api.php): failed to open stream: No such file or directory D:\xampps\htdocs\somegood\ThinkPHP\Library\Vendor\WxpayPC\WxPay.NativePay.php 第 2 行.
+
+[ 2017-11-30T14:15:24+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [2] require_once(../lib/WxPay.Api.php): failed to open stream: No such file or directory D:\xampps\htdocs\somegood\ThinkPHP\Library\Vendor\WxpayPC\WxPay.NativePay.php 第 2 行.
+
+[ 2017-11-30T14:15:26+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [2] require_once(../lib/WxPay.Api.php): failed to open stream: No such file or directory D:\xampps\htdocs\somegood\ThinkPHP\Library\Vendor\WxpayPC\WxPay.NativePay.php 第 2 行.
+
+[ 2017-11-30T14:15:40+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [2] require_once(../lib/WxPay.Api.php): failed to open stream: No such file or directory D:\xampps\htdocs\somegood\ThinkPHP\Library\Vendor\WxpayPC\WxPay.NativePay.php 第 2 行.
+
+[ 2017-11-30T14:16:11+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [2] require_once(../WxPay.php): failed to open stream: No such file or directory D:\xampps\htdocs\somegood\ThinkPHP\Library\Vendor\WxpayPC\WxPay.NativePay.php 第 2 行.
+
+[ 2017-11-30T14:16:18+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [2] require_once(./WxPay.php): failed to open stream: No such file or directory D:\xampps\htdocs\somegood\ThinkPHP\Library\Vendor\WxpayPC\WxPay.NativePay.php 第 2 行.
+
+[ 2017-11-30T14:18:48+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-11-30T14:19:45+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-11-30T14:21:56+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: web_title D:\xampps\htdocs\somegood\Runtime\Cache\Shop\930417471d8ec548a94e5eacdc4a7ae2.php 第 13 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.004000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.004000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-11-30T14:22:47+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001001s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001001s ]
+
+[ 2017-11-30T14:29:05+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-11-30T14:29:17+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: web_title D:\xampps\htdocs\somegood\Runtime\Cache\Shop\930417471d8ec548a94e5eacdc4a7ae2.php 第 13 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.005000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.005000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-11-30T14:29:44+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: web_title D:\xampps\htdocs\somegood\Runtime\Cache\Shop\930417471d8ec548a94e5eacdc4a7ae2.php 第 13 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.005000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.005000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-11-30T14:30:48+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: web_title D:\xampps\htdocs\somegood\Runtime\Cache\Shop\930417471d8ec548a94e5eacdc4a7ae2.php 第 13 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.004000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.004000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-11-30T14:30:58+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: web_title D:\xampps\htdocs\somegood\Runtime\Cache\Shop\930417471d8ec548a94e5eacdc4a7ae2.php 第 13 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.005000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.005000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-11-30T14:32:15+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-11-30T14:32:26+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-11-30T14:34:40+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: web_title D:\xampps\htdocs\somegood\Runtime\Cache\Shop\930417471d8ec548a94e5eacdc4a7ae2.php 第 13 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.005001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.005001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-11-30T14:45:43+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '' LIMIT 1   [ RunTime:0.0010s ]
+
+[ 2017-11-30T14:46:19+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '' LIMIT 1   [ RunTime:0.0010s ]
+
+[ 2017-11-30T14:46:37+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.001000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '' LIMIT 1   [ RunTime:0.0010s ]
+NOTIC: [8] Undefined variable: notify D:\xampps\htdocs\somegood\Apps\Shop\Controller\WxpayController.class.php 第 41 行.
+
+[ 2017-11-30T14:47:21+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '' LIMIT 1   [ RunTime:0.0020s ]
+
+[ 2017-11-30T14:47:27+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '' LIMIT 1   [ RunTime:0.0010s ]
+NOTIC: [8] Undefined index: code_url D:\xampps\htdocs\somegood\Apps\Shop\Controller\WxpayController.class.php 第 43 行.
+NOTIC: [8] Undefined variable: url1 D:\xampps\htdocs\somegood\Apps\Shop\Controller\WxpayController.class.php 第 45 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: web_title D:\xampps\htdocs\somegood\Runtime\Cache\Shop\930417471d8ec548a94e5eacdc4a7ae2.php 第 13 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.005000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.005000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-11-30T14:47:40+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '' LIMIT 1   [ RunTime:0.0010s ]
+NOTIC: [8] Undefined index: code_url D:\xampps\htdocs\somegood\Apps\Shop\Controller\WxpayController.class.php 第 43 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: web_title D:\xampps\htdocs\somegood\Runtime\Cache\Shop\930417471d8ec548a94e5eacdc4a7ae2.php 第 13 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.004001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.004001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-11-30T14:48:01+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '' LIMIT 1   [ RunTime:0.0010s ]
+NOTIC: [8] Undefined index: code_url D:\xampps\htdocs\somegood\Apps\Shop\Controller\WxpayController.class.php 第 43 行.
+
+[ 2017-11-30T14:48:13+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '' LIMIT 1   [ RunTime:0.0020s ]
+NOTIC: [8] Undefined index: code_url D:\xampps\htdocs\somegood\Apps\Shop\Controller\WxpayController.class.php 第 43 行.
+
+[ 2017-11-30T14:53:48+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '' LIMIT 1   [ RunTime:0.0010s ]
+
+[ 2017-11-30T14:53:48+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '' LIMIT 1   [ RunTime:0.0010s ]
+
+[ 2017-11-30T14:53:49+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '' LIMIT 1   [ RunTime:0.0020s ]
+
+[ 2017-11-30T14:57:19+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '' LIMIT 1   [ RunTime:0.0010s ]
+
+[ 2017-11-30T14:58:30+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0010s ]
+
+[ 2017-11-30T14:58:45+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0020s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: web_title D:\xampps\htdocs\somegood\Runtime\Cache\Shop\930417471d8ec548a94e5eacdc4a7ae2.php 第 13 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.004001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.004001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-11-30T14:59:05+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0020s ]
+
+[ 2017-11-30T14:59:56+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0010s ]
+
+[ 2017-11-30T15:05:03+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0010s ]
+
+[ 2017-11-30T15:19:00+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0010s ]
+
+[ 2017-11-30T15:19:10+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0010s ]
+
+[ 2017-11-30T15:20:00+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0010s ]
+
+[ 2017-11-30T15:20:15+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0020s ]
+
+[ 2017-11-30T15:20:21+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0010s ]
+NOTIC: [8] Undefined variable: openId D:\xampps\htdocs\somegood\Apps\Shop\Controller\WxpayController.class.php 第 56 行.
+NOTIC: [8] Undefined variable: product_id D:\xampps\htdocs\somegood\Apps\Shop\Controller\WxpayController.class.php 第 57 行.
+
+[ 2017-11-30T15:20:26+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0020s ]
+NOTIC: [8] Undefined variable: openId D:\xampps\htdocs\somegood\Apps\Shop\Controller\WxpayController.class.php 第 56 行.
+NOTIC: [8] Undefined variable: product_id D:\xampps\htdocs\somegood\Apps\Shop\Controller\WxpayController.class.php 第 57 行.
+
+[ 2017-11-30T15:20:33+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0020s ]
+NOTIC: [8] Undefined variable: openId D:\xampps\htdocs\somegood\Apps\Shop\Controller\WxpayController.class.php 第 56 行.
+NOTIC: [8] Undefined variable: product_id D:\xampps\htdocs\somegood\Apps\Shop\Controller\WxpayController.class.php 第 57 行.
+
+[ 2017-11-30T15:23:00+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0010s ]
+NOTIC: [8] Undefined variable: openId D:\xampps\htdocs\somegood\Apps\Shop\Controller\WxpayController.class.php 第 56 行.
+
+[ 2017-11-30T15:23:00+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0010s ]
+NOTIC: [8] Undefined variable: openId D:\xampps\htdocs\somegood\Apps\Shop\Controller\WxpayController.class.php 第 56 行.
+
+[ 2017-11-30T15:23:00+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0020s ]
+NOTIC: [8] Undefined variable: openId D:\xampps\htdocs\somegood\Apps\Shop\Controller\WxpayController.class.php 第 56 行.
+
+[ 2017-11-30T15:23:01+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0010s ]
+NOTIC: [8] Undefined variable: openId D:\xampps\htdocs\somegood\Apps\Shop\Controller\WxpayController.class.php 第 56 行.
+
+[ 2017-11-30T15:23:01+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0010s ]
+NOTIC: [8] Undefined variable: openId D:\xampps\htdocs\somegood\Apps\Shop\Controller\WxpayController.class.php 第 56 行.
+
+[ 2017-11-30T15:23:01+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0020s ]
+NOTIC: [8] Undefined variable: openId D:\xampps\htdocs\somegood\Apps\Shop\Controller\WxpayController.class.php 第 56 行.
+
+[ 2017-11-30T15:23:11+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0010s ]
+NOTIC: [8] Undefined variable: openId D:\xampps\htdocs\somegood\Apps\Shop\Controller\WxpayController.class.php 第 56 行.
+
+[ 2017-11-30T15:23:56+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0020s ]
+
+[ 2017-11-30T15:24:21+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0010s ]
+NOTIC: [8] Undefined variable: openId D:\xampps\htdocs\somegood\Apps\Shop\Controller\WxpayController.class.php 第 57 行.
+
+[ 2017-11-30T15:31:25+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-11-30T15:31:31+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0010s ]
+NOTIC: [8] Undefined variable: openId D:\xampps\htdocs\somegood\Apps\Shop\Controller\WxpayController.class.php 第 57 行.
+
+[ 2017-11-30T15:31:33+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0010s ]
+NOTIC: [8] Undefined variable: openId D:\xampps\htdocs\somegood\Apps\Shop\Controller\WxpayController.class.php 第 57 行.
+
+[ 2017-11-30T15:31:39+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0010s ]
+NOTIC: [8] Undefined variable: openId D:\xampps\htdocs\somegood\Apps\Shop\Controller\WxpayController.class.php 第 57 行.
+
+[ 2017-11-30T15:32:10+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0010s ]
+NOTIC: [8] Undefined variable: openId D:\xampps\htdocs\somegood\Apps\Shop\Controller\WxpayController.class.php 第 57 行.
+NOTIC: [8] Undefined variable: value D:\xampps\htdocs\somegood\Apps\Shop\Controller\WxpayController.class.php 第 59 行.
+
+[ 2017-11-30T15:32:15+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0040s ]
+NOTIC: [8] Undefined variable: openId D:\xampps\htdocs\somegood\Apps\Shop\Controller\WxpayController.class.php 第 57 行.
+
+[ 2017-11-30T15:32:24+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0030s ]
+NOTIC: [8] Undefined variable: openId D:\xampps\htdocs\somegood\Apps\Shop\Controller\WxpayController.class.php 第 57 行.
+
+[ 2017-11-30T15:32:30+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0010s ]
+NOTIC: [8] Undefined variable: openId D:\xampps\htdocs\somegood\Apps\Shop\Controller\WxpayController.class.php 第 57 行.
+
+[ 2017-11-30T15:33:53+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0060s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0010s ]
+NOTIC: [8] Undefined variable: openId D:\xampps\htdocs\somegood\Apps\Shop\Controller\WxpayController.class.php 第 57 行.
+
+[ 2017-11-30T15:38:08+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0010s ]
+NOTIC: [8] Undefined variable: openId D:\xampps\htdocs\somegood\Apps\Shop\Controller\WxpayController.class.php 第 56 行.
+
+[ 2017-11-30T15:38:15+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0010s ]
+NOTIC: [8] Undefined variable: openId D:\xampps\htdocs\somegood\Apps\Shop\Controller\WxpayController.class.php 第 56 行.
+
+[ 2017-11-30T15:39:03+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0010s ]
+NOTIC: [8] Undefined variable: openId D:\xampps\htdocs\somegood\Apps\Shop\Controller\WxpayController.class.php 第 56 行.
+
+[ 2017-11-30T15:39:08+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0020s ]
+NOTIC: [8] Undefined variable: openId D:\xampps\htdocs\somegood\Apps\Shop\Controller\WxpayController.class.php 第 56 行.
+
+[ 2017-11-30T15:45:01+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0010s ]
+NOTIC: [8] Undefined variable: openId D:\xampps\htdocs\somegood\Apps\Shop\Controller\WxpayController.class.php 第 56 行.
+
+[ 2017-11-30T15:45:29+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0010s ]
+NOTIC: [8] Undefined variable: openId D:\xampps\htdocs\somegood\Apps\Shop\Controller\WxpayController.class.php 第 56 行.
+
+[ 2017-11-30T15:45:29+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0010s ]
+NOTIC: [8] Undefined variable: openId D:\xampps\htdocs\somegood\Apps\Shop\Controller\WxpayController.class.php 第 56 行.
+
+[ 2017-11-30T15:45:30+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.001000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0010s ]
+NOTIC: [8] Undefined variable: openId D:\xampps\htdocs\somegood\Apps\Shop\Controller\WxpayController.class.php 第 56 行.
+
+[ 2017-11-30T15:45:54+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0010s ]
+NOTIC: [8] Undefined variable: openId D:\xampps\htdocs\somegood\Apps\Shop\Controller\WxpayController.class.php 第 56 行.
+
+[ 2017-11-30T15:46:00+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0020s ]
+NOTIC: [8] Undefined variable: openId D:\xampps\htdocs\somegood\Apps\Shop\Controller\WxpayController.class.php 第 56 行.
+
+[ 2017-11-30T15:46:00+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0010s ]
+NOTIC: [8] Undefined variable: openId D:\xampps\htdocs\somegood\Apps\Shop\Controller\WxpayController.class.php 第 56 行.
+
+[ 2017-11-30T15:46:00+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0010s ]
+NOTIC: [8] Undefined variable: openId D:\xampps\htdocs\somegood\Apps\Shop\Controller\WxpayController.class.php 第 56 行.
+
+[ 2017-11-30T15:47:21+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0020s ]
+NOTIC: [8] Undefined variable: openId D:\xampps\htdocs\somegood\Apps\Shop\Controller\WxpayController.class.php 第 56 行.
+NOTIC: [2] Missing argument 1 for WxPayUnifiedOrder::Set_spbill_create_ip(), called in D:\xampps\htdocs\somegood\Apps\Shop\Controller\WxpayController.class.php on line 59 and defined D:\xampps\htdocs\somegood\ThinkPHP\Library\Vendor\WxpayPC\WxPay.Data.php 第 295 行.
+NOTIC: [8] Undefined variable: value D:\xampps\htdocs\somegood\ThinkPHP\Library\Vendor\WxpayPC\WxPay.Data.php 第 297 行.
+
+[ 2017-11-30T15:48:03+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0020s ]
+NOTIC: [8] Undefined variable: openId D:\xampps\htdocs\somegood\Apps\Shop\Controller\WxpayController.class.php 第 56 行.
+NOTIC: [2] Missing argument 1 for WxPayUnifiedOrder::Set_spbill_create_ip(), called in D:\xampps\htdocs\somegood\Apps\Shop\Controller\WxpayController.class.php on line 59 and defined D:\xampps\htdocs\somegood\ThinkPHP\Library\Vendor\WxpayPC\WxPay.Data.php 第 295 行.
+NOTIC: [8] Undefined variable: value D:\xampps\htdocs\somegood\ThinkPHP\Library\Vendor\WxpayPC\WxPay.Data.php 第 297 行.
+
+[ 2017-11-30T15:48:13+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0010s ]
+NOTIC: [8] Undefined variable: openId D:\xampps\htdocs\somegood\Apps\Shop\Controller\WxpayController.class.php 第 56 行.
+NOTIC: [2] Missing argument 1 for WxPayUnifiedOrder::Set_spbill_create_ip(), called in D:\xampps\htdocs\somegood\Apps\Shop\Controller\WxpayController.class.php on line 59 and defined D:\xampps\htdocs\somegood\ThinkPHP\Library\Vendor\WxpayPC\WxPay.Data.php 第 295 行.
+NOTIC: [8] Undefined variable: value D:\xampps\htdocs\somegood\ThinkPHP\Library\Vendor\WxpayPC\WxPay.Data.php 第 297 行.
+
+[ 2017-11-30T15:48:18+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0010s ]
+NOTIC: [8] Undefined variable: openId D:\xampps\htdocs\somegood\Apps\Shop\Controller\WxpayController.class.php 第 56 行.
+NOTIC: [2] Missing argument 1 for WxPayUnifiedOrder::Set_spbill_create_ip(), called in D:\xampps\htdocs\somegood\Apps\Shop\Controller\WxpayController.class.php on line 59 and defined D:\xampps\htdocs\somegood\ThinkPHP\Library\Vendor\WxpayPC\WxPay.Data.php 第 295 行.
+NOTIC: [8] Undefined variable: value D:\xampps\htdocs\somegood\ThinkPHP\Library\Vendor\WxpayPC\WxPay.Data.php 第 297 行.
+
+[ 2017-11-30T15:51:05+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0060s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0020s ]
+NOTIC: [8] Undefined variable: openId D:\xampps\htdocs\somegood\Apps\Shop\Controller\WxpayController.class.php 第 56 行.
+NOTIC: [2] Missing argument 1 for WxPayUnifiedOrder::Set_spbill_create_ip(), called in D:\xampps\htdocs\somegood\Apps\Shop\Controller\WxpayController.class.php on line 59 and defined D:\xampps\htdocs\somegood\ThinkPHP\Library\Vendor\WxpayPC\WxPay.Data.php 第 295 行.
+NOTIC: [8] Undefined variable: value D:\xampps\htdocs\somegood\ThinkPHP\Library\Vendor\WxpayPC\WxPay.Data.php 第 297 行.
+
+[ 2017-11-30T15:51:17+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.001000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0020s ]
+NOTIC: [8] Undefined variable: openId D:\xampps\htdocs\somegood\Apps\Shop\Controller\WxpayController.class.php 第 56 行.
+NOTIC: [8] Undefined index: code_url D:\xampps\htdocs\somegood\Apps\Shop\Controller\WxpayController.class.php 第 62 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: web_title D:\xampps\htdocs\somegood\Runtime\Cache\Shop\930417471d8ec548a94e5eacdc4a7ae2.php 第 13 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.005000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.005000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001001s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001001s ]
+
+[ 2017-11-30T15:51:34+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001001s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0010s ]
+NOTIC: [8] Undefined variable: openId D:\xampps\htdocs\somegood\Apps\Shop\Controller\WxpayController.class.php 第 56 行.
+NOTIC: [8] Undefined index: code_url D:\xampps\htdocs\somegood\Apps\Shop\Controller\WxpayController.class.php 第 63 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: web_title D:\xampps\htdocs\somegood\Runtime\Cache\Shop\930417471d8ec548a94e5eacdc4a7ae2.php 第 13 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.004001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.004001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-11-30T15:51:47+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0010s ]
+NOTIC: [8] Undefined variable: openId D:\xampps\htdocs\somegood\Apps\Shop\Controller\WxpayController.class.php 第 56 行.
+
+[ 2017-11-30T15:51:51+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0010s ]
+NOTIC: [8] Undefined variable: openId D:\xampps\htdocs\somegood\Apps\Shop\Controller\WxpayController.class.php 第 56 行.
+
+[ 2017-11-30T15:51:59+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0010s ]
+NOTIC: [8] Undefined variable: openId D:\xampps\htdocs\somegood\Apps\Shop\Controller\WxpayController.class.php 第 56 行.
+
+[ 2017-11-30T15:52:20+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0010s ]
+NOTIC: [8] Undefined variable: openId D:\xampps\htdocs\somegood\Apps\Shop\Controller\WxpayController.class.php 第 56 行.
+
+[ 2017-11-30T15:52:22+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0010s ]
+NOTIC: [8] Undefined variable: openId D:\xampps\htdocs\somegood\Apps\Shop\Controller\WxpayController.class.php 第 56 行.
+
+[ 2017-11-30T15:52:22+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0010s ]
+NOTIC: [8] Undefined variable: openId D:\xampps\htdocs\somegood\Apps\Shop\Controller\WxpayController.class.php 第 56 行.
+
+[ 2017-11-30T15:52:48+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0010s ]
+NOTIC: [8] Undefined variable: openId D:\xampps\htdocs\somegood\Apps\Shop\Controller\WxpayController.class.php 第 56 行.
+
+[ 2017-11-30T15:53:08+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0010s ]
+NOTIC: [8] Undefined variable: openId D:\xampps\htdocs\somegood\Apps\Shop\Controller\WxpayController.class.php 第 56 行.
+
+[ 2017-11-30T15:53:19+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0020s ]
+NOTIC: [8] Undefined variable: openId D:\xampps\htdocs\somegood\Apps\Shop\Controller\WxpayController.class.php 第 56 行.
+
+[ 2017-11-30T15:53:26+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0010s ]
+NOTIC: [8] Undefined variable: openId D:\xampps\htdocs\somegood\Apps\Shop\Controller\WxpayController.class.php 第 56 行.
+
+[ 2017-11-30T15:53:42+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0020s ]
+NOTIC: [8] Undefined variable: openId D:\xampps\htdocs\somegood\Apps\Shop\Controller\WxpayController.class.php 第 56 行.
+
+[ 2017-11-30T15:57:24+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0010s ]
+NOTIC: [8] Undefined variable: openId D:\xampps\htdocs\somegood\Apps\Shop\Controller\WxpayController.class.php 第 56 行.
+
+[ 2017-11-30T15:59:30+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0020s ]
+NOTIC: [8] Undefined variable: openId D:\xampps\htdocs\somegood\Apps\Shop\Controller\WxpayController.class.php 第 56 行.
+
+[ 2017-11-30T15:59:40+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0010s ]
+NOTIC: [8] Undefined variable: openId D:\xampps\htdocs\somegood\Apps\Shop\Controller\WxpayController.class.php 第 56 行.
+
+[ 2017-11-30T16:03:38+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0020s ]
+
+[ 2017-11-30T16:03:44+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0010s ]
+NOTIC: [8] Undefined variable: result D:\xampps\htdocs\somegood\Apps\Shop\Controller\WxpayController.class.php 第 55 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: web_title D:\xampps\htdocs\somegood\Runtime\Cache\Shop\930417471d8ec548a94e5eacdc4a7ae2.php 第 13 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.005000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.005000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-11-30T16:04:02+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0080s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0020s ]
+NOTIC: [8] Undefined variable: result D:\xampps\htdocs\somegood\Apps\Shop\Controller\WxpayController.class.php 第 56 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: web_title D:\xampps\htdocs\somegood\Runtime\Cache\Shop\930417471d8ec548a94e5eacdc4a7ae2.php 第 13 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.004000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.004000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-11-30T16:04:48+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: web_title D:\xampps\htdocs\somegood\Runtime\Cache\Shop\930417471d8ec548a94e5eacdc4a7ae2.php 第 13 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.004000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.004000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-11-30T16:19:44+08:00 ] ::1 /somegood/Shop/UserOrder/orderlist
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: web_keywords D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 7 行.
+NOTIC: [8] Undefined variable: web_description D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 8 行.
+NOTIC: [8] Undefined variable: mnav D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 79 行.
+NOTIC: [8] Undefined variable: mnav D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 80 行.
+NOTIC: [8] Undefined variable: mnav D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 84 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 88 行.
+NOTIC: [8] Undefined variable: mnav D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 90 行.
+NOTIC: [8] Undefined variable: mnav D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 91 行.
+NOTIC: [8] Undefined variable: mnav D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 92 行.
+NOTIC: [8] Undefined variable: mnav D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 96 行.
+NOTIC: [8] Undefined variable: type D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 103 行.
+NOTIC: [8] Undefined variable: typeList D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 104 行.
+NOTIC: [8] Undefined variable: status D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 110 行.
+NOTIC: [8] Undefined variable: page D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 203 行.
+NOTIC: [8] Undefined variable: type D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 206 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.052003s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.052003s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-11-30T16:19:44+08:00 ] ::1 /somegood/Shop/Cart/getCartGoods.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_cart` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_cart` WHERE `phpsessid` = 'qc9263b8q7ji2s8qt7p5sisle5' AND `user_id` = 0  [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `sg_cart` [ RunTime:0.0020s ]
+SQL: SELECT SUM(counts) AS tp_sum FROM `sg_cart` WHERE `phpsessid` = 'qc9263b8q7ji2s8qt7p5sisle5' AND `user_id` = 0 LIMIT 1   [ RunTime:0.0010s ]
+
+[ 2017-11-30T16:19:53+08:00 ] ::1 /somegood/Shop/Login/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: type D:\xampps\htdocs\somegood\Runtime\Cache\Shop\d6ce59d9ac134434adf3e98b46839542.php 第 135 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.009001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.009001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002000s ]
+
+[ 2017-11-30T16:19:53+08:00 ] ::1 /somegood/Shop/Code/verify.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-11-30T16:19:54+08:00 ] ::1 /somegood/Shop/Cart/getCartGoods.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `sg_cart` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_cart` WHERE `phpsessid` = 'qc9263b8q7ji2s8qt7p5sisle5' AND `user_id` = 0  [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_cart` [ RunTime:0.0020s ]
+SQL: SELECT SUM(counts) AS tp_sum FROM `sg_cart` WHERE `phpsessid` = 'qc9263b8q7ji2s8qt7p5sisle5' AND `user_id` = 0 LIMIT 1   [ RunTime:0.0030s ]
+
+[ 2017-11-30T16:20:33+08:00 ] ::1 /somegood/Shop/Users/setting/action/info.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.012001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.012001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+
+[ 2017-11-30T16:20:34+08:00 ] ::1 /somegood/Shop/Cart/getCartGoods.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_cart` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `sg_cart` WHERE `phpsessid` = 'qc9263b8q7ji2s8qt7p5sisle5' AND `user_id` = 0  [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_cart` [ RunTime:0.0030s ]
+SQL: SELECT SUM(counts) AS tp_sum FROM `sg_cart` WHERE `phpsessid` = 'qc9263b8q7ji2s8qt7p5sisle5' AND `user_id` = 0 LIMIT 1   [ RunTime:0.0010s ]
+
+[ 2017-11-30T16:24:58+08:00 ] ::1 /somegood/Shop/UserOrder/orderlist
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+NOTIC: [8] Undefined variable: pageCondition D:\xampps\htdocs\somegood\Apps\Shop\Controller\UserOrderController.class.php 第 34 行.
+SQL: SELECT COUNT(*) AS tp_count FROM ( SELECT o.*,c.goods_title,g.goods_id,group_concat(c.goods_thumb) as tb FROM sg_order o LEFT JOIN sg_order AS mo ON mo.parent_order_sn = o.order_sn LEFT JOIN sg_order_goods AS g ON (o.order_sn = g.order_sn)or(mo.order_sn = g.order_sn) LEFT JOIN sg_goods AS c ON c.id = g.goods_id  WHERE o.uid = null AND o.status IN ('0','1','2','3','6','99') AND ( !(o.is_son=1 and o.status=0) and !( o.is_son=0 and o.status!=0) ) GROUP BY o.order_sn ORDER BY add_time DESC,id DESC  ) a LIMIT 1   [ RunTime:0.0040s ]
+SQL: SELECT o.*,c.goods_title,g.goods_id,l.code,mol.logistics_sn,c.store_id,s.store_name,group_concat(c.goods_thumb) as tb FROM sg_order o LEFT JOIN sg_order AS mo ON mo.parent_order_sn = o.order_sn LEFT JOIN sg_order_goods AS g ON (o.order_sn = g.order_sn)or(mo.order_sn = g.order_sn) LEFT JOIN sg_seller_delivery AS c ON c.id = g.goods_id LEFT JOIN sg_store AS s ON s.sid = c.store_id LEFT JOIN sg_order_logistics AS mol ON o.order_sn = mol.order_sn LEFT JOIN sg_logistics AS l ON l.id = mol.type  WHERE o.uid = null AND o.status IN ('0','1','2','3','6','99') AND ( !(o.is_son=1 and o.status=0) and !( o.is_son=0 and o.status!=0) ) GROUP BY o.order_sn ORDER BY add_time DESC,id DESC LIMIT 0,8   [ RunTime:0.0030s ]
+ERR: 模板不存在:./Apps/Shop/View/UserOrder/index.html
+
+[ 2017-11-30T16:25:10+08:00 ] ::1 /somegood/Shop/UserOrder/orderlist
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+NOTIC: [8] Undefined variable: pageCondition D:\xampps\htdocs\somegood\Apps\Shop\Controller\UserOrderController.class.php 第 34 行.
+SQL: SELECT COUNT(*) AS tp_count FROM ( SELECT o.*,c.goods_title,g.goods_id,group_concat(c.goods_thumb) as tb FROM sg_order o LEFT JOIN sg_order AS mo ON mo.parent_order_sn = o.order_sn LEFT JOIN sg_order_goods AS g ON (o.order_sn = g.order_sn)or(mo.order_sn = g.order_sn) LEFT JOIN sg_goods AS c ON c.id = g.goods_id  WHERE o.uid = null AND o.status IN ('0','1','2','3','6','99') AND ( !(o.is_son=1 and o.status=0) and !( o.is_son=0 and o.status!=0) ) GROUP BY o.order_sn ORDER BY add_time DESC,id DESC  ) a LIMIT 1   [ RunTime:0.0040s ]
+SQL: SELECT o.*,c.goods_title,g.goods_id,l.code,mol.logistics_sn,c.store_id,s.store_name,group_concat(c.goods_thumb) as tb FROM sg_order o LEFT JOIN sg_order AS mo ON mo.parent_order_sn = o.order_sn LEFT JOIN sg_order_goods AS g ON (o.order_sn = g.order_sn)or(mo.order_sn = g.order_sn) LEFT JOIN sg_seller_delivery AS c ON c.id = g.goods_id LEFT JOIN sg_store AS s ON s.sid = c.store_id LEFT JOIN sg_order_logistics AS mol ON o.order_sn = mol.order_sn LEFT JOIN sg_logistics AS l ON l.id = mol.type  WHERE o.uid = null AND o.status IN ('0','1','2','3','6','99') AND ( !(o.is_son=1 and o.status=0) and !( o.is_son=0 and o.status!=0) ) GROUP BY o.order_sn ORDER BY add_time DESC,id DESC LIMIT 0,8   [ RunTime:0.0040s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: web_keywords D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 7 行.
+NOTIC: [8] Undefined variable: web_description D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 8 行.
+NOTIC: [8] Undefined variable: mnav D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 79 行.
+NOTIC: [8] Undefined variable: mnav D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 80 行.
+NOTIC: [8] Undefined variable: mnav D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 84 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 88 行.
+NOTIC: [8] Undefined variable: mnav D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 90 行.
+NOTIC: [8] Undefined variable: mnav D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 91 行.
+NOTIC: [8] Undefined variable: mnav D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 92 行.
+NOTIC: [8] Undefined variable: mnav D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 96 行.
+NOTIC: [8] Undefined variable: type D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 103 行.
+NOTIC: [8] Undefined variable: typeList D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 104 行.
+NOTIC: [8] Undefined variable: page D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 203 行.
+NOTIC: [8] Undefined variable: type D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 206 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.013001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.013001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-11-30T16:25:10+08:00 ] ::1 /somegood/Shop/Cart/getCartGoods.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_cart` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_cart` WHERE `phpsessid` = 'qc9263b8q7ji2s8qt7p5sisle5' AND `user_id` = 0  [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `sg_cart` [ RunTime:0.0020s ]
+SQL: SELECT SUM(counts) AS tp_sum FROM `sg_cart` WHERE `phpsessid` = 'qc9263b8q7ji2s8qt7p5sisle5' AND `user_id` = 0 LIMIT 1   [ RunTime:0.0010s ]
+
+[ 2017-11-30T17:27:25+08:00 ] ::1 /somegood/Shop/UserOrder/index/type/0.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+ERR: 非法操作:index
+
+[ 2017-11-30T17:27:27+08:00 ] ::1 /somegood/Shop/Cart/getCartGoods.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_cart` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_cart` WHERE `phpsessid` = 'qc9263b8q7ji2s8qt7p5sisle5' AND `user_id` = 0  [ RunTime:0.0040s ]
+SQL: SHOW COLUMNS FROM `sg_cart` [ RunTime:0.0030s ]
+SQL: SELECT SUM(counts) AS tp_sum FROM `sg_cart` WHERE `phpsessid` = 'qc9263b8q7ji2s8qt7p5sisle5' AND `user_id` = 0 LIMIT 1   [ RunTime:0.0010s ]
+
+[ 2017-11-30T17:27:30+08:00 ] ::1 /somegood/Shop/UserOrder/orderlist
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+NOTIC: [8] Undefined variable: pageCondition D:\xampps\htdocs\somegood\Apps\Shop\Controller\UserOrderController.class.php 第 34 行.
+SQL: SELECT COUNT(*) AS tp_count FROM ( SELECT o.*,c.goods_title,g.goods_id,group_concat(c.goods_thumb) as tb FROM sg_order o LEFT JOIN sg_order AS mo ON mo.parent_order_sn = o.order_sn LEFT JOIN sg_order_goods AS g ON (o.order_sn = g.order_sn)or(mo.order_sn = g.order_sn) LEFT JOIN sg_goods AS c ON c.id = g.goods_id  WHERE o.uid = null AND o.status IN ('0','1','2','3','6','99') AND ( !(o.is_son=1 and o.status=0) and !( o.is_son=0 and o.status!=0) ) GROUP BY o.order_sn ORDER BY add_time DESC,id DESC  ) a LIMIT 1   [ RunTime:0.0030s ]
+SQL: SELECT o.*,c.goods_title,g.goods_id,l.code,mol.logistics_sn,c.store_id,s.store_name,group_concat(c.goods_thumb) as tb FROM sg_order o LEFT JOIN sg_order AS mo ON mo.parent_order_sn = o.order_sn LEFT JOIN sg_order_goods AS g ON (o.order_sn = g.order_sn)or(mo.order_sn = g.order_sn) LEFT JOIN sg_seller_delivery AS c ON c.id = g.goods_id LEFT JOIN sg_store AS s ON s.sid = c.store_id LEFT JOIN sg_order_logistics AS mol ON o.order_sn = mol.order_sn LEFT JOIN sg_logistics AS l ON l.id = mol.type  WHERE o.uid = null AND o.status IN ('0','1','2','3','6','99') AND ( !(o.is_son=1 and o.status=0) and !( o.is_son=0 and o.status!=0) ) GROUP BY o.order_sn ORDER BY add_time DESC,id DESC LIMIT 0,8   [ RunTime:0.0050s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined variable: web_keywords D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 7 行.
+NOTIC: [8] Undefined variable: web_description D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 8 行.
+NOTIC: [8] Undefined variable: mnav D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 79 行.
+NOTIC: [8] Undefined variable: mnav D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 80 行.
+NOTIC: [8] Undefined variable: mnav D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 84 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 88 行.
+NOTIC: [8] Undefined variable: mnav D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 90 行.
+NOTIC: [8] Undefined variable: mnav D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 91 行.
+NOTIC: [8] Undefined variable: mnav D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 92 行.
+NOTIC: [8] Undefined variable: mnav D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 96 行.
+NOTIC: [8] Undefined variable: type D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 103 行.
+NOTIC: [8] Undefined variable: typeList D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 104 行.
+NOTIC: [8] Undefined variable: page D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 203 行.
+NOTIC: [8] Undefined variable: type D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 206 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.012001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.012001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-11-30T17:27:30+08:00 ] ::1 /somegood/Shop/Cart/getCartGoods.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_cart` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_cart` WHERE `phpsessid` = 'qc9263b8q7ji2s8qt7p5sisle5' AND `user_id` = 0  [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_cart` [ RunTime:0.0020s ]
+SQL: SELECT SUM(counts) AS tp_sum FROM `sg_cart` WHERE `phpsessid` = 'qc9263b8q7ji2s8qt7p5sisle5' AND `user_id` = 0 LIMIT 1   [ RunTime:0.0010s ]
+
+[ 2017-11-30T18:03:51+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0010s ]
+NOTIC: [8] Undefined variable: notify D:\xampps\htdocs\somegood\Apps\Shop\Controller\WxpayController.class.php 第 42 行.
+
+[ 2017-11-30T18:03:51+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0020s ]
+NOTIC: [8] Undefined variable: notify D:\xampps\htdocs\somegood\Apps\Shop\Controller\WxpayController.class.php 第 42 行.
+
+[ 2017-11-30T18:03:51+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0020s ]
+NOTIC: [8] Undefined variable: notify D:\xampps\htdocs\somegood\Apps\Shop\Controller\WxpayController.class.php 第 42 行.
+
+[ 2017-11-30T18:04:00+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0010s ]
+NOTIC: [8] Undefined variable: notify D:\xampps\htdocs\somegood\Apps\Shop\Controller\WxpayController.class.php 第 42 行.
+
+[ 2017-11-30T18:04:16+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001001s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0070s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0070s ]
+
+[ 2017-11-30T18:04:50+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0010s ]
+
+[ 2017-11-30T18:05:02+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0010s ]
+
+[ 2017-11-30T18:06:10+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0010s ]
+
+[ 2017-11-30T18:07:08+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0010s ]
+
+[ 2017-11-30T18:07:44+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0010s ]
+
+[ 2017-11-30T18:07:47+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0020s ]
+
+[ 2017-11-30T18:07:48+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0020s ]
+
+[ 2017-11-30T18:07:48+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0010s ]
+
+[ 2017-11-30T18:07:49+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0010s ]
+
+[ 2017-11-30T18:07:49+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0010s ]
+
+[ 2017-11-30T18:07:49+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001001s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001001s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0020s ]
+
+[ 2017-11-30T18:07:50+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0020s ]
+
+[ 2017-11-30T18:08:03+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001001s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001001s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0020s ]
+
+[ 2017-11-30T18:09:10+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0020s ]
+
+[ 2017-11-30T18:11:49+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0010s ]
+
+[ 2017-11-30T18:11:55+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0010s ]
+
+[ 2017-11-30T18:13:17+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0010s ]
+
+[ 2017-11-30T18:13:20+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0010s ]
+
+[ 2017-11-30T18:13:27+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0020s ]
+
+[ 2017-11-30T18:13:28+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0010s ]
+
+[ 2017-11-30T18:13:28+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0010s ]
+
+[ 2017-11-30T18:13:28+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0020s ]
+
+[ 2017-11-30T18:13:29+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0010s ]
+
+[ 2017-11-30T18:13:29+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0010s ]
+
+[ 2017-11-30T18:14:19+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001001s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001001s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0010s ]
+
+[ 2017-11-30T18:23:42+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001001s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001001s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0160s ]
+
+[ 2017-11-30T18:24:16+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0010s ]
+
+[ 2017-11-30T18:24:17+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0010s ]
+
+[ 2017-11-30T18:24:17+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0020s ]
+
+[ 2017-11-30T18:24:24+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0020s ]
+
+[ 2017-11-30T18:24:32+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0020s ]
+
+[ 2017-11-30T18:29:34+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0020s ]
+
+[ 2017-11-30T18:29:35+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0010s ]
+
+[ 2017-11-30T18:29:35+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0020s ]
+
+[ 2017-11-30T18:29:36+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0020s ]
+
+[ 2017-11-30T18:29:37+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0010s ]
+
+[ 2017-11-30T18:29:37+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0010s ]
+
+[ 2017-11-30T18:29:37+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0010s ]
+
+[ 2017-11-30T18:29:38+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0010s ]
+
+[ 2017-11-30T18:29:38+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0010s ]
+
+[ 2017-11-30T18:29:38+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0010s ]
+
+[ 2017-11-30T18:29:38+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0010s ]
+
+[ 2017-11-30T18:29:48+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0010s ]
+
+[ 2017-11-30T18:31:00+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0020s ]
+ERR: 统一支付接口中，缺少必填参数openid！trade_type为JSAPI时，openid为必填参数！
+
+[ 2017-11-30T18:31:14+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0010s ]
+
+[ 2017-11-30T18:31:31+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0010s ]
+
+[ 2017-11-30T18:32:03+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0010s ]
+
+[ 2017-11-30T18:34:40+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0020s ]
+
+[ 2017-11-30T18:34:48+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0010s ]
+
+[ 2017-11-30T18:35:57+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0010s ]
+
+[ 2017-11-30T18:38:02+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0010s ]
+NOTIC: [8] Undefined variable: url D:\xampps\htdocs\somegood\Apps\Shop\Controller\WxpayController.class.php 第 43 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: web_title D:\xampps\htdocs\somegood\Runtime\Cache\Shop\930417471d8ec548a94e5eacdc4a7ae2.php 第 13 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.012001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.012001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002000s ]
+
+[ 2017-11-30T18:39:44+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0020s ]
+NOTIC: [8] Undefined variable: url D:\xampps\htdocs\somegood\Apps\Shop\Controller\WxpayController.class.php 第 43 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: web_title D:\xampps\htdocs\somegood\Runtime\Cache\Shop\930417471d8ec548a94e5eacdc4a7ae2.php 第 13 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.005001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.005001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2017-11-30T18:40:00+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001001s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0010s ]
+NOTIC: [8] Undefined variable: url D:\xampps\htdocs\somegood\Apps\Shop\Controller\WxpayController.class.php 第 42 行.
+
+[ 2017-11-30T18:40:09+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0020s ]
+
+[ 2017-11-30T18:40:16+08:00 ] ::1 /somegood/Shop/Wxpay/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_order` WHERE `order_sn` = '201711222629651564' LIMIT 1   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: web_title D:\xampps\htdocs\somegood\Runtime\Cache\Shop\930417471d8ec548a94e5eacdc4a7ae2.php 第 13 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.008000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.008000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+

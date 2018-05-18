@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>{$page_title}</title>
+    <import type="css" file="statics.ershou.css.public,statics.ershou.css.style" />
+    <import type="js" file="scripts.zepto.zepto#min,scripts.zepto.zepto#cookie#min,scripts.TouchSlide.TouchSlide#1#1" />
+    <script type="text/javascript" src="__PUBLIC__/statics/ershou/js/rem.js" fu-psd="720" fu-min="50" fu-max="100"></script>
+</head>
+<body>
+    <div class="page-title position-title">
+        <!--返回按钮-->
+        <div class="back-box">
+            <a href="javascript:void(0);" class="icons icon-back"></a>
+        </div>
+        <h2 class="title">商品分类</h2>
+        <!--返回按钮-->
+    </div>
+    <!--左边分类-->
+
+      <input type="hidden" name="category" value="{$goodsCategory.id}">
+      <div class="left-classify-box">
+          <ul>
+              <li <if condition=" $cid eq ''">class="sel"</if> name=''><a href="{:U('Goods/Category')}">热门推荐</a></li>
+              <volist name="goodsCategorylist" id="vo">
+              <li <if condition="$vo.id eq $cid">class="sel"</if>><a href="{:U('Goods/category',array('id'=>$vo['id']))}">{$vo.title}</a></li>
+              </volist>
+
+          </ul>
+      </div>
+    <!--左边分类-->
+    <!--右边分类展示-->
+    <div class="right-show-box">
+        <dl>
+            <dt>母婴用品</dt>
+            <dd><a href="javascript:void(0);"><img src="__PUBLIC__/statics/mobile/images/baby.jpg" alt="母婴用品" class="baby"></a></dd>
+        </dl>
+
+
+        <if condition="$cid eq '' ">
+        <dl>
+            <dt>{$hot}</dt>
+            <dd >
+              <volist name="goodsCategoryinfo" id="vo">
+                <a  href="{:U('Mobile/Goods/list',array('catid'=>$vo['id']))}">
+                    <img src="{$vo.goods_thumb}" alt="{$vo.title}">
+                    <span>{$vo.title}</span>
+                </a>
+                    </volist>
+            </dd>
+        </dl>
+      </if>
+
+        <dl>
+          <volist name="goodsCategoryinfo1" id="vo">
+            <if condition="$vo[parent_id] eq $cid">
+              <dt>{$vo[title]}</dt>
+              <dd>
+              <volist name="goodsCategoryinfo1" id="vs">
+                    <if condition="$vs[parent_id] eq $vo[id]">
+                    <a href="{:U('Goods/list',array('catid'=>$vs['id']))}">
+                      <img src="{$vs[goods_thumb]}" alt="">
+                      <span>{$vs[title]}</span>
+                    </a>
+                    </if>
+              </volist>
+            </dd>
+            </if>
+          </volist>
+        </dl>
+
+    </div>
+    <!--右边分类展示-->
+    <!--公用底部-->
+    <include file="Public/footer" />
+    <!--公用底部-->
+</body>
+<script>
+    $(".left-classify-box").find("li").on("touchstart",function(){
+        $(this).addClass("sel").siblings().removeClass("sel");
+    })
+</script>
+</html>

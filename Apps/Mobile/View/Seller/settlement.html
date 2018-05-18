@@ -1,0 +1,166 @@
+<eq name="is_ajax" value="1">
+  <volist name="list['list']" id="vo">
+    <li>
+        <a href="{:U('Mobile/Users/orderDetail',array('order_sn'=>$vo['order_sn']))}">
+            <div class="left-box">
+                <span class="order-num"><i class="icons icon-wuliu"></i><span>{$vo.order_sn}</span></span>
+                <div class="time"><span class="date">{$vo.complete_time|date="Y-m-d H:i",###}</span></div>
+            </div>
+            <div class="center-box">
+                <span>订单总额</span><span class="total">￥{$vo.original_price}</span>
+            </div>
+            <div class="right-box">
+                +<span class="income">{$vo.seller_money}</span>
+            </div>
+        </a>
+    </li>
+  </volist>
+<else/>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>{$page_title}</title>
+    <import type="css" file="statics.mobile.css.public,statics.mobile.css.user,dist.dropload" />
+    <import type="js" file="scripts.zepto.zepto#min,statics.mobile.js.common,scripts.zepto.zepto#fx,scripts.zepto.zepto#miniDialog,dist.dropload#min" />
+    <script type="text/javascript" src="__PUBLIC__/statics/mobile/js/rem.js" fu-psd="720" fu-min="50" fu-max="100"></script>
+</head>
+<body>
+<div class="seller-inner">
+    <!--返回按钮和分享-->
+    <div class="top-tips">
+        <a href="{:U('Mobile/Seller/index')}" class="icons icon-back fl"></a>
+        <h2>我的结算</h2>
+        <a href="{:U('Mobile/Users/setting')}" class="setting-box fr"><i class="icons icon-setting"></i></a>
+    </div>
+    <div class="head-portrait">
+        <a href="{:U('Users/setting',array('type'=>'user_img'))}" class="fl">
+            <img src="__PUBLIC__/statics/{$avatar}_c200x200" data-original="__PUBLIC__/statics/mobile/images/default_img.png" alt="卖家头像" class="user-img">
+        </a>
+        <h3 class="fl"><eq name="action" value="ed" >总收入<else />待收入</eq>：{$list.allGetMoney}元</h3>
+    </div>
+    <!--<h2 class="title">{$store.store_name}</h2>-->
+    <!--返回按钮和分享-->
+</div>
+<div class="already-title" style="padding-top: 0; position: absolute;">
+    <ul class="tab">
+        <li class="item <if condition="$action eq 'ing' ">sel</if>" ><a href="{:U('Seller/settlement',array('action'=>'ing'))}">正在结算<em id="settlementting"><if condition="$action eq 'ing' ">({$list.counts})</if></em></a></li>
+        <li class="item <if condition="$action eq 'ed' ">sel</if>"><a href="{:U('Seller/settlement',array('action'=>'ed'))}">已结算<em id="settlementted"><if condition="$action eq 'ed' ">({$list.counts})</if></em></a></li>
+    </ul>
+</div>
+
+<div class="user-section pd-t08">
+    <div class="sec-content">
+        <div class="divided-box">
+            <ul>
+              <volist name="list['list']" id="vo">
+                <li>
+                    <a href="{:U('Mobile/Users/orderDetail',array('order_sn'=>$vo['order_sn'],'isWho'=>'seller'))}">
+                        <div class="left-box">
+                            <span class="order-num"><i class="icons icon-wuliu"></i><span>{$vo.order_sn}</span></span>
+                            <div class="time"><span class="date">{$vo.complete_time|date="Y-m-d H:i",###}</span></div>
+                        </div>
+                        <div class="center-box">
+                            <span>订单总额</span><span class="total">￥{$vo.original_price}</span>
+                        </div>
+                        <div class="right-box">
+                            +<span class="income">{$vo.seller_money}</span>
+                        </div>
+                    </a>
+                </li>
+              </volist>
+            </ul>
+        </div>
+    </div>
+</div>
+<!--公用底部-->
+<include file="Public/ufooter" />
+<!--公用底部-->
+<script>
+//滚动页面ajax自动获取下一页内容
+var page=2; //有效求购的页码
+var totalPage = {$pageCount}; //有效求购页的总页码，会从后台获
+var ajaxUrl="{:U('Mobile/Seller/settlement')}";//ajax请求地址
+$(function(){
+    var tabLoadEnd = false;
+    // dropload
+    var dropload = $('.divided-box').dropload({
+        scrollArea : window,
+        loadDownFn : function(me){
+            // 加载菜单一的数据
+                if(page <= totalPage){
+                    $.ajax({
+                        url:ajaxUrl,
+                        type:"post",
+                        dataType:"html",
+                        data:{
+                            'p':page,
+                            'action':{$action}
+                        },
+                        success:function(data){
+                            var str = data;
+                            // 为了测试，延迟1秒加载
+                            $('.table-box').append(str);
+                            // 每次数据加载完，必须重置
+                            me.resetload();
+                            totalPage = {$pageCount};
+                        },
+                        error: function(xhr, type){
+                            alert('Ajax error!');
+                            // 即使加载出错，也得重置
+                            me.resetload();
+                        }
+                    });
+                    page++;
+                }else{
+                    // 数据加载完
+                    tabLoadEnd = true;
+                    // 锁定
+                    me.lock();
+                    // 无数据
+                    me.noData();
+                    me.resetload();
+                }
+                // 加载菜单二的数据
+        }
+    });
+    // 如果数据没有加载完
+    if(!tabLoadEnd){
+        // 解锁
+        dropload.unlock();
+        dropload.noData(false);
+    }else{
+        // 锁定
+        dropload.lock('down');
+        dropload.noData();
+    }
+    // 重置
+    dropload.resetload();
+});
+
+    /*切换*/
+    $(".already-title .tab").find("li").on("touchstart",function(){
+        $(this).addClass("sel").siblings().removeClass("sel");
+        var index = $(this).index();
+        $(".divided-box").find(".table-box").eq(index).show().siblings().hide();
+    })
+    /*头部背景改变*/
+    $(window).scroll(function(){
+        var sTop = $(window).scrollTop();
+        if(sTop >= 20){
+            $(".top-tips").addClass("change-bgcolor");
+            $(".top-tips h2").show();
+        }else{
+            $(".top-tips").removeClass("change-bgcolor");
+            $(".top-tips h2").hide();
+        }
+    })
+</script>
+</body>
+</html>
+</eq>

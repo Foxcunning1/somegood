@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>品牌推广</title>
+    <import type="css" file="statics.mobile.css.public,statics.mobile.css.user,statics.mobile.css.zepto#select#dialog,statics.mobile.css.zepto#select#area,statics.mobile.css.webuploader,statics.mobile.css.user" />
+    <import type="js" file="statics.mobile.js.jquery-1#10#2#min,statics.mobile.js.webuploader,statics.mobile.js.uploader,scripts.js.region,scripts.zepto.zepto#select#dialog,scripts.zepto.zepto#select#area,scripts.zepto.zepto#miniDialog,scripts.zepto.zepto#validateForm,statics.mobile.js.common"/>
+    <script type="text/javascript" src="__PUBLIC__/statics/mobile/js/rem.js" fu-psd="720" fu-min="50" fu-max="100"></script>
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/css/mobileSelect.css">
+    <script src="__PUBLIC__/scripts/js/mobileSelect.js" type="text/javascript"></script>
+    <!-- <script type="text/javascript">
+        var uploadType = 'image';
+        $(function(){
+            $(".upload-album").InitUploader({ btntext: "批量上传", multiple: true, sendurl: "{:U('Mobile/Member/uploadFile')}", swf: "/116cs/Public/JS/webuploader/uploader.swf" });
+        })
+    </script> -->
+</head>
+<body>
+<div class="page-title">
+    <!--返回按钮-->
+    <div class="to-back-box">
+        <a href="javascript:history.back();" class="icons icon-back"></a>
+    </div>
+    <h2 class="title">品牌推广</h2>
+    <!--返回按钮-->
+</div>
+<div class="welcome-join">
+    <div class="title">欢迎加入三好连锁</div>
+    <p>感谢您选择和关注三好连锁品牌推广平台！请您留下您的基本信息，我们专业服务人员会马上与您联系！</p>
+    <div class="examine-status-box animate <if condition="$is_seller eq 1">examined<elseif condition="$info"/>examining<else /></if>"></div>
+</div>
+<form url="{:U('Mobile/Users/apply')}" method="post" class="shop-apply-form form-box page-box" id="shopApplyForm">
+    <div class="title">基本信息</div>
+
+    <dl>
+        <dt>公司名称</dt>
+        <dd><empty name="info"><input type="text" placeholder="输入您的公司名称" class="required" name="data[company_name]" value="{$info.company_name}" ><else/>
+            <span class="txt">{$info.company_name}</span></empty></dd>
+    </dl>
+    <dl>
+        <dt>品牌分类</dt>
+        <dd><empty name="info"><input type="text" placeholder="输入您要推广品牌的分类" name="data[category]" class="required" value="{$info.category}" required><else/><span class="txt">{$info.category}</span></empty></dd>
+    </dl>
+    <dl>
+        <dt>推广方式</dt>
+        <dd class="fl">
+            <div class="item-r" id="adelivery_way">
+                <empty name="info">
+                    <a href="javascript:void(0);"  class="btn <if condition="$info['spread_way'] neq 1">select</if>" >广告牌推广</a>
+                    <input type="checkbox" name="data[spread_way][]" value="0" style="display:none;"  <if condition="$info['spread_way'] neq 1">checked="checked"</if>>
+                    <a href="javascript:void(0);" class="btn <if condition="$info['spread_way'] neq 0">select</if>">产品上架推广</a>
+                    <input type="checkbox" name="data[spread_way][]" value="1" style="display:none;" <if condition="$info['spread_way'] neq 0">checked="checked"</if>>
+                    <else/>
+                    <a href="javascript:void(0);"  class="btn <if condition="$info['spread_way'] neq 1">select</if>" >广告牌推广</a>
+                    <a href="javascript:void(0);" class="btn <if condition="$info['spread_way'] neq 0">select</if>">产品上架推广</a>
+                </empty>
+                <!-- 隐藏的checkbox -->
+            </div>
+        </dd>
+    </dl>
+    <dl>
+        <dt>联系人</dt>
+        <dd><empty name="info"><input type="text" placeholder="输入你的联系人信息" class="required" name="data[name]" value="{$info.name}"><else/><span class="txt">{$info.name}</span></empty></dd>
+    </dl>
+    <dl>
+        <dt>联系方式</dt>
+        <dd><empty name="info"><input type="text"  required placeholder="输入您的手机号" pattern="^1[3,4,5,7,8]\d{9}$" class="required" name="data[mobile]" value="{$info.mobile}"><else/><span class="txt">{$info.mobile}</span></empty></dd>
+    </dl>
+    <dl>
+        <dt>邮箱</dt>
+        <dd><empty name="info"><input type="text" placeholder="输入你的邮箱" pattern="^[A-Za-z\d]+([-_.][A-Za-z\d]+)*@([A-Za-z\d]+[-.])+[A-Za-z\d]{2,4}$" class="required" name="data[email]" value="{$info.email}"><else/><span class="txt">{$info.email}</span></empty></dd>
+    </dl>
+    <dl>
+        <dt>详细地址</dt>
+        <dd><empty name="info"><input type="text" placeholder="输入公司详细地址" name="data[address]" class="required" value="{$info.address}" required><else/><span class="txt">{$info.address}</span></empty></dd>
+    </dl>
+
+    <script type="text/javascript">
+        // 添加全局站点信息
+        var BASE_URL = '/webuploader';
+    </script>
+    <empty name="info">
+        <input type="hidden" name="returnUrl" value="{$returnUrl}">
+        <button type="submit" class="apply-btn" id="phoneLoginBtn"><eq name="Think.get.action" value="edit">更新<else/>提交</eq></button>
+        <p class="txt">点击申请，表示您已阅读并同意<a class="agreement" id="agreement" href="{:U('Mobile/Help/agreement')}">《用户注册协议》</a></p>
+    </empty>
+</form>
+<!--公用底部-->
+<include file="Public/ufooter" />
+<!--公用底部-->
+<script>
+    /*推广方式选择*/
+    <empty name="info">
+        $("#adelivery_way").children('a').on('click', function(event) {
+            $(this).toggleClass('select');
+            if ($(this).hasClass('select')) {
+                $(this).next().prop('checked', true);
+            }else {
+                $(this).next().prop('checked', false);
+            }
+        });
+    </empty>
+    /*加盟店申请 分类选择js*/
+    $(function(){
+        $("#shopApplyForm").validateForm({isAutoClose: true,closeTime: 1500,return_url:"{:U("Mobile/Users/index")}"});
+        $(".cancleBtn").on("touchstart",function(){
+            $("#goods-type-box .filter-option").removeClass("select");
+            $(".tools-btn-box").css("visibility","hidden");
+            $(".kinds-box").animate({"left":"100%"},300,function(){
+                $(".kinds-box").hide();
+                $(".over-lay").hide();
+            });
+            $('html').removeClass('noscroll');
+            $("body").css("overflow-y","auto");
+        })
+
+        $("#submitBtn").on("touchstart",function(){
+            $(".tools-btn-box").css("visibility","hidden");
+            $(".kinds-box").animate({"left":"100%"},300,function(){
+                $(".kinds-box").hide();
+                $(".over-lay").hide();
+            });
+            $("body").css("overflow","auto");
+        })
+
+        $("#submitBtn").on("touchstart");
+
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!Doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>商品列表</title>
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <import type="css" file="statics.store.css.store-public,statics.store.css.store-style,scripts.artdialog.ui-dialog,css.pagination" />
+    <import type="js" file="scripts.jquery.jquery-1#11#2#min,scripts.artdialog.dialog-plus-min,scripts.jquery.jquery#lazyload#min" />
+</head>
+<body style="background-color: #edf1f2;overflow-y: auto;">
+<div class="tab-box">
+    <ul class="tab-ul fl">
+        <li <eq name="pageType" value="all"> class="sel"</eq>><a href="{:U('Seller/SellerGoods/index',array('type'=>'all'))}">全部</a><div class="move"></div></li>
+        <li <eq name="pageType" value="sale"> class="sel"</eq>><a href="{:U('Seller/SellerGoods/index',array('type'=>'sale'))}">在售</a><div class="move"></div></li>
+        <li <eq name="pageType" value="off"> class="sel"</eq>><a href="{:U('Seller/SellerGoods/index',array('type'=>'off'))}">未上架</a><div class="move"></div></li>
+    </ul>
+</div>
+<div class="info-box">
+    <div class="goods-list-box">
+        <!--<div class="all-select-box">-->
+            <!--<label for="allSelect" id="allSelectLabel"><input type="checkbox" id="allSelect"/>全选</label>-->
+            <!--<a href="javascript:;"  class="print-a">批量打印</a>-->
+        <!--</div>-->
+        <form action="{:U('Store/Goods/printList')}" class="goods-form" id="goodsForm" method="post" target="_blank">
+            <!--<volist name="list" id="item">-->
+                <div class="goods-item" id="item{$item.id}">
+                    <!--<input type="checkbox" name="ids[]" value="{$item.id}"/>-->
+                    <a href="{:U('Seller/Goods/sellerDelivery')}?id={$item.id}" class="img-a-box btn-info"><img src="__PUBLIC__/statics/mobile/images/default_img.png" data-original="__PUBLIC__/uploads/{$item.goods_thumb}_c200x200" alt="{$item.goods_title}"></a>
+                    <a href="{:U('Seller/Goods/sellerDelivery')}?id={$item.id}" class="desc btn-info">{$item.goods_title}</a>
+                    <div class="price">￥<span>{$item.price}</span></div>
+                    <div class="price">库存<span>{$item.online_stock}</span></div>
+                    <div class="price">销量<span>{$item.online_sales_volume}</span></div>
+                    <div class="goods-btn-box">
+                        <!--待发货的商品的按钮-->
+                        <a href="{:U('Seller/Goods/sellerDelivery')}?id={$item.id}"  class="btn-info">详情</a>
+                        <a href="{:U('Seller/SellerGoods/publish')}?id={$item.id}"  class="btn-info">修改</a>
+                        <eq name="item.is_onsale" value="0">
+                            <a href="{:U('Seller/Goods/sellerDelivery')}?id={$item.id}"  class="btn-info">上架</a>
+                            <else/>
+                            <a href="{:U('Seller/Goods/sellerDelivery')}?id={$item.id}"  class="btn-info">下架</a>
+                        </eq>
+                        <a href="javascript:;"  class="apply-extension btn-info">申请推广</a>
+                    </div>
+                </div>
+            <!--</volist>-->
+        </form>
+    </div>
+</div>
+<div class="pagelist">
+    <div id="PageContent" class="default">{$pageShow}</div>
+</div>
+<script>
+    $(".apply-extension").click(function(){
+        var d = dialog({
+            title:"申请推广",
+            content: "<div class='change-price-form'>" +
+            "<form action='' id='applyExtensionForm'>" +
+            "<dl>" +
+            "<dt>长</dt>" +
+            "<dd>" +
+            "<input type='text' id='long' ></dd>" +
+            "</dl>" +
+            "<dt>宽</dt>" +
+            "<dd>" +
+            "<input type='text' id='width' ></dd>" +
+            "</dl>" +
+            "<dt>宽</dt>" +
+            "<dd>" +
+            "<input type='text' id='width' ></dd>" +
+            "</dl>" +
+            "<dt>宽</dt>" +
+            "<dd>" +
+            "<input type='text' id='width' ></dd>" +
+            "</dl>" +
+            "</form>" +
+            "</div>",
+            okValue: '确定',
+            ok: function () {
+                bindSubmitBtn1();
+                this.title('提交中…');
+                return true;
+            },
+            cancelValue: '取消',
+            cancel: function () {}
+        }).width(300).height(90).showModal();
+    })
+    function bindSubmitBtn1() {
+        var long = $("#long").val();
+        var width =$('#width').val();
+        $.ajax({
+            type: "POST",
+            url: "",
+            data: {"long":long,"width":width},
+            dataType: 'json',
+            success: function(data){
+                if(data.status==1){
+                    var d = dialog({content:data.info}).show();
+                    setTimeout(function () {
+                        d.close().remove();
+                    }, 800);
+                    setTimeout(function(){
+                        window.location.href="__SELF__";
+                    },800)
+                }else{
+                    var d = dialog({content:data.info}).show();
+                    setTimeout(function () {
+                        d.close().remove();
+                    }, 800);
+                }
+            },
+            error:function (data) {
+            }
+        });
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,133 @@
+<eq name="is_ajax" value="1">
+     <volist name="list" id="al">
+         <li>
+             <!--<div class="g-img fl"><img src="__PUBLIC__/statics/mobile/images/default_img.png" data-original="__PUBLIC__/uploads/{$al.img_url}_c200x200" alt="{$al.title}"/></div>-->
+             <div class="g-info">
+                 <a href="javascript:void(0);">
+                     <div class="product-name">
+                         <b>{$al.title}</b>
+                     </div>
+                     <div class="product-price-m">
+                         <span>{$al.area}</span>
+                         <span class="time fr"><i class="icons icon-clock"></i>{$al.begin_time|date="Y-m-d H:i:s",###}</span>
+                     </div>
+                     <div class="product-price-m">
+                         <span>{$al.store_name}</span>
+                         <span class="time fr">{$al.end_time|date="Y-m-d H:i:s",###}</span>
+                     </div>
+                     <div class="product-price-m">
+                         <em><span>{$al.pos_title}<eq name="pageType" value="store">--{$al.adv_id}</eq></span></em>
+                         <div class="fr">
+                             <eq name="al.is_delivery" value="0">
+                                 待投放
+                                 <else/>
+                                 <b style="color: green">已投放</b>
+                             </eq>
+                         </div>
+                     </div>
+                 </a>
+             </div>
+         </li>
+     </volist>
+<else/>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>已发布</title>
+    <link rel="stylesheet" href="__PUBLIC__/dist/dropload.css">
+    <import type="css" file="statics.mobile.css.public,statics.mobile.css.user" />
+    <import type="js" file="scripts.zepto.zepto#min,scripts.zepto.zepto#miniDialog,statics.mobile.js.common,scripts.zepto.timeago,scripts.zepto.lazyload#min" />
+    <script type="text/javascript" src="__PUBLIC__/statics/mobile/js/rem.js" fu-psd="720" fu-min="50" fu-max="100"></script>
+</head>
+<body>
+    <div class="page-title">
+        <!--返回按钮-->
+        <div class="to-back-box">
+            <a href="{:U('Mobile/Seller/index')}" class="icons icon-back"></a>
+        </div>
+        <!--返回按钮-->
+        <!--标题-->
+        <h2 class="title">我的推广</h2>
+        <!--标题-->
+    </div>
+    <div class="already-title">
+        <ul>
+            <li class="<if condition='$pageType eq store'>sel</if>"><a href="{:U('Mobile/Seller/advList')}?pageType=store">店铺推广</a></li>
+            <li class="<if condition='$pageType eq online'>sel</if>"><a href="{:U('Mobile/Seller/advList')}?pageType=online">线上推广</a></li>
+        </ul>
+    </div>
+    <!--点击选项卡控制near-content显示和隐藏-->
+    <div class="already-content-box">
+        <div class="already-content">
+            <!--商品列表-->
+            <ul class="apply-list search-list"></ul>
+        </div>
+    </div>
+    <!--公用底部-->
+    <include file="Public/ufooter" />
+    <!--公用底部-->
+    <script>
+        $(function(){
+            $(".g-img img").lazyload({effect : "fadeIn"});
+            /*公用底部点击样式变换 放再公用的layout里面*/
+            $(".footer ul").find("li").on("touchstart",function(){
+                $(this).addClass("sel").siblings().removeClass("sel");
+            })
+        })
+        $(function(){
+            /*公用底部点击样式变换 放再公用的layout里面*/
+            $(".footer ul").find("li").on("touchstart",function(){
+                $(this).addClass("sel").siblings().removeClass("sel");
+            })
+            $(".timeago").timeago();
+        })
+    </script>
+    <!-- jQuery1.7以上 或者 Zepto 二选一，不要同时都引用 -->
+    <script src="__PUBLIC__/dist/dropload.min.js"></script>
+    <script>
+        var page=0; //当前页的页码
+        var allpage={$pageCount}; //总页码，会从后台获
+        var pageType='{$pageType}'; //页面类型，会从后台获
+        var ajaxUrl="{:U('Mobile/Seller/advList')}";//ajax请求地址
+        $(function(){
+            var dropload = $('.already-content').dropload({
+                scrollArea : window,
+                loadDownFn : function(me){
+                    if(page<=allpage){
+                        $.ajax({
+                            url:ajaxUrl,
+                            type:"post",
+                            dataType:"html",
+                            data:{
+                                'p':page,
+                                'pageType':pageType,
+                            },
+                            success:function(data){
+                                $('.search-list').append(data);
+                                $(".g-img img").lazyload({effect : "fadeIn"});
+                                // 每次数据加载完，必须重置
+                                me.resetload();
+                            },
+                        });
+                        page++;
+                    }else{
+                        // 锁定
+                        me.lock();
+                        // 无数据
+                        me.noData();
+                        me.resetload();
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
+</eq>

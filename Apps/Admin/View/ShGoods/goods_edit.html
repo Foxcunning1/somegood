@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0,user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>编辑宝贝</title>
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/scripts/artdialog/ui-dialog.css" />
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/css/pagination.css" />
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/statics/admin/css/icon/iconfont.css" />
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/statics/admin/css/style.css" />
+    <script type="text/javascript" src="__PUBLIC__/scripts/jquery/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/scripts/jquery/Validform_v5.3.2_min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/scripts/artdialog/dialog-plus-min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/scripts/webuploader/webuploader.min.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/kindeditor/kindeditor-all.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/statics/admin/js/uploader.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/statics/admin/js/laymain.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/statics/admin/js/common.js"></script>
+    <script type="text/javascript">
+        var uploadType = 'image';
+        $(function () {
+            //初始化表单验证
+            $("#goodsForm").initValidform();
+            //初始化上传控件
+            $(".upload-img").InitUploader({modeltype:'goods_type', sendurl: "{:U('Admin/Base/uploadFile')}", swf: "__PUBLIC__/scripts/webuploader/uploader.swf"});
+            $(".upload-album").InitUploader({ modeltype:'goods_type',btntext: "批量上传", multiple: true, sendurl: "{:U('Admin/Base/uploadFile')}", swf: "__PUBLIC__/scripts/webuploader/uploader.swf" });
+            //设置封面图片的样式
+            $(".photo-list ul li .img-box img").each(function () {
+                if ($(this).attr("src") == $("#hidFocusPhoto").val()) {
+                    $(this).parent().addClass("selected");
+                }
+            });
+            //初始化编辑器
+            var editor = KindEditor.create('#txtGoodDesc', {
+                width: '100%',
+                height: '350px',
+                filterMode: false, //默认不过滤HTML
+                resizeType: 1,
+                uploadJson: "{:U('Admin/Base/uploadFile')}?action=EditorFile&modeltype=goods_type",
+                fileManagerJson: '__PUBLIC__/kindeditor/php/file_manager_json.php',
+                allowFileManager: true
+            });
+        });
+    </script>
+</head>
+
+<body class="mainbody">
+<form method="post" action="{:U('Admin/ShGoods/edit')}" id="goodsForm">
+    <!--导航栏-->
+    <div class="location">
+        <a href="{:U('Admin/ShGoods/gooslist')}" class="back"><i class="iconfont icon-up"></i><span>返回列表页</span></a>
+        <a href="{:U('Admin/Index/center')}" class="home"><i class="iconfont icon-home"></i><span>首页</span></a>
+        <i class="arrow iconfont icon-arrow-right"></i>
+        <a href="{:U('Admin/ShGoods/gooslist')}"><span>商品列表</span></a>
+        <i class="arrow iconfont icon-arrow-right"></i>
+        <span>编辑商品</span>
+    </div>
+    <div class="line10"></div>
+    <!--/导航栏-->
+    <!--内容-->
+    <div id="floatHead" class="content-tab-wrap">
+        <div class="content-tab">
+            <div class="content-tab-ul-wrap">
+                <ul>
+                    <li><a class="selected" href="javascript:void(0);">基本选项</a>
+                    <li><a href="javascript:void(0);">商品相册</a></li>
+                    <li><a href="javascript:void(0);">详细设置</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="tab-content">
+        <dl>
+            <dt>所属用户：</dt>
+            <dd>{$info.user_name}-{$info.nick_name}<input type="hidden" name="user_id" id="userId" datatype="n" value="{$info.user_id}" /> </dd>
+        </dl>
+        <dl>
+            <dt>商品名称：</dt>
+            <dd><input name="data[goods_title]" type="text" value="{$info.goods_title}" id="txtGoodsName" class="input normal" datatype="*"/> <span class="Validform_checktip">*商品名称，100字符内</span></dd>
+        </dl>
+        <dl>
+            <dt>关键字：</dt>
+            <dd><input name="data[keywords]" type="text" value="{$info.keywords}" id="txtKeywords" class="input normal" /></dd>
+        </dl>
+        <dl>
+            <dt>商品类别：</dt>
+            <dd>
+                <div class="rule-single-select">
+                    <select name="data[category_id]" id="goodsNameStyle" datatype="*" class="input normal">
+                        <option value="">请选择类别</option>
+                        <volist name="category_list" id="item">
+                            <option <if condition="$item['id'] eq $info['category_id']"> selected="selected" </if> value="{$item.id}"><neq name="item.count" value="1">{$item['count']|fill_up_string="&nbsp;&nbsp;"}├</neq> {$item.title}</option>
+                        </volist>
+                    </select>
+                </div>
+            </dd>
+        </dl>
+        <dl>
+            <dt>商品价格：</dt>
+            <dd>
+                <input name="data[goods_price]" type="text" value="{$info.goods_price}" id="txtGoodsPrice" class="input normal" datatype="/(^[1-9]\d*(\.\d{1,2})?$)|(^0(\.\d{1,2})?$)/" errormsg="请填写正确的价格" />
+                <span class="Validform_checktip">*只允许为数字,小数点后最多2位</span>
+            </dd>
+        </dl>
+        <dl>
+            <dt>物流费用：</dt>
+            <dd>
+                <input name="data[logistics_price]" type="text" value="{$info.logistics_price}" id="txtLogisticsPrice" class="input normal" datatype="/(^[1-9]\d*(\.\d{1,2})?$)|(^0(\.\d{1,2})?$)/" errormsg="请填写正确的价格" />
+                <span class="Validform_checktip">*只允许为数字,小数点后最多2位</span>
+            </dd>
+        </dl>
+        <dl>
+            <dt>成色：</dt>
+            <dd>
+                <div class="rule-single-select">
+                    <select name="data[goods_condition]" id="goodsCondition" datatype="*" class="input normal">
+                        <option value="">请选择成色</option>
+                        <volist name="goodsConditionList" id="item">
+                            <option <if condition="$key eq $info['goods_condition']"> selected="selected" </if> value="{$key}">{$item}</option>
+                        </volist>
+                    </select>
+                </div>
+            </dd>
+        </dl>
+        <dl>
+            <dt>推荐类型：</dt>
+            <dd>
+                <div class="rule-multi-checkbox">
+                    <span id="cblItem">
+                        <input id="cblItem_1" type="checkbox" name="data[is_top]" value="1" <if condition="$info.is_top eq 1">checked="checked" </if> /><label for="cblItem_1">置顶</label>
+                        <input id="cblItem_2" type="checkbox" name="data[is_rec]" value="1" <if condition="$info.is_rec eq 1">checked="checked" </if> /><label for="cblItem_2">推荐</label>
+                        <input id="cblItem_3" type="checkbox" name="data[is_hot]" value="1" <if condition="$info.is_hot eq 1">checked="checked" </if> /><label for="cblItem_3">热卖</label>
+                        <input id="cblItem_4" type="checkbox" name="data[is_new]" value="1" <if condition="$info.is_new eq 1">checked="checked" </if> /><label for="cblItem_4">最新</label>
+                    </span>
+                </div>
+            </dd>
+        </dl>
+        <dl>
+            <dt>所属地区：</dt>
+            <dd>
+                <div class="rule-single-select">
+                    <select name="province_id" id="province" onchange="loadRegion('province',2,'city','{:U('Admin/Ajax/getRegionList')}');"  class="select">
+                        <option value="0">省份/直辖市</option>
+                        <volist name="provinceList" id="v">
+                            <option value="{$v.id}" <if condition="$provinceId eq $v['id']"> selected="selected"</if> >{$v.name}</option>
+                        </volist>
+                    </select>
+                </div>
+                <div class="rule-single-select">
+                    <select name="city" id="city" class="select" onchange="loadRegion('city',3,'town','{:U('Admin/Ajax/getRegionList')}');">
+                        <option value="0">请选择</option>
+                        <volist name="cityList" id="vo">
+                            <option value="{$vo.id}" <if condition="$cityId eq $vo['id']"> selected="selected"</if>>{$vo.name}</option>
+                        </volist>
+                    </select>
+                </div>
+                <div class="rule-single-select">
+                    <select name="data[area_id]" id="town" class="select" datatype="*">
+                        <option value="0">请选择</option>
+                        <volist name="townList" id="voo">
+                            <option value="{$voo.id}" <if condition="$info['area_id'] eq $voo['id']"> selected="selected"</if>>{$voo.name}</option>
+                        </volist>
+                    </select>
+                </div>
+            </dd>
+        </dl>
+        <dl>
+            <dt>商品数量：</dt>
+            <dd><input name="data[goods_num]" type="text" value="{$info.goods_num}" id="txtGoodsNum" class="input small" datatype="n" /> <span class="Validform_checktip">*商品数量</span></dd>
+        </dl>
+        <dl>
+            <dt>排序数字：</dt>
+            <dd>
+                <input name="data[sort_num]" type="text" value="{$info.sort_num}" id="txtSortId" class="input small" datatype="n" sucmsg=" " />
+                <span class="Validform_checktip">*数字，越小越向前</span>
+            </dd>
+        </dl>
+        <dl>
+            <dt>浏览量：</dt>
+            <dd><input name="data[browse_num]" type="text" value="{$info.browse_num}" id="txtBrowseNum" class="input small" datatype="n" /> <span class="Validform_checktip">*浏览量</span></dd>
+        </dl>
+        <dl>
+            <dt>经纬度：</dt>
+            <dd>
+                <input name="data[lng]" type="text" value="{$info.lng}" id="txtLng" class="input small" datatype="/(^[1-9]\d*(\.\d*)?$)|(^0(\.\d*)?$)/" />&nbsp;-&nbsp;
+                <input name="data[at]" type="text" value="{$info.lat}" id="txtLat" class="input small" datatype="/(^[1-9]\d*(\.\d*)?$)|(^0(\.\d*)?$)/" />
+            </dd>
+        </dl>
+        <dl>
+            <dt>状态：</dt>
+            <dd>
+                <div class="rule-multi-radio">
+                    <span id="rblStatus">
+                        <volist name="status_list" id="item">
+                            <input id="rblStatus_{$key}" type="radio" name="data[status]" value="{$key}" <if condition="$info.status eq $key"> checked="checked" </if> /><label for="rblStatus_{$key}">{$item}</label>
+                        </volist>
+                    </span>
+                </div>
+            </dd>
+        </dl>
+    </div>
+    <div class="tab-content" style="display:none">
+        <dl>
+            <dt>商品缩略图：</dt>
+            <dd>
+                <input name="data[goods_thumb]" type="text" id="txtGoodsThumb" class="input normal upload-path" value="{$info.goods_thumb}" />
+                <div class="upload-box upload-img"></div>
+            </dd>
+        </dl>
+        <dl id="div_albums_container">
+            <dt>图片相册</dt>
+            <dd>
+                <div class="upload-box upload-album"></div>
+                <input name="hidFocusPhoto" type="hidden" id="hidFocusPhoto" class="focus-photo" value="{$info.goods_thumb}" />
+                <div class="photo-list">
+                    <ul>
+                        <for start="0" end="count($plist)">
+                            <li>
+                                <input type="hidden" name="photo[]" value="{$plist[$i]}" />
+                                <input type="hidden" name="rphoto[]" value="{$rlist[$i]}" />
+                                <div class="img-box" onClick="setFocusImg(this);">
+                                    <img src="__PUBLIC__/uploads/{$plist[$i]}_c120x120" bigsrc="__PUBLIC__/uploads/{$plist[$i]}" realpath="{$plist[$i]}" />
+                                    <span class="remark"><i><if condition="$rlist[$i] eq ''">暂无描述<else/>{$rlist[$i]}</if></i></span>
+                                </div>
+                                <a href="javascript:;" onClick="setRemark(this);">描述</a>
+                                <a href="javascript:;" onClick="delImg(this);">删除</a>
+                            </li>
+                        </for>
+                    </ul>
+                </div>
+            </dd>
+        </dl>
+    </div>
+    <div class="tab-content" style="display:none">
+        <dl>
+            <dt>商品简介：</dt>
+            <dd>
+                <textarea name="data[goods_brief]" id="txtBrief" class="input" datatype="*0-255">{$info.goods_brief}</textarea>
+            </dd>
+        </dl>
+        <dl>
+            <dt>商品描述：</dt>
+            <dd>
+                <textarea name="data[goods_desc]" id="txtGoodDesc" class="editor" style="visibility:hidden;">{$info.goods_desc}</textarea>
+            </dd>
+        </dl>
+    </div>
+    <!--/内容-->
+
+    <!--工具栏-->
+    <div class="page-footer">
+        <div class="btn-wrap">
+            <input type="hidden" name="action" value="{$action}" />
+            <input type="hidden" name="id" value="{$info.id}" />
+            <input type="hidden" name="returnUrl" value="{$returnUrl}" />
+            <input type="submit" name="btnSubmit" value="提交保存" id="btnSubmit" class="btn" />
+            <input name="btnReturn" type="button" value="返回上一页" class="btn yellow" onclick="javascript:history.back();" />
+        </div>
+    </div>
+    <!--/工具栏-->
+
+</form>
+</body>
+</html>

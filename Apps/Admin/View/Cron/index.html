@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0,user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>计划任务管理</title>
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/scripts/artdialog/ui-dialog.css" />
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/css/pagination.css" />
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/statics/admin/css/icon/iconfont.css" />
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/statics/admin/css/style.css" />
+    <script type="text/javascript" charset="utf-8" src="__PUBLIC__/scripts/jquery/jquery-1.11.2.min.js"></script>
+</head>
+<body class="mainbody">
+    <!--导航栏-->
+    <div class="location">
+        <a href="javascript:history.back(-1);" class="back"><i class="iconfont icon-up"></i><span>返回上一页</span></a>
+        <a href="{:U('Admin/Index/center')}" class="home"><i class="iconfont icon-home"></i><span>首页</span></a>
+        <i class="arrow iconfont icon-arrow-right"></i>
+        <a href="{:U('Admin/Cron/index')}">计划任务管理</a>
+        <neq name="pid" value="0">
+        <i class="arrow iconfont icon-arrow-right"></i>
+        <span>计划任务列表管理</span>
+        </neq>
+    </div>
+    <!--/导航栏-->
+    <!--列表-->
+    <div class="table-container">
+        <!--文字列表-->
+        <table width="100%" border="0" cellspacing="0" cellpadding="0" class="ltable">
+            <tr>
+                <th align="center">ID</th>
+                <th align="left">名称</th>
+                <th width="18%">操作</th>
+            </tr>
+                <volist name="list" id="item">
+                    <tr>
+                        <td align="center">
+                            {$item.id}
+                        </td>
+                        <td><span>{$item.name}</span></td>
+                        <td align="center" id="planStatus_{$item.id}">
+                            <eq name="item.is_start" value="0">
+                                <a href="javascript:void(0);" onclick="startPlan('{$item.id}',1)">启动</a>
+                                <else/>
+                                <a href="javascript:void(0);" onclick="startPlan('{$item.id}',0)">停止</a>&nbsp;|&nbsp;
+                                <a href="{:U('Admin/Cron/edit',array('id'=>$item['id'],'action'=>'edit'))}">修改</a>
+                            </eq>
+
+                        </td>
+                    </tr>
+                </volist>
+        </table>
+        <!--/文字列表-->
+    </div>
+    <!--/列表-->
+    <script>
+        function startPlan(id,is_start) {
+            var ajax_url="{:U('Admin/Cron/start')}"
+            $.ajax({
+                type: "POST",
+                url: ajax_url,
+                dataType: 'json',
+                data: {
+                    id:id,
+                    is_start:is_start,
+                },
+                success: function(data){
+                    //判断返回状态
+                    if(data.status==0){
+                        parent.jsprint(data.info,"");
+                    }else{
+                        var str='';
+                        switch(is_start){
+                            case 1:
+                                str+="<a href=\"javascript:void(0);\" onclick=\"startPlan('"+data.data+"',0)\">停止</a>&nbsp;|&nbsp; <a href=\"{:U('Admin/Cron/edit')}?id="+data.data+"&action=edit\">修改</a>";
+                                break;
+                            case 0:
+                                str+="<a href=\"javascript:void(0);\" onclick=\"startPlan('"+data.data+"',1)\">启动</a>";
+                                break;
+                        }
+                        $("#planStatus_"+data.data+"").html(str);
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+</html>

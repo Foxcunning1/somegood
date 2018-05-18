@@ -1,0 +1,75 @@
+<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script>
+    $(function () {
+        if(isWeixin()){
+            //是微信浏览器则ajax获取
+            $.ajax({
+                type: "post",
+                url: "{:U('Mobile/WxShare/getWxShareApiInfo')}",
+                data:{'url':window.location.href},
+                dataType: "json",
+                success: function(item){
+                    res = item.data;
+                    wx.config({
+                        debug: false,
+                        appId: res.app_id,
+                        timestamp: res.timestamp,
+                        nonceStr: res.nonceStr,
+                        signature: res.signature,
+                        jsApiList: [
+                            'translateVoice',
+                            'onMenuShareTimeline',
+                            'onMenuShareAppMessage',
+                            'getLocation'
+                        ]
+                    });
+                    var dataForWeixin = {
+                        title: "{$web_title}",
+                        desc: "{:C('SEO_DESCRIPTION')}",
+                        imgUrl: "{:C('MOBILE_URL')}__PUBLIC__/statics/mobile/images/share_img.jpg",
+                        link: res.share_url
+                    };
+                    wx.ready(function () {
+                        console.log('wx ready');
+                        wx.onMenuShareTimeline({
+                            title: dataForWeixin.title,
+                            link: dataForWeixin.link,
+                            imgUrl: dataForWeixin.imgUrl,
+                        });
+                        wx.onMenuShareAppMessage({
+                            title: dataForWeixin.title,
+                            desc: dataForWeixin.desc,
+                            link: dataForWeixin.link,
+                            imgUrl: dataForWeixin.imgUrl,
+                        });
+                        wx.getLocation({
+                            success: function (res) {
+                                var latitude = res.latitude; // 纬度，浮点数，范围为90 ~ -90
+                                var longitude = res.longitude; // 经度，浮点数，范围为180 ~ -180。
+                                var speed = res.speed; // 速度，以米/每秒计
+                                var accuracy = res.accuracy; // 位置精度
+                                localStorage.setItem("latitude", latitude);
+                                localStorage.setItem("longitude", longitude);
+                                var data = {
+                                    latitude: latitude,
+                                    longitude: longitude
+                                };
+                                if (typeof callback == "function") {
+                                    callback(data);
+                                }
+                            },
+                            cancel: function () {
+                                //这个地方是用户拒绝获取地理位置
+                                if (typeof error == "function") {
+                                    error();
+                                }
+                            }
+                        });
+                    });
+
+                },
+            });
+        }
+    });
+</script>
+

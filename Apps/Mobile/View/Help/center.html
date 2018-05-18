@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>{$web_title}</title>
+    <import type="css" file="statics.mobile.css.public,statics.mobile.css.style,dist.dropload" />
+    <import type="js" file="scripts.zepto.zepto#min,scripts.zepto.zepto#cookie#min,dist.dropload#min" />
+    <script type="text/javascript" src="__PUBLIC__/statics/mobile/js/common.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/statics/mobile/js/rem.js" fu-psd="720" fu-min="50" fu-max="100"></script>
+    <style type="text/css">
+        .left-classify-box{ background-color:#f3f3f3;}
+        .article-box{ height: 100%; overflow:auto;}
+        .article-list{ overflow:hidden;}
+        .article-list li{ padding:0 0.15rem; height:0.7rem; line-height:0.7rem; border-bottom:1px solid #e3e3e3;}
+        .article-list li a{ font-size:0.24rem; color:#666; display: block;}
+        .notData{ margin:0; padding:0; line-height:0.7rem; text-align: center; font-size: 0.24rem; color:#666;}
+    </style>
+</head>
+<body style="background:#fff;">
+    <div class="page-title position-title">
+        <!--返回按钮-->
+        <div class="back-box">
+            <a href="{:U('Mobile/Users/index')}" class="icons icon-back"></a>
+        </div>
+        <h2 class="title">帮助中心</h2>
+        <!--返回按钮-->
+    </div>
+    <!--左边分类-->
+    <div class="category-containter">
+        <div class="left-classify-box">
+            <div class="left-over-box">
+              <ul>
+                  <volist name="categorylist" id="vo">
+                  <li <if condition="$vo.id eq $catId">class="sel"</if>><a href="{:U('Mobile/Help/center',array('cat_id'=>$vo['id']))}">{$vo.c_name}</a></li>
+                  </volist>
+              </ul>
+            </div>
+        </div>
+        <!--左边分类-->
+        <!--右边分类展示-->
+        <div class="right-show-box">
+            <div class="right-show-box-content">
+                <div class="article-box">
+                    <ul class="article-list">
+                        <volist name="list" id="item" empty="$empty">
+                        <li><a href="{:U('Mobile/Help/detail',array('id'=>$item['aid']))}">{$item.title}</a></li>
+                        </volist>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--右边分类展示-->
+    <!--公用底部-->
+    <include file="Public/footer" />
+    <!--公用底部-->
+    <script>
+        $(".left-classify-box").find("li").on("touchstart",function(){
+            $(this).addClass("sel").siblings().removeClass("sel");
+        })
+        //滚动页面ajax自动获取下一页内容
+        var page=2; //有效求购的页码
+        var totalPage = {$pageCount}; //有效求购页的总页码，会从后台获
+        var ajaxUrl="{:U('Mobile/Help/center')}?cat_id={$catId}";//ajax请求地址
+        $(function(){
+            var tabLoadEnd = false;
+            // dropload
+            var dropload = $('.article-box').dropload({
+                scrollArea : window,
+                loadDownFn : function(me){
+                    // 加载菜单一的数据
+                    if(page <= totalPage){
+                        $.ajax({
+                            url:ajaxUrl,
+                            type:"post",
+                            dataType:"json",
+                            data:{
+                                'p':page
+                            },
+                            success:function(data){
+                                var str='';
+                                $.each(data.data.list,function(index, vo) {
+                                    str += "<li> ";
+                                    str += "<a href=\"{:U('Mobile/Help/detail')}?id="+vo['aid']+"\">";
+                                    str += vo['title'];
+                                    str += "</a>";
+                                    str += "</li>";
+                                })
+                                // 为了测试，延迟1秒加载
+                                $('.article-list').append(str);
+                                // 每次数据加载完，必须重置
+                                me.resetload();
+                                totalPage = data.data.pageCount;
+                            },
+                            error: function(xhr, type){
+                                alert('Ajax error!');
+                                // 即使加载出错，也得重置
+                                me.resetload();
+                            }
+                        });
+                        page++;
+                    }else{
+                        // 数据加载完
+                        tabLoadEnd = true;
+                        // 锁定
+                        me.lock();
+                        // 无数据
+                        me.noData();
+                        me.resetload();
+                    }
+                    // 加载菜单二的数据
+                }
+            });
+            // 如果数据没有加载完
+            if(!tabLoadEnd){
+                // 解锁
+                dropload.unlock();
+                dropload.noData(false);
+            }else{
+                // 锁定
+                dropload.lock('down');
+                dropload.noData();
+            }
+            // 重置
+            dropload.resetload();
+        });
+        /*设置分类盒子高度*/
+        $(function(){
+            var H = $(window).height();
+            var headH = $(".position-title").height();
+            var footerH = $(".footer").height();
+            $(".left-over-box").height(H-headH-footerH);
+            $(".right-show-box").height(H-headH-footerH);
+        })
+    </script>
+</body>
+</html>

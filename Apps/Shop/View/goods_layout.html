@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>3好连锁店商城首页</title>
+    <meta name="keywords" content="{$web_keywords}"/>
+    <meta name="description" content="{$web_description}" />
+    <import type="css" file="statics.shop.css.public,statics.shop.css.style,scripts.artdialog.ui-dialog" />
+    <import type="js" file="scripts.jquery.jquery-1#11#2#min,scripts.artdialog.dialog-plus-min" />
+</head>
+<body>
+<div class="header">
+    <include file="Public/header" />
+    <div class="w1200">
+        <div class="h-middle clearfix">
+            <a href="{:U('Shop/Index/index')}" class="fl"><img src="__PUBLIC__/statics/shop/images/logo_market.png" alt="logo" class="logo"/></a>
+            <div class="search-box fl">
+                <form class="search-form" method="post" action="{:U('Shop/Goods/goodsList')}">
+                    <i class="icons icon-search"></i>
+                    <input type="text"  name="keywords" placeholder="搜好物">
+                    <button type="submit" class="submit">搜索</button>
+                </form>
+                <div class="hot-search">
+                    <a href="javascript:;">女装</a>
+                    <a href="javascript:;">衣柜</a>
+                    <a href="javascript:;">双十一</a>
+                </div>
+            </div>
+            <div class="my-cart fr">
+                <a href="javascript:;" class="mini-cart-open">
+                    <i class="icons icon-cart"></i>
+                    <span class="txt">我的购物车</span>
+                    <span class="goods-num">0</span>
+                </a>
+                <div class="my-cart-line"></div>
+                <div class="mini-cart-box">
+                    <h4>全部商品</h4>
+                    <div class="items-list">
+                    </div>
+                    <div class="cart-to-box">
+                        <div class="total-box">
+                            共<span class="cart-num">0</span>件商品　共计<span class="cart-total-money">¥ 0</span>
+                        </div>
+                        <a href="{:U('Shop/Cart/index')}" class="to-cart-a">去购物车</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="h-bottom">
+            <div class="all-category">
+                <div class="title">全部分类</div>
+                <div class="category-box goods-category-box">
+                    <ul class="category-box-ul">
+                        <li>
+                            <a href="javascript:;">手机</a>
+                            <span class="line">/</span>
+                            <a href="javascript:;">运营商</a>
+                            <span class="line">/</span>
+                            <a href="javascript:;">智能数码</a>
+                            <div class="category-box-content">
+                                <div class="item clearfix">
+                                    <div class="part1 fl">
+                                        <div class="cannel clearfix">
+                                            <a href="javascript:;">女装<span>&gt;</span></a>
+                                            <a href="javascript:;">女装<span>&gt;</span></a>
+                                            <a href="javascript:;">女装<span>&gt;</span></a>
+                                            <a href="javascript:;">女装<span>&gt;</span></a>
+                                            <a href="javascript:;">女装<span>&gt;</span></a>
+                                        </div>
+                                        <div class="detial">
+                                            <dl>
+                                                <dt> <a href="javascript:;">女装<span>&gt;</span></a></dt>
+                                                <dd>
+                                                    <a href="javascript:;">男士西装</a>
+                                                    <a href="javascript:;">男士西装</a>
+                                                    <a href="javascript:;">男士西装</a>
+                                                    <a href="javascript:;">男士西装</a>
+                                                    <a href="javascript:;">男士西装</a>
+                                                    <a href="javascript:;">男士西装</a>
+                                                    <a href="javascript:;">男士西装</a>
+                                                </dd>
+                                            </dl>
+                                            <dl>
+                                                <dt> <a href="javascript:;">女装<span>&gt;</span></a></dt>
+                                                <dd>
+                                                    <a href="javascript:;">男士西装</a>
+                                                    <a href="javascript:;">男士西装</a>
+                                                    <a href="javascript:;">男士西装</a>
+                                                    <a href="javascript:;">男士西装</a>
+                                                    <a href="javascript:;">男士西装</a>
+                                                    <a href="javascript:;">男士西装</a>
+                                                    <a href="javascript:;">男士西装</a>
+                                                </dd>
+                                            </dl>
+                                            <dl>
+                                                <dt> <a href="javascript:;">女装<span>&gt;</span></a></dt>
+                                                <dd>
+                                                    <a href="javascript:;">男士西装</a>
+                                                    <a href="javascript:;">男士西装</a>
+                                                    <a href="javascript:;">男士西装</a>
+                                                    <a href="javascript:;">男士西装</a>
+                                                    <a href="javascript:;">男士西装</a>
+                                                    <a href="javascript:;">男士西装</a>
+                                                    <a href="javascript:;">男士西装</a>
+                                                </dd>
+                                            </dl>
+                                            <dl>
+                                                <dt> <a href="javascript:;">女装<span>&gt;</span></a></dt>
+                                                <dd>
+                                                    <a href="javascript:;">男士西装</a>
+                                                    <a href="javascript:;">男士西装</a>
+                                                    <a href="javascript:;">男士西装</a>
+                                                    <a href="javascript:;">男士西装</a>
+                                                    <a href="javascript:;">男士西装</a>
+                                                    <a href="javascript:;">男士西装</a>
+                                                    <a href="javascript:;">男士西装</a>
+                                                </dd>
+                                            </dl>
+                                            <dl>
+                                                <dt> <a href="javascript:;">女装<span>&gt;</span></a></dt>
+                                                <dd>
+                                                    <a href="javascript:;">男士西装</a>
+                                                    <a href="javascript:;">男士西装</a>
+                                                    <a href="javascript:;">男士西装</a>
+                                                    <a href="javascript:;">男士西装</a>
+                                                    <a href="javascript:;">男士西装</a>
+                                                    <a href="javascript:;">男士西装</a>
+                                                    <a href="javascript:;">男士西装</a>
+                                                </dd>
+                                            </dl>
+                                            <dl>
+                                                <dt> <a href="javascript:;">女装<span>&gt;</span></a></dt>
+                                                <dd>
+                                                    <a href="javascript:;">男士西装</a>
+                                                    <a href="javascript:;">男士西装</a>
+                                                    <a href="javascript:;">男士西装</a>
+                                                    <a href="javascript:;">男士西装</a>
+                                                    <a href="javascript:;">男士西装</a>
+                                                    <a href="javascript:;">男士西装</a>
+                                                    <a href="javascript:;">男士西装</a>
+                                                </dd>
+                                            </dl>
+                                            <dl>
+                                                <dt> <a href="javascript:;">女装<span>&gt;</span></a></dt>
+                                                <dd>
+                                                    <a href="javascript:;">男士西装</a>
+                                                    <a href="javascript:;">男士西装</a>
+                                                    <a href="javascript:;">男士西装</a>
+                                                    <a href="javascript:;">男士西装</a>
+                                                    <a href="javascript:;">男士西装</a>
+                                                    <a href="javascript:;">男士西装</a>
+                                                    <a href="javascript:;">男士西装</a>
+                                                </dd>
+                                            </dl>
+                                            <dl>
+                                                <dt> <a href="javascript:;">女装<span>&gt;</span></a></dt>
+                                                <dd>
+                                                    <a href="javascript:;">男士西装</a>
+                                                    <a href="javascript:;">男士西装</a>
+                                                    <a href="javascript:;">男士西装</a>
+                                                    <a href="javascript:;">男士西装</a>
+                                                    <a href="javascript:;">男士西装</a>
+                                                    <a href="javascript:;">男士西装</a>
+                                                    <a href="javascript:;">男士西装</a>
+                                                </dd>
+                                            </dl>
+                                            <dl>
+                                                <dt> <a href="javascript:;">女装<span>&gt;</span></a></dt>
+                                                <dd>
+                                                    <a href="javascript:;">男士西装</a>
+                                                    <a href="javascript:;">男士西装</a>
+                                                    <a href="javascript:;">男士西装</a>
+                                                    <a href="javascript:;">男士西装</a>
+                                                    <a href="javascript:;">男士西装</a>
+                                                    <a href="javascript:;">男士西装</a>
+                                                    <a href="javascript:;">男士西装</a>
+                                                </dd>
+                                            </dl>
+                                        </div>
+                                    </div>
+                                    <div class="part2 fl">
+                                        <a href="javascript:;"><img src="__PUBLIC__/statics/shop/images/floor_bg1.jpg" alt="" /></a>
+                                        <a href="javascript:;"><img src="__PUBLIC__/statics/shop/images/floor_bg1.jpg" alt="" /></a>
+                                        <a href="javascript:;"><img src="__PUBLIC__/statics/shop/images/floor_bg1.jpg" alt="" /></a>
+                                        <a href="javascript:;"><img src="__PUBLIC__/statics/shop/images/floor_bg1.jpg" alt="" /></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <ul class="nav-ul">
+                <li><a href="{:U('Shop/Index/index')}">首页</a></li>
+                <li><a href="javascript:;">今日上新</a></li>
+                <li><a href="javascript:;">全网秒杀</a></li>
+                <li><a href="javascript:;">品牌投放</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+{__CONTENT__}
+
+<include file="Public/footer" />
+
+</body>
+</html>

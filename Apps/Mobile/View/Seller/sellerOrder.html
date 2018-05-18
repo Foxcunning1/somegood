@@ -1,0 +1,202 @@
+<eq name="isAjax" value="1">
+    <volist name="list" id="vo">
+        <div class="item">
+            <div class="only-position">
+                <!--<span class="icons icon-location fl"></span>-->
+                <a href="{:U('Mobile/Users/orderdetail')}?order_sn={$vo.order_sn}" class="shop-a fl">订单号:{$vo.order_sn}</a>
+                <div style="clear:both"></div>
+              <if condition="$vo['status'] eq 3">
+                    <div class="signet"></div>
+                </if>
+            </div>
+            <div class="imgs-box">
+                <foreach name="vo['goods_thumb']" item="gp" key="k">
+                    <a href="{:U('Mobile/Users/orderDetail')}?order_sn={$vo.order_sn}"><img src="__PUBLIC__/statics/mobile/images/default_img.png" data-original="__PUBLIC__/uploads/{$gp}_c200x200" alt="{$vo.goods_title.$k}" /></a>
+                </foreach>
+            </div>
+            <div class="split-row">
+                <span class="true-payed fl">订单总价：</span><span class="imb-num fl">¥{$vo.money}</span>
+                <div class="fr">
+                    <switch name="pageType">
+                        <case value="1"> <span class="wait-pay">买家<time class="timeago" datetime="{$vo.pay_time|date="Y-m-d H:i:s",###}"></time>已支付,请尽快发货</span></case>
+                        <case value="2"> <span class="wait-pay gray"><time class="timeago" datetime="{$vo.ship_time|date="Y-m-d H:i:s",###}"></time>已发货,等待买家收货</span></case>
+                        <case value="3"> <span class="wait-pay green">买家<time class="timeago" datetime="{$vo.complete_time|date="Y-m-d H:i:s",###}"></time>确认收货,订单完成</span></case>
+                        <case value="0"> <span class="wait-pay">买家暂未付款,订单于<time class="timeago" datetime="{$vo.add_time|date="Y-m-d H:i:s",###}"></time>提交</span></case>
+                    </switch>
+                </div>
+            </div>
+            <div class="bottom-bar">
+
+                <div class="imb-btn-box fr">
+                    <switch name="pageType">
+                        <case value="1">
+                            <a href="{:U('Mobile/Seller/deliverGoods')}?order_sn={$vo.order_sn}">去发货</a>
+                        </case>
+                        <case value="2">
+                            <a href="https://m.kuaidi100.com/index_all.html?type={$vo.type}&postid={$vo.logistics_sn}&callbackurl={$Think.config.MOBILE_URL}__SELF__">查看物流</a>
+                        </case>
+                        <case value="3">
+                            <a href="https://m.kuaidi100.com/index_all.html?type={$vo.type}&postid={$vo.logistics_sn}&callbackurl={$Think.config.MOBILE_URL}__SELF__">查看物流</a>
+                        </case>
+                        <case value="0">
+                            <if condition="$vo['delivery_way'] eq 1 and $vo['is_son'] eq 2">
+                                <a href="javascript:void(0);" class="refuse-btn fr" data-value="{$vo.order_sn}">改价</a>
+                            </if>
+                        </case>
+                    </switch>
+                </div>
+            </div>
+        </div>
+    </volist>
+<else/>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>订单管理</title>
+    <link rel="stylesheet" href="__PUBLIC__/dist/dropload.css">
+    <import type="css" file="statics.mobile.css.public,statics.mobile.css.user" />
+    <import type="js" file="scripts.zepto.zepto#min,scripts.zepto.zepto#miniDialog,scripts.zepto.timeago,statics.mobile.js.common,scripts.zepto.zepto#validateForm,scripts.zepto.lazyload#min" />
+    <script type="text/javascript" src="__PUBLIC__/statics/mobile/js/rem.js" fu-psd="720" fu-min="50" fu-max="100"></script>
+</head>
+<body>
+<div class="page-title">
+    <!--返回按钮-->
+    <div class="to-back-box">
+        <a href="{:U('Mobile/Seller/index')}" class="icons icon-back"></a>
+    </div>
+    <!--返回按钮-->
+    <!--标题-->
+    <h2 class="title">订单管理</h2>
+    <!--标题-->
+</div>
+<div class="already-title">
+    <ul>
+        <li class="<if condition='$pageType eq 1'>sel</if>"><a href="{:U('Mobile/Seller/sellerOrder')}?pageType=1">待发货</a></li>
+        <li class="<if condition='$pageType eq 2'>sel</if>"><a href="{:U('Mobile/Seller/sellerOrder')}?pageType=2">待完成</a></li>
+        <li class="<if condition='$pageType eq 3'>sel</if>"><a href="{:U('Mobile/Seller/sellerOrder')}?pageType=3">已完成</a></li>
+        <li class="<if condition='$pageType eq 0'>sel</if>"><a href="{:U('Mobile/Seller/sellerOrder')}?pageType=0">待付款</a></li>
+    </ul>
+</div>
+<!--点击选项卡控制near-content显示和隐藏-->
+<!--订单-->
+<div class="div_orderlist pd-t18" >
+    <div class="allOrders"></div>
+</div>
+<!--公用底部-->
+<include file="Public/ufooter" />
+<!--公用底部-->
+<!-- jQuery1.7以上 或者 Zepto 二选一，不要同时都引用 -->
+<script src="__PUBLIC__/dist/dropload.min.js"></script>
+<script>
+    $(function(){
+        $(".imgs-box a img").lazyload({effect : "fadeIn"});
+        $(".timeago").timeago();
+    })
+    var page=1; //当前页的页码
+    var allpage={$pageCount}; //总页码，会从后台获
+    var pageType='{$pageType}'; //页面类型，会从后台获
+    var ajaxUrl="{:U('Mobile/Seller/sellerOrder')}?pageType={$pageType}";//ajax请求地址
+    $(function(){
+        var dropload = $('.div_orderlist').dropload({
+            scrollArea : window,
+            loadDownFn : function(me){
+                if(page<=allpage){
+                    $.ajax({
+                        url:ajaxUrl,
+                        type:"post",
+                        dataType:"html",
+                        data:{
+                            'p':page,
+                            'pageType':pageType,
+                        },
+                        success:function(data){
+                            var str = data;
+                            $('.allOrders').append(str);
+                            $(".timeago").timeago();
+                            $(".imgs-box a img").lazyload({effect : "fadeIn"});
+                            bindRefusBtn();
+                            // 每次数据加载完，必须重置
+                            me.resetload();
+                            allpage = {$pageCount};
+                        },
+                        error: function(xhr, type){
+                            alert('Ajax error!');
+                            // 即使加载出错，也得重置
+                            me.resetload();
+                        }
+                    });
+                    page++;
+                }else{
+                    // 锁定
+                    me.lock();
+                    // 无数据
+                    me.noData();
+                    me.resetload();
+                }
+            }
+        });
+    });
+    function bindRefusBtn(){
+        $("a.refuse-btn").on("touchstart",function(){
+            $("body").minDialog({
+                title: '更改订单价格',
+                content: "<div class='refuse-reasons'>"+
+                "<form class='refuse-form' id='refuseForm' url='{:U('Mobile/Seller/editPrice')}'>"+
+                "<dl>" +
+                "<dd style=\"color:#ffcc99;\">" +"注:只有订单中只有一个卖家才能修改价格!"+"</dd>"+
+                "<dd><span>￥<input type='number' name='edit_price' id='edit_price' class=\"edit-price\" placeholder='请输入价格' required/></span></dd>" +
+                "</dl>" +
+                "<input type='hidden' id='order_sn' name='order_sn' value='"+$(this).attr("data-value")+"' />"+
+                "<input type='button' class='edit-submit-btn' id='submitBtn' value='提交' />"+
+                "</form>"+
+                "</div>",
+            });
+            bindSubmitBtn();
+        })
+    }
+    function bindSubmitBtn() {
+        $("#submitBtn").on("touchstart",function(){
+            var edit_price = $("#edit_price").val();
+            var order_sn =$('#order_sn').val();
+            $.ajax({
+                type: "POST",
+                url: "{:U('Mobile/Seller/editPrice')}",
+                data: {"order_sn":order_sn,"edit_price":edit_price},
+                dataType: 'json',
+                success: function(data){
+                    if(data.status==1){
+                        $("body").minDialog({
+                            isMask:true,
+                            isAutoClose:true,
+                            isCloseAll:true,
+                            closeTime:800,
+                            content:data.info,
+                        });
+                        setTimeout(function(){
+                            window.location.href="__SELF__";
+                        },800)
+                    }else{
+                        $("body").minDialog({
+                            isMask:true,
+                            isAutoClose:true,
+                            isCloseAll:true,
+                            closeTime:1000,
+                            content:data.info,
+                        });
+                    }
+                },
+                error:function (data) {
+                }
+            });
+        })
+    }
+</script>
+</body>
+</html>
+</eq>

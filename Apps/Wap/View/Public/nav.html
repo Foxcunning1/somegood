@@ -1,0 +1,51 @@
+<aside class="menu-aside">
+	<ul>
+		<li class="fadeInRightFast"><a href="/Wap"><i class="icons icons-home"></i><span>首页</span></a></li>
+		<li class="fadeInRightFast"><a href="{:U('Wap/About/profile')}"><i class="icons icons-profile"></i><span>平台介绍</span></a></li>
+		<li class="fadeInRightFast"><a href="{:U('Wap/Case/list')}"><i class="icons icons-case"></i><span>案例展示</span></a></li>
+		<li class="fadeInRightFast" style="display: none;"><a href="{:U('Wap/About/team')}"><i class="icons icons-team"></i><span>团队支持</span></a></li>
+		<li class="fadeInRightFast"><a href="{:U('Wap/News/list')}"><i class="icons icons-news"></i><span>新闻资讯</span></a></li>
+		<li class="fadeInRightFast"><a href="{:U('Wap/About/contact')}"><i class="icons icons-contact"></i><span>联系我们</span></a></li>
+	</ul>
+</aside>
+<div class="over-lay"></div>
+<!--scrollanim.min.js一定要放在后面加载才可以 放在footer里面-->
+<script type="text/javascript" charset="utf-8" src="__PUBLIC__/statics/wap/js/scrollanim.min.js"></script>
+<!--以下内容作为footer-->
+<script>
+	$(function(){
+		/*右侧菜单出现*/
+		$(".menu-icon").on("click",function(){
+			if($("aside").hasClass("animate")){
+				$("aside").removeClass("animate");
+				$(".over-lay").removeClass("show");
+				$(".containter").removeClass("animate");
+			}else{
+				$("aside").addClass("animate");
+				$(".over-lay").addClass("show");
+				$(".containter").addClass("animate");
+			}
+		})
+		/*右侧菜单隐藏*/
+		$(".over-lay").on("click",function(){
+			$("aside").removeClass("animate");
+			$(this).removeClass("show");
+			$(".containter").removeClass("animate");
+		})
+
+	})
+    //回到顶部的隐藏和显示,返回顶部按钮自动隐藏
+    $(function(){
+        $(window).scroll(function(){
+            if ($(window).scrollTop()>360){
+                $("#totop").show();
+            }else if($(window).scrollTop()<360){
+                $("#totop").hide();
+            }
+        });
+        // 返回顶部按钮
+        $('#totop').on("click",function(){
+           $(window).scrollTop(0).stop(true,true);
+        });
+    })
+</script>

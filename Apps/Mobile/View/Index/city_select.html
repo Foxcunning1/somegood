@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>3好连锁主页</title>
+    <import type="css" file="statics.mobile.css.public,statics.mobile.css.style" />
+    <import type="js" file="scripts.zepto.zepto#min,statics.mobile.js.region,statics.mobile.js.common" />
+    <script type="text/javascript" src="__PUBLIC__/statics/ershou/js/rem.js" fu-psd="720" fu-min="50" fu-max="100"></script><script src=""></script>
+</head>
+<body style="height: 100%;">
+    <!--头部-->
+    <div class="page-title">
+        <!--返回按钮-->
+        <div class="back-box">
+            <a href="javascript:history.go(-1);" class="icons icon-back"></a>
+        </div>
+        <!--返回按钮-->
+        <h2 class="title">城市切换</h2>
+    </div>
+    <div class="city-change-box">
+        <ul class="city-list-ul">
+            <li>安徽</li>
+            <li>安徽</li>
+            <li>安徽</li>
+            <li>安徽</li>
+            <li>安徽</li>
+            <li>安徽</li>
+            <li>安徽</li>
+            <li>安徽</li>
+            <li>安徽</li>
+            <li>安徽</li>
+            <li>安徽</li>
+            <li>安徽</li>
+            <li>安徽</li>
+            <li>安徽</li>
+            <li>安徽</li>
+            <li>安徽</li>
+            <li>安徽</li>
+            <li>安徽</li>
+            <li>安徽</li>
+            <li>安徽</li>
+            <li>安徽</li>
+            <li>安徽</li>
+            <li>安徽</li>
+            <li>安徽</li>
+            <li>安徽</li>
+            <li>安徽</li>
+            <li>安徽</li>
+            <li>安徽</li>
+            <li>安徽</li>
+            <li>安徽</li>
+            <li>安徽</li>
+            <li>安徽</li>
+        </ul>
+    </div>
+
+<script>
+    $(function(){
+        $(window).scroll(function(){
+            var sTop = $(window).scrollTop();
+            if(sTop >= 100){
+                $(".a-wrap").hide();
+                $(".header-bottom").addClass("scroll-style");
+            }else{
+                $(".a-wrap").show();
+                $(".header-bottom").removeClass("scroll-style");
+            }
+        })
+    });
+</script>
+</body>
+</html>

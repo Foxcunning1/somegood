@@ -1,0 +1,226 @@
+<eq name="isAjax" value="1">
+    <volist name="list" id="item">
+        <li>
+            <a href="{:U('Mobile/Goods/detail')}?id={$item.id}">
+                <div class="g-img"><img src="__PUBLIC__/statics/mobile/images/default_img.png" data-original="__PUBLIC__/uploads/{$item.goods_thumb}_c200x200" alt="商品图" /></div>
+                <div class="g-info">
+                    <div class="product-name">
+                        <span>{$item.goods_title}</span>
+                    </div>
+                    <div class="product-price-m">
+                        <em>¥<span class="big-price">{$item.price}</span><span class="small-price">.00</span></em>
+                    </div>
+                    <div class="location-and-time">
+                        <span class="time fl"><i class="icons icon-clock"></i><time class="timeago" datetime="{$item.add_time|date="Y-m-d H:i:s",###}"></time>发布</span>
+                    </div>
+                </div>
+                <!--已下架的商品有这个价格阴影层,没有下架就没有-->
+                <!--<span class="opcity-white"></span>-->
+            </a>
+        </li>
+    </volist>
+<else/>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>{$info.store_name}</title>
+    <link rel="stylesheet" href="__PUBLIC__/dist/dropload.css">
+    <import type="css" file="statics.mobile.css.public,statics.mobile.css.style" />
+    <import type="js" file="scripts.zepto.zepto#min,statics.mobile.js.common,scripts.zepto.timeago,scripts.zepto.lazyload#min" />
+    <script type="text/javascript" src="__PUBLIC__/statics/mobile/js/rem.js" fu-psd="720" fu-min="50" fu-max="100"></script>
+    <script type="text/javascript">
+        var usersLng = {$Think.session.lng};//用户所在的经纬度
+        var usersLat = {$Think.session.lat};
+    </script>
+</head>
+<body>
+<!--店铺主页-->
+<div class="shop-inner">
+    <!--返回按钮和分享-->
+    <div class="to-back-box">
+        <a href="{:U('Mobile/Index/index')}" class="icons icon-back"></a>
+    </div>
+    <h2 class="title">{$info.store_name}</h2>
+    <div class="to-menu-box">
+        <i class="icons icon-share"></i>
+    </div>
+    <!--返回按钮和分享-->
+    <img src="__PUBLIC__/statics/mobile/images/default_img.png" data-original="<empty name="info.logo">__PUBLIC__/statics/mobile/images/default_img.png<else/>__PUBLIC__/uploads/{$info.logo}_c200x200</empty>" alt="{$info.store_name}" class="user-img" />
+    <!--<a href="javascript:void(0);" class="attention-to"> <eq name="favoriteStatus" value="1">取消</eq>关注</a>-->
+</div>
+<!--店铺主页-->
+<!--分享引导-->
+<div class="over-lay-share">
+    <img src="__PUBLIC__/statics/mobile/images/know.png" alt="我知道了" class="know" />
+    <img src="__PUBLIC__/statics/mobile/images/pointer.png" alt="点击右上角分享按钮分享产品" class="pointer" />
+</div>
+<!--分享引导-->
+<!--所属店铺-->
+<div class="belong-store shop-store">
+    <div class="impression">
+        <ul>
+            <li><a href="{:U('Mobile/Store/storeGoods')}?shopid={$info.sid}&pageType=new"><span class="num"></span><span>最新</span></a></li>
+            <li><a href="{:U('Mobile/Store/storeGoods')}?shopid={$info.sid}&pageType=hot"><span class="num"></span><span>热卖</span></a></li>
+            <li><a href="{:U('Mobile/Store/storeGoods')}?shopid={$info.sid}&pageType=rec"><span class="num"></span><span>推荐</span></a></li>
+            <li><a href="{:U('Mobile/Store/storeGoods')}?shopid={$info.sid}&pageType=top"><span class="num"></span><span>置顶</span></a></li>
+        </ul>
+    </div>
+    <div class="main-sell-box">
+        <div class="location-and-time">
+            <a href="http://api.map.baidu.com/marker?location={$info.lat},{$info.lng}&title={$info.store_name}&content={$info.address}&output=html " class="location-a">
+                <span class="location"><i class="icons icon-location fl" style="margin-top:3px;"></i><em data-lng="{$info.lng}" data-lat="{$info.lat}" class="distance address fl">0</em>Km</span>
+            </a>
+            <p class="main-sell">{$info.region}</p>
+        </div>
+    </div>
+</div>
+<!--所属店铺-->
+<!--店铺置顶商品列表-->
+<div  class="other-shop-goods-list" style="padding-bottom: 0.8rem;">
+    <ul class="search-list shop-goods-list" id="shopGoodsList">
+        <volist name="list" id="vo">
+            <li>
+                <a href="{:U('Mobile/Goods/detail',array('id'=>$vo['id']))}">
+                    <div class="g-img"><img data-original="__PUBLIC__/uploads/{$vo.goods_thumb}_c200x200" src="__PUBLIC__/statics/mobile/images/default_img.png" alt="{$vo.goods_title}" /></div>
+                    <div class="g-info">
+                        <div class="product-name">
+                            <span>{$vo.goods_title}</span>
+                        </div>
+                        <div class="product-price-m">
+                            <em>¥<span class="small-price">{$vo.price}</span></em>
+                        </div>
+                        <div class="location-and-time">
+                            <span class="time fl">总销量:{$vo.total_sales_volume}</span>
+                        </div>
+                    </div>
+                </a>
+            </li>
+        </volist>
+    </ul>
+</div>
+<!--店铺置顶商品列表-->
+<!--公用底部-->
+ <div class="shop-menu-bar">
+     <a href="{:U('Mobile/Store/detail')}?shopid={$shop_id}"><i class="icons icon-shop-home"></i><span>店铺首页</span></a>
+     <a href="tel:{$info.mobile}"><i class="icons icon-shop-contact"></i><span>联系商家</span></a>
+     <!-- <a href="javascript:void(0);" class="shop-products">
+         <i class="icons icon-shop-products"></i>
+         <span>产品</span>
+     </a> -->
+ </div>
+<notempty name="info.store_cate">
+    <div class="shop-menu-box">
+        <volist name="info.store_cate" id="sc">
+            <a href={:U('Mobile/Store/storeGoods')}?shopid={$info.sid}&category_id={$sc.goods_cate_id}>{$sc.goods_cate_name}</a>
+        </volist>
+    </div>
+</notempty>
+<!--公用底部-->
+</body>
+<script>
+    $(".shop-products").on("click",function(){
+        $(".shop-menu-box").toggleClass("click");
+    })
+    /*分享引导弹出*/
+    $(".icon-share").on("click",function(){
+        $(".over-lay-share").show();
+        $("body").css("overflow","hidden");
+    })
+    $("img.know").on("click",function(){
+        $(".over-lay-share").hide();
+        $("body").css("overflow","auto");
+    })
+    $(function(){
+        //图片延迟加载
+        $(".shop-inner img").lazyload({effect : "fadeIn"});
+        /*公用底部点击样式变换 放再公用的layout里面*/
+        $(".footer ul").find("li").on("touchstart",function(){
+            $(this).addClass("sel").siblings().removeClass("sel");
+        })
+        $(".timeago").timeago();
+        calcDistance(".distance");//绑定计算距离
+    })
+</script>
+<!-- jQuery1.7以上 或者 Zepto 二选一，不要同时都引用 -->
+<script src="__PUBLIC__/dist/dropload.min.js"></script>
+<script>
+    var page=1; //当前页的页码
+    var allpage={$pageCount}; //总页码，会从后台获
+    var ajaxUrl="{:U('Mobile/Store/detail')}";//ajax请求地址
+    $(function(){
+        var dropload = $('.other-shop-goods-list').dropload({
+            scrollArea : window,
+            loadDownFn : function(me){
+                if(page<=allpage){
+                    $.ajax({
+                        url:ajaxUrl,
+                        type:"post",
+                        dataType:"html",
+                        data:{
+                            'p':page,
+                            'shopid':{$shop_id},
+                        },
+                        success:function(data){
+                            var str = data;
+                            $('.shop-goods-list').append(str);
+                            $(".timeago").timeago();
+                            //图片延迟加载
+                            $(".g-img img").lazyload({effect : "fadeIn"});
+                            // 每次数据加载完，必须重置
+                            me.resetload();
+                        },
+                        error: function(xhr, type){
+                            alert('Ajax error!');
+                            // 即使加载出错，也得重置
+                            me.resetload();
+                        }
+                    });
+                    page++;
+                }else{
+                    // 锁定
+                    me.lock();
+                    // 无数据
+                    me.noData();
+                    me.resetload();
+                }
+            }
+        });
+    });
+    //店铺关注/取消
+    $(".attention-to").on('touchstart',function(){
+        $.ajax({
+            method:'post',
+            dataType:'json',
+            url:"{:U('Mobile/Goods/collect')}",
+            data:{
+                'goods_id':'{$info.sid}',
+                'favorite_type':1,
+            },
+            success:function(data){
+                if(data.status==1){
+                    //操作成功
+                    if(data.info==1){
+                        //关注成功
+                        $('.attention-to').html('取消关注');
+                    }else{
+                        //取消关注
+                        $('.attention-to').html('关注');
+                    }
+                }else{
+                    //操作失败
+                    $('body').minDialog({
+                        content:date.info,
+                    })
+                }
+            }
+        });
+    })
+</script>
+</html>
+</eq>

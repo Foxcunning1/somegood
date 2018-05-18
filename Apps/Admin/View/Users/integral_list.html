@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0,user-scalable=no" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<title>积分记录</title>
+<link href="__PUBLIC__/JS/artdialog/ui-dialog.css" rel="stylesheet" type="text/css" />
+<link href="__TMPL__skin/default/style.css" rel="stylesheet" type="text/css" />
+<link href="__TMPL__css/pagination.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="__PUBLIC__/JS/jquery/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/JS/artdialog/dialog-plus-min.js"></script>
+<script type="text/javascript" charset="utf-8" src="__TMPL__js/laymain.js"></script>
+<script type="text/javascript" charset="utf-8" src="__TMPL__js/common.js"></script>
+</head>
+
+<body class="mainbody">
+<form method="post" action="point_log.aspx" id="form1">
+
+<script type="text/javascript">
+var theForm = document.forms['form1'];
+if (!theForm) {
+    theForm = document.form1;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+</script>
+
+
+<!--导航栏-->
+<div class="location">
+  <a href="javascript:history.back(-1);" class="back"><i></i><span>返回上一页</span></a>
+  <a href="../center.aspx" class="home"><i></i><span>首页</span></a>
+  <i class="arrow"></i>
+  <a href="user_list.aspx"><span>会员管理</span></a>
+  <i class="arrow"></i>
+  <span>积分记录</span>
+</div>
+<!--/导航栏-->
+
+<!--工具栏-->
+<div id="floatHead" class="toolbar-wrap">
+  <div class="toolbar">
+    <div class="box-wrap">
+      <a class="menu-btn"></a>
+      <div class="l-list">
+        <ul class="icon-list">
+          <li><a class="all" href="javascript:;" onclick="checkAll(this);"><i></i><span>全选</span></a></li>
+          <li><a onclick="return ExePostBack(&#39;btnDelete&#39;);" id="btnDelete" class="del" href="javascript:__doPostBack(&#39;btnDelete&#39;,&#39;&#39;)"><i></i><span>删除</span></a></li>
+        </ul>
+      </div>
+      <div class="r-list">
+        <input name="txtKeywords" type="text" id="txtKeywords" class="keyword" />
+        <a id="lbtnSearch" class="btn-search" href="javascript:__doPostBack(&#39;lbtnSearch&#39;,&#39;&#39;)">查询</a>
+      </div>
+    </div>
+  </div>
+</div>
+<!--/工具栏-->
+
+<!--列表-->
+<div class="table-container">
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="ltable">
+  <tr>
+    <th width="8%">选择</th>
+    <th align="left" width="15%">用户名</th>
+    <th align="left" width="10%">积分</th>
+    <th align="left">备注</th>
+    <th align="left" width="16%">时间</th>
+  </tr>
+
+  <tr>
+    <td align="center">
+      <span class="checkall" style="vertical-align:middle;"><input id="rptList_chkId_0" type="checkbox" name="rptList$ctl01$chkId" /></span>
+      <input type="hidden" name="rptList$ctl01$hidId" id="rptList_hidId_0" value="2457" />
+    </td>
+    <td>yizhiwangchong</td>
+    <td>+10</td>
+    <td>每天登录获得积分</td>
+    <td>2016-5-26 11:16</td>
+  </tr>
+
+  <tr>
+    <td align="center">
+      <span class="checkall" style="vertical-align:middle;"><input id="rptList_chkId_1" type="checkbox" name="rptList$ctl02$chkId" /></span>
+      <input type="hidden" name="rptList$ctl02$hidId" id="rptList_hidId_1" value="2456" />
+    </td>
+    <td>test</td>
+    <td>+10</td>
+    <td>每天登录获得积分</td>
+    <td>2016-5-25 21:56</td>
+  </tr>
+
+  <tr>
+    <td align="center">
+      <span class="checkall" style="vertical-align:middle;"><input id="rptList_chkId_2" type="checkbox" name="rptList$ctl03$chkId" /></span>
+      <input type="hidden" name="rptList$ctl03$hidId" id="rptList_hidId_2" value="2455" />
+    </td>
+    <td>laojiahuo</td>
+    <td>+10</td>
+    <td>每天登录获得积分</td>
+    <td>2016-5-25 19:57</td>
+  </tr>
+
+  <tr>
+    <td align="center">
+      <span class="checkall" style="vertical-align:middle;"><input id="rptList_chkId_3" type="checkbox" name="rptList$ctl04$chkId" /></span>
+      <input type="hidden" name="rptList$ctl04$hidId" id="rptList_hidId_3" value="2454" />
+    </td>
+    <td>9999999</td>
+    <td>+10</td>
+    <td>每天登录获得积分</td>
+    <td>2016-5-25 17:15</td>
+  </tr>
+
+  <tr>
+    <td align="center">
+      <span class="checkall" style="vertical-align:middle;"><input id="rptList_chkId_4" type="checkbox" name="rptList$ctl05$chkId" /></span>
+      <input type="hidden" name="rptList$ctl05$hidId" id="rptList_hidId_4" value="2453" />
+    </td>
+    <td>blueidea</td>
+    <td>+10</td>
+    <td>每天登录获得积分</td>
+    <td>2016-5-25 15:53</td>
+  </tr>
+
+  <tr>
+    <td align="center">
+      <span class="checkall" style="vertical-align:middle;"><input id="rptList_chkId_5" type="checkbox" name="rptList$ctl06$chkId" /></span>
+      <input type="hidden" name="rptList$ctl06$hidId" id="rptList_hidId_5" value="2452" />
+    </td>
+    <td>eric</td>
+    <td>+10</td>
+    <td>每天登录获得积分</td>
+    <td>2016-5-25 15:09</td>
+  </tr>
+
+  <tr>
+    <td align="center">
+      <span class="checkall" style="vertical-align:middle;"><input id="rptList_chkId_6" type="checkbox" name="rptList$ctl07$chkId" /></span>
+      <input type="hidden" name="rptList$ctl07$hidId" id="rptList_hidId_6" value="2451" />
+    </td>
+    <td>8074970514</td>
+    <td>+10</td>
+    <td>每天登录获得积分</td>
+    <td>2016-5-25 11:45</td>
+  </tr>
+
+  <tr>
+    <td align="center">
+      <span class="checkall" style="vertical-align:middle;"><input id="rptList_chkId_7" type="checkbox" name="rptList$ctl08$chkId" /></span>
+      <input type="hidden" name="rptList$ctl08$hidId" id="rptList_hidId_7" value="2450" />
+    </td>
+    <td>123</td>
+    <td>+10</td>
+    <td>每天登录获得积分</td>
+    <td>2016-5-25 0:05</td>
+  </tr>
+
+  <tr>
+    <td align="center">
+      <span class="checkall" style="vertical-align:middle;"><input id="rptList_chkId_8" type="checkbox" name="rptList$ctl09$chkId" /></span>
+      <input type="hidden" name="rptList$ctl09$hidId" id="rptList_hidId_8" value="2449" />
+    </td>
+    <td>skyhuman123</td>
+    <td>+10</td>
+    <td>每天登录获得积分</td>
+    <td>2016-5-24 18:02</td>
+  </tr>
+
+  <tr>
+    <td align="center">
+      <span class="checkall" style="vertical-align:middle;"><input id="rptList_chkId_9" type="checkbox" name="rptList$ctl10$chkId" /></span>
+      <input type="hidden" name="rptList$ctl10$hidId" id="rptList_hidId_9" value="2448" />
+    </td>
+    <td>laojiahuo</td>
+    <td>+10</td>
+    <td>每天登录获得积分</td>
+    <td>2016-5-24 14:56</td>
+  </tr>
+
+  
+</table>
+
+</div>
+<!--/列表-->
+
+<!--内容底部-->
+<div class="line20"></div>
+<div class="pagelist">
+  <div class="l-btns">
+    <span>显示</span><input name="txtPageNum" type="text" value="10" onchange="javascript:setTimeout(&#39;__doPostBack(\&#39;txtPageNum\&#39;,\&#39;\&#39;)&#39;, 0)" onkeypress="if (WebForm_TextBoxKeyHandler(event) == false) return false;" id="txtPageNum" class="pagenum" onkeydown="return checkNumber(event);" /><span>条/页</span>
+  </div>
+  <div id="PageContent" class="default"><span>共2439记录</span><span class="disabled">«上一页</span><span class="current">1</span><a href="point_log.aspx?page=2">2</a><a href="point_log.aspx?page=3">3</a><a href="point_log.aspx?page=4">4</a><span>...</span><a href="point_log.aspx?page=244">244</a><a href="point_log.aspx?page=2">下一页»</a></div>
+</div>
+<!--/内容底部-->
+
+</form>
+</body>
+</html>

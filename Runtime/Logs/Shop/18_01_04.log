@@ -1,0 +1,1097 @@
+[ 2018-01-04T11:18:33+08:00 ] ::1 /somegood/shop/index/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: web_keywords D:\xampps\htdocs\somegood\Runtime\Cache\Shop\ae708c66cec6f9d7ecb4a80282dd4c4a.php 第 6 行.
+NOTIC: [8] Undefined variable: web_description D:\xampps\htdocs\somegood\Runtime\Cache\Shop\ae708c66cec6f9d7ecb4a80282dd4c4a.php 第 7 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.077004s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.077004s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.002001s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002001s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-01-04T11:18:34+08:00 ] ::1 /somegood/Shop/Cart/getCartGoods.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `sg_cart` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `sg_cart` WHERE `phpsessid` = 'qc9263b8q7ji2s8qt7p5sisle5' AND `user_id` = 0  [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_cart` [ RunTime:0.0030s ]
+SQL: SELECT SUM(counts) AS tp_sum FROM `sg_cart` WHERE `phpsessid` = 'qc9263b8q7ji2s8qt7p5sisle5' AND `user_id` = 0 LIMIT 1   [ RunTime:0.0030s ]
+
+[ 2018-01-04T11:18:37+08:00 ] ::1 /somegood/shop/index/index?__hash__=fe891519f0fc8bd3d936b882d88c044c_fd55124d6cd41be7f3de7d302ed76c0a
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: web_keywords D:\xampps\htdocs\somegood\Runtime\Cache\Shop\ae708c66cec6f9d7ecb4a80282dd4c4a.php 第 6 行.
+NOTIC: [8] Undefined variable: web_description D:\xampps\htdocs\somegood\Runtime\Cache\Shop\ae708c66cec6f9d7ecb4a80282dd4c4a.php 第 7 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.020001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.020001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.003000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-01-04T11:18:37+08:00 ] ::1 /somegood/Shop/Cart/getCartGoods.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_cart` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_cart` WHERE `phpsessid` = 'qc9263b8q7ji2s8qt7p5sisle5' AND `user_id` = 0  [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_cart` [ RunTime:0.0030s ]
+SQL: SELECT SUM(counts) AS tp_sum FROM `sg_cart` WHERE `phpsessid` = 'qc9263b8q7ji2s8qt7p5sisle5' AND `user_id` = 0 LIMIT 1   [ RunTime:0.0020s ]
+
+[ 2018-01-04T11:18:48+08:00 ] ::1 /somegood/Shop/Login/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: type D:\xampps\htdocs\somegood\Runtime\Cache\Shop\d6ce59d9ac134434adf3e98b46839542.php 第 135 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.011001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.011001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-01-04T11:18:48+08:00 ] ::1 /somegood/Shop/Code/verify.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-01-04T11:18:51+08:00 ] ::1 /somegood/Shop/Login/login.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001001s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002001s ]
+SQL: SHOW COLUMNS FROM `sg_users` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_users` WHERE `mobile` = '18664988205' LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT u.uid,`password`,`salt`,u.mobile as mobile,u.error_num,u.error_time,ug.* FROM sg_users u LEFT JOIN sg_users_group as ug ON ug.gid = u.group_id  WHERE u.mobile = '18664988205' LIMIT 1   [ RunTime:0.0020s ]
+SQL: UPDATE `sg_users` SET `error_num`='0',`error_time`='0' WHERE `mobile` = '18664988205' [ RunTime:0.0010s ]
+NOTIC: [8] Undefined index: remeber D:\xampps\htdocs\somegood\Apps\Shop\Controller\LoginController.class.php 第 76 行.
+
+[ 2018-01-04T11:18:52+08:00 ] ::1 /somegood/Shop/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined variable: web_keywords D:\xampps\htdocs\somegood\Runtime\Cache\Shop\ae708c66cec6f9d7ecb4a80282dd4c4a.php 第 6 行.
+NOTIC: [8] Undefined variable: web_description D:\xampps\htdocs\somegood\Runtime\Cache\Shop\ae708c66cec6f9d7ecb4a80282dd4c4a.php 第 7 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.022001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.022001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.003000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-01-04T11:18:52+08:00 ] ::1 /somegood/Shop/Cart/getCartGoods.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_cart` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_cart` WHERE `user_id` = 843  [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_cart` [ RunTime:0.0030s ]
+SQL: SELECT SUM(counts) AS tp_sum FROM `sg_cart` WHERE `user_id` = 843 LIMIT 1   [ RunTime:0.0010s ]
+
+[ 2018-01-04T11:19:07+08:00 ] ::1 /somegood/Shop/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: web_keywords D:\xampps\htdocs\somegood\Runtime\Cache\Shop\ae708c66cec6f9d7ecb4a80282dd4c4a.php 第 6 行.
+NOTIC: [8] Undefined variable: web_description D:\xampps\htdocs\somegood\Runtime\Cache\Shop\ae708c66cec6f9d7ecb4a80282dd4c4a.php 第 7 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.019001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.019001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.002001s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002001s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-01-04T11:19:07+08:00 ] ::1 /somegood/Shop/Cart/getCartGoods.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `sg_cart` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `sg_cart` WHERE `user_id` = 843  [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_cart` [ RunTime:0.0030s ]
+SQL: SELECT SUM(counts) AS tp_sum FROM `sg_cart` WHERE `user_id` = 843 LIMIT 1   [ RunTime:0.0010s ]
+
+[ 2018-01-04T11:19:09+08:00 ] ::1 /somegood/Shop/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: web_keywords D:\xampps\htdocs\somegood\Runtime\Cache\Shop\ae708c66cec6f9d7ecb4a80282dd4c4a.php 第 6 行.
+NOTIC: [8] Undefined variable: web_description D:\xampps\htdocs\somegood\Runtime\Cache\Shop\ae708c66cec6f9d7ecb4a80282dd4c4a.php 第 7 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.017001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.017001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.002000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-01-04T11:19:09+08:00 ] ::1 /somegood/Shop/Cart/getCartGoods.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `sg_cart` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_cart` WHERE `user_id` = 843  [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_cart` [ RunTime:0.0030s ]
+SQL: SELECT SUM(counts) AS tp_sum FROM `sg_cart` WHERE `user_id` = 843 LIMIT 1   [ RunTime:0.0000s ]
+
+[ 2018-01-04T11:19:13+08:00 ] ::1 /somegood/Shop/UserOrder/orderlist.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+NOTIC: [8] Undefined variable: pageCondition D:\xampps\htdocs\somegood\Apps\Shop\Controller\UserOrderController.class.php 第 34 行.
+SQL: SELECT COUNT(*) AS tp_count FROM ( SELECT o.*,c.goods_title,g.goods_id,group_concat(c.goods_thumb) as tb FROM sg_order o LEFT JOIN sg_order AS mo ON mo.parent_order_sn = o.order_sn LEFT JOIN sg_order_goods AS g ON (o.order_sn = g.order_sn)or(mo.order_sn = g.order_sn) LEFT JOIN sg_goods AS c ON c.id = g.goods_id  WHERE o.uid = '843' AND o.status IN ('0','1','2','3','6','99') AND ( !(o.is_son=1 and o.status=0) and !( o.is_son=0 and o.status!=0) ) GROUP BY o.order_sn ORDER BY add_time DESC,id DESC  ) a LIMIT 1   [ RunTime:0.0050s ]
+SQL: SELECT o.*,c.goods_title,ua.consignee,g.goods_id,g.counts,l.code,mol.logistics_sn,c.store_id,s.store_name,group_concat(c.goods_thumb) as tb FROM sg_order o LEFT JOIN sg_order AS mo ON mo.parent_order_sn = o.order_sn LEFT JOIN sg_order_goods AS g ON (o.order_sn = g.order_sn)or(mo.order_sn = g.order_sn) LEFT JOIN sg_seller_delivery AS c ON c.id = g.goods_id LEFT JOIN sg_store AS s ON s.sid = c.store_id LEFT JOIN sg_users_address AS ua ON ua.address_id = o.address_id LEFT JOIN sg_order_logistics AS mol ON o.order_sn = mol.order_sn LEFT JOIN sg_logistics AS l ON l.id = mol.type  WHERE o.uid = '843' AND o.status IN ('0','1','2','3','6','99') AND ( !(o.is_son=1 and o.status=0) and !( o.is_son=0 and o.status!=0) ) GROUP BY o.order_sn ORDER BY add_time DESC,id DESC LIMIT 0,8   [ RunTime:0.0040s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: web_keywords D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 7 行.
+NOTIC: [8] Undefined variable: web_description D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 8 行.
+NOTIC: [8] Undefined variable: mnav D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 79 行.
+NOTIC: [8] Undefined variable: mnav D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 80 行.
+NOTIC: [8] Undefined variable: mnav D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 84 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 88 行.
+NOTIC: [8] Undefined variable: mnav D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 90 行.
+NOTIC: [8] Undefined variable: mnav D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 91 行.
+NOTIC: [8] Undefined variable: mnav D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 92 行.
+NOTIC: [8] Undefined variable: mnav D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 96 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.044002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.044002s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.002000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-01-04T11:19:13+08:00 ] ::1 /somegood/Shop/Cart/getCartGoods.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_cart` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_cart` WHERE `user_id` = 843  [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_cart` [ RunTime:0.0020s ]
+SQL: SELECT SUM(counts) AS tp_sum FROM `sg_cart` WHERE `user_id` = 843 LIMIT 1   [ RunTime:0.0010s ]
+
+[ 2018-01-04T11:19:32+08:00 ] ::1 /somegood/Shop/UserOrder/orderlist/status/0.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+NOTIC: [8] Undefined variable: pageCondition D:\xampps\htdocs\somegood\Apps\Shop\Controller\UserOrderController.class.php 第 34 行.
+SQL: SELECT COUNT(*) AS tp_count FROM ( SELECT o.*,c.goods_title,g.goods_id,group_concat(c.goods_thumb) as tb FROM sg_order o LEFT JOIN sg_order AS mo ON mo.parent_order_sn = o.order_sn LEFT JOIN sg_order_goods AS g ON (o.order_sn = g.order_sn)or(mo.order_sn = g.order_sn) LEFT JOIN sg_goods AS c ON c.id = g.goods_id  WHERE o.uid = '843' AND o.status = '0' AND ( o.is_son=0 OR o.is_son=2 ) GROUP BY o.order_sn ORDER BY add_time DESC,id DESC  ) a LIMIT 1   [ RunTime:0.0050s ]
+SQL: SELECT o.*,c.goods_title,ua.consignee,g.goods_id,g.counts,l.code,mol.logistics_sn,c.store_id,s.store_name,group_concat(c.goods_thumb) as tb FROM sg_order o LEFT JOIN sg_order AS mo ON mo.parent_order_sn = o.order_sn LEFT JOIN sg_order_goods AS g ON (o.order_sn = g.order_sn)or(mo.order_sn = g.order_sn) LEFT JOIN sg_seller_delivery AS c ON c.id = g.goods_id LEFT JOIN sg_store AS s ON s.sid = c.store_id LEFT JOIN sg_users_address AS ua ON ua.address_id = o.address_id LEFT JOIN sg_order_logistics AS mol ON o.order_sn = mol.order_sn LEFT JOIN sg_logistics AS l ON l.id = mol.type  WHERE o.uid = '843' AND o.status = '0' AND ( o.is_son=0 OR o.is_son=2 ) GROUP BY o.order_sn ORDER BY add_time DESC,id DESC LIMIT 0,8   [ RunTime:0.0050s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: web_keywords D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 7 行.
+NOTIC: [8] Undefined variable: web_description D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 8 行.
+NOTIC: [8] Undefined variable: mnav D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 79 行.
+NOTIC: [8] Undefined variable: mnav D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 80 行.
+NOTIC: [8] Undefined variable: mnav D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 84 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 88 行.
+NOTIC: [8] Undefined variable: mnav D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 90 行.
+NOTIC: [8] Undefined variable: mnav D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 91 行.
+NOTIC: [8] Undefined variable: mnav D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 92 行.
+NOTIC: [8] Undefined variable: mnav D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 96 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.013000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.013000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-01-04T11:19:32+08:00 ] ::1 /somegood/Shop/Cart/getCartGoods.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_cart` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_cart` WHERE `user_id` = 843  [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `sg_cart` [ RunTime:0.0020s ]
+SQL: SELECT SUM(counts) AS tp_sum FROM `sg_cart` WHERE `user_id` = 843 LIMIT 1   [ RunTime:0.0010s ]
+
+[ 2018-01-04T11:19:32+08:00 ] ::1 /somegood/Shop/UserOrder/orderlist/status/1.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+SQL: SELECT COUNT(*) AS tp_count FROM ( SELECT o.*,c.goods_title,g.goods_id,group_concat(c.goods_thumb) as tb FROM sg_order o LEFT JOIN sg_order AS mo ON mo.parent_order_sn = o.order_sn LEFT JOIN sg_order_goods AS g ON (o.order_sn = g.order_sn)or(mo.order_sn = g.order_sn) LEFT JOIN sg_goods AS c ON c.id = g.goods_id  WHERE o.uid = '843' AND o.status = '1' AND ( o.is_son=1 OR o.is_son=2 ) GROUP BY o.order_sn ORDER BY add_time DESC,id DESC  ) a LIMIT 1   [ RunTime:0.0040s ]
+SQL: SELECT o.*,c.goods_title,ua.consignee,g.goods_id,g.counts,l.code,mol.logistics_sn,c.store_id,s.store_name,group_concat(c.goods_thumb) as tb FROM sg_order o LEFT JOIN sg_order AS mo ON mo.parent_order_sn = o.order_sn LEFT JOIN sg_order_goods AS g ON (o.order_sn = g.order_sn)or(mo.order_sn = g.order_sn) LEFT JOIN sg_seller_delivery AS c ON c.id = g.goods_id LEFT JOIN sg_store AS s ON s.sid = c.store_id LEFT JOIN sg_users_address AS ua ON ua.address_id = o.address_id LEFT JOIN sg_order_logistics AS mol ON o.order_sn = mol.order_sn LEFT JOIN sg_logistics AS l ON l.id = mol.type  WHERE o.uid = '843' AND o.status = '1' AND ( o.is_son=1 OR o.is_son=2 ) GROUP BY o.order_sn ORDER BY add_time DESC,id DESC LIMIT 0,8   [ RunTime:0.0040s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: web_keywords D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 7 行.
+NOTIC: [8] Undefined variable: web_description D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 8 行.
+NOTIC: [8] Undefined variable: mnav D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 79 行.
+NOTIC: [8] Undefined variable: mnav D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 80 行.
+NOTIC: [8] Undefined variable: mnav D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 84 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 88 行.
+NOTIC: [8] Undefined variable: mnav D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 90 行.
+NOTIC: [8] Undefined variable: mnav D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 91 行.
+NOTIC: [8] Undefined variable: mnav D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 92 行.
+NOTIC: [8] Undefined variable: mnav D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 96 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.015001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-01-04T11:19:32+08:00 ] ::1 /somegood/Shop/Cart/getCartGoods.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_cart` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_cart` WHERE `user_id` = 843  [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `sg_cart` [ RunTime:0.0020s ]
+SQL: SELECT SUM(counts) AS tp_sum FROM `sg_cart` WHERE `user_id` = 843 LIMIT 1   [ RunTime:0.0010s ]
+
+[ 2018-01-04T11:19:33+08:00 ] ::1 /somegood/Shop/UserOrder/orderlist/status/2.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0040s ]
+SQL: SELECT COUNT(*) AS tp_count FROM ( SELECT o.*,c.goods_title,g.goods_id,group_concat(c.goods_thumb) as tb FROM sg_order o LEFT JOIN sg_order AS mo ON mo.parent_order_sn = o.order_sn LEFT JOIN sg_order_goods AS g ON (o.order_sn = g.order_sn)or(mo.order_sn = g.order_sn) LEFT JOIN sg_goods AS c ON c.id = g.goods_id  WHERE o.uid = '843' AND o.status = '2' AND ( o.is_son=1 OR o.is_son=2 ) GROUP BY o.order_sn ORDER BY add_time DESC,id DESC  ) a LIMIT 1   [ RunTime:0.0050s ]
+SQL: SELECT o.*,c.goods_title,ua.consignee,g.goods_id,g.counts,l.code,mol.logistics_sn,c.store_id,s.store_name,group_concat(c.goods_thumb) as tb FROM sg_order o LEFT JOIN sg_order AS mo ON mo.parent_order_sn = o.order_sn LEFT JOIN sg_order_goods AS g ON (o.order_sn = g.order_sn)or(mo.order_sn = g.order_sn) LEFT JOIN sg_seller_delivery AS c ON c.id = g.goods_id LEFT JOIN sg_store AS s ON s.sid = c.store_id LEFT JOIN sg_users_address AS ua ON ua.address_id = o.address_id LEFT JOIN sg_order_logistics AS mol ON o.order_sn = mol.order_sn LEFT JOIN sg_logistics AS l ON l.id = mol.type  WHERE o.uid = '843' AND o.status = '2' AND ( o.is_son=1 OR o.is_son=2 ) GROUP BY o.order_sn ORDER BY add_time DESC,id DESC LIMIT 0,8   [ RunTime:0.0070s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined variable: web_keywords D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 7 行.
+NOTIC: [8] Undefined variable: web_description D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 8 行.
+NOTIC: [8] Undefined variable: mnav D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 79 行.
+NOTIC: [8] Undefined variable: mnav D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 80 行.
+NOTIC: [8] Undefined variable: mnav D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 84 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 88 行.
+NOTIC: [8] Undefined variable: mnav D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 90 行.
+NOTIC: [8] Undefined variable: mnav D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 91 行.
+NOTIC: [8] Undefined variable: mnav D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 92 行.
+NOTIC: [8] Undefined variable: mnav D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 96 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.025001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.025001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-01-04T11:19:33+08:00 ] ::1 /somegood/Shop/Cart/getCartGoods.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001001s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001001s ]
+SQL: SHOW COLUMNS FROM `sg_cart` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_cart` WHERE `user_id` = 843  [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_cart` [ RunTime:0.0030s ]
+SQL: SELECT SUM(counts) AS tp_sum FROM `sg_cart` WHERE `user_id` = 843 LIMIT 1   [ RunTime:0.0010s ]
+
+[ 2018-01-04T11:19:33+08:00 ] ::1 /somegood/Shop/UserOrder/orderlist/status/3.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+NOTIC: [8] Undefined variable: pageCondition D:\xampps\htdocs\somegood\Apps\Shop\Controller\UserOrderController.class.php 第 34 行.
+SQL: SELECT COUNT(*) AS tp_count FROM ( SELECT o.*,c.goods_title,g.goods_id,group_concat(c.goods_thumb) as tb FROM sg_order o LEFT JOIN sg_order AS mo ON mo.parent_order_sn = o.order_sn LEFT JOIN sg_order_goods AS g ON (o.order_sn = g.order_sn)or(mo.order_sn = g.order_sn) LEFT JOIN sg_goods AS c ON c.id = g.goods_id  WHERE o.uid = '843' AND ( (o.is_son=1 OR o.is_son=2) and (o.status=3 or o.status=6) ) GROUP BY o.order_sn ORDER BY add_time DESC,id DESC  ) a LIMIT 1   [ RunTime:0.0050s ]
+SQL: SELECT o.*,c.goods_title,ua.consignee,g.goods_id,g.counts,l.code,mol.logistics_sn,c.store_id,s.store_name,group_concat(c.goods_thumb) as tb FROM sg_order o LEFT JOIN sg_order AS mo ON mo.parent_order_sn = o.order_sn LEFT JOIN sg_order_goods AS g ON (o.order_sn = g.order_sn)or(mo.order_sn = g.order_sn) LEFT JOIN sg_seller_delivery AS c ON c.id = g.goods_id LEFT JOIN sg_store AS s ON s.sid = c.store_id LEFT JOIN sg_users_address AS ua ON ua.address_id = o.address_id LEFT JOIN sg_order_logistics AS mol ON o.order_sn = mol.order_sn LEFT JOIN sg_logistics AS l ON l.id = mol.type  WHERE o.uid = '843' AND ( (o.is_son=1 OR o.is_son=2) and (o.status=3 or o.status=6) ) GROUP BY o.order_sn ORDER BY add_time DESC,id DESC LIMIT 0,8   [ RunTime:0.0040s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined variable: web_keywords D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 7 行.
+NOTIC: [8] Undefined variable: web_description D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 8 行.
+NOTIC: [8] Undefined variable: mnav D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 79 行.
+NOTIC: [8] Undefined variable: mnav D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 80 行.
+NOTIC: [8] Undefined variable: mnav D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 84 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 88 行.
+NOTIC: [8] Undefined variable: mnav D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 90 行.
+NOTIC: [8] Undefined variable: mnav D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 91 行.
+NOTIC: [8] Undefined variable: mnav D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 92 行.
+NOTIC: [8] Undefined variable: mnav D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 96 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.017001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.017001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.001001s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002001s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-01-04T11:19:33+08:00 ] ::1 /somegood/Shop/Cart/getCartGoods.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_cart` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_cart` WHERE `user_id` = 843  [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `sg_cart` [ RunTime:0.0030s ]
+SQL: SELECT SUM(counts) AS tp_sum FROM `sg_cart` WHERE `user_id` = 843 LIMIT 1   [ RunTime:0.0010s ]
+
+[ 2018-01-04T11:19:34+08:00 ] ::1 /somegood/Shop/UserOrder/orderlist/status/2.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+SQL: SELECT COUNT(*) AS tp_count FROM ( SELECT o.*,c.goods_title,g.goods_id,group_concat(c.goods_thumb) as tb FROM sg_order o LEFT JOIN sg_order AS mo ON mo.parent_order_sn = o.order_sn LEFT JOIN sg_order_goods AS g ON (o.order_sn = g.order_sn)or(mo.order_sn = g.order_sn) LEFT JOIN sg_goods AS c ON c.id = g.goods_id  WHERE o.uid = '843' AND o.status = '2' AND ( o.is_son=1 OR o.is_son=2 ) GROUP BY o.order_sn ORDER BY add_time DESC,id DESC  ) a LIMIT 1   [ RunTime:0.0050s ]
+SQL: SELECT o.*,c.goods_title,ua.consignee,g.goods_id,g.counts,l.code,mol.logistics_sn,c.store_id,s.store_name,group_concat(c.goods_thumb) as tb FROM sg_order o LEFT JOIN sg_order AS mo ON mo.parent_order_sn = o.order_sn LEFT JOIN sg_order_goods AS g ON (o.order_sn = g.order_sn)or(mo.order_sn = g.order_sn) LEFT JOIN sg_seller_delivery AS c ON c.id = g.goods_id LEFT JOIN sg_store AS s ON s.sid = c.store_id LEFT JOIN sg_users_address AS ua ON ua.address_id = o.address_id LEFT JOIN sg_order_logistics AS mol ON o.order_sn = mol.order_sn LEFT JOIN sg_logistics AS l ON l.id = mol.type  WHERE o.uid = '843' AND o.status = '2' AND ( o.is_son=1 OR o.is_son=2 ) GROUP BY o.order_sn ORDER BY add_time DESC,id DESC LIMIT 0,8   [ RunTime:0.0050s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: web_keywords D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 7 行.
+NOTIC: [8] Undefined variable: web_description D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 8 行.
+NOTIC: [8] Undefined variable: mnav D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 79 行.
+NOTIC: [8] Undefined variable: mnav D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 80 行.
+NOTIC: [8] Undefined variable: mnav D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 84 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 88 行.
+NOTIC: [8] Undefined variable: mnav D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 90 行.
+NOTIC: [8] Undefined variable: mnav D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 91 行.
+NOTIC: [8] Undefined variable: mnav D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 92 行.
+NOTIC: [8] Undefined variable: mnav D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 96 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.019001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.019001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.001001s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001001s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-01-04T11:19:34+08:00 ] ::1 /somegood/Shop/Cart/getCartGoods.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_cart` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_cart` WHERE `user_id` = 843  [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `sg_cart` [ RunTime:0.0020s ]
+SQL: SELECT SUM(counts) AS tp_sum FROM `sg_cart` WHERE `user_id` = 843 LIMIT 1   [ RunTime:0.0000s ]
+
+[ 2018-01-04T11:19:34+08:00 ] ::1 /somegood/Shop/UserOrder/orderlist/status/1.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003001s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0040s ]
+SQL: SELECT COUNT(*) AS tp_count FROM ( SELECT o.*,c.goods_title,g.goods_id,group_concat(c.goods_thumb) as tb FROM sg_order o LEFT JOIN sg_order AS mo ON mo.parent_order_sn = o.order_sn LEFT JOIN sg_order_goods AS g ON (o.order_sn = g.order_sn)or(mo.order_sn = g.order_sn) LEFT JOIN sg_goods AS c ON c.id = g.goods_id  WHERE o.uid = '843' AND o.status = '1' AND ( o.is_son=1 OR o.is_son=2 ) GROUP BY o.order_sn ORDER BY add_time DESC,id DESC  ) a LIMIT 1   [ RunTime:0.0050s ]
+SQL: SELECT o.*,c.goods_title,ua.consignee,g.goods_id,g.counts,l.code,mol.logistics_sn,c.store_id,s.store_name,group_concat(c.goods_thumb) as tb FROM sg_order o LEFT JOIN sg_order AS mo ON mo.parent_order_sn = o.order_sn LEFT JOIN sg_order_goods AS g ON (o.order_sn = g.order_sn)or(mo.order_sn = g.order_sn) LEFT JOIN sg_seller_delivery AS c ON c.id = g.goods_id LEFT JOIN sg_store AS s ON s.sid = c.store_id LEFT JOIN sg_users_address AS ua ON ua.address_id = o.address_id LEFT JOIN sg_order_logistics AS mol ON o.order_sn = mol.order_sn LEFT JOIN sg_logistics AS l ON l.id = mol.type  WHERE o.uid = '843' AND o.status = '1' AND ( o.is_son=1 OR o.is_son=2 ) GROUP BY o.order_sn ORDER BY add_time DESC,id DESC LIMIT 0,8   [ RunTime:0.0040s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: web_keywords D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 7 行.
+NOTIC: [8] Undefined variable: web_description D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 8 行.
+NOTIC: [8] Undefined variable: mnav D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 79 行.
+NOTIC: [8] Undefined variable: mnav D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 80 行.
+NOTIC: [8] Undefined variable: mnav D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 84 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 88 行.
+NOTIC: [8] Undefined variable: mnav D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 90 行.
+NOTIC: [8] Undefined variable: mnav D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 91 行.
+NOTIC: [8] Undefined variable: mnav D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 92 行.
+NOTIC: [8] Undefined variable: mnav D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 96 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.022001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.022001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-01-04T11:19:35+08:00 ] ::1 /somegood/Shop/Cart/getCartGoods.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_cart` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `sg_cart` WHERE `user_id` = 843  [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_cart` [ RunTime:0.0030s ]
+SQL: SELECT SUM(counts) AS tp_sum FROM `sg_cart` WHERE `user_id` = 843 LIMIT 1   [ RunTime:0.0020s ]
+
+[ 2018-01-04T11:19:35+08:00 ] ::1 /somegood/Shop/UserOrder/orderlist/status/0.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+NOTIC: [8] Undefined variable: pageCondition D:\xampps\htdocs\somegood\Apps\Shop\Controller\UserOrderController.class.php 第 34 行.
+SQL: SELECT COUNT(*) AS tp_count FROM ( SELECT o.*,c.goods_title,g.goods_id,group_concat(c.goods_thumb) as tb FROM sg_order o LEFT JOIN sg_order AS mo ON mo.parent_order_sn = o.order_sn LEFT JOIN sg_order_goods AS g ON (o.order_sn = g.order_sn)or(mo.order_sn = g.order_sn) LEFT JOIN sg_goods AS c ON c.id = g.goods_id  WHERE o.uid = '843' AND o.status = '0' AND ( o.is_son=0 OR o.is_son=2 ) GROUP BY o.order_sn ORDER BY add_time DESC,id DESC  ) a LIMIT 1   [ RunTime:0.0040s ]
+SQL: SELECT o.*,c.goods_title,ua.consignee,g.goods_id,g.counts,l.code,mol.logistics_sn,c.store_id,s.store_name,group_concat(c.goods_thumb) as tb FROM sg_order o LEFT JOIN sg_order AS mo ON mo.parent_order_sn = o.order_sn LEFT JOIN sg_order_goods AS g ON (o.order_sn = g.order_sn)or(mo.order_sn = g.order_sn) LEFT JOIN sg_seller_delivery AS c ON c.id = g.goods_id LEFT JOIN sg_store AS s ON s.sid = c.store_id LEFT JOIN sg_users_address AS ua ON ua.address_id = o.address_id LEFT JOIN sg_order_logistics AS mol ON o.order_sn = mol.order_sn LEFT JOIN sg_logistics AS l ON l.id = mol.type  WHERE o.uid = '843' AND o.status = '0' AND ( o.is_son=0 OR o.is_son=2 ) GROUP BY o.order_sn ORDER BY add_time DESC,id DESC LIMIT 0,8   [ RunTime:0.0050s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: web_keywords D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 7 行.
+NOTIC: [8] Undefined variable: web_description D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 8 行.
+NOTIC: [8] Undefined variable: mnav D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 79 行.
+NOTIC: [8] Undefined variable: mnav D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 80 行.
+NOTIC: [8] Undefined variable: mnav D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 84 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 88 行.
+NOTIC: [8] Undefined variable: mnav D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 90 行.
+NOTIC: [8] Undefined variable: mnav D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 91 行.
+NOTIC: [8] Undefined variable: mnav D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 92 行.
+NOTIC: [8] Undefined variable: mnav D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 96 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.012001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.012001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.002000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-01-04T11:19:35+08:00 ] ::1 /somegood/Shop/Cart/getCartGoods.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_cart` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_cart` WHERE `user_id` = 843  [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `sg_cart` [ RunTime:0.0030s ]
+SQL: SELECT SUM(counts) AS tp_sum FROM `sg_cart` WHERE `user_id` = 843 LIMIT 1   [ RunTime:0.0020s ]
+
+[ 2018-01-04T11:19:36+08:00 ] ::1 /somegood/Shop/UserOrder/orderlist/status/100.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+NOTIC: [8] Undefined variable: pageCondition D:\xampps\htdocs\somegood\Apps\Shop\Controller\UserOrderController.class.php 第 34 行.
+SQL: SELECT COUNT(*) AS tp_count FROM ( SELECT o.*,c.goods_title,g.goods_id,group_concat(c.goods_thumb) as tb FROM sg_order o LEFT JOIN sg_order AS mo ON mo.parent_order_sn = o.order_sn LEFT JOIN sg_order_goods AS g ON (o.order_sn = g.order_sn)or(mo.order_sn = g.order_sn) LEFT JOIN sg_goods AS c ON c.id = g.goods_id  WHERE o.uid = '843' AND o.status IN ('0','1','2','3','6','99') AND ( !(o.is_son=1 and o.status=0) and !( o.is_son=0 and o.status!=0) ) GROUP BY o.order_sn ORDER BY add_time DESC,id DESC  ) a LIMIT 1   [ RunTime:0.0060s ]
+SQL: SELECT o.*,c.goods_title,ua.consignee,g.goods_id,g.counts,l.code,mol.logistics_sn,c.store_id,s.store_name,group_concat(c.goods_thumb) as tb FROM sg_order o LEFT JOIN sg_order AS mo ON mo.parent_order_sn = o.order_sn LEFT JOIN sg_order_goods AS g ON (o.order_sn = g.order_sn)or(mo.order_sn = g.order_sn) LEFT JOIN sg_seller_delivery AS c ON c.id = g.goods_id LEFT JOIN sg_store AS s ON s.sid = c.store_id LEFT JOIN sg_users_address AS ua ON ua.address_id = o.address_id LEFT JOIN sg_order_logistics AS mol ON o.order_sn = mol.order_sn LEFT JOIN sg_logistics AS l ON l.id = mol.type  WHERE o.uid = '843' AND o.status IN ('0','1','2','3','6','99') AND ( !(o.is_son=1 and o.status=0) and !( o.is_son=0 and o.status!=0) ) GROUP BY o.order_sn ORDER BY add_time DESC,id DESC LIMIT 0,8   [ RunTime:0.0050s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: web_keywords D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 7 行.
+NOTIC: [8] Undefined variable: web_description D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 8 行.
+NOTIC: [8] Undefined variable: mnav D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 79 行.
+NOTIC: [8] Undefined variable: mnav D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 80 行.
+NOTIC: [8] Undefined variable: mnav D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 84 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 88 行.
+NOTIC: [8] Undefined variable: mnav D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 90 行.
+NOTIC: [8] Undefined variable: mnav D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 91 行.
+NOTIC: [8] Undefined variable: mnav D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 92 行.
+NOTIC: [8] Undefined variable: mnav D:\xampps\htdocs\somegood\Runtime\Cache\Shop\bbd35982160f474d766a87af4beb3ffc.php 第 96 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.015001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.002000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-01-04T11:19:36+08:00 ] ::1 /somegood/Shop/Cart/getCartGoods.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_cart` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_cart` WHERE `user_id` = 843  [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_cart` [ RunTime:0.0030s ]
+SQL: SELECT SUM(counts) AS tp_sum FROM `sg_cart` WHERE `user_id` = 843 LIMIT 1   [ RunTime:0.0010s ]
+
+[ 2018-01-04T11:19:37+08:00 ] ::1 /somegood/Shop/Users/amount.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: web_keywords D:\xampps\htdocs\somegood\Runtime\Cache\Shop\0f1217d4151994d1e10ff35bc05caf26.php 第 7 行.
+NOTIC: [8] Undefined variable: web_description D:\xampps\htdocs\somegood\Runtime\Cache\Shop\0f1217d4151994d1e10ff35bc05caf26.php 第 8 行.
+NOTIC: [8] Undefined variable: mnav D:\xampps\htdocs\somegood\Runtime\Cache\Shop\0f1217d4151994d1e10ff35bc05caf26.php 第 80 行.
+NOTIC: [8] Undefined variable: mnav D:\xampps\htdocs\somegood\Runtime\Cache\Shop\0f1217d4151994d1e10ff35bc05caf26.php 第 81 行.
+NOTIC: [8] Undefined variable: mnav D:\xampps\htdocs\somegood\Runtime\Cache\Shop\0f1217d4151994d1e10ff35bc05caf26.php 第 85 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Shop\0f1217d4151994d1e10ff35bc05caf26.php 第 89 行.
+NOTIC: [8] Undefined variable: mnav D:\xampps\htdocs\somegood\Runtime\Cache\Shop\0f1217d4151994d1e10ff35bc05caf26.php 第 91 行.
+NOTIC: [8] Undefined variable: mnav D:\xampps\htdocs\somegood\Runtime\Cache\Shop\0f1217d4151994d1e10ff35bc05caf26.php 第 92 行.
+NOTIC: [8] Undefined variable: mnav D:\xampps\htdocs\somegood\Runtime\Cache\Shop\0f1217d4151994d1e10ff35bc05caf26.php 第 93 行.
+NOTIC: [8] Undefined variable: mnav D:\xampps\htdocs\somegood\Runtime\Cache\Shop\0f1217d4151994d1e10ff35bc05caf26.php 第 97 行.
+NOTIC: [8] Undefined variable: page D:\xampps\htdocs\somegood\Runtime\Cache\Shop\0f1217d4151994d1e10ff35bc05caf26.php 第 117 行.
+NOTIC: [8] Undefined variable: status D:\xampps\htdocs\somegood\Runtime\Cache\Shop\0f1217d4151994d1e10ff35bc05caf26.php 第 120 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.014000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.014000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-01-04T11:19:37+08:00 ] ::1 /somegood/Shop/Cart/getCartGoods.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `sg_cart` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_cart` WHERE `user_id` = 843  [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_cart` [ RunTime:0.0020s ]
+SQL: SELECT SUM(counts) AS tp_sum FROM `sg_cart` WHERE `user_id` = 843 LIMIT 1   [ RunTime:0.0020s ]
+
+[ 2018-01-04T11:19:38+08:00 ] ::1 /somegood/Shop/Users/coupon/pageType/can_use.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_coupon` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `sg_coupon` [ RunTime:0.0030s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `sg_coupon` WHERE `user_id` = 843 AND `used_time` = 0 AND `is_delete` = 0 LIMIT 1   [ RunTime:0.0010s ]
+NOTIC: [2] Division by zero D:\xampps\htdocs\somegood\ThinkPHP\Library\Think\Page.class.php 第 75 行.
+NOTIC: [2] trim() expects parameter 1 to be string, array given D:\xampps\htdocs\somegood\ThinkPHP\Common\functions.php 第 1010 行.
+NOTIC: [2] urlencode() expects parameter 1 to be string, array given D:\xampps\htdocs\somegood\ThinkPHP\Common\functions.php 第 1010 行.
+NOTIC: [2] Division by zero D:\xampps\htdocs\somegood\ThinkPHP\Library\Think\Page.class.php 第 75 行.
+NOTIC: [8] Undefined index: limit D:\xampps\htdocs\somegood\ThinkPHP\Library\Think\Db\Driver.class.php 第 961 行.
+SQL: SELECT c.coupon_id,c.coupon_sn,c.used_time,o.order_sn,u.nick_name,ct.type_name,ct.is_del,ct.type_money,ct.min_goods_amount AS min,ct.is_all,ct.use_start_date,ct.use_end_date,ct.type_id FROM sg_coupon c LEFT JOIN sg_users AS u ON u.uid = c.user_id LEFT JOIN sg_order AS o ON c.order_id = o.id LEFT JOIN sg_coupon_type AS ct ON c.coupon_type_id = ct.type_id  WHERE `user_id` = '843' AND `used_time` = 0 AND `use_start_date` < 1515035978 AND `is_delete` = 0 LIMIT 0,20   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_coupon_type_list` [ RunTime:0.0290s ]
+SQL: SELECT gc.title FROM sg_coupon_type_list ctl LEFT JOIN sg_goods_category AS gc ON ctl.goods_cate = gc.id  WHERE `coupon_type_id` = '9'  [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined variable: web_keywords D:\xampps\htdocs\somegood\Runtime\Cache\Shop\1df807f6af3922694616c3273850eeff.php 第 7 行.
+NOTIC: [8] Undefined variable: web_description D:\xampps\htdocs\somegood\Runtime\Cache\Shop\1df807f6af3922694616c3273850eeff.php 第 8 行.
+NOTIC: [8] Undefined variable: info D:\xampps\htdocs\somegood\Runtime\Cache\Shop\1df807f6af3922694616c3273850eeff.php 第 89 行.
+NOTIC: [8] Undefined variable: sum D:\xampps\htdocs\somegood\Runtime\Cache\Shop\1df807f6af3922694616c3273850eeff.php 第 106 行.
+NOTIC: [8] Undefined variable: type D:\xampps\htdocs\somegood\Runtime\Cache\Shop\1df807f6af3922694616c3273850eeff.php 第 112 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.038003s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.038003s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-01-04T11:19:38+08:00 ] ::1 /somegood/Shop/Cart/getCartGoods.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_cart` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `sg_cart` WHERE `user_id` = 843  [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_cart` [ RunTime:0.0020s ]
+SQL: SELECT SUM(counts) AS tp_sum FROM `sg_cart` WHERE `user_id` = 843 LIMIT 1   [ RunTime:0.0010s ]
+
+[ 2018-01-04T11:19:40+08:00 ] ::1 /somegood/Shop/Users/setting/action/info.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [2048] Declaration of Common\Model\UsersModel::save() should be compatible with Think\Model::save($data = '', $options = Array) D:\xampps\htdocs\somegood\Apps\Common\Model\UsersModel.class.php 第 5 行.
+SQL: SHOW COLUMNS FROM `sg_users` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `sg_users` [ RunTime:0.0030s ]
+SQL: SELECT u.*,s.sid,s.store_name FROM sg_users u LEFT JOIN sg_store AS s ON s.user_id=u.uid  WHERE `uid` = '843' LIMIT 1   [ RunTime:0.0020s ]
+NOTIC: [2048] Declaration of Common\Model\RegionModel::add() should be compatible with Think\Model::add($data = '', $options = Array, $replace = false) D:\xampps\htdocs\somegood\Apps\Common\Model\RegionModel.class.php 第 242 行.
+NOTIC: [2048] Declaration of Common\Model\RegionModel::save() should be compatible with Think\Model::save($data = '', $options = Array) D:\xampps\htdocs\somegood\Apps\Common\Model\RegionModel.class.php 第 242 行.
+SQL: SHOW COLUMNS FROM `sg_region` [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `sg_region` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `sg_region` WHERE ( pid=0 )  [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `sg_region` [ RunTime:0.0020s ]
+SQL: SELECT `merger_name` FROM `sg_region` WHERE `id` = 1831 LIMIT 1   [ RunTime:0.0070s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: web_keywords D:\xampps\htdocs\somegood\Runtime\Cache\Shop\4c3bd03f6a58fb2cb50567bcb66bbb9f.php 第 7 行.
+NOTIC: [8] Undefined variable: web_description D:\xampps\htdocs\somegood\Runtime\Cache\Shop\4c3bd03f6a58fb2cb50567bcb66bbb9f.php 第 8 行.
+NOTIC: [8] Undefined index: is_salesman D:\xampps\htdocs\somegood\Runtime\Cache\Shop\4c3bd03f6a58fb2cb50567bcb66bbb9f.php 第 120 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.041002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.041002s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-01-04T11:19:40+08:00 ] ::1 /somegood/Shop/Cart/getCartGoods.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_cart` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_cart` WHERE `user_id` = 843  [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_cart` [ RunTime:0.0030s ]
+SQL: SELECT SUM(counts) AS tp_sum FROM `sg_cart` WHERE `user_id` = 843 LIMIT 1   [ RunTime:0.0010s ]
+
+[ 2018-01-04T11:19:43+08:00 ] ::1 /somegood/Shop/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: web_keywords D:\xampps\htdocs\somegood\Runtime\Cache\Shop\ae708c66cec6f9d7ecb4a80282dd4c4a.php 第 6 行.
+NOTIC: [8] Undefined variable: web_description D:\xampps\htdocs\somegood\Runtime\Cache\Shop\ae708c66cec6f9d7ecb4a80282dd4c4a.php 第 7 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.021001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.022001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.002001s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002001s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-01-04T11:19:43+08:00 ] ::1 /somegood/Shop/Cart/getCartGoods.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_cart` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_cart` WHERE `user_id` = 843  [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `sg_cart` [ RunTime:0.0020s ]
+SQL: SELECT SUM(counts) AS tp_sum FROM `sg_cart` WHERE `user_id` = 843 LIMIT 1   [ RunTime:0.0020s ]
+
+[ 2018-01-04T11:19:56+08:00 ] ::1 /somegood/shop/goods/goods/id/1
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_goods` [ RunTime:0.0040s ]
+SQL: SELECT COUNT(*) AS tp_count FROM sg_goods g LEFT JOIN sg_seller_delivery AS sd ON sd.sg_id = g.id LEFT JOIN sg_store AS s ON s.sid = sd.store_id LEFT JOIN sg_region AS r ON r.id = s.area_id  WHERE g.id = '1' AND sd.is_onsale = 1 AND sd.is_delivery = 1 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT sd.id,s.sid,g.details,g.user_id,g.original_img,g.goods_title,g.params,g.length,g.width,g.height,g.content,sd.stock,g.market_price,g.goods_sn,gc.title,g.price,g.browse_num,s.store_name,r.shortname,s.lng,s.lat,round(6378.138*2*asin(sqrt(pow(sin( (22.598102*pi()/180-s.lat*pi()/180)/2),2)+cos(22.598102*pi()/180)*cos(s.lat*pi()/180)* pow(sin( (114.000709*pi()/180-s.lng*pi()/180)/2),2)))*1000)*0.001 as distance FROM sg_goods g LEFT JOIN sg_seller_delivery AS sd ON sd.sg_id = g.id LEFT JOIN sg_store AS s ON s.sid = sd.store_id LEFT JOIN sg_goods_category AS gc ON gc.id = g.category_id LEFT JOIN sg_region AS r ON r.id = s.area_id  WHERE g.id = '1' AND sd.is_onsale = 1 AND sd.is_delivery = 1 ORDER BY distance ASC LIMIT 0,8   [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `sg_goods` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `sg_favorites` [ RunTime:0.0030s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `sg_favorites` WHERE `fuser_id` = 843 AND `favorite_id` = 1 AND `favorite_type` = 0 LIMIT 1   [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: web_keywords D:\xampps\htdocs\somegood\Runtime\Cache\Shop\f1589efb03b3b3a12c2a32464522e780.php 第 6 行.
+NOTIC: [8] Undefined variable: web_description D:\xampps\htdocs\somegood\Runtime\Cache\Shop\f1589efb03b3b3a12c2a32464522e780.php 第 7 行.
+NOTIC: [8] Undefined variable: catId D:\xampps\htdocs\somegood\Runtime\Cache\Shop\f1589efb03b3b3a12c2a32464522e780.php 第 241 行.
+NOTIC: [8] Undefined index: goods_sub_title D:\xampps\htdocs\somegood\Runtime\Cache\Shop\f1589efb03b3b3a12c2a32464522e780.php 第 249 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.040002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.040002s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-01-04T11:19:56+08:00 ] ::1 /somegood/Shop/Cart/getCartGoods.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_cart` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_cart` WHERE `user_id` = 843  [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_cart` [ RunTime:0.0020s ]
+SQL: SELECT SUM(counts) AS tp_sum FROM `sg_cart` WHERE `user_id` = 843 LIMIT 1   [ RunTime:0.0020s ]
+
+[ 2018-01-04T11:20:00+08:00 ] ::1 /somegood/Shop/Goods/goods.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_seller_delivery` [ RunTime:0.0030s ]
+SQL: SELECT sd.id as id,s.sid as store_id,s.store_name FROM sg_seller_delivery sd LEFT JOIN sg_store AS s ON sd.store_id = s.sid  WHERE `sg_id` = '1'  [ RunTime:0.0020s ]
+
+[ 2018-01-04T11:20:02+08:00 ] ::1 /somegood/Shop/Cart/addGoods.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `sg_goods` [ RunTime:0.0050s ]
+SQL: SHOW COLUMNS FROM `sg_seller_delivery` [ RunTime:0.0030s ]
+SQL: SELECT sd.id,g.online_stock,g.user_id as seller_id,sd.store_id,s.store_name,sd.goods_title,sd.goods_thumb,sd.market_price,sd.price,sd.stock FROM sg_seller_delivery sd LEFT JOIN sg_goods AS g ON g.id = sd.sg_id LEFT JOIN sg_store AS s ON s.sid = sd.store_id  WHERE sd.id = '1' LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_cart` [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `sg_cart` [ RunTime:0.0030s ]
+SQL: SELECT `counts`,`store_id` FROM `sg_cart` WHERE `phpsessid` = 0 AND `user_id` = 843 AND `goods_id` = 1 LIMIT 1   [ RunTime:0.0010s ]
+SQL: INSERT INTO `sg_cart` (`user_id`,`goods_id`,`real_goods_id`,`store_id`,`seller_id`,`store_name`,`phpsessid`,`market_price`,`goods_price`,`counts`,`goods_title`,`goods_thumb`,`add_time`) VALUES ('843','1','1','21','820','昊天','0','300.00','200.00','1','第一个商品','20171025/59f03428401cb.png','1515036002') [ RunTime:0.0490s ]
+
+[ 2018-01-04T11:20:02+08:00 ] ::1 /somegood/Shop/Cart/getCartGoods.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_cart` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_cart` WHERE `user_id` = 843  [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `sg_cart` [ RunTime:0.0030s ]
+SQL: SELECT SUM(counts) AS tp_sum FROM `sg_cart` WHERE `user_id` = 843 LIMIT 1   [ RunTime:0.0010s ]
+
+[ 2018-01-04T11:20:05+08:00 ] ::1 /somegood/Shop/Cart/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_cart` [ RunTime:0.0030s ]
+SQL: SELECT COUNT(*) AS tp_count FROM sg_cart c WHERE c.user_id = '843' LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT c.cart_id,c.real_goods_id,sd.stock,sd.sg_id,g.id,g.online_stock,c.goods_id,c.seller_id,c.store_name,c.store_id,sd.is_onsale as is_on_sale,c.goods_title,c.counts,c.goods_thumb,c.store_name as s_name,c.market_price,c.goods_price FROM sg_cart c LEFT JOIN sg_seller_delivery AS sd ON sd.id = c.goods_id LEFT JOIN sg_goods AS g ON g.id = sd.sg_id  WHERE c.user_id = '843'  [ RunTime:0.0010s ]
+SQL: SELECT c.*,u.user_name,group_concat(c.store_name) FROM sg_cart c LEFT JOIN sg_users AS u ON u.uid = c.seller_id  WHERE c.user_id = '843' GROUP BY c.seller_id  [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined variable: web_keywords D:\xampps\htdocs\somegood\Runtime\Cache\Shop\c788990fb2e6a2df7ebba0fae9e2dfd3.php 第 6 行.
+NOTIC: [8] Undefined variable: web_description D:\xampps\htdocs\somegood\Runtime\Cache\Shop\c788990fb2e6a2df7ebba0fae9e2dfd3.php 第 7 行.
+NOTIC: [8] Use of undefined constant user_name - assumed 'user_name' D:\xampps\htdocs\somegood\Runtime\Cache\Shop\c788990fb2e6a2df7ebba0fae9e2dfd3.php 第 96 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.050003s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.050003s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-01-04T11:20:05+08:00 ] ::1 /somegood/Shop/Cart/getCartGoods.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `sg_cart` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_cart` WHERE `user_id` = 843  [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_cart` [ RunTime:0.0020s ]
+SQL: SELECT SUM(counts) AS tp_sum FROM `sg_cart` WHERE `user_id` = 843 LIMIT 1   [ RunTime:0.0020s ]
+
+[ 2018-01-04T11:20:08+08:00 ] ::1 /somegood/Shop/Order/settlement.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0030s ]
+NOTIC: [8] Undefined variable: orderModel D:\xampps\htdocs\somegood\Apps\Shop\Controller\OrderController.class.php 第 66 行.
+SQL: SHOW COLUMNS FROM `sg_users_address` [ RunTime:0.0030s ]
+SQL: SELECT ua.*,r.id,r.name as rname,o.name as oname,i.name as iname FROM sg_users_address ua LEFT JOIN sg_region AS r ON ua.district = r.id LEFT JOIN sg_region AS o ON ua.city = o.id LEFT JOIN sg_region AS i ON ua.province = i.id  WHERE `user_id` = '843' AND `is_show` = 0 ORDER BY is_default DESC  [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_users_address` [ RunTime:0.0030s ]
+SQL: SELECT `address_id` FROM `sg_users_address` WHERE `is_default` = 1 AND `is_show` = 0 AND `user_id` = 843 LIMIT 1   [ RunTime:0.0010s ]
+NOTIC: [8] Undefined variable: cart_id D:\xampps\htdocs\somegood\Apps\Shop\Controller\OrderController.class.php 第 73 行.
+SQL: SHOW COLUMNS FROM `sg_cart` [ RunTime:0.0020s ]
+SQL: SELECT c.seller_id,u.user_name FROM sg_cart c LEFT JOIN sg_users AS u ON u.uid = c.seller_id  WHERE c.cart_id IN ('2') GROUP BY c.seller_id ORDER BY c.cart_id ASC  [ RunTime:0.0010s ]
+SQL: SELECT c.*,g.heavy,sd.is_onsale as is_on_sale,sd.stock,sd.sg_id,g.online_stock FROM sg_cart c LEFT JOIN sg_seller_delivery AS sd ON sd.id = c.goods_id LEFT JOIN sg_goods AS g ON g.id = sd.sg_id  WHERE c.cart_id IN ('2') ORDER BY store_id DESC  [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_virtual_cash_log` [ RunTime:0.0220s ]
+SQL: SELECT `log_id`,`user_id`,sum(user_money) as c,sum(frozen_money) as b FROM `sg_virtual_cash_log` WHERE ( user_id=843 ) GROUP BY user_id  [ RunTime:0.0010s ]
+NOTIC: [8] Undefined offset: 0 D:\xampps\htdocs\somegood\Apps\Common\Model\OrderModel.class.php 第 274 行.
+NOTIC: [8] Undefined offset: 0 D:\xampps\htdocs\somegood\Apps\Common\Model\OrderModel.class.php 第 274 行.
+SQL: SELECT c.goods_id,c.counts,c.goods_price,gc.id as goods_category FROM sg_cart c LEFT JOIN sg_seller_delivery AS sd ON sd.id = c.goods_id LEFT JOIN sg_goods AS g ON sd.sg_id = g.id LEFT JOIN sg_goods_category AS gc ON gc.id = g.category_id  WHERE ( cart_id=2 )  [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_coupon` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `sg_coupon` [ RunTime:0.0020s ]
+SQL: SELECT c.coupon_id,c.coupon_type_id,ct.is_all,ct.type_money,ct.min_goods_amount,ct.type_name,ct.use_start_date,ct.use_end_date FROM sg_coupon c LEFT JOIN sg_coupon_type AS ct ON c.coupon_type_id = ct.type_id  WHERE `user_id` = '843' AND `min_goods_amount` < 200 AND `used_time` = 0 AND `use_start_date` < 1515036007 AND `use_end_date` > 1515036007  [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_coupon_type_list` [ RunTime:0.0030s ]
+NOTIC: [8] Undefined index: can_use D:\xampps\htdocs\somegood\Apps\Common\Model\CouponModel.class.php 第 97 行.
+NOTIC: [8] Undefined index: cant_use D:\xampps\htdocs\somegood\Apps\Common\Model\CouponModel.class.php 第 98 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined variable: web_keywords D:\xampps\htdocs\somegood\Runtime\Cache\Shop\93cebf65dcc50234c3f22e1874041112.php 第 6 行.
+NOTIC: [8] Undefined variable: web_description D:\xampps\htdocs\somegood\Runtime\Cache\Shop\93cebf65dcc50234c3f22e1874041112.php 第 7 行.
+NOTIC: [8] Undefined variable: isAjax D:\xampps\htdocs\somegood\Runtime\Cache\Shop\93cebf65dcc50234c3f22e1874041112.php 第 65 行.
+NOTIC: [8] Undefined index: num D:\xampps\htdocs\somegood\Runtime\Cache\Shop\93cebf65dcc50234c3f22e1874041112.php 第 201 行.
+NOTIC: [8] Undefined variable: shareBill D:\xampps\htdocs\somegood\Runtime\Cache\Shop\93cebf65dcc50234c3f22e1874041112.php 第 275 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.059004s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.059004s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.002000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2018-01-04T11:20:08+08:00 ] ::1 /somegood/Shop/Order/logistics.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `sg_seller_logistics` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `sg_users_address` [ RunTime:0.0020s ]
+SQL: SELECT `province`,`city`,`district` FROM `sg_users_address` WHERE ( address_id=332 ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_order` [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `sg_cart` [ RunTime:0.0030s ]
+SQL: SELECT c.*,g.heavy,sd.is_onsale as is_on_sale,sd.stock,sd.sg_id,g.online_stock FROM sg_cart c LEFT JOIN sg_seller_delivery AS sd ON sd.id = c.goods_id LEFT JOIN sg_goods AS g ON g.id = sd.sg_id  WHERE c.cart_id IN ('2') ORDER BY store_id DESC  [ RunTime:0.0010s ]
+NOTIC: [8] Undefined offset: 820 D:\xampps\htdocs\somegood\Apps\Common\Model\SellerLogisticsModel.class.php 第 78 行.
+NOTIC: [8] Undefined index: total_money D:\xampps\htdocs\somegood\Apps\Common\Model\SellerLogisticsModel.class.php 第 78 行.
+NOTIC: [8] Undefined index: total_heavy D:\xampps\htdocs\somegood\Apps\Common\Model\SellerLogisticsModel.class.php 第 79 行.
+SQL: SELECT * FROM `sg_seller_logistics` WHERE `is_on` = 1  [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_logistics` [ RunTime:0.0020s ]
+SQL: SELECT `id`,`name` FROM `sg_logistics` WHERE ( 1=1 AND id='41' ) LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `sg_seller_logistics_region` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_seller_logistics_region` WHERE ( 1=1 AND seller_logistics_id='4' )  [ RunTime:0.0020s ]
+SQL: SELECT `id`,`name` FROM `sg_logistics` WHERE ( 1=1 AND id='35' ) LIMIT 1   [ RunTime:0.0020s ]
+SQL: SELECT * FROM `sg_seller_logistics_region` WHERE ( 1=1 AND seller_logistics_id='5' )  [ RunTime:0.0010s ]
+SQL: SELECT `id`,`name` FROM `sg_logistics` WHERE ( 1=1 AND id='64' ) LIMIT 1   [ RunTime:0.0020s ]
+SQL: SELECT * FROM `sg_seller_logistics_region` WHERE ( 1=1 AND seller_logistics_id='12' )  [ RunTime:0.0010s ]
+SQL: SELECT `id`,`name` FROM `sg_logistics` WHERE ( 1=1 AND id='64' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `sg_seller_logistics_region` WHERE ( 1=1 AND seller_logistics_id='16' )  [ RunTime:0.0010s ]
+SQL: SELECT `id`,`name` FROM `sg_logistics` WHERE ( 1=1 AND id='57' ) LIMIT 1   [ RunTime:0.0020s ]
+SQL: SELECT * FROM `sg_seller_logistics_region` WHERE ( 1=1 AND seller_logistics_id='17' )  [ RunTime:0.0010s ]
+SQL: SELECT `id`,`name` FROM `sg_logistics` WHERE ( 1=1 AND id='59' ) LIMIT 1   [ RunTime:0.0010s ]
+SQL: SELECT * FROM `sg_seller_logistics_region` WHERE ( 1=1 AND seller_logistics_id='18' )  [ RunTime:0.0020s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined index: id D:\xampps\htdocs\somegood\Runtime\Cache\Shop\4e89b7202fc691246158a7665120c456.php 第 12 行.
+NOTIC: [8] Undefined index: value D:\xampps\htdocs\somegood\Runtime\Cache\Shop\4e89b7202fc691246158a7665120c456.php 第 12 行.
+NOTIC: [8] Undefined variable: k D:\xampps\htdocs\somegood\Runtime\Cache\Shop\4e89b7202fc691246158a7665120c456.php 第 15 行.
+NOTIC: [8] Undefined index: seller_id D:\xampps\htdocs\somegood\Runtime\Cache\Shop\4e89b7202fc691246158a7665120c456.php 第 15 行.
+NOTIC: [8] Undefined variable: k D:\xampps\htdocs\somegood\Runtime\Cache\Shop\4e89b7202fc691246158a7665120c456.php 第 16 行.
+NOTIC: [8] Undefined index: id D:\xampps\htdocs\somegood\Runtime\Cache\Shop\4e89b7202fc691246158a7665120c456.php 第 16 行.
+NOTIC: [8] Undefined variable: k D:\xampps\htdocs\somegood\Runtime\Cache\Shop\4e89b7202fc691246158a7665120c456.php 第 17 行.
+NOTIC: [8] Undefined index: value D:\xampps\htdocs\somegood\Runtime\Cache\Shop\4e89b7202fc691246158a7665120c456.php 第 17 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.006001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.006001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\TokenBuildBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2018-01-04T11:20:08+08:00 ] ::1 /somegood/Shop/Cart/getCartGoods.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: Run Behavior\CronRunBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `sg_cart` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `sg_cart` WHERE `user_id` = 843  [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `sg_cart` [ RunTime:0.0020s ]
+SQL: SELECT SUM(counts) AS tp_sum FROM `sg_cart` WHERE `user_id` = 843 LIMIT 1   [ RunTime:0.0010s ]
+

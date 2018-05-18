@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0,user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>求购信息审核</title>
+    <link href="__PUBLIC__/scripts/artdialog/ui-dialog.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/statics/admin/css/icon/iconfont.css" />
+    <link href="__PUBLIC__/statics/admin/css/style.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" charset="utf-8" src="__PUBLIC__/scripts/jquery/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="__PUBLIC__/scripts/jquery/Validform_v5.3.2_min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="__PUBLIC__/scripts/artdialog/dialog-plus-min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="__PUBLIC__/statics/admin/js/laymain.js"></script>
+    <script type="text/javascript" charset="utf-8" src="__PUBLIC__/statics/admin/js/common.js"></script>
+</head>
+
+<body class="mainbody">
+<form method="post" action="{:U('Want/audit')}" id="wantForm">
+    <!--导航栏-->
+    <div class="location">
+        <a href="javascript:history.back(-1);" class="back"><i class="iconfont icon-up"></i><span>返回上一页</span></a>
+        <a href="{:U('Index/center')}" class="home"><i class="iconfont icon-home"></i><span>首页</span></a>
+        <i class="arrow iconfont icon-arrow-right"></i>
+        <span>求购信息审核</span>
+    </div>
+    <div class="line10"></div>
+    <!--/导航栏-->
+
+    <!--内容-->
+    <div id="floatHead" class="content-tab-wrap">
+        <div class="content-tab">
+            <div class="content-tab-ul-wrap">
+                <ul>
+                    <li><a class="selected" href="javascript:void(0);">求购信息</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="tab-content">
+        <dl>
+            <dt>发布人</dt>
+            <input type="hidden" name="wid" value="{$detail.wid}"/>
+            <dd>{$detail.user_name}</dd>
+        </dl>
+        <dl>
+            <dt>发布时间</dt>
+            <dd>{$detail.w_addtime|date='Y-m-d H:i:s',###}</dd>
+        </dl>
+        <dl>
+            <dt>最后更新时间</dt>
+            <dd>{$detail.w_updat|date='Y-m-d H:i:s',###}</dd>
+        </dl>
+        <dl>
+            <dt>标题</dt>
+            <dd>{$detail.w_title}</dd>
+        </dl>
+        <dl>
+            <dt>内容</dt>
+            <dd>{$detail.w_content}</dd>
+        </dl>
+        <dl>
+            <dt>地区</dt>
+            <dd>{$detail.region}</dd>
+        </dl>
+        <dl>
+            <dt>电话</dt>
+            <dd>{$detail.mobile}</dd>
+        </dl>
+
+        <dl>
+            <dt>状态</dt>
+            <dd>
+                <div class="rule-multi-radio">
+                    <span id="rblStatus">
+                        <volist name="status_list" id="item">
+                            <input id="rblStatus_{$key}" type="radio" name="status" value="{$key}" <if condition="$detail.status eq $key"> checked="checked" </if> /><label for="rblStatus_{$key}">{$item}</label>
+                        </volist>
+                    </span>
+                </div>
+            </dd>
+        </dl>
+    </div>
+
+    <!--/内容-->
+
+    <!--工具栏-->
+    <div class="page-footer">
+        <div class="btn-wrap">
+            <input type="hidden" name="action" value="{$action}" />
+            <input type="hidden" name="id" value="{$info.id}" />
+            <input type="submit" name="btnSubmit" value="提交保存" id="btnSubmit" class="btn" />
+            <input name="btnReturn" type="button" value="返回上一页" class="btn yellow" onclick="javascript:history.back();" />
+        </div>
+    </div>
+    <!--/工具栏-->
+
+</form>
+</body>
+</html>

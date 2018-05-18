@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,initial-scale=1.0,user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>编辑内容</title>
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/scripts/artdialog/ui-dialog.css" />
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/statics/admin/css/icon/iconfont.css" />
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/statics/admin/css/style.css" />
+    <script type="text/javascript" charset="utf-8" src="__PUBLIC__/scripts/jquery/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="__PUBLIC__/scripts/jquery/Validform_v5.3.2_min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="__PUBLIC__/scripts/datepicker/WdatePicker.js"></script>
+    <script type="text/javascript" charset="utf-8" src="__PUBLIC__/scripts/artdialog/dialog-plus-min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="__PUBLIC__/scripts/webuploader/webuploader.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src="__PUBLIC__/kindeditor/kindeditor-all.js"></script>
+    <script type="text/javascript" charset="utf-8" src="__PUBLIC__/statics/admin/js/uploader.js"></script>
+    <script type="text/javascript" charset="utf-8" src="__PUBLIC__/statics/admin/js/common.js"></script>
+    <script type="text/javascript" charset="utf-8" src="__PUBLIC__/statics/admin/js/laymain.js"></script>
+    <script type="text/javascript">
+        var uploadType = 'image';
+        function removeExtend(obj) {
+            $(obj).parent().parent("dl").remove();
+        }
+        $(function () {
+            //初始化表单验证
+            $("#couponForm").initValidform();
+            //初始化上传控件
+            $(".upload-img").InitUploader({ filesize: "10240", sendurl: "{:U('Base/uploadFile')}", swf: "__PUBLIC__/statics/admin/js/webuploader/uploader.swf", filetypes: "gif,jpg,png,bmp,rar,zip,doc,xls,txt,docx,xlsx" });
+            //初始化编辑器
+            var editorMini = KindEditor.create('#txtContent', {
+                width: '100%',
+                height: '250px',
+                filterMode: false, //默认不过滤HTML
+                resizeType: 1,
+                uploadJson: "{:U('Base/uploadFile',array('action' => 'EditorFile'))}",
+                fileManagerJson: '__PUBLIC__/kindeditor/php/file_manager_json.php',
+                allowFileManager: true
+            });
+            //设置封面图片的样式
+            $(".photo-list ul li .img-box img").each(function () {
+                if ($(this).attr("src") == $("#hidFocusPhoto").val()) {
+                    $(this).parent().addClass("selected");
+                }
+            });
+            //创建上传附件
+            $(".attach-btn").click(function () {
+                showAttachDialog();
+            });
+            ajax();
+        });
+    </script>
+</head>
+
+<body class="mainbody">
+<form method="post" action="{:U('Coupon/typeAdd')}" id="couponForm">
+    <!--导航栏-->
+    <div class="location">
+        <a href="javascript:history.back(-1);" class="back"><i class="iconfont icon-up"></i><span>返回上一页</span></a>
+        <a href="{:U('Index/center')}" class="home"><i class="iconfont icon-home"></i><span>首页</span></a>
+        <i class="arrow iconfont icon-arrow-right"></i>
+        <span>编辑优惠券</span>
+    </div>
+    <div class="line10"></div>
+    <!--/导航栏-->
+
+    <!--内容-->
+    <div id="floatHead" class="content-tab-wrap">
+        <div class="content-tab">
+            <div class="content-tab-ul-wrap">
+                <ul>
+                    <li><a class="selected" href="javascript:void(0);">基本信息</a></li>
+                    <li><a href="javascript:void(0);">适用范围</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="tab-content">
+        <dl>
+            <dt>优惠券名称</dt>
+            <dd>
+                <input name="data[type_name]" type="text" value="{$info.type_name}" id="txtTitle" class="input normal" datatype="*" sucmsg=" " />
+                <span class="Validform_checktip">*</span>
+            </dd>
+        </dl>
+        <dl>
+            <dt>发放方式</dt>
+            <dd>
+                <div class="rule-single-select">
+                    <select name="data[send_type]" id="SendId" onchange="changeBoxContent(this.value);">
+                        <volist name="sendtype_list" id="item">
+                            <option <if condition="$key eq $info['send_type']"> selected="selected" </if> value="{$key}"> {$item}</option>
+                        </volist>
+                    </select>
+                </div>
+            </dd>
+        </dl>
+        <dl  id="min_amount"  style="display: none">
+            <dt>订单下限</dt>
+            <dd>
+                <input name="data[min_amount]" type="text" value="{$info.type_name}" class="input small" sucmsg=" "/>
+                <span class="Validform_checktip">*订单金额达到此数值则自动发放此优惠券</span>
+            </dd>
+        </dl>
+        <dl>
+            <dt>抵扣金额</dt>
+            <dd>
+                <input name="data[type_money]" type="text" value="{$info.type_money}" id="txtSortId" class="input small" sucmsg=" " />
+                <span class="Validform_checktip">*此类型的红包可以抵销的金额</span>
+            </dd>
+        </dl>
+        <dl>
+            <dt>最小订单金额</dt>
+            <dd>
+                <input name="data[min_goods_amount]" type="text" value="{$info.min_goods_amount}" id="txtClick" class="input small"  sucmsg=" " />
+                <span class="Validform_checktip">只有适用范围内的商品总金额达到这个数的订单才能使用这种红包</span>
+            </dd>
+        </dl>
+        <dl>
+            <dt>发放开始时间</dt>
+            <dd>
+                <input name="data[send_start_date]" type="text" value="{$info.send_start_date|date='Y-m-d H:i:s',###}" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" id="send_start_date" class="input rule-date-input"  datatype="/^\d{4}-\d{1,2}-\d{1,2}\s{1}(\d{1,2}:){2}\d{1,2}$/" errormsg="请选择正确的日期" sucmsg=" " />
+                <span class="Validform_checktip">不选择默认当前发布时间</span>
+            </dd>
+        </dl>
+        <dl>
+            <dt>发放结束时间</dt>
+            <dd>
+                <input name="data[send_end_date]" type="text" value="{$info.send_end_date|date='Y-m-d H:i:s',###}" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" id="send_end_date" class="input rule-date-input"  datatype="/^\d{4}-\d{1,2}-\d{1,2}\s{1}(\d{1,2}:){2}\d{1,2}$/" errormsg="请选择正确的日期" sucmsg=" " />
+                <span class="Validform_checktip">不选择默认当前发布时间</span>
+            </dd>
+        </dl>
+        <dl>
+            <dt>使用开始时间</dt>
+            <dd>
+                <input name="data[use_start_date]" type="text" value="{$info.use_start_date|date='Y-m-d H:i:s',###}" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" id="use_start_date" class="input rule-date-input"  datatype="/^\d{4}-\d{1,2}-\d{1,2}\s{1}(\d{1,2}:){2}\d{1,2}$/" errormsg="请选择正确的日期" sucmsg=" " />
+                <span class="Validform_checktip">不选择默认当前发布时间</span>
+            </dd>
+        </dl>
+        <dl>
+            <dt>使用结束时间</dt>
+            <dd>
+                <input name="data[use_end_date]" type="text" value="{$info.use_end_date|date='Y-m-d H:i:s',###}" onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" id="use_end_date" class="input rule-date-input"  datatype="/^\d{4}-\d{1,2}-\d{1,2}\s{1}(\d{1,2}:){2}\d{1,2}$/" errormsg="请选择正确的日期" sucmsg=" " />
+                <span class="Validform_checktip">不选择默认当前发布时间</span>
+            </dd>
+        </dl>
+    </div>
+
+
+
+    <div class="tab-content" style="display:none">
+        <dl>
+            <dt>商品类型</dt>
+            <dd>
+                <div class="rule-single-select">
+                <select name="data[is_all]" id="isAll" onchange="changeCategory(this.value)">
+                    <option value="1" <if condition="$info['is_all'] eq 1">selected="selected"</if>>全场通用</option>
+                    <option value="0" <if condition="$info['is_all'] eq 0">selected="selected"</if>>选择商品类型</option>
+                </select>
+            </div>
+            </dd>
+        </dl>
+        <dl></dl><dl></dl><dl></dl><dl></dl><dl></dl>
+
+        <dl id="categoryList" <if condition="$info['is_all'] eq 1"> style="display:none;" </if>>
+            <dt><table id="categoryTab" class="categoryTab" style="float:left;">
+                <tbody>
+                <tr>
+                    <td>
+                        <select name="type" id="type_list" class="input select" style="width:200px;height:160px;" size="7">
+                            <volist name="cate_list" id="v">
+                                <option value="{$v.id}">
+                                    {$v.title}
+                                </option>
+                            </volist>
+                        </select>
+                    </td>
+                    <td>
+                        <input id="addButton" value="添加到列表 &gt;&gt;" class="btn gBtn" onclick="manageSelectItem('update', 'type_list', 'select_list', 'delButton', 'typeList');" type="button">
+                        <br><br>
+                        <input id="delButton" value="从列表删除 &lt;&lt;" class="btn gBtn" onclick="manageSelectItem('delete', 'type_list', 'select_list', 'delButton', 'typeList');" type="button">
+                    </td>
+                    <td>
+                        <select name="catId" id="select_list" class="input select" style="width:200px;height:160px;" multiple="multiple">
+                            <volist name="info.goods_cate_list" id="vo">
+                                <option selected="selected" value="{$vo.id}">{$vo.title}</option>
+                            </volist>
+                        </select>
+                        <input type="hidden" name="cate_list" id="typeList" value="{$info.cate_list}" />
+                    </td>
+                </tr>
+                <tbody>
+            </table>
+            </dt>
+        </dl>
+    </div>
+
+    <!--/内容-->
+    <!--工具栏-->
+    <div class="page-footer">
+        <div class="btn-wrap">
+            <input type="hidden" name="action" value="{$action}" />
+            <input type="hidden" name="type_id" id='content-id' value="{$info.type_id}"/>
+            <input type="hidden" name="returnUrl" value="{$returnUrl}">
+            <input type="submit" name="btnSubmit" value="提交保存" id="btnSubmit" class="btn" />
+            <input name="btnReturn" type="button" value="返回上一页" class="btn yellow" onclick="javascript:history.back(-1);" />
+        </div>
+    </div>
+    <!--/工具栏-->
+
+</form>
+<script type="text/javascript">
+    function changeBoxContent(val){
+        if(val=='3'){
+            $("#min_amount").show();
+        }else{
+            $("#min_amount").hide();
+        }
+    }
+    function changeCategory(val){
+        if(val=='0'){
+            $("#categoryList").show();
+        }else{
+            $("#categoryList").hide();
+        }
+    }
+</script>
+</body>
+</html>

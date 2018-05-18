@@ -1,0 +1,44 @@
+	<div class="footer">
+        <ul>
+            <li><a href="{:U('Ershou/Index/index')}"><i class="icons icon-home"></i><span>首页</span></a></li>
+            <li><a href="{:U('Ershou/Goods/category')}"><i class="icons icon-classify"></i><span>分类</span></a></li>
+            <li class="plus"><i class="icons icon-plus"></i></li>
+            <li><a href="{:U('Mobile/Users/favorites')}"><i class="icons icon-favorites"></i><span>收藏</span></a></li>
+            <li><a href="{:U('Mobile/Users/index')}"><i class="icons icon-mine"></i><span>我的</span></a></li>
+        </ul>
+    </div>
+    <div class="rotate-box">
+        <a href="{:U('Mobile/SecondHand/publish')}" class="before">宝贝</a>
+        <a href="{:U('Mobile/Users/addWant')}" class="after">寻宝</a>
+    </div>
+    <script type="text/javascript">
+
+        /*公用底部点击样式变换*/
+        $(".footer ul").find("li").on("touchstart",function(){
+            $(this).addClass("sel").siblings().removeClass("sel");
+
+        })
+        $(".icon-plus").on("click",function(event){
+            if($(".rotate-box").hasClass("rotate")){
+                $(this).removeClass("rotate");
+                $(".rotate-box").removeClass("rotate");
+            }else{
+                $(this).addClass("rotate");
+                $(".rotate-box").addClass("rotate");
+            }
+            event.stopPropagation();
+        });
+        $(document).bind('click',function(e){
+            var e = e || window.event; //浏览器兼容性
+            var elem = e.target || e.srcElement;
+            while (elem) { //循环判断至跟节点，防止点击的是div子元素
+                if (elem.id && elem.id=='test') {
+                    return;
+                }
+                elem = elem.parentNode;
+            }
+            $(".rotate-box").addClass("rotate");
+            $(".rotate-box").removeClass("rotate");
+        })
+    </script>
+    <include file="Public/wxshare" />
